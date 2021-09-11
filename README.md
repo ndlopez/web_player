@@ -13,7 +13,7 @@ Programming language: JavaScript, Bash
 
 Editor: VS Code
 
-Environment: MacBookPro/ MacOS 15.5
+Environment: MacBookPro / MacOS 15.5
 
 ## Gnome-Shell Extension version
 ### fmLaPaz@moji.physics
@@ -23,14 +23,12 @@ Programming language: JavaScript
 
 Editor: Emacs
 
-Environment: Panasonic Let'sNote/Fedora 24
+Environment: Panasonic Let'sNote / Fedora 24
 
-coming very soon
+## Windows version
+Programming language: C# and probably Batch Script
 
-## Windows10 version
-Programming language: C#
-
-coming soon
+coming as soon as I learn C# connections with JSON
 
 ## Web version
 
