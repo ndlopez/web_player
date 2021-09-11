@@ -21,13 +21,18 @@ The application will display every 4 minutes in the Notification Center
 the current song playing on https://www.lapaz.fm
 
 Programming language: JavaScript, Bash
+
 Editor: VS Code
+
 Environment: MacBookPro/ MacOS 15.5
 
 ## Gnome version
 Programming language: JavaScript
+
 Editor: Emacs
-Environment: Panasonic Let'sNote with Fedora 24
+
+Environment: Panasonic Let'sNote/Fedora 24
+
 coming very soon
 
 ## Windows10 version
