@@ -7,7 +7,7 @@ I decided to build an small application that displays the current song playing o
 
 ## MacOS version
 
-image[get_fmLaPaz/now_fmLaPaz.png]
+![Notification](get_fmLaPaz/now_fmLaPaz.png)
 
 Download get_fmLaPaz as a zip and copy or move to $HOME/Public folder
 
