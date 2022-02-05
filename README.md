@@ -29,7 +29,9 @@ Environment: Panasonic Let'sNote / Fedora 24
 Programming language: C#
 
 ~~coming as soon as I learn C# connections with JSON~~
+
 I did learn how to code in C#. The Pre-release is available as a ZIP file.
+
 Go to: [https://github.com/ndlopez/NowPlaying]
 
 ## Web version
