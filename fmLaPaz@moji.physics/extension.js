@@ -22,9 +22,12 @@ const Mainloop = imports.mainloop;
 const PanelMenu = imports.ui.panelMenu;
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 
-const STREAM_URL = 'https://icecasthd.net:2199/rpc/lapazfm/streaminfo.get';
+const LAPAZ = 'https://icecasthd.net:2199/rpc/lapazfm/streaminfo.get';
 const THIRD_ROCK = 'https://feed.tunein.com/profiles/s151799/nowPlaying';
-const stations = ["FM La Paz","3rd Rock Radio"];
+const ALT_X = 'https://feed.tunein.com/profiles/s293700/nowPlaying'
+
+const stations = ["FM La Paz","3rd Rock Radio","113.fm Alt-x"];
+const STREAM_URL = [LAPAZ,THIRD_ROCK,ALT_X]
 let _httpSession;
 
 const NowPlaying = new Lang.Class({
@@ -56,7 +59,7 @@ const NowPlaying = new Lang.Class({
     },
     _loadData:function(){
         _httpSession = new Soup.Session();
-        let msg = Soup.Message.new('GET',THIRD_ROCK);
+        let msg = Soup.Message.new('GET',STREAM_URL[1]);
         //log(stations[1] + ", connecting to: " + THIRD_ROCK);
         msg.connect('got_headers', Lang.bind(this, function(message) {
             log(stations[1] + " status: " + message.status_code);
