@@ -6,28 +6,46 @@
   [1] https://gitlab.com/justperfection.channel/how-to-create-a-gnome-shell-extension/-/tree/master/example@example.com
   [2] https://smasue.github.io/gnome-shell-tw
   Developer: ndlopez (https://github.com/ndlopez)
-  Last updated on 2021-09-06
+  Issue: The extension cannot load due to usage of a deprecated method:
+  obj.actor.add_actor
+  Another issue with the URL, it returns a request response = 6!?
+  Added another URL to test if the JS code is correct, it works. 
+  Thus, fm La Paz URL has some issues, expiry code probably?
+
+  Last updated on 2022-05-17
 */
-const {St,GLib} = imports.gi;
+const {St, GLib, Clutter} = imports.gi;
 const Main = imports.ui.main;
 const Soup = imports.gi.Soup;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
-const Clutter = imports.gi.Clutter;
 const PanelMenu = imports.ui.panelMenu;
+const Me = imports.misc.extensionUtils.getCurrentExtension();
 
-const streamURL = 'https://icecasthd.net:2199/rpc/lapazfm/streaminfo.get'
+const STREAM_URL = 'https://icecasthd.net:2199/rpc/lapazfm/streaminfo.get';
+const THIRD_ROCK = 'https://feed.tunein.com/profiles/s151799/nowPlaying';
+const stations = ["FM La Paz","3rd Rock Radio"];
 let _httpSession;
 
 const NowPlaying = new Lang.Class({
     Name:"NowPlaying",Extends:PanelMenu.Button,
     _init:function(){
+	    /*let panelBtn = new St.Bin({
+		style_class:"panel-button"
+	    });*/
         this.parent(0.0,"Now Playing",false);
-        this.buttonText= new St.Label({
-            text:_("FM La Paz"),
+        this.labelText = new St.Label({
+            text:_(stations[1]),
             y_align:Clutter.ActorAlign.CENTER
         });
-        this.actor.add_actor(this.buttonText);
+    	//The following builds a button
+	    //let topBox = new St.BoxLayout();
+	    //topBox.add_actor(this.buttonText);
+	    //topBox.add_actor(this.iconText);//create iconText 1st!
+        //this.add_actor(topBox);
+	    //panelBtn.set_child(this.buttonText);
+	    //this.panelBtn.set_child(this.buttonText);
+	this.add_actor(this.labelText);
         this._refresh();
     },
     _refresh:function(){
@@ -38,13 +56,16 @@ const NowPlaying = new Lang.Class({
     },
     _loadData:function(){
         _httpSession = new Soup.Session();
-        let msg = Soup.Message.new('GET',streamURL);
+        let msg = Soup.Message.new('GET',THIRD_ROCK);
+        //log(stations[1] + ", connecting to: " + THIRD_ROCK);
         msg.connect('got_headers', Lang.bind(this, function(message) {
-            log("FM La Paz status: "+message.status_code);
+            log(stations[1] + " status: " + message.status_code);
         }));
+
         _httpSession.queue_message(msg,Lang.bind(this,function(_httpSession,msg){
             if (msg.status_code !== 200){
-            return;}
+                log(stations[1] + ": Connection error " + msg.status_code );
+                return;}
             let json = JSON.parse(msg.response_body.data);
             this._refreshUI(json);
         }));
@@ -53,13 +74,16 @@ const NowPlaying = new Lang.Class({
         var musicChar = String.fromCharCode(9835);
         var now = GLib.DateTime.new_now_local();
         var hora = now.format("%H:%M ");
-        let currSong = data['data'][0]['song'];
-        //if (currSong == 'Ads - Block'){extend updating time}
-        let listenNow = data['data'][0]['listeners'] + musicChar;
+        //let currSong = data['data'][0]['song'];
+        let currSong = data['Header']['Subtitle'];
+        ////if (currSong == 'Ads - Block'){extend updating time}
+        //let listenNow = data['data'][0]['listeners'] + musicChar;
+        var currArtist = currSong.split("-");
+        let listenNow = currArtist[0] + musicChar;
 
-        log(hora+"Now Playing "+currSong);
-        Main.notify(hora+" Now Playing on FM La Paz",currSong);
-        this.buttonText.set_text(listenNow);
+        //log(hora+"Now Playing "+currSong);
+        Main.notify(hora+" Now Playing on "+stations[1],currSong);
+        this.labelText.set_text(listenNow);
     },
     _removeTimeout:function(){
         if(this._timeout){
@@ -83,6 +107,7 @@ const NowPlaying = new Lang.Class({
 let nowPlayingMenu;
 
 function init(){
+    log(stations[1] + ": Application started");
 }
 
 function enable(){
