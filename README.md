@@ -1,19 +1,25 @@
-# Display current song playing on lapaz.fm
+# Display current song playing on lapaz.fm/thirdRock
 
 Since VLC only displays "live" after opening URL[https://icecasthd.net:6192/live]
 
-I decided to build an small application that displays the current song playing on www.lapaz.fm
+I decided to build an small application that displays the current song playing on *www.lapaz.fm* or *thirdrockradio.net*
 
 Update: *lapaz.fm* has changed everything. icecasthd JSON file is no longer available. MacOS notification and Gnome-shell extension NO longer work.
 
 ## MacOS version
-### get_fmLaPaz (deprecated)
+### Notification App
 
-![Notification](get_fmLaPaz/now_fmLaPaz.png)
+![Notification](notif_plugin/now_fmLaPaz.png)
 
 Programming language: JavaScript, Bash
 
-Editor: VS Code
+Editor: Emacs
+
+### xbar Plugin
+1. ThirdRock Radio <get3rdRock.4m.py>
+
+2. FM La Paz <getfmLaPaz.4m.sh>
+
 
 Environment: MacBookPro / MacOS 15.5
 
