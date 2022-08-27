@@ -1,10 +1,10 @@
-# Display current song playing on lapaz.fm/thirdRock
+# Display current song playing on laPaz.fm/thirdRock
 
-Since VLC only displays "live" after opening URL[https://icecasthd.net:6192/live]
+Since VLC only displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) or *thirdrock-...* when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac)
 
-I decided to build an small application that displays the current song playing on *www.lapaz.fm* or *thirdrockradio.net*
+Thus, I decided to build a script that displays the current song playing on *lapaz.fm* or *thirdrockradio.net*
 
-Update: *lapaz.fm* has changed everything. icecasthd JSON file is no longer available. MacOS notification and Gnome-shell extension NO longer work.
+Update: *lapaz.fm* has changed everything. icecasthd JSON file is no longer available. ~~MacOS notification and~~ Gnome-shell extension NO longer work.
 
 ## MacOS version
 ### Notification App
@@ -16,9 +16,9 @@ Programming language: JavaScript, Bash
 Editor: Emacs
 
 ### xbar Plugin
-1. ThirdRock Radio <get3rdRock.4m.py>
+1. ThirdRock Radio <notif\_plugin/get3rdRock.4m.py>
 
-2. FM La Paz <getfmLaPaz.4m.sh>
+2. FM La Paz <notif/getfmLaPaz.4m.sh>
 
 
 Environment: MacBookPro / MacOS 15.5
@@ -31,7 +31,7 @@ Programming language: JavaScript
 
 Editor: Emacs
 
-Environment: Panasonic Let'sNote / Fedora 24
+Environment: Panasonic Let'sNote / Fedora 36
 
 ## Windows version
 Programming language: C#
@@ -42,7 +42,7 @@ I did learn how to code in C#. The Pre-release is available as a ZIP file.
 
 Go to: [https://github.com/ndlopez/NowPlaying]
 
-This version no longer displays current song from fm LaPaz, 'cuz the error mentioned above, I made a version to fetch ThirdRockRadio current Playing song.
+Update: Windows version no longer displays current song from fm LaPaz, 'cuz the error mentioned above, I made a version to fetch ThirdRockRadio current Playing song.
 
 ## Web version (deprecated)
 

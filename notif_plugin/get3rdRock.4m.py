@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-# ignore verify peer
-# curl -k https://stream.consultoradas.com/cp/get_info.php?p=8042
 # <xbar.title>NowPlaying on ThirdRock</xbar.title>
 # <xbar.version>0.2</xbar.version>
 # <xbar.author>Diego Lopez</xbar.author>
@@ -14,7 +12,6 @@ from urllib.request import urlopen
 from urllib.error import URLError
 import json
 
-this_url = "https://stream.consultoradas.com/cp/get_info.php?p=8042"
 that_url = "https://feed.tunein.com/profiles/s151799/nowPlaying"
 
 def get_info(param):
