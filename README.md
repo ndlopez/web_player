@@ -9,22 +9,22 @@ Update: *lapaz.fm* has changed everything. icecasthd JSON file is no longer avai
 ## MacOS version
 ### Notification App
 
-![Notification](notif_plugin/now_fmLaPaz.png)
+![Notification](popUpMsg/now_fmLaPaz.png)
 
 Programming language: JavaScript, Bash
 
 Editor: Emacs
 
 ### xbar Plugin
-1. ThirdRock Radio <notif\_plugin/get3rdRock.4m.py>
+1. ThirdRock Radio <xbar\_plugin/get3rdRock.4m.py>
 
-2. FM La Paz <notif/getfmLaPaz.4m.sh>
+2. FM La Paz <xbar\_plugin/getfmLaPaz.4m.sh>
 
 
 Environment: MacBookPro / MacOS 15.5
 
-## Gnome-Shell Extension version
-### fmLaPaz@moji.physics (Gnome-javascript errors)
+## Gnome-Shell Extension version (not working)
+### fmLaPaz@moji.physics (Gnome-javascript issues)
 ![Notification](fmLaPaz@moji.physics/now_fmLaPaz.png)
 
 Programming language: JavaScript
