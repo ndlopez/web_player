@@ -7,16 +7,6 @@ var timeNow = new Date();
 let hh = timeNow.getHours();
 let mm = timeNow.getMinutes();
 
-//change title when focus
-function oldTitle(){
-    document.title = origTitle;
-}
-function newTitle(thisTitle){
-    document.title = thisTitle;
-}
-
-//window.onfocus = newTitle(display_data());
-//window.onfocus = oldTitle();
 var songs = [];
 var artUrls = [];
 
@@ -49,6 +39,10 @@ async function display_data(){
     
     //document.getElementById("currSong").innerHTML = gotData.song;
     //document.getElementById("currArt").innerHTML = img_art;
+    var myFrame = document.getElementById("nowPlaying");
+    myFrame.setAttribute("src","curr_song.html");
+    myFrame.style.width = "400px";
+    myFrame.style.height = "480px";
     const divElm = document.createElement("div");
     const h2Title = document.createElement("h2");
     h2Title.innerHTML = hh + ":" + mm + " Now Playing on FM La Paz";
@@ -59,8 +53,8 @@ async function display_data(){
     divElm.appendChild(h2Title);
     divElm.appendChild(h2Song);
     divElm.appendChild(divImg);
-    
-    document.body.appendChild(divElm);
+    myFrame.contentWindow.document.body.appendChild(divElm);
+    document.body.appendChild(myFrame);
     buildList(gotData.song,gotData.artwork);
     //document.body.appendChild(buildList(gotData.song,gotData.artwork));
     //console.log("Now: "+ gotData.song,gotData.artwork);
