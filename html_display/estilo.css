@@ -1,0 +1,12 @@
+body{
+  font-family: Helvetica Neue, sans-serif;
+  background-color:#2e4054;
+  color:#bed2e0;
+}
+.row:after{
+  content:"";
+  display:table;
+  clear:both;}
+.colTxt{float:left;width:79%;padding:0px;}
+.colImg{float:left;width:20%;padding:0px;}
+

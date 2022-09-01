@@ -17,26 +17,28 @@ function newTitle(thisTitle){
 
 //window.onfocus = newTitle(display_data());
 //window.onfocus = oldTitle();
+var songs = [];
+var artUrls = [];
 
 display_data();
 
 function buildList(song,artwork){
-    var songs = [];
-    var artUrls = [];
     songs.push(song);
     artUrls.push(artwork);
+    var songArr = song.split("-");
     const divList = document.createElement("div");
     divList.setAttribute("class","row");
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg");
-    divColImg.innerHTML = "<img src='"+ artwork+"' width=100>";
+    divColImg.innerHTML = "<img src='"+ artwork+"' width=100%>";
     var divText = document.createElement("div");
     divText.setAttribute("class","colTxt");
-    divText.innerHTML = "<h2>" + song  + "</h2>";
+    divText.innerHTML = "<h2>" + songArr[0]  + "<br/>"+songArr[1]+"</h2>";
     divList.appendChild(divColImg);
     divList.appendChild(divText);
     console.log(songs,artUrls);
-    return divList;
+    document.body.appendChild(divList);
+    //return divList;
 }
 
 async function display_data(){
@@ -59,15 +61,15 @@ async function display_data(){
     divElm.appendChild(divImg);
     
     document.body.appendChild(divElm);
-    
-    document.body.appendChild(buildList(gotData.song,gotData.artwork));
+    buildList(gotData.song,gotData.artwork);
+    //document.body.appendChild(buildList(gotData.song,gotData.artwork));
     //console.log("Now: "+ gotData.song,gotData.artwork);
 }
 
 async function get_url(my_url){
     const response = await fetch(my_url);
     const data = await response.json();
-    const song = data['title'];
+    var song = data['title'];
     if(song === "www.lapaz.fm - "){
         song = "Title not found";
     }
