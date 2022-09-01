@@ -11,8 +11,12 @@ var songs = [];
 var artUrls = [];
 
 display_data();
+buildList();
 
-function buildList(song,artwork){
+async function buildList(){
+    const gotData = await get_url(fmLaPaz);
+    song = gotData.song;
+    artwork = gotData.artwork;
     songs.push(song);
     artUrls.push(artwork);
     var songArr = song.split("-");
@@ -39,24 +43,35 @@ async function display_data(){
     
     //document.getElementById("currSong").innerHTML = gotData.song;
     //document.getElementById("currArt").innerHTML = img_art;
-    var myFrame = document.getElementById("nowPlaying");
-    myFrame.setAttribute("src","curr_song.html");
-    myFrame.style.width = "400px";
-    myFrame.style.height = "480px";
-    const divElm = document.createElement("div");
-    const h2Title = document.createElement("h2");
-    h2Title.innerHTML = hh + ":" + mm + " Now Playing on FM La Paz";
-    const h2Song = document.createElement("h2");
-    h2Song.innerHTML = gotData.song;
-    const divImg = document.createElement("div");
-    divImg.innerHTML = img_art;
-    divElm.appendChild(h2Title);
-    divElm.appendChild(h2Song);
-    divElm.appendChild(divImg);
-    myFrame.contentWindow.document.body.appendChild(divElm);
+    var myFrame = document.createElement("iframe");
+    myFrame.style.width = "100%";
+    myFrame.style.height = "500px";
+    myFrame.style.frameborder = "0";
     document.body.appendChild(myFrame);
-    buildList(gotData.song,gotData.artwork);
-    //document.body.appendChild(buildList(gotData.song,gotData.artwork));
+    const updater = "<meta http-equiv>='refresh' content='221'>";
+    //const divElm = document.createElement("div");
+    const h2Title = "<h2>"+ hh + ":" + mm + " Now Playing on FM La Paz"+"</h2>"; 
+    //document.createElement("h2");
+    //h2Title.innerHTML = hh + ":" + mm + " Now Playing on FM La Paz";
+    //const h2Song = document.createElement("h2");
+    //h2Song.innerHTML = gotData.song;
+    const h2Song = "<h2>"+gotData.song+"</h2>";
+    const divImg = "<div>"+img_art+"</div>";
+    //document.createElement("div");
+    //divImg.innerHTML = img_art;
+    //divElm.appendChild(h2Title);
+    //divElm.appendChild(h2Song);
+    //divElm.appendChild(divImg);
+    //console.log("doc",divElm);
+    const catInfo = h2Title + h2Song + divImg;
+    myFrame.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
+  'script.innerHTML = "(function() {' +
+  'document.open();document.domain=\'' + document.domain +
+  '\';document.close();})();";' +
+  'document.write("<head>" + script.outerHTML + "'+
+  updater + '</head><body></body>");})())';
+    myFrame.contentWindow.document.write(catInfo);
+    //'<div><h2>'+gotData.song+'</h2></div>'
     //console.log("Now: "+ gotData.song,gotData.artwork);
 }
 
