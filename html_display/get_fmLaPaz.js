@@ -33,7 +33,7 @@ function buildList(song,artwork){
     divColImg.innerHTML = "<img src='"+ artwork+"' width=100%>";
     var divText = document.createElement("div");
     divText.setAttribute("class","colTxt");
-    divText.innerHTML = "<h2>" + songArr[0]  + "<br/>"+songArr[1]+"</h2>";
+    divText.innerHTML = "<h3>" + songArr[0]  + "</h3><p>"+songArr[1]+"</p>";
     divList.appendChild(divColImg);
     divList.appendChild(divText);
     console.log(songs,artUrls);
