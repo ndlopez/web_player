@@ -7,7 +7,7 @@ display_data();
 async function display_data(){
     const key = "title";
     const gotData = await get_url(fmLaPaz);
-    const img_art = "<img src='"+gotData.artwork+"' alt='Now Playing'>";
+    const img_art = "<img src='"+gotData.artwork+"' alt='Now Playing' width=350>";
     document.getElementById("currSong").innerHTML = gotData.song;
     document.getElementById("currArt").innerHTML = img_art;
     console.log("Now: "+ gotData.song,gotData.artwork);
