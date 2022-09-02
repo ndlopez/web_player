@@ -9,4 +9,6 @@ body{
   clear:both;}
 .colTxt{float:left;width:70%;padding:0px 10px;}
 .colImg{float:left;width:15%;height:75px;padding:5px;}
-
+iframe{
+  border:none;
+}
