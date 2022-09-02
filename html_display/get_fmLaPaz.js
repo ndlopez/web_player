@@ -47,8 +47,9 @@ async function display_data(){
     myFrame.style.width = "100%";
     myFrame.style.height = "500px";
     myFrame.style.frameborder = "0";
+    //myFrame.setAttribute("meta http-equiv","refresh");
     document.body.appendChild(myFrame);
-    const updater = "<meta http-equiv>='refresh' content='221'>";
+    const updater = "<meta http-equiv='refresh' content='221'>";
     //const divElm = document.createElement("div");
     const h2Title = "<h2>"+ hh + ":" + mm + " Now Playing on FM La Paz"+"</h2>"; 
     //document.createElement("h2");
@@ -69,7 +70,8 @@ async function display_data(){
   'document.open();document.domain=\'' + document.domain +
   '\';document.close();})();";' +
   'document.write("<head>" + script.outerHTML + "'+
-  updater + '</head><body></body>");})())';
+	'</head><body></body>");})())';
+    myFrame.contentWindow.document.write(updater);
     myFrame.contentWindow.document.write(catInfo);
     //'<div><h2>'+gotData.song+'</h2></div>'
     //console.log("Now: "+ gotData.song,gotData.artwork);
