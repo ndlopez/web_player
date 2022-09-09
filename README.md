@@ -20,18 +20,7 @@ Editor: Emacs
 
 2. FM La Paz <xbar\_plugin/getfmLaPaz.4m.sh>
 
-
 Environment: MacBookPro / MacOS 15.5
-
-## Gnome-Shell Extension version (not working)
-### fmLaPaz@moji.physics (Gnome-javascript issues)
-![Notification](fmLaPaz@moji.physics/now_fmLaPaz.png)
-
-Programming language: JavaScript
-
-Editor: Emacs
-
-Environment: Panasonic Let'sNote / Fedora 36
 
 ## Windows version
 Programming language: C#
@@ -44,7 +33,7 @@ Go to: [https://github.com/ndlopez/NowPlaying]
 
 Update: Windows version no longer displays current song from fm LaPaz, 'cuz the error mentioned above, I made a version to fetch ThirdRockRadio current Playing song.
 
-## Web version (deprecated)
+## Web version
 
 Open Firefox and check the Developer's log
 

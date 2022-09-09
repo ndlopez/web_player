@@ -1,8 +1,0 @@
-{
-"name":"Now Playing on LaPaz.fm",
-"description":"Display current playing song from FM La Paz",
-"shell-version":["3.30","40.0","41.0","42"],
-"url":"https://www.github.com/ndlopez/fmLaPazNow",
-"uuid":"fmLaPaz@moji.physics",
-"version":0.6
-}
