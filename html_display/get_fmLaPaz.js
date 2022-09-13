@@ -14,11 +14,19 @@ const key = "title";
 var songs = [];
 var artUrls = [];
 
-display_data();
+document.addEventListener("onload",display_data());
+
 
 document.addEventListener("load",buildList());
 
+function updateAll(){
+    setTimeout(()=>{
+        display_data();
+    },5000);
+}
+
 async function buildList(){
+    /* Wait 'til display_data is finished, then get info from h2 elems */
     const gotValues = await display_data();
     const gotDiv = document.getElementById('nowPlaying');
 
@@ -43,12 +51,13 @@ async function buildList(){
     divList.appendChild(divText);
     console.log(songs,artUrls);
     document.body.appendChild(divList);
+    setInterval(buildList,185000);
     //return divList;
 }
 
 
 async function display_data(){
-    
+    /* Display current song playing on FM La Paz */
     const gotData = await get_url(fmLaPaz);
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     document.title = gotData.song;
@@ -74,6 +83,8 @@ async function display_data(){
     myDiv.innerHTML = catInfo;
 
     document.body.appendChild(myDiv);
+
+    setInterval(display_data, 180000);
     /*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
   'script.innerHTML = "(function() {' +
   'document.open();document.domain=\'' + document.domain +
