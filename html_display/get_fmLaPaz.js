@@ -53,7 +53,7 @@ setInterval(async function buildList(){
     document.body.appendChild(divList);
     
     //return divList;
-},185000);
+},180010);
 
 
 async function display_data(){

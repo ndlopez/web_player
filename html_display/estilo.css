@@ -9,6 +9,17 @@ body{
   clear:both;}
 .colTxt{float:left;width:75%;padding:0px 10px;}
 .colImg{float:left;width:10%;height:75px;padding:5px;}
-iframe{
+/*iframe{
   border:none;
+}*/
+
+@media (max-width:600px) {
+  body{
+    font-size: small;
+  }
+  #nowPlaying img{
+    width: 300px;
+  }
+  .colImg{width: 75%;padding:0px;}
+  .colTxt{width: 10%;}
 }
