@@ -12,15 +12,6 @@ var artUrls = [];
 
 //document.addEventListener("load",buildList());
 
-//buildList();
-//updateAll();
-
-// function updateAll(){
-//     setTimeout(()=>{
-//         buildList();
-//     },5000);
-// }
-
 setInterval(async function buildList(){
     /* Wait 'til display_data is finished, then get info from h2 elems */
     await display_data();
@@ -56,7 +47,7 @@ setInterval(async function buildList(){
 },180010);
 
 
-async function display_data(){
+setInterval(async function display_data(){
     /* Display current song playing on FM La Paz */
     const gotData = await get_url(fmLaPaz);
     var timeNow = new Date();
@@ -91,8 +82,6 @@ async function display_data(){
     myDiv.innerHTML = catInfo;
 
     document.body.appendChild(myDiv);
-
-    setInterval(display_data, 180000);
     /*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
   'script.innerHTML = "(function() {' +
   'document.open();document.domain=\'' + document.domain +
@@ -104,7 +93,7 @@ async function display_data(){
     myDiv.contentWindow.document.write(catInfo);*/
     //'<div><h2>'+gotData.song+'</h2></div>'
     //console.log("Now: "+ gotData.song,gotData.artwork);
-}
+},180000);
 
 async function get_url(my_url){
     const response = await fetch(my_url);
