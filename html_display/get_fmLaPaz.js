@@ -7,49 +7,82 @@ var timeNow = new Date();
 let hh = timeNow.getHours();
 let mm = timeNow.getMinutes();
 
-//var songs = [];
-//var artUrls = [];
+if(mm < 10){
+    mm = "0"+String(mm);
+}
+const key = "title";
+var songs = [];
+var artUrls = [];
 
 display_data();
 
+document.addEventListener("load",buildList());
+
+async function buildList(){
+    const gotValues = await display_data();
+    const gotDiv = document.getElementById('nowPlaying');
+
+    const song = gotDiv.getElementsByTagName("h2");
+    const playTime = song[0].innerHTML.split(" ");
+    
+    //console.log("parent",song[1].innerHTML);
+    var artwork = gotDiv.getElementsByTagName("div");
+    artwork = artwork[0].innerHTML.split('"');
+    songs.push(playTime+" "+song[1].innerHTML);
+    artUrls.push(artwork[1]);
+    
+    const divList = document.getElementById("playList");
+    //divList.setAttribute("class","row");
+    var divColImg = document.createElement("div");
+    divColImg.setAttribute("class","colImg");
+    divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
+    var divText = document.createElement("div");
+    divText.setAttribute("class","colTxt");
+    divText.innerHTML = "<h3>" + playTime[0] + " " + song[1].innerHTML  + "</h3>";
+    divList.appendChild(divColImg);
+    divList.appendChild(divText);
+    console.log(songs,artUrls);
+    document.body.appendChild(divList);
+    //return divList;
+}
+
+
 async function display_data(){
-    const key = "title";
+    
     const gotData = await get_url(fmLaPaz);
-    const img_art = "<img src='"+gotData.artwork+"' alt='Now Playing' width=350>";
+    const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     document.title = gotData.song;
     
-    //document.getElementById("currSong").innerHTML = gotData.song;
-    //document.getElementById("currArt").innerHTML = img_art;
-    var myFrame = document.getElementById("nowPlaying");
-    myFrame.style.width = "100%";
-    myFrame.style.height = "500px";
-    document.body.appendChild(myFrame);
-    const updater = "<meta http-equiv='refresh' content='221'>";
-    const calljs = "<script src='get_fmLaPaz.js'></script>"
-    //const divElm = document.createElement("div");
+    var myDiv = document.getElementById("nowPlaying");
+    myDiv.style.width = "100%";
+    myDiv.style.height = "500px";
+    
+    // const updater = "<meta http-equiv='refresh' content='221'>";
+    // const calljs = "<script src='get_fmLaPaz.js'></script>"
+    // const divElm = document.createElement("div");
     const h2Title = "<h2 style='color:#bed2e0;'>"+ hh + ":" + mm + " Now Playing on FM La Paz"+"</h2>"; 
     //document.createElement("h2");
     //h2Title.innerHTML = hh + ":" + mm + " Now Playing on FM La Paz";
     //const h2Song = document.createElement("h2");
     //h2Song.innerHTML = gotData.song;
-    const h2Song = "<h2 style='color:#bed2e0;'>"+gotData.song+"</h2>";
-    const divImg = "<div>"+img_art+"</div>";
+    const h2Song = "<h2 style='color:#bed2e0;'>" + gotData.song + "</h2>";
+    const divImg = "<div>" + img_art + "</div>";
     //document.createElement("div");
     //divImg.innerHTML = img_art;
-    //divElm.appendChild(h2Title);
-    //divElm.appendChild(h2Song);
-    //divElm.appendChild(divImg);
     //console.log("doc",divElm);
     const catInfo = h2Title + h2Song + divImg;
-    myFrame.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
+    myDiv.innerHTML = catInfo;
+
+    document.body.appendChild(myDiv);
+    /*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
   'script.innerHTML = "(function() {' +
   'document.open();document.domain=\'' + document.domain +
   '\';document.close();})();";' +
   'document.write("<head>" + script.outerHTML + "'+
 	'</head><body></body>");})())';
-    myFrame.contentWindow.document.write(updater);
-    //myFrame.contentWindow.document.write(calljs);
-    myFrame.contentWindow.document.write(catInfo);
+    myDiv.contentWindow.document.write(updater);
+    //myDiv.contentWindow.document.write(calljs);
+    myDiv.contentWindow.document.write(catInfo);*/
     //'<div><h2>'+gotData.song+'</h2></div>'
     //console.log("Now: "+ gotData.song,gotData.artwork);
 }
@@ -57,7 +90,7 @@ async function display_data(){
 async function get_url(my_url){
     const response = await fetch(my_url);
     const data = await response.json();
-    var song = data['title'];
+    var song = data[key];
     if(song === "www.lapaz.fm - "){
         song = "Title not found";
     }

@@ -2,20 +2,20 @@
 //const third_rock = "https://feed.tunein.com/profiles/s151799/nowPlaying";
 //const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
-//let origTitle = document.title;
-//var timeNow = new Date();
-//let hh = timeNow.getHours();
-//let mm = timeNow.getMinutes();
-
 var songs = [];
 var artUrls = [];
 
 document.addEventListener("load",buildList());
 
 function buildList(){
-    var gotFrame = document.getElementById('nowPlaying');
+    const gotDiv = document.getElementById('nowPlaying');
     //console.log(gotFrame);
-    var song = gotFrame.contentWindow.document.getElementsByTagName("H2")[1];
+    const song = gotDiv.getElementsByTagName("h2");
+
+    const newDiv = document.createElement("div");
+    newDiv.innerHTML = song[1].innerHTML;
+    
+    document.appendChild(newDiv);
     console.log("parent",song);
     //var divart = gotFrame.contentWindow.document.getElementsByTagName("DIV")[0];
     var artwork = "";//divart.getElementsByTagName("IMG")[0];
@@ -40,15 +40,3 @@ function buildList(){
     document.body.appendChild(divList);
     //return divList;
 }
-
-/*async function get_url(my_url){
-    const response = await fetch(my_url);
-    const data = await response.json();
-    var song = data['title'];
-    if(song === "www.lapaz.fm - "){
-        song = "Title not found";
-    }
-    const artwork = data['art'];
-    return {song,artwork};
-}*/
-
