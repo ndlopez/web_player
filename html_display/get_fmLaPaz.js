@@ -8,20 +8,23 @@ const key = "title";
 var songs = [];
 var artUrls = [];
 
-document.addEventListener("onload",display_data());
+//document.addEventListener("onload",display_data());
 
+//document.addEventListener("load",buildList());
 
-document.addEventListener("load",buildList());
+//buildList();
+updateAll();
 
 function updateAll(){
     setTimeout(()=>{
-        display_data();
+        buildList();
     },5000);
 }
 
 async function buildList(){
     /* Wait 'til display_data is finished, then get info from h2 elems */
-    const gotValues = await display_data();
+    await display_data();
+    setInterval(buildList,185000);
     const gotDiv = document.getElementById('nowPlaying');
 
     const song = gotDiv.getElementsByTagName("h2");
@@ -30,8 +33,8 @@ async function buildList(){
     //console.log("parent",song[1].innerHTML);
     var artwork = gotDiv.getElementsByTagName("div");
     artwork = artwork[0].innerHTML.split('"');
-    songs.push(playTime+" "+song[1].innerHTML);
-    artUrls.push(artwork[1]);
+    //songs.push(playTime+" "+song[1].innerHTML);
+    //artUrls.push(artwork[1]);
     
     const divList = document.getElementById("playList");
     const mainDiv = document.createElement("div");
@@ -45,10 +48,10 @@ async function buildList(){
     divText.innerHTML = "<h3>" + playTime[0] + " " + song[1].innerHTML  + "</h3>";
     mainDiv.appendChild(divColImg);
     mainDiv.appendChild(divText);
-    console.log(songs,artUrls);
+    //console.log(songs,artUrls);
     divList.appendChild(mainDiv);
     document.body.appendChild(divList);
-    setInterval(buildList,185000);
+    
     //return divList;
 }
 
