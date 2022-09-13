@@ -17,6 +17,9 @@ body{
   body{
     font-size: small;
   }
+  #nowPlaying{
+    text-align: center;
+  }
   #nowPlaying img{
     width: 300px;
   }
