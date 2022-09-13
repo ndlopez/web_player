@@ -3,13 +3,7 @@
 const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
 let origTitle = document.title;
-var timeNow = new Date();
-let hh = timeNow.getHours();
-let mm = timeNow.getMinutes();
 
-if(mm < 10){
-    mm = "0"+String(mm);
-}
 const key = "title";
 var songs = [];
 var artUrls = [];
@@ -40,6 +34,8 @@ async function buildList(){
     artUrls.push(artwork[1]);
     
     const divList = document.getElementById("playList");
+    const mainDiv = document.createElement("div");
+    mainDiv.setAttribute("class","row");
     //divList.setAttribute("class","row");
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg");
@@ -47,9 +43,10 @@ async function buildList(){
     var divText = document.createElement("div");
     divText.setAttribute("class","colTxt");
     divText.innerHTML = "<h3>" + playTime[0] + " " + song[1].innerHTML  + "</h3>";
-    divList.appendChild(divColImg);
-    divList.appendChild(divText);
+    mainDiv.appendChild(divColImg);
+    mainDiv.appendChild(divText);
     console.log(songs,artUrls);
+    divList.appendChild(mainDiv);
     document.body.appendChild(divList);
     setInterval(buildList,185000);
     //return divList;
@@ -59,6 +56,14 @@ async function buildList(){
 async function display_data(){
     /* Display current song playing on FM La Paz */
     const gotData = await get_url(fmLaPaz);
+    var timeNow = new Date();
+    let hh = timeNow.getHours();
+    let mm = timeNow.getMinutes();
+
+    if(mm < 10){
+        mm = "0"+String(mm);
+    }
+
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     document.title = gotData.song;
     
