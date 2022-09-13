@@ -13,18 +13,18 @@ var artUrls = [];
 //document.addEventListener("load",buildList());
 
 //buildList();
-updateAll();
+//updateAll();
 
-function updateAll(){
-    setTimeout(()=>{
-        buildList();
-    },5000);
-}
+// function updateAll(){
+//     setTimeout(()=>{
+//         buildList();
+//     },5000);
+// }
 
-async function buildList(){
+setInterval(async function buildList(){
     /* Wait 'til display_data is finished, then get info from h2 elems */
     await display_data();
-    setInterval(buildList,185000);
+    //setTimeout(buildList,185000);
     const gotDiv = document.getElementById('nowPlaying');
 
     const song = gotDiv.getElementsByTagName("h2");
@@ -53,7 +53,7 @@ async function buildList(){
     document.body.appendChild(divList);
     
     //return divList;
-}
+},185000);
 
 
 async function display_data(){
