@@ -20,6 +20,6 @@ body{
   #nowPlaying img{
     width: 300px;
   }
-  .colImg{width: 75%;padding:0px;}
-  .colTxt{width: 10%;}
+  .colImg{padding:0px;width:auto;}
+  .colTxt{padding: 4px;}
 }
