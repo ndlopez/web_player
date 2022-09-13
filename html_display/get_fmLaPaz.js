@@ -47,7 +47,7 @@ setInterval(async function buildList(){
 },180010);
 
 
-setInterval(async function display_data(){
+async function display_data(){
     /* Display current song playing on FM La Paz */
     const gotData = await get_url(fmLaPaz);
     var timeNow = new Date();
@@ -93,7 +93,7 @@ setInterval(async function display_data(){
     myDiv.contentWindow.document.write(catInfo);*/
     //'<div><h2>'+gotData.song+'</h2></div>'
     //console.log("Now: "+ gotData.song,gotData.artwork);
-},180000);
+}//,180000);
 
 async function get_url(my_url){
     const response = await fetch(my_url);
