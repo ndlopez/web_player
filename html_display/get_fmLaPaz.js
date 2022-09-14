@@ -77,14 +77,13 @@ async function display_data(){
     const h2Title = "<h2 style='color:#bed2e0;'>"+ hh + ":" + mm + " Now Playing on FM La Paz"+"</h2>"; 
     //document.createElement("h2");
     //h2Title.innerHTML = hh + ":" + mm + " Now Playing on FM La Paz";
-    //const h2Song = document.createElement("h2");
-    //h2Song.innerHTML = gotData.song;
-    const h2Song = "<h2 style='color:#bed2e0;'>" + gotData.song + "</h2>";
-    const divImg = "<div>" + img_art + "</div>";
+    const h2Song = gotData.song.split("-");
+    const divTitle = "<div class='bottomText'><h2>"+ h2Song[0] + "<br>" + h2Song[1]+ "</h2></div>";
+    const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
     //document.createElement("div");
     //divImg.innerHTML = img_art;
     //console.log("doc",divElm);
-    const catInfo = h2Title + h2Song + divImg;
+    const catInfo = h2Title + divImg;
     myDiv.innerHTML = catInfo;
 
     document.body.appendChild(myDiv);
