@@ -69,22 +69,24 @@ async function display_data(){
     
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
-    myDiv.style.height = "500px";
+    myDiv.style.height = "450px";
     
     // const updater = "<meta http-equiv='refresh' content='221'>";
     // const calljs = "<script src='get_fmLaPaz.js'></script>"
     // const divElm = document.createElement("div");
-    const h2Title = "<h2 style='color:#bed2e0;'>"+ hh + ":" + mm + " Now Playing on FM La Paz"+"</h2>"; 
+    const h2Time = "<h2>"+ hh + ":" + mm +"</h2>"; 
     //document.createElement("h2");
-    //h2Title.innerHTML = hh + ":" + mm + " Now Playing on FM La Paz";
+    //h2Title.innerHTML = hh + ":" + mm + 
+    const hTitle = "<h1> Now Playing on FM La Paz</h1>";
     const h2Song = gotData.song.split("-");
-    const divTitle = "<div class='bottomText'><h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2></div>";
+    const divTitle = "<div class='bottomText'>" + h2Time + 
+    "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2></div>";
     const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
     //document.createElement("div");
     //divImg.innerHTML = img_art;
     //console.log("doc",divElm);
-    const catInfo = h2Title + divImg;
-    myDiv.innerHTML = catInfo;
+    const catInfo = divImg;
+    myDiv.innerHTML = hTitle + catInfo;
 
     document.body.appendChild(myDiv);
     /*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +

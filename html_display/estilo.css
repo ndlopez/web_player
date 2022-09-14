@@ -8,6 +8,8 @@ body{
   display:table;
   clear:both;
 }
+h1{font-size:1.5em;}
+
 .row{
   border-bottom: 1px #bed2e0 dashed;
 }
@@ -18,12 +20,17 @@ body{
 /*iframe{
   border:none;
 }*/
+img{border-radius: 50%;}
 .contain{
+  height: 360px;
   position: relative;
+  /*background-color: #bed2e0;*/
+  border-radius: 10px;
 }
 .bottomText{
-  /*border-radius: 10px;*/
-  background-color: #bed2e080;
+  border-radius: 10px;
+  /*background-image: linear-gradient(#bed2e0,#2e4054);*/
+  background-color: #bed2e095;
   color: #2e4054;
   /*opacity: 0.4;*/
   position: absolute;
@@ -31,7 +38,7 @@ body{
   left:0px;
   width: 350px;
   font-size: small;
-  text-align: right;
+  text-align: center;
 }
 .bottomText h2{
   margin: 4px;
