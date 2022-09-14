@@ -9,7 +9,7 @@ var songs = [];
 var artUrls = [];
 
 //document.addEventListener("onload",display_data());
-
+display_data();
 //document.addEventListener("load",buildList());
 
 setInterval(async function buildList(){
@@ -35,8 +35,8 @@ setInterval(async function buildList(){
     divColImg.setAttribute("class","colImg");
     divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
     var divText = document.createElement("div");
-    divText.setAttribute("class","colTxt");
-    divText.innerHTML = "<h3>" + playTime[0] + " " + song[1].innerHTML  + "</h3>";
+    divText.setAttribute("class","colArtist");
+    divText.innerHTML = "<span class='time-stamp'>" + playTime[0] + " " + song[1].innerHTML  + "</span>";
     mainDiv.appendChild(divColImg);
     mainDiv.appendChild(divText);
     //console.log(songs,artUrls);
