@@ -23,7 +23,7 @@ body{
 }
 .bottomText{
   /*border-radius: 10px;*/
-  background-color: #bed2e070;
+  background-color: #bed2e080;
   color: #2e4054;
   /*opacity: 0.4;*/
   position: absolute;
@@ -31,7 +31,10 @@ body{
   left:0px;
   width: 350px;
   font-size: small;
-  text-align: center;
+  text-align: right;
+}
+.bottomText h2{
+  margin: 4px;
 }
 
 @media (max-width:600px) {
@@ -44,7 +47,7 @@ body{
   #nowPlaying img, .bottomText{
     width: 300px;
   }
-  .bottomText{left:30px;}
+  .bottomText{left:22px;/*iphone mini:30px*/}
   .colImg{padding:0px;width:auto;}
   .colTime{padding: 0px;}
   .colArtist{padding: 5px;}
