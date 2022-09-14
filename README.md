@@ -7,13 +7,16 @@ Update: *www.lapaz.fm* has changed everything. icecasthd JSON file is no longer 
 ## MacOS version
 ### Notification App
 
-![Notification](popUpMsg/now_fmLaPaz.png)
+![Notification](assets/now_fmLaPaz.png)
 
 Programming language: JavaScript, Bash
 
 Editor: Emacs
 
 ### xbar Plugin
+On MacOS this is the recommended method to display current song.
+
+The following plugins DO NOT store extra files on SSD/HDD.
 
 1. ThirdRock Radio <xbar\_plugin/get3rdRock.4m.py>
 
@@ -25,6 +28,9 @@ Environment: MacBookPro / MacOS 15.5
 
 ## Gnome-Shell Extension
 Dir: *thirdRock@moji.physics*<br>
+
+![Preview](assets/3rdRock_20220914_1201.png)
+
 On this repository only the *thirdRock* version is available. Please refer to [this link](https://github.com/ndlopez/NowOnFMLaPaz) to get the FMLaPaz version.
 
 The above script uses GJS-Soap library to make a request to fetch data. Thus, all work is done in memory, no data file is written to SSD/HDD.
