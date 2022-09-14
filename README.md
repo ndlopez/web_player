@@ -32,7 +32,7 @@ The above script uses GJS-Soap library to make a request to fetch data. Thus, al
 To install copy the above dir to:<br>
    $ $HOME/.local/share/gnome-shell/extensions/
 
-Default update time is 3 minutes. To modify, please edit *extension.js* and find line 30:replace *237* by another interval in seconds.
+Default update time is 3 minutes. To modify, please edit *extension.js* and find the const variable *upTime* and replace *238* by another interval in seconds.
 
 ## Windows version (Support for thirdRock only)
 Programming language: C#
