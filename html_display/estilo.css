@@ -7,12 +7,11 @@ body{
   content:"";
   display:table;
   clear:both;
-  
 }
 .row{
   border-bottom: 1px #bed2e0 dashed;
 }
-.colArtist{float:left;width:65%;padding:10px;}
+.colArtist{float:left;width:65%;padding:10px 20px;}
 .colImg{float:left;width:10%;height:75px;padding:5px;}
 .colTime{float: left;width: 10%;text-align: right;margin: 10px 0px;}
 /*iframe{

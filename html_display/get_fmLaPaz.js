@@ -5,7 +5,7 @@ const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 let origTitle = document.title;
 
 const key = "title";
-const upTime = 15000;//180010; //ms
+const upTime = 180010; //ms
 var songs = [];
 var artUrls = [];
 
