@@ -5,6 +5,7 @@ const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 let origTitle = document.title;
 
 const key = "title";
+const upTime = 15000;//180010; //ms
 var songs = [];
 var artUrls = [];
 
@@ -26,7 +27,7 @@ setInterval(async function buildList(){
     artwork = artwork[0].innerHTML.split('"');
     //songs.push(playTime+" "+song[1].innerHTML);
     //artUrls.push(artwork[1]);
-    
+    var thisSong = song[1].innerHTML.split("-");
     const divList = document.getElementById("playList");
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","row");
@@ -36,15 +37,20 @@ setInterval(async function buildList(){
     divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
     var divText = document.createElement("div");
     divText.setAttribute("class","colArtist");
-    divText.innerHTML = "<span class='time-stamp'>" + playTime[0] + " " + song[1].innerHTML  + "</span>";
+    divText.innerHTML = "<span>" + thisSong[0] + "<br/><br/>" + thisSong[1] +"</span>";
+    var divTime = document.createElement("div");
+    divTime.setAttribute("class","colTime");
+    divTime.innerHTML = "<span>" + playTime[0] + "</span>";
+    
     mainDiv.appendChild(divColImg);
     mainDiv.appendChild(divText);
+    mainDiv.appendChild(divTime);
     //console.log(songs,artUrls);
     divList.appendChild(mainDiv);
     document.body.appendChild(divList);
     
     //return divList;
-},180010);
+},upTime);
 
 
 async function display_data(){

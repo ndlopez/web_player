@@ -6,9 +6,12 @@ body{
 .row:after{
   content:"";
   display:table;
-  clear:both;}
-.colArtist{float:left;width:75%;padding:0px 10px;}
+  clear:both;
+  border-bottom: 1px #bed2e0 solid;
+}
+.colArtist{float:left;width:65%;padding:10px;}
 .colImg{float:left;width:10%;height:75px;padding:5px;}
+.colTime{float: left;width: 10%;text-align: right;margin: 10px 0px;}
 /*iframe{
   border:none;
 }*/
@@ -25,5 +28,5 @@ body{
   }
   .colImg{padding:0px;width:auto;}
   .colArtist{padding: 4px;}
-  .colTime{padding: 4px;}
+  .colTime{padding: 0px;}
 }
