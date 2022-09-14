@@ -7,7 +7,10 @@ body{
   content:"";
   display:table;
   clear:both;
-  border-bottom: 1px #bed2e0 solid;
+  
+}
+.row{
+  border-bottom: 1px #bed2e0 dashed;
 }
 .colArtist{float:left;width:65%;padding:10px;}
 .colImg{float:left;width:10%;height:75px;padding:5px;}
