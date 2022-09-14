@@ -27,7 +27,7 @@ setInterval(async function buildList(){
     artwork = artwork[0].innerHTML.split('"');
     //songs.push(playTime+" "+song[1].innerHTML);
     //artUrls.push(artwork[1]);
-    var thisSong = song[1].innerHTML.split("-");
+    var thisSong = song[1].innerHTML; // .split("-");
     const divList = document.getElementById("playList");
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","row");
@@ -78,7 +78,7 @@ async function display_data(){
     //document.createElement("h2");
     //h2Title.innerHTML = hh + ":" + mm + " Now Playing on FM La Paz";
     const h2Song = gotData.song.split("-");
-    const divTitle = "<div class='bottomText'><h2>"+ h2Song[0] + "<br>" + h2Song[1]+ "</h2></div>";
+    const divTitle = "<div class='bottomText'><h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2></div>";
     const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
     //document.createElement("div");
     //divImg.innerHTML = img_art;
