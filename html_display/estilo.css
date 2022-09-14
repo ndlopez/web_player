@@ -7,7 +7,7 @@ body{
   content:"";
   display:table;
   clear:both;}
-.colTxt{float:left;width:75%;padding:0px 10px;}
+.colArtist{float:left;width:75%;padding:0px 10px;}
 .colImg{float:left;width:10%;height:75px;padding:5px;}
 /*iframe{
   border:none;
@@ -24,5 +24,6 @@ body{
     width: 300px;
   }
   .colImg{padding:0px;width:auto;}
-  .colTxt{padding: 4px;}
+  .colArtist{padding: 4px;}
+  .colTime{padding: 4px;}
 }
