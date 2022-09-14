@@ -20,21 +20,24 @@ h1{font-size:1.5em;}
 /*iframe{
   border:none;
 }*/
-#nowPlaying img{border-radius: 50%;}
+#nowPlaying img{
+  border: 5px solid #bed2e0;
+  border-radius: 4px;
+  padding: 0px;
+}
 .contain{
-  height: 360px;
   position: relative;
   /*background-color: #bed2e0;*/
   border-radius: 10px;
 }
 .bottomText{
-  border-radius: 10px;
-  /*background-image: linear-gradient(#bed2e0,#2e4054);*/
+  /*border-radius: 10px;
+  background-image: linear-gradient(#bed2e0,#2e4054);*/
   background-color: #bed2e095;
   color: #2e4054;
   /*opacity: 0.4;*/
   position: absolute;
-  bottom: 4px;
+  bottom: 8px;
   left:0px;
   width: 350px;
   font-size: small;
