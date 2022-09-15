@@ -38,10 +38,10 @@ h1{font-size:1.5em;}
   /*opacity: 0.4;*/
   position: absolute;
   bottom: 8px;
-  left:0px;
+  left:5px;
   width: 350px;
   font-size: small;
-  text-align: center;
+  text-align: left;
 }
 .bottomText h2{
   margin: 4px;

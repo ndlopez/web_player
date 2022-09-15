@@ -1,11 +1,10 @@
-//Should fetch data from fm La Paz
-//const third_rock = "https://feed.tunein.com/profiles/s151799/nowPlaying";
-const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
+//Should fetch data from ThirdRock Radio
+const third_rock_url = "https://feed.tunein.com/profiles/s151799/nowPlaying";
 
 let origTitle = document.title;
 
 const key = "title";
-const upTime = 180010; //ms
+const upTime = 200000; //ms
 
 let songs = [];
 let artImg = [];
@@ -13,14 +12,13 @@ let timeStamp = [];
 let tmpData;
 let myList = [];
 let upCount = 0;
-//document.addEventListener("onload",display_data());
+
+var headers = {};
 display_data();
-//document.addEventListener("load",buildList());
 
 setInterval(async function buildList(){
     /* Wait 'til display_data is finished, then get info from h2 elems */
     await display_data();
-    //setTimeout(buildList,185000);
     const gotDiv = document.getElementById('nowPlaying');
 
     const song = gotDiv.getElementsByTagName("h2");
@@ -65,14 +63,14 @@ setInterval(async function buildList(){
 
 
 async function display_data(){
-    /* Display current song playing on FM La Paz */
-    const gotData = await get_url(fmLaPaz);
+    /* Display current song playing on ThirdRock */
+    const gotData = await get_url(third_rock_url);
     var timeNow = new Date();
     let hh = timeNow.getHours();
     let mm = timeNow.getMinutes();
 
     if(mm < 10){
-        mm = "0"+String(mm);
+        mm = "0" + String(mm);
     }
 
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
@@ -82,45 +80,36 @@ async function display_data(){
     myDiv.style.width = "100%";
     myDiv.style.height = "450px";
     
-    // const updater = "<meta http-equiv='refresh' content='221'>";
-    // const calljs = "<script src='get_fmLaPaz.js'></script>"
-    // const divElm = document.createElement("div");
     const h2Time = "<h2>"+ hh + ":" + mm +"</h2>"; 
-    //document.createElement("h2");
-    //h2Title.innerHTML = hh + ":" + mm + 
-    const hTitle = "<h1> Now Playing on FM La Paz</h1>";
+    const hTitle = "<h1> Now Playing on ThirdRock Radio</h1>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" + h2Time + 
     "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2></div>";
     const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
-    //document.createElement("div");
-    //divImg.innerHTML = img_art;
-    //console.log("doc",divElm);
     const catInfo = divImg;
     myDiv.innerHTML = hTitle + catInfo;
 
     document.body.appendChild(myDiv);
-    /*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
-  'script.innerHTML = "(function() {' +
-  'document.open();document.domain=\'' + document.domain +
-  '\';document.close();})();";' +
-  'document.write("<head>" + script.outerHTML + "'+
-	'</head><body></body>");})())';
-    myDiv.contentWindow.document.write(updater);
-    //myDiv.contentWindow.document.write(calljs);
-    myDiv.contentWindow.document.write(catInfo);*/
-    //'<div><h2>'+gotData.song+'</h2></div>'
-    //console.log("Now: "+ gotData.song,gotData.artwork);
 }
 
 async function get_url(my_url){
-    const response = await fetch(my_url);
-    const data = await response.json();
-    var song = data[key];
-    if(song === "www.lapaz.fm - "){
-        song = "Title not found";
+    //headers('Access-Control-Allow-origin: '+my_url);
+    const response = await fetch(my_url,{
+        //method: 'GET',
+        mode: 'cors',
+        //headers: {'Access-Control-Allow-Origin': '*'},
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        //Access-Control-Allow-origin: my_url
+    });
+    if(!response.ok){
+        throw new Error(response.error);
     }
-    const artwork = data['art'];
+    const data = await response.json();
+    const song = data['Header']['Subtitle'];
+    const artwork = data['Secondary']['Image'];
+    //const data = await response.json();
+    
+    console.log(song,artwork);
     return {song,artwork};
 }
 
