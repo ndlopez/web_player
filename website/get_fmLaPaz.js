@@ -30,10 +30,8 @@ display_data();
 function get_sched(tag,heure){
     var myTitle = "";
     for (let item in weekly){
-        if(weekly[item].day == tag && weekly[item].time == heure){
+        if(weekly[item].day === tag && weekly[item].time === heure){
             myTitle = weekly[item].name;
-        }else{
-            myTitle = "online";
         }
     }
     return myTitle;
