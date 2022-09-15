@@ -38,7 +38,7 @@ setInterval(async function buildList(){
     divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
     var divText = document.createElement("div");
     divText.setAttribute("class","colArtist");
-    divText.innerHTML = "<span>" + song[1].innerHTML + "<br/><br/>" + song[2].innerHTML +"</span>";
+    divText.innerHTML = "<span>" + song[1].innerHTML + "<br/>" + song[2].innerHTML +"</span>";
     var divTime = document.createElement("div");
     divTime.setAttribute("class","colTime");
     divTime.innerHTML = "<span>" + playTime[0] + "</span>";
@@ -93,23 +93,28 @@ async function display_data(){
 }
 
 async function get_url(my_url){
-    //headers('Access-Control-Allow-origin: '+my_url);
-    const response = await fetch(my_url,{
-        //method: 'GET',
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    var song;
+    var artwork;
+
+    try{
+        const response = await fetch(proxyUrl + my_url)
+        /*,{
+        method: 'GET',
         mode: 'cors',
         //headers: {'Access-Control-Allow-Origin': '*'},
-        allowedHeaders: ['Content-Type', 'Authorization'],
+        //allowedHeaders: ['Content-Type', 'Authorization'],
         //Access-Control-Allow-origin: my_url
-    });
-    if(!response.ok){
-        throw new Error(response.error);
-    }
-    const data = await response.json();
-    const song = data['Header']['Subtitle'];
-    const artwork = data['Secondary']['Image'];
-    //const data = await response.json();
-    
-    console.log(song,artwork);
+        });*/
+
+        const data = await response.json();
+        song = data['Header']['Subtitle'];
+        artwork = data['Secondary']['Image'];
+        console.log(song,artwork);
+    }catch(error){
+        console.log("Error :(",error);
+    } 
+
     return {song,artwork};
 }
 
