@@ -1,8 +1,19 @@
 //Should fetch data from fm La Paz
 const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
-let origTitle = document.title;
+// Week:[0:Sun, 1:Mon, 2:Tue, 3:Wed, 4:Thu, 5:Fri, 6:Sat]
+const weekly = [
+    {name:"PopArt",day:1,time:16},
+    {name:"PopArt",day:3,time:9},
+    {name:"PopArt",day:4,time:9},
+    {name:"En Concierto",day:4,time:16},
+    {name:"UltraLight",day:0,time:16},
+    {name:"UltraLight",day:1,time:9},
+    {name:"UltraLight",day:2,time:10},
+    {name:"UltraLight",day:4,time:15},
+];
 
+let origTitle = document.title;
 const key = "title";
 const upTime = 180010; //ms
 
@@ -16,6 +27,18 @@ var textFileUrl = null;
 //document.addEventListener("onload",display_data());
 display_data();
 //document.addEventListener("load",buildList());
+function get_sched(tag,heure){
+    var myTitle = "";
+    for (let item in weekly){
+        if(weekly[item].day == tag && weekly[item].time == heure){
+            myTitle = weekly[item].name;
+        }else{
+            myTitle = "online";
+        }
+    }
+    return myTitle;
+}
+
 function genTxtFileUrl(text){
     let fData = new Blob([text],{type:'text/plain'});
     if (textFileUrl !== null){
@@ -79,6 +102,7 @@ async function display_data(){
     /* Display current song playing on FM La Paz */
     const gotData = await get_url(fmLaPaz);
     var timeNow = new Date();
+    let day = timeNow.getDay();
     let hh = timeNow.getHours();
     let mm = timeNow.getMinutes();
 
@@ -98,8 +122,8 @@ async function display_data(){
     // const divElm = document.createElement("div");
     const h2Time = "<h2>"+ hh + ":" + mm +"</h2>"; 
     //document.createElement("h2");
-    //h2Title.innerHTML = hh + ":" + mm + 
-    const hTitle = "<h1> Now Playing on FM La Paz</h1><a id='downLink' href='#' download='thisFile.json'>Download playlist</a>";
+    const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
+    "</h1><a id='downLink' href='#' download='thisFile.json'>Download playlist</a>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" + h2Time + 
     "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2></div>";
@@ -111,17 +135,8 @@ async function display_data(){
     myDiv.innerHTML = hTitle + catInfo;
 
     document.body.appendChild(myDiv);
-    /*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
-  'script.innerHTML = "(function() {' +
-  'document.open();document.domain=\'' + document.domain +
-  '\';document.close();})();";' +
-  'document.write("<head>" + script.outerHTML + "'+
-	'</head><body></body>");})())';
-    myDiv.contentWindow.document.write(updater);
-    //myDiv.contentWindow.document.write(calljs);
-    myDiv.contentWindow.document.write(catInfo);*/
-    //'<div><h2>'+gotData.song+'</h2></div>'
-    //console.log("Now: "+ gotData.song,gotData.artwork);
+
+    //console.log(day,hh,"Prog:",get_sched(day,hh));
 }
 
 async function get_url(my_url){
@@ -135,3 +150,14 @@ async function get_url(my_url){
     return {song,artwork};
 }
 
+/*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
+  'script.innerHTML = "(function() {' +
+  'document.open();document.domain=\'' + document.domain +
+  '\';document.close();})();";' +
+  'document.write("<head>" + script.outerHTML + "'+
+	'</head><body></body>");})())';
+    myDiv.contentWindow.document.write(updater);
+    //myDiv.contentWindow.document.write(calljs);
+    myDiv.contentWindow.document.write(catInfo);*/
+    //'<div><h2>'+gotData.song+'</h2></div>'
+    //console.log("Now: "+ gotData.song,gotData.artwork);
