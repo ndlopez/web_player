@@ -14,7 +14,7 @@ let timeStamp = [];
 let myList = [];
 
 //document.addEventListener("onload",display_data());
-display_data();
+buildList();
 //document.addEventListener("load",buildList());
 
 setInterval(async function buildList(){
@@ -48,7 +48,7 @@ setInterval(async function buildList(){
     mainDiv.appendChild(divColImg);
     mainDiv.appendChild(divText);
     mainDiv.appendChild(divTime);
-    //console.log(songs,artUrls);
+
     divList.appendChild(mainDiv);
     document.body.appendChild(divList);
 
@@ -58,7 +58,7 @@ setInterval(async function buildList(){
     
     let tmpData;
     for(let idx=0; idx < timeStamp.length; idx++){
-        tmpData = {"time": timeStamp[0],"song":songs[0],"artwork":artImg[0]};
+        tmpData = {"time": timeStamp[idx],"song":songs[idx],"artwork":artImg[idx]};
         myList.push(tmpData);
     }
     
@@ -114,7 +114,7 @@ async function display_data(){
     myDiv.contentWindow.document.write(catInfo);*/
     //'<div><h2>'+gotData.song+'</h2></div>'
     //console.log("Now: "+ gotData.song,gotData.artwork);
-}//,180000);
+}
 
 async function get_url(my_url){
     const response = await fetch(my_url);
