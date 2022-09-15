@@ -1,5 +1,4 @@
 //Should fetch data from fm La Paz
-//const third_rock = "https://feed.tunein.com/profiles/s151799/nowPlaying";
 const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
 let origTitle = document.title;
@@ -13,9 +12,18 @@ let timeStamp = [];
 let tmpData;
 let myList = [];
 let upCount = 0;
+var textFileUrl = null;
 //document.addEventListener("onload",display_data());
 display_data();
 //document.addEventListener("load",buildList());
+function genTxtFileUrl(text){
+    let fData = new Blob([text],{type:'text/plain'});
+    if (textFileUrl !== null){
+        window.URL.revokeObjectURL(jsonFile);
+    }
+    textFileUrl = window.URL.createObjectURL(fData);
+    return textFileUrl;
+}
 
 setInterval(async function buildList(){
     /* Wait 'til display_data is finished, then get info from h2 elems */
@@ -60,7 +68,10 @@ setInterval(async function buildList(){
     myList.push(tmpData);
     console.log(upCount,myList);
     upCount++;
-    //return divList;
+
+    //window.addEventListener("load",()=>{
+    //document.getElementById('downLink').href = genTxtFileUrl(myList);
+    //})
 },upTime);
 
 
@@ -88,7 +99,7 @@ async function display_data(){
     const h2Time = "<h2>"+ hh + ":" + mm +"</h2>"; 
     //document.createElement("h2");
     //h2Title.innerHTML = hh + ":" + mm + 
-    const hTitle = "<h1> Now Playing on FM La Paz</h1>";
+    const hTitle = "<h1> Now Playing on FM La Paz</h1><a id='downLink' href='#' download='thisFile.json'>Download playlist</a>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" + h2Time + 
     "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2></div>";
