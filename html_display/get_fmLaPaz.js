@@ -10,11 +10,11 @@ const upTime = 60000; //180010; //ms
 let songs = [];
 let artImg = [];
 let timeStamp = [];
-
+let tmpData;
 let myList = [];
-
+let upCount = 0;
 //document.addEventListener("onload",display_data());
-buildList();
+display_data();
 //document.addEventListener("load",buildList());
 
 setInterval(async function buildList(){
@@ -56,13 +56,10 @@ setInterval(async function buildList(){
     songs.push(song[1].innerHTML+"-"+song[2].innerHTML);
     artImg.push(artwork[1]);
     
-    let tmpData;
-    for(let idx=0; idx < timeStamp.length; idx++){
-        tmpData = {"time": timeStamp[idx],"song":songs[idx],"artwork":artImg[idx]};
-        myList.push(tmpData);
-    }
-    
-    console.log(myList);
+    tmpData = {"time": timeStamp[upCount],"song":songs[upCount],"artwork":artImg[upCount]};
+    myList.push(tmpData);
+    console.log(upCount,myList);
+    upCount++;
     //return divList;
 },upTime);
 
