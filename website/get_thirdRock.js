@@ -110,7 +110,7 @@ async function get_url(my_url){
         const data = await response.json();
         song = data['Header']['Subtitle'];
         artwork = data['Secondary']['Image'];
-        console.log(song,artwork);
+        //console.log(song,artwork);
     }catch(error){
         console.log("Error :(",error);
     } 
