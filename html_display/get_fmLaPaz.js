@@ -5,9 +5,13 @@ const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 let origTitle = document.title;
 
 const key = "title";
-const upTime = 180010; //ms
-var songs = [];
-var artUrls = [];
+const upTime = 60000; //180010; //ms
+
+let songs = [];
+let artImg = [];
+let timeStamp = [];
+
+let myList = [];
 
 //document.addEventListener("onload",display_data());
 display_data();
@@ -25,8 +29,7 @@ setInterval(async function buildList(){
     //console.log("parent",song[1].innerHTML);
     var artwork = gotDiv.getElementsByTagName("div");
     artwork = artwork[0].innerHTML.split('"');
-    //songs.push(playTime+" "+song[1].innerHTML);
-    //artUrls.push(artwork[1]);
+
     //var thisSong = song[1].innerHTML; // .split("-");
     const divList = document.getElementById("playList");
     const mainDiv = document.createElement("div");
@@ -48,7 +51,14 @@ setInterval(async function buildList(){
     //console.log(songs,artUrls);
     divList.appendChild(mainDiv);
     document.body.appendChild(divList);
+
+    timeStamp.push(playTime[0]);
+    songs.push(song[1].innerHTML+"-"+song[2].innerHTML);
+    artImg.push(artwork[1]);
     
+    let tmpData = {"time": timeStamp[0],"song":songs[0],"artwork":artImg[0]};
+    myList.push(tmpData);
+    console.log(myList);
     //return divList;
 },upTime);
 
