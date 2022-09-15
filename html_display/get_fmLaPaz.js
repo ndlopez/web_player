@@ -56,8 +56,12 @@ setInterval(async function buildList(){
     songs.push(song[1].innerHTML+"-"+song[2].innerHTML);
     artImg.push(artwork[1]);
     
-    let tmpData = {"time": timeStamp[0],"song":songs[0],"artwork":artImg[0]};
-    myList.push(tmpData);
+    let tmpData;
+    for(let idx=0; idx < timeStamp.length; idx++){
+        tmpData = {"time": timeStamp[0],"song":songs[0],"artwork":artImg[0]};
+        myList.push(tmpData);
+    }
+    
     console.log(myList);
     //return divList;
 },upTime);
