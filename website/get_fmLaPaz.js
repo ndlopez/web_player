@@ -70,7 +70,7 @@ setInterval(async function buildList(){
     divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
     var divText = document.createElement("div");
     divText.setAttribute("class","colArtist");
-    divText.innerHTML = "<span>" + song[1].innerHTML + "<br/>" + song[2].innerHTML +"</span>";
+    divText.innerHTML = "<span>" + song[1].innerHTML + "</span><span>" + song[2].innerHTML +"</span>";
     var divTime = document.createElement("div");
     divTime.setAttribute("class","colTime");
     divTime.innerHTML = "<span>" + playTime[0] + "</span>";

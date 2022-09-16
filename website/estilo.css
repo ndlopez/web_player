@@ -9,7 +9,10 @@ body{
   clear:both;
 }
 h1{font-size:1.5em;}
-
+span{
+  display: block;
+  padding: 10px 5px;
+}
 .row{
   border-bottom: 1px #bed2e0 dashed;
 }
