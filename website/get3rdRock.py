@@ -10,7 +10,7 @@ from urllib.request import urlopen
 from urllib.error import URLError
 import json
 from datetime import datetime
-import time # to loop
+import time
 
 that_url = "https://feed.tunein.com/profiles/s151799/nowPlaying"
 
@@ -37,11 +37,14 @@ while(True):
 	heure = thisDate.strftime("%H:%M")
 	jsonHead = get_info()
 	currSong = jsonHead['Header']['Subtitle']
-	artwork = jsonHead['Secondary']['Image']
+	if "Secondary" in jsonHead:
+		artwork = jsonHead['Secondary']['Image']
+		# print("Artwork found")
+	else:
+		# print("No artwork available, using default")
+		artwork = "http://cdn-profiles.tunein.com/s151799/images/logoq.jpg?t=636355620405200000"
 
 	outJson = {"time":heure,"song":currSong,"artwork":artwork}
 
 	write_json(outJson)
 	time.sleep(185)
-
-
