@@ -34,6 +34,7 @@ let upCount = 0;
 display_data();
 //document.addEventListener("load",buildList());
 function sleepy(ms){
+    console.log("sleeping "+ms);
     return new Promise(resolve =>setTimeout(resolve,ms));
 }
 function get_sched(tag,heure){
@@ -99,12 +100,10 @@ setInterval(async function buildList(){
     
     tmpData = {"time": timeStamp[upCount],"song":songs[upCount],"artwork":artImg[upCount]};
     myList.push(tmpData);
-    console.log(upCount,myList);
+    //console.log(upCount,myList);
     export_to_file(myList);
     upCount++;
-    //window.addEventListener("load",()=>{
-    //document.getElementById('downLink').href = genTxtFileUrl(myList);
-    //})
+
 },upTime);
 
 
