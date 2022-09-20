@@ -1,5 +1,5 @@
 //Should fetch data from fm La Paz
-const fmLaPaz = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
+const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
 // Week:[0:Sun, 1:Mon, 2:Tue, 3:Wed, 4:Thu, 5:Fri, 6:Sat]
 const weekly = [
@@ -33,6 +33,9 @@ var textFileUrl = null;
 //document.addEventListener("onload",display_data());
 display_data();
 //document.addEventListener("load",buildList());
+function sleepy(ms){
+    return new Promise(resolve =>setTimeout(resolve,ms));
+}
 function get_sched(tag,heure){
     var myTitle = "";
     for (let item in weekly){
@@ -104,7 +107,7 @@ setInterval(async function buildList(){
 
 async function display_data(){
     /* Display current song playing on FM La Paz */
-    const gotData = await get_url(fmLaPaz);
+    var gotData = await get_url(thisURL);
     var timeNow = new Date();
     let day = timeNow.getDay();
     let hh = timeNow.getHours();
@@ -113,9 +116,12 @@ async function display_data(){
     if(mm < 10){
         mm = "0"+String(mm);
     }
-
-    const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
+    if(gotData.song == "Radio Online - LAPAZ.FM"){
+        await sleepy(3000);
+        gotData = await get_url(thisURL);
+    }
     document.title = gotData.song;
+    const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
@@ -149,6 +155,9 @@ async function get_url(my_url){
     var song = data[key];
     if(song === "www.lapaz.fm - "){
         song = "Title not found";
+    }
+    if(song === "Radio Online - "){
+        song = "Please reload page.";
     }
     const artwork = data['art'];
     return {song,artwork};
