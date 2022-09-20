@@ -100,7 +100,7 @@ setInterval(async function buildList(){
     songs.push(song[1].innerHTML+"-"+song[2].innerHTML);
     artImg.push(artwork[1]);
     
-    tmpData = {"time": timeStamp[upCount],"song":songs[upCount],"artwork":artImg[upCount]};
+    tmpData = {"time": timeStamp[upCount], "song": songs[upCount], "artwork": artImg[upCount]};
     myList.push(tmpData);
     //console.log(upCount,myList);
     export_to_file(myList);
