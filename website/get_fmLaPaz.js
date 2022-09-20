@@ -4,6 +4,7 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 // Week:[0:Sun, 1:Mon, 2:Tue, 3:Wed, 4:Thu, 5:Fri, 6:Sat]
 const weekly = [
     {name:"PopArt",day:1,time:16},
+    {name:"PopArt",day:2,time:16},
     {name:"PopArt",day:3,time:9},
     {name:"PopArt",day:4,time:9},
     {name:"En Concierto",day:4,time:16},
@@ -19,7 +20,8 @@ const weekly = [
     {name:"Rock Clasico",day:5,time:10},
 ];
 
-const titleErr = "Radio Online  -  LAPAZ.FM"; //PROMO PUBLICIDAD LPFM - , Diferente Como Tu Lapaz.fm  -  IVAN 5 *
+const titleErr = "Radio Online  -  LAPAZ.FM";
+const titleVar = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"];
 let origTitle = document.title;
 const key = "title";
 const upTime = 180010; //ms
@@ -118,7 +120,7 @@ async function display_data(){
     if(mm < 10){
         mm = "0"+String(mm);
     }
-    if(gotData.song == titleErr){
+    if(gotData.song === titleErr){
         await sleepy(3000);
         gotData = await get_url(thisURL);
     }
