@@ -19,6 +19,7 @@ const weekly = [
     {name:"Rock Clasico",day:5,time:10},
 ];
 
+const titleErr = "Radio Online  -  LAPAZ.FM"; //PROMO PUBLICIDAD LPFM - , Diferente Como Tu Lapaz.fm  -  IVAN 5 *
 let origTitle = document.title;
 const key = "title";
 const upTime = 180010; //ms
@@ -29,7 +30,6 @@ let timeStamp = [];
 let tmpData;
 let myList = [];
 let upCount = 0;
-var textFileUrl = null;
 //document.addEventListener("onload",display_data());
 display_data();
 //document.addEventListener("load",buildList());
@@ -46,13 +46,16 @@ function get_sched(tag,heure){
     return myTitle;
 }
 
-function genTxtFileUrl(text){
-    let fData = new Blob([text],{type:'text/plain'});
-    if (textFileUrl !== null){
-        window.URL.revokeObjectURL(jsonFile);
-    }
-    textFileUrl = window.URL.createObjectURL(fData);
-    return textFileUrl;
+function export_to_file(jsonData){
+    let dataStr = JSON.stringify(jsonData);
+    let dataUri = 'data:application/json;charset=utf-8,'+encodeURIComponent(dataStr);
+
+    let exportFile = "playlist.json";
+
+    let linkElm = document.getElementById("downLink")
+    linkElm.setAttribute('href',dataUri);
+    linkElm.setAttribute('download',exportFile);
+    //linkElm.click();
 }
 
 setInterval(async function buildList(){
@@ -97,8 +100,8 @@ setInterval(async function buildList(){
     tmpData = {"time": timeStamp[upCount],"song":songs[upCount],"artwork":artImg[upCount]};
     myList.push(tmpData);
     console.log(upCount,myList);
+    export_to_file(myList);
     upCount++;
-
     //window.addEventListener("load",()=>{
     //document.getElementById('downLink').href = genTxtFileUrl(myList);
     //})
@@ -116,7 +119,7 @@ async function display_data(){
     if(mm < 10){
         mm = "0"+String(mm);
     }
-    if(gotData.song == "Radio Online - LAPAZ.FM"){
+    if(gotData.song == titleErr){
         await sleepy(3000);
         gotData = await get_url(thisURL);
     }
@@ -133,7 +136,7 @@ async function display_data(){
     const h2Time = "<h2>"+ hh + ":" + mm +"</h2>"; 
     //document.createElement("h2");
     const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
-    "</h1><a id='downLink' href='#' download='thisFile.json'>Download playlist</a>";
+    "</h1><p><a id='downLink'>Download playlist</a></p>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" + h2Time + 
     "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2></div>";
