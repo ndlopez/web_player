@@ -11,8 +11,10 @@ const weekly = [
     {name:"UltraLight",day:1,time:9},
     {name:"UltraLight",day:1,time:10},
     {name:"UltraLight",day:1,time:11},
-    {name:"UltraLight",day:2,time:10},
     {name:"UltraLight",day:1,time:11},
+    {name:"UltraLight",day:2,time:10},
+    {name:"UltraLight",day:2,time:11},
+    {name:"UltraLight",day:2,time:12},
     {name:"UltraLight",day:4,time:15},
     {name:"Rock Clasico",day:5,time:10},
 ];
