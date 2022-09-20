@@ -36,7 +36,6 @@ let upCount = 0;
 display_data();
 //document.addEventListener("load",buildList());
 function sleepy(ms){
-    console.log("sleeping "+ms);
     return new Promise(resolve =>setTimeout(resolve,ms));
 }
 function get_sched(tag,heure){
@@ -123,6 +122,7 @@ async function display_data(){
     if(gotData.song === titleErr){
         await sleepy(3000);
         gotData = await get_url(thisURL);
+        console.log("sleeping 3s",gotData.song);
     }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
