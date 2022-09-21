@@ -18,13 +18,14 @@ const weekly = [
     {name:"UltraLight",day:2,time:11},
     {name:"UltraLight",day:2,time:12},
     {name:"UltraLight",day:4,time:15},
+    {name:"Rock Clasico",day:3,time:16},
     {name:"Rock Clasico",day:5,time:10},
 ];
 
-const titleErr = "Radio Online  -  LAPAZ.FM";
-const titleVar = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"];
+//const titleErr = "Radio Online  -  LAPAZ.FM";
+const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"];
 let origTitle = document.title;
-const key = "title";
+const keys = ["title","art"];
 const upTime = 180010; //ms
 
 let songs = [];
@@ -108,6 +109,11 @@ setInterval(async function buildList(){
 
 },upTime);
 
+async function call_back(){
+    await sleepy(1500);
+    gotData = await get_url(thisURL);
+    console.log("sleeping 1.5s",gotData.song);
+}
 
 async function display_data(){
     /* Display current song playing on FM La Paz */
@@ -120,11 +126,18 @@ async function display_data(){
     if(mm < 10){
         mm = "0"+String(mm);
     }
-    if(gotData.song === titleErr){
+    /*switch(gotData.song){
+        case titleErr[0]:
+            await call_back();
+            break;
+        case titleErr[1]:
+
+    }*/
+    if(gotData.song === titleErr[0]){
         console.log(hh+":"+mm,gotData.song);
-        await sleepy(1500);
+        await sleepy(2000);
         gotData = await get_url(thisURL);
-        console.log("sleeping 1.5s",gotData.song);
+        console.log("sleeping 2s",gotData.song);
     }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
@@ -158,14 +171,8 @@ async function display_data(){
 async function get_url(my_url){
     const response = await fetch(my_url);
     const data = await response.json();
-    var song = data[key];
-    if(song === "www.lapaz.fm - "){
-        song = "Title not found";
-    }
-    if(song === "Radio Online - "){
-        song = "Please reload page.";
-    }
-    const artwork = data['art'];
+    const song = data[keys[0]];
+    const artwork = data[keys[1]];
     return {song,artwork};
 }
 
