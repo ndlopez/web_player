@@ -5,8 +5,9 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 const weekly = [
     {name:"PopArt",day:1,time:16},
     {name:"PopArt",day:2,time:16},
-    {name:"PopArt",day:3,time:9},
+    {name:"PopArt",day:3,time:10},
     {name:"PopArt",day:4,time:9},
+    {name:"En Concierto",day:3,time:12},
     {name:"En Concierto",day:4,time:16},
     {name:"UltraLight",day:0,time:16},
     {name:"UltraLight",day:1,time:9},
@@ -120,9 +121,10 @@ async function display_data(){
         mm = "0"+String(mm);
     }
     if(gotData.song === titleErr){
-        await sleepy(3000);
+        console.log(hh+":"+mm,gotData.song);
+        await sleepy(1500);
         gotData = await get_url(thisURL);
-        console.log("sleeping 3s",gotData.song);
+        console.log("sleeping 1.5s",gotData.song);
     }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
