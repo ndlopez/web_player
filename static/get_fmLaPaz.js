@@ -170,8 +170,11 @@ async function display_data(){
         case titleErr[1]:
             call_back(hh,mm);
             break;
+        case titleErr[2]:
+            call_back(hh,mm);
+            break;
         default:
-            console.log("OK");
+            let fdx=0;
     }
     /*if(gotData.song === titleErr[0]){
         
