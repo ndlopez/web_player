@@ -22,7 +22,13 @@ const weekly = [
     {name:"Rock Clasico",day:5,time:10},
 ];
 
-//const titleErr = "Radio Online  -  LAPAZ.FM";
+function startPlay(){
+    const audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
+    audioConnect.play();
+    audioConnect.loop = true;
+    //console.log("Did it started?");
+}
+
 const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"];
 let origTitle = document.title;
 const keys = ["title","art"];
@@ -40,6 +46,7 @@ display_data();
 function sleepy(ms){
     return new Promise(resolve =>setTimeout(resolve,ms));
 }
+
 function get_sched(tag,heure){
     var myTitle = "";
     for (let item in weekly){
@@ -131,13 +138,12 @@ async function display_data(){
             await call_back();
             break;
         case titleErr[1]:
-
     }*/
     if(gotData.song === titleErr[0]){
         console.log(hh+":"+mm,gotData.song);
         await sleepy(5000);
         gotData = await get_url(thisURL);
-        console.log("sleeping 2s",gotData.song);
+        console.log("sleeping 5s",gotData.song);
     }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";

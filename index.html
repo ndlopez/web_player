@@ -11,9 +11,9 @@
   <body>
     <div id="nowPlaying"></div>
     <div>
-      <audio controls>
-        <source src="https://stream.consultoradas.com/8042/stream" type="audio/mpeg">
-      </audio>
+      <audio id="player"></audio>
+      <button onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="M10 2 L10 30 24 16 Z" /></svg></button>
     </div>
     <div id="playList">
       <h2>Playlist (earlier today)</h2>
