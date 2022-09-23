@@ -1,5 +1,6 @@
 //Should fetch data from fm La Paz
 const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
+const audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
 
 // Week:[0:Sun, 1:Mon, 2:Tue, 3:Wed, 4:Thu, 5:Fri, 6:Sat]
 const weekly = [
@@ -23,10 +24,13 @@ const weekly = [
 ];
 
 function startPlay(){
-    const audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
     audioConnect.play();
     audioConnect.loop = true;
     //console.log("Did it started?");
+}
+function pausePlay(){
+    audioConnect.pause();
+    audioConnect.loop = false;
 }
 
 const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"];
