@@ -144,7 +144,8 @@ setInterval(async function buildList(){
 
 },upTime);
 
-async function call_back(){
+async function call_back(hour,min){
+    console.log(hour+":"+min,"error:",gotData.song);
     await sleepy(5000);
     gotData = await get_url(thisURL);
     console.log("sleeping 5s",gotData.song);
@@ -161,19 +162,20 @@ async function display_data(){
     if(mm < 10){
         mm = "0"+String(mm);
     }
-    /*switch(gotData.song){
+    switch(gotData.song){
         case titleErr[0]:
-            await call_back();
+            call_back(hh,mm);
             break;
         case titleErr[1]:
+            call_back(hh,mm);
+            break;
+        default:
+            console.log("OK");
+    }
+    /*if(gotData.song === titleErr[0]){
+        
+        call_back();
     }*/
-    if(gotData.song === titleErr[0]){
-        console.log(hh+":"+mm,gotData.song);
-        call_back();
-    }
-    if(gotData.song === titleErr[1]){
-        call_back();
-    }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     
