@@ -135,7 +135,7 @@ async function display_data(){
     }*/
     if(gotData.song === titleErr[0]){
         console.log(hh+":"+mm,gotData.song);
-        await sleepy(2000);
+        await sleepy(5000);
         gotData = await get_url(thisURL);
         console.log("sleeping 2s",gotData.song);
     }
