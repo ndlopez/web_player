@@ -47,7 +47,7 @@ let upCount = 0;
 //document.addEventListener("onload",display_data());
 display_data();
 
-playControls();
+//playControls();
 //document.addEventListener("load",buildList());
 function playControls(){
     //await display_data();
