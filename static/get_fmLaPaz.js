@@ -49,14 +49,14 @@ display_data();
 
 playControls();
 //document.addEventListener("load",buildList());
-async function playControls(){
-    await display_data();
-    const nowDiv = document.getElementById('nowPlaying');
+function playControls(){
+    //await display_data();
     const playDiv = document.createElement("div");
+    playDiv.setAttribute("id","player");
     var texty = '<button onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg></button>';
     texty += '<button onclick="pausePlay()"><svg id="i-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M23 2 L23 30 M9 2 L9 30" /></svg></button>';
     playDiv.innerHTML = texty;
-    nowDiv.appendChild(playDiv);
+    document.body.appendChild(playDiv);
 }
 
 function sleepy(ms){
