@@ -24,11 +24,21 @@ const weekly = [
 ];
 
 function startPlay(){
+    const svgPlay = document.getElementById("i-play");
+    const svgPause = document.getElementById("i-pause");
+    svgPlay.style.fill = "#cc274c";
+    svgPlay.style.stroke = "#cc274c";
+    svgPause.style.stroke = "#234054";
     audioConnect.play();
     audioConnect.loop = true;
     //console.log("Did it started?");
 }
 function pausePlay(){
+    const svgPlay = document.getElementById("i-play");
+    const svgPause = document.getElementById("i-pause");
+    svgPlay.style.fill = "#234054";
+    svgPlay.style.stroke = "#234054";
+    svgPause.style.stroke = "#cc274c";
     audioConnect.pause();
     audioConnect.loop = false;
 }
@@ -44,6 +54,7 @@ let timeStamp = [];
 let tmpData;
 let myList = [];
 let upCount = 0;
+var gotData = "";
 //document.addEventListener("onload",display_data());
 display_data();
 
@@ -56,8 +67,9 @@ function playControls(){
     var texty = '<button onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg></button>';
     texty += '<button onclick="pausePlay()"><svg id="i-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M23 2 L23 30 M9 2 L9 30" /></svg></button>';
     playDiv.innerHTML = texty;
-    document.body.appendChild(playDiv);
+    return playDiv;
 }
+//document.body.appendChild(playControls());
 
 function sleepy(ms){
     return new Promise(resolve =>setTimeout(resolve,ms));
@@ -133,14 +145,14 @@ setInterval(async function buildList(){
 },upTime);
 
 async function call_back(){
-    await sleepy(1500);
+    await sleepy(5000);
     gotData = await get_url(thisURL);
-    console.log("sleeping 1.5s",gotData.song);
+    console.log("sleeping 5s",gotData.song);
 }
 
 async function display_data(){
     /* Display current song playing on FM La Paz */
-    var gotData = await get_url(thisURL);
+    gotData = await get_url(thisURL);
     var timeNow = new Date();
     let day = timeNow.getDay();
     let hh = timeNow.getHours();
@@ -157,9 +169,10 @@ async function display_data(){
     }*/
     if(gotData.song === titleErr[0]){
         console.log(hh+":"+mm,gotData.song);
-        await sleepy(5000);
-        gotData = await get_url(thisURL);
-        console.log("sleeping 5s",gotData.song);
+        call_back();
+    }
+    if(gotData.song === titleErr[1]){
+        call_back();
     }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
