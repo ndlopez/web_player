@@ -54,7 +54,8 @@ Go to: [https://github.com/ndlopez/NowPlaying]
 Update: Windows version no longer displays current song from fm LaPaz, 'cuz the error mentioned above, the new version supports only ThirdRockRadio.
 
 ## Web version
-Dir: html_display
+click on live demo link above
 
-Open *index.html* in Firefox and wait for 3minutes or so. The playlist will populate and auto update after 3minutes passed. 
+Dev only: Open *index.html* in Firefox and wait for 3minutes or so. The playlist will populate and update every 3minutes.
 
+By clicking on the cloud icon, it is possible to download the playlist in JSON format, obviously from the moment the page was opened.
