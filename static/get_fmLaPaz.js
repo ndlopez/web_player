@@ -206,7 +206,7 @@ async function display_data(){
     "</h1><h3>Download playlist&emsp;<a id='downLink'><img src='assets/down_cloud.svg' width='32'/></a></h3>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
-    "<h2> "+ h2Song[0] + "</h2><h2> " + h2Song[1]+ "</h2>"+h2Time+"</div>";
+    "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2>"+h2Time+"</div>";
     const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
 
     //console.log("doc",divElm);
