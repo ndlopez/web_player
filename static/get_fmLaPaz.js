@@ -111,7 +111,8 @@ setInterval(async function buildList(){
     const gotDiv = document.getElementById('nowPlaying');
 
     const song = gotDiv.getElementsByTagName("h2");
-    const playTime = song[2].innerHTML.split(" ");
+    console.log(song[2].innerText);
+    //const playTime = song[2].innerHTML;//.split(" ");
     
     //console.log("parent",song[1].innerHTML);
     var artwork = gotDiv.getElementsByTagName("div");
@@ -127,10 +128,10 @@ setInterval(async function buildList(){
     divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
     var divText = document.createElement("div");
     divText.setAttribute("class","colArtist");
-    divText.innerHTML = "<span>" + song[0].innerHTML + "</span><span>" + song[1].innerHTML +"</span>";
+    divText.innerHTML = "<span>" + song[0].innerText + "</span><span>" + song[1].innerText +"</span>";
     var divTime = document.createElement("div");
     divTime.setAttribute("class","colTime");
-    divTime.innerHTML = "<span>" + playTime[0] + "</span>";
+    divTime.innerHTML = "<span>" + song[2].innerText + "</span>";
     
     mainDiv.appendChild(divColImg);
     mainDiv.appendChild(divText);
@@ -139,8 +140,8 @@ setInterval(async function buildList(){
     divList.appendChild(mainDiv);
     document.body.appendChild(divList);
 
-    timeStamp.push(playTime[0]);
-    songs.push(song[1].innerHTML+"-"+song[2].innerHTML);
+    timeStamp.push(song[2].innerText);
+    songs.push(song[0].innerText + "-" + song[1].innerText);
     artImg.push(artwork[1]);
     
     tmpData = {"time": timeStamp[upCount], "song": songs[upCount], "artwork": artImg[upCount]};
@@ -199,7 +200,7 @@ async function display_data(){
     // const updater = "<meta http-equiv='refresh' content='221'>";
     // const calljs = "<script src='get_fmLaPaz.js'></script>"
     // const divElm = document.createElement("div");
-    const h2Time = "<h2> "+ hh + ":" + mm +"</h2>"; 
+    const h2Time = "<h2><small>"+ hh + ":" + mm +"</small></h2>"; 
     //document.createElement("h2");
     const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
     "</h1><h3>Download playlist&emsp;<a id='downLink'><img src='assets/down_cloud.svg' width='32'/></a></h3>";
