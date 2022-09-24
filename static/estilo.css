@@ -19,6 +19,7 @@ a{
 #player button{
   margin:0px 6px;
   border: none;
+  background-color: transparent;
 }
 
 .row:after{
