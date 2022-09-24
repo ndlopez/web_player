@@ -42,8 +42,10 @@ let timeStamp = [];
 let tmpData;
 let myList = [];
 let upCount = 0;
+var playStatus = false;
 
 function startPlay(){
+    playStatus = true;
     audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
@@ -55,6 +57,7 @@ function startPlay(){
     audioConnect.loop = true;
 }
 function stopPlay(){
+    playStatus = false;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     svgPlay.style.fill = "#234054";
@@ -64,16 +67,17 @@ function stopPlay(){
     audioConnect.pause();
     audioConnect.loop = false;
 }
-
-if(document.body === null){
-    display_data();
-    sleepy(3000);
-    console.log(document.body);
-}else{
-    console.log("No longer null?");
-    document.body.appendChild(addModal());
+function chgIcon(){
+    const btn = document.getElementById("playBtn");
+    if(playStatus){
+        btn.innerHTML = '<svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>stop';
+    }else{
+        //stopPlay();
+        btn.innerHTML = '<svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg>play';
+    }
 }
-//display_data();
+
+display_data();
 //playControls();
 
 function playControls(){
@@ -251,13 +255,11 @@ function closeNav(thisObj){
 }
 
 function addModal(){
-    //await display_data();
-    console.log("Adding modal?");
     const secDiv = document.createElement("div");
     secDiv.id = "InfoNav";
     secDiv.className = "success_window";
     secDiv.innerHTML = "<div class='success-content'><div class='success-header'>"+
-    "<span class='closeBtn' onclick=\"closeNav('SuccessNav')\">&times;</span>" +
+    "<span class='closeBtn' onclick=\"closeNav('InfoNav')\">&times;</span>" +
     "</div><div class='success-body'>"+
     "<h2>Info</h2>" +
     "<p>In order to NOT make too many requests to server (lapaz.fm), the Playlist is updated every 3mins. Thus, sometimes live playing might differ from nowPlaying info and artwork</p><p><img class='success-svg' src='assets/down_cloud.svg'/> Click on this icon and you can download the playlist, from the moment you opened this page.</p><p>Developed by <a href='https://github.com/ndlopez'>ndzerglink</a></p></div></div>";

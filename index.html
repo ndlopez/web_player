@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="static/estilo.css">
   </head>
   <body>
+    <div id="thisModal"></div>
     <div id="nowPlaying"></div>
     <div id="playList">
       <h2>&ensp;Playlist (earlier today) <a id='downLink'></a></h2>
@@ -16,8 +17,8 @@
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <ul>
         <li><a href="https://ndlopez.github.io"><img src="https://raw.githubusercontent.com/ndlopez/ndlopez.github.io/main/assets/home.svg" width="26">home</a></li>
-        <li><a onclick="openNav()"><img src="assets/fmlapaz.ico" width="30"/> LAPAZ.fm</a></li>
-        <li><a href="#"><svg id="i-play" onclick="startPlay()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg>play</a></li>
+        <li><a href="#"><img src="assets/fmlapaz.ico" width="30"/> LAPAZ.fm</a></li>
+        <li><a id="playBtn" onclick="startPlay()" onmouseleave="chgIcon()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg>play</a></li>
         <li><a href="#"><svg id="i-stop" onclick="stopPlay()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>stop</a></li>
         <li><a class="link-off" href="https://ndlopez.github.io/pages/todo_list.html"><img src="https://raw.githubusercontent.com/ndlopez/ndlopez.github.io/main/assets/todo.svg"/>todo</a></li>
       </ul>
