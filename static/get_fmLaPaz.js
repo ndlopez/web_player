@@ -3,7 +3,7 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 var audioConnect = "";//new Audio("https://stream.consultoradas.com/8042/stream");
 
 // Week:[0:Sun, 1:Mon, 2:Tue, 3:Wed, 4:Thu, 5:Fri, 6:Sat]
-const weekly = [
+const weekly_9 = [
     {name:"PopArt",day:1,time:16},
     {name:"PopArt",day:2,time:16},
     {name:"PopArt",day:3,time:10},
@@ -14,7 +14,7 @@ const weekly = [
     {name:"UltraLight",day:1,time:9},
     {name:"UltraLight",day:1,time:10},
     {name:"UltraLight",day:1,time:11},
-    {name:"UltraLight",day:1,time:11},
+    {name:"UltraLight",day:1,time:12},
     {name:"UltraLight",day:2,time:10},
     {name:"UltraLight",day:2,time:11},
     {name:"UltraLight",day:2,time:12},
@@ -28,13 +28,39 @@ const weekly = [
     {name:"DiscoStu",day:0,time:11},
     {name:"DiscoStu",day:0,time:12},
 ];
+const weekly_4 = [
+    {name:"PopArt",day:1,time:3},
+    {name:"PopArt",day:2,time:3},
+    {name:"PopArt",day:2,time:21},
+    {name:"PopArt",day:3,time:20},
+    {name:"En Concierto",day:2,time:23},
+    {name:"En Concierto",day:4,time:3},
+    {name:"UltraLight",day:0,time:3},
+    {name:"UltraLight",day:0,time:20},
+    {name:"UltraLight",day:0,time:21},
+    {name:"UltraLight",day:0,time:22},
+    {name:"UltraLight",day:0,time:23},
+    {name:"UltraLight",day:1,time:21},
+    {name:"UltraLight",day:1,time:22},
+    {name:"UltraLight",day:1,time:23},
+    {name:"UltraLight",day:4,time:2},
+    {name:"Rock Clasico",day:3,time:3},
+    {name:"Rock Clasico",day:4,time:21},
+    {name:"DiscoStu",day:5,time:21},
+    {name:"DiscoStu",day:5,time:22},
+    {name:"DiscoStu",day:5,time:23},
+    {name:"DiscoStu",day:6,time:21},
+    {name:"DiscoStu",day:6,time:22},
+    {name:"DiscoStu",day:6,time:23},
+];
 
 const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"," - "];
 const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art"];
-const upTime = 200000; //ms
+const upTime = 190000; //ms
+const errLapse = 5000; //ms
 
 let songs = [];
 let artImg = [];
@@ -94,11 +120,16 @@ function sleepy(ms){
     return new Promise(resolve =>setTimeout(resolve,ms));
 }
 
-function get_sched(tag,heure){
+function get_sched(tag,heure,time_lag){
     var myTitle = "LAPAZ.fm";
-    for (let item in weekly){
-        if(weekly[item].day === tag && weekly[item].time === heure){
-            myTitle = weekly[item].name;
+    var gotObj="";
+    if(time_lag == 240){
+        /* UTC-4 */
+        gotObj = weekly_4;
+    }else{gotObj = weekly_9;}
+    for (let item in gotObj){
+        if(gotObj[item].day === tag && gotObj[item].time === heure){
+            myTitle = gotObj[item].name;
         }
     }
     return myTitle;
@@ -175,7 +206,9 @@ async function call_back(hour,min){
 async function display_data(){
     /* Display current song playing on FM La Paz */
     var gotData = await get_url(thisURL);
-    var timeNow = new Date();
+    const timeNow = new Date();
+    const timeOffset = timeNow.getTimezoneOffset(); //if UTC + -> return -offset
+    //console.log(timeOffset,typeof(timeOffset));//
     let day = timeNow.getDay();
     let hh = timeNow.getHours();
     let mm = timeNow.getMinutes();
@@ -199,7 +232,7 @@ async function display_data(){
     }*/
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){
         console.log(hh+":"+mm,"error:",gotData.song);
-        await sleepy(5000);
+        await sleepy(errLapse);
         auxText = "Loading... please wait";
         gotData = await get_url(thisURL);
         console.log(auxText,gotData.song);
@@ -208,11 +241,11 @@ async function display_data(){
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     
     const headTitle = document.getElementById("nowLabel");
-    headTitle.innerHTML = "<h1>Now Playing: " + get_sched(day,hh) + "</h1>";
+    headTitle.innerHTML = "<h2>Now Playing: " + get_sched(day,hh,timeOffset) + "</h2>";
 
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
-    //myDiv.style.height = "450px";
+    myDiv.style.height = "450px";
     
     const h2Time = "<h2 class='opaque lighter'><small>"+ hh + ":" + mm +"</small></h2>"; 
     //document.createElement("h2");
