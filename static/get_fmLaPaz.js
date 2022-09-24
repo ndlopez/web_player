@@ -65,9 +65,16 @@ function stopPlay(){
     audioConnect.loop = false;
 }
 
-display_data();
+if(document.body === null){
+    display_data();
+    sleepy(3000);
+    console.log(document.body);
+}else{
+    console.log("No longer null?");
+    document.body.appendChild(addModal());
+}
+//display_data();
 //playControls();
-document.body.appendChild(addModal());
 
 function playControls(){
     //await display_data();
@@ -242,7 +249,10 @@ function closeNav(thisObj){
     document.getElementById(thisObj).style.display = "none";
     document.body.style.overflow = "auto";
 }
+
 function addModal(){
+    //await display_data();
+    console.log("Adding modal?");
     const secDiv = document.createElement("div");
     secDiv.id = "InfoNav";
     secDiv.className = "success_window";

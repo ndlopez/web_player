@@ -88,7 +88,44 @@ span{
 .bottomText h2{
   margin: 4px;
 }
-
+.success_window{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left:0;
+  top:30%;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #2e405430;
+}
+.success-content{
+  position:relative;
+  background-color: #bed2e0;
+  margin:auto;
+  padding: 0;
+  width: 80%;
+}
+.success-header{
+  padding: 2px 16px;
+  background-color: #bed2e060;
+}
+.success-body{
+  padding: 10px 0px;
+  color:#2e4054;
+  text-align: center;
+}
+.success-svg{
+  width: 30%;
+  height: 30%;
+}
+.closeBtn{
+  color:#cc274c;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 @media (max-width:500px) {
   body{
     font-size: small;
