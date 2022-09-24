@@ -67,6 +67,7 @@ function stopPlay(){
 
 display_data();
 //playControls();
+document.body.appendChild(addModal());
 
 function playControls(){
     //await display_data();
@@ -111,7 +112,7 @@ setInterval(async function buildList(){
     const gotDiv = document.getElementById('nowPlaying');
 
     const song = gotDiv.getElementsByTagName("h2");
-    console.log(song[2].innerText);
+    //console.log(song[2].innerText);
     //const playTime = song[2].innerHTML;//.split(" ");
     
     //console.log("parent",song[1].innerHTML);
@@ -149,8 +150,8 @@ setInterval(async function buildList(){
     myList.push(tmpData);
     //console.log(upCount,myList);
     export_to_file(myList);
-    var dLink = document.getElementById("downLabel");
-    dLink.innerHTML = "&ensp;Playlist (earlier today)&emsp;<a id='downLink'><img src='assets/down_cloud.svg' width='32'/></a>";
+    var dLink = document.getElementById("downLink");
+    dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
     upCount++;
 
 },upTime);
@@ -230,6 +231,32 @@ async function get_url(my_url){
         console.log("3hr sched",song,upTime);}
     //console.log(song);
     return {song,artwork};
+}
+
+/* open and close Info modal */
+function openNav(){
+    document.getElementById("InfoNav").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+function closeNav(thisObj){
+    document.getElementById(thisObj).style.display = "none";
+    document.body.style.overflow = "auto";
+}
+function addModal(){
+    const secDiv = document.createElement("div");
+    secDiv.id = "InfoNav";
+    secDiv.className = "success_window";
+    secDiv.innerHTML = "<div class='success-content'><div class='success-header'>"+
+    "<span class='closeBtn' onclick=\"closeNav('SuccessNav')\">&times;</span>" +
+    "</div><div class='success-body'>"+
+    "<h2>Info</h2>" +
+    "<p>In order to NOT make too many requests to server (lapaz.fm), the Playlist is updated every 3mins. Thus, sometimes live playing might differ from nowPlaying info and artwork</p><p><img class='success-svg' src='assets/down_cloud.svg'/> Click on this icon and you can download the playlist, from the moment you opened this page.</p><p>Developed by <a href='https://github.com/ndlopez'>ndzerglink</a></p></div></div>";
+    window.onclick = function(ev){
+        if (ev.target == secDiv){
+            secDiv.style.display = "none";
+        }
+    }
+    return secDiv;
 }
 
 /*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
