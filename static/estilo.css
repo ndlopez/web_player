@@ -52,7 +52,7 @@ span{
   padding: 8px 5px;
 }
 .row{
-  border-bottom: 1px #bed2e0 solid;
+  border-bottom: 1px #bed2e0 dashed;
 }
 /*img{filter: opacity(30%);}*/
 .colArtist{float:left;width:60%;padding:10px 20px;}
@@ -75,13 +75,14 @@ span{
 .bottomText{
   /*border-radius: 10px;
   background-image: linear-gradient(#bed2e0,#2e4054);
-  background-color: #bed2e095;*/
-  color: #bed2e0;
-  /*opacity: 0.4;
+  opacity: 0.4;
   position: absolute;
   bottom: -22px;
-  left:5px;*/
-  width: 350px;
+  left:5px;
+  width: 360px;*/
+  padding: 5px 0px 5px 13px;
+  /*padding-left: 13px;*/
+  background-color: #bed2e040;
   font-size: small;
   text-align: left;
 }
@@ -89,14 +90,14 @@ span{
   margin: 4px;
 }
 .align-right{text-align: right;}
-.opaque{color: #bed2e090;}
+.opaque{color: #ccc}
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 #nowPlaying{
   padding: 0 20px;
   float: left;/*height: 500px;*/
 }
-#playList .row{background-color: #bed2e040;color: #bed2e0;}
+/*#playList .row{background-color: #bed2e040;color: #bed2e0;}*/
 /*.success_window{
   display: none;
   position: fixed;
@@ -139,21 +140,18 @@ span{
   body{
     font-size: small;
   }
-  /*#player{text-align: center;}*/
   
   #nowPlaying{
     text-align: center;
     width: 100%;
     height: 420px;
   }
-  #nowPlaying img, .bottomText{
-    width: 100%;
-  }
+
   #nowPlaying img{
-    border:0px;
+    border:0px;width: 100%;
   }
   #downLink img{width: 32px;}
-  .bottomText{left:0px;/*iphone mini:30px*/}
+  .bottomText{margin-left: -20px;width: 100vw;}
   .colImg{padding:0px;width:auto;}
   .colTime{padding: 0px;}
   .colArtist{padding: 5px;}
