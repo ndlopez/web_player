@@ -34,7 +34,7 @@ const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art"];
-const upTime = 180010; //ms
+const upTime = 200000; //ms
 
 let songs = [];
 let artImg = [];
@@ -119,14 +119,11 @@ function export_to_file(jsonData){
 setInterval(async function buildList(){
     /* Wait 'til display_data is finished, then get info from h2 elems */
     await display_data();
-    //setTimeout(buildList,185000);
-    const gotDiv = document.getElementById('nowPlaying');
 
+    const gotDiv = document.getElementById('nowPlaying');
     const song = gotDiv.getElementsByTagName("h2");
     //console.log(song[2].innerText);
     //const playTime = song[2].innerHTML;//.split(" ");
-    
-    //console.log("parent",song[1].innerHTML);
     var artwork = gotDiv.getElementsByTagName("div");
     artwork = artwork[0].innerHTML.split('"');
 
@@ -210,14 +207,16 @@ async function display_data(){
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     
+    const headTitle = document.getElementById("nowLabel");
+    headTitle.innerHTML = "<h1>Now Playing: " + get_sched(day,hh) + "</h1>";
+
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
     //myDiv.style.height = "450px";
     
     const h2Time = "<h2 class='opaque lighter'><small>"+ hh + ":" + mm +"</small></h2>"; 
     //document.createElement("h2");
-    const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + 
-    "</h1>";
+    //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
     "<h2>"+ h2Song[0] + "</h2><h2 class='opaque'>" + h2Song[1]+ "</h2>"+h2Time+"</div>";
@@ -225,7 +224,7 @@ async function display_data(){
 
     //console.log("doc",divElm);
     const catInfo = divImg;
-    myDiv.innerHTML = hTitle + catInfo;
+    myDiv.innerHTML = /*hTitle +*/ catInfo;
 
     document.body.appendChild(myDiv);
 

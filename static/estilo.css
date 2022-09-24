@@ -61,7 +61,8 @@ span{
 .colImg img{border-radius: 5px;}
 .colTime{float: left;width: 15%;text-align: right;margin: 10px 0px;}
 /*iframe{border:none;}*/
-
+#nowLabel{background-color: #bed2e040;padding:8px;}
+#nowLabel h1{margin: 0px;}
 #nowPlaying img{
   border: 5px solid #bed2e0;
   border-radius: 4px;
@@ -135,6 +136,7 @@ span{
   font-size: 28px;
   font-weight: bold;
 }*/
+
 @media (max-width:500px) {
   body{
     font-size: small;
