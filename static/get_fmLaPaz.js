@@ -29,6 +29,20 @@ const weekly = [
     {name:"DiscoStu",day:0,time:12},
 ];
 
+const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"," - "];
+const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
+
+let origTitle = document.title;
+const keys = ["title","art"];
+const upTime = 180010; //ms
+
+let songs = [];
+let artImg = [];
+let timeStamp = [];
+let tmpData;
+let myList = [];
+let upCount = 0;
+
 function startPlay(){
     audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
     const svgPlay = document.getElementById("i-play");
@@ -50,20 +64,6 @@ function stopPlay(){
     audioConnect.pause();
     audioConnect.loop = false;
 }
-
-const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"," - "];
-const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
-
-let origTitle = document.title;
-const keys = ["title","art"];
-const upTime = 180010; //ms
-
-let songs = [];
-let artImg = [];
-let timeStamp = [];
-let tmpData;
-let myList = [];
-let upCount = 0;
 
 display_data();
 //playControls();
@@ -120,6 +120,7 @@ setInterval(async function buildList(){
 
     //var thisSong = song[1].innerHTML; // .split("-");
     const divList = document.getElementById("playList");
+    
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","row");
     //divList.setAttribute("class","row");
@@ -148,6 +149,8 @@ setInterval(async function buildList(){
     myList.push(tmpData);
     //console.log(upCount,myList);
     export_to_file(myList);
+    var dLink = document.getElementById("downLabel");
+    dLink.innerHTML = "&ensp;Playlist (earlier today)&emsp;<a id='downLink'><img src='assets/down_cloud.svg' width='32'/></a>";
     upCount++;
 
 },upTime);
@@ -203,7 +206,7 @@ async function display_data(){
     const h2Time = "<h2><small>"+ hh + ":" + mm +"</small></h2>"; 
     //document.createElement("h2");
     const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
-    "</h1><h3>Download playlist&emsp;<a id='downLink'><img src='assets/down_cloud.svg' width='32'/></a></h3>";
+    "</h1>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
     "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2>"+h2Time+"</div>";
@@ -225,7 +228,7 @@ async function get_url(my_url){
     if(song === discostu){
         //upTime = 3600000;
         console.log("3hr sched",song,upTime);}
-    console.log("thisSong:",song);
+    //console.log(song);
     return {song,artwork};
 }
 
