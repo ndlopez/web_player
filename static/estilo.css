@@ -57,7 +57,7 @@ span{
 }
 /*img{filter: opacity(30%);}*/
 .colArtist{float:left;width:60%;padding:10px 20px;}
-.colImg{float:left;width:10%;height:75px;padding:5px;}
+.colImg{float:left;width:15%;height:75px;padding:5px;}
 .colImg img{border-radius: 5px;}
 .colTime{float: left;width: 15%;text-align: right;margin: 10px 0px;}
 /*iframe{border:none;}*/

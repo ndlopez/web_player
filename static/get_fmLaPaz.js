@@ -95,7 +95,7 @@ function sleepy(ms){
 }
 
 function get_sched(tag,heure){
-    var myTitle = "";
+    var myTitle = "LAPAZ.fm";
     for (let item in weekly){
         if(weekly[item].day === tag && weekly[item].time === heure){
             myTitle = weekly[item].name;
@@ -216,7 +216,7 @@ async function display_data(){
     
     const h2Time = "<h2 class='opaque lighter'><small>"+ hh + ":" + mm +"</small></h2>"; 
     //document.createElement("h2");
-    const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
+    const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + 
     "</h1>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
