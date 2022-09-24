@@ -21,6 +21,12 @@ const weekly = [
     {name:"UltraLight",day:4,time:15},
     {name:"Rock Clasico",day:3,time:16},
     {name:"Rock Clasico",day:5,time:10},
+    {name:"DiscoStu",day:6,time:10},
+    {name:"DiscoStu",day:6,time:11},
+    {name:"DiscoStu",day:6,time:12},
+    {name:"DiscoStu",day:0,time:10},
+    {name:"DiscoStu",day:0,time:11},
+    {name:"DiscoStu",day:0,time:12},
 ];
 
 function startPlay(){
@@ -44,6 +50,8 @@ function pausePlay(){
 }
 
 const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"];
+const discostu = "DISCO ESTUDIO PROGRAMA - VIERNES";
+
 let origTitle = document.title;
 const keys = ["title","art"];
 const upTime = 180010; //ms
@@ -54,7 +62,6 @@ let timeStamp = [];
 let tmpData;
 let myList = [];
 let upCount = 0;
-var gotData = "";
 //document.addEventListener("onload",display_data());
 display_data();
 
@@ -154,7 +161,7 @@ async function call_back(hour,min){
 
 async function display_data(){
     /* Display current song playing on FM La Paz */
-    gotData = await get_url(thisURL);
+    var gotData = await get_url(thisURL);
     var timeNow = new Date();
     let day = timeNow.getDay();
     let hh = timeNow.getHours();
@@ -163,7 +170,7 @@ async function display_data(){
     if(mm < 10){
         mm = "0"+String(mm);
     }
-    switch(gotData.song){
+    /*switch(gotData.song){
         case titleErr[0]:
             call_back(hh,mm);
             break;
@@ -175,11 +182,13 @@ async function display_data(){
             break;
         default:
             let fdx=0;
-    }
-    /*if(gotData.song === titleErr[0]){
-        
-        call_back();
     }*/
+    if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2]){
+        console.log(hour+":"+min,"error:",gotData.song);
+        await sleepy(5000);
+        gotData = await get_url(thisURL);
+        console.log("sleeping 5s",gotData.song);
+    }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     
