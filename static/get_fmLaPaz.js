@@ -113,7 +113,7 @@ function export_to_file(jsonData){
     let linkElm = document.getElementById("downLink")
     linkElm.setAttribute('href',dataUri);
     linkElm.setAttribute('download',exportFile);
-    //linkElm.click();
+    //linkElm.click();//downloads a file every update
 }
 
 setInterval(async function buildList(){
@@ -182,6 +182,7 @@ async function display_data(){
     let day = timeNow.getDay();
     let hh = timeNow.getHours();
     let mm = timeNow.getMinutes();
+    var auxText="";
 
     if(mm < 10){
         mm = "0"+String(mm);
@@ -202,26 +203,24 @@ async function display_data(){
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){
         console.log(hh+":"+mm,"error:",gotData.song);
         await sleepy(5000);
+        auxText = "Loading... please wait";
         gotData = await get_url(thisURL);
-        console.log("sleeping 5s",gotData.song);
+        console.log(auxText,gotData.song);
     }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
-    myDiv.style.height = "450px";
+    //myDiv.style.height = "450px";
     
-    // const updater = "<meta http-equiv='refresh' content='221'>";
-    // const calljs = "<script src='get_fmLaPaz.js'></script>"
-    // const divElm = document.createElement("div");
-    const h2Time = "<h2><small>"+ hh + ":" + mm +"</small></h2>"; 
+    const h2Time = "<h2 class='opaque lighter'><small>"+ hh + ":" + mm +"</small></h2>"; 
     //document.createElement("h2");
     const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
     "</h1>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
-    "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2>"+h2Time+"</div>";
+    "<h2>"+ h2Song[0] + "</h2><h2 class='opaque'>" + h2Song[1]+ "</h2>"+h2Time+"</div>";
     const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
 
     //console.log("doc",divElm);
