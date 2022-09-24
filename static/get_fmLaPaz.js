@@ -200,7 +200,7 @@ async function display_data(){
     const h2Time = "<h2> "+ hh + ":" + mm +"</h2>"; 
     //document.createElement("h2");
     const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
-    "</h1><h3><a id='downLink'>Download playlist</a></h3>";
+    "</h1><h3><a id='downLink'>Download playlist<img src='assets/download.svg' width='32'/></a></h3>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
     "<h2> "+ h2Song[0] + "</h2><h2> " + h2Song[1]+ "</h2>"+h2Time+"</div>";
