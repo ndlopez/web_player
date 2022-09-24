@@ -15,6 +15,9 @@ a{
 #player img, #player a{
   padding-top: 5px;
 }
+#player button{
+  margin:0px 6px;
+}
 
 .row:after{
   content:"";
