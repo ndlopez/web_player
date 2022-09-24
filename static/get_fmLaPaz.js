@@ -1,6 +1,6 @@
 //Should fetch data from fm La Paz
 const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
-const audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
+var audioConnect = "";//new Audio("https://stream.consultoradas.com/8042/stream");
 
 // Week:[0:Sun, 1:Mon, 2:Tue, 3:Wed, 4:Thu, 5:Fri, 6:Sat]
 const weekly = [
@@ -30,6 +30,7 @@ const weekly = [
 ];
 
 function startPlay(){
+    audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
     const svgPlay = document.getElementById("i-play");
     const svgPause = document.getElementById("i-pause");
     svgPlay.style.fill = "#cc274c";
@@ -37,7 +38,6 @@ function startPlay(){
     svgPause.style.stroke = "#234054";
     audioConnect.play();
     audioConnect.loop = true;
-    //console.log("Did it started?");
 }
 function pausePlay(){
     const svgPlay = document.getElementById("i-play");
@@ -50,7 +50,7 @@ function pausePlay(){
 }
 
 const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *"];
-const discostu = "DISCO ESTUDIO PROGRAMA - VIERNES";
+const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art"];
@@ -62,11 +62,10 @@ let timeStamp = [];
 let tmpData;
 let myList = [];
 let upCount = 0;
-//document.addEventListener("onload",display_data());
-display_data();
 
+display_data();
 //playControls();
-//document.addEventListener("load",buildList());
+
 function playControls(){
     //await display_data();
     const playDiv = document.createElement("div");
@@ -76,7 +75,6 @@ function playControls(){
     playDiv.innerHTML = texty;
     return playDiv;
 }
-//document.body.appendChild(playControls());
 
 function sleepy(ms){
     return new Promise(resolve =>setTimeout(resolve,ms));
@@ -184,7 +182,7 @@ async function display_data(){
             let fdx=0;
     }*/
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2]){
-        console.log(hour+":"+min,"error:",gotData.song);
+        console.log(hh+":"+mm,"error:",gotData.song);
         await sleepy(5000);
         gotData = await get_url(thisURL);
         console.log("sleeping 5s",gotData.song);
@@ -199,23 +197,21 @@ async function display_data(){
     // const updater = "<meta http-equiv='refresh' content='221'>";
     // const calljs = "<script src='get_fmLaPaz.js'></script>"
     // const divElm = document.createElement("div");
-    const h2Time = "<h2>"+ hh + ":" + mm +"</h2>"; 
+    const h2Time = "<h2> "+ hh + ":" + mm +"</h2>"; 
     //document.createElement("h2");
     const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
-    "</h1><p><a id='downLink'>Download playlist</a></p>";
+    "</h1><h3><a id='downLink'>Download playlist</a></h3>";
     const h2Song = gotData.song.split("-");
-    const divTitle = "<div class='bottomText'>" + h2Time + 
-    "<h2>"+ h2Song[0] + "</h2><h2>" + h2Song[1]+ "</h2></div>";
+    const divTitle = "<div class='bottomText'>" +
+    "<h2> "+ h2Song[0] + "</h2><h2> " + h2Song[1]+ "</h2>"+h2Time+"</div>";
     const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
-    //document.createElement("div");
-    //divImg.innerHTML = img_art;
+
     //console.log("doc",divElm);
     const catInfo = divImg;
     myDiv.innerHTML = hTitle + catInfo;
 
     document.body.appendChild(myDiv);
 
-    //console.log(day,hh,"Prog:",get_sched(day,hh));
 }
 
 async function get_url(my_url){
@@ -223,6 +219,10 @@ async function get_url(my_url){
     const data = await response.json();
     const song = data[keys[0]];
     const artwork = data[keys[1]];
+    if(song === discostu){
+        //upTime = 3600000;
+        console.log("3hr sched",song,upTime);}
+    //console.log("3hr sched",song);
     return {song,artwork};
 }
 
