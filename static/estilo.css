@@ -18,6 +18,8 @@ a{
 }
 #player button{
   margin:0px 6px;
+  background-color: #bed2e095;
+  border: none;
 }
 
 .row:after{
@@ -72,6 +74,7 @@ span{
     font-size: small;
   }
   /*#player{text-align: center;}*/
+  
   #nowPlaying{
     text-align: center;
   }
@@ -81,6 +84,7 @@ span{
   #nowPlaying img{
     border:0px;
   }
+  #downLink img{width: 32px;}
   .bottomText{left:0px;/*iphone mini:30px*/}
   .colImg{padding:0px;width:auto;}
   .colTime{padding: 0px;}

@@ -32,19 +32,21 @@ const weekly = [
 function startPlay(){
     audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
     const svgPlay = document.getElementById("i-play");
-    const svgPause = document.getElementById("i-pause");
+    const svgStop = document.getElementById("i-stop");
     svgPlay.style.fill = "#cc274c";
     svgPlay.style.stroke = "#cc274c";
-    svgPause.style.stroke = "#234054";
+    svgStop.style.stroke = "#234054";
+    svgStop.style.fill = "#234054";
     audioConnect.play();
     audioConnect.loop = true;
 }
-function pausePlay(){
+function stopPlay(){
     const svgPlay = document.getElementById("i-play");
-    const svgPause = document.getElementById("i-pause");
+    const svgStop = document.getElementById("i-stop");
     svgPlay.style.fill = "#234054";
     svgPlay.style.stroke = "#234054";
-    svgPause.style.stroke = "#cc274c";
+    svgStop.style.stroke = "#cc274c";
+    svgStop.style.fill ="#cc274c";
     audioConnect.pause();
     audioConnect.loop = false;
 }
@@ -200,7 +202,7 @@ async function display_data(){
     const h2Time = "<h2> "+ hh + ":" + mm +"</h2>"; 
     //document.createElement("h2");
     const hTitle = "<h1> Now Playing on FM La Paz: " + get_sched(day,hh) + 
-    "</h1><h3><a id='downLink'>Download playlist<img src='assets/download.svg' width='32'/></a></h3>";
+    "</h1><h3><a id='downLink'>Download playlist&emsp;<img src='assets/down_cloud.svg' width='32'/></a></h3>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
     "<h2> "+ h2Song[0] + "</h2><h2> " + h2Song[1]+ "</h2>"+h2Time+"</div>";
