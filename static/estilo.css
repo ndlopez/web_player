@@ -80,8 +80,8 @@ span{
   bottom: -22px;
   left:5px;
   width: 360px;*/
+  margin-top: 5px;
   padding: 5px 0px 5px 13px;
-  /*padding-left: 13px;*/
   background-color: #bed2e040;
   font-size: small;
   text-align: left;
@@ -90,7 +90,7 @@ span{
   margin: 4px;
 }
 .align-right{text-align: right;}
-.opaque{color: #2e4054;}
+/*.opaque{color: #bed2e030;}*/
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 #nowPlaying{

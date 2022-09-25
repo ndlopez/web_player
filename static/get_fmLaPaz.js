@@ -82,6 +82,7 @@ function startPlay(){
     audioConnect.play();
     audioConnect.loop = true;
 }
+
 function stopPlay(){
     playStatus = false;
     const svgPlay = document.getElementById("i-play");
@@ -93,6 +94,7 @@ function stopPlay(){
     audioConnect.pause();
     audioConnect.loop = false;
 }
+
 function chgIcon(){
     const btn = document.getElementById("playBtn");
     if(playStatus){
@@ -252,7 +254,7 @@ async function display_data(){
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
-    "<h2>"+ h2Song[0] + "</h2><h2 class='opaque'>" + h2Song[1]+ "</h2>"+h2Time+"</div>";
+    "<h2>"+ h2Song[0] + "</h2><h2 class='opaque'><small>" + h2Song[1]+ "</small></h2>"+h2Time+"</div>";
     const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
 
     //console.log("doc",divElm);
