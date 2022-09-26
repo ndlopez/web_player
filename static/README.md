@@ -1,8 +1,11 @@
 # Display current playing song
 
 ## FM La Paz - <index.html>
+
+![new design](../assets/new_design.png)
+
 Display and store in a playlist on the same page current song.<br>
-The URL has some security issues (*expired* SSL certificate) but JavaScript fetch does not care and gets data without problems.
+The URL has some security issues (*expired* SSL certificate) but JavaScript's fetch does not seem to care and gets data without problems. I cannot say the same with C# json lib.
 
 About the *expired* certificate:<br>
 The URL I am using is hosted somewhere on the west (where the Sun sets), where I am the Sun is rising, there's a +13 hour difference. The URL's certificate is renewed every day at midnight, so by the time I am fetching data it already *expired*. Perhaps if the URL's server would be connected to some CloudFlare service, this issue might not matter. 
