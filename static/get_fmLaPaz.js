@@ -1,6 +1,5 @@
 //Should fetch data from fm La Paz
 const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
-var audioConnect = "";//new Audio("https://stream.consultoradas.com/8042/stream");
 
 // Week:[0:Sun, 1:Mon, 2:Tue, 3:Wed, 4:Thu, 5:Fri, 6:Sat]
 const weekly_9 = [
@@ -68,54 +67,27 @@ let timeStamp = [];
 let tmpData;
 let myList = [];
 let upCount = 0;
-var playStatus = false;
-
-function startPlay(){
-    playStatus = true;
-    audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
-    const svgPlay = document.getElementById("i-play");
-    const svgStop = document.getElementById("i-stop");
-    svgPlay.style.fill = "#cc274c";
-    svgPlay.style.stroke = "#cc274c";
-    svgStop.style.stroke = "#234054";
-    svgStop.style.fill = "#234054";
-    audioConnect.play();
-    audioConnect.loop = true;
-}
-
-function stopPlay(){
-    playStatus = false;
-    const svgPlay = document.getElementById("i-play");
-    const svgStop = document.getElementById("i-stop");
-    svgPlay.style.fill = "#234054";
-    svgPlay.style.stroke = "#234054";
-    svgStop.style.stroke = "#cc274c";
-    svgStop.style.fill ="#cc274c";
-    audioConnect.pause();
-    audioConnect.loop = false;
-}
-
-function chgIcon(){
-    const btn = document.getElementById("playBtn");
-    if(playStatus){
-        btn.innerHTML = '<svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>stop';
-    }else{
-        //stopPlay();
-        btn.innerHTML = '<svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg>play';
-    }
-}
 
 display_data();
-//playControls();
 
-function playControls(){
-    //await display_data();
-    const playDiv = document.createElement("div");
-    playDiv.setAttribute("id","player");
-    var texty = '<button onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg></button>';
-    texty += '<button onclick="pausePlay()"><svg id="i-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M23 2 L23 30 M9 2 L9 30" /></svg></button>';
-    playDiv.innerHTML = texty;
-    return playDiv;
+window.onscroll = function() {scrollFunction()};
+
+var pxx=500; //artwork size
+//scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
+function scrollFunction() {
+    if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+//user clicks on myBtn, scroll to top
+function topFunction() {
+    //document.body.scrollTop = 0;
+    //document.body.animate({scrollTop:0},1500);
+    //document.documentElement.scrollTop = 0;
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+	
 }
 
 function sleepy(ms){
@@ -146,6 +118,7 @@ function export_to_file(jsonData){
     let linkElm = document.getElementById("downLink")
     linkElm.setAttribute('href',dataUri);
     linkElm.setAttribute('download',exportFile);
+    linkElm.setAttribute('target','_blank');
     //linkElm.click();//downloads a file every update
 }
 
