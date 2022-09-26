@@ -53,12 +53,12 @@ const weekly_4 = [
     {name:"DiscoStu",day:6,time:23},
 ];
 
-const titleErr = ["Radio Online  -  LAPAZ.FM","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
+const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
 const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art"];
-const upTime = 190000; //ms
+const upTime = 200000; //ms
 const errLapse = 5000; //ms
 
 let songs = [];
@@ -78,9 +78,11 @@ function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
         document.getElementById("topBtn").style.display = "block";
         document.getElementById("currSong").style.display = "block";
+        document.getElementById("headTit").style.display = "none";
     } else {
         document.getElementById("topBtn").style.display = "none";
         document.getElementById("currSong").style.display = "none";
+        document.getElementById("headTit").style.display = "block";
     }
 }
 //user clicks on myBtn, scroll to top
@@ -193,23 +195,11 @@ async function display_data(){
     if(mm < 10){
         mm = "0"+String(mm);
     }
-    /*switch(gotData.song){
-        case titleErr[0]:
-            call_back(hh,mm);
-            break;
-        case titleErr[1]:
-            call_back(hh,mm);
-            break;
-        case titleErr[2]:
-            call_back(hh,mm);
-            break;
-        default:
-            let fdx=0;
-    }*/
+    const gina = hh+":"+mm;
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){
-        console.log(hh+":"+mm,"error:",gotData.song);
+        console.log(gina,"error:",gotData.song);
         await sleepy(errLapse);
-        auxText = "Loading... please wait";
+        auxText = "Loading...";
         gotData = await get_url(thisURL);
         console.log(auxText,gotData.song);
     }
@@ -217,8 +207,8 @@ async function display_data(){
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     
     const headTitle = document.getElementById("nowLabel");
-    headTitle.innerHTML = "<h2>Now Playing: " + get_sched(day,hh,timeOffset) + "</h2><h3 id='currSong'>"+
-    gotData.song+"</h3>";
+    headTitle.innerHTML = "<h2 id='headTit'>Now Playing: " + get_sched(day,hh,timeOffset) + 
+    "</h2><h3 id='currSong'>" + gina +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";

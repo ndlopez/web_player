@@ -11,7 +11,7 @@ a{
 #topBtn{
   display: none;
   position: fixed;
-  bottom: 500px;
+  bottom: 70px;
   right:15px;
   z-index: 99;
   border: none;
@@ -22,6 +22,7 @@ a{
   height: 50px;
 }
 #topBtn::before{
+  color: #bed2e0;
   font-size: 2em;
   content: "\22bc";
 }
