@@ -58,7 +58,7 @@ const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art"];
-const upTime = 10000;//190000; //ms
+const upTime = 190000; //ms
 const errLapse = 5000; //ms
 
 let songs = [];
@@ -72,7 +72,7 @@ display_data();
 
 window.onscroll = function() {scrollFunction()};
 
-var pxx=600; //artwork size
+var pxx=400; //artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
 function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
