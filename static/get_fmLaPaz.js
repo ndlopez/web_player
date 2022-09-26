@@ -58,7 +58,7 @@ const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art"];
-const upTime = 190000; //ms
+const upTime = 10000;//190000; //ms
 const errLapse = 5000; //ms
 
 let songs = [];
@@ -72,13 +72,15 @@ display_data();
 
 window.onscroll = function() {scrollFunction()};
 
-var pxx=500; //artwork size
+var pxx=600; //artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
 function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
-        document.getElementById("myBtn").style.display = "block";
+        document.getElementById("topBtn").style.display = "block";
+        document.getElementById("currSong").style.display = "block";
     } else {
-        document.getElementById("myBtn").style.display = "none";
+        document.getElementById("topBtn").style.display = "none";
+        document.getElementById("currSong").style.display = "none";
     }
 }
 //user clicks on myBtn, scroll to top
@@ -87,7 +89,6 @@ function topFunction() {
     //document.body.animate({scrollTop:0},1500);
     //document.documentElement.scrollTop = 0;
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-	
 }
 
 function sleepy(ms){
@@ -216,7 +217,8 @@ async function display_data(){
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
     
     const headTitle = document.getElementById("nowLabel");
-    headTitle.innerHTML = "<h2>Now Playing: " + get_sched(day,hh,timeOffset) + "</h2>";
+    headTitle.innerHTML = "<h2>Now Playing: " + get_sched(day,hh,timeOffset) + "</h2><h3 id='currSong'>"+
+    gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";

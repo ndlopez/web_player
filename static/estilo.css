@@ -8,8 +8,26 @@ a{
   text-decoration: none;
   color: #2e4054;
 }
+#topBtn{
+  display: none;
+  position: fixed;
+  bottom: 500px;
+  right:15px;
+  z-index: 99;
+  border: none;
+  background-color: #cc274c;
+  color: #bed2e0;
+  border-radius: 70px;
+  width: 50px;
+  height: 50px;
+}
+#topBtn::before{
+  font-size: 2em;
+  content: "\22bc";
+}
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
+#currSong{display: none;}
 #player{
   display: block;
   width: 100%;
@@ -60,7 +78,16 @@ span{
 .colImg img{border-radius: 5px;}
 .colTime{float: left;width: 15%;text-align: right;margin: 10px 0px;}
 /*iframe{border:none;}*/
-#nowLabel{background-color: #bed2e040;padding:8px;margin-bottom: 10px;}
+#nowLabel{
+  background-color: #cc274c;
+  padding:8px;
+  margin-bottom: 10px;
+  position: sticky;
+  top:0;
+  z-index: 100;
+  float: none;
+  box-sizing: content-box;
+}
 #nowLabel h2{margin: 0px;}
 #nowPlaying img{
   border: 5px solid #bed2e0;
