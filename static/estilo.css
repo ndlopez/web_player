@@ -97,8 +97,8 @@ span{
 }
 .contain{
   position: relative;
-  /*background-color: #bed2e0;*/
   border-radius: 10px;
+  text-align: center;
 }
 .bottomText{
   /*border-radius: 10px;
