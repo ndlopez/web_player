@@ -142,12 +142,21 @@ setInterval(async function buildList(){
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","row");
     //divList.setAttribute("class","row");
+
+    var divText = document.createElement("div");
+    divText.setAttribute("class","colArtist");
+
+    var gotArtist = song[0].innerText;
+    if(gotArtist === "Radio Online"){
+        gotArtist = "Title error";
+        artwork[1] = "";
+    }
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg");
     divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
-    var divText = document.createElement("div");
-    divText.setAttribute("class","colArtist");
-    divText.innerHTML = "<span>" + song[0].innerText + "</span><span>" + song[1].innerText +"</span>";
+
+    divText.innerHTML = "<span>" + gotArtist + "</span><span>" + song[1].innerText +"</span>";
+
     var divTime = document.createElement("div");
     divTime.setAttribute("class","colTime");
     divTime.innerHTML = "<span>" + song[2].innerText + "</span>";
@@ -208,7 +217,7 @@ async function display_data(){
     
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='headTit'>Now Playing: " + get_sched(day,hh,timeOffset) + 
-    "</h2><h3 id='currSong'>" + gina +" "+gotData.song+"</h3>";
+    "</h2><h3 id='currSong' class='lighter'>" + gina +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
@@ -219,7 +228,7 @@ async function display_data(){
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
-    "<h2>"+ h2Song[0] + "</h2><h2 class='opaque'><small>" + h2Song[1]+ "</small></h2>"+h2Time+"</div>";
+    "<h2>"+ h2Song[0].trim() + "</h2><h2 class='opaque'><small>" + h2Song[1].trim() + "</small></h2>"+h2Time+"</div>";
     const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
 
     //console.log("doc",divElm);
