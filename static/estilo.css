@@ -90,7 +90,7 @@ span{
   background-color: #cc274c;
   padding:8px;
   margin-bottom: 10px;
-  position: sticky;
+  position: fixed;
   top:0;
   z-index: 100;
   float: none;
@@ -196,7 +196,7 @@ span{
   .bottomText{
     padding: 5px 0px 5px 13px;  
     margin-left: -20px;
-    width: 100vh;
+    width: 100vw;
   }
   .bottomText h3{display: none;}
   .bottomText h2{line-height: normal;}
