@@ -228,7 +228,9 @@ async function display_data(){
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
-    "<h2>"+ h2Song[0].trim() + "</h2><h2 class='opaque'><small>" + h2Song[1].trim() + "</small></h2>"+h2Time+"</div>";
+    "<h2>"+ h2Song[0].trim() + "</h2><h2 class='opaque'><small>" + h2Song[1].trim() + 
+    "</small></h2>"+"<h3 class='lighter'>" + gotData.bit + 
+    " kbps</h3><h3 class='lighter'> Listening: "+ gotData.listen + "</h3>"+ h2Time +"</div>";
     const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
 
     //console.log("doc",divElm);
