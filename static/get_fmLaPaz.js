@@ -221,7 +221,7 @@ async function display_data(){
 
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
-    myDiv.style.height = "450px";
+    //myDiv.style.height = "450px";
     
     const h2Time = "<h2 class='opaque lighter'><small>"+ hh + ":" + mm +"</small></h2>"; 
     //document.createElement("h2");
