@@ -8,8 +8,8 @@ function startPlay(){
     const svgStop = document.getElementById("i-stop");
     svgPlay.style.fill = "#cc274c";
     svgPlay.style.stroke = "#cc274c";
-    svgStop.style.stroke = "#234054";
-    svgStop.style.fill = "#234054";
+    svgStop.style.stroke = "#2e4054";
+    svgStop.style.fill = "#2e4054";
     audioConnect.play();
     audioConnect.loop = true;
 }
@@ -18,8 +18,8 @@ function stopPlay(){
     playStatus = false;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
-    svgPlay.style.fill = "#234054";
-    svgPlay.style.stroke = "#234054";
+    svgPlay.style.fill = "#2e4054";
+    svgPlay.style.stroke = "#2e4054";
     svgStop.style.stroke = "#cc274c";
     svgStop.style.fill ="#cc274c";
     audioConnect.pause();

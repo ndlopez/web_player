@@ -181,6 +181,6 @@ span{
   #downLink img{width: 32px;}
   .bottomText{margin-left: -20px;width: 100vw;}
   .colImg img{width: 64px;}
-  .colTime{padding-right: 2px;}
+  .colTime{padding-right: 5px;padding-top: 5px;}
   .colArtist{padding: 5px;}
 }
