@@ -77,7 +77,14 @@ span{
 .colArtist{float:left;width:65%;padding:10px 20px;}
 .colImg{float:left;width:20%;height:75px;padding:5px;}
 .colImg img{border-radius: 5px;}
-.colTime{float: left;width: 15%;text-align: right;margin: 10px 0px;}
+.colTime{
+  float: left;
+  width: 15%;
+  text-align: right;
+  margin: 10px 0px;
+  padding-right: 5px;
+  padding-top: 5px;
+}
 /*iframe{border:none;}*/
 #nowLabel{
   background-color: #cc274c;
@@ -195,6 +202,5 @@ span{
   .bottomText h3{display: none;}
   .bottomText h2{line-height: normal;}
   .colImg img{width: 64px;}
-  .colTime{padding-right: 5px;padding-top: 5px;}
   .colArtist{padding: 5px;}
 }
