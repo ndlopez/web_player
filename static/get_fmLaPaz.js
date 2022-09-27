@@ -57,7 +57,7 @@ const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ","Dif
 const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
-const keys = ["title","art"];
+const keys = ["title","art","bitrate","listeners"];
 const upTime = 200000; //ms
 const errLapse = 5000; //ms
 
@@ -229,7 +229,7 @@ async function display_data(){
     const h2Song = gotData.song.split("-");
     const divTitle = "<div class='bottomText'>" +
     "<h2>"+ h2Song[0].trim() + "</h2><h2 class='opaque'><small>" + h2Song[1].trim() + "</small></h2>"+h2Time+"</div>";
-    const divImg = "<div class='contain'>" + img_art + divTitle + "</div>";
+    const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
 
     //console.log("doc",divElm);
     const catInfo = divImg;
@@ -244,11 +244,13 @@ async function get_url(my_url){
     const data = await response.json();
     const song = data[keys[0]];
     const artwork = data[keys[1]];
+    const bit = data[keys[2]];
+    const listen = data[keys[3]];
     if(song === discostu){
         //upTime = 3600000;
         console.log("3hr sched",song,upTime);}
     //console.log(song);
-    return {song,artwork};
+    return {song,artwork,bit,listen};
 }
 
 /* open and close Info modal */
