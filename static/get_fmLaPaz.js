@@ -58,7 +58,7 @@ const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art"];
-const upTime = 200000; //ms
+const upTime = 60000;//200000; //ms
 const errLapse = 5000; //ms
 
 let songs = [];
@@ -213,7 +213,7 @@ async function display_data(){
         console.log(auxText,gotData.song);
     }
     document.title = gotData.song;
-    const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=350>";
+    const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=256>";
     
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='headTit'>Now Playing: " + get_sched(day,hh,timeOffset) + 

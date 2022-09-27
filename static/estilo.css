@@ -71,11 +71,11 @@ span{
   padding: 8px 5px;
 }
 .row{
-  border-bottom: 1px #bed2e0 dashed;
+  border-top: 1px #bed2e0 dashed;
 }
 /*img{filter: opacity(30%);}*/
-.colArtist{float:left;width:60%;padding:10px 20px;}
-.colImg{float:left;width:15%;height:75px;padding:5px;}
+.colArtist{float:left;width:65%;padding:10px 20px;}
+.colImg{float:left;width:20%;height:75px;padding:5px;}
 .colImg img{border-radius: 5px;}
 .colTime{float: left;width: 15%;text-align: right;margin: 10px 0px;}
 /*iframe{border:none;}*/
@@ -180,7 +180,7 @@ span{
   }
   #downLink img{width: 32px;}
   .bottomText{margin-left: -20px;width: 100vw;}
-  .colImg{padding:0px;width:auto;}
-  .colTime{padding: 0px;}
+  .colImg img{width: 64px;}
+  .colTime{padding-right: 2px;}
   .colArtist{padding: 5px;}
 }
