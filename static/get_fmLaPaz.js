@@ -58,7 +58,7 @@ const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art","bitrate","listeners"];
-const upTime = 60000;//200000; //ms
+const upTime = 200000; //ms
 const errLapse = 5000; //ms
 
 let songs = [];
