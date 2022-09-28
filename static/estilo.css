@@ -138,6 +138,7 @@ span{
   padding: 0px;
 }
 #playList{width: 60%;float: left;}
+#schedList{width: 40%;float: left;}
 /*#playList .row{background-color: #bed2e040;color: #bed2e0;}*/
 /*.success_window{
   display: none;

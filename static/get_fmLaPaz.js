@@ -1,7 +1,8 @@
 //Should fetch data from fm La Paz
 const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
-// Week:[0:Sun, 1:Mon, 2:Tue, 3:Wed, 4:Thu, 5:Fri, 6:Sat]
+//const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
 const weekly_9 = [
     {name:"PopArt",day:1,time:16},
     {name:"PopArt",day:2,time:16},
@@ -121,7 +122,7 @@ function export_to_file(jsonData){
     let linkElm = document.getElementById("downLink")
     linkElm.setAttribute('href',dataUri);
     linkElm.setAttribute('download',exportFile);
-    linkElm.setAttribute('target','_blank');
+    //linkElm.setAttribute('target','_blank');
     //linkElm.click();//downloads a file every update
 }
 
@@ -167,6 +168,11 @@ setInterval(async function buildList(){
 
     divList.appendChild(mainDiv);
     document.body.appendChild(divList);
+
+    /*Schedule list
+    const schedLiz = document.getElementById("schedList");
+    const newDate = new Date();
+    schedLiz.innerHTML = "<h2>Later today<br/>"+ days[newDate.getDay()] + "</h2>";*/
 
     timeStamp.push(song[2].innerText);
     songs.push(song[0].innerText + "-" + song[1].innerText);
