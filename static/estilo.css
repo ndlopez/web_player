@@ -101,7 +101,6 @@ span{
   width: 40%;
   float: left;
   border-radius: 10px;
-  text-align: center;
 }
 .bottomText{
   width: 60%;
@@ -110,12 +109,9 @@ span{
   background-image: linear-gradient(#bed2e0,#2e4054);
   opacity: 0.4;
   position: absolute;
-  bottom: -22px;
-  left:5px;
-  width: 360px;*/
-  
+  bottom: -22px;  left:5px;  width: 360px;*/  
   margin-top: 5px;
-  padding: 20px 0px 20px 20px;
+  padding: 15px 0px 15px 20px;
   background-color: #bed2e040;
   font-size: small;
   text-align: left;
@@ -124,6 +120,7 @@ span{
   line-height:2em;
   margin: 4px;
 }
+.bottomText a{color: #bed2e0;}
 .align-right{text-align: right;}
 /*.opaque{color: #bed2e030;}*/
 .lighter{font-weight: 400;}
@@ -132,14 +129,14 @@ span{
   padding: 50px 20px;
   float: left;
 }
-#nowPlaying img{
+.contain img{
   border: 5px solid #bed2e0;
   border-radius: 4px;
   padding: 0px;
 }
 #playList{width: 60%;float: left;}
-#schedList{width: 40%;float: left;}
-/*#playList .row{background-color: #bed2e040;color: #bed2e0;}*/
+/*#schedList{width: 40%;float: left;}
+#playList .row{background-color: #bed2e040;color: #bed2e0;}*/
 /*.success_window{
   display: none;
   position: fixed;

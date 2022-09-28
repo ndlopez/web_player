@@ -236,9 +236,11 @@ async function display_data(){
     const divTitle = "<div class='bottomText'>" +
     "<h2>"+ h2Song[0].trim() + "</h2><h2 class='opaque'><small>" + h2Song[1].trim() + 
     "</small></h2>"+"<h3 class='lighter'>" + gotData.bit + 
-    " kbps</h3><h3 class='lighter'> Listening: "+ gotData.listen + "</h3>"+ h2Time +"</div>";
-    const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
+    " kbps</h3><h3 class='lighter'> Listening: "+ gotData.listen + "</h3>"+ h2Time +
+    "<h3 class='lighter'><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/>&emsp;Search on duckduckgo</a>"+"</h3></div>";
 
+    const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
     //console.log("doc",divElm);
     const catInfo = divImg;
     myDiv.innerHTML = /*hTitle +*/ catInfo;
