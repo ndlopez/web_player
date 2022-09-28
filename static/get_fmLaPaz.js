@@ -58,7 +58,7 @@ const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art","bitrate","listeners"];
-const upTime = 200000; //ms
+const upTime = 60000;//200000; //ms
 const errLapse = 5000; //ms
 
 let songs = [];
@@ -221,7 +221,7 @@ async function display_data(){
 
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
-    //myDiv.style.height = "450px";
+    myDiv.style.height = "350px";
     
     const h2Time = "<h2 class='opaque lighter'><small>"+ hh + ":" + mm +"</small></h2>"; 
     //document.createElement("h2");
