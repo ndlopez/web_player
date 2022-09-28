@@ -88,20 +88,20 @@ span{
 /*iframe{border:none;}*/
 #nowLabel{
   display: block;
-  width: auto;
+  width: 100%;
   background-color: #cc274c;
   padding:8px;
   margin-bottom: 10px;
-  position: sticky;
+  position: fixed;
   top:0;
-  /*z-index: 100;*/
+  z-index: 100;
   float: none;
   box-sizing: content-box;
 }
 #nowLabel h2{margin: 0px;}
 
 .contain{
-  /*position: relative;*/
+  position: relative;
   width: 40%;
   float: left;
   border-radius: 10px;
