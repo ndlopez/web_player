@@ -7,7 +7,7 @@ const weekly_9 = [
     {name:"PopArt",day:1,time:16},
     {name:"PopArt",day:2,time:16},
     {name:"PopArt",day:3,time:10},
-    {name:"PopArt",day:4,time:9},
+    {name:"PopArt",day:4,time:10},
     {name:"En Concierto",day:3,time:12},
     {name:"En Concierto",day:4,time:16},
     {name:"UltraLight",day:0,time:16},
@@ -32,7 +32,7 @@ const weekly_4 = [
     {name:"PopArt",day:1,time:3},
     {name:"PopArt",day:2,time:3},
     {name:"PopArt",day:2,time:21},
-    {name:"PopArt",day:3,time:20},
+    {name:"PopArt",day:3,time:21},
     {name:"En Concierto",day:2,time:23},
     {name:"En Concierto",day:4,time:3},
     {name:"UltraLight",day:0,time:3},
@@ -54,12 +54,16 @@ const weekly_4 = [
     {name:"DiscoStu",day:6,time:23},
 ];
 
-const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
+const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ",
+"Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
+const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
+"https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
+"https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde"];
 const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
 
 let origTitle = document.title;
 const keys = ["title","art","bitrate","listeners"];
-const upTime = 200000; //ms
+let upTime = 200000; //ms
 const errLapse = 5000; //ms
 
 let songs = [];
@@ -149,8 +153,12 @@ setInterval(async function buildList(){
 
     var gotArtist = song[0].innerText;
     if(gotArtist === "Radio Online"){
-        gotArtist = "Title error";
+        gotArtist = "Sorry, title error";
         artwork[1] = "";
+    }
+    if((artwork[1] === awfulArt[0]) || (artwork[1] === awfulArt[1]) || (artwork[1] === awfulArt[2])){
+        artwork[1] = "";
+        gotArtist = "Sorry, title error";
     }
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg");
@@ -218,6 +226,11 @@ async function display_data(){
         gotData = await get_url(thisURL);
         console.log(auxText,gotData.song);
     }
+    if(gotData.artwork === awfulArt[0] || gotData.artwork === awfulArt[1] || gotData.artwork === awfulArt[2]){
+        console.log(gina,"error:",gotData.artwork);
+        await sleepy(60000);//10s
+        gotData = await get_url(thisURL);
+    }
     document.title = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=256>";
     
@@ -238,7 +251,7 @@ async function display_data(){
     "</small></h2>"+"<h3 class='lighter'>" + gotData.bit + 
     " kbps</h3><h3 class='lighter'> Listening: "+ gotData.listen + "</h3>"+ h2Time +
     "<h3 class='lighter'><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/>&emsp;Search on duckduckgo</a>"+"</h3></div>";
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/>&emsp;Search on DuckDuckGo</a>"+"</h3></div>";
 
     const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
     //console.log("doc",divElm);
