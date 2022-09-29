@@ -248,7 +248,7 @@ async function display_data(){
     "</small></h2>"+"<h3 class='lighter'>" + gotData.bit + 
     " kbps</h3><h3 class='lighter'> Listening : "+ gotData.listen + "</h3>"+ h2Time +
     "<h3 class='lighter'><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=24/>&emsp;Search on DuckDuckGo</a>"+"</h3></div>";
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>Search on DuckDuckGo&emsp;<img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=24/></a>"+"</h3></div>";
 
     const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
     //console.log("doc",divElm);

@@ -130,7 +130,7 @@ span{
   padding: 50px 20px;
   float: left;
 }
-#nowPlaying .contain{padding: 20px;}
+.contain{padding: 20px;}
 .contain img{
   border: 8px solid #bed2e0;
   border-radius: 4px;
@@ -184,7 +184,10 @@ span{
     width: 100%;
     height: 480px !important;
   }
-  .contain{width: 100%;}
+  .contain{
+    width: 100%;
+    padding: 0px;
+  }
   #nowPlaying img{
     border:0px;width: 100%;
     padding: 0px;
