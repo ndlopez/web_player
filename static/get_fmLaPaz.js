@@ -136,6 +136,8 @@ setInterval(async function buildList(){
 
     const gotDiv = document.getElementById('nowPlaying');
     const song = gotDiv.getElementsByTagName("h2");
+    var noSec = song[2].innerText;//time
+    noSec = noSec.substring(0,4);
     //console.log(song[2].innerText);
     //const playTime = song[2].innerHTML;//.split(" ");
     var artwork = gotDiv.getElementsByTagName("div");
@@ -168,7 +170,7 @@ setInterval(async function buildList(){
 
     var divTime = document.createElement("div");
     divTime.setAttribute("class","colTime");
-    divTime.innerHTML = "<span>" + song[2].innerText + "</span>";
+    divTime.innerHTML = "<span>" + noSec + "</span>";
     
     mainDiv.appendChild(divColImg);
     mainDiv.appendChild(divText);
@@ -182,7 +184,7 @@ setInterval(async function buildList(){
     const newDate = new Date();
     schedLiz.innerHTML = "<h2>Later today<br/>"+ days[newDate.getDay()] + "</h2>";*/
 
-    timeStamp.push(song[2].innerText);
+    timeStamp.push(noSec);
     songs.push(song[0].innerText + "-" + song[1].innerText);
     artImg.push(artwork[1]);
     
@@ -196,13 +198,6 @@ setInterval(async function buildList(){
 
 },upTime);
 
-async function call_back(hour,min){
-    console.log(hour+":"+min,"error:",gotData.song);
-    await sleepy(5000);
-    gotData = await get_url(thisURL);
-    console.log("sleeping 5s",gotData.song);
-    return gotData;
-}
 
 async function display_data(){
     /* Display current song playing on FM La Paz */
@@ -213,12 +208,14 @@ async function display_data(){
     let day = timeNow.getDay();
     let hh = timeNow.getHours();
     let mm = timeNow.getMinutes();
+    let ss = timeNow.getSeconds();
     var auxText="";
 
-    if(mm < 10){
-        mm = "0"+String(mm);
-    }
-    const gina = hh+":"+mm;
+    mm = (mm < 10)? "0" + String(mm):mm;
+    ss = (ss < 10)? "0" + String(ss):ss;
+
+    const gina = hh+":"+mm+":"+ss;
+    //console.log("time",gina);
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){
         console.log(gina,"error:",gotData.song);
         await sleepy(errLapse);
@@ -242,7 +239,7 @@ async function display_data(){
     myDiv.style.width = "100%";
     myDiv.style.height = "350px";
     
-    const h2Time = "<h2 class='opaque lighter'><small>"+ hh + ":" + mm +"</small></h2>"; 
+    const h2Time = "<h2 class='opaque lighter'><small>"+ gina +"</small></h2>"; 
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
@@ -269,9 +266,9 @@ async function get_url(my_url){
     const artwork = data[keys[1]];
     const bit = data[keys[2]];
     const listen = data[keys[3]];
-    if(song === discostu){
+    /*if(song === discostu){
         //upTime = 3600000;
-        console.log("3hr sched",song,upTime);}
+        console.log("3hr sched",song,upTime);}*/
     //console.log(song);
     return {song,artwork,bit,listen};
 }
