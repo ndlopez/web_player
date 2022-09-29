@@ -130,12 +130,12 @@ span{
   padding: 50px 20px;
   float: left;
 }
+#nowPlaying .contain{padding: 20px;}
 .contain img{
-  border: 5px solid #bed2e0;
+  border: 8px solid #bed2e0;
   border-radius: 4px;
-  padding: 20px;
 }
-#playList{width: 60%;float: left;}
+#playList{width: 60%;float: left;border-bottom: 1px dashed #bed2e040;}
 /*#schedList{width: 40%;float: left;}
 #playList .row{background-color: #bed2e040;color: #bed2e0;}*/
 /*.success_window{
@@ -187,6 +187,7 @@ span{
   .contain{width: 100%;}
   #nowPlaying img{
     border:0px;width: 100%;
+    padding: 0px;
   }
   #downLink img{width: 32px;}
   .bottomText{
