@@ -6,10 +6,14 @@ function startPlay(){
     audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
+    const gifImg = document.getElementById("gifElm");
     svgPlay.style.fill = "#cc274c";
     svgPlay.style.stroke = "#cc274c";
     svgStop.style.stroke = "#2e4054";
     svgStop.style.fill = "#2e4054";
+    gifImg.style.display = "block";
+    //gifImg.style.background = "#2e4054";
+    gifImg.style.animation = "load 1s 1.2s infinite linear;";
     audioConnect.play();
     audioConnect.loop = true;
 }
@@ -18,10 +22,13 @@ function stopPlay(){
     playStatus = false;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
+    const gifImg = document.getElementById("gifElm");
     svgPlay.style.fill = "#2e4054";
     svgPlay.style.stroke = "#2e4054";
     svgStop.style.stroke = "#cc274c";
-    svgStop.style.fill ="#cc274c";
+    svgStop.style.fill = "#cc274c";
+    gifImg.style.display = "none";
+    gifImg.style.animation = "none";
     audioConnect.pause();
     audioConnect.loop = false;
 }
