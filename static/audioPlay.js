@@ -11,9 +11,10 @@ function startPlay(){
     svgPlay.style.stroke = "#cc274c";
     svgStop.style.stroke = "#2e4054";
     svgStop.style.fill = "#2e4054";
-    gifImg.style.display = "block";
+    //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
-    gifImg.style.animation = "load 1s 1.2s infinite linear;";
+    gifImg.classList.remove("no-audio");
+    //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     audioConnect.play();
     audioConnect.loop = true;
 }
@@ -27,8 +28,9 @@ function stopPlay(){
     svgPlay.style.stroke = "#2e4054";
     svgStop.style.stroke = "#cc274c";
     svgStop.style.fill = "#cc274c";
-    gifImg.style.display = "none";
-    gifImg.style.animation = "none";
+    //gifImg.style.display = "none";
+    //gifImg.style.animation = "none";
+    gifImg.classList.add("no-audio");
     audioConnect.pause();
     audioConnect.loop = false;
 }
