@@ -19,6 +19,7 @@ const weekly_9 = [
     {name:"UltraLight",day:2,time:11},
     {name:"UltraLight",day:2,time:12},
     {name:"UltraLight",day:4,time:13},
+    {name:"UltraLight",day:4,time:14},
     {name:"UltraLight",day:4,time:15},
     {name:"Rock Clasico",day:3,time:16},
     {name:"Rock Clasico",day:5,time:10},
@@ -289,7 +290,7 @@ function addModal(){
     secDiv.id = "InfoNav";
     secDiv.className = "success_window";
     secDiv.innerHTML = "<div class='success-content'><div class='success-header'>"+
-    "<span class='closeBtn' onclick=\"closeNav('InfoNav')\">&times;</span>" +
+    "<span class='closeBtn' onclick=\'closeNav('InfoNav')\'>&times;</span>" +
     "</div><div class='success-body'>"+
     "<h2>Info</h2>" +
     "<p>In order to NOT make too many requests to server (lapaz.fm), the Playlist is updated every 3mins. Thus, sometimes live playing might differ from nowPlaying info and artwork</p><p><img class='success-svg' src='assets/down_cloud.svg'/> Click on this icon and you can download the playlist, from the moment you opened this page.</p><p>Developed by <a href='https://github.com/ndlopez'>ndzerglink</a></p></div></div>";
