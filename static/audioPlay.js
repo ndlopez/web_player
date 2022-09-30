@@ -7,8 +7,10 @@ function startPlay(){
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
-    svgPlay.style.fill = "#cc274c";
-    svgPlay.style.stroke = "#cc274c";
+    svgPlay.classList.remove("paused");
+    svgPlay.classList.add("play_on");
+    // svgPlay.style.fill = "#cc274c";
+    // svgPlay.style.stroke = "#cc274c";
     svgStop.style.stroke = "#2e4054";
     svgStop.style.fill = "#2e4054";
     //gifImg.style.display = "block";
@@ -24,8 +26,10 @@ function stopPlay(){
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
-    svgPlay.style.fill = "#2e4054";
-    svgPlay.style.stroke = "#2e4054";
+    svgPlay.classList.remove("play_on");
+    svgPlay.classList.add("paused");
+    //svgPlay.style.fill = "#2e4054";
+    //svgPlay.style.stroke = "#2e4054";
     svgStop.style.stroke = "#cc274c";
     svgStop.style.fill = "#cc274c";
     //gifImg.style.display = "none";
