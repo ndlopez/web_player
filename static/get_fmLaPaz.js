@@ -216,7 +216,7 @@ async function display_data(){
     mm = (mm < 10)? "0" + String(mm):mm;
     ss = (ss < 10)? "0" + String(ss):ss;
 
-    const gina = hh+":"+mm+":"+ss;
+    var gina = hh+":"+mm;// +":"+ss;
     //console.log("time",gina);
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){
         console.log(gina,"error:",gotData.song);
@@ -240,7 +240,7 @@ async function display_data(){
     var myDiv = document.getElementById("nowPlaying");
     myDiv.style.width = "100%";
     myDiv.style.height = "350px";
-    
+    gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='opaque lighter'><small>"+ gina +"</small></h2>"; 
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
@@ -309,7 +309,8 @@ function addModal(){
   'document.write("<head>" + script.outerHTML + "'+
 	'</head><body></body>");})())';
     myDiv.contentWindow.document.write(updater);
-    //myDiv.contentWindow.document.write(calljs);
-    myDiv.contentWindow.document.write(catInfo);*/
-    //'<div><h2>'+gotData.song+'</h2></div>'
-    //console.log("Now: "+ gotData.song,gotData.artwork);
+    /\myDiv.contentWindow.document.write(calljs);
+    myDiv.contentWindow.document.write(catInfo);
+    /\'<div><h2>'+gotData.song+'</h2></div>'
+    /\console.log("Now: "+ gotData.song,gotData.artwork);
+*/
