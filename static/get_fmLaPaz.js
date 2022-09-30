@@ -103,7 +103,7 @@ function topFunction() {
 function play_elapsed(){
     var sec = 0;
     var min = 0;
-    sec = (sec < 10)? "0"+sec:sec;
+    (sec < 10)? "0"+sec:sec;
     var tina_timer = setInterval(function(){
         var texty = "00:"+sec;
         document.getElementById("timerr").innerHTML = texty;
@@ -112,7 +112,7 @@ function play_elapsed(){
             min++;
             sec=0;
             //clearInterval(tina_timer)
-            texty = min + sec;  
+            texty = "0"+ min + sec;  
         }
         //if(sec < 0){clearInterval(tina_timer);}
     },1000);
