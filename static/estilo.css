@@ -134,6 +134,10 @@ span{
 .row{
   border-top: 1px #bed2e0 dashed;
 }
+.col3{
+  float: left;
+  width: 32%;/*33.33%*/
+}
 /*img{filter: opacity(30%);}*/
 .colArtist{float:left;width:65%;padding:10px 20px;}
 .colImg{float:left;width:20%;height:75px;padding:5px;}
@@ -186,6 +190,7 @@ span{
   margin: 4px;
 }
 .bottomText a{color: #bed2e0;}
+.bottomText #more_info{text-align: center;}
 .align-right{text-align: right;}
 /*.opaque{color: #bed2e030;}*/
 .lighter{font-weight: 400;}
@@ -235,7 +240,7 @@ span{
     margin-left: -20px;
     width: 100vw;
   }
-  .bottomText h3{display: none;}
+  .bottomText #more_info{display: none;}
   .bottomText h2{line-height: normal;}
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}

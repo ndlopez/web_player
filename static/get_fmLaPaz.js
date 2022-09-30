@@ -111,7 +111,7 @@ function reloadMe(){
         buildList();
     }*/
     // in the mean time call:
-    window.scroll({bottom:0,behavior:'smooth'});
+    window.scroll({bottom:0,left:0,behavior:'smooth'});
     display_data();
 }
 
@@ -171,7 +171,7 @@ setInterval(async function buildList(){
     divText.setAttribute("class","colArtist");
 
     var gotArtist = song[0].innerText;
-    if(gotArtist === "Radio Online"){
+    if(gotArtist === "Radio Online" || gotArtist === "LA CASCADA"){
         gotArtist = "Sorry, title error";
         artwork[1] = "";
     }
@@ -260,12 +260,14 @@ async function display_data(){
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
-    const divTitle = "<div class='bottomText'>" +
-    "<h2>"+ h2Song[0].trim() + "</h2><h2 class='opaque'><small>" + h2Song[1].trim() + 
-    "</small></h2>"+"<h3 class='lighter'>" + gotData.bit + 
-    " kbps</h3><h3 class='lighter'> Listening : "+ gotData.listen + "</h3>"+ h2Time +
-    "<h3 class='lighter'><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>Search on DuckDuckGo&emsp;<img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=24/></a>"+"</h3></div>";
+    const divTitle = "<div class='bottomText'>" + "<h2>"+ h2Song[0].trim() +
+    "</h2><h2 class='opaque'><small>" + h2Song[1].trim() + 
+    "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3'>"+
+    "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
+    " kbps</h3></div><div class='col3'><h3 class='lighter'> Listeners</h3><h3>"+ 
+    gotData.listen + "</h3></div><div class='col3'><h3 class='lighter'>Search on</h3>" + 
+    "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=24/></a>"+"</h3></div></div></div>";
 
     const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
     //console.log("doc",divElm);
