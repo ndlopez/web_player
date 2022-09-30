@@ -236,6 +236,10 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{width: 100%;}
+  .equalizer span:nth-child(6) {
+    animation: none;
+    display: none;
+  }
 }
 
 /*Equalizer elem animation*/
