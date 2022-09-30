@@ -100,6 +100,34 @@ function topFunction() {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 }
 
+function play_elapsed(){
+    var sec = 0;
+    var min = 0;
+    sec = (sec < 10)? "0"+sec:sec;
+    var tina_timer = setInterval(function(){
+        var texty = "00:"+sec;
+        document.getElementById("timerr").innerHTML = texty;
+        sec++;
+        if(sec>59){
+            min++;
+            sec=0;
+            //clearInterval(tina_timer)
+            texty = min + sec;  
+        }
+        //if(sec < 0){clearInterval(tina_timer);}
+    },1000);
+}
+
+function reloadMe(){
+    /* Reload the Playing artwork */
+    const play_list = document.getElementById("playList");
+    if(play_list === undefined){
+        display_data();
+    }else{
+        buildList();
+    }
+}
+
 function sleepy(ms){
     return new Promise(resolve =>setTimeout(resolve,ms));
 }
