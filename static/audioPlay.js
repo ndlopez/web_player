@@ -58,3 +58,37 @@ function playControls(){
     playDiv.innerHTML = texty;
     return playDiv;
 }
+
+var tina_timer;
+function play_elapsed(){
+    let sec = 0;
+    let min = 0;
+    var texty = "";
+    var second,minute;
+
+    tina_timer = setInterval(function(){
+        /*if(sec < 10){
+            second = "0"+String(sec);
+        }
+        if(min < 10){
+            minute = "0"+String(min);
+        }*/
+        second = (sec<10)?"0"+String(sec):sec;
+        minute = (min<10)?"0"+String(min):min;
+        //texty = ()? :sec; min = (min < 10)? :min;
+        //var texty = String(min) + ":" + String(sec);
+        //var texty = min + ":" + sec;
+        document.getElementById("timerr").innerHTML = minute + ":" + second;
+        sec++;
+        if(sec>59){
+            min++;
+            sec=0;
+            //clearInterval(tina_timer)
+            //texty = "0"+ min + sec;  
+        }
+        //if(sec < 0){clearInterval(tina_timer);}
+    },1000);
+}
+function stop_timer(){
+    clearInterval(tina_timer);
+}
