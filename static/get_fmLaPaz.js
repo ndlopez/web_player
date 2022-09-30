@@ -100,22 +100,38 @@ function topFunction() {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 }
 
+var tina_timer;
 function play_elapsed(){
-    var sec = 0;
-    var min = 0;
-    (sec < 10)? "0"+sec:sec;
-    var tina_timer = setInterval(function(){
-        var texty = "00:"+sec;
-        document.getElementById("timerr").innerHTML = texty;
+    let sec = 0;
+    let min = 0;
+    var texty = "";
+    var second,minute;
+
+    tina_timer = setInterval(function(){
+        /*if(sec < 10){
+            second = "0"+String(sec);
+        }
+        if(min < 10){
+            minute = "0"+String(min);
+        }*/
+        second = (sec<10)?"0"+String(sec):sec;
+        minute = (min<10)?"0"+String(min):min;
+        //texty = ()? :sec; min = (min < 10)? :min;
+        //var texty = String(min) + ":" + String(sec);
+        //var texty = min + ":" + sec;
+        document.getElementById("timerr").innerHTML = minute + ":" + second;
         sec++;
         if(sec>59){
             min++;
             sec=0;
             //clearInterval(tina_timer)
-            texty = "0"+ min + sec;  
+            //texty = "0"+ min + sec;  
         }
         //if(sec < 0){clearInterval(tina_timer);}
     },1000);
+}
+function stop_timer(){
+    clearInterval(tina_timer);
 }
 
 function reloadMe(){
