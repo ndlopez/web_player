@@ -102,12 +102,16 @@ function topFunction() {
 
 function reloadMe(){
     /* Reload the Playing artwork */
+    /*returns buildList is not defined, probably because is 
+    inside setInterval function, by setting it outside might work.
     const play_list = document.getElementById("playList");
     if(play_list === undefined){
         display_data();
     }else{
         buildList();
-    }
+    }*/
+    // in the mean time call:
+    display_data();
 }
 
 function sleepy(ms){
