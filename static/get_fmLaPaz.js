@@ -111,6 +111,7 @@ function reloadMe(){
         buildList();
     }*/
     // in the mean time call:
+    window.scroll({bottom:0,behavior:'smooth'});
     display_data();
 }
 
