@@ -80,7 +80,7 @@ function play_elapsed(){
         //texty = ()? :sec; min = (min < 10)? :min;
         //var texty = String(min) + ":" + String(sec);
         //var texty = min + ":" + sec;
-        document.getElementById("timerr").innerHTML = minute + ":" + second;
+        document.getElementById("timerr").innerText = minute + ":" + second;
         sec++;
         if(sec>59){
             min++;
@@ -94,5 +94,5 @@ function play_elapsed(){
 function stop_timer(){
     /* pauses time */
     clearInterval(tina_timer);
-    document.getElementById("timerr").innerHTML = "00:00";
+    document.getElementById("timerr").innerText = "00:00";
 }
