@@ -19,6 +19,7 @@ function startPlay(){
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     audioConnect.play();
     audioConnect.loop = true;
+    play_elapsed();
 }
 
 function stopPlay(){
@@ -37,6 +38,7 @@ function stopPlay(){
     gifImg.classList.add("no-audio");
     audioConnect.pause();
     audioConnect.loop = false;
+    stop_timer();
 }
 
 function chgIcon(){
@@ -90,5 +92,7 @@ function play_elapsed(){
     },1000);
 }
 function stop_timer(){
+    /* pauses time */
     clearInterval(tina_timer);
+    document.getElementById("timerr").innerHTML = "00:00";
 }
