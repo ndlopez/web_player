@@ -153,8 +153,9 @@ setInterval(async function buildList(){
 
     const gotDiv = document.getElementById('nowPlaying');
     const song = gotDiv.getElementsByTagName("h2");
-    var noSec = song[2].innerText;//time
-    noSec = noSec.substring(0,5);
+    var noSec = song[2].innerText;//time HH:MM:SS
+    noSec = (noSec.length < 8)? noSec.substring(0,4):noSec.substring(0,5);
+    //noSec = noSec.substring(0,5);
     //console.log(song[2].innerText);
     //const playTime = song[2].innerHTML;//.split(" ");
     var artwork = gotDiv.getElementsByTagName("div");
