@@ -51,6 +51,18 @@ function chgIcon(){
     }
 }
 
+function display_volume(vol_stat){
+    const volInput = document.getElementById("vol_input");
+    if(vol_stat === 1){
+        volInput.classList.remove("volume-none");
+        volInput.classList.add("volume-vertical");
+    }else{
+        volInput.classList.remove("volume-vertical");
+        volInput.classList.add("volume-none");
+    }
+    
+}
+
 function playControls(){
     //await display_data();
     const playDiv = document.createElement("div");

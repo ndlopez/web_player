@@ -16,8 +16,8 @@
 
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <ul>
-        <li><a id="playBtn" onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <circle class="paused" fill="none" stroke="none" stroke-width="2" cx="20" cy="20" r="18"/>
+        <li><a id="playBtn" onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="#2e4054" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle class="paused" stroke-width="2" cx="24" cy="24" r="22"/>
           <path class="paused" d="M9 25 L25 16 9 7 Z" /></svg><span id="timerr">00:00</span></a></li>
         <li><a><svg id="i-stop" onclick="stopPlay()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#cc274c" stroke="#cc274c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>stop</a></li>
         <li><!--a target="_blank" href="https://ndlopez.github.io/pages/todo_list.html"><img src="https://raw.githubusercontent.com/ndlopez/ndlopez.github.io/main/assets/todo.svg"/-->
@@ -27,8 +27,7 @@
             <span></span><span></span><span></span><span></span><span></span><span></span>
             </div></div></a>
         </li>
-        <li><div class="volume-field">
-          <input type="range" min="0" max="100" value="100" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
+        <li><a onclick="display_volume(1)"><img src="assets/volume-svgrepo.svg" width="32"/></a><div><input id="vol_input" class="volume-none" type="range" min="0" max="100" value="100" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
         </div></li>
         <!--li><a href="#" id="timerr" aria-label="elapsed time">00:00</a></li-->
       </ul>
