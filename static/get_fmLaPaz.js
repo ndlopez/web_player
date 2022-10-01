@@ -283,9 +283,13 @@ async function get_url(my_url){
     const response = await fetch(my_url);
     const data = await response.json();
     const song = data[keys[0]];
-    const artwork = data[keys[1]];
+    var artwork = data[keys[1]];
     const bit = data[keys[2]];
     const listen = data[keys[3]];
+
+    if(artwork === awfulArt[1]){
+        artwork = "";
+    }
     /*if(song === discostu){
         //upTime = 3600000;
         console.log("3hr sched",song,upTime);}*/

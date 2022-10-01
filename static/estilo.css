@@ -120,6 +120,7 @@ ul, li{margin: 0px;padding: 5px;}
 .no-audio span:nth-child(6){
   animation: none !important;
 }
+.volume-field{width: 100px;}
 /*Playlist elements*/
 /*h1{font-size:1.5em;}*/
 .row:after{
