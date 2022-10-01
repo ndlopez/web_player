@@ -56,7 +56,7 @@ ul, li{margin: 0px;padding: 5px;}
   font-size: .8rem;
 }
 #player ul li{flex: 1;}
-#timerr{font-size: 1rem !important;padding-top: 10px;}
+
 /*Equalizer elem anim*/
 .equalizer {
   width: 80px;
@@ -224,7 +224,7 @@ span{
   position: fixed;
   bottom: 30px;
 }
-
+#timerr{font-size: 1rem !important;padding-top: 30px;}
 #playBtn{height: 90px;}
 .paused path{
   fill:#2e4054;
@@ -270,6 +270,12 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{width: 100%;}
+  .volume-vertical{right: 0;}
+  .equalizer{width: 50px;}
+  .equalizer span:nth-child(5) {
+    animation: none;
+    display: none;
+  }
   .equalizer span:nth-child(6) {
     animation: none;
     display: none;

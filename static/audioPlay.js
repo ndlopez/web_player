@@ -53,12 +53,16 @@ function chgIcon(){
 
 function display_volume(vol_stat){
     const volInput = document.getElementById("vol_input");
-    if(vol_stat === 1){
-        volInput.classList.remove("volume-none");
-        volInput.classList.add("volume-vertical");
-    }else{
-        volInput.classList.remove("volume-vertical");
-        volInput.classList.add("volume-none");
+    if(vol_stat === 0){
+        if(volInput.className === "volume-none"){
+            // console.log("volume on");
+            volInput.classList.remove("volume-none");
+            volInput.classList.add("volume-vertical");
+        }else{
+            // console.log("volume off");
+            volInput.classList.remove("volume-vertical");
+            volInput.classList.add("volume-none");
+        }
     }
     
 }
