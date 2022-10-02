@@ -26,9 +26,7 @@
             <span></span><span></span><span></span><span></span><span></span><span></span>
             </div></div></a>
         </li>
-        <li><a onclick="display_volume(0)"><img src="assets/volume-svgrepo.svg" width="32"/></a><div><input id="vol_input" class="volume-none" type="range" min="0" max="100" value="100" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
-        </div></li>
-        <!--li><a href="#" id="timerr" aria-label="elapsed time">00:00</a></li-->
+        <li><a onclick="display_volume(0)"><img src="assets/volume-svgrepo.svg" width="32"/></a><div class="thisIcon"><input id="vol_input" class="volume-none" type="range" min="0" max="100" value="100" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div></li>
       </ul>
     </div>
     <script src="static/audioPlay.js"></script>

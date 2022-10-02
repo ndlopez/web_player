@@ -6,7 +6,7 @@ body{
 }
 a{
   text-decoration: none;
-  color: #2e4054;
+  color: #bed2e0;
 }
 #topBtn{
   display: none;
@@ -33,7 +33,7 @@ ul, li{margin: 0px;padding: 5px;}
 #player{
   display: block;
   width: 100%;
-  background-color: #bed2e0;
+  background-color: #bed2e040;
   padding: 5px 0px;
   height: 48px;
 }
@@ -79,7 +79,7 @@ ul, li{margin: 0px;padding: 5px;}
   height: 10%;
   margin: 25% 1px 0 2px;
   float: left;
-  background: #2e4054;
+  background: #bed2e0;
 }
 .no-audio span{
   background: #cc274c;
@@ -120,7 +120,6 @@ ul, li{margin: 0px;padding: 5px;}
 .no-audio span:nth-child(6){
   animation: none !important;
 }
-/*.volume-field input {width: 80px;}*/
 .volume-vertical{
   display: block;
   position: fixed;
@@ -133,7 +132,6 @@ ul, li{margin: 0px;padding: 5px;}
   display: none;
 }
 /*Playlist elements*/
-/*h1{font-size:1.5em;}*/
 .row:after{
   content:"";
   display:table;
@@ -227,20 +225,20 @@ span{
 #timerr{font-size: 1rem !important;padding-top: 30px;}
 #playBtn{height: 90px;}
 .paused path{
-  fill:#2e4054;
-  stroke:#2e4054;
+  fill: #bed2e0;/*#2e4054;*/
+  stroke: #bed2e0; /*#2e4054;*/
 }
 .paused circle{
-  fill:#bed2e0;
-  stroke:#2e4054;
+  fill: #2e4054; /*#bed2e0;*/
+  stroke:#bed2e0;
 }
 .play_on circle{
-  fill:#bed2e0;
-  stroke: #cc274c;
+  fill: #cc274c; /*#bed2e0;
+  stroke: #cc274c;*/
 }
 .play_on path{
-  fill:#cc274c;
-  stroke: #cc274c;
+  fill: #bed2e0;/*#cc274c;*/
+  stroke: #bed2e0;/*#cc274c;*/
 }
 
 @media (max-width:500px) {
@@ -270,7 +268,11 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{width: 100%;}
-  .volume-vertical{right: 0;}
+  .thisIcon{background-color: #bed2e0;}
+  .volume-vertical{
+    right: 0;
+    /*transform:rotate(-90deg);*/
+  }
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {
     animation: none;
@@ -287,17 +289,17 @@ span{
   0% {
     margin-top: 25%;
     height: 10%;
-    background: #2e4054;
+    background: #bed2e0;
   }
   50% {
     height: 50%;
     margin-top: 0%;
-    background: #2e4054;
+    background: #bed2e0;
   }
   100% {
     height: 10%;
     margin-top: 25%;
-    background: #2e4054;
+    background: #bed2e0;
   }
 }
 

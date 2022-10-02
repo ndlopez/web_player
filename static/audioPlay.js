@@ -2,6 +2,7 @@ var audioConnect = "";//new Audio("https://stream.consultoradas.com/8042/stream"
 var playStatus = false;
 
 function startPlay(){
+    /*bug: onclock again starts another stream */
     playStatus = true;
     audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
     const svgPlay = document.getElementById("i-play");
@@ -9,10 +10,9 @@ function startPlay(){
     const gifImg = document.getElementById("gifElm");
     svgPlay.classList.remove("paused");
     svgPlay.classList.add("play_on");
-    // svgPlay.style.fill = "#cc274c";
-    // svgPlay.style.stroke = "#cc274c";
-    svgStop.style.stroke = "#2e4054";
-    svgStop.style.fill = "#2e4054";
+
+    svgStop.style.stroke = "#bed2e0";
+    svgStop.style.fill = "#bed2e0";
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
     gifImg.classList.remove("no-audio");
