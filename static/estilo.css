@@ -121,12 +121,12 @@ ul, li{margin: 0px;padding: 5px;}
   animation: none !important;
 }
 .volume-vertical{
-  display: block;
+  /*display: block;
   position: fixed;
-  bottom: 73px;
+  bottom: 73px;*/
   width: 80px;
-  right: 40px;
-  transform:rotate(-90deg);
+  /*right: 40px;
+  transform:rotate(-90deg);*/
 }
 .volume-none{
   display: none;
@@ -268,11 +268,11 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{width: 100%;}
-  .thisIcon{background-color: #bed2e0;}
+  /*.thisIcon{background-color: #bed2e0;}
   .volume-vertical{
     right: 0;
-    /*transform:rotate(-90deg);*/
-  }
+    /*transform:rotate(-90deg);
+  }*/
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {
     animation: none;

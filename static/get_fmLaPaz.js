@@ -11,6 +11,8 @@ const weekly_9 = [
     {name:"En Concierto",day:3,time:12},
     {name:"En Concierto",day:4,time:16},
     {name:"UltraLight",day:0,time:16},
+    {name:"UltraLight",day:0,time:17},
+    {name:"UltraLight",day:0,time:18},
     {name:"UltraLight",day:1,time:9},
     {name:"UltraLight",day:1,time:10},
     {name:"UltraLight",day:1,time:11},
