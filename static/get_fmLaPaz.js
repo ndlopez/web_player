@@ -61,7 +61,7 @@ const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ",
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde"];
-const discostu = "DISCO ESTUDIO PROGRAMA VIERNES - ";
+const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
 
 let origTitle = document.title;
 const keys = ["title","art","bitrate","listeners"];
@@ -246,8 +246,11 @@ async function display_data(){
         await sleepy(60000);//10s
         gotData = await get_url(thisURL);
     }
+    if(gotData.artwork === awfulArt[0]){
+        gotData.artwork = "";
+    }
     document.title = gotData.song;
-    const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing' width=256>";
+    const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing: Artwork' width=256>";
     
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='headTit'>Now Playing: " + get_sched(day,hh,timeOffset) + 
@@ -287,13 +290,13 @@ async function get_url(my_url){
     const bit = data[keys[2]];
     const listen = data[keys[3]];
 
-    if(artwork === awfulArt[1]){
+    if(artwork === awfulArt[1] || artwork === ""){
         artwork = "";
     }
     /*if(song === discostu){
         //upTime = 3600000;
         console.log("3hr sched",song,upTime);}*/
-    //console.log(song);
+    console.log(song,artwork);
     return {song,artwork,bit,listen};
 }
 
