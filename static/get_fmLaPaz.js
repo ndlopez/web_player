@@ -60,7 +60,8 @@ const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ",
 "Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
-"https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde"];
+"https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
+"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059"];
 const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
 
 let origTitle = document.title;
@@ -176,7 +177,7 @@ setInterval(async function buildList(){
         gotArtist = "Sorry, title error";
         artwork[1] = "";
     }
-    if((artwork[1] === awfulArt[0]) || (artwork[1] === awfulArt[1]) || (artwork[1] === awfulArt[2])){
+    if((artwork[1] === awfulArt[0]) || (artwork[1] === awfulArt[1]) || (artwork[1] === awfulArt[2]) || artwork[1] === awfulArt[3]){
         artwork[1] = "";
         gotArtist = "Sorry, title error";
     }
@@ -260,18 +261,18 @@ async function display_data(){
     myDiv.style.width = "100%";
     myDiv.style.height = "350px";
     gina = hh + ":" + mm + ":" + ss;
-    const h2Time = "<h2 class='opaque lighter'><small>"+ gina +"</small></h2>"; 
+    const h2Time = "<h2 class='lighter'><small>"+ gina +"</small></h2>"; 
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
-    const divTitle = "<div class='bottomText'>" + "<h2>"+ h2Song[0].trim() +
-    "</h2><h2 class='opaque'><small>" + h2Song[1].trim() + 
+    const divTitle = "<div class='bottomText'>" + "<h2 class='headLabel'>"+ h2Song[0].trim() +
+    "</h2><h2><small>" + h2Song[1].trim() + 
     "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3'>"+
     "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
     " kbps</h3></div><div class='col3'><h3 class='lighter'> Listeners</h3><h3>"+ 
     gotData.listen + "</h3></div><div class='col3'><h3 class='lighter'>Search on</h3>" + 
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=24/></a>"+"</h3></div></div></div>";
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+"</h3></div></div></div>";
 
     const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
     //console.log("doc",divElm);
@@ -296,7 +297,7 @@ async function get_url(my_url){
     /*if(song === discostu){
         //upTime = 3600000;
         console.log("3hr sched",song,upTime);}*/
-    console.log(song,artwork);
+    //console.log(song,artwork);
     return {song,artwork,bit,listen};
 }
 

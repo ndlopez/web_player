@@ -1,6 +1,6 @@
 body{
   font-family: Helvetica Neue, sans-serif;
-  background-color:#2e4054;
+  background-color: #2e4054; /*blackish#333;#2d2d2d;*/
   color:#bed2e0;
   margin:0px;
 }
@@ -15,14 +15,14 @@ a{
   right:15px;
   z-index: 99;
   border: none;
-  background-color: #cc274c;
-  color: #bed2e0;
+  background-color: #bed2e0; /*#cc274c;*/
+  /*color: #bed2e0;*/
   border-radius: 70px;
   width: 50px;
   height: 50px;
 }
 #topBtn::before{
-  color: #bed2e0;
+  color: #2e4054;
   font-size: 2em;
   content: "\22bc";
 }
@@ -33,7 +33,7 @@ ul, li{margin: 0px;padding: 5px;}
 #player{
   display: block;
   width: 100%;
-  background-color: #bed2e040;
+  background-color: #333;
   padding: 5px 0px;
   height: 48px;
 }
@@ -202,7 +202,7 @@ span{
 .bottomText a{color: #bed2e0;}
 .bottomText #more_info{padding-top:15px;}
 .align-right{text-align: right;}
-/*.opaque{color: #bed2e030;}*/
+.headLabel{color: #ffeea6;}
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 #nowPlaying{
