@@ -25,7 +25,7 @@
           <path class="paused" d="M18 30 L18 18 30 24 Z" /></svg>
           <span id="timerr">00:00</span></a></li>
         <li><div><label for="vol_input" onclick="volume_mute(0)">
-          <img src="assets/volume-svgrepo.svg" width="32"/></label>
+          <img id="vol_icon" src="assets/volume-svgrepo.svg" width="32"/></label>
           <input id="vol_input" class="volume-vertical" type="range" min="0" max="100" value="100" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>
         </li>
         <li><a target="_blank" href="https://ndlopez.github.io/" aria-label="about">

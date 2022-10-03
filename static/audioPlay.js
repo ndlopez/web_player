@@ -53,12 +53,15 @@ function chgIcon(){
 
 function volume_mute(vol_stat){
     const volInput = document.getElementById("vol_input");
+    const volIcon = document.getElementById("vol_icon");
+
     if(vol_stat === 0){
         if(volInput.value != "0"){
             // console.log("volume on");
             // volInput.classList.remove("volume-none");
             // volInput.classList.add("volume-vertical");
             //console.log(audioConnect.volume);
+            volIcon.src = "assets/volume-repo-off.svg";
             audioConnect.volume = "0";
             volInput.onchange = "0";
             volInput.value = "0";
@@ -66,6 +69,7 @@ function volume_mute(vol_stat){
             // console.log("volume off");
             // volInput.classList.remove("volume-vertical");
             // volInput.classList.add("volume-none");
+            volIcon.src = "assets/volume-svgrepo.svg"
             audioConnect.volume = "0.8";
             volInput.onchange = "0.8";
             volInput.value = "80";
