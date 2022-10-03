@@ -1,10 +1,10 @@
-var audioConnect = "";//new Audio("https://stream.consultoradas.com/8042/stream");
+var audioConnect; //= new Audio("https://stream.consultoradas.com/8042/stream");
 var playStatus = false;
+var tina_timer;
 
-function startPlay(){
+function startPlay(play_stat){
     /*bug: onclock again starts another stream */
     playStatus = true;
-    audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
@@ -17,9 +17,19 @@ function startPlay(){
     //gifImg.style.background = "#2e4054";
     gifImg.classList.remove("no-audio");
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
-    audioConnect.play();
-    audioConnect.loop = true;
-    play_elapsed();
+    if(play_stat === 1){
+        if(svgPlay.className === "paused"){
+            console.log("playing audio");
+            clearInterval(tina_timer);
+            audioConnect.pause();
+        }else{
+            console.log("audio is already playing");
+            audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
+            audioConnect.play();
+            audioConnect.loop = true;
+            play_elapsed();
+        }
+    }
 }
 
 function stopPlay(){
@@ -87,7 +97,6 @@ function playControls(){
     return playDiv;
 }
 
-var tina_timer;
 function play_elapsed(){
     let sec = 0;
     let min = 0;
