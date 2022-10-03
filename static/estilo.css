@@ -26,18 +26,7 @@ a{
   font-size: 2em;
   content: "\22bc";
 }
-#reloadBtn{
-  display: flex;
-  position: fixed;
-  top: 35vh;
-  right:15px;
-  z-index: 99;
-  border: none;
-  background-color: #bed2e0;
-  border-radius: 70px;
-  width: 36px;
-  height: 36px;
-}
+
 /* Bottom menu and player*/
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
@@ -45,7 +34,7 @@ ul, li{margin: 0px;padding: 5px;}
 #player{
   display: block;
   width: 100%;
-  background-color: #333;
+  background-color: #6a7285;/*#333*/;
   padding: 5px 0px;
   height: 48px;
 }
@@ -218,7 +207,7 @@ span{
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 #nowPlaying{
-  background-color: #bed2e040;
+  background-color: #6a7285;
   padding: 50px 20px;
   float: left;
 }
@@ -245,7 +234,8 @@ span{
   stroke:#bed2e0;
 }
 .play_on circle{
-  fill: #cc274c; /*#bed2e0;stroke: #cc274c;*/
+  fill: #cc274c; /*#bed2e0;*/
+  stroke: #cc274c;
 }
 .play_on path{
   fill: #bed2e0;/*#cc274c;*/
@@ -280,12 +270,7 @@ span{
   .colArtist{padding: 5px;}
   #playList{width: 100%;}
   /*.thisIcon{background-color: #bed2e0;}*/
-  .volume-vertical{
-    /*right: 0;*/
-    /*transform:rotate(-90deg);*/
-    width: 50px;
-  }
-  #reloadBtn{top:55vh;}
+  #vol_input{display: none;}
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {
     animation: none;
@@ -294,6 +279,9 @@ span{
   .equalizer span:nth-child(6) {
     animation: none;
     display: none;
+  }
+  ul li:nth-child(4){
+    text-align: center;
   }
 }
 

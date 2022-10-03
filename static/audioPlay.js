@@ -51,20 +51,26 @@ function chgIcon(){
     }
 }
 
-function display_volume(vol_stat){
+function volume_mute(vol_stat){
     const volInput = document.getElementById("vol_input");
     if(vol_stat === 0){
-        if(volInput.className === "volume-none"){
+        if(volInput.value != "0"){
             // console.log("volume on");
-            volInput.classList.remove("volume-none");
-            volInput.classList.add("volume-vertical");
+            // volInput.classList.remove("volume-none");
+            // volInput.classList.add("volume-vertical");
+            //console.log(audioConnect.volume);
+            audioConnect.volume = "0";
+            volInput.onchange = "0";
+            volInput.value = "0";
         }else{
             // console.log("volume off");
-            volInput.classList.remove("volume-vertical");
-            volInput.classList.add("volume-none");
+            // volInput.classList.remove("volume-vertical");
+            // volInput.classList.add("volume-none");
+            audioConnect.volume = "0.8";
+            volInput.onchange = "0.8";
+            volInput.value = "80";
         }
     }
-    
 }
 
 function playControls(){
