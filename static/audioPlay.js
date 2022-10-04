@@ -2,34 +2,46 @@ var audioConnect; //= new Audio("https://stream.consultoradas.com/8042/stream");
 var playStatus = false;
 var tina_timer;
 
-function startPlay(play_stat){
+window.addEventListener("load",startPlay);
+
+function startPlay(){
     /*bug: onclock again starts another stream */
     playStatus = true;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
-    svgPlay.classList.remove("paused");
-    svgPlay.classList.add("play_on");
 
-    svgStop.style.stroke = "#bed2e0";
-    svgStop.style.fill = "#bed2e0";
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
-    gifImg.classList.remove("no-audio");
+    audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
+    // audioConnect.play(); means autoPlay!
+    audioConnect.loop = true;
+
+    svgPlay.addEventListener("click",playPause);
+
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
-    if(play_stat === 1){
-        if(svgPlay.className === "paused"){
-            console.log("playing audio");
-            clearInterval(tina_timer);
-            audioConnect.pause();
-        }else{
-            console.log("audio is already playing");
-            audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
+    function playPause(){
+        if(audioConnect.paused){
             audioConnect.play();
-            audioConnect.loop = true;
             play_elapsed();
+            svgPlay.classList.remove("paused");
+            svgPlay.classList.add("play_on");
+            svgStop.style.stroke = "#bed2e0";
+            svgStop.style.fill = "#bed2e0";
+            gifImg.classList.remove("no-audio");
+            //change icon to pause btn
+        }else{
+            audioConnect.pause();
+            clearInterval(tina_timer);
+            gifImg.classList.add("no-audio");
+            //playbtn should show play again
         }
     }
+    /*try {
+        console.log("buffer wise",audioConnect.buffered);
+    } catch (error) {
+        console.log("Buffer error:",error);
+    }*/
 }
 
 function stopPlay(){
@@ -79,10 +91,12 @@ function volume_mute(vol_stat){
             // console.log("volume off");
             // volInput.classList.remove("volume-vertical");
             // volInput.classList.add("volume-none");
-            volIcon.src = "assets/volume-svgrepo.svg"
-            audioConnect.volume = "0.8";
+            volIcon.src = "assets/volume-svgrepo.svg";
             volInput.onchange = "0.8";
             volInput.value = "80";
+            if(audioConnect !== null){
+                audioConnect.volume = "0.8";
+            }            
         }
     }
 }

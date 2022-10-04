@@ -243,7 +243,7 @@ async function display_data(){
         console.log(auxText,gotData.song);
     }
     if(gotData.artwork === awfulArt[0] || gotData.artwork === awfulArt[1] || gotData.artwork === awfulArt[2]){
-        console.log(gina,"art error:",gotData.artwork);
+        console.log(gina,"wait 60s, art error:",gotData.artwork);
         await sleepy(60000);//10s
         gotData = await get_url(thisURL);
     }
