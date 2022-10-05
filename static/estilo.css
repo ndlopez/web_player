@@ -26,7 +26,6 @@ a{
   font-size: 2em;
   content: "\22bc";
 }
-
 /* Bottom menu and player*/
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
@@ -176,12 +175,6 @@ span{
 }
 #nowLabel h2{margin: 0px;}
 
-.contain{
-  position: relative;
-  width: 40%;
-  float: left;
-  border-radius: 10px;
-}
 .bottomText{
   width: 60%;
   float: left;
@@ -213,16 +206,21 @@ span{
 }
 
 .contain{
+  position: relative;
+  width: 40%;
+  float: left;
   padding: 20px;
   height: 300px;
-  background-size:330px;
+  background-size:320px;
   background-image: url("../assets/cd_case.svg");
   background-repeat: no-repeat;
+  
 }
 .contain img{
-  border: 8px solid #bed2e0;
+  /*border: 1px solid #bed2e0;float: right;*/
   border-radius: 50%;/*4px;*/
-  /*float: right;*/
+  margin-top: -12px;
+  margin-left: 25px;
 }
 #playList{width: 60%;float: left;border-bottom: 1px dashed #bed2e040;}
 /*Player controls*/

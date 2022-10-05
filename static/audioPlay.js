@@ -54,11 +54,6 @@ function startPlay(){
         audioConnect.loop = false;
         stop_timer();
     }
-    /*try {
-        console.log("buffer wise",audioConnect.buffered);
-    } catch (error) {
-        console.log("Buffer error:",error);
-    }*/
 }
 
 function chgIcon(){
@@ -116,12 +111,7 @@ function play_elapsed(){
     var second,minute;
 
     tina_timer = setInterval(function(){
-        /*if(sec < 10){
-            second = "0"+String(sec);
-        }
-        if(min < 10){
-            minute = "0"+String(min);
-        }*/
+
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
         //texty = ()? :sec; min = (min < 10)? :min;
