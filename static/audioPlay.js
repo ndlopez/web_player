@@ -14,10 +14,10 @@ function startPlay(){
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
     audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
-    // audioConnect.play(); means autoPlay!
     audioConnect.loop = true;
 
     svgPlay.addEventListener("click",playPause);
+    svgStop.addEventListener("click",stopPlay);
 
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
@@ -33,34 +33,32 @@ function startPlay(){
         }else{
             audioConnect.pause();
             clearInterval(tina_timer);
+            //resets interval but its possible to send back the 
+            //stopped time to interval again
             gifImg.classList.add("no-audio");
             //playbtn should show play again
         }
+    }
+    function stopPlay(){
+        /* pauses stream */
+        svgPlay.classList.remove("play_on");
+        svgPlay.classList.add("paused");
+        //svgPlay.style.fill = "#2e4054";
+        //svgPlay.style.stroke = "#2e4054";
+        svgStop.style.stroke = "#cc274c";
+        svgStop.style.fill = "#cc274c";
+        //gifImg.style.display = "none";
+        //gifImg.style.animation = "none";
+        gifImg.classList.add("no-audio");
+        audioConnect.pause();
+        audioConnect.loop = false;
+        stop_timer();
     }
     /*try {
         console.log("buffer wise",audioConnect.buffered);
     } catch (error) {
         console.log("Buffer error:",error);
     }*/
-}
-
-function stopPlay(){
-    playStatus = false;
-    const svgPlay = document.getElementById("i-play");
-    const svgStop = document.getElementById("i-stop");
-    const gifImg = document.getElementById("gifElm");
-    svgPlay.classList.remove("play_on");
-    svgPlay.classList.add("paused");
-    //svgPlay.style.fill = "#2e4054";
-    //svgPlay.style.stroke = "#2e4054";
-    svgStop.style.stroke = "#cc274c";
-    svgStop.style.fill = "#cc274c";
-    //gifImg.style.display = "none";
-    //gifImg.style.animation = "none";
-    gifImg.classList.add("no-audio");
-    audioConnect.pause();
-    audioConnect.loop = false;
-    stop_timer();
 }
 
 function chgIcon(){
@@ -114,7 +112,7 @@ function playControls(){
 function play_elapsed(){
     let sec = 0;
     let min = 0;
-    var texty = "";
+    //var texty = "";
     var second,minute;
 
     tina_timer = setInterval(function(){
