@@ -1,11 +1,12 @@
-var audioConnect; //= new Audio("https://stream.consultoradas.com/8042/stream");
+const stream_url = "https://stream.consultoradas.com/8042/stream";
+var audioConnect; //= new Audio();
 var playStatus = false;
 var tina_timer;
 
 window.addEventListener("load",startPlay);
 
 function startPlay(){
-    /*bug: onclock again starts another stream */
+    /*bug: stop only pauses stream */
     playStatus = true;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
@@ -13,7 +14,7 @@ function startPlay(){
 
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
-    audioConnect = new Audio("https://stream.consultoradas.com/8042/stream");
+    audioConnect = new Audio(stream_url);
     audioConnect.loop = true;
 
     svgPlay.addEventListener("click",playPause);
@@ -23,6 +24,7 @@ function startPlay(){
     function playPause(){
         if(audioConnect.paused){
             audioConnect.play();
+            //console.log("this value",audioConnect.value); 
             play_elapsed();
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
@@ -41,6 +43,7 @@ function startPlay(){
     }
     function stopPlay(){
         /* pauses stream */
+        audioConnect.load(stream_url);
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         //svgPlay.style.fill = "#2e4054";
@@ -50,8 +53,8 @@ function startPlay(){
         //gifImg.style.display = "none";
         //gifImg.style.animation = "none";
         gifImg.classList.add("no-audio");
-        audioConnect.pause();
-        audioConnect.loop = false;
+        //audioConnect.pause();
+        //audioConnect.loop = false;
         stop_timer();
     }
 }
