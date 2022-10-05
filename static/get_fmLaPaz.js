@@ -117,6 +117,9 @@ function reloadMe(){
 }
 
 function sleepy(ms){
+    /* Display a simple msg on top */
+    const headTitle = document.getElementById("nowLabel");
+    headTitle.innerHTML = "<span>Connecting, please wait.</span>";
     return new Promise(resolve =>setTimeout(resolve,ms));
 }
 
@@ -221,6 +224,7 @@ setInterval(async function buildList(){
 async function display_data(){
     /* Display current song playing on FM La Paz */
     var gotData = await get_url(thisURL);
+    //await sleepy(5000);
     const timeNow = new Date();
     const timeOffset = timeNow.getTimezoneOffset(); //if UTC + -> return -offset
     //console.log(timeOffset,typeof(timeOffset));//
@@ -310,7 +314,6 @@ function closeNav(thisObj){
     document.getElementById(thisObj).style.display = "none";
     document.body.style.overflow = "auto";
 }
-
 function addModal(){
     const secDiv = document.createElement("div");
     secDiv.id = "InfoNav";

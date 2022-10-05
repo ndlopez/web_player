@@ -121,12 +121,9 @@ ul, li{margin: 0px;padding: 5px;}
   animation: none !important;
 }
 .volume-vertical{
-  /*display: block;
-  position: fixed;
-  bottom: 73px;*/
+  /*display: block; position: fixed; bottom: 73px;*/
   width: 80px;
-  /*right: 40px;
-  transform:rotate(-90deg);*/
+  /*right: 40px; transform:rotate(-90deg);*/
 }
 .volume-none{
   display: none;
@@ -180,14 +177,13 @@ span{
   float: left;
   /*border-radius: 10px;
   background-image: linear-gradient(#bed2e0,#2e4054);
-  opacity: 0.4;
-  position: absolute;
-  bottom: -22px;  left:5px;  width: 360px;
-  background-color: #bed2e040;*/  
+  opacity: 0.4; position: absolute;
+  bottom: -22px;  left:5px;  width: 360px;*/  
   margin-top: 5px;
   padding: 15px 0px 15px 20px;
   font-size: small;
   text-align: left;
+  background-color: #bed2e040;
 }
 .bottomText h2, .bottomText h3{
   line-height:2em;
@@ -200,7 +196,7 @@ span{
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 #nowPlaying{
-  background-color: #6a7285;
+  /*background-color: #6a7285;*/
   padding: 50px 20px;
   float: left;
 }
@@ -219,7 +215,7 @@ span{
 .contain img{
   /*border: 1px solid #bed2e0;float: right;*/
   border-radius: 50%;/*4px;*/
-  margin-top: -12px;
+  margin-top: -9px;
   margin-left: 25px;
 }
 #playList{width: 60%;float: left;border-bottom: 1px dashed #bed2e040;}
@@ -258,10 +254,15 @@ span{
   .contain{
     width: 100%;
     padding: 0px;
+    margin: 0;
+    height: 340px;
+    background: none;
   }
-  #nowPlaying img{
-    border:0px;width: 100%;
-    padding: 0px;
+  .contain img{
+    border-radius:10px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
   #downLink img{width: 32px;}
   .bottomText{
@@ -274,7 +275,6 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{width: 100%;}
-  /*.thisIcon{background-color: #bed2e0;}*/
   #vol_input{display: none;}
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {
@@ -285,9 +285,7 @@ span{
     animation: none;
     display: none;
   }
-  ul li:nth-child(4){
-    text-align: center;
-  }
+  /*ul li:nth-child(4){text-align: center;}*/
 }
 
 /*Equalizer elem animation*/
