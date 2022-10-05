@@ -78,7 +78,7 @@ let upCount = 0;
 
 display_data();
 
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {scrollFunction();};
 
 var pxx=400; //artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
@@ -113,6 +113,7 @@ function reloadMe(){
     }*/
     // in the mean time call:
     window.scroll({bottom:0,left:0,behavior:'smooth'});
+    //scrollTo(0, document.body.scrollHeight);  
     display_data();
 }
 
