@@ -117,6 +117,10 @@ function reloadMe(){
     display_data();
 }
 
+function zeroPad(timeElm){
+    return (parseInt(timeElm,10) < 10 ? '0' : '') + timeElm;
+}
+
 function sleepy(msec){
     /* Display a simple msg on top */
     const headTitle = document.getElementById("nowLabel");
@@ -135,7 +139,7 @@ function get_sched(tag,heure,time_lag){
         if(gotObj[item].day === tag && gotObj[item].time === heure){
             myTitle = gotObj[item].name;
             var durTime = gotObj[item].time + gotObj[item].duration;
-            myTitle += " (" + gotObj[item].time + ":00 - " + durTime+"00)";
+            myTitle += " (" + gotObj[item].time + " - " + durTime+")";
         }
     }
     return myTitle;
@@ -237,17 +241,16 @@ async function display_data(){
     let ss = timeNow.getSeconds();
     var auxText="";
 
-    mm = (mm < 10)? "0" + String(mm):mm;
-    ss = (ss < 10)? "0" + String(ss):ss;
+    mm = zeroPad(mm); //(mm < 10)? "0" + String(mm):mm;
+    ss = zeroPad(ss); //(ss < 10)? "0" + String(ss):ss;
 
     var gina = hh+":"+mm;// +":"+ss;
     //console.log("time",gina);
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){
         console.log(gina,"error:",gotData.song);
         await sleepy(errLapse);
-        auxText = "Loading...";
         gotData = await get_url(thisURL);
-        console.log(auxText,gotData.song);
+        console.log("Loading...",gotData.song);
     }
     if(gotData.artwork === awfulArt[0] || gotData.artwork === awfulArt[1] || gotData.artwork === awfulArt[2]){
         console.log(gina,"wait 60s, art error:",gotData.artwork);
@@ -301,9 +304,8 @@ async function get_url(my_url){
     if(artwork === awfulArt[1] || artwork === ""){
         artwork = "";
     }
-    /*if(song === discostu){
-        //upTime = 3600000;
-        console.log("3hr sched",song,upTime);}*/
+    // Should not update if Sat/Sun @10-12
+    // sleepy <- 3hrs
     //console.log(song,artwork);
     return {song,artwork,bit,listen};
 }

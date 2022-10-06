@@ -117,9 +117,10 @@ function play_elapsed(){
         if(sec>59){
             min++;
             sec=0;
-            //clearInterval(tina_timer)
-            //texty = "0"+ min + sec;  
         }
+        /* if listen hours
+        if(min>59 && sec>59){hours++;min=0;sec=0;}
+        */
         //if(sec < 0){clearInterval(tina_timer);}
     },1000);
 }
