@@ -1,59 +1,59 @@
 //Should fetch data from fm La Paz
 const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
-//const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
 const weekly_9 = [
-    {name:"PopArt",day:1,time:16},
-    {name:"PopArt",day:2,time:16},
-    {name:"PopArt",day:3,time:10},
-    {name:"PopArt",day:4,time:10},
-    {name:"En Concierto",day:3,time:12},
-    {name:"En Concierto",day:4,time:16},
-    {name:"UltraLight",day:0,time:16},
-    {name:"UltraLight",day:0,time:17},
-    {name:"UltraLight",day:0,time:18},
-    {name:"UltraLight",day:1,time:9},
-    {name:"UltraLight",day:1,time:10},
-    {name:"UltraLight",day:1,time:11},
-    {name:"UltraLight",day:2,time:10},
-    {name:"UltraLight",day:2,time:11},
-    {name:"UltraLight",day:2,time:12},
-    {name:"UltraLight",day:4,time:13},
-    {name:"UltraLight",day:4,time:14},
-    {name:"UltraLight",day:4,time:15},
-    {name:"Rock Clasico",day:3,time:16},
-    {name:"Rock Clasico",day:5,time:10},
-    {name:"DiscoStu",day:6,time:10},
-    {name:"DiscoStu",day:6,time:11},
-    {name:"DiscoStu",day:6,time:12},
-    {name:"DiscoStu",day:0,time:10},
-    {name:"DiscoStu",day:0,time:11},
-    {name:"DiscoStu",day:0,time:12},
+    {name:"PopArt",day:1,time:16,duration:1},
+    {name:"PopArt",day:2,time:16,duration:1},
+    {name:"PopArt",day:3,time:10,duration:1},
+    {name:"PopArt",day:4,time:10,duration:1},
+    {name:"En Concierto",day:3,time:12,duration:1},
+    {name:"En Concierto",day:4,time:16,duration:1},
+    {name:"UltraLight",day:0,time:16,duration:3},
+    {name:"UltraLight",day:0,time:17,duration:2},
+    {name:"UltraLight",day:0,time:18,duration:1},
+    {name:"UltraLight",day:1,time:9,duration:3},
+    {name:"UltraLight",day:1,time:10,duration:2},
+    {name:"UltraLight",day:1,time:11,duration:1},
+    {name:"UltraLight",day:2,time:10,duration:3},
+    {name:"UltraLight",day:2,time:11,duration:2},
+    {name:"UltraLight",day:2,time:12,duration:1},
+    {name:"UltraLight",day:4,time:13,duration:3},
+    {name:"UltraLight",day:4,time:14,duration:2},
+    {name:"UltraLight",day:4,time:15,duration:1},
+    {name:"Rock Clasico",day:3,time:16,duration:1},
+    {name:"Rock Clasico",day:5,time:10,duration:1},
+    {name:"DiscoStu",day:6,time:10,duration:3},
+    {name:"DiscoStu",day:6,time:11,duration:2},
+    {name:"DiscoStu",day:6,time:12,duration:1},
+    {name:"DiscoStu",day:0,time:10,duration:3},
+    {name:"DiscoStu",day:0,time:11,duration:2},
+    {name:"DiscoStu",day:0,time:12,duration:1},
 ];
 const weekly_4 = [
-    {name:"PopArt",day:1,time:3},
-    {name:"PopArt",day:2,time:3},
-    {name:"PopArt",day:2,time:21},
-    {name:"PopArt",day:3,time:21},
-    {name:"En Concierto",day:2,time:23},
-    {name:"En Concierto",day:4,time:3},
-    {name:"UltraLight",day:0,time:3},
-    {name:"UltraLight",day:0,time:20},
-    {name:"UltraLight",day:0,time:21},
-    {name:"UltraLight",day:0,time:22},
-    {name:"UltraLight",day:1,time:21},
-    {name:"UltraLight",day:1,time:22},
-    {name:"UltraLight",day:1,time:23},
-    {name:"UltraLight",day:4,time:2},
-    {name:"Rock Clasico",day:3,time:3},
-    {name:"Rock Clasico",day:4,time:21},
-    {name:"DiscoStu",day:5,time:21},
-    {name:"DiscoStu",day:5,time:22},
-    {name:"DiscoStu",day:5,time:23},
-    {name:"DiscoStu",day:6,time:21},
-    {name:"DiscoStu",day:6,time:22},
-    {name:"DiscoStu",day:6,time:23},
+    {name:"PopArt",day:1,time:3,duration:1},
+    {name:"PopArt",day:2,time:3,duration:1},
+    {name:"PopArt",day:2,time:21,duration:1},
+    {name:"PopArt",day:3,time:21,duration:1},
+    {name:"En Concierto",day:2,time:23,duration:1},
+    {name:"En Concierto",day:4,time:3,duration:1},
+    {name:"UltraLight",day:0,time:3,duration:3},
+    {name:"UltraLight",day:0,time:20,duration:3},
+    {name:"UltraLight",day:0,time:21,duration:2},
+    {name:"UltraLight",day:0,time:22,duration:1},
+    {name:"UltraLight",day:1,time:21,duration:3},
+    {name:"UltraLight",day:1,time:22,duration:2},
+    {name:"UltraLight",day:1,time:23,duration:1},
+    {name:"UltraLight",day:4,time:2,duration:3},
+    {name:"Rock Clasico",day:3,time:3,duration:1},
+    {name:"Rock Clasico",day:4,time:21,duration:1},
+    {name:"DiscoStu",day:5,time:21,duration:3},
+    {name:"DiscoStu",day:5,time:22,duration:2},
+    {name:"DiscoStu",day:5,time:23,duration:1},
+    {name:"DiscoStu",day:6,time:21,duration:3},
+    {name:"DiscoStu",day:6,time:22,duration:2},
+    {name:"DiscoStu",day:6,time:23,duration:1},
 ];
 
 const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ",
@@ -126,14 +126,16 @@ function sleepy(msec){
 
 function get_sched(tag,heure,time_lag){
     var myTitle = "LAPAZ.fm";
-    var gotObj="";
+    var gotObj = weekly_9; //default JST
     if(time_lag == 240){
         /* UTC-4 */
         gotObj = weekly_4;
-    }else{gotObj = weekly_9;}
+    }
     for (let item in gotObj){
         if(gotObj[item].day === tag && gotObj[item].time === heure){
             myTitle = gotObj[item].name;
+            var durTime = gotObj[item].time + gotObj[item].duration;
+            myTitle += " (" + gotObj[item].time + "-" + durTime+")";
         }
     }
     return myTitle;

@@ -15,7 +15,6 @@ function startPlay(){
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
     audioConnect = new Audio(stream_url);
-    audioConnect.loop = true;
 
     svgPlay.addEventListener("click",playPause);
     svgStop.addEventListener("click",stopPlay);
@@ -24,6 +23,7 @@ function startPlay(){
     function playPause(){
         if(audioConnect.paused){
             audioConnect.play();//if not success -> then timer should not start
+            audioConnect.loop = true;
             //console.log("this value",audioConnect.value); 
             play_elapsed();
             svgPlay.classList.remove("paused");
