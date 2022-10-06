@@ -259,7 +259,7 @@ span{
     padding: 0px;
     margin: 0;
     height: 340px;
-    background: none;
+    /*background: none;*/
   }
   .contain img{
     border-radius:10px;

@@ -34,7 +34,6 @@ function startPlay(){
             //change icon to pause btn
         }else{
             audioConnect.pause();
-            clearInterval(tina_timer);
             //resets interval but its possible to send back the 
             //stopped time to interval again
             gifImg.classList.add("no-audio");
@@ -56,6 +55,7 @@ function startPlay(){
         //gifImg.style.animation = "none";
         gifImg.classList.add("no-audio");
         //audioConnect.pause();
+        clearInterval(tina_timer);
         stop_timer();
     }
 }
