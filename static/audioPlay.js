@@ -14,17 +14,18 @@ function startPlay(){
 
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
-    audioConnect = new Audio(stream_url);
-
+    audioConnect = new Audio();
     svgPlay.addEventListener("click",playPause);
     svgStop.addEventListener("click",stopPlay);
 
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
+            audioConnect.src = stream_url;
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
-            //console.log("this value",audioConnect.value); 
+            //console.log("this value",audioConnect.startTime,audioConnect.networkState);
+            //console.log(audioConnect.loadstart,audioConnect.stalled,audioConnect.playing); 
             play_elapsed();
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");

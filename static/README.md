@@ -8,7 +8,10 @@ Display and store in a playlist on the same page current song and the prev liste
 The URL has some security issues (*expired* SSL certificate) but JavaScript's fetch does not seem to care and gets data without problems. I cannot say the same with C#'s json lib.
 
 About the *expired* certificate:<br>
-The URL I am using is hosted somewhere on the west (where the Sun sets), where I am the Sun is rising, there's a UTC+9 hour difference. The URL's certificate is renewed every day at midnight, so by the time I am fetching data it already *expired*. Perhaps if the URL's server would be connected to some CloudFlare service, this issue might not matter. 
+The URL I am using is hosted somewhere on the west (where the Sun sets), where I am the Sun is rising, there's a UTC+9 hour difference. The URL's certificate is renewed every day at midnight, so by the time I am fetching data it already *expired*. Perhaps if the URL's server would be connected to some CloudFlare service, this issue might not matter.
+
+*small issue*<br>
+Update time is set to 3min20s (average length of a song). Because of this sometimes a song might me missed and not included in the Playlist.
 
 ## ThirdRock Radio <thirdRock.html>
 Display and store in a playlist on the same page current song.<br>

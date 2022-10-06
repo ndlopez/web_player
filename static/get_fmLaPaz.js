@@ -135,7 +135,7 @@ function get_sched(tag,heure,time_lag){
         if(gotObj[item].day === tag && gotObj[item].time === heure){
             myTitle = gotObj[item].name;
             var durTime = gotObj[item].time + gotObj[item].duration;
-            myTitle += " (" + gotObj[item].time + "-" + durTime+")";
+            myTitle += " (" + gotObj[item].time + ":00 - " + durTime+"00)";
         }
     }
     return myTitle;
