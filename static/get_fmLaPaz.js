@@ -66,8 +66,8 @@ const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_
 
 let origTitle = document.title;
 const keys = ["title","art","bitrate","listeners"];
-let upTime = 200000; //ms
-const errLapse = 5000; //ms
+let upTime = 200000; // about 3min20s
+const errLapse = 10000; //10s
 
 let songs = [];
 let artImg = [];
@@ -117,11 +117,11 @@ function reloadMe(){
     display_data();
 }
 
-function sleepy(ms){
+function sleepy(msec){
     /* Display a simple msg on top */
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<span>Connecting, please wait.</span>";
-    return new Promise(resolve =>setTimeout(resolve,ms));
+    return new Promise(resolve =>setTimeout(resolve,msec));
 }
 
 function get_sched(tag,heure,time_lag){

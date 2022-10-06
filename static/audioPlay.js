@@ -23,7 +23,7 @@ function startPlay(){
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
-            audioConnect.play();
+            audioConnect.play();//if not success -> then timer should not start
             //console.log("this value",audioConnect.value); 
             play_elapsed();
             svgPlay.classList.remove("paused");
@@ -43,7 +43,9 @@ function startPlay(){
     }
     function stopPlay(){
         /* pauses stream */
+        audioConnect.loop = false;
         audioConnect.load(stream_url);
+        
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         //svgPlay.style.fill = "#2e4054";
@@ -54,7 +56,6 @@ function startPlay(){
         //gifImg.style.animation = "none";
         gifImg.classList.add("no-audio");
         //audioConnect.pause();
-        //audioConnect.loop = false;
         stop_timer();
     }
 }
