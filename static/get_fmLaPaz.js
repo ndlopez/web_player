@@ -270,8 +270,8 @@ async function display_data(){
     "</h2><h3 id='currSong' class='lighter'>" + gina +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
-    /*myDiv.style.width = "100%";*/
-    myDiv.style.height = "350px";
+    /*myDiv.style.width = "100%";
+    myDiv.style.height = "350px";*/
     gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='lighter'><small>"+ gina +"</small></h2>"; 
     //document.createElement("h2");

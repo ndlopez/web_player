@@ -29,6 +29,7 @@ a{
   font-size: 2em;
   content: "\22bc";
 }
+#music{padding-top: 30px;}
 /* Bottom menu and player*/
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
@@ -155,7 +156,7 @@ span{
 .colTime{
   float: left;
   width: 15%;
-  text-align: right;
+  /*text-align: right;*/
   margin: 10px 0px;
   padding-right: 5px;
   padding-top: 5px;
@@ -165,6 +166,7 @@ span{
   display: block;
   width: 100%;
   background-color: #cc274c;
+  /*navy: #03314B*/
   padding:8px;
   margin-bottom: 10px;
   position: fixed;
@@ -178,11 +180,12 @@ span{
 .bottomText{
   /*width: 60%;
   float: left;*/
-
-  /*border-radius: 10px;
-  background-image: linear-gradient(#bed2e0,#2e4054);
-  opacity: 0.4; bottom: -22px;  left:5px;  width: 360px;*/  
+  /*background-image: linear-gradient(#bed2e0,#2e4054);
+  opacity: 0.4; bottom: -22px;  left:5px;  width: 360px;*/
+  background: url("../assets/group.svg") no-repeat;
+  background-position-x: right;
   margin-top: 5px;
+  border-radius: 10px;
   padding: 15px 0px 15px 20px;
   font-size: small;
   text-align: center;
@@ -228,7 +231,10 @@ span{
 #playList{
   width: 50%;
   float: left;
-  border-bottom: 1px dashed #bed2e040;}
+  border-bottom: 1px dashed #bed2e040;
+  height: 90vh;
+  overflow: auto;
+}
 /*Player controls*/
 #i-play{
   position: fixed;
@@ -279,12 +285,17 @@ span{
     padding: 5px 0px 5px 13px;  
     margin-left: -20px;
     width: 100vw;
+    text-align: left;
+    height: auto;
   }
   .bottomText #more_info{display: none;}
   .bottomText h2{line-height: normal;}
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
-  #playList{width: 100%;}
+  #playList{
+    width: 100%;
+    overflow: inherit;
+  }
   #vol_input{display: none;}
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {
