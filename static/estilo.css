@@ -176,17 +176,18 @@ span{
 #nowLabel h2{margin: 0px;}
 
 .bottomText{
-  width: 60%;
-  float: left;
+  /*width: 60%;
+  float: left;*/
+
   /*border-radius: 10px;
   background-image: linear-gradient(#bed2e0,#2e4054);
-  opacity: 0.4; position: absolute;
-  bottom: -22px;  left:5px;  width: 360px;*/  
+  opacity: 0.4; bottom: -22px;  left:5px;  width: 360px;*/  
   margin-top: 5px;
   padding: 15px 0px 15px 20px;
   font-size: small;
   text-align: center;
   background-color: #bed2e040;
+  height: 280px;
 }
 .bottomText h2, .bottomText h3{
   line-height:2em;
@@ -202,17 +203,20 @@ span{
   /*background-color: #6a7285;*/
   padding: 50px 20px;
   float: left;
+  width: 50%;
 }
 
 .contain{
   position: relative;
-  width: 40%;
-  float: left;
+  /*width: 40%;
+  float: left;*/
   padding: 20px;
   height: 300px;
   background-size:320px;
   background-image: url("../assets/cd_case.svg");
   background-repeat: no-repeat;
+  background-position-x: center;
+  text-align: center;
   
 }
 .contain img{
@@ -221,7 +225,10 @@ span{
   margin-top: -9px;
   margin-left: 25px;
 }
-#playList{width: 60%;float: left;border-bottom: 1px dashed #bed2e040;}
+#playList{
+  width: 50%;
+  float: left;
+  border-bottom: 1px dashed #bed2e040;}
 /*Player controls*/
 #i-play{
   position: fixed;

@@ -161,6 +161,8 @@ function export_to_file(jsonData){
 setInterval(async function buildList(){
     /* Wait 'til display_data is finished, then get info from h2 elems */
     await display_data();
+    const parentDiv = document.getElementById("music");
+    const divList = document.getElementById("playList");
 
     const gotDiv = document.getElementById('nowPlaying');
     const song = gotDiv.getElementsByTagName("h2");
@@ -173,7 +175,6 @@ setInterval(async function buildList(){
     artwork = artwork[0].innerHTML.split('"');
 
     //var thisSong = song[1].innerHTML; // .split("-");
-    const divList = document.getElementById("playList");
     
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","row");
@@ -206,7 +207,8 @@ setInterval(async function buildList(){
     mainDiv.appendChild(divTime);
 
     divList.appendChild(mainDiv);
-    document.body.appendChild(divList);
+    //document.body.appendChild(divList);
+    parentDiv.appendChild(divList);
 
     /*Schedule list
     const schedLiz = document.getElementById("schedList");
@@ -231,6 +233,7 @@ setInterval(async function buildList(){
 async function display_data(){
     /* Display current song playing on FM La Paz */
     var gotData = await get_url(thisURL);
+    const parentDiv = document.getElementById("music");
     //await sleepy(5000);
     const timeNow = new Date();
     const timeOffset = timeNow.getTimezoneOffset(); //if UTC + -> return -offset
@@ -239,7 +242,6 @@ async function display_data(){
     let hh = timeNow.getHours();
     let mm = timeNow.getMinutes();
     let ss = timeNow.getSeconds();
-    var auxText="";
 
     mm = zeroPad(mm); //(mm < 10)? "0" + String(mm):mm;
     ss = zeroPad(ss); //(ss < 10)? "0" + String(ss):ss;
@@ -268,7 +270,7 @@ async function display_data(){
     "</h2><h3 id='currSong' class='lighter'>" + gina +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
-    myDiv.style.width = "100%";
+    /*myDiv.style.width = "100%";*/
     myDiv.style.height = "350px";
     gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='lighter'><small>"+ gina +"</small></h2>"; 
@@ -289,8 +291,8 @@ async function display_data(){
     const catInfo = divImg;
     myDiv.innerHTML = /*hTitle +*/ catInfo;
 
-    document.body.appendChild(myDiv);
-
+    //document.body.appendChild(myDiv);
+    parentDiv.appendChild(myDiv);
 }
 
 async function get_url(my_url){

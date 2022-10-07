@@ -11,9 +11,11 @@
     <button id="topBtn" type="button" onclick="topFunction()" style="display: none;"></button>
     <div id="nowLabel"></div>
     <!--div id="thisModal"></div-->
-    <div id="nowPlaying"><img src="assets/loading.svg" width="300"/></div>
-    <div id="playList"><h2>&ensp;Playlist (earlier today)&emsp;&emsp;&emsp;<a id='downLink'></a></h2></div>
-
+    <div id="music">
+      <div id="nowPlaying"><img src="assets/loading.svg" width="300"/></div>
+      <div id="playList"><h2>&ensp;Playlist (earlier today)&emsp;&emsp;&emsp;
+        <a id='downLink'></a></h2></div>
+    </div>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <ul>
         <li><a onclick="reloadMe()"><img src="assets/reload-svgrepo.svg" width="32"/>reload</a></li>

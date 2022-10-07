@@ -38,6 +38,7 @@ function startPlay(){
             //resets interval but its possible to send back the 
             //stopped time to interval again
             gifImg.classList.add("no-audio");
+            clearInterval(tina_timer);
             //playbtn should show play again
         }
     }
@@ -56,7 +57,7 @@ function startPlay(){
         //gifImg.style.animation = "none";
         gifImg.classList.add("no-audio");
         //audioConnect.pause();
-        clearInterval(tina_timer);
+        
         stop_timer();
     }
 }
