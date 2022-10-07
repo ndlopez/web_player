@@ -13,7 +13,12 @@ The URL I am using is hosted somewhere on the west (where the Sun sets), where I
 *small issue*<br>
 Update time is set to 3min20s (average length of a song). Because of this sometimes a song might me missed and not included in the Playlist.
 
+To create some [wavy path in CSS3 and SVG](https://css-tricks.com/how-to-create-wavy-shapes-patterns-in-css/#top-of-site)
+
 ## ThirdRock Radio <thirdRock.html>
+
+*The Strumbellas - Spirits*
+
 Display and store in a playlist on the same page current song.<br>
 JavaScript seems to have a CORS issue with the URL I am fetching data from, it cannot parse anything. So I found a herokuapp website that appends the required *header* to the URL and JavaScript can fetch ~~without problems~~. There are several problems, the herokuapp no longer accepts my requests, so this page no longer works :(
 

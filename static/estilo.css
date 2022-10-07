@@ -248,11 +248,11 @@ span{
 }
 .paused circle{
   fill: #bed2e0; /*#bed2e0;*/
-  stroke:#bed2e0;
+  stroke:#2e4054;
 }
 .play_on circle{
   fill: #cc274c; /*#bed2e0;*/
-  stroke: #cc274c;
+  stroke: #2e4054;
 }
 .play_on path{
   fill: #bed2e0;/*#cc274c;*/
