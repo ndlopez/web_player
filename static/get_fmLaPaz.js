@@ -185,12 +185,12 @@ setInterval(async function buildList(){
 
     var gotArtist = song[0].innerText;
     if(gotArtist === "Radio Online" || gotArtist === "LA CASCADA"){
-        gotArtist = "Sorry, title error";
+        gotArtist = "CM or Station Identification";
         artwork[1] = "";
     }
     if((artwork[1] === awfulArt[0]) || (artwork[1] === awfulArt[1]) || (artwork[1] === awfulArt[2]) || artwork[1] === awfulArt[3]){
         artwork[1] = "";
-        gotArtist = "Sorry, title error";
+        gotArtist = "Sorry, artwork not found in DB";
     }
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg");

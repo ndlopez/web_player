@@ -86,7 +86,7 @@ ul, li{margin: 0px;padding: 5px;}
   background: #bed2e0;
 }
 .no-audio span{
-  background: #cc274c;
+  background: #2e4054;
 }
 .equalizer span:nth-child(1) {
   animation: load 1s 1.2s infinite linear;
