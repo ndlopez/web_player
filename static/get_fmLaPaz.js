@@ -124,6 +124,8 @@ function zeroPad(timeElm){
 function sleepy(msec){
     /* Display a simple msg on top */
     const headTitle = document.getElementById("nowLabel");
+    const imgArt = document.getElementsByClassName("contain");
+    imgArt.innerHTML = "";//insert svg loading...
     headTitle.innerHTML = "<span>Connecting, please wait.</span>";
     return new Promise(resolve =>setTimeout(resolve,msec));
 }
@@ -246,8 +248,8 @@ async function display_data(){
     mm = zeroPad(mm); //(mm < 10)? "0" + String(mm):mm;
     ss = zeroPad(ss); //(ss < 10)? "0" + String(ss):ss;
 
-    var gina = hh+":"+mm;// +":"+ss;
-    //console.log("time",gina);
+    var gina = hh + ":" + mm + ":" + ss;
+    // console.log("time",gina);
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){
         console.log(gina,"error:",gotData.song);
         await sleepy(errLapse);
@@ -267,12 +269,12 @@ async function display_data(){
     
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='headTit'>Now Playing: " + get_sched(day,hh,timeOffset) + 
-    "</h2><h3 id='currSong' class='lighter'>" + gina +" "+gotData.song+"</h3>";
+    "</h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%";
     myDiv.style.height = "350px";*/
-    gina = hh + ":" + mm + ":" + ss;
+    //var gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='lighter'><small>"+ gina +"</small></h2>"; 
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
