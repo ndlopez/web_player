@@ -125,8 +125,9 @@ function sleepy(msec){
     /* Display a simple msg on top */
     const headTitle = document.getElementById("nowLabel");
     const imgArt = document.getElementsByClassName("contain");
-    imgArt.innerHTML = "";//insert svg loading...
-    headTitle.innerHTML = "<span>Connecting, please wait.</span>";
+    imgArt.innerHTML = "";//not working, should ID it!
+    // it does not actually sleep for msec, interval is not stopped
+    headTitle.innerHTML = "<span>Connecting, please wait...</span>";
     return new Promise(resolve =>setTimeout(resolve,msec));
 }
 
