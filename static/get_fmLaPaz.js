@@ -67,7 +67,7 @@ const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_
 let origTitle = document.title;
 const keys = ["title","art","bitrate","listeners"];
 let upTime = 200000; // about 3min20s
-const errLapse = 10000; //10s
+const errLapse = 20000; //10s
 
 let songs = [];
 let artImg = [];
@@ -257,12 +257,12 @@ async function display_data(){
         gotData = await get_url(thisURL);
         console.log("Loading...",gotData.song);
     }
-    if(gotData.artwork === awfulArt[0] || gotData.artwork === awfulArt[1] || gotData.artwork === awfulArt[2]){
+    if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){
         console.log(gina,"wait 60s, art error:",gotData.artwork);
         await sleepy(60000);//10s
         gotData = await get_url(thisURL);
     }
-    if(gotData.artwork === awfulArt[0]){
+    if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){
         gotData.artwork = "";
     }
     document.title = gotData.song;
