@@ -231,7 +231,6 @@ span{
 #playList{
   width: 50%;
   float: left;
-  border-bottom: 1px dashed #bed2e040;
   height: 90vh;
   overflow: auto;
 }
@@ -295,6 +294,7 @@ span{
   #playList{
     width: 100%;
     overflow: inherit;
+    height: auto;
   }
   #vol_input{display: none;}
   .equalizer{width: 50px;}
@@ -308,7 +308,18 @@ span{
   }
   /*ul li:nth-child(4){text-align: center;}*/
 }
-
+@media (prefers-color-scheme: light){
+  body{
+    color:#2e4054;
+    background: #bed2e0;
+  }
+}
+@media (prefers-color-scheme:dark){
+  body{
+    color: #bed2e0;
+    background: #2e4054;
+  }
+}
 /*Equalizer elem animation*/
 @keyframes load{
   0% {
