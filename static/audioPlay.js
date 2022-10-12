@@ -125,8 +125,27 @@ function play_elapsed(){
         //if(sec < 0){clearInterval(tina_timer);}
     },1000);
 }
+
 function stop_timer(){
     /* pauses time */
     clearInterval(tina_timer);
     document.getElementById("timerr").innerText = "00:00";
 }
+
+const recordBtn = document.getElementById("record");
+const recordedAudio = document.getElementById("recordedAudio");
+recordBtn.addEventListener('click',async()=>{
+    let stream = stream_url;
+    let rec = new MediaRecorder(stream);
+    rec.start();
+    let audioChunks = [];
+    rec.ondataavailable = e => {
+        audioChunks.push(e.data);
+    }
+    rec.onerror = (e)=>{alert(e.error);}
+    rec.onstop = (e)=>{
+        let blob = new Blob(audioChunks,{type:'audio/mp4'});
+        let url = URL.createObjectURL(blob);
+        recordedAudio.src = url;
+    }
+})

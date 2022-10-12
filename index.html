@@ -27,11 +27,12 @@
           <circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>
           <path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg>
           <span id="timerr">00:00</span></a></li>
-        <li><a><div><label for="vol_input" onclick="volume_mute(0)">
+        <!--li><a><div><label for="vol_input" onclick="volume_mute(0)">
           <img id="vol_icon" src="assets/volume-svgrepo.svg" width="32"/></label>
           <input id="vol_input" class="volume-vertical" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>
           volume</a>
-        </li>
+        </li-->
+        <li><a href="#"><button id="record">record</button></a></li>
         <li><a target="_blank" href="/" aria-label="about">
           <div id="gifElm" class="equalizer no-audio"><div>
             <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -39,6 +40,7 @@
         </li>
       </ul>
     </div>
+    <audio id="recordedAudio"></audio>
     <script src="static/audioPlay.js"></script>
   </body>
 </html>
