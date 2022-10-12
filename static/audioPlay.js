@@ -132,11 +132,11 @@ function stop_timer(){
     document.getElementById("timerr").innerText = "00:00";
 }
 
-const recordBtn = document.getElementById("record");
+/*const recordBtn = document.getElementById("record");
 const recordedAudio = document.getElementById("recordedAudio");
 recordBtn.addEventListener('click',async()=>{
     let stream = stream_url;
-    let rec = new MediaRecorder(stream);
+    let rec = new MediaRecorder(stream);//stream is wrong type
     rec.start();
     let audioChunks = [];
     rec.ondataavailable = e => {
@@ -148,4 +148,4 @@ recordBtn.addEventListener('click',async()=>{
         let url = URL.createObjectURL(blob);
         recordedAudio.src = url;
     }
-})
+})*/

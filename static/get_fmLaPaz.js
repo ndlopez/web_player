@@ -124,7 +124,7 @@ function zeroPad(timeElm){
 function sleepy(msec){
     /* Display a simple msg on top */
     const headTitle = document.getElementById("nowLabel");
-    const imgArt = document.getElementsByClassName("contain");
+    const imgArt = document.getElementsById("album_art");
     imgArt.innerHTML = "";//not working, should ID it!
     // it does not actually sleep for msec, interval is not stopped
     headTitle.innerHTML = "<span>Connecting, please wait...</span>";
@@ -255,7 +255,7 @@ async function display_data(){
         console.log(gina,"error:",gotData.song);
         await sleepy(errLapse);
         gotData = await get_url(thisURL);
-        console.log("Loading...",gotData.song);
+        console.log("gotIt",gotData.song);
     }
     if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){
         console.log(gina,"wait 60s, art error:",gotData.artwork);
@@ -289,7 +289,7 @@ async function display_data(){
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+"</h3></div></div></div>";
 
-    const divImg = "<div class='contain'>" + img_art + "</div>" + divTitle;
+    const divImg = "<div class='contain' id='album_art'>" + img_art + "</div>" + divTitle;
     //console.log("doc",divElm);
     const catInfo = divImg;
     myDiv.innerHTML = /*hTitle +*/ catInfo;
