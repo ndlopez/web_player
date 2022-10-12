@@ -124,7 +124,7 @@ function zeroPad(timeElm){
 function sleepy(msec){
     /* Display a simple msg on top */
     const headTitle = document.getElementById("nowLabel");
-    const imgArt = document.getElementsById("album_art");
+    const imgArt = document.getElementById("album_art");
     imgArt.innerHTML = "";//not working, should ID it!
     // it does not actually sleep for msec, interval is not stopped
     headTitle.innerHTML = "<span>Connecting, please wait...</span>";
