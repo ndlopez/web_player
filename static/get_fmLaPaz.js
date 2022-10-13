@@ -78,7 +78,11 @@ let upCount = 0;
 
 display_data();
 
-window.onscroll = function() {scrollFunction();};
+// Load onMobile only
+if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+    console.log("User is using a Mobile device");
+    window.onscroll = function() {scrollFunction();};
+}else{console.log("User is on desktop Mode");}
 
 var pxx=400; //artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
