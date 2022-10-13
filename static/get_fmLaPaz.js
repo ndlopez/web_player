@@ -85,19 +85,17 @@ var pxx=400; //artwork size
 function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
         document.getElementById("topBtn").style.display = "block";
-        document.getElementById("currSong").style.display = "block";
+        document.getElementById("currSong").style.display = "block";//should disable onDesktop
         document.getElementById("headTit").style.display = "none";
     } else {
         document.getElementById("topBtn").style.display = "none";
-        document.getElementById("currSong").style.display = "none";
+        document.getElementById("currSong").style.display = "none";//should disable onDesktop
         document.getElementById("headTit").style.display = "block";
     }
 }
 //user clicks on myBtn, scroll to top
 function topFunction() {
-    //document.body.scrollTop = 0;
-    //document.body.animate({scrollTop:0},1500);
-    //document.documentElement.scrollTop = 0;
+    //document.body.scrollTop = 0;//document.body.animate({scrollTop:0},1500);
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 }
 
@@ -125,7 +123,7 @@ function sleepy(msec){
     /* Display a simple msg on top */
     const headTitle = document.getElementById("nowLabel");
     const imgArt = document.getElementById("album_art");
-    imgArt.innerHTML = "";//not working, should ID it!
+    if(imgArt !== null){imgArt.innerHTML = "";}
     // it does not actually sleep for msec, interval is not stopped
     headTitle.innerHTML = "<span>Connecting, please wait...</span>";
     return new Promise(resolve =>setTimeout(resolve,msec));
