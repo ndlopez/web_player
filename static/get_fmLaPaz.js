@@ -122,19 +122,23 @@ function reloadMe(){
 function zeroPad(timeElm){
     return (parseInt(timeElm,10) < 10 ? '0' : '') + timeElm;
 }
-
-function sleepy(msec){
-    /* Display a simple msg on top */
+function clear_nowPlay(){
+    const nowText = document.getElementById("now_text");
     const headTitle = document.getElementById("nowLabel");
     const imgArt = document.getElementById("album_art");
     if(imgArt !== null){imgArt.innerHTML = "";}
-    // it does not actually sleep for msec, interval is not stopped
+    if(nowText !== null){nowText.innerHTML = "";}
     headTitle.innerHTML = "<span>Connecting, please wait...</span>";
+}
+function sleepy(msec){
+    /* Display a simple msg on top */
+    // it does not actually sleep for msec, interval is not stopped
+    clear_nowPlay();
     return new Promise(resolve =>setTimeout(resolve,msec));
 }
 
 function get_sched(tag,heure,time_lag){
-    var myTitle = "LAPAZ.fm";
+    var myTitle = "";//"LAPAZ.fm";
     var gotObj = weekly_9; //default JST
     if(time_lag == 240){
         /* UTC-4 */
@@ -271,7 +275,7 @@ async function display_data(){
     const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing: Artwork' width=256>";
     
     const headTitle = document.getElementById("nowLabel");
-    headTitle.innerHTML = "<h2 id='headTit'>Now Playing: " + get_sched(day,hh,timeOffset) + 
+    headTitle.innerHTML = "<h2 id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
     "</h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
@@ -282,7 +286,7 @@ async function display_data(){
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
-    const divTitle = "<div class='bottomText'>" + "<h2 class='headLabel'>"+ h2Song[0].trim() +
+    const divTitle = "<div id='now_text' class='bottomText'>" + "<h2 class='headLabel'>"+ h2Song[0].trim() +
     "</h2><h2><small>" + h2Song[1].trim() + 
     "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3'>"+
     "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
