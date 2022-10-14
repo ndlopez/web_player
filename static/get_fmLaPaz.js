@@ -1,3 +1,6 @@
+/*Soundcloud: Mobile settings
+Song Title: font-size:22px;font-weight:700;
+Song Artist: color: var(--second-color)*/
 //Should fetch data from fm La Paz
 const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
