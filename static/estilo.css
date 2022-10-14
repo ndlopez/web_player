@@ -304,7 +304,7 @@ span{
   }
   /*ul li:nth-child(4){text-align: center;}*/
 }
-@media (prefers-color-scheme: light){
+/*@media (prefers-color-scheme: light){
   body{
     color:#2e4054;
     background: #bed2e0;
@@ -315,7 +315,7 @@ span{
     color: #bed2e0;
     background: #2e4054;
   }
-}
+}*/
 /*Equalizer elem animation*/
 @keyframes load{
   0% {
