@@ -12,6 +12,7 @@ function startPlay(){
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
 
+
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
     audioConnect = new Audio();
@@ -29,6 +30,8 @@ function startPlay(){
             play_elapsed();
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
+            svgPlay.innerHTML = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>'+
+            '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
             svgStop.style.stroke = "#bed2e0";
             svgStop.style.fill = "#bed2e0";
             gifImg.classList.remove("no-audio");
@@ -39,6 +42,8 @@ function startPlay(){
             //stopped time to interval again
             gifImg.classList.add("no-audio");
             clearInterval(tina_timer);
+            svgPlay.innerHTML = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>'+
+            '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>';
             //playbtn should show play again
         }
     }
