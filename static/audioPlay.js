@@ -1,18 +1,22 @@
 const stream_url = "https://stream.consultoradas.com/8042/stream";
 var audioConnect; //= new Audio();
-var playStatus = false;
+//var playStatus = false;
 var tina_timer;
 
 window.addEventListener("load",startPlay);
 
 function startPlay(){
     /*bug: stop only pauses stream */
-    playStatus = true;
+    //playStatus = true;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
+    const getTimer = document.getElementById("timerr");
+    var hhmm = "";
 
-
+    const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
+    const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
+    const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
     audioConnect = new Audio();
@@ -26,12 +30,13 @@ function startPlay(){
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
             //console.log("this value",audioConnect.startTime,audioConnect.networkState);
-            //console.log(audioConnect.loadstart,audioConnect.stalled,audioConnect.playing); 
-            play_elapsed();
+            //console.log(audioConnect.loadstart,audioConnect.stalled,audioConnect.playing);
+            hhmm = getTimer.innerText; // mm:ss
+            play_elapsed(parseInt(hhmm.substring(0,2)),parseInt(hhmm.substring(3,5))); //counter starts or restarts
+            //play_elapsed();
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
-            svgPlay.innerHTML = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>'+
-            '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
+            svgPlay.innerHTML = circleImg + pauseImg;
             svgStop.style.stroke = "#bed2e0";
             svgStop.style.fill = "#bed2e0";
             gifImg.classList.remove("no-audio");
@@ -42,9 +47,7 @@ function startPlay(){
             //stopped time to interval again
             gifImg.classList.add("no-audio");
             clearInterval(tina_timer);
-            svgPlay.innerHTML = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>'+
-            '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>';
-            //playbtn should show play again
+            svgPlay.innerHTML = circleImg + playImg;
         }
     }
     function stopPlay(){
@@ -54,6 +57,7 @@ function startPlay(){
         
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
+        svgPlay.innerHTML = circleImg + playImg;
         //svgPlay.style.fill = "#2e4054";
         //svgPlay.style.stroke = "#2e4054";
         svgStop.style.stroke = "#cc274c";
@@ -95,19 +99,8 @@ function volume_mute(vol_stat){
     }
 }
 
-function playControls(){
-    //await display_data();
-    const playDiv = document.createElement("div");
-    playDiv.setAttribute("id","player");
-    var texty = '<button onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg></button>';
-    texty += '<svg id="i-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M23 2 L23 30 M9 2 L9 30" /></svg>';
-    playDiv.innerHTML = texty;
-    return playDiv;
-}
-
-function play_elapsed(){
-    let sec = 0;
-    let min = 0;
+function play_elapsed(min=0,sec=0){
+    //let sec = 0, min = 0;
     //var texty = "";
     var second,minute;
 
@@ -137,7 +130,18 @@ function stop_timer(){
     document.getElementById("timerr").innerText = "00:00";
 }
 
-/*const recordBtn = document.getElementById("record");
+/*
+function playControls(){
+    //await display_data();
+    const playDiv = document.createElement("div");
+    playDiv.setAttribute("id","player");
+    var texty = '<button onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg></button>';
+    texty += '<svg id="i-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M23 2 L23 30 M9 2 L9 30" /></svg>';
+    playDiv.innerHTML = texty;
+    return playDiv;
+}
+// Record audio from stream -> not easy task :(
+const recordBtn = document.getElementById("record");
 const recordedAudio = document.getElementById("recordedAudio");
 recordBtn.addEventListener('click',async()=>{
     let stream = stream_url;
