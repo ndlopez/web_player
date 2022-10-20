@@ -14,11 +14,12 @@
     <!--div id="thisModal"></div-->
     <div id="music">
       <div id="nowPlaying"><img src="assets/loading.svg" width="300"/></div>
-      <div id="playList"><h2>&ensp;Playlist (earlier today)&emsp;&emsp;&emsp;
+      <div id="playList"><h2>&ensp;Recently listened&emsp;&emsp;&emsp;
         <a id='downLink'></a></h2></div>
     </div>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <ul>
+        <li id="now_song">Alive and Kicking<a id="now_artist">Simple Minds</a></li>
         <li><a onclick="reloadMe()"><img src="assets/reload-svgrepo.svg" width="32"/>reload</a></li>
         <li><a aria-label="stop stream">
           <svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#cc274c" stroke="#cc274c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>stop</a></li>
