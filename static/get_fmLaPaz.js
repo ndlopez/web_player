@@ -272,10 +272,10 @@ async function display_data(){
         gotData = await get_url(thisURL);
     }
     if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){
-        gotData.artwork = "";
+        gotData.artwork = "assets/cd-case.svg";
     }
     document.title = gotData.song;
-    const img_art = "<img src='" + gotData.artwork + "' alt='Now Playing: Artwork' width=256>";
+    const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
@@ -294,7 +294,7 @@ async function display_data(){
     "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3'>"+
     "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
     " kbps</h3></div><div class='col3'><h3 class='lighter'> Listeners</h3><h3>"+ 
-    gotData.listen + "</h3></div><div class='col3'><h3 class='lighter'>Search on</h3>" + 
+    gotData.listen + "</h3></div><div class='col3'><h3 class='lighter'>More info at</h3>" + 
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+"</h3></div></div></div>";
 

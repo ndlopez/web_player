@@ -180,7 +180,7 @@ span{
   opacity: 0.4; bottom: -22px;  left:5px;  width: 360px;*/
   margin-top: 5px;
   border-radius: 10px;
-  padding: 15px 0px 15px 20px;
+  padding: 15px 0px; /*15px 20px;*/
   font-size: small;
   text-align: center;
   background-color: #bed2e040;
@@ -197,28 +197,32 @@ span{
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 #nowPlaying{
-  /*background-color: #6a7285;*/
-  padding: 50px 20px;
+  background-size:320px;
+  background-image: url("../assets/cd_case.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
+  padding: 20px;/*50px 20px*/
   float: left;
+  height: 300px;
   width: 50%;
 }
 
 .contain{
   position: relative;
-  /*width: 40%;
-  float: left;*/
+  /*width: 40%; float: left;*/
   padding: 20px;
-  height: 300px;
-  background-size:320px;
-  background-image: url("../assets/cd_case.svg");
+  height: 280px;
+  background-size:290px;
+  background-image: url("../assets/CD_icon.svg");
   background-repeat: no-repeat;
-  background-position-x: center;
+  background-position-x: right;
   text-align: center;
   
 }
 .contain img{
   /*border: 1px solid #bed2e0;float: right;*/
-  border-radius: 50%;/*4px;*/
+  /*border-radius: 50%;4px;*/
   margin-top: -9px;
   margin-left: 25px;
 }
