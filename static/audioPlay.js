@@ -12,7 +12,9 @@ function startPlay(){
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timerr");
-    var hhmm = "";
+    /*const song_artist = document.getElementById("currSong");
+    console.log(song_artist.innerText);// returns null object*/
+    var mmss = "";
 
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
     const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
@@ -31,8 +33,8 @@ function startPlay(){
             audioConnect.loop = true;
             //console.log("this value",audioConnect.startTime,audioConnect.networkState);
             //console.log(audioConnect.loadstart,audioConnect.stalled,audioConnect.playing);
-            hhmm = getTimer.innerText; // mm:ss
-            play_elapsed(parseInt(hhmm.substring(0,2)),parseInt(hhmm.substring(3,5))); //counter starts or restarts
+            mmss = getTimer.innerText; // mm:ss
+            play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5))); //counter starts or restarts
             //play_elapsed();
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
@@ -100,7 +102,6 @@ function volume_mute(vol_stat){
 }
 
 function play_elapsed(min=0,sec=0){
-    //let sec = 0, min = 0;
     //var texty = "";
     var second,minute;
 
@@ -108,9 +109,7 @@ function play_elapsed(min=0,sec=0){
 
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
-        //texty = ()? :sec; min = (min < 10)? :min;
-        //var texty = String(min) + ":" + String(sec);
-        //var texty = min + ":" + sec;
+        
         document.getElementById("timerr").innerText = minute + ":" + second;
         sec++;
         if(sec>59){
@@ -118,9 +117,8 @@ function play_elapsed(min=0,sec=0){
             sec=0;
         }
         /* if listen hours
-        if(min>59 && sec>59){hours++;min=0;sec=0;}
-        */
-        //if(sec < 0){clearInterval(tina_timer);}
+        if(min>59 && sec>59){hours++;min=0;sec=0;}*/
+        //timer case: if(sec < 0){clearInterval(tina_timer);}
     },1000);
 }
 
