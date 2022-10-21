@@ -69,7 +69,7 @@ const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmla
 "https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059"];
 const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
 
-var origTitle = document.title;
+var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
 let upTime = 200000; // about 3min20s
 const errLapse = 20000; //10s
@@ -283,10 +283,10 @@ async function display_data(){
     if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){
         gotData.artwork = "assets/cd-case.svg";
     }
-    //document.title = gotData.song;
-    origTitle = gotData.song;
-    const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     
+    document.title = gotData.song;
+    
+    const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
     "</h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";

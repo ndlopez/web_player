@@ -1,3 +1,4 @@
+//check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
 const stream_url = "https://stream.consultoradas.com/8042/stream";
 var audioConnect; //= new Audio();
 //Beethoven - moonlight
