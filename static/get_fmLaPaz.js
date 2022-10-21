@@ -198,17 +198,25 @@ setInterval(async function buildList(){
 
     var gotArtist = song[0].innerText;
     if(gotArtist === "Radio Online" || gotArtist === "LA CASCADA"){
-        gotArtist = "CM or Station Identification";
-        artwork[1] = "";
+        gotArtist = "CM or Station Id";
+        artwork[1] = "assets/cd-case.svg";
     }
     if((artwork[1] === awfulArt[0]) || (artwork[1] === awfulArt[1]) || (artwork[1] === awfulArt[2]) || artwork[1] === awfulArt[3]){
-        artwork[1] = "";
+        artwork[1] = "assets/cd-case.svg";
         gotArtist = "Sorry, artwork not found in DB";
     }
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg");
-    divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
-
+    divColImg.style.backgroundImage = "url('"+ artwork[1] + "')";
+    divColImg.style.backgroundSize = "75px";
+    divColImg.style.backgroundRepeat = "no-repeat";
+    //divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
+    //it works but it does not turn off :(
+    /*if(upCount == myList.length){
+        divColImg.innerHTML = "<img src='assets/bars.svg' width='70'>";
+    }else{
+        console.log("no bars here :(");
+        divColImg.innerHTML = "";}*/
     divText.innerHTML = "<span>" + gotArtist + "</span><span>" + song[1].innerText +"</span>";
 
     var divTime = document.createElement("div");
@@ -234,7 +242,7 @@ setInterval(async function buildList(){
     
     tmpData = {"time": timeStamp[upCount], "song": songs[upCount], "artwork": artImg[upCount]};
     myList.push(tmpData);
-    //console.log(upCount,myList);
+    console.log(upCount,myList);
     export_to_file(myList);
     var dLink = document.getElementById("downLink");
     dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
@@ -307,7 +315,7 @@ async function display_data(){
     parentDiv.appendChild(myDiv);
 
     const now_song = document.getElementById("now_song");
-    now_song.innerHTML = h2Song[0].trim() + "<br/>"+ h2Song[1].trim();
+    now_song.innerHTML = "&emsp;"+ h2Song[0].trim() + "<br/>&emsp;"+ h2Song[1].trim();
 }
 
 async function get_url(my_url){
@@ -328,6 +336,7 @@ async function get_url(my_url){
 
 /* open and close Info modal */
 function openNav(){
+    //error: apparently document is null!
     document.getElementById("InfoNav").style.display = "block";
     document.body.style.overflow = "hidden";
 }

@@ -1,6 +1,6 @@
 const stream_url = "https://stream.consultoradas.com/8042/stream";
 var audioConnect; //= new Audio();
-//var playStatus = false;
+//Beethoven - moonlight
 var tina_timer;
 
 window.addEventListener("load",startPlay);
