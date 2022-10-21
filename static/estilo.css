@@ -50,11 +50,10 @@ ul, li{margin: 0px;padding: 5px;}
 }
 #player ul li a{
   display: inline-flex;
-  align-items: center;
+  /*align-items: center;font-size: .8rem;*/
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  font-size: .8rem;
 }
 #player ul li{flex: 1;}
 
@@ -122,8 +121,9 @@ ul, li{margin: 0px;padding: 5px;}
   animation: none !important;
 }
 .volume-vertical{
-  /*display: block; position: fixed; bottom: 73px;
-  right: 40px; transform:rotate(-90deg);*/
+  display: flex; 
+  position: fixed; bottom: 73px;
+  transform:rotate(-90deg);
   width: 80px;
 }
 .volume-none{
@@ -257,9 +257,7 @@ span{
 }
 
 @media (max-width:500px) {
-  body{
-    font-size: small;
-  }
+  body{font-size: small;}
   #now_song{display: none;}
   #nowPlaying{
     background: url("../assets/group.svg") no-repeat;
@@ -289,7 +287,7 @@ span{
     height: auto;
   }
   .bottomText #more_info{display: none;}
-  .bottomText h2{line-height: normal;}
+  /*.bottomText h2{line-height: normal;}*/
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{
