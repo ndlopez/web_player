@@ -69,7 +69,7 @@ const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmla
 "https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059"];
 const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
 
-let origTitle = document.title;
+var origTitle = document.title;
 const keys = ["title","art","bitrate","listeners"];
 let upTime = 200000; // about 3min20s
 const errLapse = 20000; //10s
@@ -242,7 +242,7 @@ setInterval(async function buildList(){
     
     tmpData = {"time": timeStamp[upCount], "song": songs[upCount], "artwork": artImg[upCount]};
     myList.push(tmpData);
-    console.log(upCount,myList);
+    //console.log(upCount,myList);
     export_to_file(myList);
     var dLink = document.getElementById("downLink");
     dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
@@ -283,7 +283,8 @@ async function display_data(){
     if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){
         gotData.artwork = "assets/cd-case.svg";
     }
-    document.title = gotData.song;
+    //document.title = gotData.song;
+    origTitle = gotData.song;
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     
     const headTitle = document.getElementById("nowLabel");
@@ -314,8 +315,10 @@ async function display_data(){
     //document.body.appendChild(myDiv);
     parentDiv.appendChild(myDiv);
 
-    const now_song = document.getElementById("now_song");
-    now_song.innerHTML = "&emsp;"+ h2Song[0].trim() + "<br/>&emsp;"+ h2Song[1].trim();
+    // I wonder if it's necessary to display currSong a 3rd time
+    /* const now_song = document.getElementById("now_song");
+    //now_song.innerHTML = "&emsp;"+ gotData.song;
+    now_song.innerHTML = "&emsp;"+ h2Song[0].trim() + "<br/>&emsp;"+ h2Song[1].trim();*/
 }
 
 async function get_url(my_url){
