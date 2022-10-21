@@ -50,7 +50,7 @@ ul, li{margin: 0px;padding: 5px;}
 }
 #player ul li a{
   display: inline-flex;
-  /*align-items: center;font-size: .8rem;*/
+  align-items: center;/*font-size: .8rem;*/
   flex-direction: column;
   justify-content: center;
   width: 100%;
@@ -63,8 +63,8 @@ ul, li{margin: 0px;padding: 5px;}
   height: 30px;
   overflow: hidden;
   position: absolute;
-  /*top: 46px;
-  left: 260px;*/
+  /*top: 46px;left: 260px;*/
+  right: 10px;
 }
 .equalizer > div {
   width: 80px;/*45px;*/

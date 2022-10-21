@@ -307,7 +307,7 @@ async function display_data(){
     parentDiv.appendChild(myDiv);
 
     const now_song = document.getElementById("now_song");
-    now_song.innerHTML = h2Song[0].trim() + "<a>"+ h2Song[1].trim() +"</a>";
+    now_song.innerHTML = h2Song[0].trim() + "<br/>"+ h2Song[1].trim();
 }
 
 async function get_url(my_url){
