@@ -260,6 +260,7 @@ span{
   body{
     font-size: small;
   }
+  #now_song{display: none;}
   #nowPlaying{
     background: url("../assets/group.svg") no-repeat;
     background-position-x: right;

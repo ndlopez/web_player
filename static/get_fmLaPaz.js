@@ -302,9 +302,11 @@ async function display_data(){
     //console.log("doc",divElm);
     const catInfo = divImg;
     myDiv.innerHTML = /*hTitle +*/ catInfo;
-
     //document.body.appendChild(myDiv);
     parentDiv.appendChild(myDiv);
+
+    const now_song = document.getElementById("now_song");
+    now_song.innerHTML = h2Song[0].trim() + "<a>"+ h2Song[1].trim() +"</a>";
 }
 
 async function get_url(my_url){
@@ -320,7 +322,6 @@ async function get_url(my_url){
     }
     // Should not update if Sat/Sun @10-12
     // sleepy <- 3hrs
-    //console.log(song,artwork);
     return {song,artwork,bit,listen};
 }
 

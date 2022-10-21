@@ -93,7 +93,7 @@ async function display_data(){
 }
 
 async function get_url(my_url){
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const proxyUrl = "";//'https://cors-anywhere.herokuapp.com/';
     /* The above site is overloaded with requests, thus THIS might not work */
     var song;
     var artwork;
