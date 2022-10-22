@@ -71,7 +71,7 @@ const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_
 
 var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
-let upTime = 3600000;//200000; // about 3min20s
+let upTime = 200000;//3600000;~on Sat/Sun 10~13// about 3min20s
 const errLapse = 20000; //10s
 
 let songs = [];
@@ -94,11 +94,11 @@ var pxx=400; //artwork size
 function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
         document.getElementById("topBtn").style.display = "block";
-        document.getElementById("currSong").style.display = "block";//should disable onDesktop
+        document.getElementById("currSong").style.display = "block";
         document.getElementById("headTit").style.display = "none";
     } else {
         document.getElementById("topBtn").style.display = "none";
-        document.getElementById("currSong").style.display = "none";//should disable onDesktop
+        document.getElementById("currSong").style.display = "none";
         document.getElementById("headTit").style.display = "block";
     }
 }
@@ -199,10 +199,10 @@ setInterval(async function buildList(){
     var gotArtist = song[0].innerText;
     if(gotArtist === "Radio Online" || gotArtist === "LA CASCADA"){
         gotArtist = "CM or Station Id";
-        artwork[1] = "assets/cd-case.svg";
+        artwork[1] = "../assets/cd-case.svg";
     }
     if((artwork[1] === awfulArt[0]) || (artwork[1] === awfulArt[1]) || (artwork[1] === awfulArt[2]) || artwork[1] === awfulArt[3]){
-        artwork[1] = "assets/cd-case.svg";
+        artwork[1] = "../assets/cd-case.svg";
         gotArtist = "Sorry, artwork not found in DB";
     }
     var divColImg = document.createElement("div");
@@ -281,7 +281,7 @@ async function display_data(){
         gotData = await get_url(thisURL);
     }
     if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){
-        gotData.artwork = "assets/cd-case.svg";
+        gotData.artwork = "";
     }
     
     document.title = gotData.song;
