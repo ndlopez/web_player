@@ -71,7 +71,7 @@ const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_
 
 var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
-let upTime = 200000; // about 3min20s
+let upTime = 3600000;//200000; // about 3min20s
 const errLapse = 20000; //10s
 
 let songs = [];
@@ -133,7 +133,7 @@ function clear_nowPlay(){
     const imgArt = document.getElementById("album_art");
     if(imgArt !== null){imgArt.innerHTML = "";}
     if(nowText !== null){nowText.innerHTML = "";}
-    headTitle.innerHTML = "<span>Connecting, please wait...</span>";
+    headTitle.innerHTML = "<h2>Retrieving data, please wait...</h2>";
 }
 function sleepy(msec){
     /* Display a simple msg on top */
