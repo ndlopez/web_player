@@ -62,14 +62,9 @@ function startPlay(){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
-        //svgPlay.style.fill = "#2e4054";
-        //svgPlay.style.stroke = "#2e4054";
         svgStop.style.stroke = "#cc274c";
         svgStop.style.fill = "#cc274c";
-        //gifImg.style.display = "none";
-        //gifImg.style.animation = "none";
         gifImg.classList.add("no-audio");
-        //audioConnect.pause();
         
         stop_timer();
     }
@@ -84,13 +79,11 @@ function volume_mute(vol_stat){
             // console.log("volume on");
             // volInput.classList.remove("volume-none");
             // volInput.classList.add("volume-vertical");
-            //console.log(audioConnect.volume);
             volIcon.src = "assets/volume-repo-off.svg";
             audioConnect.volume = "0";
             volInput.onchange = "0";
             volInput.value = "0";
         }else{
-            // console.log("volume off");
             // volInput.classList.remove("volume-vertical");
             // volInput.classList.add("volume-none");
             volIcon.src = "assets/volume-svgrepo.svg";

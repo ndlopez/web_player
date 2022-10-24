@@ -19,8 +19,8 @@
     </div>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <!--span id="now_song">Alive and Kicking<br/>Simple Minds</span-->
-      <!--ul><li-->
       <ul>
+        <li id="now_song">Alive and Kicking<br/>Simple Minds</li>
         <li><a title="reload id3-tag" onclick="reloadMe()"><img src="assets/reload-svgrepo.svg" width="32"/><!--reload--></a></li>
         <li><a title="stop stream">
           <svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#cc274c" stroke="#cc274c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>
@@ -44,9 +44,7 @@
           </div></div></a>
         </li>
       </ul>
-        <!--/li-->
-        <!--li><a href="#"><button id="record">record</button></a></li-->        
-      <!--/ul-->
+      <!--li><a href="#"><button id="record">record</button></a></li-->
     </div>
     <!--audio id="recordedAudio">to play recorded audio</audio-->
     <script src="static/audioPlay.js"></script>

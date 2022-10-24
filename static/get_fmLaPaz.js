@@ -171,12 +171,52 @@ function export_to_file(jsonData){
     //linkElm.click();//downloads a file every update
 }
 
-setInterval(async function buildList(){
+setInterval(async function makePlayList(){
+    /* Build a playlist from myList: array data */
+    await display_data();//builds myList
+    const parentDiv = document.getElementById("music");
+    const divList = document.getElementById("playList");
+    const mainDiv = document.createElement("div");
+    mainDiv.setAttribute("class","row");
+    var divText = document.createElement("div");
+    divText.setAttribute("class","colArtist");
+    //last index of myList array
+    var lena = Object.keys(myList)[Object.keys(myList).length - 1];
+    var gotArtist = myList[lena].song.split("-");
+    if(gotArtist[0] === "Radio Online" || gotArtist[0] === "LA CASCADA"){
+        gotArtist[0] = "CM or Station Id";
+        myList[0].artwork = "../assets/cd-case.svg";
+    }
+    var gotArtwork = myList[lena].artwork;
+    if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) || (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3]){
+        gotArtwork = "../assets/cd-case.svg";
+        gotArtist = "Sorry, artwork not found in DB";
+    }
+    var divColImg = document.createElement("div");
+    divColImg.setAttribute("class","colImg");
+    divColImg.style.backgroundImage = "url('"+ myList[0].artwork + "')";
+    divColImg.style.backgroundSize = "75px";
+    divColImg.style.backgroundRepeat = "no-repeat";
+    divText.innerHTML = "<span>" + gotArtist[0] + "</span><span>" + gotArtist[1] +"</span>";
+
+    var divTime = document.createElement("div");
+    divTime.setAttribute("class","colTime");
+    divTime.innerHTML = "<span>" + myList[0].time + "</span>";
+    
+    mainDiv.appendChild(divColImg);
+    mainDiv.appendChild(divText);
+    mainDiv.appendChild(divTime);
+
+    divList.appendChild(mainDiv);
+    parentDiv.appendChild(divList);
+},upTime);
+
+/*setInterval(*/async function buildList(){
     /* Wait 'til display_data is finished, then get info from h2 elems */
     await display_data();
     const parentDiv = document.getElementById("music");
     const divList = document.getElementById("playList");
-
+    // Getting data from nowPlaying div
     const gotDiv = document.getElementById('nowPlaying');
     const song = gotDiv.getElementsByTagName("h2");
     var noSec = song[2].innerText;//time HH:MM:SS
@@ -236,19 +276,19 @@ setInterval(async function buildList(){
     const newDate = new Date();
     schedLiz.innerHTML = "<h2>Later today<br/>"+ days[newDate.getDay()] + "</h2>";*/
 
+    /*Saving data into array
     timeStamp.push(noSec);
     songs.push(song[0].innerText + "-" + song[1].innerText);
     artImg.push(artwork[1]);
-    
     tmpData = {"time": timeStamp[upCount], "song": songs[upCount], "artwork": artImg[upCount]};
     myList.push(tmpData);
     //console.log(upCount,myList);
     export_to_file(myList);
     var dLink = document.getElementById("downLink");
     dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
-    upCount++;
+    upCount++;*/
 
-},upTime);
+}/*,upTime);*/
 
 
 async function display_data(){
@@ -292,8 +332,7 @@ async function display_data(){
     "</h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
-    /*myDiv.style.width = "100%";
-    myDiv.style.height = "350px";*/
+    /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
     //var gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='lighter'><small>"+ gina +"</small></h2>"; 
     //document.createElement("h2");
@@ -316,9 +355,24 @@ async function display_data(){
     parentDiv.appendChild(myDiv);
 
     // I wonder if it's necessary to display currSong a 3rd time
-    /* const now_song = document.getElementById("now_song");
+    const now_song = document.getElementById("now_song");
     //now_song.innerHTML = "&emsp;"+ gotData.song;
-    now_song.innerHTML = "&emsp;"+ h2Song[0].trim() + "<br/>&emsp;"+ h2Song[1].trim();*/
+    now_song.innerHTML = "&emsp;"+ h2Song[0].trim() + "<br/>&emsp;"+ h2Song[1].trim();
+
+    // Saving data into array
+    var noSec = gina;//time HH:MM:SS
+    noSec = (noSec.length < 8)? noSec.substring(0,4):noSec.substring(0,5);
+    timeStamp.push(noSec);
+    songs.push(gotData.song);
+    artImg.push(gotData.artwork);
+    
+    tmpData = {"time": timeStamp[upCount], "song": songs[upCount], "artwork": artImg[upCount]};
+    myList.push(tmpData);
+    //console.log(upCount,myList);
+    export_to_file(myList);
+    var dLink = document.getElementById("downLink");
+    dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
+    upCount++;
 }
 
 async function get_url(my_url){
