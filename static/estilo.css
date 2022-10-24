@@ -120,15 +120,15 @@ ul, li{margin: 0px;padding: 5px;}
 .no-audio span:nth-child(6){
   animation: none !important;
 }
+/*vol_input
 .volume-vertical{
   display: flex; 
   position: fixed; bottom: 73px;
   transform:rotate(-90deg);
   width: 80px;
 }
-.volume-none{
-  display: none;
-}
+.volume-none{display: none;}*/
+#vol_input{display: none;}
 /*Playlist elements*/
 .row:after{
   content:"";
@@ -295,7 +295,6 @@ span{
     overflow: inherit;
     height: auto;
   }
-  #vol_input{display: none;}
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {
     animation: none;
