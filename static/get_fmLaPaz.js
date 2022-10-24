@@ -180,8 +180,8 @@ setInterval(async function makePlayList(){
     mainDiv.setAttribute("class","row");
     var divText = document.createElement("div");
     divText.setAttribute("class","colArtist");
-    //last index of myList array
-    var lena = Object.keys(myList)[Object.keys(myList).length - 1];
+    //last prev index of myList array, last will be -1
+    var lena = Object.keys(myList)[Object.keys(myList).length - 2];
     var gotArtist = myList[lena].song.split("-");
     if(gotArtist[0] === "Radio Online" || gotArtist[0] === "LA CASCADA"){
         gotArtist[0] = "CM or Station Id";
@@ -194,14 +194,14 @@ setInterval(async function makePlayList(){
     }
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg");
-    divColImg.style.backgroundImage = "url('"+ myList[0].artwork + "')";
+    divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
     divColImg.style.backgroundSize = "75px";
     divColImg.style.backgroundRepeat = "no-repeat";
     divText.innerHTML = "<span>" + gotArtist[0] + "</span><span>" + gotArtist[1] +"</span>";
 
     var divTime = document.createElement("div");
     divTime.setAttribute("class","colTime");
-    divTime.innerHTML = "<span>" + myList[0].time + "</span>";
+    divTime.innerHTML = "<span>" + myList[lena].time + "</span>";
     
     mainDiv.appendChild(divColImg);
     mainDiv.appendChild(divText);
