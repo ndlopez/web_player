@@ -131,8 +131,11 @@ function clear_nowPlay(){
     const nowText = document.getElementById("now_text");
     const headTitle = document.getElementById("nowLabel");
     const imgArt = document.getElementById("album_art");
+    const nowSong = document.getElementById("now_song");
     if(imgArt !== null){imgArt.innerHTML = "";}
     if(nowText !== null){nowText.innerHTML = "";}
+    nowSong.innerHTML = "";
+    document.title = "Updating...";
     headTitle.innerHTML = "<h2>Retrieving data, please wait...</h2>";
 }
 function sleepy(msec){
@@ -357,7 +360,7 @@ async function display_data(){
     // I wonder if it's necessary to display currSong a 3rd time
     const now_song = document.getElementById("now_song");
     //now_song.innerHTML = "&emsp;"+ gotData.song;
-    now_song.innerHTML = "&emsp;"+ h2Song[0].trim() + "<br/>&emsp;"+ h2Song[1].trim();
+    now_song.innerHTML = " "+ h2Song[0].trim() + "<br/> "+ h2Song[1].trim();
 
     // Saving data into array
     var noSec = gina;//time HH:MM:SS
