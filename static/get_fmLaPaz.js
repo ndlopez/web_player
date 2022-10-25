@@ -6,7 +6,7 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
 const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
-const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
+//const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
 
 const weekly_9 = [
     {name:"PopArt",day:1,time:16,duration:1},
