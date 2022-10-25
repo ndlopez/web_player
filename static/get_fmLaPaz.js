@@ -66,7 +66,7 @@ const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ",
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
-"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059"];
+"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059","https://stream.consultoradas.com/cp/musiclibrary/nocover.png"];
 const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
 
 var origTitle = document.title; //prev Title
@@ -191,7 +191,7 @@ setInterval(async function makePlayList(){
         myList[0].artwork = "../assets/cd-case.svg";
     }
     var gotArtwork = myList[lena].artwork;
-    if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) || (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3]){
+    if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) || (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3] || gotArtwork === awfulArt[4]){
         gotArtwork = "../assets/cd-case.svg";
         gotArtist = "Sorry, artwork not found in DB";
     }
