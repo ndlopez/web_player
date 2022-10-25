@@ -232,18 +232,22 @@ async function display_data(){
 
     var gina = hh + ":" + mm + ":" + ss;
     // console.log("time",gina);
-    if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){
+    if(titleErr.includes(gotData.song)){
         console.log(gina,"error:",gotData.song);
         await sleepy(errLapse);
         gotData = await get_url(thisURL);
         console.log("gotIt",gotData.song);
     }
-    if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3]) || (gotData.artwork === awfulArt[4])){
+    /*Old-method
+    if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){}
+    if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3]) || (gotData.artwork === awfulArt[4])){}if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){}*/
+    if(awfulArt.includes(gotData.artwork)){
         console.log(gina,"wait 60s, art error:",gotData.artwork);
         await sleepy(60000);//10s
         gotData = await get_url(thisURL);
     }
-    if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){
+    
+    if(awfulArt.includes(gotData.artwork)){
         gotData.artwork = "";
     }
     
