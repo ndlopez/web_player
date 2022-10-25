@@ -66,7 +66,7 @@ const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ",
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
-"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059","https://stream.consultoradas.com/cp/musiclibrary/nocover.png"];
+"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059","https://stream.consultoradas.com/cp/musiclibrary/nocover.png","https://i.scdn.co/image/ab67616d0000b273946c1699a48b214e45f765d6"];
 const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
 
 var origTitle = document.title; //prev Title
