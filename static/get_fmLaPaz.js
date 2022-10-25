@@ -350,7 +350,8 @@ async function display_data(){
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+"</h3></div></div></div>";
 
-    const divImg = "<div class='contain' id='album_art'>" + img_art + "</div>" + divTitle;
+    const divImg = "<div class='contain' id='album_art'><div class='cover'><div>" + img_art +
+    "</div></div></div>" + divTitle;
     //console.log("doc",divElm);
     const catInfo = divImg;
     myDiv.innerHTML = /*hTitle +*/ catInfo;
