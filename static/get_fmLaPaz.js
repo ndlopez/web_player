@@ -62,7 +62,7 @@ const weekly_4 = [
 ];
 
 const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ",
-"Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
+"Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS","LA CASCADA"];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
@@ -186,15 +186,18 @@ setInterval(async function makePlayList(){
     //last prev index of myList array, last will be -1
     var lena = Object.keys(myList)[Object.keys(myList).length - 2];
     var gotArtist = myList[lena].song.split("-");
-    if(gotArtist[0] === "Radio Online" || gotArtist[0] === "LA CASCADA"){
+    if(titleErr.includes(gotArtist)){
         gotArtist[0] = "CM or Station Id";
-        myList[0].artwork = "../assets/cd-case.svg";
+        myList[lena].artwork = "../assets/cd-case.svg";
     }
     var gotArtwork = myList[lena].artwork;
-    if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) || (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3] || gotArtwork === awfulArt[4]){
+    if(awfulArt.includes(gotArtwork)){
         gotArtwork = "../assets/cd-case.svg";
         gotArtist = "Sorry, artwork not found in DB";
     }
+    /*
+    if(gotArtist[0] === "Radio Online" || gotArtist[0] === "LA CASCADA"){}
+    if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) || (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3] || gotArtwork === awfulArt[4]){}*/
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg");
     divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
@@ -282,7 +285,7 @@ async function display_data(){
     //document.body.appendChild(myDiv);
     parentDiv.appendChild(myDiv);
 
-    // I wonder if it's necessary to display currSong a 3rd time
+    // I wonder if it's necessary to display currSong a 2nd time
     const now_song = document.getElementById("now_song");
     //now_song.innerHTML = "&emsp;"+ gotData.song;
     now_song.innerHTML = " "+ h2Song[0].trim() + "<br/> "+ h2Song[1].trim();
