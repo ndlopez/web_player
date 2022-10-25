@@ -222,21 +222,22 @@ span{
   margin-top: -9px;
   margin-left: 25px;
 }*/
-/*.contain img border: 1px solid #bed2e0;float: right;
+/*//.contain img border: 1px solid #bed2e0;float: right;
   border-radius: 50%;4px;*/
-/*Form here: new artwork design */
+/*From here: https://codepen.io/joshbader/pen/GqXbVZ
+new artwork design */
 .contain{
   position: relative;
   left: 52%;
   top: 30%;
   width:15em;
   height: 15em;
-  margin-bottom: -13%;
+  border-radius: 50%;
   overflow: hidden;
   transform: translate(-50%,-25%);
-  background-color: #111;
-  border:1px solid #111;
-  border-radius: 50%;
+  margin-bottom: 50px;
+  /*background-color: #111;
+  border:1px solid #111;*/
   box-shadow:
     0 0.0625em 0.1875em rgba(0,0,0,0.5),
     0 0 0.125em 0.3125em #ddd,
@@ -303,42 +304,19 @@ span{
   width: 100%;
   height: 100%;
   transform: translate(-50%,-50%);
-  background-image:     linear-gradient(
-    -45deg,
-    rgba(255,255,255,0) 30%,
-    rgba(255,255,255,0.125),
-    rgba(255,255,255,0) 70%
-  ),
-  linear-gradient(
-    -48deg,
-    rgba(255,255,255,0) 45%,
-    rgba(255,255,255,0.075),
-    rgba(255,255,255,0) 55%
-  ),
-  linear-gradient(
-    -42deg,
-    rgba(255,255,255,0) 45%,
-    rgba(255,255,255,0.075),
-    rgba(255,255,255,0) 55%
-  ),
-  radial-gradient(
-    circle at top left,
-    rgba(0,0,0,1) 20%,
-    rgba(0,0,0,0) 80%
-  ),
-  radial-gradient(
-    circle at bottom right,
-    rgba(0,0,0,1) 20%,
-    rgba(0,0,0,0) 80%
-  );
+  background-image: linear-gradient(-45deg,rgba(255,255,255,0) 30%, rgba(255,255,255,0.125),rgba(255,255,255,0) 70%),
+  linear-gradient(-48deg,rgba(255,255,255,0) 45%,rgba(255,255,255,0.075),rgba(255,255,255,0) 55%),
+  linear-gradient(-42deg,rgba(255,255,255,0) 45%,rgba(255,255,255,0.075),rgba(255,255,255,0) 55%),
+  radial-gradient(circle at top left, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%),
+  radial-gradient(circle at bottom right,rgba(0,0,0,1) 20%,rgba(0,0,0,0) 80%);
 }
 .cover, .cover div{
   position: absolute;
   z-index: 1;
   top: 50%;
   left: 50%;
-  width: 6em;
-  height: 6em;
+  width: 8em;
+  height: 8em;
   overflow: hidden;
   transform-origin: 0 0;
   transform: rotate(0) translate(-50%,-50%);
