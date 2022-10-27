@@ -147,18 +147,12 @@ span{
   width: 33%;/*33.33%*/
 }
 .half_col{
-  float: left;
   width: 20%;
-  text-align: center;
+  display: grid;
+  place-items: center;
 }
-.col_40{
-  float: left;
-  width: 40%;
-}
-.col_20{
-  float: left;
-  width: 20%;
-}
+.col_40{width: 40%;}
+.col_20{width: 20%;}
 /*img{filter: opacity(30%);}*/
 .colArtist{float:left;width:65%;padding:10px 20px;}
 .colImg{float:left;width:20%;height:75px;padding:5px;}
@@ -237,7 +231,7 @@ span{
 }
 /*//.contain img border: 1px solid #bed2e0;float: right;
   border-radius: 50%;4px;*/
-
+.float_left{float: left;}
 #playList{
   width: 50%;
   float: left;
@@ -248,7 +242,6 @@ span{
 #i-play{
   position: fixed;
   bottom: 30px;
-  left:50vw;
 }
 #timerr{font-size: 1rem !important;padding-top: 30px;}
 #playBtn{height: 90px;}

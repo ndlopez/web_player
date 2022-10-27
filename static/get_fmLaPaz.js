@@ -264,7 +264,7 @@ async function display_data(){
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
     //var gina = hh + ":" + mm + ":" + ss;
-    const h2Time = "<h2 class='lighter'><small>"+ gina +"</small></h2>"; 
+    const h2Time = "<h2 class='lighter'><small>&#x231A; "+ gina +"</small></h2>"; 
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
