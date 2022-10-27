@@ -182,7 +182,7 @@ setInterval(async function makePlayList(){
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","row");
     var divText = document.createElement("div");
-    divText.setAttribute("class","colArtist");
+    divText.setAttribute("class","colArtist float_left");
     //last prev index of myList array, last will be -1
     var lena = Object.keys(myList)[Object.keys(myList).length - 2];
     var gotArtist = myList[lena].song.split("-");
@@ -199,14 +199,14 @@ setInterval(async function makePlayList(){
     if(gotArtist[0] === "Radio Online" || gotArtist[0] === "LA CASCADA"){}
     if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) || (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3] || gotArtwork === awfulArt[4]){}*/
     var divColImg = document.createElement("div");
-    divColImg.setAttribute("class","colImg");
+    divColImg.setAttribute("class","colImg float_left");
     divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
     divColImg.style.backgroundSize = "75px";
     divColImg.style.backgroundRepeat = "no-repeat";
     divText.innerHTML = "<span>" + gotArtist[0] + "</span><span>" + gotArtist[1] +"</span>";
 
     var divTime = document.createElement("div");
-    divTime.setAttribute("class","colTime");
+    divTime.setAttribute("class","colTime float_left");
     divTime.innerHTML = "<span>" + myList[lena].time + "</span>";
     
     mainDiv.appendChild(divColImg);
@@ -270,10 +270,10 @@ async function display_data(){
     const h2Song = gotData.song.split("-");
     const divTitle = "<div id='now_text' class='bottomText'>" + "<h2 class='headLabel'>"+ h2Song[0].trim() +
     "</h2><h2><small>" + h2Song[1].trim() + 
-    "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3'>"+
+    "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3 float_left'>"+
     "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
-    " kbps</h3></div><div class='col3'><h3 class='lighter'> Listeners</h3><h3>"+ 
-    gotData.listen + "</h3></div><div class='col3'><h3 class='lighter'>More info at</h3>" + 
+    " kbps</h3></div><div class='col3 float_left'><h3 class='lighter'> Listeners</h3><h3>"+ 
+    gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info at</h3>" + 
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+"</h3></div></div></div>";
 
