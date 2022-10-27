@@ -144,7 +144,20 @@ span{
 }
 .col3{
   float: left;
-  width: 32%;/*33.33%*/
+  width: 33%;/*33.33%*/
+}
+.half_col{
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+.col_40{
+  float: left;
+  width: 40%;
+}
+.col_20{
+  float: left;
+  width: 20%;
 }
 /*img{filter: opacity(30%);}*/
 .colArtist{float:left;width:65%;padding:10px 20px;}
