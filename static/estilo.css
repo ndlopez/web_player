@@ -109,13 +109,13 @@ ul, li{margin: 0px;padding: 5px;}
   animation: none !important;
 }
 .equalizer span:nth-child(5) {
-  animation: load 1s 0.6s infinite linear;
+  animation: load 1s 0.5s infinite linear;
 }
 .no-audio span:nth-child(5){
   animation: none !important;
 }
 .equalizer span:nth-child(6) {
-  animation: load 1s 1s infinite linear;
+  animation: load 1s 1.2s infinite linear;
 }
 .no-audio span:nth-child(6){
   animation: none !important;
