@@ -248,6 +248,7 @@ span{
 #i-play{
   position: fixed;
   bottom: 30px;
+  left:50vw;
 }
 #timerr{font-size: 1rem !important;padding-top: 30px;}
 #playBtn{height: 90px;}
@@ -315,6 +316,9 @@ span{
     animation: none;
     display: none;
   }
+  .no_mobil{display: none;}
+  .col_40{width: 80%;}
+  .col_20{width: 20%;}
   /*ul li:nth-child(4){text-align: center;}*/
 }
 /*@media (prefers-color-scheme: light){
