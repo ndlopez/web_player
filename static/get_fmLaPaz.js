@@ -293,10 +293,13 @@ async function display_data(){
     // Saving data into array
     var noSec = gina;//time HH:MM:SS
     noSec = (noSec.length < 8)? noSec.substring(0,4):noSec.substring(0,5);
+    /*if(upCount === 0){
+        tmpData = {"time":noSec,"song":gotData.song,"artwork":gotData.artwork};}
+    else{
+        if(songs[upCount] !== songs[upCount-1]){}}*/
     timeStamp.push(noSec);
     songs.push(gotData.song);
     artImg.push(gotData.artwork);
-    
     tmpData = {"time": timeStamp[upCount], "song": songs[upCount], "artwork": artImg[upCount]};
     myList.push(tmpData);
     //console.log(upCount,myList);
