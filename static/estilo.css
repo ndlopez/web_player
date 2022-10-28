@@ -142,6 +142,7 @@ span{
 .row{
   border-bottom: 1px #bed2e0 dashed;
 }
+.padding_10{padding: 10px;}
 .col3{width: 33%;/*33.33%*/}
 .half_col{
   width: 20%;
