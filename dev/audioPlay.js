@@ -1,5 +1,6 @@
 // check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
 // https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
+// add this to stations: https://113fm-atunwadigital.streamguys1.com/1001
 const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
 var audioConnect; //= new Audio();
 //Beethoven - moonlight
