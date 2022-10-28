@@ -66,12 +66,13 @@ const titleErr = ["Radio Online  -  LAPAZ.FM","","PROMO PUBLICIDAD LPFM - ",
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
-"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059","https://stream.consultoradas.com/cp/musiclibrary/nocover.png","https://i.scdn.co/image/ab67616d0000b273946c1699a48b214e45f765d6"];
-const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
-
-var origTitle = document.title; //prev Title
+"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059",
+"https://stream.consultoradas.com/cp/musiclibrary/nocover.png",
+"https://i.scdn.co/image/ab67616d0000b273946c1699a48b214e45f765d6"];
+//const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
+//var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
-let upTime = 200000;//3600000;~on Sat/Sun 10~13// about 3min20s
+let upTime = 220000;//3600000;~on Sat/Sun 10~13// about 3min20s
 const errLapse = 20000; //10s
 
 let songs = [];
@@ -85,11 +86,11 @@ display_data();
 
 // Load onMobile only
 if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
-    console.log("User is using a Mobile device");
+    //console.log("User is using a Mobile device");
     window.onscroll = function() {scrollFunction();};
 }else{console.log("User is on desktop Mode");}
 
-var pxx=400; //artwork size
+const pxx=400; //not artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
 function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
@@ -110,15 +111,6 @@ function topFunction() {
 
 function reloadMe(){
     /* Reload the Playing artwork */
-    /*returns buildList is not defined, probably because is 
-    inside setInterval function, by setting it outside might work.
-    const play_list = document.getElementById("playList");
-    if(play_list === undefined){
-        display_data();
-    }else{
-        buildList();
-    }*/
-    // in the mean time call:
     window.scroll({bottom:0,left:0,behavior:'smooth'});
     //scrollTo(0, document.body.scrollHeight);  
     display_data();
@@ -218,7 +210,8 @@ setInterval(async function makePlayList(){
 },upTime);
 
 async function display_data(){
-    /* Display current song playing on FM La Paz */
+    /* Display current song playing on FM La Paz 
+    Builds array to store recently played*/
     var gotData = await get_url(thisURL);
     const parentDiv = document.getElementById("music");
     //await sleepy(5000);
