@@ -298,7 +298,7 @@ async function display_data(){
     //console.log(upCount,myList);
     export_to_file(myList);
     var dLink = document.getElementById("downLink");
-    dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
+    dLink.innerHTML = "<img src='../assets/down_cloud.svg' width='32'/>";
     upCount++;
 }
 
