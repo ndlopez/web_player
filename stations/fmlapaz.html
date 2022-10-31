@@ -22,6 +22,14 @@
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <div class="col_40 float_left">
         <div class="half_col float_left">
+          <a title="reload id3-tag" onclick="reloadMe()"><img src="../assets/reload-svgrepo.svg" width="32"/><!--reload--></a>
+        </div>
+        <div class="half_col float_left">
+          <a href="" title="Wanna listen Alt-Rock?"><svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+            <!--path d="M9 25 L25 16 9 7Z M25 25 L25 7"/-->
+            <path d="M12 30 L12 10 30 20Z M31 30 L31 10"/></svg></a>
+        </div>
+        <div class="half_col float_left">
           <a id="playBtn" title="start stream">
             <svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
             <circle class="paused" cx="30" cy="30" r="26"/>
@@ -29,17 +37,14 @@
             <span id="timerr">00:00</span></a>
         </div>
         <div class="half_col float_left">
-          <a title="stop stream">
-            <svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#cc274c" stroke="#cc274c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>
-            <!--stop--></a>
-        </div>
-        <div class="half_col float_left">
-          <a title="reload id3-tag" onclick="reloadMe()"><img src="../assets/reload-svgrepo.svg" width="32"/><!--reload--></a>
-        </div>
-        <div class="half_col float_left">
           <a href="thirdRock.html" title="Wanna listen Rock?"><svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
             <!--path d="M9 25 L25 16 9 7Z M25 25 L25 7"/-->
             <path d="M12 30 L12 10 30 20Z M31 30 L31 10"/></svg></a>
+        </div>
+        <div class="half_col float_left">
+          <a title="stop stream">
+            <svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#cc274c" stroke="#cc274c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>
+            <!--stop--></a>
         </div>
         <div class="half_col float_left">
           <label for="vol_input" onclick="volume_mute(0)">
