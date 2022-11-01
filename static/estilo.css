@@ -145,10 +145,11 @@ span{
 .padding_10{padding: 10px;}
 .col3{width: 33%;/*33.33%*/}
 .half_col{
-  width: 16%;
+  width: 20%;
   display: grid;
   place-items: center;
 }
+.col_50{width: 50%;}
 .col_40{width: 40%;}
 .col_20{width: 20%;}
 /*img{filter: opacity(30%);}*/
