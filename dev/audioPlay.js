@@ -81,14 +81,14 @@ function volume_mute(vol_stat){
             // console.log("volume on");
             // volInput.classList.remove("volume-none");
             // volInput.classList.add("volume-vertical");
-            volIcon.src = "../assets/volume-repo-off.svg";
+            volIcon.src = "static/volume-repo-off.svg";
             audioConnect.volume = "0";
             volInput.onchange = "0";
             volInput.value = "0";
         }else{
             // volInput.classList.remove("volume-vertical");
             // volInput.classList.add("volume-none");
-            volIcon.src = "../assets/volume-svgrepo.svg";
+            volIcon.src = "static/volume-svgrepo.svg";
             volInput.onchange = "0.8";
             volInput.value = "80";
             if(audioConnect !== null){
