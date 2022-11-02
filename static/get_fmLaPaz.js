@@ -257,7 +257,9 @@ async function display_data(){
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
     //var gina = hh + ":" + mm + ":" + ss;
-    const h2Time = "<h2 class='lighter'><small>&#x231A; "+ gina +"</small></h2>"; 
+    const h2Time = "<h2 class='lighter col_50 float_left'><small>&#x231A; "+ gina +
+    "</small></h2><a title='reload id3-tag' onclick='reloadMe()'>" + 
+    "<img src='../assets/reload-svgrepo.svg' width='32'/></a>"; 
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
@@ -272,9 +274,8 @@ async function display_data(){
 
     const divImg = "<div class='contain' id='album_art'><div class='cover'><div>" + img_art +
     "</div></div></div>" + divTitle;
-    //console.log("doc",divElm);
-    const catInfo = divImg;
-    myDiv.innerHTML = /*hTitle +*/ catInfo;
+    //console.log("doc",divElm);//const catInfo = divImg;
+    myDiv.innerHTML = divImg; /*hTitle +catInfo;*/ 
     //document.body.appendChild(myDiv);
     parentDiv.appendChild(myDiv);
 
