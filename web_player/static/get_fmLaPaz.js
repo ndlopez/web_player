@@ -36,6 +36,7 @@ const weekly_9 = [
     {name:"DiscoStu",day:0,time:11,duration:2},
     {name:"DiscoStu",day:0,time:12,duration:1},
 ];
+
 const weekly_4 = [
     {name:"PopArt",day:1,time:3,duration:1},
     {name:"PopArt",day:2,time:3,duration:1},
@@ -180,11 +181,11 @@ setInterval(async function makePlayList(){
     var gotArtist = myList[lena].song.split("-");
     if(titleErr.includes(gotArtist)){
         gotArtist[0] = "CM or Station Id";
-        myList[lena].artwork = "../assets/cd-case.svg";
+        myList[lena].artwork = "assets/cd-case.svg";
     }
     var gotArtwork = myList[lena].artwork;
     if(awfulArt.includes(gotArtwork)){
-        gotArtwork = "../assets/cd-case.svg";
+        gotArtwork = "assets/cd-case.svg";
         gotArtist = "Sorry, artwork not found in DB";
     }
     /*
@@ -259,7 +260,7 @@ async function display_data(){
     //var gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='lighter col_50 float_left'><small>&#x231A; "+ gina +
     "</small></h2><a title='reload id3-tag' onclick='reloadMe()'>" + 
-    "<img src='../assets/reload-svgrepo.svg' width='32'/></a>"; 
+    "<img src='assets/reload-svgrepo.svg' width='32'/></a>"; 
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
@@ -299,7 +300,7 @@ async function display_data(){
     //console.log(upCount,myList);
     export_to_file(myList);
     var dLink = document.getElementById("downLink");
-    dLink.innerHTML = "<img src='../assets/down_cloud.svg' width='32'/>";
+    dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
     upCount++;
 }
 

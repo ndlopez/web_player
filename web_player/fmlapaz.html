@@ -7,8 +7,8 @@
     <meta name="author" content="DLopez (github.com/ndlopez)">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#2e4054">
-    <script src="../static/get_fmLaPaz.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/estilo.css">
+    <script src="static/get_fmLaPaz.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/estilo.css">
   </head>
   <body>
     <button id="topBtn" type="button" onclick="topFunction()" style="display: none;"></button>
@@ -17,7 +17,7 @@
     <div id="music">
       <div id="playList" class="float_left"><h2>&ensp;Recently listened&emsp;&emsp;
         <a id='downLink'></a></h2></div>
-      <div id="nowPlaying" class="float_left"><img src="../assets/loading.svg" width="300"/></div>
+      <div id="nowPlaying" class="float_left"><img src="assets/loading.svg" width="300"/></div>
     </div>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <div class="col_40 float_left">
@@ -26,7 +26,7 @@
         </div-->
         <div class="half_col float_left">
           <label for="vol_input" onclick="volume_mute(0)">
-            <img id="vol_icon" src="../static/volume-svgrepo.svg" width="32"/></label>
+            <img id="vol_icon" src="assets/volume-svgrepo.svg" width="32"/></label>
             <input id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
         </div>
         <div class="half_col float_left">
@@ -65,6 +65,6 @@
       <!--li><a href="#"><button id="record">record</button></a></li-->
     </div>
     <!--audio id="recordedAudio">to play recorded audio</audio-->
-    <script src="../static/audioPlay.js"></script>
+    <script src="static/audioPlay.js"></script>
   </body>
 </html>

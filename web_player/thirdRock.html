@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!--script src="get_thirdRock.js"></script-->
-    <link rel="stylesheet" type="text/css" href="../static/estilo.css">
+    <link rel="stylesheet" type="text/css" href="static/estilo.css">
   </head>
   <body>
     <div id="nowPlaying"></div>
@@ -15,7 +15,7 @@
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <!--span id="now_song">You don't get me hight anymore<br/>Phantogram</span-->
       <ul>
-        <li><a title="reload id3-tag" onclick="reloadMe()"><img src="../assets/reload-svgrepo.svg" width="32"/><!--reload--></a></li>
+        <li><a title="reload id3-tag" onclick="reloadMe()"><img src="assets/reload-svgrepo.svg" width="32"/><!--reload--></a></li>
         <li><a title="stop stream">
           <svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#cc274c" stroke="#cc274c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>
           <!--stop--></a></li>
@@ -28,7 +28,7 @@
           <path d="M9 25 L25 16 9 7Z M25 25 L25 7"/></svg></a>
         </li>
         <li><a><div><label for="vol_input" onclick="volume_mute(0)">
-          <img id="vol_icon" src="../assets/volume-svgrepo.svg" width="32"/></label>
+          <img id="vol_icon" src="assets/volume-svgrepo.svg" width="32"/></label>
           <input id="vol_input" class="volume-vertical" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>
           <!--volume--></a>
         </li>
@@ -39,6 +39,6 @@
         </li>
       </ul>
     </div>
-    <script src="../dev/audioPlay.js"></script>
+    <script src="dev/audioPlay.js"></script>
   </body>
 </html>
