@@ -20,7 +20,8 @@
       <div id="nowPlaying" class="float_left"><img src="assets/loading.svg" width="300"/></div>
     </div>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
-      <div class="col_40 float_left">
+      <span id="timerr">&emsp;00:00</span><span class="align-right no-padding sp-margin">LIVE&emsp;</span>
+      <div class="col_50 float_left">
         <!--div class="half_col float_left">
           <a title="reload id3-tag" onclick="reloadMe()"><img src="../assets/reload-svgrepo.svg" width="32"/><-reload-></a>
         </div-->
@@ -39,7 +40,7 @@
             <svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
             <circle class="paused" cx="30" cy="30" r="26"/>
             <path class="paused" d="M23 40 L23 20 43 30Z"/></svg>
-            <span id="timerr">00:00</span></a>
+            <!--span id="timerr">00:00</span--></a>
         </div>
         <div class="half_col float_left">
           <a href="thirdRock.html" title="Wanna listen Rock?"><svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
