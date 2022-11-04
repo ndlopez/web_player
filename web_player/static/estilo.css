@@ -243,17 +243,17 @@ span{
 #i-play{
   /*position: fixed;
   bottom: 30px;*/
-  margin-top: -12px;
+  margin-top: -18px;
 }/*#playBtn{height: 90px;}*/
 #timerr{
   font-size: 1rem !important;
   position: fixed;
-  bottom: 50px;
+  bottom: 55px;
 }
 .no-padding{padding: 0;}
 .sp-margin{
-  margin-top: -23px;
-  margin-bottom: 10px;
+  margin-top: -40px;
+  padding-bottom: 12px;
 }
 
 .paused path{
@@ -296,11 +296,12 @@ span{
   }
   #downLink img{width: 32px;}
   .bottomText{
-    padding: 5px 0px 5px 13px;  
+    padding: 5px 5px 20px 13px;  
     margin-left: -20px;
     width: 100vw;
     text-align: left;
     height: auto;
+    background-image: linear-gradient(#2e4054,#6a7285);
   }
   .bottomText #more_info{display: none;}
   /*.bottomText h2{line-height: normal;}*/

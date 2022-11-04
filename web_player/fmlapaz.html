@@ -20,7 +20,6 @@
       <div id="nowPlaying" class="float_left"><img src="assets/loading.svg" width="300"/></div>
     </div>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
-      <span id="timerr">&emsp;00:00</span><span class="align-right no-padding sp-margin">LIVE&emsp;</span>
       <div class="col_50 float_left">
         <!--div class="half_col float_left">
           <a title="reload id3-tag" onclick="reloadMe()"><img src="../assets/reload-svgrepo.svg" width="32"/><-reload-></a>
@@ -64,6 +63,8 @@
         <!--a target="_blank" href="/" title="about this"><--span id="timerr">00:00</span-></a-->
       </div>
       <!--li><a href="#"><button id="record">record</button></a></li-->
+      <div style="background-color: #6a7285;"><span id="timerr">00:00</span><span class="align-right sp-margin">LIVE&emsp;</span>
+      </div>
     </div>
     <!--audio id="recordedAudio">to play recorded audio</audio-->
     <script src="static/audioPlay.js"></script>
