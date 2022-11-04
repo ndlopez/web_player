@@ -14,16 +14,21 @@
     </div>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <!--span id="now_song">You don't get me hight anymore<br/>Phantogram</span-->
+      <div style="background-color: #6a7285;"><span id="timerr">00:00</span><span class="align-right sp-margin">LIVE&emsp;</span>
+      </div>
       <ul>
-        <li><a title="reload id3-tag" onclick="reloadMe()"><img src="assets/reload-svgrepo.svg" width="32"/><!--reload--></a></li>
         <li><a title="stop stream">
           <svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#cc274c" stroke="#cc274c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>
           <!--stop--></a></li>
+        <li><a title="wanna listen Alt-Rock?">
+          <svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+            <path d="M30 30 L30 10 12 20Z M11 30 L11 10"/></svg>
+        </a></li>
         <li><a id="playBtn" title="start stream">
           <svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">
           <circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>
           <path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg>
-          <span id="timerr">00:00</span></a></li>
+          <!--span id="timerr">00:00</span--></a></li>
         <li><a href="fmlapaz.html" title="Go to FM LaPaz"><svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
           <path d="M9 25 L25 16 9 7Z M25 25 L25 7"/></svg></a>
         </li>
@@ -38,6 +43,7 @@
           </div></div></a>
         </li>
       </ul>
+      
     </div>
     <script src="dev/audioPlay.js"></script>
   </body>
