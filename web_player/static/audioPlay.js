@@ -1,4 +1,6 @@
-//check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
+// check this 
+// https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
+// https://alvarotrigo.com/blog/hamburger-menu-css/
 const stream_url = "https://stream.consultoradas.com/8042/stream";
 var audioConnect; //= new Audio();
 //Beethoven - moonlight
