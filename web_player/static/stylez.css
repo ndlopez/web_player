@@ -60,6 +60,7 @@ ul li a{
 .col_50{width: 50%;}
 .col3{width: 33%;/*33.33%*/}
 .float_left{float: left;}
+.no-desktop{display: none;}
 @media (max-width:500px) {
     .col_50{width:100%;text-align: center;}
     #nav-menu{display: block;}
