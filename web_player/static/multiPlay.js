@@ -9,8 +9,9 @@ const stream_url = ["https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
 "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347"];
 const id3_181fm = "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052";
 var audioConnect; //= new Audio();
-//Beethoven - moonlight
-//Cigarettes After Sex - Apocalypse
+// Beethoven - moonlight
+// Cigarettes After Sex - Apocalypse
+// lovelytheband - these are my friends
 var tina_timer;
 
 //window.addEventListener("load",startPlay);

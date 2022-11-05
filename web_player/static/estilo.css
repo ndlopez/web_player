@@ -157,7 +157,7 @@ span{
   display: grid;
   place-items: center;
 }
-.col_50{width: 50%;}
+.col_50, .col2{width: 50%;}
 .col_40{width: 40%;}
 .col_20{width: 10%;}
 /*img{filter: opacity(30%);}*/
@@ -340,6 +340,7 @@ span{
   .no_mobil{display: none;}
   .col_50{width: 80%;}
   .col_20{width: 20%;}
+  .col2{width: 100%;}
   /*ul li:nth-child(4){text-align: center;}*/
 }
 /*@media (prefers-color-scheme: light){
