@@ -35,6 +35,10 @@ function init_player(stream_idx){
     }
 }
 
+function reloadMe(){
+    display_data();
+}
+
 function startPlay(idx){
     //playStatus = true;
     const svgPlay = document.getElementById("i-play");
@@ -57,7 +61,6 @@ function startPlay(idx){
     function playPause(){
         if(audioConnect.paused){
             audioConnect.src = stream_url[idx];//stream_url
-            console.log("playing",stream_url[idx]);
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
             //console.log("this value",audioConnect.startTime,audioConnect.networkState);
