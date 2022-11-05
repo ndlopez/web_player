@@ -2,22 +2,25 @@
 // https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
 // add this to stations: https://113fm-atunwadigital.streamguys1.com/1001
 const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
+const streams_url = ["https://rfcmedia3.streamguys1.com/thirdrock.mp3",
+"https://113fm-atunwadigital.streamguys1.com/1001",
+"https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347"];
+const id3_181fm = "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052";
 var audioConnect; //= new Audio();
 //Beethoven - moonlight
 //Cigarettes After Sex - Apocalypse
 var tina_timer;
-
+var stream_idx;
 window.addEventListener("load",startPlay);
 
-function startPlay(){
-    /*bug: stop only pauses stream */
+function startPlay(stream_idx){
+    console.log("gotStream",stream_idx);
     //playStatus = true;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timerr");
-    /*const song_artist = document.getElementById("currSong");
-    console.log(song_artist.innerText);// returns null object*/
+    
     var mmss = "";
 
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
@@ -32,7 +35,7 @@ function startPlay(){
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
-            audioConnect.src = stream_url;
+            audioConnect.src = streams_url[stream_idx];//stream_url;
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
             //console.log("this value",audioConnect.startTime,audioConnect.networkState);
