@@ -37,9 +37,9 @@ function init_player(stream_idx){
     }
 }
 
-function reloadMe(){
+/*function reloadMe(){
     display_data();
-}
+}*/
 
 function startPlay(idx){
     //playStatus = true;
@@ -64,8 +64,6 @@ function startPlay(idx){
             audioConnect.src = stream_url[idx];//stream_url
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
-            //console.log("this value",audioConnect.startTime,audioConnect.networkState);
-            //console.log(audioConnect.loadstart,audioConnect.stalled,audioConnect.playing);
             mmss = getTimer.innerText; // mm:ss
             play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5))); //counter starts or restarts
             svgPlay.classList.remove("paused");
@@ -154,7 +152,7 @@ function stop_timer(){
 async function display_data(){
     var gotData = await get_id3();
     const now_title = document.getElementById("stat_name");
-    now_title.innerHTML = "<h3>" + gotData.song + "</h3>";
+    now_title.innerHTML = "<h3>Now: " + gotData.song + "</h3>";
 }
 async function get_id3(){
     const response = await fetch(id3_181fm);

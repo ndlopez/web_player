@@ -269,7 +269,7 @@ async function display_data(){
     "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3 float_left'>"+
     "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
     " kbps</h3></div><div class='col3 float_left'><h3 class='lighter'> Listeners</h3><h3>"+ 
-    gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info at</h3>" + 
+    gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info</h3>" + 
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+"</h3></div></div></div>";
 

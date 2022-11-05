@@ -251,20 +251,15 @@ span{
 #i-play{
   /*position: fixed;
   bottom: 30px;*/
-  margin-top: -18px;
-}/*#playBtn{height: 90px;}*/
-/*#timerr{
-  position: fixed;
-  bottom: 60px;
-  padding-left: 15px;
-}*/
+  margin-top: -12px;
+}
+/*#timerr{position: fixed;bottom: 60px;padding-left: 15px;}*/
 #timer{font-size: 1rem !important;}
 .no-padding{padding: 0;}
 .sp-margin{
   margin-top: -40px;
   padding-bottom: 12px;
 }
-
 .paused path{
   fill: var(--smoke);
   stroke: var(--smoke);
@@ -323,7 +318,7 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{
-    padding-top: 25px;
+    padding-top: 55px;
     width: 100%;
     overflow: inherit;
     height: auto;
