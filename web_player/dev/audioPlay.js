@@ -15,14 +15,19 @@ var tina_timer;
 //window.addEventListener("load",startPlay);
 function init_player(stream_idx){
     console.log("gotStream",stream_idx);
+    document.title = stream_name[stream_idx];
+
     const span_name = document.getElementById("stat_name");
-    span_name.innerText = stream_name[stream_idx];
+    span_name.innerHTML = "<h3>Now Playing: "+stream_name[stream_idx]+"</h3>";
     if(stream_idx === 0){
         startPlay(0);
     }else{
         if(stream_idx === 1){
             startPlay(1);
-        }else{startPlay(2);}
+        }else{
+            startPlay(2);
+            display_data();
+        }
     }
 }
 
@@ -140,4 +145,20 @@ function stop_timer(){
     /* pauses time */
     clearInterval(tina_timer);
     document.getElementById("timer").innerText = "00:00";
+}
+
+async function display_data(){
+    var gotData = await get_id3();
+    const now_title = document.getElementById("stat_name");
+    now_title.innerHTML = "<h3>" + gotData.song + "</h3>";
+}
+async function get_id3(){
+    const response = await fetch(id3_181fm);
+    const data = await response.json();
+    const song = data["song"];
+    // var artwork = data[keys[1]];
+    const bit = data["bitrate"];
+    // const listen = data[keys[3]];
+
+    return {song,bit};
 }

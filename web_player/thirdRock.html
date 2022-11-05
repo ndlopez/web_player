@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Now on ThirdRock Radio</title>
+    <title>Favorite Stations</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!--script src="get_thirdRock.js"></script-->
     <link rel="stylesheet" type="text/css" href="static/estilo.css">
   </head>
   <body>
+    <header id="stat_name" style="background-color: #cc274c;" class="padding_10">Select an station</header>
     <main>
       <div class="col_50 float_left padding_10">
-        <h2>Third Rock radio</h2>
+        <h2>Third Rock radio 
+          <a onclick="init_player(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" stroke="#2e4054" fill="#bed2e0">
+          <path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg></a></h2>
+
         <p>NASA's Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with the National Aeronautics and Space Administration, Washington DC.</p>
         <div>
           <div class="col3 float_left"><h4>Genre</h4><p>Alternative, Indie Rock</p></div>
           <div class="col3 float_left"><h4>Language</h4><p>English</p></div>
           <div class="col3 float_left"><h4>Bitrate</h4><p>196kbps</p></div>
         </div>
-        <a onclick="init_player(0)"><img src="https://cdn-profiles.tunein.com/s151799/images/logoq.jpg?t=636355620405200000"/></a>
+        <img src="https://cdn-profiles.tunein.com/s151799/images/logoq.jpg?t=636355620405200000"/>
       </div>
       <div class="col_50 float_left padding_10">
-        <h2>113.fm Alternative Rock</h2>
+        <h2>113.fm Alt-X
+          <a onclick="init_player(1)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" stroke="#2e4054" fill="#bed2e0">
+            <path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg></a>
+        </h2>
         <p>The biggest Alternative hits from the '90s.  From guitar riffs to mellow beats, we've got you covered.</p>
         <div>
           <div class="col3 float_left"><h4>Genre</h4><p>Alternative Rock</p></div>
           <div class="col3 float_left"><h4>Language</h4><p>English</p></div>
           <div class="col3 float_left"><h4>Bitrate</h4><p>196kbps</p></div>
         </div>
-        <a onclick="init_player(1)"><img src="https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" width=256/></a>
+        <img src="https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" width="128"/>
       </div>
       <div class="col_50 float_left padding_10">
-        <h2>Awesome 80's</h2>
+        <h2>Awesome 80's
+          <a onclick="init_player(2)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" stroke="#2e4054" fill="#bed2e0">
+            <path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg></a>
+        </h2>
         <p>181.FM Internet Radio - The Best Choice for Radio. Your Lifestyle, Your Music.</p>
         <div>
           <div class="col3 float_left"><h4>Genre</h4><p>1980's best hits</p></div>
           <div class="col3 float_left"><h4>Language</h4><p>English</p></div>
-          <div class="col3 float_left"><h4>Bitrate</h4><p>192kbps</p></div>
+          <div class="col3 float_left"><h4>Bitrate</h4><p>128kbps</p></div>
         </div>
-        <a onclick="init_player(2)"><img src="https://player.181fm.com/configs/images/181fm.png"/></a>
+        <img src="https://player.181fm.com/configs/images/181fm.png"/>
       </div>
     </main>   
 
     <div id="station_info" style="background-color: #6a7285;">
       <span id="timer" class="col3 float_left">00:00</span>
-      <span id="stat_name"class="col3 float_left">Now Playing</span>
+      <span class="col3 float_left"></span>
       <span class="col3 float_left align-right">LIVE&emsp;</span>
     </div>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
