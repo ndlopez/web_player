@@ -44,7 +44,7 @@ function init_player(stream_idx){
 function startPlay(idx){
     //playStatus = true;
     const svgPlay = document.getElementById("i-play");
-    const svgStop = document.getElementById("i-stop");
+    //const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timer");
     
@@ -52,11 +52,12 @@ function startPlay(idx){
 
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
     const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
+    const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
     const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
     svgPlay.addEventListener("click",playPause);
-    svgStop.addEventListener("click",stopPlay);
+    //svgStop.addEventListener("click",stopPlay);
     audioConnect = new Audio();
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
@@ -68,30 +69,32 @@ function startPlay(idx){
             play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5))); //counter starts or restarts
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
-            svgPlay.innerHTML = circleImg + pauseImg;
-            svgStop.style.stroke = "#bed2e0";
-            svgStop.style.fill = "#bed2e0";
+            svgPlay.innerHTML = circleImg + stopImg;
+            //svgStop.style.stroke = "#bed2e0";
+            //svgStop.style.fill = "#bed2e0";
             gifImg.classList.remove("no-audio");
         }else{
             audioConnect.pause();
+            audioConnect.loop = false;
             gifImg.classList.add("no-audio");
+            svgPlay.classList.remove("play_on");
+            svgPlay.classList.add("paused");
             clearInterval(tina_timer);
             svgPlay.innerHTML = circleImg + playImg;
+            stop_timer();
         }
     }
     function stopPlay(){
         /* does not pause/stop stream */
         audioConnect.pause();
         audioConnect.loop = false;
-        audioConnect.load(stream_url[idx]);
-        
+        audioConnect.load(stream_url[idx]);    
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
         svgStop.style.stroke = "#cc274c";
         svgStop.style.fill = "#cc274c";
         gifImg.classList.add("no-audio");
-        
         stop_timer();
     }
 }
