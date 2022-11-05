@@ -2,6 +2,7 @@
 // https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
 // add this to stations: https://113fm-atunwadigital.streamguys1.com/1001
 // const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
+// alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
 const stream_name = ["Third Rock Radio","113.fm Alt-Rock","181.fm Awesome 80's"];
 const stream_url = ["https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
 "https://113fm-atunwadigital.streamguys1.com/1001",

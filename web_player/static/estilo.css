@@ -19,7 +19,7 @@ a{
 #topBtn{
   display: none;
   position: fixed;
-  bottom: 70px;
+  bottom: 100px;
   right:15px;
   z-index: 99;
   border: none;
@@ -254,7 +254,6 @@ span{
   margin-top: -18px;
 }/*#playBtn{height: 90px;}*/
 #timerr{
-  
   position: fixed;
   bottom: 60px;
   padding-left: 15px;
