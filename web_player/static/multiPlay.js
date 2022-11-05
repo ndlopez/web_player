@@ -68,18 +68,14 @@ function startPlay(idx){
             //console.log(audioConnect.loadstart,audioConnect.stalled,audioConnect.playing);
             mmss = getTimer.innerText; // mm:ss
             play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5))); //counter starts or restarts
-            //play_elapsed();
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
             svgPlay.innerHTML = circleImg + pauseImg;
             svgStop.style.stroke = "#bed2e0";
             svgStop.style.fill = "#bed2e0";
             gifImg.classList.remove("no-audio");
-            //change icon to pause btn
         }else{
             audioConnect.pause();
-            //resets interval but its possible to send back the 
-            //stopped time to interval again
             gifImg.classList.add("no-audio");
             clearInterval(tina_timer);
             svgPlay.innerHTML = circleImg + playImg;
@@ -89,7 +85,7 @@ function startPlay(idx){
         /* does not pause/stop stream */
         audioConnect.pause();
         audioConnect.loop = false;
-        //audioConnect.load(stream_url[idx]);
+        audioConnect.load(stream_url[idx]);
         
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
