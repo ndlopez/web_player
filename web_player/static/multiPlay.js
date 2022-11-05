@@ -53,10 +53,9 @@ function startPlay(idx){
     const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
     //gifImg.style.display = "block";
     //gifImg.style.background = "#2e4054";
-    audioConnect = new Audio();
     svgPlay.addEventListener("click",playPause);
     svgStop.addEventListener("click",stopPlay);
-
+    audioConnect = new Audio();
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
