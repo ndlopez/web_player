@@ -35,7 +35,16 @@ function startPlay(stream_idx){
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
-            audioConnect.src = streams_url[stream_idx];//stream_url;
+            if(stream_idx === 0){
+                audioConnect.src = streams_url[0];//stream_url
+                console.log("playing",streams_url[0]);
+            }else{
+                if(stream_idx === 1){
+                    audioConnect.src = streams_url[1];console.log("playing",streams_url[1]);
+                }else{
+                    audioConnect.src = streams_url[2];console.log("playing",streams_url[2]);
+                }
+            }
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
             //console.log("this value",audioConnect.startTime,audioConnect.networkState);
@@ -60,9 +69,16 @@ function startPlay(stream_idx){
         }
     }
     function stopPlay(){
-        /* pauses stream */
+        /* does not pause/stop stream */
+        audioConnect.pause();
         audioConnect.loop = false;
-        audioConnect.load(stream_url);
+        if(stream_idx === 0){
+            audioConnect.load(streams_url[0]);
+        }else{
+            if(stream_idx === 1){
+                audioConnect.load(streams_url[1]);
+            }else{audioConnect.load(streams_url[2]);}
+        }       
         
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
@@ -127,32 +143,3 @@ function stop_timer(){
     clearInterval(tina_timer);
     document.getElementById("timerr").innerText = "00:00";
 }
-
-/*
-function playControls(){
-    //await display_data();
-    const playDiv = document.createElement("div");
-    playDiv.setAttribute("id","player");
-    var texty = '<button onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg></button>';
-    texty += '<svg id="i-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M23 2 L23 30 M9 2 L9 30" /></svg>';
-    playDiv.innerHTML = texty;
-    return playDiv;
-}
-// Record audio from stream -> not easy task :(
-const recordBtn = document.getElementById("record");
-const recordedAudio = document.getElementById("recordedAudio");
-recordBtn.addEventListener('click',async()=>{
-    let stream = stream_url;
-    let rec = new MediaRecorder(stream);//stream is wrong type
-    rec.start();
-    let audioChunks = [];
-    rec.ondataavailable = e => {
-        audioChunks.push(e.data);
-    }
-    rec.onerror = (e)=>{alert(e.error);}
-    rec.onstop = (e)=>{
-        let blob = new Blob(audioChunks,{type:'audio/mp4'});
-        let url = URL.createObjectURL(blob);
-        recordedAudio.src = url;
-    }
-})*/
