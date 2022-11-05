@@ -281,6 +281,12 @@ span{
   fill: var(--light-sky);/*var(--wine);*/
   stroke: var(--light-sky);/*var(--wine);*/
 }
+#station_info{
+  background-color: var(--dark-smoke);
+  position: fixed;
+  bottom: 60px;
+  width: 100%;
+}
 @media (max-width:500px) {
   body{font-size: small;}
   #now_song{display: none;}

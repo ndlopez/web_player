@@ -1,8 +1,9 @@
 // check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
 // https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
 // add this to stations: https://113fm-atunwadigital.streamguys1.com/1001
-const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
-const streams_url = ["https://rfcmedia3.streamguys1.com/thirdrock.mp3",
+// const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
+const stream_name = ["Third Rock Radio","113.fm Alt-Rock","181.fm Awesome 80's"];
+const stream_url = ["https://rfcmedia3.streamguys1.com/thirdrock.mp3",
 "https://113fm-atunwadigital.streamguys1.com/1001",
 "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347"];
 const id3_181fm = "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052";
@@ -10,8 +11,8 @@ var audioConnect; //= new Audio();
 //Beethoven - moonlight
 //Cigarettes After Sex - Apocalypse
 var tina_timer;
-var stream_idx;
-window.addEventListener("load",startPlay);
+
+//window.addEventListener("load",startPlay);
 
 function startPlay(stream_idx){
     console.log("gotStream",stream_idx);
@@ -19,8 +20,9 @@ function startPlay(stream_idx){
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
-    const getTimer = document.getElementById("timerr");
-    
+    const getTimer = document.getElementById("timer");
+    const span_name = document.getElementById("stat_name");
+    span_name.innerHTML = stream_name[stream_idx];
     var mmss = "";
 
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
@@ -36,13 +38,13 @@ function startPlay(stream_idx){
     function playPause(){
         if(audioConnect.paused){
             if(stream_idx === 0){
-                audioConnect.src = streams_url[0];//stream_url
-                console.log("playing",streams_url[0]);
+                audioConnect.src = stream_url[0];//stream_url
+                console.log("playing",stream_url[0]);
             }else{
                 if(stream_idx === 1){
-                    audioConnect.src = streams_url[1];console.log("playing",streams_url[1]);
+                    audioConnect.src = stream_url[1];console.log("playing",stream_url[1]);
                 }else{
-                    audioConnect.src = streams_url[2];console.log("playing",streams_url[2]);
+                    audioConnect.src = stream_url[2];console.log("playing",stream_url[2]);
                 }
             }
             audioConnect.play();//if not success -> then timer should not start
@@ -73,12 +75,12 @@ function startPlay(stream_idx){
         audioConnect.pause();
         audioConnect.loop = false;
         if(stream_idx === 0){
-            audioConnect.load(streams_url[0]);
+            audioConnect.load(stream_url[0]);
         }else{
             if(stream_idx === 1){
-                audioConnect.load(streams_url[1]);
-            }else{audioConnect.load(streams_url[2]);}
-        }       
+                audioConnect.load(stream_url[1]);
+            }else{audioConnect.load(stream_url[2]);}
+        }
         
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
@@ -100,14 +102,14 @@ function volume_mute(vol_stat){
             // console.log("volume on");
             // volInput.classList.remove("volume-none");
             // volInput.classList.add("volume-vertical");
-            volIcon.src = "static/volume-repo-off.svg";
+            volIcon.src = "../static/volume-repo-off.svg";
             audioConnect.volume = "0";
             volInput.onchange = "0";
             volInput.value = "0";
         }else{
             // volInput.classList.remove("volume-vertical");
             // volInput.classList.add("volume-none");
-            volIcon.src = "static/volume-svgrepo.svg";
+            volIcon.src = "../static/volume-svgrepo.svg";
             volInput.onchange = "0.8";
             volInput.value = "80";
             if(audioConnect !== null){
@@ -126,7 +128,7 @@ function play_elapsed(min=0,sec=0){
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
         
-        document.getElementById("timerr").innerText = minute + ":" + second;
+        document.getElementById("timer").innerText = minute + ":" + second;
         sec++;
         if(sec>59){
             min++;
@@ -141,5 +143,5 @@ function play_elapsed(min=0,sec=0){
 function stop_timer(){
     /* pauses time */
     clearInterval(tina_timer);
-    document.getElementById("timerr").innerText = "00:00";
+    document.getElementById("timer").innerText = "00:00";
 }
