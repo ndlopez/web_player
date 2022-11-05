@@ -254,11 +254,12 @@ span{
   margin-top: -18px;
 }/*#playBtn{height: 90px;}*/
 #timerr{
-  font-size: 1rem !important;
+  
   position: fixed;
   bottom: 60px;
   padding-left: 15px;
 }
+#timer{font-size: 1rem !important;}
 .no-padding{padding: 0;}
 .sp-margin{
   margin-top: -40px;
@@ -284,7 +285,7 @@ span{
 #station_info{
   background-color: var(--dark-smoke);
   position: fixed;
-  bottom: 60px;
+  bottom: 58px;
   width: 100%;
 }
 @media (max-width:500px) {

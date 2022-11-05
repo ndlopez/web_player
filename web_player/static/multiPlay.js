@@ -19,15 +19,19 @@ function init_player(stream_idx){
 
     const span_name = document.getElementById("stat_name");
     span_name.innerHTML = "<h3>Now Playing: "+stream_name[stream_idx]+"</h3>";
-    if(stream_idx === 0){
-        startPlay(0);
-    }else{
-        if(stream_idx === 1){
+    switch (stream_idx) {
+        case 0:
+            startPlay(0);
+            break;
+        case 1:
             startPlay(1);
-        }else{
+            break;
+        case 2:
             startPlay(2);
             display_data();
-        }
+            break;
+        default:
+            break;
     }
 }
 
@@ -103,14 +107,14 @@ function volume_mute(vol_stat){
             // console.log("volume on");
             // volInput.classList.remove("volume-none");
             // volInput.classList.add("volume-vertical");
-            volIcon.src = "../static/volume-repo-off.svg";
+            volIcon.src = "assets/volume-repo-off.svg";
             audioConnect.volume = "0";
             volInput.onchange = "0";
             volInput.value = "0";
         }else{
             // volInput.classList.remove("volume-vertical");
             // volInput.classList.add("volume-none");
-            volIcon.src = "../static/volume-svgrepo.svg";
+            volIcon.src = "assets/volume-svgrepo.svg";
             volInput.onchange = "0.8";
             volInput.value = "80";
             if(audioConnect !== null){
