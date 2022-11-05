@@ -8,22 +8,39 @@
     <link rel="stylesheet" type="text/css" href="static/estilo.css">
   </head>
   <body>
-    <div class="col_50 float_left" id="nowPlaying">
-      <div class="cover">
-        <img src="https://cdn-profiles.tunein.com/s151799/images/logoq.jpg?t=636355620405200000" width="256"/>
+    <main>
+      <div class="col_50 float_left padding_10">
+        <h2>Third Rock radio</h2>
+        <p>NASA's Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with the National Aeronautics and Space Administration, Washington DC.</p>
+        <div>
+          <div class="col3 float_left"><h4>Genre</h4><p>Alternative, Indie Rock</p></div>
+          <div class="col3 float_left"><h4>Language</h4><p>English</p></div>
+          <div class="col3 float_left"><h4>Bitrate</h4><p>196kbps</p></div>
+        </div>
+        <a onclick="init_player(0)"><img src="https://cdn-profiles.tunein.com/s151799/images/logoq.jpg?t=636355620405200000"/></a>
       </div>
-      
-    </div>
-    <div class="col_50 float_left">
-      <h2>Third Rock radio</h2>
-      <p>
-      Discovery powers the work of NASA.  It also drives music lovers to the Internet in search of something less ordinary.  The two came together in 2011 with the launch of NASA's Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with the National Aeronautics and Space Administration, Washington DC.</p>
-      <div>
-        <div class="col3 float_left"><h4>Genre</h4><p>Alternative, Indie Rock</p></div>
-        <div class="col3 float_left"><h4>Language</h4><p>English</p></div>
-        <div class="col3 float_left"><h4>Bitrate</h4><p>196kbps</p></div>
+      <div class="col_50 float_left padding_10">
+        <h2>113.fm Alternative Rock</h2>
+        <p>The biggest Alternative hits from the '90s.  From guitar riffs to mellow beats, we've got you covered.</p>
+        <div>
+          <div class="col3 float_left"><h4>Genre</h4><p>Alternative Rock</p></div>
+          <div class="col3 float_left"><h4>Language</h4><p>English</p></div>
+          <div class="col3 float_left"><h4>Bitrate</h4><p>196kbps</p></div>
+        </div>
+        <a onclick="init_player(1)"><img src="https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" width=256/></a>
       </div>
-    </div>
+      <div class="col_50 float_left padding_10">
+        <h2>Awesome 80's</h2>
+        <p>181.FM Internet Radio - The Best Choice for Radio. Your Lifestyle, Your Music.</p>
+        <div>
+          <div class="col3 float_left"><h4>Genre</h4><p>1980's best hits</p></div>
+          <div class="col3 float_left"><h4>Language</h4><p>English</p></div>
+          <div class="col3 float_left"><h4>Bitrate</h4><p>192kbps</p></div>
+        </div>
+        <a onclick="init_player(2)"><img src="https://player.181fm.com/configs/images/181fm.png"/></a>
+      </div>
+    </main>   
+
     <div id="station_info" style="background-color: #6a7285;">
       <span id="timer" class="col3 float_left">00:00</span>
       <span id="stat_name"class="col3 float_left">Now Playing</span>
@@ -35,16 +52,16 @@
         <li><a title="stop stream">
           <svg id="i-stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#cc274c" stroke="#cc274c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M5 9 L5 29 27 29 27 9 Z" /></svg>
           <!--stop--></a></li>
-        <li><a title="wanna listen Alt-Rock?" onclick="startPlay(1)">
+        <li><a title="wanna listen Alt-Rock?" onclick="init_player(1)">
           <svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
             <path d="M30 30 L30 10 12 20Z M11 30 L11 10"/></svg>
         </a></li>
-        <li><a id="playBtn" title="start stream" onclick="startPlay(0)">
+        <li><a id="playBtn" title="start stream">
           <svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">
           <circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>
           <path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg>
           <!--span id="timerr">00:00</span--></a></li>
-        <li><a title="Classics perhaps?" onclick="startPlay(2)"><svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <li><a title="Classics perhaps?" onclick="init_player(2)"><svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
           <path d="M9 25 L25 16 9 7Z M25 25 L25 7"/></svg></a>
         </li>
         <li><a><div><label for="vol_input" onclick="volume_mute(0)">

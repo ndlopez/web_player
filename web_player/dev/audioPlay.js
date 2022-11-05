@@ -3,7 +3,7 @@
 // add this to stations: https://113fm-atunwadigital.streamguys1.com/1001
 // const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
 const stream_name = ["Third Rock Radio","113.fm Alt-Rock","181.fm Awesome 80's"];
-const stream_url = ["https://rfcmedia3.streamguys1.com/thirdrock.mp3",
+const stream_url = ["https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
 "https://113fm-atunwadigital.streamguys1.com/1001",
 "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347"];
 const id3_181fm = "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052";
@@ -13,16 +13,26 @@ var audioConnect; //= new Audio();
 var tina_timer;
 
 //window.addEventListener("load",startPlay);
-
-function startPlay(stream_idx){
+function init_player(stream_idx){
     console.log("gotStream",stream_idx);
+    const span_name = document.getElementById("stat_name");
+    span_name.innerText = stream_name[stream_idx];
+    if(stream_idx === 0){
+        startPlay(0);
+    }else{
+        if(stream_idx === 1){
+            startPlay(1);
+        }else{startPlay(2);}
+    }
+}
+
+function startPlay(idx){
     //playStatus = true;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
     const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timer");
-    const span_name = document.getElementById("stat_name");
-    span_name.innerHTML = stream_name[stream_idx];
+    
     var mmss = "";
 
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
@@ -37,16 +47,8 @@ function startPlay(stream_idx){
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
-            if(stream_idx === 0){
-                audioConnect.src = stream_url[0];//stream_url
-                console.log("playing",stream_url[0]);
-            }else{
-                if(stream_idx === 1){
-                    audioConnect.src = stream_url[1];console.log("playing",stream_url[1]);
-                }else{
-                    audioConnect.src = stream_url[2];console.log("playing",stream_url[2]);
-                }
-            }
+            audioConnect.src = stream_url[idx];//stream_url
+            console.log("playing",stream_url[idx]);
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
             //console.log("this value",audioConnect.startTime,audioConnect.networkState);
@@ -74,13 +76,7 @@ function startPlay(stream_idx){
         /* does not pause/stop stream */
         audioConnect.pause();
         audioConnect.loop = false;
-        if(stream_idx === 0){
-            audioConnect.load(stream_url[0]);
-        }else{
-            if(stream_idx === 1){
-                audioConnect.load(stream_url[1]);
-            }else{audioConnect.load(stream_url[2]);}
-        }
+        //audioConnect.load(stream_url[idx]);
         
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
