@@ -2,6 +2,9 @@
 // https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
 // const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
 // alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
+// Beethoven - moonlight
+// Cigarettes After Sex - Apocalypse
+// lovelytheband - these are my friends
 
 const stations = [
     {
@@ -27,8 +30,8 @@ const stations = [
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     }
 ];
-const keys = ["Genre","Language","Bitrate","Ads"];
-const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
+const info_keys = ["Genre","Language","Bitrate","Ads"];
+const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
 
 display_info();
 
@@ -37,16 +40,15 @@ function display_info(){
     var aux_text = "";
     for (let idx = 0; idx < stations.length; idx++) {
         if(idx == 2){
-            aux_text = '<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
+            aux_text = '&emsp;<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
         }
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","col2 float_left padding_10");
-        var texty = "<p><a onclick='init_player("+idx+")'><img src='"+stations[idx].logo+"' width='128'/>";
-        texty += svg_elm + "</a>"+aux_text+"</p><details><summary>"+stations[idx].description+"</summary>";
+        var texty = "<p><a onclick='init_player("+idx+")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>";
+        texty += "</a>"+aux_text+"</p><details><summary>"+stations[idx].description+"</summary>";
         var zoey_html = "<div>";
-        for (let jdx = 0; jdx < keys.length; jdx++) {
-            zoey_html += "<div class='half_col float_left'><h4>"+keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
-            
+        for (let jdx = 0; jdx < info_keys.length; jdx++) {
+            zoey_html += "<div class='half_col float_left'><h4>"+info_keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
         }
         zoey_html += "</div></details>";
         newDiv.innerHTML = texty + zoey_html;
@@ -54,9 +56,7 @@ function display_info(){
     }    
 }
 var audioConnect; //= new Audio();
-// Beethoven - moonlight
-// Cigarettes After Sex - Apocalypse
-// lovelytheband - these are my friends
+
 var tina_timer;
 
 //window.addEventListener("load",startPlay);
