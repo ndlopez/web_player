@@ -36,6 +36,21 @@ const stations = [
         ads: true
     }
 ];
+
+const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
+display_info();
+
+function display_info(){
+    const mainDiv = document.getElementById("amia");
+    for (let idx = 0; idx < stations.length; idx++) {
+        const newDiv = document.createElement("div");
+        newDiv.setAttribute("class","col2 float_left padding_10");
+        var texty = "<a onclick='init_player("+idx+")'><img src='"+stations[idx].logo+"' width='128'/>";
+        texty += svg_elm + "</a>";
+        newDiv.innerHTML = texty;
+        mainDiv.appendChild(newDiv);
+    }    
+}
 var audioConnect; //= new Audio();
 // Beethoven - moonlight
 // Cigarettes After Sex - Apocalypse
@@ -65,25 +80,22 @@ function init_player(stream_idx){
     }
 }
 
-/*function reloadMe(){
-    display_data();
-}*/
+/*function reloadMe(){display_data();}*/
 
 function startPlay(idx){
     //playStatus = true;
-    const svgPlay = document.getElementById("i-play");
-    //const svgStop = document.getElementById("i-stop");
+    const svgPlay = document.getElementById("i-play");    
     const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timer");
     
     var mmss = "";
-
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
     const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
     const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
     //const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
     
     svgPlay.addEventListener("click",playPause);
+    //const svgStop = document.getElementById("i-stop");
     //svgStop.addEventListener("click",stopPlay);
     audioConnect = new Audio();
     function playPause(){
