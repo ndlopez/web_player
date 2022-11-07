@@ -1,13 +1,7 @@
 // check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
 // https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
-
 // const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
 // alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
-const stream_name = ["Third Rock Radio","113.fm Alt-Rock","181.fm Awesome 80's"];
-const stream_url = ["https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
-"https://113fm-atunwadigital.streamguys1.com/1001",
-"https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347"];
-const id3_181fm = "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052";
 
 const stations = [
     {
@@ -51,10 +45,10 @@ var tina_timer;
 //window.addEventListener("load",startPlay);
 function init_player(stream_idx){
     console.log("gotStream",stream_idx);
-    document.title = stream_name[stream_idx];
+    document.title = stations[stream_idx].name;
 
     const span_name = document.getElementById("stat_name");
-    span_name.innerHTML = "<h3>Now Playing: "+stream_name[stream_idx]+"</h3>";
+    span_name.innerHTML = "<h3>Now Playing: "+stations[stream_idx].name+"</h3>";
     switch (stream_idx) {
         case 0:
             startPlay(0);
@@ -87,16 +81,14 @@ function startPlay(idx){
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
     const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
     const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
-    const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
-    //gifImg.style.display = "block";
-    //gifImg.style.background = "#2e4054";
+    //const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
+    
     svgPlay.addEventListener("click",playPause);
     //svgStop.addEventListener("click",stopPlay);
     audioConnect = new Audio();
-    //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
-            audioConnect.src = stream_url[idx];//stream_url
+            audioConnect.src = stations[idx].stream_url;//stream_url[idx];
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
             mmss = getTimer.innerText; // mm:ss
@@ -164,7 +156,6 @@ function play_elapsed(min=0,sec=0){
     var second,minute;
 
     tina_timer = setInterval(function(){
-
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
         
@@ -181,7 +172,7 @@ function play_elapsed(min=0,sec=0){
 }
 
 function stop_timer(){
-    /* pauses time */
+    /* pauses timer */
     clearInterval(tina_timer);
     document.getElementById("timer").innerText = "00:00";
 }
@@ -192,12 +183,10 @@ async function display_data(){
     now_title.innerHTML = "<h3>Now: " + gotData.song + "</h3>";
 }
 async function get_id3(){
-    const response = await fetch(id3_181fm);
+    const response = await fetch(stations[2].id3_info);
     const data = await response.json();
     const song = data["song"];
-    // var artwork = data[keys[1]];
     const bit = data["bitrate"];
-    // const listen = data[keys[3]];
 
     return {song,bit};
 }
