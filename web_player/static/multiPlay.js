@@ -36,7 +36,7 @@ const stations = [
         ads: true
     }
 ];
-
+const keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
 display_info();
 
@@ -45,9 +45,16 @@ function display_info(){
     for (let idx = 0; idx < stations.length; idx++) {
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","col2 float_left padding_10");
-        var texty = "<a onclick='init_player("+idx+")'><img src='"+stations[idx].logo+"' width='128'/>";
-        texty += svg_elm + "</a>";
+        var texty = "<p><a onclick='init_player("+idx+")'><img src='"+stations[idx].logo+"' width='128'/>";
+        texty += svg_elm + "</a></p><details><summary>"+stations[idx].description+"</summary>";
+        var zoey_html = "";
+        const inner_div = document.createElement("div");
+        for (let jdx = 0; jdx < 4; jdx++) {
+            zoey_html = "<div class='half_col float_left'><h4>"+keys[jdx]+"</h4><p>"+stations[idx].genre+"</p></div>";
+            inner_div.innerHTML = zoey_html;
+        }
         newDiv.innerHTML = texty;
+        newDiv.appendChild(inner_div);
         mainDiv.appendChild(newDiv);
     }    
 }
