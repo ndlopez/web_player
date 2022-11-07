@@ -192,16 +192,19 @@ function stop_timer(){
 }
 
 async function display_data(){
+    const timeNow = new Date();
     var gotData = await get_artwork();//await get_id3();
-    const now_title = document.getElementById("stat_name");
-    now_title.innerHTML = "<h3><img src='" + gotData.artwork+"'/>" + gotData.now_song + "</h3>";
+    const this_img = document.getElementById("artwork");
+    this_img.setAttribute("class","padding_10");
+    this_img.innerHTML = "<img src='" + gotData.artwork+"'/>"+
+    "<h3>" + timeNow.getHours() +":"+ timeNow.getMinutes() + " " +
+    gotData.now_song + "</h3>";;
 }
 async function get_id3(){
     const response = await fetch(stations[2].id3_info);
     const data = await response.json();
     const song = data["song"];
     //const bit = data["bitrate"];
-
     return song;
 }
 
@@ -213,8 +216,15 @@ async function get_artwork(){
     console.log("got url",this_url);
     const response = await fetch(this_url)
     const data = await response.json();
-    const artwork = data["track"]["album"]["image"][1]["#text"];
-    const album = data["track"]["album"]["title"];
+    const artwork = data["track"]["album"]["image"][2]["#text"];
+    var album = "",duration="";
+    if(artwork === undefined){
+        artwork = "assets/cd_case.svg";
+    }else{
+        album = data["track"]["album"]["title"];
+        duration = data["track"]["duration"];//ms
+    }
+    
     console.log("artwork",artwork,"album",album);
-    return {now_song, album, artwork};
+    return {now_song, album, artwork, duration};
 }
