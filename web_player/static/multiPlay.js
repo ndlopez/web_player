@@ -23,30 +23,33 @@ const stations = [
         logo: "https://player.181fm.com/configs/images/181fm.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
-        description: "181.FM Internet Radio - The Best Choice for Radio. Your Lifestyle, Your Music.",
+        description: "181.FM Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     }
 ];
 const keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
+
 display_info();
 
 function display_info(){
     const mainDiv = document.getElementById("amia");
+    var aux_text = "";
     for (let idx = 0; idx < stations.length; idx++) {
+        if(idx == 2){
+            aux_text = '<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
+        }
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","col2 float_left padding_10");
         var texty = "<p><a onclick='init_player("+idx+")'><img src='"+stations[idx].logo+"' width='128'/>";
-        texty += svg_elm + "</a></p><details><summary>"+stations[idx].description+"</summary></details>";
-        var zoey_html = "";
-        const inner_div = document.createElement("div");
+        texty += svg_elm + "</a>"+aux_text+"</p><details><summary>"+stations[idx].description+"</summary>";
+        var zoey_html = "<div>";
         for (let jdx = 0; jdx < keys.length; jdx++) {
             zoey_html += "<div class='half_col float_left'><h4>"+keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
             
         }
-        inner_div.innerHTML = zoey_html;
-        newDiv.innerHTML = texty;
-        newDiv.appendChild(inner_div);
+        zoey_html += "</div></details>";
+        newDiv.innerHTML = texty + zoey_html;
         mainDiv.appendChild(newDiv);
     }    
 }
