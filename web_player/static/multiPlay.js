@@ -208,11 +208,13 @@ async function get_id3(){
 async function get_artwork(){
     const now_song = await get_id3();
     const song_artist = now_song.split("-");
-    const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+song_artist[0]+"&track="+song_artist[1]+"&format=json";
+    const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
+    song_artist[0].trim().replace(/\s+/g,"%20")+"&track="+song_artist[1].trim().replace(/\s+/g,"%20")+"&format=json";
     console.log("got url",this_url);
     const response = await fetch(this_url)
     const data = await response.json();
-    const artwork = data["track"]["album"]["image"][2]["#text"];
+    const artwork = data["track"]["album"]["image"][1]["#text"];
     const album = data["track"]["album"]["title"];
+    console.log("artwork",artwork,"album",album);
     return {now_song, album, artwork};
 }

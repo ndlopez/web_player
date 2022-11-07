@@ -270,7 +270,7 @@ async function display_data(){
     "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
     " kbps</h3></div><div class='col3 float_left'><h3 class='lighter'> Listeners</h3><h3>"+ 
     gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info</h3>" + 
-    "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim()+ "+" + h2Song[0].trim() +
+    "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim().replace(/\s+/g,"%20")+ "+" + h2Song[0].trim().replace(/\s+/g,"%20") +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+"</h3></div></div></div>";
 
     const divImg = "<div class='contain' id='album_art'><div class='cover'><div>" + img_art +
