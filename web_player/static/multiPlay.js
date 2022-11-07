@@ -8,6 +8,13 @@
 
 const stations = [
     {
+        name: "181.fm Awesome 80's",
+        logo: "https://player.181fm.com/configs/images/181fm.png",
+        stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
+        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
+        description: "181.FM Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
+        xtra_info: ["80's best hits","English","128kbps","Yes"]
+    },{
         name:"Third Rock Radio",
         logo: "https://thirdrockradio.net/wp-content/uploads/2018/02/logo_transparent_small.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
@@ -21,13 +28,6 @@ const stations = [
         id3_info: "",
         description: "The biggest Alternative hits from the '90s.  From guitar riffs to mellow beats, we've got you covered.",
         xtra_info: ["Alternative Rock","English","128kbps","Yes"]
-    },{
-        name: "181.fm Awesome 80's",
-        logo: "https://player.181fm.com/configs/images/181fm.png",
-        stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
-        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
-        description: "181.FM Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
-        xtra_info: ["80's best hits","English","128kbps","Yes"]
     }
 ];
 const info_keys = ["Genre","Language","Bitrate","Ads"];
@@ -37,11 +37,12 @@ display_info();
 
 function display_info(){
     const mainDiv = document.getElementById("amia");
-    var aux_text = "";
+    
     for (let idx = 0; idx < stations.length; idx++) {
-        if(idx == 2){
+        var aux_text = "";
+        if(idx == 0){
             aux_text = '&emsp;<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
-        }
+        }else{aux_text = "";}
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","col2 float_left padding_10");
         var texty = "<p><a onclick='init_player("+idx+")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>";
@@ -194,14 +195,13 @@ function stop_timer(){
 async function display_data(){
     const timeNow = new Date();
     var gotData = await get_artwork();//await get_id3();
+    console.log("gotThis",gotData);
     const this_img = document.getElementById("artwork");
-    this_img.setAttribute("class","padding_10");
-    this_img.innerHTML = "<img src='" + gotData.artwork+"'/>"+
-    "<h3>" + timeNow.getHours() +":"+ timeNow.getMinutes() + " " +
-    gotData.now_song + "</h3>";;
+    this_img.innerHTML = "<img src='" + gotData.artwork+"' width='256'/>"+
+    "<h3>" + timeNow.getHours() +":"+ timeNow.getMinutes() + " " + gotData.now_song + "</h3>";
 }
 async function get_id3(){
-    const response = await fetch(stations[2].id3_info);
+    const response = await fetch(stations[0].id3_info);
     const data = await response.json();
     const song = data["song"];
     //const bit = data["bitrate"];
@@ -214,17 +214,21 @@ async function get_artwork(){
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     song_artist[0].trim().replace(/\s+/g,"%20")+"&track="+song_artist[1].trim().replace(/\s+/g,"%20")+"&format=json";
     console.log("got url",this_url);
-    const response = await fetch(this_url)
-    const data = await response.json();
-    const artwork = data["track"]["album"]["image"][2]["#text"];
-    var album = "",duration="";
-    if(artwork === undefined){
-        artwork = "assets/cd_case.svg";
-    }else{
-        album = data["track"]["album"]["title"];
-        duration = data["track"]["duration"];//ms
-    }
-    
-    console.log("artwork",artwork,"album",album);
-    return {now_song, album, artwork, duration};
+    try {
+        const response = await fetch(this_url)
+        const data = await response.json();
+        var album = "",duration="";
+        var artwork = data["track"]["album"]["image"][2]["#text"];
+        if(artwork === undefined || artwork ===""){
+            artwork = "assets/cd_case.svg";
+        }else{
+            album = data["track"]["album"]["title"];
+            duration = data["track"]["duration"];//ms
+        }
+        console.log("artwork",artwork,"album",album);
+        return {now_song, album, artwork, duration};
+    } catch (error) {
+        console.log("got an error",error);
+        return now_song;
+    }    
 }
