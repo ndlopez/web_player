@@ -44,7 +44,7 @@ function display_info(){
             aux_text = '&emsp;<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
         }else{aux_text = "";}
         const newDiv = document.createElement("div");
-        newDiv.setAttribute("class","col2 float_left padding_10");
+        newDiv.setAttribute("class","padding_10");
         var texty = "<p><a onclick='init_player("+idx+")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>";
         texty += "</a>"+aux_text+"</p><details><summary>"+stations[idx].description+"</summary>";
         var zoey_html = "<div>";
@@ -55,6 +55,11 @@ function display_info(){
         newDiv.innerHTML = texty + zoey_html;
         mainDiv.appendChild(newDiv);
     }    
+}
+
+function no_artwork(){
+    const gotDiv = document.getElementById("artwork");
+    gotDiv.innerHTML = "<img src='assets/CD_icon.svg' width='350'/>"
 }
 var audioConnect; //= new Audio();
 
@@ -70,13 +75,15 @@ function init_player(stream_idx){
     switch (stream_idx) {
         case 0:
             startPlay(0);
+            display_data();
             break;
         case 1:
             startPlay(1);
+            no_artwork();
             break;
         case 2:
             startPlay(2);
-            display_data();
+            no_artwork();            
             break;
         default:
             break;
@@ -195,9 +202,9 @@ function stop_timer(){
 async function display_data(){
     const timeNow = new Date();
     var gotData = await get_artwork();//await get_id3();
-    console.log("gotThis",gotData);
+    //console.log("gotThis",gotData);
     const this_img = document.getElementById("artwork");
-    this_img.innerHTML = "<img src='" + gotData.artwork+"' width='256'/>"+
+    this_img.innerHTML = "<img src='" + gotData.artwork+"' width='300'/>"+
     "<h3>" + timeNow.getHours() +":"+ timeNow.getMinutes() + " " + gotData.now_song + "</h3>";
 }
 async function get_id3(){
@@ -217,12 +224,13 @@ async function get_artwork(){
     try {
         const response = await fetch(this_url)
         const data = await response.json();
-        var album = "",duration="";
-        var artwork = data["track"]["album"]["image"][2]["#text"];
-        if(artwork === undefined || artwork ===""){
-            artwork = "assets/cd_case.svg";
+        var album = "", artwork = "",duration="";
+        if(data["track"]["album"] === undefined || data["track"]["album"] === ""){
+            artwork = "assets/CD_icon.svg";
+            album = "";
         }else{
-            album = data["track"]["album"]["title"];
+            artwork = data["track"]["album"]["image"][3]["#text"];
+            album = data["track"]["album"]["title"],duration="";
             duration = data["track"]["duration"];//ms
         }
         console.log("artwork",artwork,"album",album);

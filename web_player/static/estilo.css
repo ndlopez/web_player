@@ -224,7 +224,17 @@ span{
   height: 300px;
   width: 50%;
 }
-
+#artwork{
+  height: 400px;
+  background-size: 370px;
+  background-image: url("../assets/cd_case.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+#artwork img{
+  margin-left: 100px;
+  margin-top: -18px;
+}
 .contain{
   position: relative;
   padding: 20px;
