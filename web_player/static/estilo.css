@@ -284,7 +284,6 @@ span{
 }
 @media (max-width:500px) {
   body{font-size: small;}
-  #amia{height: 115vh;}
   #now_song{display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;

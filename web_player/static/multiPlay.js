@@ -192,15 +192,27 @@ function stop_timer(){
 }
 
 async function display_data(){
-    var gotData = await get_id3();
+    var gotData = await get_artwork();//await get_id3();
     const now_title = document.getElementById("stat_name");
-    now_title.innerHTML = "<h3>Now: " + gotData.song + "</h3>";
+    now_title.innerHTML = "<h3><img src='" + gotData.artwork+"'/>" + gotData.now_song + "</h3>";
 }
 async function get_id3(){
     const response = await fetch(stations[2].id3_info);
     const data = await response.json();
     const song = data["song"];
-    const bit = data["bitrate"];
+    //const bit = data["bitrate"];
 
-    return {song,bit};
+    return song;
+}
+
+async function get_artwork(){
+    const now_song = await get_id3();
+    const song_artist = now_song.split("-");
+    const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+song_artist[0]+"&track="+song_artist[1]+"&format=json";
+    console.log("got url",this_url);
+    const response = await fetch(this_url)
+    const data = await response.json();
+    const artwork = data["track"]["album"]["image"][2]["#text"];
+    const album = data["track"]["album"]["title"];
+    return {now_song, album, artwork};
 }
