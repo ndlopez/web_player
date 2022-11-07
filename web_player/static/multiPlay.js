@@ -10,30 +10,21 @@ const stations = [
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         description: "NASA's Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with the National Aeronautics and Space Administration, Washington DC.",
-        genre: "Alternative, Indie-Rock",
-        language: "English",
-        bitrate: 196,
-        ads: false
+        xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
     },{
         name: "113.fm Alt-Rock",
         logo: "https://static.wixstatic.com/media/143966_9e7dd404f2fd4df1a0c48e335c993bad~mv2.jpg/v1/crop/x_97,y_166,w_328,h_164/fill/w_161,h_93,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_logo_blk_sml_transparent.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
         id3_info: "",
         description: "The biggest Alternative hits from the '90s.  From guitar riffs to mellow beats, we've got you covered.",
-        genre: "Alternative Rock",
-        language: "English",
-        bitrate: 128,
-        ads: true
+        xtra_info: ["Alternative Rock","English","128kbps","Yes"]
     },{
         name: "181.fm Awesome 80's",
         logo: "https://player.181fm.com/configs/images/181fm.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "181.FM Internet Radio - The Best Choice for Radio. Your Lifestyle, Your Music.",
-        genre: "80's best hits",
-        language: "English",
-        bitrate: 128,
-        ads: true
+        xtra_info: ["80's best hits","English","128kbps","Yes"]
     }
 ];
 const keys = ["Genre","Language","Bitrate","Ads"];
@@ -46,13 +37,14 @@ function display_info(){
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","col2 float_left padding_10");
         var texty = "<p><a onclick='init_player("+idx+")'><img src='"+stations[idx].logo+"' width='128'/>";
-        texty += svg_elm + "</a></p><details><summary>"+stations[idx].description+"</summary>";
+        texty += svg_elm + "</a></p><details><summary>"+stations[idx].description+"</summary></details>";
         var zoey_html = "";
         const inner_div = document.createElement("div");
-        for (let jdx = 0; jdx < 4; jdx++) {
-            zoey_html = "<div class='half_col float_left'><h4>"+keys[jdx]+"</h4><p>"+stations[idx].genre+"</p></div>";
-            inner_div.innerHTML = zoey_html;
+        for (let jdx = 0; jdx < keys.length; jdx++) {
+            zoey_html += "<div class='half_col float_left'><h4>"+keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
+            
         }
+        inner_div.innerHTML = zoey_html;
         newDiv.innerHTML = texty;
         newDiv.appendChild(inner_div);
         mainDiv.appendChild(newDiv);
