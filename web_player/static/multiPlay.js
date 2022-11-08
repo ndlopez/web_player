@@ -19,7 +19,7 @@ const stations = [
         logo: "https://thirdrockradio.net/wp-content/uploads/2018/02/logo_transparent_small.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        description: "NASA's Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with the National Aeronautics and Space Administration, Washington DC.",
+        description: "Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with the NASA, Washington DC.",
         xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
     },{
         name: "113.fm Alt-Rock",
@@ -75,7 +75,6 @@ function init_player(stream_idx){
     switch (stream_idx) {
         case 0:
             startPlay(0);
-            display_data();
             break;
         case 1:
             startPlay(1);
