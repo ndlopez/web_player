@@ -207,7 +207,7 @@ async function display_data(){
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div");
     coverDiv.innerHTML = "<div id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
-    "<div class='padding_10'><h3>" + gotSong.song + "</h3><h3>"+ gotSong.artist + "</h3><p>&#x231A; " +
+    "<div class='smoke-bkg padding_10'><h2 class='headLabel'>" + gotSong.song + "</h2><h3>"+ gotSong.artist + "</h3><p>&#x231A; " +
     zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + "</p></div>";
     //this_img.appendChild(coverDiv);
 }
@@ -243,6 +243,7 @@ async function get_artwork(){
         return {album, artwork, duration};
     } catch (error) {
         console.log("got an error",error);
+        return {nowPlaying};
     }    
 }
 

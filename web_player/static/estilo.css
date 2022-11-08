@@ -16,6 +16,10 @@ a{
   text-decoration: none;
   color: var(--light-sky);
 }
+.smoke-bkg{
+  background-color: var(--dark-smoke);
+  border-radius: 10px;
+}
 #topBtn{
   display: none;
   position: fixed;
@@ -235,6 +239,7 @@ span{
   margin-left: 25px;
 }
 #coverCD{
+  height: 280px;
   background-size:280px;
   background-image: url("../assets/CD_icon.svg");
   background-repeat: no-repeat;
