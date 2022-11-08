@@ -204,8 +204,13 @@ async function display_data(){
     var gotData = await get_artwork();//await get_id3();
     //console.log("gotThis",gotData);
     const this_img = document.getElementById("artwork");
-    this_img.innerHTML = "<img src='" + gotData.artwork+"' width='300'/>"+
-    "<h3>" + timeNow.getHours() +":"+ timeNow.getMinutes() + " " + gotData.now_song + "</h3>";
+    const coverDiv = document.createElement("div");
+    coverDiv.style.backgroundImage = "url('assets/CD_icon.svg')";
+    coverDiv.style.backgroundRepeat = "no-repeat";
+    coverDiv.style.backgroundSize = "280px";
+    coverDiv.innerHTML = "<img src='" + gotData.artwork+"' width='260'/>"+
+    "<h3>" + zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + " " + gotData.now_song + "</h3>";
+    this_img.appendChild(coverDiv);
 }
 async function get_id3(){
     const response = await fetch(stations[0].id3_info);
@@ -226,7 +231,7 @@ async function get_artwork(){
         const data = await response.json();
         var album = "", artwork = "",duration="";
         if(data["track"]["album"] === undefined || data["track"]["album"] === ""){
-            artwork = "assets/CD_icon.svg";
+            artwork = "";
             album = "";
         }else{
             artwork = data["track"]["album"]["image"][3]["#text"];
@@ -239,4 +244,8 @@ async function get_artwork(){
         console.log("got an error",error);
         return now_song;
     }    
+}
+
+function zeroPad(timeElm){
+    return (parseInt(timeElm,10) < 10 ? '0' : '') + timeElm;
 }
