@@ -201,13 +201,14 @@ function stop_timer(){
 
 async function display_data(){
     const timeNow = new Date();
-    var gotSong = await get_id3();
+    //var gotSong = await get_id3();
     var gotData = await get_artwork();//await get_id3();
     //console.log("gotThis",gotData);
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div");
     coverDiv.innerHTML = "<div id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
-    "<div class='smoke-bkg padding_10'><h2 class='headLabel'>" + gotSong.song + "</h2><h3>"+ gotSong.artist + "</h3><p>&#x231A; " +
+    "<div class='smoke-bkg padding_10'><h3 class='headLabel'>" + gotData.nowPlaying.song+
+    "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>&#x231A; " +
     zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + "</p></div>";
     //this_img.appendChild(coverDiv);
 }
@@ -237,10 +238,10 @@ async function get_artwork(){
         }else{
             artwork = data["track"]["album"]["image"][3]["#text"];
             album = data["track"]["album"]["title"],duration="";
-            duration = data["track"]["duration"];//ms
+            //duration = data["track"]["duration"];//ms
         }
         console.log("artwork",artwork,"album",album);
-        return {album, artwork, duration};
+        return {nowPlaying, album, artwork};
     } catch (error) {
         console.log("got an error",error);
         return {nowPlaying};
