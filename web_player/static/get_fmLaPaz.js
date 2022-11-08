@@ -129,7 +129,7 @@ function clear_nowPlay(){
     if(nowText !== null){nowText.innerHTML = "";}
     nowSong.innerHTML = "";
     document.title = "Updating...";
-    headTitle.innerHTML = "<h2>Retrieving data, please wait...</h2>";
+    headTitle.innerHTML = "<h2>Retrieving data, please wait&emsp;<img src='assets/tail-spin.svg'/></h2>";
 }
 function sleepy(msec){
     /* Display a simple msg on top */
