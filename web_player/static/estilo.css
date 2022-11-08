@@ -359,6 +359,7 @@ span{
   .col_50{width: 80%;}
   .col_20{width: 20%;}
   .col2{width: 100%;}
+  #amia{height: 100vh;}
   /*ul li:nth-child(4){text-align: center;}*/
 }
 /*@media (prefers-color-scheme: light){
