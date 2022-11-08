@@ -231,8 +231,16 @@ span{
   background-repeat: no-repeat;
   background-position-x: center;
 }
-#artwork img{
+#coverCD img{
   margin-left: 25px;
+}
+#coverCD{
+  background-size:280px;
+  background-image: url("../assets/CD_icon.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  display: grid;
+  place-items: center;
 }
 .contain{
   position: relative;

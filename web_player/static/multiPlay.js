@@ -203,14 +203,11 @@ async function display_data(){
     const timeNow = new Date();
     var gotData = await get_artwork();//await get_id3();
     //console.log("gotThis",gotData);
-    const this_img = document.getElementById("artwork");
-    const coverDiv = document.createElement("div");
-    coverDiv.style.backgroundImage = "url('assets/CD_icon.svg')";
-    coverDiv.style.backgroundRepeat = "no-repeat";
-    coverDiv.style.backgroundSize = "280px";
-    coverDiv.innerHTML = "<img src='" + gotData.artwork+"' width='260'/>"+
-    "<h3>" + zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + " " + gotData.now_song + "</h3>";
-    this_img.appendChild(coverDiv);
+    const coverDiv = document.getElementById("artwork");
+    //const coverDiv = document.createElement("div");
+    coverDiv.innerHTML = "<div id='coverCD'><img src='" + gotData.artwork+"' width='260'/>"+
+    "<h3>" + zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + " " + gotData.now_song + "</h3></div>";
+    //this_img.appendChild(coverDiv);
 }
 async function get_id3(){
     const response = await fetch(stations[0].id3_info);
