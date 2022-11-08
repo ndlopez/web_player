@@ -59,7 +59,7 @@ function display_info(){
 
 function no_artwork(){
     const gotDiv = document.getElementById("artwork");
-    gotDiv.innerHTML = "<img src='assets/CD_icon.svg' width='350'/>"
+    gotDiv.innerHTML = "<img src='assets/CD_icon.svg' width='310'/>"
 }
 var audioConnect; //= new Audio();
 
@@ -201,27 +201,31 @@ function stop_timer(){
 
 async function display_data(){
     const timeNow = new Date();
+    var gotSong = await get_id3();
     var gotData = await get_artwork();//await get_id3();
     //console.log("gotThis",gotData);
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div");
-    coverDiv.innerHTML = "<div id='coverCD'><img src='" + gotData.artwork+"' width='260'/>"+
-    "<h3>" + zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + " " + gotData.now_song + "</h3></div>";
+    coverDiv.innerHTML = "<div id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
+    "<div class='padding_10'><h3>" + gotSong.song + "</h3><h3>"+ gotSong.artist + "</h3><p>&#x231A; " +
+    zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + "</p></div>";
     //this_img.appendChild(coverDiv);
 }
 async function get_id3(){
     const response = await fetch(stations[0].id3_info);
     const data = await response.json();
-    const song = data["song"];
+    const artist = data["artist"];
+    const song = data["title"];
     //const bit = data["bitrate"];
-    return song;
+    return {artist,song};
 }
 
 async function get_artwork(){
-    const now_song = await get_id3();
-    const song_artist = now_song.split("-");
+    const nowPlaying = await get_id3();
+    //const song_artist = now_song.split("-");
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
-    song_artist[0].trim().replace(/\s+/g,"%20")+"&track="+song_artist[1].trim().replace(/\s+/g,"%20")+"&format=json";
+    nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
+    nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
     console.log("got url",this_url);
     try {
         const response = await fetch(this_url)
@@ -236,10 +240,9 @@ async function get_artwork(){
             duration = data["track"]["duration"];//ms
         }
         console.log("artwork",artwork,"album",album);
-        return {now_song, album, artwork, duration};
+        return {album, artwork, duration};
     } catch (error) {
         console.log("got an error",error);
-        return now_song;
     }    
 }
 

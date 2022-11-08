@@ -211,7 +211,7 @@ span{
 .bottomText a{color: var(--light-sky);}
 .bottomText #more_info{padding-top:15px;}
 .align-right{text-align: right;}
-.headLabel{color: #ffeea6;}
+.headLabel{color: var(--lemon)}
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 #nowPlaying{

@@ -188,9 +188,8 @@ setInterval(async function makePlayList(){
         gotArtwork = "assets/cd-case.svg";
         gotArtist = "Sorry, artwork not found in DB";
     }
-    /*
-    if(gotArtist[0] === "Radio Online" || gotArtist[0] === "LA CASCADA"){}
-    if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) || (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3] || gotArtwork === awfulArt[4]){}*/
+    /*if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) ||
+    (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3] || gotArtwork === awfulArt[4]){}*/
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg float_left");
     divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
