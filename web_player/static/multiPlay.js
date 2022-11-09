@@ -207,7 +207,7 @@ async function display_data(){
     //const coverDiv = document.createElement("div");
     coverDiv.innerHTML = "<div id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
     "<div class='smoke-bkg padding_10'><h3 class='headLabel'>" + gotData.nowPlaying.song+
-    "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>&#x231A; " +
+    "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>" + gotData.album + "</p><p>&#x231A; " +
     zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + "</p></div>";
     //this_img.appendChild(coverDiv);
 }
@@ -232,7 +232,7 @@ async function get_artwork(){
         const data = await response.json();
         var album = "", artwork = "",duration="";
         if(data["track"]["album"] === undefined || data["track"]["album"] === ""){
-            artwork = "";
+            artwork = stations[0].logo;
             album = "";
         }else{
             artwork = data["track"]["album"]["image"][3]["#text"];
