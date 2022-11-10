@@ -206,7 +206,7 @@ async function display_data(){
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div");
     coverDiv.innerHTML = "<div id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
-    "<div class='smoke-bkg padding_10'><h3 class='headLabel'>" + gotData.nowPlaying.song+
+    "<div class='smoke-bkg padding_15'><h3 class='headLabel'>" + gotData.nowPlaying.song+
     "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>" + gotData.album + "</p><p>&#x231A; " +
     zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + "</p></div>";
     //this_img.appendChild(coverDiv);

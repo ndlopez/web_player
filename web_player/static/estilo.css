@@ -155,6 +155,7 @@ span{
   border-bottom: 1px var(--light-sky) dashed;
 }
 .padding_10{padding: 10px;}
+.padding_15{padding: 15px;}
 .col3{width: 33%;/*33.33%*/}
 .half_col{
   width: 25%;
@@ -192,7 +193,6 @@ span{
   top:0;
   z-index: 100;
   float: none;
-  /*box-sizing: content-box;*/
 }
 #nowLabel h2{margin: 0px;}
 
@@ -218,6 +218,12 @@ span{
 .headLabel{color: var(--lemon)}
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
+.bkg_cd_case{
+  background-size:320px;
+  background-image: url("../assets/cd_case.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
 #nowPlaying{
   background-size:320px;
   background-image: url("../assets/cd_case.svg");
@@ -234,6 +240,13 @@ span{
   background-image: url("../assets/cd_case.svg");
   background-repeat: no-repeat;
   background-position-x: center;
+  /*padding-left: 10px;*/
+}
+.bkg_cd_icon{
+  height: 280px;
+  background-image: url("../assets/CD_icon.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
 }
 #coverCD img{
   margin-left: 25px;
