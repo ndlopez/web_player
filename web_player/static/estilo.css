@@ -94,7 +94,7 @@ ul, li{margin: 0px;padding: 5px;}
   background: var(--light-sky);
 }
 .no-audio span{
-  background: var(--smoke);
+  background: var(--light-sky);
 }
 .equalizer span:nth-child(1) {
   animation: load 1s 1.2s infinite linear;
@@ -134,10 +134,8 @@ ul, li{margin: 0px;padding: 5px;}
 }
 /*vol_input
 .volume-vertical{
-  display: flex; 
-  position: fixed; bottom: 73px;
-  transform:rotate(-90deg);
-  width: 80px;
+  display: flex; position: fixed; bottom: 73px;
+  transform:rotate(-90deg);  width: 80px;
 }
 .volume-none{display: none;}*/
 #vol_input{display: none;}
