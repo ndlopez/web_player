@@ -225,49 +225,28 @@ span{
   background-position-x: center;
 }
 #nowPlaying{
-  background-size:320px;
-  background-image: url("../assets/cd_case.svg");
-  background-repeat: no-repeat;
-  background-position-x: center;
   background-position-y: bottom;
   padding: 20px;/*50px 20px*/
   height: 300px;
   width: 50%;
 }
-#artwork{
-  height: 400px;
-  background-size: 320px;
-  background-image: url("../assets/cd_case.svg");
-  background-repeat: no-repeat;
-  background-position-x: center;
-  /*padding-left: 10px;*/
-}
+#artwork{height: 400px;/*padding-left: 10px;*/}
 .bkg_cd_icon{
   height: 280px;
   background-image: url("../assets/CD_icon.svg");
   background-repeat: no-repeat;
   background-position-x: right;
 }
-#coverCD img{
-  margin-left: 25px;
-}
+#coverCD img{margin-left: 25px;}
 #coverCD{
-  height: 280px;
   background-size:280px;
-  background-image: url("../assets/CD_icon.svg");
-  background-repeat: no-repeat;
-  background-position-x: right;
   display: grid;
   place-items: center;
 }
 .contain{
   position: relative;
   padding: 20px;
-  height: 280px;
   background-size:290px;
-  background-image: url("../assets/CD_icon.svg");
-  background-repeat: no-repeat;
-  background-position-x: right;
   text-align: center;
 }
 .contain img{
@@ -317,6 +296,7 @@ span{
   bottom: 58px;
   width: 100%;
 }
+#stat_name h3{margin:0px;}
 @media (max-width:500px) {
   body{font-size: small;}
   #now_song{display: none;}
