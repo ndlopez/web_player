@@ -104,6 +104,13 @@ function startPlay(idx){
     //const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
     
     svgPlay.addEventListener("click",playPause);
+    document.addEventListener("keydown",function(event){
+        /* adding key press events to player */
+        if(event.key === "p" || event.key === "P"){
+            /* play pressed */
+            playPause();
+        }
+    });
     //const svgStop = document.getElementById("i-stop");
     //svgStop.addEventListener("click",stopPlay);
     audioConnect = new Audio();

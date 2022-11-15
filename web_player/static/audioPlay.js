@@ -27,7 +27,17 @@ function startPlay(){
     audioConnect = new Audio();
     svgPlay.addEventListener("click",playPause);
     svgStop.addEventListener("click",stopPlay);
-
+    document.addEventListener("keydown",function(event){
+        /* adding key press events to player */
+        if(event.key === "p" || event.key === "P"){
+            /* play pressed */
+            playPause();
+        }
+        if(event.key === "s" || event.key === "S"){
+            stopPlay();
+        }
+    });
+    
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
