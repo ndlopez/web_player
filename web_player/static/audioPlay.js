@@ -29,7 +29,7 @@ function startPlay(){
     svgStop.addEventListener("click",stopPlay);
     document.addEventListener("keydown",function(event){
         /* adding key press events to player */
-        if(event.key === "p" || event.key === "P"){
+        if(event.key === "d" || event.key === "D"){
             /* play pressed */
             playPause();
         }
