@@ -70,7 +70,8 @@ const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmla
 "https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059",
 "https://stream.consultoradas.com/cp/musiclibrary/nocover.png",
 "https://i.scdn.co/image/ab67616d0000b273946c1699a48b214e45f765d6",
-"https://i.scdn.co/image/ab67616d0000b2736d7a8a34f348d587f007045f"];
+"https://i.scdn.co/image/ab67616d0000b2736d7a8a34f348d587f007045f",
+"https://i.scdn.co/image/ab67616d0000b273d4af276af7f96299274d4b1b"];
 //const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
 //var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
