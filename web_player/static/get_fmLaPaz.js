@@ -75,7 +75,7 @@ const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmla
 //var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
 let upTime = 220000;//3600000;~on Sat/Sun 10~13// about 3min20s
-const errLapse = 20000; //10s
+const errLapse = 20000; //20s
 
 let songs = [];
 let artImg = [];
@@ -239,13 +239,13 @@ async function display_data(){
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){}
     if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3]) || (gotData.artwork === awfulArt[4])){}if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){}*/
     if(awfulArt.includes(gotData.artwork)){
-        console.log(gina,"wait 60s, art error:",gotData.artwork);
-        await sleepy(60000);//10s
+        console.log(gina,"wait 40s, art error:",gotData.artwork);
+        await sleepy(40000);//40s
         gotData = await get_url(thisURL);
     }
     
     if(awfulArt.includes(gotData.artwork)){
-        gotData.artwork = "";
+        gotData.artwork = "../assets/discoStu.png";
     }
     
     document.title = gotData.song;
@@ -258,7 +258,7 @@ async function display_data(){
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
     //var gina = hh + ":" + mm + ":" + ss;
-    const h2Time = "<h2 class='lighter col_50 float_left'><small>&#x231A; "+ gina +
+    const h2Time = "<h2 class='lighter col_50 float_left'><small>&#8986; "+ gina +
     "</small></h2><a title='reload id3-tag' onclick='reloadMe()'>" + 
     "<img src='assets/reload-svgrepo.svg' width='32'/></a>"; 
     //document.createElement("h2");
@@ -272,7 +272,7 @@ async function display_data(){
     gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info</h3>" + 
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim().replace(/\s+/g,"%20")+ "+" + h2Song[0].trim().replace(/\s+/g,"%20") +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+
-    "</h3></div></div>" + "<div>Usage, [d] key: start stream, [s] key: stop stream</div></div>";
+    "</h3></div>" + "<div>Usage, [d] key: start stream, [s] key: stop stream</div></div></div>";
 
     const divImg = "<div class='bkg_cd_icon contain' id='album_art'><div class='cover'><div>" + img_art +
     "</div></div></div>" + divTitle;
@@ -316,8 +316,7 @@ async function get_url(my_url){
     if(artwork === awfulArt[1] || artwork === ""){
         artwork = "";
     }
-    // Should not update if Sat/Sun @10-12
-    // sleepy <- 3hrs
+    // Should not update if Sat/Sun @10-12 sleepy <- 3hrs
     return {song,artwork,bit,listen};
 }
 
