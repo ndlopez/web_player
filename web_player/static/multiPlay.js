@@ -5,6 +5,7 @@
 // Beethoven - moonlight
 // Cigarettes After Sex - Apocalypse
 // lovelytheband - these are my friends
+// The Shins - So now what
 
 const stations = [
     {
@@ -233,7 +234,7 @@ async function get_artwork(){
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
-    console.log("got url",this_url);
+    // console.log("got url",this_url);
     try {
         const response = await fetch(this_url)
         const data = await response.json();
@@ -246,10 +247,10 @@ async function get_artwork(){
             album = data["track"]["album"]["title"],duration="";
             //duration = data["track"]["duration"];//ms
         }
-        console.log("artwork",artwork,"album",album);
+        // console.log("artwork",artwork,"album",album);
         return {nowPlaying, album, artwork};
     } catch (error) {
-        console.log("got an error",error);
+        // console.log("got an error",error);
         return {nowPlaying};
     }    
 }
