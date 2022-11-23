@@ -327,12 +327,12 @@ span{
     height: auto;
     background-image: linear-gradient(var(--smoke),var(--dark-smoke));
   }
-  .bottomText #more_info{display: none;}
+  /*.bottomText #more_info{display: none;}*/
   /*.bottomText h2{line-height: normal;}*/
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{
-    padding-top: 55px;
+    padding-top: 120px;/*55px;*/
     width: 100%;
     overflow: inherit;
     height: auto;
