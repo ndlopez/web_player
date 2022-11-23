@@ -38,7 +38,7 @@ a{
   font-size: 2em;
   content: "\22bc";
 }
-#music{padding-top: 30px;}
+#music{padding-top: 50px;}
 /* Bottom menu and player*/
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
@@ -324,7 +324,7 @@ span{
     margin-left: -20px;
     width: 100vw;
     text-align: left;
-    height: auto;
+    height: 240px;
     background-image: linear-gradient(var(--smoke),var(--dark-smoke));
   }
   /*.bottomText #more_info{display: none;}*/
