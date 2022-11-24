@@ -71,7 +71,8 @@ const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmla
 "https://stream.consultoradas.com/cp/musiclibrary/nocover.png",
 "https://i.scdn.co/image/ab67616d0000b273946c1699a48b214e45f765d6",
 "https://i.scdn.co/image/ab67616d0000b2736d7a8a34f348d587f007045f",
-"https://i.scdn.co/image/ab67616d0000b273d4af276af7f96299274d4b1b"];
+"https://i.scdn.co/image/ab67616d0000b273d4af276af7f96299274d4b1b",
+"https://i.scdn.co/image/ab67616d0000b273e8e71ebc372dfa978fc0581f"];
 //const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
 //var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
@@ -273,7 +274,7 @@ async function display_data(){
     gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info</h3>" + 
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim().replace(/\s+/g,"%20")+ "+" + h2Song[0].trim().replace(/\s+/g,"%20") +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+
-    "</h3></div>" + "<div class='no_mobil'>Usage, [d] key: start stream, [s] key: stop stream</div></div></div>";
+    "</h3></div>" + "<div class='no_mobil'>Press <kbd>d</kbd> key to START stream, <kbd>s</kbd> key to STOP stream</div></div></div>";
 
     const divImg = "<div class='bkg_cd_icon contain' id='album_art'><div class='cover'><div>" + img_art +
     "</div></div></div>" + divTitle;
