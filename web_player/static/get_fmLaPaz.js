@@ -92,7 +92,12 @@ display_data();
 if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     //console.log("User is using a Mobile device");
     window.onscroll = function() {scrollFunction();};
-}else{console.log("User is on desktop Mode");}
+    //document.getElementById("playList").style.display = "none";
+}
+/*else{
+    //TypeError: playList is null
+    document.getElementById("playList").style.display = "block";
+}*/
 
 const pxx=400; //not artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
@@ -254,8 +259,8 @@ async function display_data(){
     
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     const headTitle = document.getElementById("nowLabel");
-    headTitle.innerHTML = "<h2 id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
-    "<img id='my_playlist' onclick='openNav()' src='assets/list-alt.svg' width='24'/></h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
+    headTitle.innerHTML = "<h2 class='col90 float_left' id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
+    "</h2><p class='col10 float_left'><img id='list-icon' onclick='openNav()' src='assets/list-alt.svg' width='24'/></p><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
@@ -330,7 +335,11 @@ function openNav(){
     document.body.style.overflow = "hidden";
 }
 function closeNav(thisObj){
-    document.getElementById(thisObj).style.display = "none";
+    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+        document.getElementById(thisObj).style.display = "none";
+    }else{
+        document.getElementById(thisObj).style.display = "block";
+    }
     document.getElementById("nowLabel").style.display = "block";
     document.getElementById("nowPlaying").style.display = "block";
     document.body.style.overflow = "auto";

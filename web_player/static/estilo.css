@@ -260,6 +260,7 @@ span{
   border-radius: 50%;4px;*/
 .float_left{float: left;}
 #playList{
+  display: block;
   width: 50%;
   height: 90vh;
   overflow: auto;
@@ -301,7 +302,7 @@ span{
 }
 #stat_name h3{margin:0px;}
 .closeBtn{display: none;}
-#my_playlist{display: none;}
+#list-icon{display: none;}
 @media (max-width:500px) {
   body{font-size: small;}
   #now_song{display: none;}
@@ -339,15 +340,14 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{
-    display: none;
     /*padding-top: 120px;/*55px;*/
+    display: none;
     width: 100%;
     overflow: inherit;
     height: auto;
   }
-  #my_playlist{
-    text-align: right;
-    display: block;
+  #playList h2{
+    margin-top: -30px;
   }
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {
@@ -361,15 +361,20 @@ span{
   .no_mobil{display: none;}
   .col_50{width: 80%;}
   .col_20{width: 20%;}
+  .col90{width:90%}
+  .col10{width: 10%;margin:0px;}
   .col2{width: 100%;}
   #amia{height: 100vh;}
+  #list-icon{
+    display: block;
+  }
   .closeBtn{
     display: block;
     position: absolute;
     top: 0px;
     right: 20px;
     color:var(--wine);
-    font-size: 60px;
+    font-size: 40px;
   }
   /*ul li:nth-child(4){text-align: center;}*/
 }
