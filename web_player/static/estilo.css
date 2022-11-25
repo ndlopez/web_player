@@ -300,6 +300,7 @@ span{
   width: 100%;
 }
 #stat_name h3{margin:0px;}
+.closeBtn{display: none;}
 @media (max-width:500px) {
   body{font-size: small;}
   #now_song{display: none;}
@@ -337,7 +338,8 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{
-    padding-top: 120px;/*55px;*/
+    display: none;
+    /*padding-top: 120px;/*55px;*/
     width: 100%;
     overflow: inherit;
     height: auto;
@@ -356,6 +358,14 @@ span{
   .col_20{width: 20%;}
   .col2{width: 100%;}
   #amia{height: 100vh;}
+  .closeBtn{
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    color:var(--wine);
+    font-size: 60px;
+    font-weight: bold;
+  }
   /*ul li:nth-child(4){text-align: center;}*/
 }
 /*@media (prefers-color-scheme: light){
@@ -415,7 +425,4 @@ span{
 .success-svg{
   width: 30%;height: 30%;
 }
-.closeBtn{
-  color:var(--wine);
-  float: right;  font-size: 28px;  font-weight: bold;
-}*/
+*/

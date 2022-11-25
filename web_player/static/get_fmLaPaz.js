@@ -247,7 +247,7 @@ async function display_data(){
     }
     
     if(awfulArt.includes(gotData.artwork)){
-        gotData.artwork = "../assets/discoStu.png";
+        gotData.artwork = "assets/discoStu.png";
     }
     
     document.title = gotData.song;
@@ -255,7 +255,7 @@ async function display_data(){
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
-    "</h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
+    "<img src='assets/list-alt.svg' width='24'/></h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
