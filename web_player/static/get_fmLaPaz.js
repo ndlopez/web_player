@@ -255,7 +255,7 @@ async function display_data(){
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
-    "<img src='assets/list-alt.svg' width='24'/></h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
+    "<img id='my_playlist' onclick='openNav()' src='assets/list-alt.svg' width='24'/></h2><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
@@ -324,12 +324,15 @@ async function get_url(my_url){
 
 /* open and close Info modal */
 function openNav(){
-    //error: apparently document is null!
-    document.getElementById("InfoNav").style.display = "block";
+    document.getElementById("nowLabel").style.display = "none";
+    document.getElementById("nowPlaying").style.display = "none";
+    document.getElementById("playList").style.display = "block";
     document.body.style.overflow = "hidden";
 }
 function closeNav(thisObj){
     document.getElementById(thisObj).style.display = "none";
+    document.getElementById("nowLabel").style.display = "block";
+    document.getElementById("nowPlaying").style.display = "block";
     document.body.style.overflow = "auto";
 }
 function addModal(){

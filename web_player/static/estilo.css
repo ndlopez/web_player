@@ -301,6 +301,7 @@ span{
 }
 #stat_name h3{margin:0px;}
 .closeBtn{display: none;}
+#my_playlist{display: none;}
 @media (max-width:500px) {
   body{font-size: small;}
   #now_song{display: none;}
@@ -344,6 +345,10 @@ span{
     overflow: inherit;
     height: auto;
   }
+  #my_playlist{
+    text-align: right;
+    display: block;
+  }
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {
     animation: none;
@@ -359,12 +364,12 @@ span{
   .col2{width: 100%;}
   #amia{height: 100vh;}
   .closeBtn{
+    display: block;
     position: absolute;
     top: 0px;
     right: 20px;
     color:var(--wine);
     font-size: 60px;
-    font-weight: bold;
   }
   /*ul li:nth-child(4){text-align: center;}*/
 }
