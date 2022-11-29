@@ -262,7 +262,7 @@ span{
 #playList{
   display: block;
   width: 50%;
-  height: 90vh;
+  height: 80vh;
   overflow: auto;
 }
 /*Player controls*/
@@ -312,6 +312,7 @@ span{
     width: 100%;
     height: 480px !important;
   }
+  #currSong{margin-bottom: 0px;}
   .contain{
     width: 100%;
     padding: 0px;
@@ -344,9 +345,6 @@ span{
     display: none;
     width: 100%;
     overflow: auto;
-  }
-  #playList h2{
-    margin-top: -30px;
   }
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {

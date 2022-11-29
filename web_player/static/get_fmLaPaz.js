@@ -155,8 +155,8 @@ function get_sched(tag,heure,time_lag){
     for (let item in gotObj){
         if(gotObj[item].day === tag && gotObj[item].time === heure){
             myTitle = gotObj[item].name;
-            var durTime = gotObj[item].time + gotObj[item].duration;
-            myTitle += " (" + gotObj[item].time + " - " + durTime+")";
+            // var durTime = gotObj[item].time + gotObj[item].duration;
+            // myTitle += " (" + gotObj[item].time + " - " + durTime+")";
         }
     }
     return myTitle;
@@ -260,7 +260,8 @@ async function display_data(){
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 class='col90 float_left' id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
-    "</h2><p id='list-icon' class='col10 float_left'><img onclick='openNav()' src='assets/list-alt.svg' width='24'/></p><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
+    "</h2><p id='list-icon' class='col10 float_left'><img onclick='openNav()' src='assets/list-alt.svg' width='24'/></p>"+
+    "<h3 id='currSong' class='lighter col90 float_left'>Now: " +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
@@ -335,18 +336,17 @@ function openNav(){
     closeBtn.style.margin = "0";
     closeBtn.setAttribute("class","closeBtn");
     closeBtn.setAttribute("href","javascript:void(0)");
-    
+    closeBtn.setAttribute("onclick","closeNav()");
     /*closeBtn.onclick = function(){
         document.getElementById('playList').style.display = "none";
         document.getElementById("nowLabel").style.display = "block";
         document.getElementById("nowPlaying").style.display = "block";
         document.body.style.overflow = "auto";
     };*/ //doesnt work
-
+    document.getElementById("currSong").style.display = "block";
     document.getElementById("nowPlaying").style.display = "none";
     document.getElementById("playList").style.display = "block";
-    document.body.style.overflow = "hidden";
-    closeBtn.setAttribute("onclick","closeNav()");
+    document.body.style.overflow = "hidden";    
 }
 function closeNav(){
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
@@ -359,6 +359,7 @@ function closeNav(){
     listBtn.innerHTML = "<img src='assets/list-alt.svg' width='24'/>"
     document.getElementById("nowLabel").style.display = "block";
     document.getElementById("nowPlaying").style.display = "block";
+    document.getElementById("currSong").style.display = "none";
     document.body.style.overflow = "auto";
 }
 function addModal(){
