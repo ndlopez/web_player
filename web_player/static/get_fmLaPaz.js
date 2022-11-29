@@ -335,6 +335,7 @@ function openNav(){
     closeBtn.style.margin = "0";
     closeBtn.setAttribute("class","closeBtn");
     closeBtn.setAttribute("href","javascript:void(0)");
+    
     /*closeBtn.onclick = function(){
         document.getElementById('playList').style.display = "none";
         document.getElementById("nowLabel").style.display = "block";
@@ -345,6 +346,7 @@ function openNav(){
     document.getElementById("nowPlaying").style.display = "none";
     document.getElementById("playList").style.display = "block";
     document.body.style.overflow = "hidden";
+    closeBtn.setAttribute("onclick","closeNav()");
 }
 function closeNav(){
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
@@ -352,6 +354,9 @@ function closeNav(){
     }else{
         document.getElementById('playList').style.display = "block";
     }
+    const listBtn = document.getElementById("list-icon");
+    listBtn.setAttribute("onclick","openNav()");
+    listBtn.innerHTML = "<img src='assets/list-alt.svg' width='24'/>"
     document.getElementById("nowLabel").style.display = "block";
     document.getElementById("nowPlaying").style.display = "block";
     document.body.style.overflow = "auto";
