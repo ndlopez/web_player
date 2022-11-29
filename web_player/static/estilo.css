@@ -375,7 +375,7 @@ span{
     position: absolute;
     top: 0px;
     right: 20px;
-    color:var(--wine);
+    color:var(--light-sky);
     font-size: 40px;
   }
   /*ul li:nth-child(4){text-align: center;}*/

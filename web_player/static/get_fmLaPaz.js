@@ -332,19 +332,25 @@ function openNav(){
     //document.getElementById("nowLabel").style.display = "none";
     const closeBtn = document.getElementById("list-icon");
     closeBtn.innerHTML = "x";
+    closeBtn.style.margin = "0";
     closeBtn.setAttribute("class","closeBtn");
     closeBtn.setAttribute("href","javascript:void(0)");
-    closeBtn.addEventListener("click",'closeNav(\'playList\')');
+    /*closeBtn.onclick = function(){
+        document.getElementById('playList').style.display = "none";
+        document.getElementById("nowLabel").style.display = "block";
+        document.getElementById("nowPlaying").style.display = "block";
+        document.body.style.overflow = "auto";
+    };*/ //doesnt work
 
     document.getElementById("nowPlaying").style.display = "none";
     document.getElementById("playList").style.display = "block";
     document.body.style.overflow = "hidden";
 }
-function closeNav(thisObj){
+function closeNav(){
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
-        document.getElementById(thisObj).style.display = "none";
+        document.getElementById('playList').style.display = "none";
     }else{
-        document.getElementById(thisObj).style.display = "block";
+        document.getElementById('playList').style.display = "block";
     }
     document.getElementById("nowLabel").style.display = "block";
     document.getElementById("nowPlaying").style.display = "block";
