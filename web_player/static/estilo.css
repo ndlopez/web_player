@@ -340,11 +340,10 @@ span{
   .colImg img{width: 64px;}
   .colArtist{padding: 5px;}
   #playList{
-    /*padding-top: 120px;/*55px;*/
+    /*padding-top: 120px;/*55px;height: auto;*/
     display: none;
     width: 100%;
-    overflow: inherit;
-    height: auto;
+    overflow: auto;
   }
   #playList h2{
     margin-top: -30px;
@@ -367,6 +366,9 @@ span{
   #amia{height: 100vh;}
   #list-icon{
     display: block;
+  }
+  #list-icon .active:after{
+    content: "x";
   }
   .closeBtn{
     display: block;

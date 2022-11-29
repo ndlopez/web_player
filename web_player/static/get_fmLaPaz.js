@@ -89,11 +89,11 @@ let upCount = 0;
 display_data();
 
 // Load onMobile only
-if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+/*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     //console.log("User is using a Mobile device");
     window.onscroll = function() {scrollFunction();};
     //document.getElementById("playList").style.display = "none";
-}
+}*/
 /*else{
     //TypeError: playList is null
     document.getElementById("playList").style.display = "block";
@@ -260,7 +260,7 @@ async function display_data(){
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 class='col90 float_left' id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
-    "</h2><p class='col10 float_left'><img id='list-icon' onclick='openNav()' src='assets/list-alt.svg' width='24'/></p><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
+    "</h2><p id='list-icon' class='col10 float_left'><img onclick='openNav()' src='assets/list-alt.svg' width='24'/></p><h3 id='currSong' class='lighter'>Now: " +" "+gotData.song+"</h3>";
 
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
@@ -320,16 +320,22 @@ async function get_url(my_url){
     const bit = data[keys[2]];
     const listen = data[keys[3]];
 
-    if(artwork === awfulArt[1] || artwork === ""){
+    /*if(artwork === awfulArt[1] || artwork === ""){
         artwork = "";
-    }
+    }*/
     // Should not update if Sat/Sun @10-12 sleepy <- 3hrs
     return {song,artwork,bit,listen};
 }
 
 /* open and close Info modal */
 function openNav(){
-    document.getElementById("nowLabel").style.display = "none";
+    //document.getElementById("nowLabel").style.display = "none";
+    const closeBtn = document.getElementById("list-icon");
+    closeBtn.innerHTML = "x";
+    closeBtn.setAttribute("class","closeBtn");
+    closeBtn.setAttribute("href","javascript:void(0)");
+    closeBtn.addEventListener("click",'closeNav(\'playList\')');
+
     document.getElementById("nowPlaying").style.display = "none";
     document.getElementById("playList").style.display = "block";
     document.body.style.overflow = "hidden";
