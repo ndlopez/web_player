@@ -138,7 +138,7 @@ function clear_nowPlay(){
     nowSong.innerHTML = "";
     document.title = "Updating...";
     headTitle.innerHTML = "<h2 class='col90 float_left'>Retrieving data, please wait</h2>"+
-    "<img class='col10 float_left' src='assets/tail-spin.svg'/>";
+    "<img class='col10 float_left' src='assets/tail-spin.svg' width='32'/>";
 }
 function sleepy(msec){
     /* Display a simple msg on top */
@@ -265,7 +265,7 @@ async function display_data(){
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
     "<h3 id='currSong' class='lighter col90 float_left'>Now: " + 
     gotData.song+"</h3>" + "<p id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
-    "<img src='assets/list-alt.svg' width='28'/></p>";
+    "<img src='assets/list-alt.svg' width='32'/></p>";
     //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
 
     var myDiv = document.getElementById("nowPlaying");
@@ -337,7 +337,7 @@ async function get_url(my_url){
 function openNav(){
     //document.getElementById("nowLabel").style.display = "none";
     const closeBtn = document.getElementById("list-icon");
-    closeBtn.innerHTML = '<svg id="i-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
+    closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //closeBtn.style.margin = "0";
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
@@ -357,7 +357,7 @@ function closeNav(){
     }
     const listBtn = document.getElementById("list-icon");
     listBtn.setAttribute("onclick","openNav()");
-    listBtn.innerHTML = "<img src='assets/list-alt.svg' width='24'/>"
+    listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
     document.getElementById("nowLabel").style.display = "block";
     document.getElementById("nowPlaying").style.display = "block";
     document.getElementById("mainTitle").style.display = "block";
