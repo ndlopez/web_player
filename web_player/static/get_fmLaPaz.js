@@ -263,8 +263,8 @@ async function display_data(){
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
     "<h3 id='currSong' class='lighter col90 float_left'>Now: " + 
-    gotData.song+"</h3>" + "<p id='list-icon' class='col10 float_left'>"+
-    "<img onclick='openNav()' src='assets/list-alt.svg' width='24'/></p>";
+    gotData.song+"</h3>" + "<p id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
+    "<img src='assets/list-alt.svg' width='24'/></p>";
     //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
 
     var myDiv = document.getElementById("nowPlaying");
@@ -337,16 +337,11 @@ function openNav(){
     //document.getElementById("nowLabel").style.display = "none";
     const closeBtn = document.getElementById("list-icon");
     closeBtn.innerHTML = "x";
-    closeBtn.style.margin = "0";
-    closeBtn.setAttribute("class","closeBtn");
-    closeBtn.setAttribute("href","javascript:void(0)");
+    //closeBtn.style.margin = "0";
+    //closeBtn.setAttribute("class","col10 float_left closeBtn");
+    //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    /*closeBtn.onclick = function(){
-        document.getElementById('playList').style.display = "none";
-        document.getElementById("nowLabel").style.display = "block";
-        document.getElementById("nowPlaying").style.display = "block";
-        document.body.style.overflow = "auto";
-    };*/ //doesnt work
+    
     document.getElementById("currSong").style.display = "block";
     document.getElementById("mainTitle").style.display = "none";
     document.getElementById("nowPlaying").style.display = "none";

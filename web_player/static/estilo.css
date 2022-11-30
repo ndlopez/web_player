@@ -365,14 +365,11 @@ span{
   #list-icon{
     display: block;
   }
-  #list-icon .active:after{
-    content: "x";
-  }
   .closeBtn{
-    display: block;
+    /*display: block;
     position: absolute;
     top: 0px;
-    right: 20px;
+    right: 20px;*/
     color:var(--light-sky);
     font-size: 40px;
   }
