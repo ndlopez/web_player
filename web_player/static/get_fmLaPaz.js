@@ -137,7 +137,8 @@ function clear_nowPlay(){
     if(nowText !== null){nowText.innerHTML = "";}
     nowSong.innerHTML = "";
     document.title = "Updating...";
-    headTitle.innerHTML = "<h2>Retrieving data, please wait&emsp;<img src='assets/tail-spin.svg'/></h2>";
+    headTitle.innerHTML = "<h2 class='col90 float_left'>Retrieving data, please wait</h2>"+
+    "<img class='col10 float_left' src='assets/tail-spin.svg'/>";
 }
 function sleepy(msec){
     /* Display a simple msg on top */
@@ -264,7 +265,7 @@ async function display_data(){
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
     "<h3 id='currSong' class='lighter col90 float_left'>Now: " + 
     gotData.song+"</h3>" + "<p id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
-    "<img src='assets/list-alt.svg' width='24'/></p>";
+    "<img src='assets/list-alt.svg' width='28'/></p>";
     //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
 
     var myDiv = document.getElementById("nowPlaying");
@@ -336,7 +337,7 @@ async function get_url(my_url){
 function openNav(){
     //document.getElementById("nowLabel").style.display = "none";
     const closeBtn = document.getElementById("list-icon");
-    closeBtn.innerHTML = "x";
+    closeBtn.innerHTML = '<svg id="i-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //closeBtn.style.margin = "0";
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
