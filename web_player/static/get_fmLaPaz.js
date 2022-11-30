@@ -146,7 +146,7 @@ function sleepy(msec){
 }
 
 function get_sched(tag,heure,time_lag){
-    var myTitle = "";//"LAPAZ.fm";
+    var myTitle = "LaPaz.fm";
     var gotObj = weekly_9; //default JST
     if(time_lag == 240){
         /* UTC-4 */
@@ -155,8 +155,8 @@ function get_sched(tag,heure,time_lag){
     for (let item in gotObj){
         if(gotObj[item].day === tag && gotObj[item].time === heure){
             myTitle = gotObj[item].name;
-            // var durTime = gotObj[item].time + gotObj[item].duration;
-            // myTitle += " (" + gotObj[item].time + " - " + durTime+")";
+            var durTime = gotObj[item].time + gotObj[item].duration;
+            myTitle += " (" + gotObj[item].time + " - " + durTime+")";
         }
     }
     return myTitle;
@@ -258,17 +258,21 @@ async function display_data(){
     document.title = gotData.song;
     
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
+    const titleStatus = document.getElementById("title_stat");
+    titleStatus.innerText = get_sched(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
-    headTitle.innerHTML = "<h2 class='col90 float_left' id='headTit'>You are listening to: " + get_sched(day,hh,timeOffset) + 
-    "</h2><p id='list-icon' class='col10 float_left'><img onclick='openNav()' src='assets/list-alt.svg' width='24'/></p>"+
-    "<h3 id='currSong' class='lighter col90 float_left'>Now: " +" "+gotData.song+"</h3>";
+    headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
+    "<h3 id='currSong' class='lighter col90 float_left'>Now: " + 
+    gotData.song+"</h3>" + "<p id='list-icon' class='col10 float_left'>"+
+    "<img onclick='openNav()' src='assets/list-alt.svg' width='24'/></p>";
+    //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
 
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
     //var gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='lighter col_50 float_left'><small>&#8986; "+ gina +
     "</small></h2><a title='reload id3-tag' onclick='reloadMe()'>" + 
-    "<img src='assets/reload-svgrepo.svg' width='32'/></a>"; 
+    "<img src='assets/reload-svgrepo.svg' width='32'/></a>";
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
@@ -344,6 +348,7 @@ function openNav(){
         document.body.style.overflow = "auto";
     };*/ //doesnt work
     document.getElementById("currSong").style.display = "block";
+    document.getElementById("mainTitle").style.display = "none";
     document.getElementById("nowPlaying").style.display = "none";
     document.getElementById("playList").style.display = "block";
     document.body.style.overflow = "hidden";    
@@ -359,6 +364,7 @@ function closeNav(){
     listBtn.innerHTML = "<img src='assets/list-alt.svg' width='24'/>"
     document.getElementById("nowLabel").style.display = "block";
     document.getElementById("nowPlaying").style.display = "block";
+    document.getElementById("mainTitle").style.display = "block";
     document.getElementById("currSong").style.display = "none";
     document.body.style.overflow = "auto";
 }
