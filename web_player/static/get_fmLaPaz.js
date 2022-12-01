@@ -62,7 +62,7 @@ const weekly_4 = [
     {name:"DiscoStu",day:6,time:23,duration:1},
 ];
 
-const titleErr = ["Radio Online  -  LAPAZ.FM","  - ","PROMO PUBLICIDAD LPFM - ",
+const titleErr = ["Radio Online  -  LAPAZ.FM"," - ","PROMO PUBLICIDAD LPFM - ",
 "Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
@@ -261,6 +261,9 @@ async function display_data(){
         gotData = await get_url(thisURL);
         console.log("gotIt",gotData.song);
     }
+    if(gotData.song === " - "){
+        gotData.song = "LaPaz.fm - Song ID not found on DB"
+    }
     /*Old-method
     if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){}
     if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3]) || (gotData.artwork === awfulArt[4])){}if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){}*/
@@ -344,9 +347,6 @@ async function get_url(my_url){
     const bit = data[keys[2]];
     const listen = data[keys[3]];
 
-    /*if(artwork === awfulArt[1] || artwork === ""){
-        artwork = "";
-    }*/
     // Should not update if Sat/Sun @10-12 sleepy <- 3hrs
     return {song,artwork,bit,listen};
 }

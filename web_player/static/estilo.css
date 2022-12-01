@@ -19,8 +19,9 @@ a{
   color: var(--light-sky);
 }
 kbd {
+  font-size: large;
   border-radius: 2px;
-  padding: 2px;
+  padding: 2px 4px;
   border: 1px solid var(--light-sky);
 }
 .centered{
