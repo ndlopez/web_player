@@ -5,10 +5,12 @@
   --light-sky:#bed2e0;
   --darkish-sky:#bed2e040;
   --lemon: #ffeea6;
+  --blackish: #333;
+  --blacky: #2d2d2d;
 }
 body{
   font-family: Helvetica Neue, sans-serif;
-  background-color: var(--smoke); /*blackish#333;#2d2d2d;*/
+  background-color: var(--smoke);
   color:var(--light-sky);
   margin:0px;
 }
@@ -36,8 +38,7 @@ kbd {
   right:15px;
   z-index: 99;
   border: none;
-  background-color: var(--light-sky); /*var(--wine);*/
-  /*color: #bed2e0;*/
+  background-color: var(--light-sky);
   border-radius: 70px;
   width: 48px;
   height: 48px;
@@ -55,7 +56,7 @@ ul, li{margin: 0px;padding: 5px;}
 #player{
   display: block;
   width: 100%;
-  background-color: var(--dark-smoke);/*#333*/;
+  background-color: var(--dark-smoke);
   padding: 5px 0px;
   height: 48px;
 }
@@ -145,8 +146,7 @@ ul, li{margin: 0px;padding: 5px;}
 .volume-vertical{
   display: flex; position: fixed; bottom: 73px;
   transform:rotate(-90deg);  width: 80px;
-}
-.volume-none{display: none;}*/
+}.volume-none{display: none;}*/
 #vol_input{display: none;}
 /*Playlist elements*/
 .row:after{
@@ -383,16 +383,10 @@ span{
   #list-icon{
     display: block;
   }
-  /*.closeBtn{
-    display: block;
-    position: absolute;
-    top: 0px;right: 20px;
-    font-size: 40px;
-    color:var(--light-sky);
-  }*/
   /*ul li:nth-child(4){text-align: center;}*/
 }
-/*@media (prefers-color-scheme: light){
+/*
+@media (prefers-color-scheme: light){
   body{
     color:var(--smoke);
     background: var(--light-sky);
@@ -432,8 +426,7 @@ span{
 /*@keyframes spin {
   100% { transform: rotate(360deg) translate(-50%,-50%); }
 }*/
-/*#schedList{width: 40%;float: left;}
-#playList .row{background-color: var(--light-sky)40;color: var(--light-sky);}*/
+/*#playList .row{background-color: var(--light-sky)40;color: var(--light-sky);}*/
 /*.success_window{
   display: none;  position: fixed;
   z-index: 1;  left:0;

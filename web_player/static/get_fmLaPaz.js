@@ -146,7 +146,7 @@ function sleepy(msec){
 }
 
 function get_sched(tag,heure,time_lag){
-    var myTitle = "♪ Now on LaPaz.fm ♪ Adult contemporary music";
+    var myTitle = "Now on LaPaz.fm ♪ Adult contemporary music";
     var gotObj = weekly_9; //default JST
     if(time_lag == 240){
         /* UTC-4 */
