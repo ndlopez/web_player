@@ -13,8 +13,6 @@ const weekly_9 = [
     {name:"PopArt",day:2,time:16,duration:1},
     {name:"PopArt",day:3,time:10,duration:1},
     {name:"PopArt",day:4,time:10,duration:1},
-    {name:"En Concierto",day:3,time:12,duration:1},
-    {name:"En Concierto",day:4,time:16,duration:1},
     {name:"UltraLight",day:0,time:16,duration:3},
     {name:"UltraLight",day:0,time:17,duration:2},
     {name:"UltraLight",day:0,time:18,duration:1},
@@ -29,6 +27,8 @@ const weekly_9 = [
     {name:"UltraLight",day:4,time:15,duration:1},
     {name:"Rock Clasico",day:3,time:16,duration:1},
     {name:"Rock Clasico",day:5,time:10,duration:1},
+    {name:"En Concierto",day:3,time:12,duration:1},
+    {name:"En Concierto",day:4,time:16,duration:1},
     {name:"DiscoStu",day:6,time:10,duration:3},
     {name:"DiscoStu",day:6,time:11,duration:2},
     {name:"DiscoStu",day:6,time:12,duration:1},
@@ -42,8 +42,6 @@ const weekly_4 = [
     {name:"PopArt",day:2,time:3,duration:1},
     {name:"PopArt",day:2,time:21,duration:1},
     {name:"PopArt",day:3,time:21,duration:1},
-    {name:"En Concierto",day:2,time:23,duration:1},
-    {name:"En Concierto",day:4,time:3,duration:1},
     {name:"UltraLight",day:0,time:3,duration:3},
     {name:"UltraLight",day:0,time:20,duration:3},
     {name:"UltraLight",day:0,time:21,duration:2},
@@ -54,6 +52,8 @@ const weekly_4 = [
     {name:"UltraLight",day:4,time:2,duration:3},
     {name:"Rock Clasico",day:3,time:3,duration:1},
     {name:"Rock Clasico",day:4,time:21,duration:1},
+    {name:"En Concierto",day:2,time:23,duration:1},
+    {name:"En Concierto",day:4,time:3,duration:1},
     {name:"DiscoStu",day:5,time:21,duration:3},
     {name:"DiscoStu",day:5,time:22,duration:2},
     {name:"DiscoStu",day:5,time:23,duration:1},
@@ -155,7 +155,7 @@ function get_sched(tag,heure,time_lag){
     }
     for (let item in gotObj){
         if(gotObj[item].day === tag && gotObj[item].time === heure){
-            myTitle = gotObj[item].name;
+            myTitle = "Now on LaPaz.fm : " + gotObj[item].name;
             var durTime = gotObj[item].time + gotObj[item].duration;
             myTitle += " (" + gotObj[item].time + " - " + durTime+")";
         }
@@ -163,12 +163,14 @@ function get_sched(tag,heure,time_lag){
     return myTitle;
 }
 
-function build_schedule(tag){
+function build_schedule(tag,heure){
     var sched = [];
     var thisObj = weekly_9;
     for(let item in thisObj){
         if(thisObj[item].day === tag){
-            sched.push(thisObj[item].name);
+            if(thisObj[item].time > heure){
+                sched.push(thisObj[item].name);
+                sched.push(thisObj[item].time);}
         }
     }
     return sched;
@@ -246,7 +248,7 @@ async function display_data(){
     mm = zeroPad(mm); //(mm < 10)? "0" + String(mm):mm;
     ss = zeroPad(ss); //(ss < 10)? "0" + String(ss):ss;
 
-    console.log("Today:",build_schedule(day));
+    console.log("Today:",build_schedule(day,hh));
     var gina = hh + ":" + mm + ":" + ss;
     // console.log("time",gina);
     if(titleErr.includes(gotData.song)){
