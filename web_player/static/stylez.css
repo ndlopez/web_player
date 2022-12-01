@@ -61,6 +61,7 @@ ul li a{
 .col3{width: 33%;/*33.33%*/}
 .float_left{float: left;}
 .no-desktop{display: none;}
+
 @media (max-width:500px) {
     .col_50{width:100%;text-align: center;}
     #nav-menu{display: block;}
@@ -91,4 +92,5 @@ ul li a{
     .link-off{color: var(--smoke);}
     nav.menu ul li{flex: 1;}
     nav.menu ul li a img{width: 1.15rem;height: 1.15rem;}
+    .no_mobil{display: none;}
 }

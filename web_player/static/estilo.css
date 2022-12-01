@@ -21,6 +21,10 @@ kbd {
   padding: 2px;
   border: 1px solid var(--light-sky);
 }
+.centered{
+  display: grid;
+  place-items: center;
+}
 .smoke-bkg{
   background-color: var(--dark-smoke);
   border-radius: 10px;
@@ -305,7 +309,9 @@ span{
 #list-icon{display: none;}
 .col90{width:90%}
 .col10{width: 10%;margin: 0px;}
+
 @media (max-width:500px) {
+  .no_mobil{display: none;}
   body{font-size: small;}
   #now_song{display: none;}
   #nowPlaying{
@@ -357,7 +363,7 @@ span{
     animation: none;
     display: none;
   }
-  .no_mobil{display: none;}
+  
   .col_50{width: 80%;}
   .col_20{width: 20%;}
   .col2{width: 100%;}
