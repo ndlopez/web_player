@@ -155,7 +155,7 @@ function get_sched(tag,heure,time_lag){
     }
     for (let item in gotObj){
         if(gotObj[item].day === tag && gotObj[item].time === heure){
-            myTitle = "Now on LaPaz.fm : " + gotObj[item].name;
+            myTitle = "Now on LaPaz.fm: " + gotObj[item].name;
             var durTime = gotObj[item].time + gotObj[item].duration;
             myTitle += " (" + gotObj[item].time + " - " + durTime+")";
         }
@@ -163,10 +163,11 @@ function get_sched(tag,heure,time_lag){
     return myTitle;
 }
 
-function build_schedule(tag,heure){
+function build_schedule(tag,heure,time_lag){
     var sched = [];
     var outStr = ", up next ";
     var thisObj = weekly_9;
+    if(time_lag == 240){thisObj = weekly_4;}
     let idx=0;
     for(let item in thisObj){
         if(thisObj[item].day === tag){
@@ -281,7 +282,7 @@ async function display_data(){
     
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     const titleStatus = document.getElementById("title_stat");
-    titleStatus.innerText = get_sched(day,hh,timeOffset) + build_schedule(day,hh);
+    titleStatus.innerText = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
     "<h3 id='currSong' class='lighter col90 float_left'>Now: " + 

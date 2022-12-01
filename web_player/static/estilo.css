@@ -312,10 +312,15 @@ span{
 .col15{width:15%;}
 .col70{
   width:70%;
+  height: 34px;
   text-align: center;
   overflow: hidden;
 }
-
+#title_stat{
+  float: left;
+  white-space: nowrap;
+}
+.moving-text:hover{animation-play-state: paused;}
 @media (max-width:500px) {
   .no_mobil{display: none;}
   body{font-size: small;}
@@ -415,6 +420,13 @@ span{
     margin-top: 25%;
     background: var(--light-sky);
   }
+}
+@keyframes marque{
+  0%{transform: translateX(100%);}
+  100%{transform: translateX(-100%);}
+}
+@media(prefers-reduced-motion: no-preference){
+  .moving-text{animation: marque 20s linear infinite;}
 }
 /*@keyframes spin {
   100% { transform: rotate(360deg) translate(-50%,-50%); }
