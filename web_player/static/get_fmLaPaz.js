@@ -137,8 +137,8 @@ function clear_nowPlay(){
     if(nowText !== null){nowText.innerHTML = "";}
     nowSong.innerHTML = "";
     document.title = "Updating...";
-    headTitle.innerHTML = "<h2 class='col90 float_left'>Retrieving data, please wait</h2>"+
-    "<img class='col10 float_left' src='assets/tail-spin.svg' width='32'/>";
+    headTitle.innerHTML = "<h2>Retrieving data, please wait&emsp;&emsp;"+
+    "<img src='assets/tail-spin.svg'/></h2>";
 }
 function sleepy(msec){
     /* Display a simple msg on top */
