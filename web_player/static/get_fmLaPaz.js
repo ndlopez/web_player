@@ -163,6 +163,17 @@ function get_sched(tag,heure,time_lag){
     return myTitle;
 }
 
+function build_schedule(tag){
+    var sched = [];
+    var thisObj = weekly_9;
+    for(let item in thisObj){
+        if(thisObj[item].day === tag){
+            sched.push(thisObj[item].name);
+        }
+    }
+    return sched;
+}
+
 function export_to_file(jsonData){
     let dataStr = JSON.stringify(jsonData);
     let dataUri = 'data:application/json;charset=utf-8,'+encodeURIComponent(dataStr);
@@ -235,6 +246,7 @@ async function display_data(){
     mm = zeroPad(mm); //(mm < 10)? "0" + String(mm):mm;
     ss = zeroPad(ss); //(ss < 10)? "0" + String(ss):ss;
 
+    console.log("Today:",build_schedule(day));
     var gina = hh + ":" + mm + ":" + ss;
     // console.log("time",gina);
     if(titleErr.includes(gotData.song)){
