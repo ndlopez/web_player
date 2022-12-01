@@ -94,10 +94,8 @@ if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     window.onscroll = function() {scrollFunction();};
     //document.getElementById("playList").style.display = "none";
 }
-/*else{
-    //TypeError: playList is null
-    document.getElementById("playList").style.display = "block";
-}*/
+/*else{//TypeError: playList is null
+    document.getElementById("playList").style.display = "block";}*/
 
 const pxx=400; //not artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
@@ -112,8 +110,9 @@ function scrollFunction() {
         document.getElementById("headTit").style.display = "block";
     }
 }
-//user clicks on myBtn, scroll to top
+
 function topFunction() {
+    //user clicks on myBtn, scroll to top
     //document.body.scrollTop = 0;//document.body.animate({scrollTop:0},1500);
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 }
@@ -180,20 +179,18 @@ function build_schedule(tag,heure,time_lag){
             }
         }
     }
-    console.log("myStr",outStr,idx,sched);
+    //console.log("myStr",outStr,idx,sched);
     return outStr;
 }
 
 function export_to_file(jsonData){
     let dataStr = JSON.stringify(jsonData);
     let dataUri = 'data:application/json;charset=utf-8,'+encodeURIComponent(dataStr);
-
     let exportFile = "playlist.json";
 
     let linkElm = document.getElementById("downLink")
     linkElm.setAttribute('href',dataUri);
     linkElm.setAttribute('download',exportFile);
-    //linkElm.setAttribute('target','_blank');
     //linkElm.click();//downloads a file every update
 }
 
@@ -244,10 +241,9 @@ async function display_data(){
     Builds array to store recently played*/
     var gotData = await get_url(thisURL);
     const parentDiv = document.getElementById("music");
-    //await sleepy(5000);
     const timeNow = new Date();
     const timeOffset = timeNow.getTimezoneOffset(); //if UTC + -> return -offset
-    //console.log(timeOffset,typeof(timeOffset));//
+    //console.log(timeOffset,typeof(timeOffset));
     let day = timeNow.getDay();
     let hh = timeNow.getHours();
     let mm = timeNow.getMinutes();
@@ -256,7 +252,7 @@ async function display_data(){
     mm = zeroPad(mm); //(mm < 10)? "0" + String(mm):mm;
     ss = zeroPad(ss); //(ss < 10)? "0" + String(ss):ss;
 
-    console.log("Today:",build_schedule(day,hh));
+    //console.log("Today:",build_schedule(day,hh));
     var gina = hh + ":" + mm + ":" + ss;
     // console.log("time",gina);
     if(titleErr.includes(gotData.song)){
