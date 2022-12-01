@@ -89,11 +89,11 @@ let upCount = 0;
 display_data();
 
 // Load onMobile only
-/*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     //console.log("User is using a Mobile device");
     window.onscroll = function() {scrollFunction();};
     //document.getElementById("playList").style.display = "none";
-}*/
+}
 /*else{
     //TypeError: playList is null
     document.getElementById("playList").style.display = "block";
