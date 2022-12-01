@@ -147,7 +147,7 @@ function sleepy(msec){
 }
 
 function get_sched(tag,heure,time_lag){
-    var myTitle = "Now LaPaz.fm";
+    var myTitle = "♪ Now LaPaz.fm ♪";
     var gotObj = weekly_9; //default JST
     if(time_lag == 240){
         /* UTC-4 */
@@ -155,7 +155,7 @@ function get_sched(tag,heure,time_lag){
     }
     for (let item in gotObj){
         if(gotObj[item].day === tag && gotObj[item].time === heure){
-            myTitle = "Now on LaPaz.fm: " + gotObj[item].name;
+            myTitle = "Now on LaPaz.fm ♪ " + gotObj[item].name;
             var durTime = gotObj[item].time + gotObj[item].duration;
             myTitle += " (" + gotObj[item].time + " - " + durTime+")";
         }
