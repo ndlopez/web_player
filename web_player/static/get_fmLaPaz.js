@@ -63,7 +63,7 @@ const weekly_4 = [
 ];
 
 const titleErr = ["Radio Online  -  LAPAZ.FM","  - ","PROMO PUBLICIDAD LPFM - ",
-"Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS","LA CASCADA"];
+"Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
@@ -165,17 +165,21 @@ function get_sched(tag,heure,time_lag){
 
 function build_schedule(tag,heure){
     var sched = [];
-    var outStr = "";
+    var outStr = ", up next ";
     var thisObj = weekly_9;
+    let idx=0;
     for(let item in thisObj){
         if(thisObj[item].day === tag){
+            //outStr = ", up next ";
             if(thisObj[item].time > heure){
                 sched.push(thisObj[item].time);
                 sched.push(thisObj[item].name);
                 outStr = ", up next " + sched[0] + ":00 " + sched[1];
+                //idx++;
             }
         }
     }
+    console.log("myStr",outStr,idx,sched);
     return outStr;
 }
 

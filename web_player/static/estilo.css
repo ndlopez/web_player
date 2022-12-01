@@ -310,7 +310,12 @@ span{
 .col90{width:90%}
 .col10{width: 10%;margin: 0px;}
 .col15{width:15%;}
-.col70{width:70%;text-align: center;}
+.col70{
+  width:70%;
+  text-align: center;
+  overflow: hidden;
+}
+
 @media (max-width:500px) {
   .no_mobil{display: none;}
   body{font-size: small;}
