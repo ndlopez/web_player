@@ -147,7 +147,7 @@ function sleepy(msec){
 }
 
 function get_sched(tag,heure,time_lag){
-    var myTitle = "LaPaz.fm";
+    var myTitle = "Now LaPaz.fm";
     var gotObj = weekly_9; //default JST
     if(time_lag == 240){
         /* UTC-4 */
@@ -165,15 +165,18 @@ function get_sched(tag,heure,time_lag){
 
 function build_schedule(tag,heure){
     var sched = [];
+    var outStr = "";
     var thisObj = weekly_9;
     for(let item in thisObj){
         if(thisObj[item].day === tag){
             if(thisObj[item].time > heure){
+                sched.push(thisObj[item].time);
                 sched.push(thisObj[item].name);
-                sched.push(thisObj[item].time);}
+                outStr = ", up next " + sched[0] + ":00 " + sched[1];
+            }
         }
     }
-    return sched;
+    return outStr;
 }
 
 function export_to_file(jsonData){
@@ -274,7 +277,7 @@ async function display_data(){
     
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
     const titleStatus = document.getElementById("title_stat");
-    titleStatus.innerText = get_sched(day,hh,timeOffset);
+    titleStatus.innerText = get_sched(day,hh,timeOffset) + build_schedule(day,hh);
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
     "<h3 id='currSong' class='lighter col90 float_left'>Now: " + 
