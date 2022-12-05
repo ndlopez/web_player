@@ -10,31 +10,19 @@ const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
 const weekly_9 = [
     {name:"DiscoStu",day:0,time:10,duration:3},
-    {name:"DiscoStu",day:0,time:11,duration:2},
-    {name:"DiscoStu",day:0,time:12,duration:1},
     {name:"UltraLight",day:0,time:16,duration:3},
-    {name:"UltraLight",day:0,time:17,duration:2},
-    {name:"UltraLight",day:0,time:18,duration:1},
     {name:"UltraLight",day:1,time:9,duration:3},
-    {name:"UltraLight",day:1,time:10,duration:2},
-    {name:"UltraLight",day:1,time:11,duration:1},
     {name:"PopArt",day:1,time:16,duration:1},
     {name:"UltraLight",day:2,time:10,duration:3},
-    {name:"UltraLight",day:2,time:11,duration:2},
-    {name:"UltraLight",day:2,time:12,duration:1},
     {name:"PopArt",day:2,time:16,duration:1},
     {name:"PopArt",day:3,time:10,duration:1},
     {name:"En Concierto",day:3,time:12,duration:1},
     {name:"Rock Clasico",day:3,time:16,duration:1},
     {name:"PopArt",day:4,time:10,duration:1},
     {name:"UltraLight",day:4,time:13,duration:3},
-    {name:"UltraLight",day:4,time:14,duration:2},
-    {name:"UltraLight",day:4,time:15,duration:1},
     {name:"En Concierto",day:4,time:16,duration:1},
     {name:"Rock Clasico",day:5,time:10,duration:1},    
     {name:"DiscoStu",day:6,time:10,duration:3},
-    {name:"DiscoStu",day:6,time:11,duration:2},
-    {name:"DiscoStu",day:6,time:12,duration:1}
 ];
 
 const weekly_4 = [
@@ -153,10 +141,17 @@ function get_sched(tag,heure,time_lag){
         gotObj = weekly_4;
     }
     for (let item in gotObj){
-        if(gotObj[item].day === tag && gotObj[item].time === heure){
+        /*if(gotObj[item].day === tag && gotObj[item].time === heure){
             myTitle = "Now on LaPaz.fm ♪ " + gotObj[item].name;
             var durTime = gotObj[item].time + gotObj[item].duration;
-            myTitle += " ( ~ " + /*gotObj[item].time + " - " +*/ durTime+":00)";
+            myTitle += " (" + gotObj[item].time + " - " + durTime+":00)";
+        }*/
+        if(gotObj[item].day === tag){
+            var endTime = gotObj[item].time + gotObj[item].duration;
+            if(heure >= gotObj[item].time && heure < endTime){
+                myTitle = "Now on LaPaz.fm ♪ " + gotObj[item].name;
+                myTitle += " (" + gotObj[item].time + ":00 ~ " + endTime + ":00)";
+            }
         }
     }
     return myTitle;
