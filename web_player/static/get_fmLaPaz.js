@@ -28,12 +28,8 @@ const weekly_9 = [
 const weekly_4 = [
     {name:"UltraLight",day:0,time:3,duration:3},
     {name:"UltraLight",day:0,time:20,duration:3},
-    {name:"UltraLight",day:0,time:21,duration:2},
-    {name:"UltraLight",day:0,time:22,duration:1},
     {name:"PopArt",day:1,time:3,duration:1},
     {name:"UltraLight",day:1,time:21,duration:3},
-    {name:"UltraLight",day:1,time:22,duration:2},
-    {name:"UltraLight",day:1,time:23,duration:1},
     {name:"PopArt",day:2,time:3,duration:1},
     {name:"PopArt",day:2,time:21,duration:1},
     {name:"En Concierto",day:2,time:23,duration:1},
@@ -43,11 +39,7 @@ const weekly_4 = [
     {name:"En Concierto",day:4,time:3,duration:1},
     {name:"Rock Clasico",day:4,time:21,duration:1},
     {name:"DiscoStu",day:5,time:21,duration:3},
-    {name:"DiscoStu",day:5,time:22,duration:2},
-    {name:"DiscoStu",day:5,time:23,duration:1},
-    {name:"DiscoStu",day:6,time:21,duration:3},
-    {name:"DiscoStu",day:6,time:22,duration:2},
-    {name:"DiscoStu",day:6,time:23,duration:1},
+    {name:"DiscoStu",day:6,time:21,duration:3}
 ];
 
 const titleErr = ["Radio Online  -  LAPAZ.FM"," - ","PROMO PUBLICIDAD LPFM - ",
@@ -61,7 +53,7 @@ const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmla
 "https://i.scdn.co/image/ab67616d0000b2736d7a8a34f348d587f007045f",
 "https://i.scdn.co/image/ab67616d0000b273d4af276af7f96299274d4b1b",
 "https://i.scdn.co/image/ab67616d0000b273e8e71ebc372dfa978fc0581f"];
-//const discostu = "https:\/\/stream.consultoradas.com\/cp\/musiclibrary\/nowplay_fmlapaz.png";
+
 //var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
 let upTime = 220000;//3600000;~on Sat/Sun 10~13// about 3min20s
@@ -85,7 +77,7 @@ if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
 /*else{//TypeError: playList is null
     document.getElementById("playList").style.display = "block";}*/
 
-const pxx=400; //not artwork size
+const pxx=300; //not artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
 function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
