@@ -10,21 +10,21 @@
 const stations = [
     {
         name: "181.fm Awesome 80's",
-        logo: "https://player.181fm.com/configs/images/181fm.png",
+        logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "181.FM Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     },{
         name: "113.fm Alt-Rock",
-        logo: "https://static.wixstatic.com/media/143966_9e7dd404f2fd4df1a0c48e335c993bad~mv2.jpg/v1/crop/x_97,y_166,w_328,h_164/fill/w_161,h_93,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_logo_blk_sml_transparent.jpg",
+        logo: "assets/113fm_logo.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
         id3_info: "",
         description: "The biggest Alternative hits from the '90s.  From guitar riffs to mellow beats, we've got you covered.",
         xtra_info: ["Alt-Rock","English","128kbps","Yes"]
     },{
         name:"Third Rock Radio",
-        logo: "https://thirdrockradio.net/wp-content/uploads/2018/02/logo_transparent_small.png",
+        logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         description: "Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with NASA.",
@@ -62,8 +62,8 @@ function no_artwork(){
     const gotDiv = document.getElementById("artwork");
     gotDiv.innerHTML = "<img src='assets/CD_icon.svg' width='310'/>"
 }
-var audioConnect; //= new Audio();
 
+var audioConnect; //= new Audio();
 var tina_timer;
 
 //window.addEventListener("load",startPlay);
