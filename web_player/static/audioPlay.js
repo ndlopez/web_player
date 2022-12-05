@@ -1,6 +1,11 @@
-// check this 
-// https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
-// https://alvarotrigo.com/blog/hamburger-menu-css/
+/*
+Code to play an audio stream with basic functions: play/pause/stop 
+handled by either by click or keyboard events.
+Also control volume and animations.
+Must refer to these code-sources:
+ https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
+ https://alvarotrigo.com/blog/hamburger-menu-css/
+*/
 const stream_url = "https://stream.consultoradas.com/8042/stream";
 var audioConnect; //= new Audio();
 var tina_timer;
@@ -8,7 +13,6 @@ var tina_timer;
 window.addEventListener("load",startPlay);
 
 function startPlay(){
-    /*bug: stop only pauses stream */
     //playStatus = true;
     const svgPlay = document.getElementById("i-play");
     const svgStop = document.getElementById("i-stop");
