@@ -90,8 +90,6 @@ function init_player(stream_idx){
     }
 }
 
-/*function reloadMe(){display_data();}*/
-
 function startPlay(idx){
     //playStatus = true;
     const svgPlay = document.getElementById("i-play");    
@@ -230,6 +228,7 @@ async function get_id3(){
 
 async function get_artwork(){
     const nowPlaying = await get_id3();
+    document.title = nowPlaying.artist + " - "+ nowPlaying.song;
     //const song_artist = now_song.split("-");
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
