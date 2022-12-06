@@ -190,7 +190,7 @@ span{
   padding-top: 5px;
 }
 /*iframe{border:none;}*/
-#nowLabel{
+#nowLabel, #stat_name{
   display: block;
   width: 100%;
   background-color: var(--wine);
@@ -398,7 +398,10 @@ span{
   .col_50{width: 80%;}
   .col_20{width: 20%;}
   .col2{width: 100%;}
-  #amia{height: 100vh;}
+  #amia{
+    height: 100vh;
+    display: none;
+  }
   #list-icon{
     display: block;
   }

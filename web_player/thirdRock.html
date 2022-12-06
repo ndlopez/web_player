@@ -10,9 +10,12 @@
     <link rel="stylesheet" type="text/css" href="static/estilo.css">
   </head>
   <body>
-    <header id="stat_name" style="background-color: #cc274c;" class="padding_10">
-      Select an station by clicking on station logo and press <kbd>d</kbd> to start</header>
-    <main>
+    <header id="stat_name">
+      <h2 class="col90 float_left">Select an station by clicking on station logo and press <kbd>d</kbd> to start</h2>
+      <h2 class="col10 float_left closeBtn" id="list-icon" onclick="openNav()">
+      <img src="assets/list-alt.svg" width="32"/></h2>
+    </header>
+    <main id="music">
       <section class="col2 float_left bkg_cd_case" id="artwork"></section>
       <section class="col2 float_left padding_10" id="amia"></section>
     </main>    

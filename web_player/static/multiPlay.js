@@ -72,7 +72,9 @@ function init_player(stream_idx){
     document.title = stations[stream_idx].name;
 
     const span_name = document.getElementById("stat_name");
-    span_name.innerHTML = "<h3>Now Playing: "+stations[stream_idx].name+"</h3>";
+    span_name.innerHTML = "<h2 class='col90 float_left'>Now Playing: "+stations[stream_idx].name+"</h2>"+
+    "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
+    "<img src='assets/list-alt.svg' width='32'/></h2>";
     switch (stream_idx) {
         case 0:
             startPlay(0);
@@ -256,4 +258,39 @@ async function get_artwork(){
 
 function zeroPad(timeElm){
     return (parseInt(timeElm,10) < 10 ? '0' : '') + timeElm;
+}
+
+/* open and close Info modal */
+function openNav(){
+    //document.getElementById("nowLabel").style.display = "none";
+    const closeBtn = document.getElementById("list-icon");
+    closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
+    //closeBtn.style.margin = "0";
+    //closeBtn.setAttribute("class","col10 float_left closeBtn");
+    //closeBtn.setAttribute("href","javascript:void(0)");
+    closeBtn.setAttribute("onclick","closeNav()");
+    document.getElementById("amia").style.display = "block";
+    document.getElementById("artwork").style.display = "none";
+    //document.getElementById("nowPlaying").style.display = "none";
+    //document.getElementById("playList").style.display = "block";
+    document.getElementById("player").style.display = "none";
+    document.getElementById("station_info").style.display = "none";
+    document.body.style.overflow = "hidden";    
+}
+function closeNav(){
+    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+        document.getElementById('amia').style.display = "none";
+    }else{
+        document.getElementById('amia').style.display = "block";
+    }
+    const listBtn = document.getElementById("list-icon");
+    listBtn.setAttribute("onclick","openNav()");
+    listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
+    document.getElementById("artwork").style.display = "block";
+    //document.getElementById("nowPlaying").style.display = "block";
+    //document.getElementById("mainTitle").style.display = "block";
+    document.getElementById("amia").style.display = "none";
+    document.getElementById("player").style.display = "block";
+    document.getElementById("station_info").style.display = "block";
+    document.body.style.overflow = "auto";
 }
