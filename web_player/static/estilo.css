@@ -190,7 +190,7 @@ span{
   padding-top: 5px;
 }
 /*iframe{border:none;}*/
-#nowLabel, #stat_name{
+#nowLabel{
   display: block;
   width: 100%;
   background-color: var(--wine);
@@ -238,7 +238,10 @@ span{
   height: 300px;
   width: 50%;
 }
-#artwork{height: 400px;/*padding-left: 10px;*/}
+#artwork{
+  height: 400px;/*padding-left: 10px;*/
+  margin-top: 30px;
+}
 .bkg_cd_icon{
   height: 280px;
   background-image: url("../assets/CD_icon.svg");

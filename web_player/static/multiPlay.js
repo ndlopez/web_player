@@ -70,9 +70,11 @@ var tina_timer;
 function init_player(stream_idx){
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
+    const stat_title = document.getElementById("title_stat");
+    stat_title.innerText = stations[stream_idx].name;
 
-    const span_name = document.getElementById("stat_name");
-    span_name.innerHTML = "<h2 class='col90 float_left'>Now Playing: "+stations[stream_idx].name+"</h2>"+
+    const span_name = document.getElementById("nowLabel");
+    span_name.innerHTML = "<h2 class='col90 float_left'>Now Playing:</h2>"+
     "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
     "<img src='assets/list-alt.svg' width='32'/></h2>";
     switch (stream_idx) {
