@@ -149,8 +149,7 @@ function get_sched(tag,heure,time_lag){
     var myTitle = "Now on LaPaz.fm ♪ Adult contemporary music";
     var gotObj = weekly_9; //default JST
     if(time_lag == 240){
-        /* UTC-4 */
-        gotObj = weekly_4;
+        gotObj = weekly_4;// UTC-4
     }
     for (let item in gotObj){
         /*if(gotObj[item].day === tag && gotObj[item].time === heure){
@@ -174,7 +173,6 @@ function build_schedule(tag,heure,time_lag){
     var outStr = "";
     var thisObj = weekly_9;
     if(time_lag == 240){thisObj = weekly_4;}
-    let idx=0;
     for(let item in thisObj){
         if(thisObj[item].day === tag){
             //outStr = ", up next ";
@@ -182,11 +180,9 @@ function build_schedule(tag,heure,time_lag){
                 sched.push(thisObj[item].time);
                 sched.push(thisObj[item].name);
                 outStr = ", up next " + sched[0] + ":00 " + sched[1];
-                //idx++;
             }
         }
     }
-    //console.log("myStr",outStr,idx,sched);
     return outStr;
 }
 
@@ -291,9 +287,9 @@ async function display_data(){
     titleStatus.innerText = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
-    "<h3 id='currSong' class='lighter col90 float_left'>Now: " + 
-    gotData.song+"</h3>" + "<p id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
-    "<img src='assets/list-alt.svg' width='32'/></p>";
+    "<h2 id='currSong' class='col90 float_left moving-text'>Now: " + 
+    gotData.song+"</h2>" + "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
+    "<img src='assets/list-alt.svg' width='32'/></h2>";
     //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
 
     var myDiv = document.getElementById("nowPlaying");
@@ -367,11 +363,12 @@ function openNav(){
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    
     document.getElementById("currSong").style.display = "block";
     document.getElementById("mainTitle").style.display = "none";
     document.getElementById("nowPlaying").style.display = "none";
     document.getElementById("playList").style.display = "block";
+    document.getElementById("player").style.display = "none";
+    document.getElementById("station_info").style.display = "none";
     document.body.style.overflow = "hidden";    
 }
 function closeNav(){
@@ -387,6 +384,8 @@ function closeNav(){
     document.getElementById("nowPlaying").style.display = "block";
     document.getElementById("mainTitle").style.display = "block";
     document.getElementById("currSong").style.display = "none";
+    document.getElementById("player").style.display = "block";
+    document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
 }
 function addModal(){
