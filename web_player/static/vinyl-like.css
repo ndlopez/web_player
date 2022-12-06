@@ -142,3 +142,6 @@ new artwork design */
 }
 .paused .cover img{animation-play-state:paused;}
 .play_on .cover img{animation-play-state: running;}
+@keyframes spin {
+  100% { transform: rotate(360deg) translate(-50%,-50%); }
+}
