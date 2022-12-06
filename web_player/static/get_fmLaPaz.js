@@ -218,13 +218,12 @@ setInterval(async function makePlayList(){
         gotArtwork = "assets/cd-case.svg";
         gotArtist = "Sorry, artwork not found in DB";
     }
-    /*if((gotArtwork === awfulArt[0]) || (gotArtwork === awfulArt[1]) ||
-    (gotArtwork === awfulArt[2]) || gotArtwork === awfulArt[3] || gotArtwork === awfulArt[4]){}*/
     var divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg float_left");
-    divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
+    /*divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
     divColImg.style.backgroundSize = "75px";
-    divColImg.style.backgroundRepeat = "no-repeat";
+    divColImg.style.backgroundRepeat = "no-repeat";*/
+    divColImg.innerHTML = "<img src='"+ gotArtwork + "' width='75'/>";
     divText.innerHTML = "<span>" + gotArtist[0] + "</span><span>" + gotArtist[1] +"</span>";
 
     var divTime = document.createElement("div");
@@ -287,7 +286,7 @@ async function display_data(){
     titleStatus.innerText = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
-    "<h2 id='currSong' class='col90 float_left moving-text'>Now: " + 
+    "<h2 id='currSong' class='col90 float_left moving-text'>Now playing: " + 
     gotData.song+"</h2>" + "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
     "<img src='assets/list-alt.svg' width='32'/></h2>";
     //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
@@ -358,7 +357,7 @@ async function get_url(my_url){
 function openNav(){
     //document.getElementById("nowLabel").style.display = "none";
     const closeBtn = document.getElementById("list-icon");
-    closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
+    closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //closeBtn.style.margin = "0";
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
