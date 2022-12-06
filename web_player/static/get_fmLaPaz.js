@@ -1,11 +1,29 @@
-/*Soundcloud: Mobile settings
+/* 
+Code to fetch id3 info from LaPaz.fm server.
+Data are updated every 4mins or so and stored in a json-array
+Playlist is built using this array.
+
+issues:
+1. Since updating time is ~4mins but not all songs last that long,
+json-array stores duplicated data.
+2. It seems not easy to get info when audio is not playing,
+after the user pushes play will either listen or not.
+How to control this?
+3. On mobile: after clicking show plalist button there's a possibility
+that by accident update the page, in such case stream restarts, playlist
+empties its contents to start all over again. Must find a way to prevent
+this.
+4. The audio stream has a lot of un-requested awful artwork, some of them
+were avoided but remains a whole bunch. 
+
+Soundcloud: Mobile settings
 Song Title: font-size:22px;font-weight:700;
-Song Artist: color: var(--second-color)*/
-//Should fetch data from fm La Paz
+Song Artist: color: var(--second-color)
+*/
+
 const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
-const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-
+//const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
 
 const weekly_9 = [
@@ -26,6 +44,7 @@ const weekly_9 = [
 ];
 
 const weekly_4 = [
+    {name:"DiscoStu",day:0,time:10,duration:3},
     {name:"UltraLight",day:0,time:3,duration:3},
     {name:"UltraLight",day:0,time:20,duration:3},
     {name:"PopArt",day:1,time:3,duration:1},
@@ -35,15 +54,17 @@ const weekly_4 = [
     {name:"En Concierto",day:2,time:23,duration:1},
     {name:"Rock Clasico",day:3,time:3,duration:1},
     {name:"PopArt",day:3,time:21,duration:1},
-    {name:"UltraLight",day:4,time:2,duration:3},
+    {name:"UltraLight",day:4,time:0,duration:3},
     {name:"En Concierto",day:4,time:3,duration:1},
     {name:"Rock Clasico",day:4,time:21,duration:1},
     {name:"DiscoStu",day:5,time:21,duration:3},
+    {name:"En Concierto",day:6,time:14,duration:1},
     {name:"DiscoStu",day:6,time:21,duration:3}
 ];
 
-const titleErr = ["Radio Online  -  LAPAZ.FM"," - ","PROMO PUBLICIDAD LPFM - ",
-"Diferente Como Tu Lapaz.fm  -  IVAN 5 *","DISCO ESTUDIO AVANCE DOMINGOS"];
+const titleErr = ["Radio Online  -  LAPAZ.FM"," - ","ID LAPAZ.FM 1  -  ID LAPAZ.FM 1",
+"PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *",
+"La Radio Hecha A Tu Medida Lapaz.fm  -  IVAN 7 *","DISCO ESTUDIO AVANCE DOMINGOS"];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
@@ -54,7 +75,6 @@ const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmla
 "https://i.scdn.co/image/ab67616d0000b273d4af276af7f96299274d4b1b",
 "https://i.scdn.co/image/ab67616d0000b273e8e71ebc372dfa978fc0581f"];
 
-//var origTitle = document.title; //prev Title
 const keys = ["title","art","bitrate","listeners"];
 let upTime = 220000;//3600000;~on Sat/Sun 10~13// about 3min20s
 const errLapse = 20000; //20s

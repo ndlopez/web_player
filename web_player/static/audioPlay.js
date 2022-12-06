@@ -118,7 +118,6 @@ function volume_mute(vol_stat){
 }
 
 function play_elapsed(min=0,sec=0){
-    //var texty = "";
     var second,minute;
 
     tina_timer = setInterval(function(){
