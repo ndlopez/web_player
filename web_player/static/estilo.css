@@ -264,9 +264,9 @@ span{
   margin-top: -9px;
   margin-left: 25px;
 }
-/*//.contain img border: 1px solid var(--light-sky);float: right;
-  border-radius: 50%;4px;*/
+
 .float_left{float: left;}
+.no-padding{padding: 0;}
 #playList{
   display: block;
   width: 50%;
@@ -274,14 +274,12 @@ span{
   overflow: auto;
 }
 /*Player controls*/
-#i-play{
+#play{
   /*position: fixed;
   bottom: 30px;*/
   margin-top: -12px;
 }
-/*#timerr{position: fixed;bottom: 60px;padding-left: 15px;}*/
 
-.no-padding{padding: 0;}
 .sp-margin{
   margin-top: -40px;
   padding-bottom: 12px;
