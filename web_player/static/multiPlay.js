@@ -14,21 +14,21 @@
 
 const stations = [
     {
-        name: "181.fm Awesome 80's",
+        name: "Awesome 80's",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "181.FM Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     },{
-        name: "181.fm '90s Alternative",
+        name: "'90s Alternative",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
-        description: "181.FM '90s Alternative - The Best Choice for Radio. Your Lifestyle, Your Music.",
+        description: "181.FM '90s Alternative - Listen to the best hits of the 1990s",
         xtra_info: ["90's alternative","English","128kbps","Yes"]
     },{
-        name: "113.fm Alt-Rock",
+        name: "Alt-Rock",
         logo: "assets/113fm_logo.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
         id3_info: "",
@@ -58,8 +58,9 @@ function display_info(){
         }else{aux_text = "";}*/
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","padding_10");
-        var texty = "<p><a onclick='init_player("+idx+")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>";
-        texty += "</a>"+/*aux_text+*/"</p><details><summary>"+stations[idx].description+"</summary>";
+        var texty = "<details><summary>"+stations[idx].name+"&emsp;<a onclick='init_player(" + 
+        idx + ")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>" + 
+        "</a></summary><p>" + stations[idx].description + "</p>";
         var zoey_html = "<div>";
         for (let jdx = 0; jdx < info_keys.length; jdx++) {
             zoey_html += "<div class='half_col float_left'><h4>"+info_keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
@@ -239,7 +240,8 @@ async function display_data(idx){
     "</p><p class='col_50 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
     zeroPad(timeNow.getMinutes()) + 
     "</p><a title='Reload id3-tag' onclick='display_data("+ idx +
-    ")' class='align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
+    ")' class='col_50 float_right align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
+    //"<p>"+gotData.summ+"</p>";
     //this_img.appendChild(coverDiv);
 }
 
@@ -253,28 +255,33 @@ async function get_id3(idx){
 }
 
 async function get_artwork(jdx){
+    /*Fetch artwork from another source, must first get id3 */
     const nowPlaying = await get_id3(jdx);
     document.title = nowPlaying.artist + " - "+ nowPlaying.song;
     //const song_artist = now_song.split("-");
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
-    // console.log("got url",this_url);
+    // console.log("got url",this_url);duration="",
     try {
         const response = await fetch(this_url)
         const data = await response.json();
-        var album = "", artwork = "",duration="";
+        var album = "", artwork = "", summ = "";
         if(data["track"]["album"] === undefined || data["track"]["album"] === ""){
             //stations[0].logo;
             artwork = "https://lastfm.freetls.fastly.net/i/u/300x300/62b1b1423e0cfb3d055cca4206667080.png";
             album = "";
         }else{
             artwork = data["track"]["album"]["image"][3]["#text"];
-            album = data["track"]["album"]["title"],duration="";
+            album = data["track"]["album"]["title"];
+            /*summ = data["track"]["wiki"]["summary"];
+            if(summ === undefined){
+                summ = "";
+            }*/
             //duration = data["track"]["duration"];//ms
         }
         // console.log("artwork",artwork,"album",album);
-        return {nowPlaying, album, artwork};
+        return {nowPlaying, album, artwork, summ};
     } catch (error) {
         // console.log("got an error",error);
         return {nowPlaying};
