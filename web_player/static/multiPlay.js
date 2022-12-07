@@ -138,7 +138,7 @@ function startPlay(idx=0){
     audioConnect = new Audio();
     function playPause(){
         if(audioConnect.paused){
-            audioConnect.src = stations[idx].stream_url;//stream_url[idx];
+            audioConnect.src = stations[idx].stream_url;
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
             mmss = getTimer.innerText; // mm:ss
@@ -275,13 +275,11 @@ async function get_artwork(jdx){
             artwork = data["track"]["album"]["image"][3]["#text"];
             album = data["track"]["album"]["title"];
             /*summ = data["track"]["wiki"]["summary"];
-            if(summ === undefined){
-                summ = "";
-            }*/
+            if(summ === undefined){summ = "";}*/
             //duration = data["track"]["duration"];//ms
         }
         // console.log("artwork",artwork,"album",album);
-        return {nowPlaying, album, artwork, summ};
+        return {nowPlaying, album, artwork};
     } catch (error) {
         // console.log("got an error",error);
         return {nowPlaying};
