@@ -1,11 +1,16 @@
-// check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
-// https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
-// const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
-// alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
-// Beethoven - moonlight
-// Cigarettes After Sex - Apocalypse
-// lovelytheband - these are my friends
-// The Shins - So now what
+/*
+ check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
+ https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
+ const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
+ alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
+ Beethoven - moonlight
+ Cigarettes After Sex - Apocalypse
+ lovelytheband - these are my friends
+ The Shins - So now what
+ id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
+ stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
+ history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
+ */
 
 const stations = [
     {
@@ -15,6 +20,13 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "181.FM Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
+    },{
+        name: "181.fm '90s Alternative",
+        logo: "assets/181fm_logo.png",
+        stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
+        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
+        description: "181.FM '90s Alternative - The Best Choice for Radio. Your Lifestyle, Your Music.",
+        xtra_info: ["90's alternative","English","128kbps","Yes"]
     },{
         name: "113.fm Alt-Rock",
         logo: "assets/113fm_logo.jpg",
@@ -29,13 +41,6 @@ const stations = [
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         description: "Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with NASA.",
         xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
-    },{
-        name:"LaPaz.fm",
-        logo: "assets/fmLP_logo.png",
-        stream_url:"",
-        id3_info: "",
-        description: "Mas musica, menos palabras",
-        xtra_info:["Adult contemporary","English","128kbps","Yes"]
     }
 ];
 const info_keys = ["Genre","Language","Bitrate","Ads"];
@@ -65,9 +70,11 @@ function display_info(){
     }    
 }
 
-function no_artwork(){
+function no_artwork(idx){
     const gotDiv = document.getElementById("artwork");
-    gotDiv.innerHTML = "<img src='assets/CD_icon.svg' width='310'/>"
+    //"<img src='assets/CD_icon.svg' width='310'/>"
+    gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
+    "' width='260'/></div>";
 }
 
 var audioConnect; //= new Audio();
@@ -86,20 +93,21 @@ function init_player(stream_idx){
     "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
     "<img src='assets/list-alt.svg' width='32'/></h2>";
     switch (stream_idx) {
-        /*case 0:
+        case 0:
             startPlay(0);
-            break;*/
+            display_data(0);
+            break;
         case 1:
             startPlay(1);
-            no_artwork();
+            display_data(1);
             break;
         case 2:
             startPlay(2);
-            no_artwork();            
+            no_artwork(2);            
             break;
         default:
-            startPlay(0);
-            display_data();
+            startPlay(3);
+            no_artwork(3);
             break;
     }
 }
@@ -218,10 +226,10 @@ function stop_timer(){
     document.getElementById("timer").innerText = "00:00";
 }
 
-async function display_data(){
+async function display_data(idx){
     const timeNow = new Date();
     //var gotSong = await get_id3();
-    var gotData = await get_artwork();//await get_id3();
+    var gotData = await get_artwork(idx);//await get_id3();
     //console.log("gotThis",gotData);
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div");
@@ -230,12 +238,13 @@ async function display_data(){
     "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>" + gotData.album + 
     "</p><p class='col_50 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
     zeroPad(timeNow.getMinutes()) + 
-    "</p><a title='Reload id3-tag' onclick='display_data()' class='align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
+    "</p><a title='Reload id3-tag' onclick='display_data("+ idx +
+    ")' class='align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
     //this_img.appendChild(coverDiv);
 }
 
-async function get_id3(){
-    const response = await fetch(stations[0].id3_info);
+async function get_id3(idx){
+    const response = await fetch(stations[idx].id3_info);
     const data = await response.json();
     const artist = data["artist"];
     const song = data["title"];
@@ -243,8 +252,8 @@ async function get_id3(){
     return {artist,song};
 }
 
-async function get_artwork(){
-    const nowPlaying = await get_id3();
+async function get_artwork(jdx){
+    const nowPlaying = await get_id3(jdx);
     document.title = nowPlaying.artist + " - "+ nowPlaying.song;
     //const song_artist = now_song.split("-");
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
