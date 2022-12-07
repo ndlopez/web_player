@@ -68,6 +68,7 @@ var tina_timer;
 
 //window.addEventListener("load",startPlay);
 function init_player(stream_idx){
+    /*bug: user must click 2 times the logo to start stream */
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
     const stat_title = document.getElementById("title_stat");
@@ -85,11 +86,13 @@ function init_player(stream_idx){
             startPlay(1);
             no_artwork();
             break;
-        case 2:
+        /*case 2:
             startPlay(2);
             no_artwork();            
-            break;
+            break;*/
         default:
+            startPlay(2)
+            no_artwork();
             break;
     }
 }
@@ -217,10 +220,13 @@ async function display_data(){
     //const coverDiv = document.createElement("div");
     coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
     "<div class='smoke-bkg padding_15'><h3 class='headLabel'>" + gotData.nowPlaying.song+
-    "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>" + gotData.album + "</p><p>&#x231A; " +
-    zeroPad(timeNow.getHours()) +":"+ zeroPad(timeNow.getMinutes()) + "</p></div>";
+    "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>" + gotData.album + 
+    "</p><p class='col_50 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
+    zeroPad(timeNow.getMinutes()) + 
+    "</p><a title='Reload id3-tag' onclick='display_data()'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
     //this_img.appendChild(coverDiv);
 }
+
 async function get_id3(){
     const response = await fetch(stations[0].id3_info);
     const data = await response.json();
