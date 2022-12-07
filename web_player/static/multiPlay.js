@@ -267,16 +267,14 @@ async function get_artwork(jdx){
         const response = await fetch(this_url)
         const data = await response.json();
         var album = "", artwork = "", summ = "";
-        if(data["track"]["album"] === undefined || data["track"]["album"] === ""){
-            //stations[0].logo;
-            artwork = "https://lastfm.freetls.fastly.net/i/u/300x300/62b1b1423e0cfb3d055cca4206667080.png";
-            album = "";
-        }else{
+        if(typeof data["track"]["album"] !== 'undefined'){
             artwork = data["track"]["album"]["image"][3]["#text"];
             album = data["track"]["album"]["title"];
             /*summ = data["track"]["wiki"]["summary"];
-            if(summ === undefined){summ = "";}*/
-            //duration = data["track"]["duration"];//ms
+            if(summ === undefined){summ = "";}*/            
+        }else{
+            artwork = "https://lastfm.freetls.fastly.net/i/u/300x300/62b1b1423e0cfb3d055cca4206667080.png";
+            album = "";
         }
         // console.log("artwork",artwork,"album",album);
         return {nowPlaying, album, artwork};
