@@ -29,6 +29,13 @@ const stations = [
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         description: "Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with NASA.",
         xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
+    },{
+        name:"LaPaz.fm",
+        logo: "assets/fmLP_logo.png",
+        stream_url:"",
+        id3_info: "",
+        description: "Mas musica, menos palabras",
+        xtra_info:["Adult contemporary","English","128kbps","Yes"]
     }
 ];
 const info_keys = ["Genre","Language","Bitrate","Ads"];
@@ -75,21 +82,21 @@ function init_player(stream_idx){
     stat_title.innerText = stations[stream_idx].name;
 
     const span_name = document.getElementById("nowLabel");
-    span_name.innerHTML = "<h2 class='col90 float_left'>Now Playing:</h2>"+
+    span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now Playing</h2>"+
     "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
     "<img src='assets/list-alt.svg' width='32'/></h2>";
     switch (stream_idx) {
-        case 0:
+        /*case 0:
             startPlay(0);
-            break;
+            break;*/
         case 1:
             startPlay(1);
             no_artwork();
             break;
-        /*case 2:
+        case 2:
             startPlay(2);
             no_artwork();            
-            break;*/
+            break;
         default:
             startPlay(2)
             no_artwork();
@@ -97,7 +104,7 @@ function init_player(stream_idx){
     }
 }
 
-function startPlay(idx){
+function startPlay(idx=0){
     //playStatus = true;
     const svgPlay = document.getElementById("i-play");    
     const gifImg = document.getElementById("gifElm");
@@ -223,7 +230,7 @@ async function display_data(){
     "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>" + gotData.album + 
     "</p><p class='col_50 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
     zeroPad(timeNow.getMinutes()) + 
-    "</p><a title='Reload id3-tag' onclick='display_data()'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
+    "</p><a title='Reload id3-tag' onclick='display_data()' class='align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
     //this_img.appendChild(coverDiv);
 }
 
@@ -277,6 +284,7 @@ function openNav(){
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
+    document.getElementById("mainTitle").innerText = "Favorite Stations";
     document.getElementById("amia").style.display = "block";
     document.getElementById("artwork").style.display = "none";
     //document.getElementById("nowPlaying").style.display = "none";
@@ -294,6 +302,7 @@ function closeNav(){
     const listBtn = document.getElementById("list-icon");
     listBtn.setAttribute("onclick","openNav()");
     listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
+    document.getElementById("mainTitle").innerText = "Now Playing";
     document.getElementById("artwork").style.display = "block";
     //document.getElementById("nowPlaying").style.display = "block";
     //document.getElementById("mainTitle").style.display = "block";

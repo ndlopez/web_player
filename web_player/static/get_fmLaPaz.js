@@ -261,7 +261,7 @@ async function display_data(){
         console.log(gina,"error:",gotData.song);
         await sleepy(errLapse);
         gotData = await get_url(thisURL);
-        console.log("gotIt",gotData.song);
+        console.log("gotIt:",gotData.song);
     }
     if(gotData.song === " - "){
         gotData.song = "LaPaz.fm - Song ID not found on DB"
