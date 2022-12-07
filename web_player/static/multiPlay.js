@@ -47,14 +47,14 @@ function display_info(){
     const mainDiv = document.getElementById("amia");
     
     for (let idx = 0; idx < stations.length; idx++) {
-        var aux_text = "";
+        /*var aux_text = "";
         if(idx == 0){
             aux_text = '&emsp;<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
-        }else{aux_text = "";}
+        }else{aux_text = "";}*/
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","padding_10");
         var texty = "<p><a onclick='init_player("+idx+")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>";
-        texty += "</a>"+aux_text+"</p><details><summary>"+stations[idx].description+"</summary>";
+        texty += "</a>"+/*aux_text+*/"</p><details><summary>"+stations[idx].description+"</summary>";
         var zoey_html = "<div>";
         for (let jdx = 0; jdx < info_keys.length; jdx++) {
             zoey_html += "<div class='half_col float_left'><h4>"+info_keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
@@ -98,8 +98,8 @@ function init_player(stream_idx){
             no_artwork();            
             break;
         default:
-            startPlay(2)
-            no_artwork();
+            startPlay(0);
+            display_data();
             break;
     }
 }
@@ -256,7 +256,8 @@ async function get_artwork(){
         const data = await response.json();
         var album = "", artwork = "",duration="";
         if(data["track"]["album"] === undefined || data["track"]["album"] === ""){
-            artwork = stations[0].logo;
+            //stations[0].logo;
+            artwork = "https://lastfm.freetls.fastly.net/i/u/300x300/62b1b1423e0cfb3d055cca4206667080.png";
             album = "";
         }else{
             artwork = data["track"]["album"]["image"][3]["#text"];
