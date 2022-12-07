@@ -111,11 +111,14 @@ function init_player(stream_idx){
             no_artwork(3);
             break;
     }
+    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+        closeNav();
+    }    
 }
 
 function startPlay(idx=0){
     //playStatus = true;
-    const svgPlay = document.getElementById("i-play");    
+    const svgPlay = document.getElementById("play");    
     const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timer");
     
