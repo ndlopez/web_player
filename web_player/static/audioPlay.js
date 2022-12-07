@@ -14,8 +14,8 @@ window.addEventListener("load",startPlay);
 
 function startPlay(){
     //playStatus = true;
-    const svgPlay = document.getElementById("i-play");
-    const svgStop = document.getElementById("i-stop");
+    const svgPlay = document.getElementById("play");
+    const svgStop = document.getElementById("stop");
     const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timerr");
     /*const song_artist = document.getElementById("currSong");
@@ -148,7 +148,7 @@ function playControls(){
     //await display_data();
     const playDiv = document.createElement("div");
     playDiv.setAttribute("id","player");
-    var texty = '<button onclick="startPlay()"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg></button>';
+    var texty = '<button onclick="startPlay()"><svg id="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 2 L10 30 24 16 Z" /></svg></button>';
     texty += '<svg id="i-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M23 2 L23 30 M9 2 L9 30" /></svg>';
     playDiv.innerHTML = texty;
     return playDiv;
