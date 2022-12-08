@@ -167,7 +167,7 @@ function get_sched(tag,heure,time_lag){
             var endTime = gotObj[item].time + gotObj[item].duration;
             if(heure >= gotObj[item].time && heure < endTime){
                 myTitle = "Now on LaPaz.fm ♪ " + gotObj[item].time + ":00 ~ " + 
-                endTime + ":00 " + gotObj[item].name + gotObj[item].desc;
+                endTime + ":00 <em>" + gotObj[item].name +"</em>"+gotObj[item].desc;
             }
         }
     }
@@ -184,7 +184,7 @@ function build_schedule(tag,heure,time_lag){
             if(thisObj[item].time > heure){
                 sched.push(thisObj[item].time);
                 sched.push(thisObj[item].name);
-                outStr = " Up next " + sched[0] + ":00 " + sched[1];
+                outStr = " Later today at " + sched[0] + ":00 " + sched[1];
             }
         }
     }
@@ -288,7 +288,7 @@ async function display_data(){
     
     const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width='256' height='256'>";
     const titleStatus = document.getElementById("title_stat");
-    titleStatus.innerText = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
+    titleStatus.innerHTML = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
     "<h2 id='currSong' class='col90 float_left'>Now playing: " + 
