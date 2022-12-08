@@ -128,7 +128,7 @@ function startPlay(idx=0){
     const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
     //const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
     
-    svgPlay.addEventListener("click",playPause);
+    svgPlay.addEventListener("click",playStop);
     document.addEventListener("keydown",function(event){
         /* adding key press events to player */
         if(event.key === "d" || event.key === "D"){
@@ -139,7 +139,7 @@ function startPlay(idx=0){
     //const svgStop = document.getElementById("i-stop");
     //svgStop.addEventListener("click",stopPlay);
     audioConnect = new Audio();
-    function playPause(){
+    function playStop(){
         if(audioConnect.paused){
             audioConnect.src = stations[idx].stream_url;
             audioConnect.play();//if not success -> then timer should not start
@@ -149,8 +149,6 @@ function startPlay(idx=0){
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
             svgPlay.innerHTML = circleImg + stopImg;
-            //svgStop.style.stroke = "#bed2e0";
-            //svgStop.style.fill = "#bed2e0";
             gifImg.classList.remove("no-audio");
         }else{
             audioConnect.pause();
@@ -232,8 +230,7 @@ function stop_timer(){
 
 async function display_data(idx){
     const timeNow = new Date();
-    //var gotSong = await get_id3();
-    var gotData = await get_artwork(idx);//await get_id3();
+    var gotData = await get_artwork(idx);
     //console.log("gotThis",gotData);
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div");
