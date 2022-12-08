@@ -238,11 +238,11 @@ async function display_data(idx){
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div");
     coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
-    "<div class='smoke-bkg padding_15'><h3 class='headLabel'>" + gotData.nowPlaying.song+
-    "</h3><h3>"+ gotData.nowPlaying.artist + "</h3><p>" + gotData.album + 
-    "</p><p class='col_50 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
+    "<div class='smoke-bkg padding_15'><h2 class='headLabel'>" + gotData.nowPlaying.song+
+    "</h2><h2>"+ gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + gotData.album + 
+    "</h2><h2 class='lighter col_50 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
     zeroPad(timeNow.getMinutes()) + 
-    "</p><a title='Reload id3-tag' onclick='display_data("+ idx +
+    "</h2><a title='Reload id3-tag' onclick='display_data("+ idx +
     ")' class='col_50 float_right align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
     //"<p>"+gotData.summ+"</p>";
     //this_img.appendChild(coverDiv);
