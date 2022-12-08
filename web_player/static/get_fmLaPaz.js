@@ -26,40 +26,46 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 //const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
 
+const description = [": música enganchada de las décadas de los 70s, 80s y parte de los 90s.",
+": lo mejor de los 70s, 80s y los 90s.",
+": dedicado a una generación que aún perdura, los 70s y 80s.",
+": con el mejor sonido y la emoción del escenario",
+": música romántica, lo mejor en baladas."];
+
 const weekly_9 = [
-    {name:"DiscoStu",day:0,time:10,duration:3},
-    {name:"UltraLight",day:0,time:16,duration:3},
-    {name:"UltraLight",day:1,time:9,duration:3},
-    {name:"PopArt",day:1,time:16,duration:1},
-    {name:"UltraLight",day:2,time:10,duration:3},
-    {name:"PopArt",day:2,time:16,duration:1},
-    {name:"PopArt",day:3,time:10,duration:1},
-    {name:"En Concierto",day:3,time:12,duration:1},
-    {name:"Rock Clasico",day:3,time:16,duration:1},
-    {name:"PopArt",day:4,time:10,duration:1},
-    {name:"UltraLight",day:4,time:13,duration:3},
-    {name:"En Concierto",day:4,time:16,duration:1},
-    {name:"Rock Clasico",day:5,time:10,duration:1},    
-    {name:"DiscoStu",day:6,time:10,duration:3},
+    {name:"DiscoStu",day:0,time:10,duration:3,desc:description[0]},
+    {name:"UltraLight",day:0,time:16,duration:3,desc:description[4]},
+    {name:"UltraLight",day:1,time:9,duration:3,desc:description[4]},
+    {name:"PopArt",day:1,time:16,duration:1,desc:description[2]},
+    {name:"UltraLight",day:2,time:10,duration:3,desc:description[4]},
+    {name:"PopArt",day:2,time:16,duration:1,desc:description[2]},
+    {name:"PopArt",day:3,time:10,duration:1,desc:description[2]},
+    {name:"En Concierto",day:3,time:12,duration:1,desc:description[3]},
+    {name:"Rock Clasico",day:3,time:16,duration:1,desc:description[1]},
+    {name:"PopArt",day:4,time:10,duration:1,desc:description[2]},
+    {name:"UltraLight",day:4,time:13,duration:3,desc:description[4]},
+    {name:"En Concierto",day:4,time:16,duration:1,desc:description[3]},
+    {name:"Rock Clasico",day:5,time:10,duration:1,desc:description[1]},    
+    {name:"DiscoStu",day:6,time:10,duration:3,desc:description[0]},
 ];
 
 const weekly_4 = [
-    {name:"DiscoStu",day:0,time:10,duration:3},
-    {name:"UltraLight",day:0,time:3,duration:3},
-    {name:"UltraLight",day:0,time:20,duration:3},
-    {name:"PopArt",day:1,time:3,duration:1},
-    {name:"UltraLight",day:1,time:21,duration:3},
-    {name:"PopArt",day:2,time:3,duration:1},
-    {name:"PopArt",day:2,time:21,duration:1},
-    {name:"En Concierto",day:2,time:23,duration:1},
-    {name:"Rock Clasico",day:3,time:3,duration:1},
-    {name:"PopArt",day:3,time:21,duration:1},
-    {name:"UltraLight",day:4,time:0,duration:3},
-    {name:"En Concierto",day:4,time:3,duration:1},
-    {name:"Rock Clasico",day:4,time:21,duration:1},
-    {name:"DiscoStu",day:5,time:21,duration:3},
-    {name:"En Concierto",day:6,time:14,duration:1},
-    {name:"DiscoStu",day:6,time:21,duration:3}
+    {name:"DiscoStu",day:0,time:10,duration:3,desc:description[0]},
+    {name:"UltraLight",day:0,time:3,duration:3,desc:description[4]},
+    {name:"UltraLight",day:0,time:20,duration:3,desc:description[4]},
+    {name:"PopArt",day:1,time:3,duration:1,desc:description[2]},
+    {name:"UltraLight",day:1,time:21,duration:3,desc:description[4]},
+    {name:"PopArt",day:2,time:3,duration:1,desc:description[2]},
+    {name:"PopArt",day:2,time:21,duration:1,desc:description[2]},
+    {name:"En Concierto",day:2,time:23,duration:1,desc:description[3]},
+    {name:"Rock Clasico",day:3,time:3,duration:1,desc:description[1]},
+    {name:"PopArt",day:3,time:21,duration:1,desc:description[2]},
+    {name:"UltraLight",day:4,time:0,duration:3,desc:description[4]},
+    {name:"En Concierto",day:4,time:3,duration:1,desc:description[3]},
+    {name:"Rock Clasico",day:4,time:21,duration:1,desc:description[1]},
+    {name:"DiscoStu",day:5,time:21,duration:3,desc:description[0]},
+    {name:"En Concierto",day:6,time:14,duration:1,desc:description[3]},
+    {name:"DiscoStu",day:6,time:21,duration:3,desc:description[0]}
 ];
 
 const titleErr = ["Radio Online  -  LAPAZ.FM"," - ","ID LAPAZ.FM 1  -  ID LAPAZ.FM 1",
@@ -146,7 +152,7 @@ function sleepy(msec){
 }
 
 function get_sched(tag,heure,time_lag){
-    var myTitle = "Now on LaPaz.fm ♪ Adult contemporary music";
+    var myTitle = "Now on LaPaz.fm ♪ Adult contemporary music.";
     var gotObj = weekly_9; //default JST
     if(time_lag == 240){
         gotObj = weekly_4;// UTC-4
@@ -160,8 +166,8 @@ function get_sched(tag,heure,time_lag){
         if(gotObj[item].day === tag){
             var endTime = gotObj[item].time + gotObj[item].duration;
             if(heure >= gotObj[item].time && heure < endTime){
-                myTitle = "Now on LaPaz.fm ♪ " + gotObj[item].name;
-                myTitle += " (" + gotObj[item].time + ":00 ~ " + endTime + ":00)";
+                myTitle = "Now on LaPaz.fm ♪ " + gotObj[item].time + ":00 ~ " + 
+                endTime + ":00 " + gotObj[item].name + gotObj[item].desc;
             }
         }
     }
@@ -175,11 +181,10 @@ function build_schedule(tag,heure,time_lag){
     if(time_lag == 240){thisObj = weekly_4;}
     for(let item in thisObj){
         if(thisObj[item].day === tag){
-            //outStr = ", up next ";
             if(thisObj[item].time > heure){
                 sched.push(thisObj[item].time);
                 sched.push(thisObj[item].name);
-                outStr = ", up next " + sched[0] + ":00 " + sched[1];
+                outStr = " Up next " + sched[0] + ":00 " + sched[1];
             }
         }
     }
@@ -286,7 +291,7 @@ async function display_data(){
     titleStatus.innerText = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
-    "<h2 id='currSong' class='col90 float_left moving-text'>Now playing: " + 
+    "<h2 id='currSong' class='col90 float_left'>Now playing: " + 
     gotData.song+"</h2>" + "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
     "<img src='assets/list-alt.svg' width='32'/></h2>";
     //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
