@@ -223,7 +223,7 @@ setInterval(async function makePlayList(){
     /*divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
     divColImg.style.backgroundSize = "75px";
     divColImg.style.backgroundRepeat = "no-repeat";*/
-    divColImg.innerHTML = "<img src='"+ gotArtwork + "' width='75'/>";
+    divColImg.innerHTML = "<img src='"+ gotArtwork + "' width='75' height='75'/>";
     divText.innerHTML = "<span>" + gotArtist[0] + "</span><span>" + gotArtist[1] +"</span>";
 
     var divTime = document.createElement("div");
@@ -281,7 +281,7 @@ async function display_data(){
     
     document.title = gotData.song;
     
-    const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width=256>";
+    const img_art = "<img src='" + gotData.artwork + "' alt='Artwork' width='256' height='256'>";
     const titleStatus = document.getElementById("title_stat");
     titleStatus.innerText = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
