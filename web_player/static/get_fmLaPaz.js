@@ -26,11 +26,11 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 //const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
 
-const description = [": música enganchada de las décadas de los 70s, 80s y parte de los 90s.",
+const description = [": continuously mixed music from the 70s, 80s and 90s.",
 ": lo mejor de los 70s, 80s y los 90s.",
-": dedicado a una generación que aún perdura, los 70s y 80s.",
+": music from a generation that still lasts, the 70s and 80s.",
 ": con el mejor sonido y la emoción del escenario",
-": música romántica, lo mejor en baladas."];
+": the best in ballads. A song can show what we feel."];
 
 const weekly_9 = [
     {name:"DiscoStu",day:0,time:10,duration:3,desc:description[0]},
