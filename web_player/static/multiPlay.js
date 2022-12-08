@@ -32,14 +32,14 @@ const stations = [
         logo: "assets/113fm_logo.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
         id3_info: "",
-        description: "The biggest Alternative hits from the '90s.  From guitar riffs to mellow beats, we've got you covered.",
+        description: "The biggest Alternative hits from the '90s. From guitar riffs to mellow beats, we've got you covered.",
         xtra_info: ["Alt-Rock","English","128kbps","Yes"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        description: "Third Rock Radio, produced and published by Houston-based RFC Media LLC under a Space Act Agreement with NASA.",
+        description: "Explore and discover new worlds of music with NASA's Third Rock Radio.",
         xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
     }
 ];
@@ -87,7 +87,7 @@ function init_player(stream_idx){
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
     const stat_title = document.getElementById("title_stat");
-    stat_title.innerText = stations[stream_idx].name;
+    stat_title.innerText = stations[stream_idx].description;
 
     const span_name = document.getElementById("nowLabel");
     span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now Playing</h2>"+
