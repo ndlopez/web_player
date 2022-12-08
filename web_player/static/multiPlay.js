@@ -121,7 +121,7 @@ function startPlay(idx=0){
     const svgPlay = document.getElementById("play");    
     const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timer");
-    
+    //const titleStat = document.getElementById("title_stat");
     var mmss = "";
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
     const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
@@ -150,6 +150,7 @@ function startPlay(idx=0){
             svgPlay.classList.add("play_on");
             svgPlay.innerHTML = circleImg + stopImg;
             gifImg.classList.remove("no-audio");
+            //titleStat.innerText = "Select an station by clicking on station logo and press the play button to start";
         }else{
             audioConnect.pause();
             audioConnect.loop = false;
