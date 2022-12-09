@@ -55,8 +55,8 @@ function startPlay(){
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
             svgPlay.innerHTML = circleImg + pauseImg;
-            svgStop.style.stroke = "#bed2e0";
-            svgStop.style.fill = "#bed2e0";
+            svgStop.style.stroke = "#2e4054";
+            svgStop.style.fill = "#2e4054";
             gifImg.classList.remove("no-audio");
             //change icon to pause btn
         }else{
@@ -76,12 +76,8 @@ function startPlay(){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
-        //svgPlay.style.fill = "#2e4054";
-        //svgPlay.style.stroke = "#2e4054";
         svgStop.style.stroke = "#cc274c";
         svgStop.style.fill = "#cc274c";
-        //gifImg.style.display = "none";
-        //gifImg.style.animation = "none";
         gifImg.classList.add("no-audio");
         //audioConnect.pause();
         
