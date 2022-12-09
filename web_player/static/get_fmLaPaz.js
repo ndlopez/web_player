@@ -71,7 +71,7 @@ const weekly_4 = [
 const titleErr = ["Radio Online  -  LAPAZ.FM"," - ","ID LAPAZ.FM 1  -  ID LAPAZ.FM 1",
 "PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *",
 "La Radio Hecha A Tu Medida Lapaz.fm  -  IVAN 7 *","ID LAPAZ.FM 0 - ID LAPAZ.FM 0",
-"CS LAPAZFM - Losing My Religion"];
+"CS LAPAZFM - Losing My Religion", "DESPEDID - ROCK CLAS"];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
@@ -126,6 +126,7 @@ function topFunction() {
 
 function reloadMe(){
     /* Reload the Playing artwork */
+    console.log("Reloading artwork...");
     window.scroll({bottom:0,left:0,behavior:'smooth'});
     //scrollTo(0, document.body.scrollHeight);  
     display_data();
@@ -292,7 +293,7 @@ async function display_data(){
     titleStatus.innerHTML = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
-    "<h2 id='currSong' class='col90 float_left'>Now playing: " + 
+    "<h2 id='currSong' class='col90 float_left'>Now: " + 
     gotData.song+"</h2>" + "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
     "<img src='assets/list-alt.svg' width='32'/></h2>";
     //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
@@ -301,8 +302,8 @@ async function display_data(){
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
     //var gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='lighter col_50 float_left'><small>&#8986; "+ gina +
-    "</small></h2><a title='reload id3-tag' onclick='reloadMe()'>" + 
-    "<img src='assets/reload-svgrepo.svg' width='32'/></a>";
+    "</small></h2><button title='reload id3-tag' onclick='reloadMe()'>" + 
+    "<img src='assets/reload-svgrepo.svg' width='32'/></button>";
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");

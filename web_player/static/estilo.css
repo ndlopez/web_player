@@ -324,17 +324,27 @@ span{
   white-space: nowrap;
 }
 .moving-text-10{animation: marque 10s linear infinite;}
-/*.button{
-  width: 32px;
-  height: 32px;
+button{
+  appearance: none;
+  outline: none;
+  position: relative;
+  padding: 0;
+  font-size: 100%;
   background-color: transparent;
-  background-image: linear-gradient(#ddd,#f6f6f6);
   border: none;
-  border-radius: 50%;
   cursor: pointer;
 }
-.button::before{
+.button{
+  width: 2.8em;
+  height: 2.8em;
+  background-color: transparent;
+  background-image: linear-gradient(var(--light-sky),var(--light-sky));
+  border: none;
+  border-radius: 50%;
+}
+/*.button:before{
   content: '';
+  position: absolute;
   width: 80%;
   height: 80%;
   transform: translate(-50%,-50%);
