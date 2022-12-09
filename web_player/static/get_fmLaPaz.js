@@ -70,7 +70,8 @@ const weekly_4 = [
 
 const titleErr = ["Radio Online  -  LAPAZ.FM"," - ","ID LAPAZ.FM 1  -  ID LAPAZ.FM 1",
 "PROMO PUBLICIDAD LPFM - ","Diferente Como Tu Lapaz.fm  -  IVAN 5 *",
-"La Radio Hecha A Tu Medida Lapaz.fm  -  IVAN 7 *","DISCO ESTUDIO AVANCE DOMINGOS"];
+"La Radio Hecha A Tu Medida Lapaz.fm  -  IVAN 7 *","ID LAPAZ.FM 0 - ID LAPAZ.FM 0",
+"CS LAPAZFM - Losing My Religion"];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
