@@ -378,7 +378,10 @@ span{
   }
   
   /*.bottomText h2{line-height: normal;}*/
-  .colImg img{width: 64px;}
+  .colImg img{
+    width: 64px;
+    height: 64px;
+  }
   .colArtist{padding: 5px;}
   #playList{
     display: none;
