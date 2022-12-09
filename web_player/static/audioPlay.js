@@ -55,8 +55,8 @@ function startPlay(){
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
             svgPlay.innerHTML = circleImg + pauseImg;
-            svgStop.style.stroke = "#2e4054";
-            svgStop.style.fill = "#2e4054";
+            svgStop.style.stroke = "#bed2e0";
+            svgStop.style.fill = "#bed2e0";
             gifImg.classList.remove("no-audio");
             //change icon to pause btn
         }else{
