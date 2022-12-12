@@ -396,7 +396,7 @@ button{
     display: none;
     width: 100%;
     overflow: auto;
-    height: 100vh;
+    height: 90vh;
   }
   .equalizer{width: 50px;}
   .equalizer span:nth-child(5) {

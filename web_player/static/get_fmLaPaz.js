@@ -103,7 +103,7 @@ if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
 /*else{//TypeError: playList is null
     document.getElementById("playList").style.display = "block";}*/
 
-const pxx=350; //not artwork size
+const pxx=350;
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
 function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
@@ -118,7 +118,7 @@ function scrollFunction() {
 }
 
 function topFunction() {
-    //user clicks on myBtn, scroll to top
+    console.log("user clicks on myBtn, scroll to top");
     //document.body.scrollTop = 0;//document.body.animate({scrollTop:0},1500);
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 }
@@ -364,13 +364,12 @@ function openNav(){
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    
     document.getElementById("mainTitle").style.display = "none";
     document.getElementById("nowPlaying").style.display = "none";
     document.getElementById("playList").style.display = "block";
     document.getElementById("player").style.display = "none";
     document.getElementById("station_info").style.display = "none";
-    document.body.style.overflow = "hidden";    
+    document.body.style.overflow = "hidden";
 }
 function closeNav(){
     document.getElementById('playList').style.display = "none";
