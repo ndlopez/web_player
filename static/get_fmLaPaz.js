@@ -25,7 +25,7 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
 //const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
-// No PopArt on Monday @ 16
+
 const description = [": nonstop mixed music from the 70s, 80s and 90s.",
 ": lo mejor de los 70s, 80s y los 90s.",
 ": music from a generation that stand the test of time, the 70s and 80s.",
@@ -33,6 +33,7 @@ const description = [": nonstop mixed music from the 70s, 80s and 90s.",
 ": the best in ballads. A song can show what we feel."];
 
 const weekly_9 = [
+    // No PopArt on Monday @ 16
     {name:"DiscoStu",day:0,time:10,duration:3,desc:description[0]},
     {name:"UltraLight",day:0,time:16,duration:3,desc:description[4]},
     {name:"UltraLight",day:1,time:9,duration:3,desc:description[4]},
@@ -311,7 +312,7 @@ async function display_data(){
     " kbps</h3></div><div class='col3 float_left'><h3 class='lighter'> Listeners</h3><h3>"+ 
     gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info</h3>" + 
     "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim().replace(/\s+/g,"%20")+ "+" + h2Song[0].trim().replace(/\s+/g,"%20") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='https://duckduckgo.com/assets/logo_header.alt.v108.svg' width=32/></a>"+
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width=32/></a>"+
     "</h3></div>" + "<div class='no_mobil'>Press <kbd>d</kbd> key to START stream, <kbd>s</kbd> key to STOP stream</div></div></div>";
 
     const divImg = "<div class='bkg_cd_icon contain' id='album_art'><div class='cover'><div>" + img_art +
