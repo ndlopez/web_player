@@ -25,7 +25,7 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
 //const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
-
+// No PopArt on Monday @ 16
 const description = [": nonstop mixed music from the 70s, 80s and 90s.",
 ": lo mejor de los 70s, 80s y los 90s.",
 ": music from a generation that stand the test of time, the 70s and 80s.",
@@ -104,9 +104,10 @@ if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     document.getElementById("playList").style.display = "block";}*/
 
 const pxx=350;
-//scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
+//scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 500 milliseconds
 function scrollFunction() {
-    if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
+    const plist = document.getElementById("playList");
+    if (plist.scrollTop > pxx) {
         document.getElementById("topBtn").style.display = "block";
         document.getElementById("currSong").style.display = "block";
         document.getElementById("headTit").style.display = "none";
