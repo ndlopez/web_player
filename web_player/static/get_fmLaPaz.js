@@ -95,16 +95,15 @@ let upCount = 0;
 
 display_data();
 
-// Load onMobile only
 if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
-    //console.log("User is using a Mobile device");
+    // Load onMobile only:console.log("User is using a Mobile device");
     window.onscroll = function() {scrollFunction();};
     //document.getElementById("playList").style.display = "none";
 }
 /*else{//TypeError: playList is null
     document.getElementById("playList").style.display = "block";}*/
 
-const pxx=300; //not artwork size
+const pxx=350; //not artwork size
 //scrolldelay = setTimeout('scrollFunction()',500); // scrolls every 100 milliseconds
 function scrollFunction() {
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) {
@@ -127,8 +126,8 @@ function topFunction() {
 function reloadMe(){
     /* Reload the Playing artwork */
     console.log("Reloading artwork...");
-    window.scroll({bottom:0,left:0,behavior:'smooth'});
-    //scrollTo(0, document.body.scrollHeight);  
+    // window.scroll({bottom:0,left:0,behavior:'smooth'});
+    // scrollTo(0, document.body.scrollHeight); // set cursor to top
     display_data();
 }
 
@@ -261,7 +260,6 @@ async function display_data(){
     mm = zeroPad(mm); //(mm < 10)? "0" + String(mm):mm;
     ss = zeroPad(ss); //(ss < 10)? "0" + String(ss):ss;
 
-    //console.log("Today:",build_schedule(day,hh));
     var gina = hh + ":" + mm + ":" + ss;
     // console.log("time",gina);
     if(titleErr.includes(gotData.song)){
@@ -273,9 +271,7 @@ async function display_data(){
     if(gotData.song === " - "){
         gotData.song = "LaPaz.fm - Song ID not found on DB"
     }
-    /*Old-method
-    if(gotData.song === titleErr[0] || gotData.song === titleErr[1] || gotData.song === titleErr[2] || gotData.song === titleErr[3]){}
-    if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3]) || (gotData.artwork === awfulArt[4])){}if((gotData.artwork === awfulArt[0]) || (gotData.artwork === awfulArt[1]) || (gotData.artwork === awfulArt[2]) || (gotData.artwork === awfulArt[3])){}*/
+
     if(awfulArt.includes(gotData.artwork)){
         console.log(gina,"wait 40s, art error:",gotData.artwork);
         await sleepy(40000);//40s
@@ -334,8 +330,7 @@ async function display_data(){
     noSec = (noSec.length < 8)? noSec.substring(0,4):noSec.substring(0,5);
     /*if(upCount === 0){
         tmpData = {"time":noSec,"song":gotData.song,"artwork":gotData.artwork};}
-    else{
-        if(songs[upCount] !== songs[upCount-1]){}}*/
+    else{if(songs[upCount] !== songs[upCount-1]){}}*/
     timeStamp.push(noSec);
     songs.push(gotData.song);
     artImg.push(gotData.artwork);
@@ -362,14 +357,14 @@ async function get_url(my_url){
 
 /* open and close Info modal */
 function openNav(){
-    //document.getElementById("nowLabel").style.display = "none";
+    document.getElementById("currSong").style.display = "block";
     const closeBtn = document.getElementById("list-icon");
     closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //closeBtn.style.margin = "0";
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    document.getElementById("currSong").style.display = "block";
+    
     document.getElementById("mainTitle").style.display = "none";
     document.getElementById("nowPlaying").style.display = "none";
     document.getElementById("playList").style.display = "block";
@@ -378,11 +373,7 @@ function openNav(){
     document.body.style.overflow = "hidden";    
 }
 function closeNav(){
-    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
-        document.getElementById('playList').style.display = "none";
-    }else{
-        document.getElementById('playList').style.display = "block";
-    }
+    document.getElementById('playList').style.display = "none";
     const listBtn = document.getElementById("list-icon");
     listBtn.setAttribute("onclick","openNav()");
     listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
