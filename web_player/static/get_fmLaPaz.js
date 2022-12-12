@@ -26,9 +26,9 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 //const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
 
-const description = [": continuously mixed music from the 70s, 80s and 90s.",
+const description = [": nonstop mixed music from the 70s, 80s and 90s.",
 ": lo mejor de los 70s, 80s y los 90s.",
-": music from a generation that still lasts, the 70s and 80s.",
+": music from a generation that stand the test of time, the 70s and 80s.",
 ": con el mejor sonido y la emoción del escenario",
 ": the best in ballads. A song can show what we feel."];
 
