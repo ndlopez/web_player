@@ -104,7 +104,7 @@ function init_player(stream_idx){
             break;
         case 2:
             startPlay(2);
-            no_artwork(2);            
+            no_artwork(2);
             break;
         default:
             startPlay(3);
@@ -133,7 +133,7 @@ function startPlay(idx=0){
         /* adding key press events to player */
         if(event.key === "d" || event.key === "D"){
             /* play pressed */
-            playPause();
+            playStop();
         }
     });
     //const svgStop = document.getElementById("i-stop");

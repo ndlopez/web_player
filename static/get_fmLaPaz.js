@@ -346,15 +346,17 @@ async function display_data(){
 }
 
 async function get_url(my_url){
-    const response = await fetch(my_url);
-    const data = await response.json();
-    const song = data[keys[0]];
-    var artwork = data[keys[1]];
-    const bit = data[keys[2]];
-    const listen = data[keys[3]];
-
-    // Should not update if Sat/Sun @10-12 sleepy <- 3hrs
-    return {song,artwork,bit,listen};
+    try {
+        const response = await fetch(my_url);
+        const data = await response.json();
+        const song = data[keys[0]];
+        var artwork = data[keys[1]];
+        const bit = data[keys[2]];
+        const listen = data[keys[3]];
+        return {song,artwork,bit,listen};
+    } catch (error) {
+        alert("Network error",error);
+    }    
 }
 
 /* open and close Info modal */
