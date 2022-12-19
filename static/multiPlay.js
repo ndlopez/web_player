@@ -76,6 +76,7 @@ function no_artwork(idx){
     //"<img src='assets/CD_icon.svg' width='310'/>"
     gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
     "' width='260'/></div>";
+    document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
 }
 
 var audioConnect; //= new Audio();
@@ -86,7 +87,7 @@ function init_player(stream_idx){
     /*bug: user must click 2 times the logo to start stream */
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
-    const stat_title = document.getElementById("title_stat");
+    const stat_title = document.getElementById("cover_title");
     stat_title.innerText = stations[stream_idx].description;
 
     const span_name = document.getElementById("nowLabel");
@@ -242,6 +243,11 @@ async function display_data(idx){
     zeroPad(timeNow.getMinutes()) + 
     "</h2><a title='Reload id3-tag' onclick='display_data("+ idx +
     ")' class='col_50 float_right align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
+
+    const cover_art = document.getElementById("cover_art");
+    cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
+    document.getElementById("cover_title").innerHTML = gotData.nowPlaying.song + "<br/>" + 
+    gotData.nowPlaying.artist;
     //"<p>"+gotData.summ+"</p>";
     //this_img.appendChild(coverDiv);
 }
@@ -298,7 +304,7 @@ function openNav(){
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    document.getElementById("mainTitle").innerText = "Favorite Stations";
+    document.getElementById("mainTitle").innerText = "Now Playing";
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
     //document.getElementById("nowPlaying").style.display = "none";
@@ -316,7 +322,7 @@ function closeNav(){
     const listBtn = document.getElementById("list-icon");
     listBtn.setAttribute("onclick","openNav()");
     listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
-    document.getElementById("mainTitle").innerText = "Now Playing";
+    document.getElementById("mainTitle").innerText = "Favorite Stations";
     document.getElementById("artwork").style.display = "none";
     //document.getElementById("nowPlaying").style.display = "block";
     //document.getElementById("mainTitle").style.display = "block";

@@ -58,7 +58,7 @@ ul, li{margin: 0px;padding: 5px;}
 #player{
   display: block;
   width: 100%;
-  background-color: var(--dark-smoke);
+  background-color: var(--smoke);
   padding: 5px 0px;
   height: 48px;
 }
@@ -221,6 +221,7 @@ span{
 .bottomText a{color: var(--light-sky);}
 .bottomText #more_info{padding-top:15px;}
 .align-right{text-align: right;}
+.align-left{text-align: left;}
 .headLabel{color: var(--lemon)}
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
@@ -305,7 +306,7 @@ span{
   height: 38px;
 }
 #station_info{
-  background-color: var(--smoke);
+  background-color: var(--dark-smoke);
   position: fixed;
   bottom: 58px;
   width: 100%;
@@ -316,10 +317,11 @@ span{
 .col15{width:15%;}
 .col70{
   width:70%;
-  height: 34px;
   text-align: center;
   overflow: hidden;
 }
+#title_stat{height: 34px;}
+#cover_title{padding-left: 20px;}
 /*.moving-text:hover{animation-play-state: paused;}*/
 .moving-text{
   animation: marque 40s linear infinite;
