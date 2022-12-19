@@ -111,9 +111,9 @@ function init_player(stream_idx){
             no_artwork(3);
             break;
     }
-    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+    /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
         closeNav();
-    }    
+    }*/
 }
 
 function startPlay(idx=0){
@@ -299,8 +299,8 @@ function openNav(){
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
     document.getElementById("mainTitle").innerText = "Favorite Stations";
-    document.getElementById("amia").style.display = "block";
-    document.getElementById("artwork").style.display = "none";
+    document.getElementById("amia").style.display = "none";
+    document.getElementById("artwork").style.display = "block";
     //document.getElementById("nowPlaying").style.display = "none";
     //document.getElementById("playList").style.display = "block";
     document.getElementById("player").style.display = "none";
@@ -308,20 +308,20 @@ function openNav(){
     document.body.style.overflow = "hidden";    
 }
 function closeNav(){
-    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+    /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
         document.getElementById('amia').style.display = "none";
     }else{
         document.getElementById('amia').style.display = "block";
-    }
+    }*/
     const listBtn = document.getElementById("list-icon");
     listBtn.setAttribute("onclick","openNav()");
     listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
     document.getElementById("mainTitle").innerText = "Now Playing";
-    document.getElementById("artwork").style.display = "block";
+    document.getElementById("artwork").style.display = "none";
     //document.getElementById("nowPlaying").style.display = "block";
     //document.getElementById("mainTitle").style.display = "block";
-    document.getElementById("amia").style.display = "none";
     document.getElementById("player").style.display = "block";
+    document.getElementById("amia").style.display = "block";
     document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
 }

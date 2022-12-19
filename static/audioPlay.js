@@ -44,6 +44,8 @@ function startPlay(){
     //gifImg.style.animation = "load 1s 1.2s infinite linear;";
     function playPause(){
         if(audioConnect.paused){
+            audioConnect.addEventListener('error',()=>{
+                console.error(`Error loading: ${stream_url}`);});
             audioConnect.src = stream_url;
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;

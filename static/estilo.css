@@ -54,7 +54,7 @@ kbd {
 /* Bottom menu and player*/
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
-#currSong{display: none;}
+#currSong, #vol_input, .closeBtn, #list-icon{display: none;}
 #player{
   display: block;
   width: 100%;
@@ -149,7 +149,6 @@ ul, li{margin: 0px;padding: 5px;}
   display: flex; position: fixed; bottom: 73px;
   transform:rotate(-90deg);  width: 80px;
 }.volume-none{display: none;}*/
-#vol_input{display: none;}
 /*Playlist elements*/
 .row:after{
   content:"";
@@ -298,16 +297,20 @@ span{
   fill: var(--light-sky);
   stroke: var(--light-sky);
 }
-#station_info{
+#curr_station{
   background-color: var(--dark-smoke);
   position: fixed;
   bottom: 58px;
   width: 100%;
   height: 38px;
 }
+#station_info{
+  background-color: var(--smoke);
+  position: fixed;
+  bottom: 58px;
+  width: 100%;
+}
 #stat_name h3{margin:0px;}
-.closeBtn{display: none;}
-#list-icon{display: none;}
 .col90{width:90%}
 .col10{width: 10%;margin: 0px;}
 .col15{width:15%;}
@@ -353,9 +356,8 @@ button{
   box-shadow: inset 0 0.25em 1em -0.25em rgba(255,255,255,0.75);
 }*/
 @media (max-width:500px) {
-  .no_mobil{display: none;}
   body{font-size: small;}
-  #now_song{display: none;}
+  #now_song, #artwork, .no_mobil {display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
     background-position-x: right;*/
@@ -411,10 +413,10 @@ button{
   .col_50{width: 80%;}
   .col_20{width: 20%;}
   .col2{width: 100%;}
-  #amia{
+  /*#amia{
     height: 100vh;
     display: none;
-  }
+  }*/
   #list-icon{
     display: block;
   }
