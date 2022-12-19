@@ -303,7 +303,6 @@ function zeroPad(timeElm){
 
 /* open and close Info modal */
 function openNav(){
-    //document.getElementById("nowLabel").style.display = "none";
     const closeBtn = document.getElementById("list-icon");
     closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //closeBtn.style.margin = "0";
@@ -312,10 +311,8 @@ function openNav(){
     closeBtn.setAttribute("onclick","closeNav()");
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
-    //document.getElementById("nowPlaying").style.display = "none";
-    //document.getElementById("playList").style.display = "block";
     document.getElementById("player").style.display = "none";
-    document.getElementById("station_info").style.display = "none";
+    document.getElementById("stat_info").style.display = "none";
     document.body.style.overflow = "hidden";    
 }
 function closeNav(){
@@ -328,10 +325,8 @@ function closeNav(){
     listBtn.setAttribute("onclick","openNav()");
     listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
     document.getElementById("artwork").style.display = "none";
-    //document.getElementById("nowPlaying").style.display = "block";
-    //document.getElementById("mainTitle").style.display = "block";
     document.getElementById("player").style.display = "block";
     document.getElementById("amia").style.display = "block";
-    document.getElementById("station_info").style.display = "block";
+    document.getElementById("stat_info").style.display = "block";
     document.body.style.overflow = "auto";
 }

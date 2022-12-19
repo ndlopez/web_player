@@ -362,17 +362,19 @@ async function get_url(my_url){
 /* open and close Info modal */
 function openNav(){
     document.getElementById("currSong").style.display = "block";
+    document.getElementById("mainTitle").style.display = "none";
+    document.getElementById("nowPlaying").style.display = "none";
+    document.getElementById("playList").style.display = "block";
+    document.getElementById("player").style.display = "none";
+    document.getElementById("station_info").style.display = "none";
+    
     const closeBtn = document.getElementById("list-icon");
     closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //closeBtn.style.margin = "0";
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    document.getElementById("mainTitle").style.display = "none";
-    document.getElementById("nowPlaying").style.display = "none";
-    document.getElementById("playList").style.display = "block";
-    document.getElementById("player").style.display = "none";
-    document.getElementById("station_info").style.display = "none";
+    
     document.body.style.overflow = "hidden";
 }
 function closeNav(){

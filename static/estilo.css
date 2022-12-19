@@ -298,15 +298,9 @@ span{
   fill: var(--light-sky);
   stroke: var(--light-sky);
 }
-#curr_station{
-  background-color: var(--dark-smoke);
-  position: fixed;
-  bottom: 58px;
-  width: 100%;
-  height: 38px;
-}
-#station_info{
-  background-color: var(--dark-smoke);
+#stat_info{background-color: var(--dark-smoke);}
+#station_info{background-color: var(--smoke);}
+#station_info, #stat_info{
   position: fixed;
   bottom: 58px;
   width: 100%;
@@ -380,6 +374,7 @@ button{
     margin: 0;
   }
   #timerr, #timer{font-size: 1rem !important;}
+  #timer{margin-top: 13px;}
   #downLink img{width: 32px;}
   .bottomText{
     padding: 5px 5px 20px 13px;  
