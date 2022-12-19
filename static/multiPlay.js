@@ -50,6 +50,9 @@ display_info();
 
 function display_info(){
     const mainDiv = document.getElementById("amia");
+    const divTitle = document.createElement("h2");
+    divTitle.innerText = "Favorite stations";
+    mainDiv.appendChild(divTitle);
     
     for (let idx = 0; idx < stations.length; idx++) {
         /*var aux_text = "";
@@ -77,6 +80,9 @@ function no_artwork(idx){
     gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
     "' width='260'/></div>";
     document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
+    const divTitle = document.getElementById("cover_title");
+    divTitle.innerText = stations[idx].description;
+    divTitle.classList.add("moving-text");
 }
 
 var audioConnect; //= new Audio();
@@ -87,11 +93,10 @@ function init_player(stream_idx){
     /*bug: user must click 2 times the logo to start stream */
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
-    const stat_title = document.getElementById("cover_title");
-    stat_title.innerText = stations[stream_idx].description;
 
     const span_name = document.getElementById("nowLabel");
-    span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now Playing</h2>"+
+    span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now playing: "+ 
+    stations[stream_idx].name + "</h2>"+
     "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
     "<img src='assets/list-alt.svg' width='32'/></h2>";
     switch (stream_idx) {
@@ -248,6 +253,7 @@ async function display_data(idx){
     cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
     document.getElementById("cover_title").innerHTML = gotData.nowPlaying.song + "<br/>" + 
     gotData.nowPlaying.artist;
+    document.getElementById("cover_title").classList.remove("moving-text");
     //"<p>"+gotData.summ+"</p>";
     //this_img.appendChild(coverDiv);
 }
@@ -304,7 +310,6 @@ function openNav(){
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    document.getElementById("mainTitle").innerText = "Now Playing";
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
     //document.getElementById("nowPlaying").style.display = "none";
@@ -322,7 +327,6 @@ function closeNav(){
     const listBtn = document.getElementById("list-icon");
     listBtn.setAttribute("onclick","openNav()");
     listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
-    document.getElementById("mainTitle").innerText = "Favorite Stations";
     document.getElementById("artwork").style.display = "none";
     //document.getElementById("nowPlaying").style.display = "block";
     //document.getElementById("mainTitle").style.display = "block";
