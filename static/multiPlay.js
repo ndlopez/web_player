@@ -46,7 +46,6 @@ const stations = [
 const info_keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
 
-//display_info();
 display_all_stations();
 
 function display_info(){
@@ -84,7 +83,7 @@ function display_all_stations(){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row");
         rowDiv.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
-        ")' src='" + stations[idx].logo + "'/></div>" +
+        ")' src='" + stations[idx].logo + "' width='84'/></div>" +
         "<div class='colArtist float_left'><span>" + stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
         "</span></div><div class='colTime float_left'><span>" + stations[idx].xtra_info[2] + "</span></div>";
         mainDiv.appendChild(rowDiv);
@@ -287,10 +286,9 @@ async function get_id3(idx){
 }
 
 async function get_artwork(jdx){
-    /*Fetch artwork from another source, must first get id3 */
+    /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx);
     document.title = nowPlaying.artist + " - "+ nowPlaying.song;
-    //const song_artist = now_song.split("-");
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
