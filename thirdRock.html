@@ -54,11 +54,15 @@
         </li>
       </ul>      
     </div>
-    <aside id="stat_info" onclick="openNav()">
-      <div class="col15 float_left" id="cover_art"><img src="assets/discoStu.png" width="60" height="60"/></div>
-      <div class="col70 float_left"><p id="cover_title" class="align-left">You don't get me hight anymore<br/>Phantogram</p></div>
-      <div class="col15 float_left"><span id="timer" class="col15 float_left">00:00</span></div>
+    <aside id="stat_info">
+      <div class="col15 float_left" id="cover_art"><img src="assets/phantogram.jpg" width="60" height="60"/></div>
+      <div id="cover_title" class="col70 float_left" onclick="openNav()"><span>You don't get me high anymore</span><span>Phantogram</span></div>
+      <div class="col15 float_left">
+        <svg id="sub_play" viewBox="0 0 16 16" width="32px" height="32px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path class="paused" d="M12.322 7.576a.5.5 0 010 .848l-6.557 4.098A.5.5 0 015 12.098V3.902a.5.5 0 01.765-.424l6.557 4.098z" fill="currentColor"></path></svg>
+        <span id="timer" class="col15 float_left">00:00</span></div>
     </aside>
     <script src="static/multiPlay.js"></script>
+    <!--svg width="18px" height="20px" viewBox="0 0 8 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path transform="translate(-1682.000000, -935.000000)" d="M1687,935 L1687,945 L1690,945 L1690,935 L1687,935 Z M1682,935 L1682,945 L1685,945 L1685,935 L1682,935 Z" fill="currentColor"></path></svg-->
   </body>
 </html>

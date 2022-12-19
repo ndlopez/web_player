@@ -58,7 +58,7 @@ ul, li{margin: 0px;padding: 5px;}
 #player{
   display: block;
   width: 100%;
-  background-color: var(--smoke);
+  background-color: var(--dark-smoke);
   padding: 5px 0px;
   height: 48px;
 }
@@ -277,7 +277,6 @@ span{
   /*position: fixed;bottom: 30px;*/
   margin-top: -12px;
 }
-
 .sp-margin{
   margin-top: -40px;
   padding-bottom: 12px;
@@ -298,9 +297,8 @@ span{
   fill: var(--light-sky);
   stroke: var(--light-sky);
 }
-#stat_info{background-color: var(--dark-smoke);}
-#station_info{background-color: var(--smoke);}
 #station_info, #stat_info{
+  background-color: var(--dark-smoke);
   position: fixed;
   bottom: 58px;
   width: 100%;
@@ -316,6 +314,7 @@ span{
 }
 #title_stat{height: 34px;}
 #cover_title{padding-left: 20px;}
+#timer{margin-top: 30px;}
 /*.moving-text:hover{animation-play-state: paused;}*/
 .moving-text{
   animation: marque 40s linear infinite;
@@ -374,7 +373,6 @@ button{
     margin: 0;
   }
   #timerr, #timer{font-size: 1rem !important;}
-  #timer{margin-top: 13px;}
   #downLink img{width: 32px;}
   .bottomText{
     padding: 5px 5px 20px 13px;  

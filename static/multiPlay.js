@@ -14,21 +14,21 @@
 
 const stations = [
     {
-        name: "Awesome 80's",
+        name: "181.fm Awesome 80's",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "181.FM Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     },{
-        name: "'90s Alternative",
+        name: "181.fm '90s Alternative",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "181.FM '90s Alternative - Listen to the best hits of the 1990s",
         xtra_info: ["90's alternative","English","128kbps","Yes"]
     },{
-        name: "Alt-Rock",
+        name: "113.fm Alternative-Rock",
         logo: "assets/113fm_logo.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
         id3_info: "",
@@ -46,7 +46,8 @@ const stations = [
 const info_keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
 
-display_info();
+//display_info();
+display_all_stations();
 
 function display_info(){
     const mainDiv = document.getElementById("amia");
@@ -74,6 +75,21 @@ function display_info(){
     }    
 }
 
+function display_all_stations(){
+    const mainDiv = document.getElementById("amia");
+    const divTitle = document.createElement("h2");
+    divTitle.innerText = "Favorite stations";
+    mainDiv.appendChild(divTitle);
+    for(let idx = 0; idx < stations.length; idx++){
+        const rowDiv = document.createElement("div");
+        rowDiv.setAttribute("class","row");
+        rowDiv.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
+        ")' src='" + stations[idx].logo + "'/></div>" +
+        "<div class='colArtist float_left'><span>" + stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
+        "</span></div><div class='colTime float_left'><span>" + stations[idx].xtra_info[2] + "</span></div>";
+        mainDiv.appendChild(rowDiv);
+    }
+}
 function no_artwork(idx){
     const gotDiv = document.getElementById("artwork");
     //"<img src='assets/CD_icon.svg' width='310'/>"
@@ -251,11 +267,9 @@ async function display_data(idx){
 
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
-    document.getElementById("cover_title").innerHTML = gotData.nowPlaying.song + "<br/>" + 
-    gotData.nowPlaying.artist;
+    document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
+    gotData.nowPlaying.song + "</span><span class='align-left'>" + gotData.nowPlaying.artist + "</span>";
     document.getElementById("cover_title").classList.remove("moving-text");
-    //"<p>"+gotData.summ+"</p>";
-    //this_img.appendChild(coverDiv);
 }
 
 async function get_id3(idx){
