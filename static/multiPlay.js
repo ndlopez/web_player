@@ -18,14 +18,14 @@ const stations = [
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
-        description: "181.FM Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
+        description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     },{
         name: "181.fm '90s Alternative",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
-        description: "181.FM '90s Alternative - Listen to the best hits of the 1990s",
+        description: "Listen to the best hits of the 1990s",
         xtra_info: ["90's alternative","English","128kbps","Yes"]
     },{
         name: "113.fm Alternative-Rock",
@@ -89,16 +89,6 @@ function display_all_stations(){
         "</span></div><div class='colTime float_left'><span>" + stations[idx].xtra_info[2] + "</span></div>";
         mainDiv.appendChild(rowDiv);
     }
-}
-function no_artwork(idx){
-    const gotDiv = document.getElementById("artwork");
-    //"<img src='assets/CD_icon.svg' width='310'/>"
-    gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
-    "' width='260'/></div>";
-    document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
-    const divTitle = document.getElementById("cover_title");
-    divTitle.innerText = stations[idx].description;
-    divTitle.classList.add("moving-text");
 }
 
 var audioConnect; //= new Audio();
@@ -251,6 +241,17 @@ function stop_timer(){
     document.getElementById("timer").innerText = "00:00";
 }
 
+function no_artwork(idx){
+    const gotDiv = document.getElementById("artwork");
+    //"<img src='assets/CD_icon.svg' width='310'/>"
+    gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
+    "' width='260'/></div>";
+    document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
+    const divTitle = document.getElementById("cover_title");
+    divTitle.innerHTML= "<span>" + stations[idx].description + "</span>";
+    //divTitle.classList.add("moving-text");
+}
+
 async function display_data(idx){
     const timeNow = new Date();
     var gotData = await get_artwork(idx);
@@ -260,16 +261,20 @@ async function display_data(idx){
     coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
     "<div class='smoke-bkg padding_15'><h2 class='headLabel'>" + gotData.nowPlaying.song+
     "</h2><h2>"+ gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + gotData.album + 
-    "</h2><h2 class='lighter col_50 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
+    "</h2><h2 class='lighter col3 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
     zeroPad(timeNow.getMinutes()) + 
     "</h2><a title='Reload id3-tag' onclick='display_data("+ idx +
-    ")' class='col_50 float_right align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a></div>";
+    ")' class='col3 float_left align-right'><img src='assets/reload-svgrepo.svg' width='32'/></a>" +
+    "<a class='col3 float_left align-right' title='More info' href='https://duckduckgo.com/?q=" + 
+    gotData.nowPlaying.artist.trim().replace(/\s+/g,"%20") + "+" + 
+    gotData.nowPlaying.song.trim().replace(/\s+/g,"%20") +
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='32'/></a></div>";
 
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
     document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
     gotData.nowPlaying.song + "</span><span class='align-left'>" + gotData.nowPlaying.artist + "</span>";
-    document.getElementById("cover_title").classList.remove("moving-text");
+    //document.getElementById("cover_title").classList.remove("moving-text");
 }
 
 async function get_id3(idx){
@@ -289,25 +294,26 @@ async function get_artwork(jdx){
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
+    var album = "", artwork = stations[jdx].logo, summ = "";
     // console.log("got url",this_url);duration="",
     try {
         const response = await fetch(this_url)
         const data = await response.json();
-        var album = "", artwork = "", summ = "";
+        
         if(typeof data["track"]["album"] !== 'undefined'){
             artwork = data["track"]["album"]["image"][3]["#text"];
             album = data["track"]["album"]["title"];
             /*summ = data["track"]["wiki"]["summary"];
             if(summ === undefined){summ = "";}*/            
         }else{
-            artwork = "https://lastfm.freetls.fastly.net/i/u/300x300/62b1b1423e0cfb3d055cca4206667080.png";
+            artwork = stations[jdx].logo;
             album = "";
         }
         // console.log("artwork",artwork,"album",album);
         return {nowPlaying, album, artwork};
     } catch (error) {
         // console.log("got an error",error);
-        return {nowPlaying};
+        return {nowPlaying, album, artwork};
     }    
 }
 
