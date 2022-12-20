@@ -202,7 +202,7 @@ span{
   padding:8px;
   margin-bottom: 10px;
   position: fixed;
-  top:0;
+  top:50;/*0*/
   z-index: 100;
   float: none;
 }

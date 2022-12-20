@@ -76,9 +76,7 @@ function display_info(){
 
 function display_all_stations(){
     const mainDiv = document.getElementById("amia");
-    const divTitle = document.createElement("h2");
-    divTitle.innerText = "Favorite stations";
-    mainDiv.appendChild(divTitle);
+    
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row");
@@ -104,6 +102,7 @@ function init_player(stream_idx){
     stations[stream_idx].name + "</h2>"+
     "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
     "<img src='assets/list-alt.svg' width='32'/></h2>";
+
     switch (stream_idx) {
         case 0:
             startPlay(0);

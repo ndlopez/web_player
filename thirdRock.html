@@ -8,8 +8,21 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!--script src="get_thirdRock.js">CORS issue</script-->
     <link rel="stylesheet" type="text/css" href="static/estilo.css">
+    <link rel="stylesheet" type="text/css" href="static/burger.css">
   </head>
   <body>
+    <nav class="top-nav">
+      <div><h2>Favorite Stations</h2></div>
+      <input id="menu-toggle" type="checkbox"/><label class="menu-button-container" for="menu-toggle">
+        <div class="menu-button"></div>
+      </label>
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/pages/research.html">Research</a></li>
+        <li><a href="/pages/projects.html">Projects</a></li>
+        <li><a href="/pages/jma_weather.html">Weather</a></li>
+        <li><a href="/pages/todo_list.html">To Do</a></li></ul>
+    </nav>
     <header id="nowLabel">
       <h2 class="col90 float_left" id="mainTitle">Click on a station logo and press <kbd>play button</kbd> to start</h2>
       <h2 class="col10 float_left closeBtn" id="list-icon">
@@ -34,16 +47,6 @@
           <path class="paused" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg>
         <span id="timer" class="col15 float_left">00:00</span></div>
     </aside>
-    
-    <nav class="no-desktop" id="player" style="background-color: #bed2e0;">
-      <ul>
-        <li><a class="link-off" href="/"><img src="https://ndlopez.github.io/assets/home.svg"/> home</a></li>
-        <li><a class="link-off" href="/pages/research.html"><img src="https://ndlopez.github.io/assets/telescope.svg"/> research</a></li>
-        <li><a class="link-off" href="/pages/projects.html"><img src="https://ndlopez.github.io/assets/code.svg" width="24"/> projects</a></li>
-        <li><a class="link-off" href="/pages/jma_weather.html"><img src="https://ndlopez.github.io/assets/cloudy.svg" width="24"/> weather</a></li>
-        <li><a class="link-off" href="/pages/todo_list.html"><img src="https://ndlopez.github.io/assets/todo.svg" width="24"/> todo</a></li>
-      </ul>
-    </nav>
     <script src="static/multiPlay.js"></script>
   </body>
 </html>
