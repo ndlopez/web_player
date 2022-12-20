@@ -21,9 +21,19 @@
     </main>    
     <!--aside id="station_info">
       <span id="timer" class="col15 float_left">00:00</span>
-      <div class="col70 float_left"> <span id="title_stat" class="moving-text">♪ You don't get me hight anymore - Phantogram</span></div>
+      <div class="col70 float_left"> <span id="title_stat" class="moving-text">♪ You don't get me high anymore - Phantogram</span></div>
       <span class="col15 float_left align-right">LIVE&ensp;</span>
     </aside-->
+
+    <aside id="stat_info">
+      <div class="col15 float_left" id="cover_art"><img src="assets/phantogram.jpg" width="60" height="60"/></div>
+      <div id="cover_title" class="col70 float_left" onclick="openNav()"><span>You don't get me high anymore</span><span>Phantogram</span></div>
+      <div class="col15 float_left">
+        <svg id="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">
+          <!--circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/-->
+          <path class="paused" fill="#2e4054" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg>
+        <span id="timer" class="col15 float_left">00:00</span></div>
+    </aside>
     <div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
       <ul>
         <li><a><div><label for="vol_input" onclick="volume_mute(0)">
@@ -36,11 +46,7 @@
             <circle stroke-width="0" cx="21" cy="21" r="20"/><!--M30 30 L30 10 12 20Z M11 30 L11 10-->
             <path fill= "#2e4054" d="M28 28 L28 14 15 21Z M14 28 L14 14"/></svg>
           </a></li>
-        <li><a id="playBtn" title="start stream">
-          <svg id="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">
-          <circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>
-          <path class="paused" fill="#2e4054" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg>
-          </a></li>
+        <li><a id="playBtn" title="start stream"></a></li>
         <li><a href="fmlapaz.html" title="Go to FM LaPaz">
           <svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
           <!--path d="M9 25 L25 16 9 7Z M25 25 L25 7"/"M12 30 L12 10 30 20Z M31 30 L31 10"-->
@@ -54,15 +60,10 @@
         </li>
       </ul>      
     </div>
-    <aside id="stat_info">
-      <div class="col15 float_left" id="cover_art"><img src="assets/phantogram.jpg" width="60" height="60"/></div>
-      <div id="cover_title" class="col70 float_left" onclick="openNav()"><span>You don't get me high anymore</span><span>Phantogram</span></div>
-      <div class="col15 float_left">
-        <svg id="sub_play" viewBox="0 0 16 16" width="32px" height="32px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path class="paused" d="M12.322 7.576a.5.5 0 010 .848l-6.557 4.098A.5.5 0 015 12.098V3.902a.5.5 0 01.765-.424l6.557 4.098z" fill="currentColor"></path></svg>
-        <span id="timer" class="col15 float_left">00:00</span></div>
-    </aside>
     <script src="static/multiPlay.js"></script>
-    <!--svg width="18px" height="20px" viewBox="0 0 8 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path transform="translate(-1682.000000, -935.000000)" d="M1687,935 L1687,945 L1690,945 L1690,935 L1687,935 Z M1682,935 L1682,945 L1685,945 L1685,935 L1682,935 Z" fill="currentColor"></path></svg-->
+    <!--svg width="18px" height="20px" viewBox="0 0 8 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path transform="translate(-1682.000000, -935.000000)" d="M1687,935 L1687,945 L1690,945 L1690,935 L1687,935 Z M1682,935 L1682,945 L1685,945 L1685,935 L1682,935 Z" fill="currentColor"></path></svg>
+    <svg id="sub_play" viewBox="0 0 16 16" width="32px" height="32px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="paused" d="M12.322 7.576a.5.5 0 010 .848l-6.557 4.098A.5.5 0 015 12.098V3.902a.5.5 0 01.765-.424l6.557 4.098z" fill="currentColor"></path></svg-->
   </body>
 </html>

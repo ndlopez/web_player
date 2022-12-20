@@ -313,8 +313,8 @@ span{
   overflow: hidden;
 }
 #title_stat{height: 34px;}
-#cover_title{padding-left: 20px;}
-#timer{margin-top: 30px;}
+#cover_title{padding-left: 10px;}
+#timer{margin-top: -10px;}
 /*.moving-text:hover{animation-play-state: paused;}*/
 .moving-text{
   animation: marque 40s linear infinite;

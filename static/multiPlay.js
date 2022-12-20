@@ -159,7 +159,7 @@ function startPlay(idx=0){
             play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5))); //counter starts or restarts
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
-            svgPlay.innerHTML = circleImg + stopImg;
+            svgPlay.innerHTML = /*circleImg +*/ stopImg;
             gifImg.classList.remove("no-audio");
             //titleStat.innerText = "Select an station by clicking on station logo and press the play button to start";
         }else{
@@ -169,7 +169,7 @@ function startPlay(idx=0){
             svgPlay.classList.remove("play_on");
             svgPlay.classList.add("paused");
             clearInterval(tina_timer);
-            svgPlay.innerHTML = circleImg + playImg;
+            svgPlay.innerHTML = /*circleImg +*/ playImg;
             stop_timer();
         }
     }
@@ -271,7 +271,7 @@ async function display_data(idx){
 
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
-    document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
+    document.getElementById("cover_title").innerHTML = "<span class='align-left headLabel'>" + 
     gotData.nowPlaying.song + "</span><span class='align-left'>" + gotData.nowPlaying.artist + "</span>";
     //document.getElementById("cover_title").classList.remove("moving-text");
 }
