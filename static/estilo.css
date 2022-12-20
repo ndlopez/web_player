@@ -50,6 +50,14 @@ kbd {
   font-size: 2em;
   content: "\22bc";
 }
+#playBtn{
+  display: none;
+  position: fixed;
+  bottom: 25vh;
+  right: 20px;
+  z-index: 99;
+  border: none;
+}
 #music{padding-top: 50px;}
 /* Bottom menu and player*/
 
@@ -177,7 +185,7 @@ span{
   display: grid;
   place-items: center;
 }
-.col_50, .col2{width: 50%;}
+.col_50, .col2, .col_half{width: 50%;}
 .col_40{width: 40%;}
 .col_20{width: 10%;}
 /*img{filter: opacity(30%);}*/
