@@ -6,6 +6,33 @@ Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultorada
 
 Update: *www.lapaz.fm* has changed everything. icecasthd JSON file is no longer available. 
 
-Dev only: Open *index.html* in Firefox, the playlist will populate and update every 3.5 minutes.
+Dev only: Open *index.html* in Firefox and access *Web Developer Tools* from Settings Menu.
 
 By clicking on the cloud icon, it is possible to download the playlist in JSON format, obviously from the moment the page was opened.
+
+<!--div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
+      <ul>
+        <li><a><div><label for="vol_input" onclick="volume_mute(0)">
+          <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
+          <input id="vol_input" class="volume-vertical" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>
+          <-volume-></a>
+        </li>
+        <li><a title="back to home" href="../index.html">
+          <svg id="prev_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+            <circle stroke-width="0" cx="21" cy="21" r="20"/><-M30 30 L30 10 12 20Z M11 30 L11 10->
+            <path fill= "#2e4054" d="M28 28 L28 14 15 21Z M14 28 L14 14"/></svg>
+          </a></li>
+        <li><a id="playBtn" title="start stream"></a></li>
+        <li><a href="fmlapaz.html" title="Go to FM LaPaz">
+          <svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#2e4054" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+          <-path d="M9 25 L25 16 9 7Z M25 25 L25 7"/"M12 30 L12 10 30 20Z M31 30 L31 10"->
+          <circle stroke-width="0" cx="21" cy="21" r="20"/>
+          <path fill="#2e4054" d="M15 28 L15 14 25 21Z M28 28 L28 14" /></svg></a>
+        </li>        
+        <li><a target="_blank" href="/" title="about this">
+          <div id="gifElm" class="equalizer no-audio"><div>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div></div></a>
+        </li>
+      </ul>
+</div-->

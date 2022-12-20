@@ -52,11 +52,17 @@ kbd {
 }
 #music{padding-top: 50px;}
 /* Bottom menu and player*/
+
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
 #currSong, #vol_input, .closeBtn, #list-icon{display: none;}
 #player{
   display: block;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  float:none;
+  box-sizing: content-box;
   width: 100%;
   background-color: var(--dark-smoke);
   padding: 5px 0px;
@@ -80,7 +86,6 @@ ul, li{margin: 0px;padding: 5px;}
   width: 100%;
 }
 #player ul li{flex: 1;}
-
 /*Equalizer elem anim*/
 .equalizer {
   width: 80px;
@@ -181,7 +186,7 @@ span{
   width:20%;
   height:75px;
   padding:5px;}
-.colImg img{border-radius: 5px;}
+.colImg img, .col15 img{border-radius: 5px;}
 .colTime{
   width: 15%;
   margin: 10px 0px;

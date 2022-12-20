@@ -130,7 +130,7 @@ function init_player(stream_idx){
 function startPlay(idx=0){
     //playStatus = true;
     const svgPlay = document.getElementById("play");    
-    const gifImg = document.getElementById("gifElm");
+    //const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timer");
     //const titleStat = document.getElementById("title_stat");
     var mmss = "";
@@ -160,12 +160,12 @@ function startPlay(idx=0){
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
             svgPlay.innerHTML = /*circleImg +*/ stopImg;
-            gifImg.classList.remove("no-audio");
+            //gifImg.classList.remove("no-audio");
             //titleStat.innerText = "Select an station by clicking on station logo and press the play button to start";
         }else{
             audioConnect.pause();
             audioConnect.loop = false;
-            gifImg.classList.add("no-audio");
+            //gifImg.classList.add("no-audio");
             svgPlay.classList.remove("play_on");
             svgPlay.classList.add("paused");
             clearInterval(tina_timer);
