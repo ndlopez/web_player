@@ -18,28 +18,28 @@ const stations = [
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
-        description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
+        description: ": The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     },{
         name: "181.fm '90s Alternative",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
-        description: "Listen to the best hits of the 1990s",
+        description: ": Listen to the best hits of the 1990s",
         xtra_info: ["90's alternative","English","128kbps","Yes"]
     },{
         name: "113.fm Alternative-Rock",
         logo: "assets/113fm_logo.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
         id3_info: "",
-        description: "The biggest Alternative hits from the '90s. From guitar riffs to mellow beats, we've got you covered.",
+        description: ": The biggest Alternative hits from the '90s. From guitar riffs to mellow beats, we've got you covered.",
         xtra_info: ["Alt-Rock","English","128kbps","Yes"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        description: "Explore and discover new worlds of music with NASA's Third Rock Radio.",
+        description: ": Explore and discover new worlds of music with NASA's Third Rock Radio.",
         xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
     }
 ];
@@ -97,11 +97,12 @@ function init_player(stream_idx){
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
 
-    const span_name = document.getElementById("nowLabel");
-    span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now playing: "+ 
-    stations[stream_idx].name + "</h2>"+
-    "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
-    "<img src='assets/list-alt.svg' width='32'/></h2>";
+    document.getElementById("title_stat").innerText = stations[stream_idx].name + 
+    stations[stream_idx].description;
+
+    /*const span_name = document.getElementById("nowLabel");
+    span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now playing</h2>" + 
+    "<h2 id='list-icon' class='col10 float_left closeBtn'></h2>";*/
 
     switch (stream_idx) {
         case 0:
@@ -158,7 +159,7 @@ function startPlay(idx=0){
             play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5))); //counter starts or restarts
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
-            svgPlay.innerHTML = /*circleImg +*/ stopImg;
+            svgPlay.innerHTML = circleImg + stopImg;
             //gifImg.classList.remove("no-audio");
             //titleStat.innerText = "Select an station by clicking on station logo and press the play button to start";
         }else{
@@ -168,7 +169,7 @@ function startPlay(idx=0){
             svgPlay.classList.remove("play_on");
             svgPlay.classList.add("paused");
             clearInterval(tina_timer);
-            svgPlay.innerHTML = /*circleImg +*/ playImg;
+            svgPlay.innerHTML = circleImg + playImg;
             stop_timer();
         }
     }
@@ -246,7 +247,7 @@ function no_artwork(idx){
     "' width='260'/></div>";
     document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
     const divTitle = document.getElementById("cover_title");
-    divTitle.innerHTML= "<span>" + stations[idx].description + "</span>";
+    divTitle.innerHTML= "<span>" + stations[idx].name + "</span>";
     //divTitle.classList.add("moving-text");
 }
 
@@ -255,8 +256,9 @@ async function display_data(idx){
     var gotData = await get_artwork(idx);
     //console.log("gotThis",gotData);
     const coverDiv = document.getElementById("artwork");
-    //const coverDiv = document.createElement("div");
-    coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + gotData.artwork+"' width='260'/></div>"+
+    //const coverDiv = document.createElement("div"); <h2 id='list-icon' class='closeBtn'></h2>
+    coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + 
+    gotData.artwork+"' width='260'/></div>"+
     "<div class='smoke-bkg padding_15'><h2 class='headLabel'>" + gotData.nowPlaying.song+
     "</h2><h2>"+ gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + gotData.album + 
     "</h2><h2 class='lighter col3 float_left'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
@@ -320,7 +322,10 @@ function zeroPad(timeElm){
 
 /* open and close Info modal */
 function openNav(){
+    // document.getElementById("burger").style.display = "none";
+    // document.getElementById("nowLabel").style.display = "block";
     const closeBtn = document.getElementById("list-icon");
+    closeBtn.style.display = "block";
     closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //closeBtn.style.margin = "0";
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
@@ -328,8 +333,8 @@ function openNav(){
     closeBtn.setAttribute("onclick","closeNav()");
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
-    document.getElementById("player").style.display = "none";
-    document.getElementById("stat_info").style.display = "none";
+    document.getElementById("player2").style.display = "none";
+    document.getElementById("station_info").style.display = "none";
     document.body.style.overflow = "hidden";    
 }
 function closeNav(){
@@ -338,12 +343,12 @@ function closeNav(){
     }else{
         document.getElementById('amia').style.display = "block";
     }*/
-    const listBtn = document.getElementById("list-icon");
-    listBtn.setAttribute("onclick","openNav()");
-    listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
+    // document.getElementById("nowLabel").style.display = "none";
+    // document.getElementById("burger").style.display = "block"
+    document.getElementById("list-icon").style.display = "none";
     document.getElementById("artwork").style.display = "none";
-    document.getElementById("player").style.display = "block";
+    document.getElementById("player2").style.display = "block";
     document.getElementById("amia").style.display = "block";
-    document.getElementById("stat_info").style.display = "block";
+    document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
 }

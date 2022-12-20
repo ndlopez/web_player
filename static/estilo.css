@@ -56,7 +56,7 @@ kbd {
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
 #currSong, #vol_input, .closeBtn, #list-icon{display: none;}
-#player{
+#player, #player2{
   display: block;
   position: fixed;
   bottom: 0;
@@ -66,8 +66,9 @@ ul, li{margin: 0px;padding: 5px;}
   width: 100%;
   background-color: var(--dark-smoke);
   padding: 5px 0px;
-  height: 48px;
 }
+#player{height: 48px;}
+#player2{height: 58px;}
 #player img{
   padding-top: 5px;
 }
@@ -202,11 +203,11 @@ span{
   padding:8px;
   margin-bottom: 10px;
   position: fixed;
-  top:50;/*0*/
+  top:0;
   z-index: 100;
   float: none;
 }
-#nowLabel h2{margin: 0px;}
+#nowLabel h2, body h2{margin: 0px;}
 
 .bottomText{
   /*width: 60%;float: left;
@@ -303,7 +304,7 @@ span{
   fill: var(--light-sky);
   stroke: var(--light-sky);
 }
-#station_info, #stat_info{
+#station_info{
   background-color: var(--dark-smoke);
   position: fixed;
   bottom: 58px;
@@ -318,9 +319,8 @@ span{
   text-align: center;
   overflow: hidden;
 }
-#title_stat{height: 34px;}
 #cover_title{padding-left: 10px;}
-#timer{margin-top: -10px;}
+/*#timer{margin-top: -10px;}*/
 /*.moving-text:hover{animation-play-state: paused;}*/
 .moving-text{
   animation: marque 40s linear infinite;
