@@ -207,7 +207,7 @@ span{
   z-index: 100;
   float: none;
 }
-#nowLabel h2, body h2{margin: 0px;}
+#nowLabel h2, .close_btn h2{margin: 0px;}
 
 .bottomText{
   /*width: 60%;float: left;
@@ -244,10 +244,7 @@ span{
   height: 300px;
   width: 50%;
 }
-#artwork{
-  /*height: 400px;/*padding-left: 10px;*/
-  margin-top: 20px;
-}
+
 .bkg_cd_icon{
   height: 280px;
   background-image: url("../assets/CD_icon.svg");

@@ -293,7 +293,8 @@ async function get_artwork(jdx){
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
-    var album = "", artwork = stations[jdx].logo, summ = "";
+    const default_art = ["https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png","assets/90s_alt.jpg"];
+    var album = "", artwork = default_art[jdx], summ = "";
     // console.log("got url",this_url);duration="",
     try {
         const response = await fetch(this_url)
@@ -305,7 +306,7 @@ async function get_artwork(jdx){
             /*summ = data["track"]["wiki"]["summary"];
             if(summ === undefined){summ = "";}*/            
         }else{
-            artwork = stations[jdx].logo;
+            artwork = default_art[jdx];
             album = "";
         }
         // console.log("artwork",artwork,"album",album);
