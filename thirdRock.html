@@ -36,18 +36,20 @@
 
     <aside id="player2">
       <div class="col15 float_left" id="cover_art"><img src="assets/phantogram.jpg" width="60" height="60"/></div>
-      <div id="cover_title" class="col70 float_left" onclick="openNav()"><span>You don't get me high anymore</span><span>Phantogram</span></div>
+      <div class="col70 float_left" onclick="openNav()">
+        <div id="cover_title"><span>You don't get me high anymore</span><span>Phantogram</span></div>
+        <div>
+          <div class="col70 float_left"> <span id="title_stat" class="moving-text">♪ Click on a station logo and press the <em>play</em> button to start</span></div>
+          <span id="timer" class="col30 float_left">00:00</span><!--span class="col15 float_left align-right">LIVE&emsp;</span-->
+        </div>
+      </div>
       <div class="col15 float_left">
         <svg id="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" fill="#bed2e0">
           <!--circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/-->
           <path class="paused" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg>
         <!--span id="timer" class="col15 float_left">00:00</span--></div> 
     </aside>
-    <aside id="station_info">
-      <span id="timer" class="col15 float_left">00:00</span>
-      <div class="col70 float_left"> <span id="title_stat" class="moving-text">♪ Click on a station logo and press the <em>play</em> button to start</span></div>
-      <span class="col15 float_left align-right">LIVE&emsp;</span>
-    </aside>
+    <!--aside id="station_info"></aside-->
     <script src="static/multiPlay.js"></script>
   </body>
 </html>

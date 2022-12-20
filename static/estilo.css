@@ -76,7 +76,7 @@ ul, li{margin: 0px;padding: 5px;}
   padding: 5px 0px;
 }
 #player{height: 48px;}
-#player2{height: 58px;}
+#player2{height: 90px;}
 #player img{
   padding-top: 5px;
 }
@@ -318,7 +318,8 @@ span{
 #stat_name h3{margin:0px;}
 .col90{width:90%}
 .col10{width: 10%;margin: 0px;}
-.col15{width:15%;}
+.col15{width: 15%;}
+.col30{width: 30%;}
 .col70{
   width:70%;
   text-align: center;
