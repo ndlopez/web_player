@@ -53,7 +53,7 @@ kbd {
 #play_btn{
   display: none;
   position: fixed;
-  bottom: 25vh;
+  bottom: 30vh;
   right: 20px;
   z-index: 99;
   border: none;
