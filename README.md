@@ -36,3 +36,8 @@ By clicking on the cloud icon, it is possible to download the playlist in JSON f
         </li>
       </ul>
 </div-->
+
+<!--svg width="18px" height="20px" viewBox="0 0 8 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path transform="translate(-1682.000000, -935.000000)" d="M1687,935 L1687,945 L1690,945 L1690,935 L1687,935 Z M1682,935 L1682,945 L1685,945 L1685,935 L1682,935 Z" fill="currentColor"></path></svg>
+    <svg id="sub_play" viewBox="0 0 16 16" width="32px" height="32px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="paused" d="M12.322 7.576a.5.5 0 010 .848l-6.557 4.098A.5.5 0 015 12.098V3.902a.5.5 0 01.765-.424l6.557 4.098z" fill="currentColor"></path></svg-->

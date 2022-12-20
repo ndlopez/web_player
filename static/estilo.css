@@ -84,6 +84,7 @@ ul, li{margin: 0px;padding: 5px;}
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  color: var(--smoke);
 }
 #player ul li{flex: 1;}
 /*Equalizer elem anim*/
