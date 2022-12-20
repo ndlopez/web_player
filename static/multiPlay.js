@@ -135,7 +135,7 @@ function init_player(stream_idx){
 function startPlay(idx=0){
     //playStatus = true;
     const svgPlay = document.getElementById("play");
-    const float_btn = document.getElementById("playBtn")
+    const float_btn = document.getElementById("play_btn")
     //const gifImg = document.getElementById("gifElm");
     const getTimer = document.getElementById("timer");
     //const titleStat = document.getElementById("title_stat");
@@ -343,7 +343,7 @@ function openNav(){
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    document.getElementById("playBtn").style.display = "block";
+    document.getElementById("play_btn").style.display = "block";
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
     document.getElementById("player2").style.display = "none";
@@ -358,7 +358,7 @@ function closeNav(){
     }*/
     // document.getElementById("nowLabel").style.display = "none";
     // document.getElementById("burger").style.display = "block"
-    document.getElementById("playBtn").style.display = "none";
+    document.getElementById("play_btn").style.display = "none";
     document.getElementById("list-icon").style.display = "none";
     document.getElementById("artwork").style.display = "none";
     document.getElementById("player2").style.display = "block";
