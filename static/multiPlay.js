@@ -284,11 +284,11 @@ async function display_data(idx){
     "</h2><h2 class='col_half float_left lighter'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
     zeroPad(timeNow.getMinutes()) + 
     "</h2><a title='Reload id3-tag' onclick='display_data("+ idx +
-    ")' class='col_half float_left align-right'><img src='assets/reload-svgrepo.svg' width='40'/></a>" +
-    "<a class='col2 float_left align-left' title='More info' href='https://duckduckgo.com/?q=" + 
+    ")' class='col_half float_left align-right'><img src='assets/reload-svgrepo.svg' width='36'/></a>" +
+    "<a class='col2 float_left' title='More info' href='https://duckduckgo.com/?q=" + 
     gotData.nowPlaying.artist.trim().replace(/\s+/g,"%20") + "+" + 
     gotData.nowPlaying.song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>More info at duckduckgo.com: &emsp; <img src='assets/duck.svg' width='32'/></a></div>";
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>More info at duckduckgo.com: &emsp; <img src='assets/duck.svg' width='36'/></a></div>";
 
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
@@ -303,7 +303,7 @@ async function get_id3(idx){
     var myReg = RegExp("[(][^)]*[)]");//find parentheses
     const artist = data["artist"];
     const song = data["title"].replace(myReg,"");
-    console.log("got:",data["title"],song);
+    //console.log("got:",data["title"],song);
     //const bit = data["bitrate"];
     return {artist,song};
 }

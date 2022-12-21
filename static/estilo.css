@@ -366,6 +366,7 @@ button{
 #amia .row{
   border-radius: 10px;
 }
+
 @media (max-width:500px) {
   body{font-size: small;}
   #now_song, #artwork, .no_mobil {display: none;}
