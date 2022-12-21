@@ -135,22 +135,21 @@ function init_player(stream_idx){
 }
 
 function startPlay(idx=0){
-    //playStatus = true;
     const svgPlay = document.getElementById("play");
     const float_btn = document.getElementById("play_btn")
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
     var mmss = "";
-    
+    var get_sub_timer = "";
     for(let jdx=0;jdx < stations.length; jdx++){
         const get_row = document.getElementById("station_"+jdx);
-        const get_sub_timer = document.getElementById("timer_"+jdx);
+        get_sub_timer = document.getElementById("timer_"+jdx);
         if(idx == jdx){
             get_row.classList.add("smoke-bkg");
             get_sub_timer.classList.add("headLabel");
         }else{
             get_row.classList.remove("smoke-bkg");
-            get_sub_timer.remove("headLabel");
+            get_sub_timer.classList.remove("headLabel");
         }
     }
     
@@ -158,9 +157,8 @@ function startPlay(idx=0){
     float_btn.addEventListener("click",playStop);
 
     document.addEventListener("keydown",function(event){
-        /* adding key press events to player */
         if(event.key === "d" || event.key === "D"){
-            /* play pressed */
+            /* adding key press events to player: play pressed */
             playStop();
         }
     });
@@ -183,7 +181,6 @@ function startPlay(idx=0){
             float_btn.classList.add("play_on");
             float_btn.innerHTML = circle_img + pauseImg;
             gifImg.classList.remove("no-audio");
-            //titleStat.innerText = "Select an station by clicking on station logo and press the play button to start";
         }else{
             audioConnect.pause();
             audioConnect.loop = false;
@@ -240,7 +237,6 @@ function volume_mute(vol_stat){
 }
 
 function play_elapsed(min=0,sec=0,jdx){
-    //var texty = "";
     var second,minute;
 
     tina_timer = setInterval(function(){
@@ -267,7 +263,6 @@ function stop_timer(jdx){
 
 function no_artwork(idx){
     const gotDiv = document.getElementById("artwork");
-    //"<img src='assets/CD_icon.svg' width='310'/>"
     gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
     "' width='260'/></div>";
     document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
