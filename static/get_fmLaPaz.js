@@ -25,11 +25,12 @@ const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
 
 //const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
-
+//const opt_menu = '<svg id="i-options" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M28 6 L4 6 M28 16 L4 16 M28 26 L4 26 M24 3 L24 9 M8 13 L8 19 M20 23 L20 29" /></svg>'
+const this_menu = '<svg id="i-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 8 L28 8 M4 16 L28 16 M4 24 L28 24" /></svg>'
 const description = [": nonstop mixed music from the 70s, 80s and 90s.",
 ": lo mejor de los 70s, 80s y los 90s.",
 ": music from a generation that stand the test of time, the 70s and 80s.",
-": con el mejor sonido y la emoción del escenario",
+": con el mejor sonido y la emoción del escenario.",
 ": the best in ballads. A song can show what we feel."];
 
 const weekly_9 = [
@@ -290,11 +291,10 @@ async function display_data(){
     const titleStatus = document.getElementById("title_stat");
     titleStatus.innerHTML = get_sched(day,hh,timeOffset) + build_schedule(day,hh,timeOffset);
     const headTitle = document.getElementById("nowLabel");
-    headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>"+
-    "<h2 id='currSong' class='col90 float_left'>Now: " + 
-    gotData.song+"</h2>" + "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>"+
-    "<img src='assets/list-alt.svg' width='32'/></h2>";
-    //"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
+    headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>" +
+    "<h2 id='currSong' class='col90 float_left'>Now: " + gotData.song + "</h2>" + 
+    "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>" + this_menu + "</h2>";
+    //<img src='assets/list-alt.svg' width='32'/>"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
 
     var myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
@@ -370,6 +370,9 @@ function openNav(){
 
     const closeBtn = document.getElementById("list-icon");
     closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
+    //'<svg id="i-arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 6 L2 16 10 26 M2 16 L30 16" /></svg>';
+    //'<svg id="i-chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 30 L8 16 20 2" /></svg>';
+    
     //closeBtn.style.margin = "0";
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
@@ -381,7 +384,7 @@ function closeNav(){
     document.getElementById('playList').style.display = "none";
     const listBtn = document.getElementById("list-icon");
     listBtn.setAttribute("onclick","openNav()");
-    listBtn.innerHTML = "<img src='assets/list-alt.svg' width='32'/>"
+    listBtn.innerHTML = this_menu;//"<img src='assets/list-alt.svg' width='32'/>"
     document.getElementById("nowLabel").style.display = "block";
     document.getElementById("nowPlaying").style.display = "block";
     document.getElementById("mainTitle").style.display = "block";
