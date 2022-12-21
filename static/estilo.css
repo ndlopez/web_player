@@ -31,8 +31,8 @@ kbd {
 .smoke-bkg{
   background-color: var(--dark-smoke);
   border-radius: 10px;
-  font-size: small;
 }
+.small{font-size: small;}
 #topBtn{
   display: none;
   position: fixed;
@@ -76,7 +76,7 @@ ul, li{margin: 0px;padding: 5px;}
   padding: 5px 0px;
 }
 #player{height: 48px;}
-#player2{height: 58px;}
+#player2{height: 64px;}
 #player2 #gifElm{margin-top: 10px;}
 #player img{
   padding-top: 5px;

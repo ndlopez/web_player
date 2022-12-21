@@ -104,7 +104,7 @@ function init_player(stream_idx){
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
 
-    document.getElementById("title_stat").innerText = stations[stream_idx].name + 
+    // document.getElementById("title_stat").innerText = stations[stream_idx].name + 
     stations[stream_idx].description;
 
     /*const span_name = document.getElementById("nowLabel");
@@ -140,10 +140,19 @@ function startPlay(idx=0){
     const float_btn = document.getElementById("play_btn")
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
-    const get_sub_timer = document.getElementById("timer_"+idx);
-    const get_row = document.getElementById("station_"+idx);    
-    // get_sub_timer.innerText = "00:0" + idx;
     var mmss = "";
+    
+    for(let jdx=0;jdx < stations.length; jdx++){
+        const get_row = document.getElementById("station_"+jdx);
+        const get_sub_timer = document.getElementById("timer_"+jdx);
+        if(idx == jdx){
+            get_row.classList.add("smoke-bkg");
+            get_sub_timer.classList.add("headLabel");
+        }else{
+            get_row.classList.remove("smoke-bkg");
+            get_sub_timer.remove("headLabel");
+        }
+    }
     
     svgPlay.addEventListener("click",playStop);
     float_btn.addEventListener("click",playStop);
@@ -173,8 +182,6 @@ function startPlay(idx=0){
             float_btn.classList.remove("paused");
             float_btn.classList.add("play_on");
             float_btn.innerHTML = circle_img + pauseImg;
-            get_sub_timer.classList.add("headLabel");
-            get_row.style.backgroundColor = "#405366";
             gifImg.classList.remove("no-audio");
             //titleStat.innerText = "Select an station by clicking on station logo and press the play button to start";
         }else{
@@ -189,8 +196,6 @@ function startPlay(idx=0){
             float_btn.classList.add("paused");
             float_btn.innerHTML = circle_img + playImg;
             stop_timer(idx);
-            get_sub_timer.classList.remove("headLabel");
-            get_row.style.backgroundColor = "";
         }
     }
     function stopPlay(){
@@ -279,14 +284,14 @@ async function display_data(idx){
     //const coverDiv = document.createElement("div"); <h2 id='list-icon' class='closeBtn'></h2>
     coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + 
     gotData.artwork+"' width='260'/></div>"+
-    "<div class='smoke-bkg padding_15'><h2 class='headLabel'>" + gotData.nowPlaying.song+
+    "<div class='smoke-bkg padding_15 small'><h2 class='headLabel'>" + gotData.nowPlaying.song+
     "</h2><h2>"+ gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + gotData.album + 
     "</h2><h2 class='col_half float_left lighter'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
     zeroPad(timeNow.getMinutes()) + 
     "</h2><a title='Reload id3-tag' onclick='display_data("+ idx +
     ")' class='col_half float_left align-right'><img src='assets/reload-svgrepo.svg' width='36'/></a>" +
-    "<a class='col2 float_left' title='More info' href='https://duckduckgo.com/?q=" + 
-    gotData.nowPlaying.artist.trim().replace(/\s+/g,"%20") + "+" + 
+    "<a title='More info' href='https://duckduckgo.com/?q=" + 
+    gotData.nowPlaying.artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
     gotData.nowPlaying.song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'>More info at duckduckgo.com: &emsp; <img src='assets/duck.svg' width='36'/></a></div>";
 
@@ -301,7 +306,7 @@ async function get_id3(idx){
     const response = await fetch(stations[idx].id3_info);
     const data = await response.json();
     var myReg = RegExp("[(][^)]*[)]");//find parentheses
-    const artist = data["artist"];
+    const artist = data["artist"].replace(/&/g,"and");
     const song = data["title"].replace(myReg,"");
     //console.log("got:",data["title"],song);
     //const bit = data["bitrate"];
