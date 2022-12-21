@@ -39,7 +39,7 @@ const stations = [
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        description: "Explore and discover new worlds of music with NASA's Third Rock Radio.",
+        description: "Explore and discover new worlds of music with NASA's 3rd Rock Radio.",
         xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
     }
 ];
@@ -85,6 +85,7 @@ function display_all_stations(){
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row");
+        rowDiv.setAttribute("id","station_"+idx);
         rowDiv.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
         ")' src='" + stations[idx].logo + "' width='84'/></div>" +
         "<div class='colArtist float_left'><span>" + stations[idx].name + "</span><span>" + stations[idx].description + 
@@ -139,6 +140,7 @@ function startPlay(idx=0){
     //const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
     const get_sub_timer = document.getElementById("timer_"+idx);
+    const get_row = document.getElementById("station_"+idx);
     // get_sub_timer.innerText = "00:0" + idx;
     //const titleStat = document.getElementById("title_stat");
     var mmss = "";
@@ -171,6 +173,8 @@ function startPlay(idx=0){
             float_btn.classList.remove("paused");
             float_btn.classList.add("play_on");
             float_btn.innerHTML = circleImg + pauseImg;
+            get_sub_timer.classList.add("headLabel");
+            get_row.style.backgroundColor = "#405366";
             //gifImg.classList.remove("no-audio");
             //titleStat.innerText = "Select an station by clicking on station logo and press the play button to start";
         }else{
@@ -185,6 +189,8 @@ function startPlay(idx=0){
             float_btn.classList.add("paused");
             float_btn.innerHTML = circleImg + playImg;
             stop_timer(idx);
+            get_sub_timer.classList.remove("headLabel");
+            get_row.style.backgroundColor = "";
         }
     }
     function stopPlay(){

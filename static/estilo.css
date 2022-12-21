@@ -174,7 +174,7 @@ span{
   display: block;
   padding: 8px 5px;
 }
-.row{
+#playList .row{
   border-bottom: 1px var(--light-sky) dashed;
 }
 .padding_10{padding: 10px;}
@@ -237,7 +237,10 @@ span{
 .bottomText #more_info{padding-top:15px;}
 .align-right{text-align: right;}
 .align-left{text-align: left;}
-.headLabel{color: var(--lemon)}
+.headLabel{
+  color: var(--lemon);
+  font-weight: bold;
+}
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 .bkg_cd_case{
@@ -364,6 +367,9 @@ button{
   box-shadow: inset 0 0.25em 1em -0.25em rgba(255,255,255,0.75);
 }*/
 
+#amia .row{
+  border-radius: 10px;
+}
 @media (max-width:500px) {
   body{font-size: small;}
   #now_song, #artwork, .no_mobil {display: none;}
@@ -386,7 +392,7 @@ button{
     padding: 0;
     margin: 0;
   }
-  #timerr, #timer{font-size: 1rem !important;}
+  #timerr, #timer_0, #timer_1, #timer_2, #timer_3{font-size: 1rem !important;}
   #downLink img{width: 32px;}
   .bottomText{
     padding: 5px 5px 20px 13px;  
@@ -422,10 +428,6 @@ button{
   .col_50{width: 80%;}
   .col_20{width: 20%;}
   .col2{width: 100%;}
-  /*#amia{
-    height: 100vh;
-    display: none;
-  }*/
   #list-icon{
     display: block;
   }
