@@ -3,6 +3,7 @@ Code to fetch id3 info from LaPaz.fm server.
 Data are updated every 4mins or so and stored in a json-array
 Playlist is built using this array.
 
+Some icons are from: www.danklammer.com/bytesize-icons/
 issues:
 1. Since updating time is ~4mins but not all songs last that long,
 json-array stores duplicated data.

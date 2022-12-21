@@ -288,7 +288,7 @@ async function display_data(idx){
     "<a class='col2 float_left align-left' title='More info' href='https://duckduckgo.com/?q=" + 
     gotData.nowPlaying.artist.trim().replace(/\s+/g,"%20") + "+" + 
     gotData.nowPlaying.song.trim().replace(/\s+/g,"%20") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>More info: &emsp; <img src='assets/duck.svg' width='32'/></a></div>";
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>More info at duckduckgo.com: &emsp; <img src='assets/duck.svg' width='32'/></a></div>";
 
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
