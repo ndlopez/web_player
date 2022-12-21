@@ -7,22 +7,26 @@
  Cigarettes After Sex - Apocalypse
  lovelytheband - these are my friends
  The Shins - So now what
+ Sneaker Pimps - 6 Underground
+
  id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
  stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
  history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
+ 80s: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png"
+ alt-rock: "assets/90s_alt.jpg"
  */
 
 const stations = [
     {
         name: "181.fm Awesome 80's",
-        logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",/*"assets/181fm_logo.png",*/
+        logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     },{
         name: "181.fm '90s Alternative",
-        logo: /*"assets/181fm_logo.png"*/"assets/90s_alt.jpg",
+        logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best hits of the 1990s",
@@ -291,16 +295,17 @@ async function display_data(idx){
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'>More info at duckduckgo.com: &emsp; <img src='assets/duck.svg' width='36'/></a></div>";
 
     const cover_art = document.getElementById("cover_art");
-    cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
-    document.getElementById("cover_title").innerHTML = "<span class='align-left headLabel'>" + 
-    gotData.nowPlaying.song + "</span><span class='align-left'>" + gotData.nowPlaying.artist + "</span>";
+    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
+    document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
+    stations[idx].name + "</span><span class='align-left'>" + stations[idx].description + "</span>";
 
     const this_row = document.getElementById("station_"+idx);
     this_row.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
     ")' src='" + gotData.artwork + "' width='84'/></div>" +
     "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
     "</span><span>" + gotData.nowPlaying.artist + 
-    "</span></div><div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
+    "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
+    "' class='headLabel'>00:00</span></div>";
     //document.getElementById("cover_title").classList.remove("moving-text");
 }
 
@@ -322,7 +327,7 @@ async function get_artwork(jdx){
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
-    const default_art = ["https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png","assets/90s_alt.jpg"];
+    const default_art = ["assets/181fm_logo.png","assets/181fm_logo.png"];
     var album = "", artwork = default_art[jdx], summ = "";
     // console.log("got url",this_url);duration="",
     try {
