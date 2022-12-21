@@ -46,7 +46,8 @@ const stations = [
 const info_keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
 const svg_btn = '<svg class="col_half float_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">'
-const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
+const circleImg = '<circle class="paused no_mobil" stroke-width="4" cx="30" cy="30" r="26"/>';
+const circle_img = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
 const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
 const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
@@ -167,11 +168,11 @@ function startPlay(idx=0){
             play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
-            svgPlay.innerHTML = pauseImg;
+            svgPlay.innerHTML = circleImg + pauseImg;
 
             float_btn.classList.remove("paused");
             float_btn.classList.add("play_on");
-            float_btn.innerHTML = circleImg + pauseImg;
+            float_btn.innerHTML = circle_img + pauseImg;
             get_sub_timer.classList.add("headLabel");
             get_row.style.backgroundColor = "#405366";
             gifImg.classList.remove("no-audio");
@@ -183,10 +184,10 @@ function startPlay(idx=0){
             clearInterval(tina_timer);
             svgPlay.classList.remove("play_on");
             svgPlay.classList.add("paused");
-            svgPlay.innerHTML = playImg;
+            svgPlay.innerHTML = circleImg + playImg;
             float_btn.classList.remove("play_on");
             float_btn.classList.add("paused");
-            float_btn.innerHTML = circleImg + playImg;
+            float_btn.innerHTML = circle_img + playImg;
             stop_timer(idx);
             get_sub_timer.classList.remove("headLabel");
             get_row.style.backgroundColor = "";
