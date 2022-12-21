@@ -294,6 +294,13 @@ async function display_data(idx){
     cover_art.innerHTML = "<img src='" + gotData.artwork + "' width='60' height='60'/>";
     document.getElementById("cover_title").innerHTML = "<span class='align-left headLabel'>" + 
     gotData.nowPlaying.song + "</span><span class='align-left'>" + gotData.nowPlaying.artist + "</span>";
+
+    const this_row = document.getElementById("station_"+idx);
+    this_row.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
+    ")' src='" + gotData.artwork + "' width='84'/></div>" +
+    "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
+    "</span><span>" + gotData.nowPlaying.artist + 
+    "</span></div><div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
     //document.getElementById("cover_title").classList.remove("moving-text");
 }
 
