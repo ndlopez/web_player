@@ -12,21 +12,20 @@
  id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
  stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
  history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
- 80s: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png"
- alt-rock: "assets/90s_alt.jpg"
- */
+ 80s: "assets/181fm_logo.png"
+*/
 
 const stations = [
     {
         name: "181.fm Awesome 80's",
-        logo: "assets/181fm_logo.png",
+        logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     },{
         name: "181.fm '90s Alternative",
-        logo: "assets/181fm_logo.png",
+        logo: "assets/90s_alt.jpg",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best hits of the 1990s",
@@ -92,7 +91,7 @@ function display_all_stations(){
         rowDiv.setAttribute("class","row");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
-        ")' src='" + stations[idx].logo + "' width='84'/></div>" +
+        ")' src='" + stations[idx].logo + "' width='84' height='84'/></div>" +
         "<div class='colArtist float_left'><span>" + stations[idx].name + "</span><span>" + stations[idx].description + 
         "</span></div><div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
