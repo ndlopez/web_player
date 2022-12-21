@@ -312,7 +312,8 @@ async function display_data(){
     "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
     " kbps</h3></div><div class='col3 float_left'><h3 class='lighter'> Listeners</h3><h3>"+ 
     gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info</h3>" + 
-    "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim().replace(/\s+/g,"%20")+ "+" + h2Song[0].trim().replace(/\s+/g,"%20") +
+    "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim().replace(/\s+/g,"%20")+ "+" + 
+    h2Song[0].trim().replace(/\s+/g,"%20").replace(/'([^']*)'/g,'') +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width=32/></a>"+
     "</h3></div>" + "<div class='no_mobil'>Press <kbd>d</kbd> key to START stream, <kbd>s</kbd> key to STOP stream</div></div></div>";
 
