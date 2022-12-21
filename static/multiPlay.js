@@ -15,31 +15,31 @@
 const stations = [
     {
         name: "181.fm Awesome 80's",
-        logo: "assets/181fm_logo.png",
+        logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",/*"assets/181fm_logo.png",*/
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
-        description: ": The Best Choice for Radio. Your Lifestyle, Your Music.",
+        description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's best hits","English","128kbps","Yes"]
     },{
         name: "181.fm '90s Alternative",
-        logo: "assets/181fm_logo.png",
+        logo: /*"assets/181fm_logo.png"*/"assets/90s_alt.jpg",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
-        description: ": Listen to the best hits of the 1990s",
+        description: "Listen to the best hits of the 1990s",
         xtra_info: ["90's alternative","English","128kbps","Yes"]
     },{
         name: "113.fm Alternative-Rock",
         logo: "assets/113fm_logo.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
         id3_info: "",
-        description: ": The biggest Alternative hits from the '90s. From guitar riffs to mellow beats, we've got you covered.",
+        description: "The biggest Alternative hits from the '90s. From guitar riffs to mellow beats, we've got you covered.",
         xtra_info: ["Alt-Rock","English","128kbps","Yes"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        description: ": Explore and discover new worlds of music with NASA's Third Rock Radio.",
+        description: "Explore and discover new worlds of music with NASA's Third Rock Radio.",
         xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
     }
 ];
@@ -87,8 +87,8 @@ function display_all_stations(){
         rowDiv.setAttribute("class","row");
         rowDiv.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
         ")' src='" + stations[idx].logo + "' width='84'/></div>" +
-        "<div class='colArtist float_left'><span>" + stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
-        "</span></div><div class='colTime float_left'><span>" + stations[idx].xtra_info[2] + "</span></div>";
+        "<div class='colArtist float_left'><span>" + stations[idx].name + "</span><span>" + stations[idx].description + 
+        "</span></div><div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
     }
 }
@@ -137,7 +137,9 @@ function startPlay(idx=0){
     const svgPlay = document.getElementById("play");
     const float_btn = document.getElementById("play_btn")
     //const gifImg = document.getElementById("gifElm");
-    const getTimer = document.getElementById("timer");
+    // const getTimer = document.getElementById("timer");
+    const get_sub_timer = document.getElementById("timer_"+idx);
+    // get_sub_timer.innerText = "00:0" + idx;
     //const titleStat = document.getElementById("title_stat");
     var mmss = "";
     
@@ -159,8 +161,9 @@ function startPlay(idx=0){
             audioConnect.src = stations[idx].stream_url;
             audioConnect.play();//if not success -> then timer should not start
             audioConnect.loop = true;
-            mmss = getTimer.innerText; // mm:ss
-            play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5))); //counter starts or restarts
+            // mmss = getTimer.innerText; // mm:ss
+            mmss = get_sub_timer.innerText; // mm:ss
+            play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
             svgPlay.classList.remove("paused");
             svgPlay.classList.add("play_on");
             svgPlay.innerHTML = pauseImg;
@@ -181,7 +184,7 @@ function startPlay(idx=0){
             float_btn.classList.remove("play_on");
             float_btn.classList.add("paused");
             float_btn.innerHTML = circleImg + playImg;
-            stop_timer();
+            stop_timer(idx);
         }
     }
     function stopPlay(){
@@ -225,7 +228,7 @@ function volume_mute(vol_stat){
     }
 }
 
-function play_elapsed(min=0,sec=0){
+function play_elapsed(min=0,sec=0,jdx){
     //var texty = "";
     var second,minute;
 
@@ -233,7 +236,7 @@ function play_elapsed(min=0,sec=0){
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
         
-        document.getElementById("timer").innerText = minute + ":" + second;
+        document.getElementById("timer_"+jdx).innerText = minute + ":" + second;
         sec++;
         if(sec>59){
             min++;
@@ -245,10 +248,10 @@ function play_elapsed(min=0,sec=0){
     },1000);
 }
 
-function stop_timer(){
+function stop_timer(jdx){
     /* pauses timer */
     clearInterval(tina_timer);
-    document.getElementById("timer").innerText = "00:00";
+    document.getElementById("timer_"+jdx).innerText = "00:00";
 }
 
 function no_artwork(idx){
