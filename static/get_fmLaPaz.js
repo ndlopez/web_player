@@ -357,7 +357,7 @@ async function get_url(my_url){
         const listen = data[keys[3]];
         return {song,artwork,bit,listen};
     } catch (error) {
-        alert("Network error",error);
+        alert("Sorry, could not connect to lapaz.fm server, please wait.",error);
     }    
 }
 

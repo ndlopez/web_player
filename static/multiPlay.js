@@ -54,34 +54,10 @@ const circle_img = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="2
 const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
 const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
+var audioConnect; //= new Audio();
+var tina_timer;
 
 display_all_stations();
-
-function display_info(){
-    const mainDiv = document.getElementById("amia");
-    const divTitle = document.createElement("h2");
-    divTitle.innerText = "Favorite stations";
-    mainDiv.appendChild(divTitle);
-    
-    for (let idx = 0; idx < stations.length; idx++) {
-        /*var aux_text = "";
-        if(idx == 0){
-            aux_text = '&emsp;<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
-        }else{aux_text = "";}*/
-        const newDiv = document.createElement("div");
-        newDiv.setAttribute("class","padding_10");
-        var texty = "<details><summary>"+stations[idx].name+"&emsp;<a onclick='init_player(" + 
-        idx + ")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>" + 
-        "</a></summary><p>" + stations[idx].description + "</p>";
-        var zoey_html = "<div>";
-        for (let jdx = 0; jdx < info_keys.length; jdx++) {
-            zoey_html += "<div class='half_col float_left'><h4>"+info_keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
-        }
-        zoey_html += "</div></details>";
-        newDiv.innerHTML = texty + zoey_html;
-        mainDiv.appendChild(newDiv);
-    }    
-}
 
 function display_all_stations(){
     const mainDiv = document.getElementById("amia");
@@ -90,16 +66,14 @@ function display_all_stations(){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row");
         rowDiv.setAttribute("id","station_"+idx);
-        rowDiv.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
-        ")' src='" + stations[idx].logo + "' width='84' height='84'/></div>" +
-        "<div class='colArtist float_left'><span>" + stations[idx].name + "</span><span>" + stations[idx].description + 
+        rowDiv.setAttribute("onclick","init_player("+idx+")");
+        rowDiv.innerHTML = "<div class='colImg float_left'><img src='" + stations[idx].logo + 
+        "' width='84' height='84'/></div>" + "<div class='colArtist float_left'><span>" + 
+        stations[idx].name + "</span><span>" + stations[idx].description + 
         "</span></div><div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
     }
 }
-
-var audioConnect; //= new Audio();
-var tina_timer;
 
 //window.addEventListener("load",startPlay);
 function init_player(stream_idx){
@@ -283,7 +257,7 @@ async function display_data(idx){
     const timeNow = new Date();
     var gotData = await get_artwork(idx);
     var this_artwork = gotData.artwork;
-    if(gotData.artwork === "assets/cd_case.svg"){
+    if((gotData.artwork === "assets/cd_case.svg") || (gotData.artwork === "")){
         this_artwork = "assets/181fm_logo.png";
     }
     const coverDiv = document.getElementById("artwork");
@@ -316,10 +290,11 @@ async function display_data(idx){
     //document.getElementById("cover_title").classList.remove("moving-text");
 }
 
+let myReg = RegExp("[(][^)]*[)]");//find parentheses
+
 async function get_id3(idx){
     const response = await fetch(stations[idx].id3_info);
     const data = await response.json();
-    var myReg = RegExp("[(][^)]*[)]");//find parentheses
     const artist = data["artist"].replace(/&/g,"and");
     const song = data["title"].replace(myReg,"").replace(/&/g,"and");
     console.log("got:",data["title"],song);
@@ -333,7 +308,7 @@ async function get_artwork(jdx){
     document.title = nowPlaying.artist + " - "+ nowPlaying.song;
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
-    nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
+    nowPlaying.song.trim().replace(myReg,"").replace(/\s+/g,"%20") + "&format=json";
     //const default_art = ;//["assets/181fm_logo.png","assets/181fm_logo.png"];
     var album = "", artwork = "assets/cd_case.svg", summ = "";
     // console.log("got url",this_url);duration="",
@@ -395,4 +370,30 @@ function closeNav(){
     document.getElementById("amia").style.display = "block";
     document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
+}
+
+function display_info(){
+    const mainDiv = document.getElementById("amia");
+    const divTitle = document.createElement("h2");
+    divTitle.innerText = "Favorite stations";
+    mainDiv.appendChild(divTitle);
+    
+    for (let idx = 0; idx < stations.length; idx++) {
+        /*var aux_text = "";
+        if(idx == 0){
+            aux_text = '&emsp;<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
+        }else{aux_text = "";}*/
+        const newDiv = document.createElement("div");
+        newDiv.setAttribute("class","padding_10");
+        var texty = "<details><summary>"+stations[idx].name+"&emsp;<a onclick='init_player(" + 
+        idx + ")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>" + 
+        "</a></summary><p>" + stations[idx].description + "</p>";
+        var zoey_html = "<div>";
+        for (let jdx = 0; jdx < info_keys.length; jdx++) {
+            zoey_html += "<div class='half_col float_left'><h4>"+info_keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
+        }
+        zoey_html += "</div></details>";
+        newDiv.innerHTML = texty + zoey_html;
+        mainDiv.appendChild(newDiv);
+    }    
 }
