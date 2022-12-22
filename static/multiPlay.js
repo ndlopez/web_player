@@ -164,7 +164,11 @@ function startPlay(idx=0){
             /* adding key press events to player: play pressed */
             playStop();
         }
+        if(event.key === "r" || event.key === "R"){
+            display_data(idx);
+        }
     });
+    
     //const svgStop = document.getElementById("i-stop");
     //svgStop.addEventListener("click",stopPlay);
     audioConnect = new Audio();
@@ -317,8 +321,8 @@ async function get_id3(idx){
     const data = await response.json();
     var myReg = RegExp("[(][^)]*[)]");//find parentheses
     const artist = data["artist"].replace(/&/g,"and");
-    const song = data["title"].replace(myReg,"");
-    //console.log("got:",data["title"],song);
+    const song = data["title"].replace(myReg,"").replace(/&/g,"and");
+    console.log("got:",data["title"],song);
     //const bit = data["bitrate"];
     return {artist,song};
 }
@@ -330,8 +334,8 @@ async function get_artwork(jdx){
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
-    const default_art = "assets/cd_case.svg";//["assets/181fm_logo.png","assets/181fm_logo.png"];
-    var album = "", artwork = default_art[jdx], summ = "";
+    //const default_art = ;//["assets/181fm_logo.png","assets/181fm_logo.png"];
+    var album = "", artwork = "assets/cd_case.svg", summ = "";
     // console.log("got url",this_url);duration="",
     try {
         const response = await fetch(this_url)
@@ -341,16 +345,16 @@ async function get_artwork(jdx){
             artwork = data["track"]["album"]["image"][3]["#text"];
             album = data["track"]["album"]["title"];
             /*summ = data["track"]["wiki"]["summary"];
-            if(summ === undefined){summ = "";}*/            
+            if(summ === undefined){summ = "";}*/
         }else{
-            artwork = default_art;
+            artwork = "assets/cd_case.svg";
             album = "";
         }
         // console.log("artwork",artwork,"album",album);
         return {nowPlaying, album, artwork};
     } catch (error) {
         console.log("got an error",error);
-        return {nowPlaying, album, default_art};
+        return {nowPlaying, album, artwork};
     }    
 }
 
