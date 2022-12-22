@@ -119,7 +119,7 @@ ul, li{margin: 0px;padding: 5px;}
   background: var(--light-sky);
 }
 .no-audio span{
-  background: var(--light-sky);
+  background: var(--smoke);
 }
 .equalizer span:nth-child(1) {
   animation: load 1s 1.2s infinite linear;
@@ -431,6 +431,11 @@ button{
   .col2{width: 100%;}
   #list-icon{
     display: block;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-color: var(--light-sky);
+    border: 1px solid var(--light-sky);
   }
   /*ul li:nth-child(4){text-align: center;}*/
 }

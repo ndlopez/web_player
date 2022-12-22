@@ -6,7 +6,7 @@
  Beethoven - moonlight
  Cigarettes After Sex - Apocalypse
  lovelytheband - these are my friends
- The Shins - So now what
+ The Shins - So now what, New Slang
  Sneaker Pimps - 6 Underground
 
  id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
@@ -75,7 +75,7 @@ function display_all_stations(){
     }
 }
 
-//window.addEventListener("load",startPlay);
+//window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
     /*bug: user must click 2 times the logo to start stream */
     console.log("gotStream",stream_idx);
@@ -119,6 +119,7 @@ function startPlay(idx=0){
     var mmss = "";
     var get_sub_timer = "";
     for(let jdx=0;jdx < stations.length; jdx++){
+        /* this loops disables/enables background and text-color */
         const get_row = document.getElementById("station_"+jdx);
         get_sub_timer = document.getElementById("timer_"+jdx);
         if(idx == jdx){
@@ -347,7 +348,8 @@ function openNav(){
     // document.getElementById("nowLabel").style.display = "block";
     const closeBtn = document.getElementById("list-icon");
     closeBtn.style.display = "block";
-    closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
+    closeBtn.innerHTML = '<svg focusable="false" width="24" height="24" viewBox="0 0 24 24" stroke="#2e4054" fill="#2e4054"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>'
+    // '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //closeBtn.style.margin = "0";
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
@@ -356,7 +358,7 @@ function openNav(){
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
     document.getElementById("player2").style.display = "none";
-    document.getElementById("station_info").style.display = "none";
+    //document.getElementById("station_info").style.display = "none";
     document.body.style.overflow = "hidden";    
 }
 function closeNav(){
@@ -372,7 +374,7 @@ function closeNav(){
     document.getElementById("artwork").style.display = "none";
     document.getElementById("player2").style.display = "block";
     document.getElementById("amia").style.display = "block";
-    document.getElementById("station_info").style.display = "block";
+    //document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
 }
 
