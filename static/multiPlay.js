@@ -270,7 +270,8 @@ function no_artwork(idx){
     "' width='260'/></div>";
     document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
     const divTitle = document.getElementById("cover_title");
-    divTitle.innerHTML= "<span>" + stations[idx].name + "</span>";
+    divTitle.innerHTML= "<span class='align-left'>Now Playing</span><span class='align-left'>" + 
+    stations[idx].name + "</span>";
     //divTitle.classList.add("moving-text");
 }
 
@@ -296,7 +297,7 @@ async function display_data(idx){
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
     document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
-    stations[idx].name + "</span><span class='align-left'>" + stations[idx].description + "</span>";
+    "Now Playing</span><span class='align-left'>" + stations[idx].name + "</span>";
 
     const this_row = document.getElementById("station_"+idx);
     this_row.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
