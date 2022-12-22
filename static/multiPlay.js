@@ -278,7 +278,7 @@ function no_artwork(idx){
 async function display_data(idx){
     const timeNow = new Date();
     var gotData = await get_artwork(idx);
-    var this_artwork = "";
+    var this_artwork = gotData.artwork;
     if(gotData.artwork === "assets/cd_case.svg"){
         this_artwork = "assets/181fm_logo.png";
     }
@@ -292,10 +292,10 @@ async function display_data(idx){
     zeroPad(timeNow.getMinutes()) + 
     "</h2><a title='Reload id3-tag' onclick='display_data("+ idx +
     ")' class='col_half float_left align-right'><img src='assets/reload-svgrepo.svg' width='36'/></a>" +
-    "<a title='More info' href='https://duckduckgo.com/?q=" + 
+    "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 
     gotData.nowPlaying.artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
     gotData.nowPlaying.song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>More info at duckduckgo.com: &emsp; <img src='assets/duck.svg' width='36'/></a></div>";
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>Click for more info: &emsp; <img src='assets/duck.svg' width='36'/></a></div>";
 
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";

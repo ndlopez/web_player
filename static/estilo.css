@@ -321,6 +321,7 @@ span{
 .col90{width:90%}
 .col10{width: 10%;margin: 0px;}
 .col15{width: 15%;}
+.col15 img{margin-left: 5px;}
 .col30{width: 30%;}
 .col70{
   width:70%;
