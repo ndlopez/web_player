@@ -278,11 +278,14 @@ function no_artwork(idx){
 async function display_data(idx){
     const timeNow = new Date();
     var gotData = await get_artwork(idx);
-    //console.log("gotThis",gotData);
+    var this_artwork = "";
+    if(gotData.artwork === "assets/cd_case.svg"){
+        this_artwork = "assets/181fm_logo.png";
+    }
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div"); <h2 id='list-icon' class='closeBtn'></h2>
     coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + 
-    gotData.artwork+"' width='260'/></div>"+
+    this_artwork + "' width='260'/></div>"+
     "<div class='smoke-bkg padding_15 small'><h2 class='headLabel'>" + gotData.nowPlaying.song+
     "</h2><h2>"+ gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + gotData.album + 
     "</h2><h2 class='col_half float_left lighter'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
@@ -327,7 +330,7 @@ async function get_artwork(jdx){
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(/\s+/g,"%20") + "&format=json";
-    const default_art = ["assets/181fm_logo.png","assets/181fm_logo.png"];
+    const default_art = "assets/cd_case.svg";//["assets/181fm_logo.png","assets/181fm_logo.png"];
     var album = "", artwork = default_art[jdx], summ = "";
     // console.log("got url",this_url);duration="",
     try {
@@ -340,14 +343,14 @@ async function get_artwork(jdx){
             /*summ = data["track"]["wiki"]["summary"];
             if(summ === undefined){summ = "";}*/            
         }else{
-            artwork = default_art[jdx];
+            artwork = default_art;
             album = "";
         }
         // console.log("artwork",artwork,"album",album);
         return {nowPlaying, album, artwork};
     } catch (error) {
-        // console.log("got an error",error);
-        return {nowPlaying, album, artwork};
+        console.log("got an error",error);
+        return {nowPlaying, album, default_art};
     }    
 }
 
