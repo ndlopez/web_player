@@ -112,7 +112,7 @@ function init_player(stream_idx){
 }
 
 function startPlay(idx=0){
-    const svgPlay = document.getElementById("play");
+    const svgPlay = document.getElementById("play2");
     const float_btn = document.getElementById("play_btn")
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
@@ -258,7 +258,11 @@ async function display_data(idx){
     var gotData = await get_artwork(idx);
     var this_artwork = gotData.artwork;
     if((gotData.artwork === "assets/cd_case.svg") || (gotData.artwork === "")){
+        console.log("Error: No artwork found",gotData.artwork);
         this_artwork = "assets/181fm_logo.png";
+    }
+    if(gotData.artwork === ""){
+        gotData.artwork = "assets/cd_case.svg";
     }
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div"); <h2 id='list-icon' class='closeBtn'></h2>
@@ -326,11 +330,11 @@ async function get_artwork(jdx){
             album = "";
         }
         // console.log("artwork",artwork,"album",album);
-        return {nowPlaying, album, artwork};
     } catch (error) {
         console.log("got an error",error);
-        return {nowPlaying, album, artwork};
-    }    
+        //return {nowPlaying, album, artwork};
+    }
+    return {nowPlaying, album, artwork};
 }
 
 function zeroPad(timeElm){
