@@ -92,10 +92,16 @@ function init_player(stream_idx){
         case 0:
             startPlay(0);
             display_data(0);
+            if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+                openNav();
+            }            
             break;
         case 1:
             startPlay(1);
             display_data(1);
+            if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+                openNav();
+            }            
             break;
         case 2:
             startPlay(2);
