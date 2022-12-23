@@ -131,8 +131,8 @@ audioConnect = new Audio();
 function playStop(idx=0){
     const svgPlay = document.getElementById("play2");
     svgPlay.addEventListener("click",stopPlay);
-    const float_btn = document.getElementById("play_btn");
-    float_btn.addEventListener("click",stopPlay);
+    // const float_btn = document.getElementById("play_btn");
+    // float_btn.addEventListener("click",stopPlay);
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
     
@@ -165,9 +165,8 @@ function playStop(idx=0){
         svgPlay.classList.add("play_on");
         svgPlay.innerHTML = circleImg + pauseImg;
 
-        float_btn.classList.remove("paused");
-        float_btn.classList.add("play_on");
-        float_btn.innerHTML = circle_img + pauseImg;
+        /*float_btn.classList.remove("paused");
+        float_btn.classList.add("play_on");float_btn.innerHTML = circle_img + pauseImg;*/
         gifImg.classList.remove("no-audio");
     }else{
         audioConnect.pause();
@@ -177,9 +176,8 @@ function playStop(idx=0){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
-        float_btn.classList.remove("play_on");
-        float_btn.classList.add("paused");
-        float_btn.innerHTML = circle_img + playImg;
+        /*float_btn.classList.remove("play_on");
+        float_btn.classList.add("paused");float_btn.innerHTML = circle_img + playImg;*/
         stop_timer();//idx
     }
 }
@@ -187,8 +185,8 @@ function playStop(idx=0){
 function stopPlay(){/* param: idx=0 */
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
-    //svgPlay.addEventListener("click",playStop);
-    const float_btn = document.getElementById("play_btn");
+    // svgPlay.addEventListener("click",playStop);
+    // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
     gifImg.classList.add("no-audio");
@@ -196,9 +194,8 @@ function stopPlay(){/* param: idx=0 */
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
     svgPlay.innerHTML = circleImg + playImg;
-    float_btn.classList.remove("play_on");
-    float_btn.classList.add("paused");
-    float_btn.innerHTML = circle_img + playImg;
+    /*float_btn.classList.remove("play_on");float_btn.classList.add("paused");
+    float_btn.innerHTML = circle_img + playImg;*/
     stop_timer();//idx
 }
 
@@ -277,12 +274,10 @@ async function display_data(idx){
     gotData.nowPlaying.song + "</h2><h2>" + gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + 
     gotData.album + "</h2><h2 class='col_half float_left lighter'>&#x231A; " + 
     zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + 
-    "</h2><a title='Reload id3-tag' onclick='display_data("+ idx +
-    ")' class='col_half float_left align-right'><img src='assets/reload-svgrepo.svg' width='36'/></a>" +
-    "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 
+    "</h2><a class='col_half float_left' title='Click for more info' href='https://duckduckgo.com/?q=" + 
     gotData.nowPlaying.artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
     gotData.nowPlaying.song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>Click for more info: &emsp; <img src='assets/duck.svg' width='36'/></a></div>";
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a></div>";
 
     const cover_art = document.getElementById("cover_art");
     cover_art.setAttribute("onclick","display_data("+idx+")");
@@ -361,11 +356,11 @@ function openNav(){
     //closeBtn.setAttribute("class","col10 float_left closeBtn");
     //closeBtn.setAttribute("href","javascript:void(0)");
     closeBtn.setAttribute("onclick","closeNav()");
-    document.getElementById("play_btn").style.display = "block";
+    //document.getElementById("play_btn").style.display = "block";
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
-    document.getElementById("player2").style.display = "none";
-    //document.getElementById("station_info").style.display = "none";
+    // document.getElementById("player2").style.display = "none";
+    // document.getElementById("station_info").style.display = "none";
     document.body.style.overflow = "hidden";    
 }
 function closeNav(){
@@ -376,10 +371,10 @@ function closeNav(){
     }*/
     // document.getElementById("nowLabel").style.display = "none";
     // document.getElementById("burger").style.display = "block"
-    document.getElementById("play_btn").style.display = "none";
+    //document.getElementById("play_btn").style.display = "none";
     document.getElementById("list-icon").style.display = "none";
     document.getElementById("artwork").style.display = "none";
-    document.getElementById("player2").style.display = "block";
+    // document.getElementById("player2").style.display = "block";
     document.getElementById("amia").style.display = "block";
     //document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
@@ -393,10 +388,6 @@ function display_info(){
     mainDiv.appendChild(divTitle);
     
     for (let idx = 0; idx < stations.length; idx++) {
-        /*var aux_text = "";
-        if(idx == 0){
-            aux_text = '&emsp;<a onclick="display_data()"><img src="assets/reload-svgrepo.svg" width="32"/></a>';
-        }else{aux_text = "";}*/
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","padding_10");
         var texty = "<details><summary>"+stations[idx].name+"&emsp;<a onclick='init_player(" + 
@@ -414,7 +405,7 @@ function display_info(){
 
 function startPlay(idx=0){
     const svgPlay = document.getElementById("play2");
-    const float_btn = document.getElementById("play_btn")
+    //const float_btn = document.getElementById("play_btn")
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
     var mmss = "";
@@ -433,7 +424,7 @@ function startPlay(idx=0){
     }
     
     svgPlay.addEventListener("click",playStop);
-    float_btn.addEventListener("click",playStop);
+    //float_btn.addEventListener("click",playStop);
 
     document.addEventListener("keydown",function(event){
         if(event.key === "d" || event.key === "D"){
@@ -458,9 +449,9 @@ function startPlay(idx=0){
             svgPlay.classList.add("play_on");
             svgPlay.innerHTML = circleImg + pauseImg;
 
-            float_btn.classList.remove("paused");
+            /*float_btn.classList.remove("paused");
             float_btn.classList.add("play_on");
-            float_btn.innerHTML = circle_img + pauseImg;
+            float_btn.innerHTML = circle_img + pauseImg;*/
             gifImg.classList.remove("no-audio");
         }else{
             audioConnect.pause();
@@ -470,9 +461,9 @@ function startPlay(idx=0){
             svgPlay.classList.remove("play_on");
             svgPlay.classList.add("paused");
             svgPlay.innerHTML = circleImg + playImg;
-            float_btn.classList.remove("play_on");
+            /*float_btn.classList.remove("play_on");
             float_btn.classList.add("paused");
-            float_btn.innerHTML = circle_img + playImg;
+            float_btn.innerHTML = circle_img + playImg;*/
             stop_timer(idx);
         }
     }
