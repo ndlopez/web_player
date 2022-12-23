@@ -284,7 +284,9 @@ async function display_data(idx){
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'>Click for more info: &emsp; <img src='assets/duck.svg' width='36'/></a></div>";
 
     const cover_art = document.getElementById("cover_art");
+    cover_art.setAttribute("onclick","display_data("+idx+")");
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
+    
     document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
     "Now Playing</span><span class='align-left'>" + stations[idx].name + "</span>";
 
