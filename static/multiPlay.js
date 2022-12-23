@@ -64,7 +64,7 @@ function display_all_stations(){
     
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
-        rowDiv.setAttribute("class","row");
+        rowDiv.setAttribute("class","row round-border dashed-border");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.innerHTML = "<div class='colImg float_left'><img src='" + stations[idx].logo + 
@@ -77,7 +77,6 @@ function display_all_stations(){
 
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
-    /*bug: user must click 2 times the logo to start stream */
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
 
@@ -91,7 +90,7 @@ function init_player(stream_idx){
     switch (stream_idx) {
         case 0:
             /*startPlay(0);*/
-            stopPlay(0);
+            stopPlay();
             playStop(0);
             display_data(0);
             if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
@@ -100,7 +99,7 @@ function init_player(stream_idx){
             break;
         case 1:
             /*startPlay(1);*/
-            stopPlay(1);
+            stopPlay();
             playStop(1);
             display_data(1);
             if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
@@ -109,13 +108,13 @@ function init_player(stream_idx){
             break;
         case 2:
             /*startPlay(2);*/
-            stopPlay(2);
+            stopPlay();
             playStop(2);
             no_artwork(2);
             break;
         default:
             /*startPlay(3);*/
-            stopPlay(3);
+            stopPlay();
             playStop(3);
             no_artwork(3);
             break;
@@ -128,31 +127,36 @@ audioConnect = new Audio();
 
 function playStop(idx=0){
     const svgPlay = document.getElementById("play2");
-    //svgPlay.addEventListener("click",audioConnect.pause);
-    const float_btn = document.getElementById("play_btn")
+    svgPlay.addEventListener("click",stopPlay);
+    const float_btn = document.getElementById("play_btn");
+    float_btn.addEventListener("click",stopPlay);
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
-    var mmss = "";
+    
     var get_sub_timer = "";
+    var mmss = "";
     for(let jdx=0;jdx < stations.length; jdx++){
         /* this loops disables/enables background and text-color */
         const get_row = document.getElementById("station_"+jdx);
         get_sub_timer = document.getElementById("timer_"+jdx);
         if(idx == jdx){
-            get_row.classList.add("smoke-bkg");
+            get_row.classList.remove("dashed-border");
+            get_row.classList.add("smoke-bkg");            
             get_sub_timer.classList.add("headLabel");
+            mmss = get_sub_timer.innerText;
         }else{
             get_row.classList.remove("smoke-bkg");
+            get_row.classList.add("dashed-border");
             get_sub_timer.classList.remove("headLabel");
         }
     }
-    
+
     if(audioConnect.paused){
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
         // mmss = getTimer.innerText; // mm:ss
-        mmss = get_sub_timer.innerText; // mm:ss
+        //mmss = get_sub_timer.innerText; // mm:ss
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
@@ -173,11 +177,11 @@ function playStop(idx=0){
         float_btn.classList.remove("play_on");
         float_btn.classList.add("paused");
         float_btn.innerHTML = circle_img + playImg;
-        stop_timer(idx);
+        stop_timer();//idx
     }
 }
 
-function stopPlay(idx=0){
+function stopPlay(){/* param: idx=0 */
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
     //svgPlay.addEventListener("click",playStop);
@@ -192,7 +196,7 @@ function stopPlay(idx=0){
     float_btn.classList.remove("play_on");
     float_btn.classList.add("paused");
     float_btn.innerHTML = circle_img + playImg;
-    stop_timer(idx);
+    stop_timer();//idx
 }
 
 function volume_mute(vol_stat){
@@ -240,10 +244,10 @@ function play_elapsed(min=0,sec=0,jdx){
     },1000);
 }
 
-function stop_timer(jdx){
+function stop_timer(){
     /* pauses timer */
     clearInterval(tina_timer);
-    document.getElementById("timer_"+jdx).innerText = "00:00";
+    //document.getElementById("timer_"+jdx).innerText = "00:00";
 }
 
 function no_artwork(idx){
@@ -258,7 +262,13 @@ function no_artwork(idx){
 
 async function display_data(idx){
     const timeNow = new Date();
-    var gotData = await get_artwork(idx);
+    var gotData = "";
+    if(idx < 2){
+        gotData = await get_artwork(idx);
+    }else{
+        gotData = {nowPlaying:{artist: stations[idx].description,song:stations[idx].name},
+        album: "",artwork: stations[idx].logo};
+    }
     var this_artwork = gotData.artwork;
     if((gotData.artwork === "assets/cd_case.svg") || (gotData.artwork === "")){
         console.log("Error: No artwork found",gotData.artwork);
