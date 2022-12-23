@@ -281,12 +281,11 @@ async function display_data(idx){
     }
     const coverDiv = document.getElementById("artwork");
     //const coverDiv = document.createElement("div"); <h2 id='list-icon' class='closeBtn'></h2>
-    coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + 
-    this_artwork + "' width='260'/></div>"+
-    "<div class='smoke-bkg padding_15 small'><h2 class='headLabel'>" + gotData.nowPlaying.song+
-    "</h2><h2>"+ gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + gotData.album + 
-    "</h2><h2 class='col_half float_left lighter'>&#x231A; " + zeroPad(timeNow.getHours()) + ":"+ 
-    zeroPad(timeNow.getMinutes()) + 
+    coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + this_artwork + 
+    "' width='260'/></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
+    gotData.nowPlaying.song + "</h2><h2>" + gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + 
+    gotData.album + "</h2><h2 class='col_half float_left lighter'>&#x231A; " + 
+    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + 
     "</h2><a title='Reload id3-tag' onclick='display_data("+ idx +
     ")' class='col_half float_left align-right'><img src='assets/reload-svgrepo.svg' width='36'/></a>" +
     "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 

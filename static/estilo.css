@@ -433,7 +433,7 @@ button{
   .col_20{width: 20%;}
   .col2{width: 100%;}
   #list-icon{
-    display: block;
+    display: none;
     height: 28px;
     width: 28px;
     border-radius: 50%;
