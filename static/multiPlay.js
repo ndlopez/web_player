@@ -22,28 +22,28 @@ const stations = [
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
-        xtra_info: ["80's best hits","English","128kbps","Yes"]
+        xtra_info: ["80's hits","English"," 128kbps","Yes"]
     },{
-        name: "181.fm '90s Alternative",
+        name: "181.fm 90's Alternative",
         logo: "assets/90s_alt.jpg",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best hits of the 1990s",
-        xtra_info: ["90's alternative","English","128kbps","Yes"]
+        xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]
     },{
         name: "113.fm Alternative-Rock",
         logo: "assets/113fm_logo.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
-        id3_info: "",
-        description: "The biggest Alternative hits from the '90s. From guitar riffs to mellow beats, we've got you covered.",
-        xtra_info: ["Alt-Rock","English","128kbps","Yes"]
+        id3_info: "From guitar riffs to mellow beats, we've got you covered.",
+        description: "The biggest Alternative hits from the '90s.",
+        xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        description: "Explore and discover new worlds of music with NASA's 3rd Rock Radio.",
-        xtra_info:["Alternative, Indie-Rock","English","196kbps","no"]
+        description: "Explore and discover new worlds of music with NASA's Radio.",
+        xtra_info:["Alt-Rock","English"," 196kbps","no"]
     }
 ];
 const info_keys = ["Genre","Language","Bitrate","Ads"];
@@ -71,7 +71,8 @@ function display_all_stations(){
         rowDiv.innerHTML = "<div class='colImg float_left'><img src='" + stations[idx].logo + 
         "' width='84' height='84'/></div>" + "<div class='colArtist float_left'><span>" + 
         stations[idx].name + "</span><span>" + stations[idx].description + 
-        "</span></div><div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
+        "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
+        "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
     }
 }
@@ -82,7 +83,7 @@ function init_player(stream_idx){
     document.title = stations[stream_idx].name;
 
     // document.getElementById("title_stat").innerText = stations[stream_idx].name + 
-    stations[stream_idx].description;
+    // stations[stream_idx].description;
 
     /*const span_name = document.getElementById("nowLabel");
     span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now playing</h2>" + 
@@ -256,7 +257,7 @@ async function display_data(idx){
     if(idx < 2){
         gotData = await get_artwork(idx);
     }else{
-        gotData = {nowPlaying:{artist: stations[idx].description,song:stations[idx].name},
+        gotData = {nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
         album: "",artwork: stations[idx].logo};
     }
     var this_artwork = gotData.artwork;
@@ -279,14 +280,6 @@ async function display_data(idx){
     gotData.nowPlaying.song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a></div>";
 
-    const cover_art = document.getElementById("cover_art");
-    cover_art.setAttribute("onclick","display_data("+idx+")");
-    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + 
-    "<div class='above_img'>" + reloadImg + "</div>"
-    
-    document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
-    "Now Playing</span><span class='align-left'>" + stations[idx].name + "</span>";
-
     const this_row = document.getElementById("station_"+idx);
     this_row.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
     ")' src='" + gotData.artwork + "' width='84'/></div>" +
@@ -295,6 +288,13 @@ async function display_data(idx){
     "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
     "' class='headLabel'>00:00</span></div>";
     //document.getElementById("cover_title").classList.remove("moving-text");
+    const cover_art = document.getElementById("cover_art");
+    cover_art.setAttribute("onclick","display_data("+idx+")");
+    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + 
+    "<div class='above_img'>" + reloadImg + "</div>"
+    
+    document.getElementById("cover_title").innerHTML = "<span>Now Playing</span><span>" +
+    stations[idx].name + "</span><span>"; //+ stations[idx].description + "</span>";
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses

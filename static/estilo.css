@@ -328,7 +328,6 @@ span{
 .col30{width: 30%;}
 .col70{
   width:70%;
-  text-align: center;
   overflow: hidden;
 }
 #cover_title{padding-left: 10px;}
