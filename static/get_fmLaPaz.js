@@ -295,7 +295,7 @@ async function display_data(){
     const headTitle = document.getElementById("nowLabel");
     headTitle.innerHTML = "<h2 id='mainTitle' class='col90 float_left'>You are listening to:</h2>" +
     "<h2 id='currSong' class='col90 float_left'>Now: " + gotData.song + "</h2>" + 
-    "<h2 id='list-icon' onclick='openNav()' class='col10 float_left closeBtn'>" + this_menu + "</h2>";
+    "<h2 id='listIcon' onclick='openNav()' class='col10 float_left closeBtn'>" + this_menu + "</h2>";
     //<img src='assets/list-alt.svg' width='32'/>"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
 
     var myDiv = document.getElementById("nowPlaying");
@@ -371,7 +371,7 @@ function openNav(){
     document.getElementById("player").style.display = "none";
     document.getElementById("station_info").style.display = "none";
 
-    const closeBtn = document.getElementById("list-icon");
+    const closeBtn = document.getElementById("listIcon");
     closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
     //'<svg id="i-arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 6 L2 16 10 26 M2 16 L30 16" /></svg>';
     //'<svg id="i-chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 30 L8 16 20 2" /></svg>';
@@ -385,7 +385,7 @@ function openNav(){
 }
 function closeNav(){
     document.getElementById('playList').style.display = "none";
-    const listBtn = document.getElementById("list-icon");
+    const listBtn = document.getElementById("listIcon");
     listBtn.setAttribute("onclick","openNav()");
     listBtn.innerHTML = this_menu;//"<img src='assets/list-alt.svg' width='32'/>"
     document.getElementById("nowLabel").style.display = "block";

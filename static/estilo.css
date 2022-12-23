@@ -67,7 +67,7 @@ kbd {
 
 ul{list-style-type: none;}
 ul, li{margin: 0px;padding: 5px;}
-#currSong, #vol_input, .closeBtn, #list-icon{display: none;}
+#currSong, #vol_input, .closeBtn, #list-icon, #listIcon{display: none;}
 #player, #player2{
   display: block;
   position: fixed;
@@ -441,8 +441,8 @@ button{
   .col_50{width: 80%;}
   .col_20{width: 20%;}
   .col2{width: 100%;}
+  #listIcon{display: block;}
   #list-icon{
-    display: none;
     height: 28px;
     width: 28px;
     border-radius: 50%;
