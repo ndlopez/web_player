@@ -288,10 +288,15 @@ async function display_data(idx){
     "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
     "' class='headLabel'>00:00</span></div>";
     //document.getElementById("cover_title").classList.remove("moving-text");
+    var auxText = ""
     const cover_art = document.getElementById("cover_art");
-    cover_art.setAttribute("onclick","display_data("+idx+")");
+    if(idx < 2){
+        cover_art.setAttribute("onclick","display_data(" + idx + ")");
+        auxText = "<div class='above_img'>" + reloadImg + "</div>";
+    }
+
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + 
-    "<div class='above_img'>" + reloadImg + "</div>"
+    auxText;
     
     document.getElementById("cover_title").innerHTML = "<span>Now Playing</span><span>" +
     stations[idx].name + "</span><span>"; //+ stations[idx].description + "</span>";
