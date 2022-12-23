@@ -90,25 +90,33 @@ function init_player(stream_idx){
 
     switch (stream_idx) {
         case 0:
-            startPlay(0);
+            /*startPlay(0);*/
+            stopPlay(0);
+            playStop(0);
             display_data(0);
             if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
                 openNav();
             }            
             break;
         case 1:
-            startPlay(1);
+            /*startPlay(1);*/
+            stopPlay(1);
+            playStop(1);
             display_data(1);
             if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
                 openNav();
             }            
             break;
         case 2:
-            startPlay(2);
+            /*startPlay(2);*/
+            stopPlay(2);
+            playStop(2);
             no_artwork(2);
             break;
         default:
-            startPlay(3);
+            /*startPlay(3);*/
+            stopPlay(3);
+            playStop(3);
             no_artwork(3);
             break;
     }
@@ -116,9 +124,11 @@ function init_player(stream_idx){
         closeNav();
     }*/
 }
+audioConnect = new Audio();
 
-function startPlay(idx=0){
+function playStop(idx=0){
     const svgPlay = document.getElementById("play2");
+    svgPlay.addEventListener("click",stopPlay);
     const float_btn = document.getElementById("play_btn")
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
@@ -137,65 +147,52 @@ function startPlay(idx=0){
         }
     }
     
-    svgPlay.addEventListener("click",playStop);
-    float_btn.addEventListener("click",playStop);
+    if(audioConnect.paused){
+        audioConnect.src = stations[idx].stream_url;
+        audioConnect.play();//if not success -> then timer should not start
+        audioConnect.loop = true;
+        // mmss = getTimer.innerText; // mm:ss
+        mmss = get_sub_timer.innerText; // mm:ss
+        play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
+        svgPlay.classList.remove("paused");
+        svgPlay.classList.add("play_on");
+        svgPlay.innerHTML = circleImg + pauseImg;
 
-    document.addEventListener("keydown",function(event){
-        if(event.key === "d" || event.key === "D"){
-            /* adding key press events to player: play pressed */
-            playStop();
-        }
-        if(event.key === "r" || event.key === "R"){
-            display_data(idx);
-        }
-    });
-    
-    //const svgStop = document.getElementById("i-stop");
-    //svgStop.addEventListener("click",stopPlay);
-    audioConnect = new Audio();
-    function playStop(){
-        if(audioConnect.paused){
-            audioConnect.src = stations[idx].stream_url;
-            audioConnect.play();//if not success -> then timer should not start
-            audioConnect.loop = true;
-            // mmss = getTimer.innerText; // mm:ss
-            mmss = get_sub_timer.innerText; // mm:ss
-            play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
-            svgPlay.classList.remove("paused");
-            svgPlay.classList.add("play_on");
-            svgPlay.innerHTML = circleImg + pauseImg;
-
-            float_btn.classList.remove("paused");
-            float_btn.classList.add("play_on");
-            float_btn.innerHTML = circle_img + pauseImg;
-            gifImg.classList.remove("no-audio");
-        }else{
-            audioConnect.pause();
-            audioConnect.loop = false;
-            gifImg.classList.add("no-audio");
-            clearInterval(tina_timer);
-            svgPlay.classList.remove("play_on");
-            svgPlay.classList.add("paused");
-            svgPlay.innerHTML = circleImg + playImg;
-            float_btn.classList.remove("play_on");
-            float_btn.classList.add("paused");
-            float_btn.innerHTML = circle_img + playImg;
-            stop_timer(idx);
-        }
-    }
-    function stopPlay(){
-        /* does not pause/stop stream */
+        float_btn.classList.remove("paused");
+        float_btn.classList.add("play_on");
+        float_btn.innerHTML = circle_img + pauseImg;
+        gifImg.classList.remove("no-audio");
+    }else{
         audioConnect.pause();
         audioConnect.loop = false;
-        audioConnect.load(stream_url[idx]);    
+        gifImg.classList.add("no-audio");
+        clearInterval(tina_timer);
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
-        svgStop.style.stroke = "#cc274c";
-        svgStop.style.fill = "#cc274c";
-        gifImg.classList.add("no-audio");
-        stop_timer();
+        float_btn.classList.remove("play_on");
+        float_btn.classList.add("paused");
+        float_btn.innerHTML = circle_img + playImg;
+        stop_timer(idx);
     }
+}
+
+function stopPlay(idx=0){
+    const gifImg = document.getElementById("gifElm");
+    const svgPlay = document.getElementById("play2");
+    svgPlay.addEventListener("click",playStop);
+    const float_btn = document.getElementById("play_btn");
+    audioConnect.pause();
+    audioConnect.loop = false;
+    gifImg.classList.add("no-audio");
+    clearInterval(tina_timer);
+    svgPlay.classList.remove("play_on");
+    svgPlay.classList.add("paused");
+    svgPlay.innerHTML = circleImg + playImg;
+    float_btn.classList.remove("play_on");
+    float_btn.classList.add("paused");
+    float_btn.innerHTML = circle_img + playImg;
+    stop_timer(idx);
 }
 
 function volume_mute(vol_stat){
@@ -255,8 +252,7 @@ function no_artwork(idx){
     "' width='260'/></div>";
     document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
     const divTitle = document.getElementById("cover_title");
-    divTitle.innerHTML= "<span class='align-left'>Now Playing</span><span class='align-left'>" + 
-    stations[idx].name + "</span>";
+    divTitle.innerHTML= "<span>Now Playing</span><span>" + stations[idx].name + "</span>";
     //divTitle.classList.add("moving-text");
 }
 
@@ -288,8 +284,8 @@ async function display_data(idx){
 
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
-    document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
-    "Now Playing</span><span class='align-left'>" + stations[idx].name + "</span>";
+    document.getElementById("cover_title").innerHTML = "<span>" + 
+    "Now Playing</span><span>" + stations[idx].name + "</span>";
 
     const this_row = document.getElementById("station_"+idx);
     this_row.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
@@ -384,6 +380,7 @@ function closeNav(){
     document.body.style.overflow = "auto";
 }
 
+/* Deprecated functions */
 function display_info(){
     const mainDiv = document.getElementById("amia");
     const divTitle = document.createElement("h2");
@@ -408,4 +405,70 @@ function display_info(){
         newDiv.innerHTML = texty + zoey_html;
         mainDiv.appendChild(newDiv);
     }    
+}
+
+function startPlay(idx=0){
+    const svgPlay = document.getElementById("play2");
+    const float_btn = document.getElementById("play_btn")
+    const gifImg = document.getElementById("gifElm");
+    // const getTimer = document.getElementById("timer");
+    var mmss = "";
+    var get_sub_timer = "";
+    for(let jdx=0;jdx < stations.length; jdx++){
+        /* this loops disables/enables background and text-color */
+        const get_row = document.getElementById("station_"+jdx);
+        get_sub_timer = document.getElementById("timer_"+jdx);
+        if(idx == jdx){
+            get_row.classList.add("smoke-bkg");
+            get_sub_timer.classList.add("headLabel");
+        }else{
+            get_row.classList.remove("smoke-bkg");
+            get_sub_timer.classList.remove("headLabel");
+        }
+    }
+    
+    svgPlay.addEventListener("click",playStop);
+    float_btn.addEventListener("click",playStop);
+
+    document.addEventListener("keydown",function(event){
+        if(event.key === "d" || event.key === "D"){
+            /* adding key press events to player: play pressed */
+            playStop();
+        }
+        if(event.key === "r" || event.key === "R"){
+            display_data(idx);
+        }
+    });
+    audioConnect = new Audio();
+    
+    function playStop(){
+        if(audioConnect.paused){
+            audioConnect.src = stations[idx].stream_url;
+            audioConnect.play();//if not success -> then timer should not start
+            audioConnect.loop = true;
+            // mmss = getTimer.innerText; // mm:ss
+            mmss = get_sub_timer.innerText; // mm:ss
+            play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
+            svgPlay.classList.remove("paused");
+            svgPlay.classList.add("play_on");
+            svgPlay.innerHTML = circleImg + pauseImg;
+
+            float_btn.classList.remove("paused");
+            float_btn.classList.add("play_on");
+            float_btn.innerHTML = circle_img + pauseImg;
+            gifImg.classList.remove("no-audio");
+        }else{
+            audioConnect.pause();
+            audioConnect.loop = false;
+            gifImg.classList.add("no-audio");
+            clearInterval(tina_timer);
+            svgPlay.classList.remove("play_on");
+            svgPlay.classList.add("paused");
+            svgPlay.innerHTML = circleImg + playImg;
+            float_btn.classList.remove("play_on");
+            float_btn.classList.add("paused");
+            float_btn.innerHTML = circle_img + playImg;
+            stop_timer(idx);
+        }
+    }
 }
