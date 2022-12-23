@@ -22,7 +22,8 @@ Song Title: font-size:22px;font-weight:700;
 Song Artist: color: var(--second-color)
 */
 
-const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
+const old_URL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
+const thisURL = "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042";
 
 //const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';

@@ -128,7 +128,7 @@ audioConnect = new Audio();
 
 function playStop(idx=0){
     const svgPlay = document.getElementById("play2");
-    svgPlay.addEventListener("click",stopPlay);
+    //svgPlay.addEventListener("click",audioConnect.pause);
     const float_btn = document.getElementById("play_btn")
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
@@ -180,7 +180,7 @@ function playStop(idx=0){
 function stopPlay(idx=0){
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
-    svgPlay.addEventListener("click",playStop);
+    //svgPlay.addEventListener("click",playStop);
     const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
