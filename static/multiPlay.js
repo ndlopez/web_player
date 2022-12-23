@@ -54,6 +54,7 @@ const circle_img = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="2
 const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
 const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
+const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 var audioConnect; //= new Audio();
 var tina_timer;
 
@@ -285,7 +286,8 @@ async function display_data(idx){
 
     const cover_art = document.getElementById("cover_art");
     cover_art.setAttribute("onclick","display_data("+idx+")");
-    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
+    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + 
+    "<div class='above_img'>" + reloadImg + "</div>"
     
     document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
     "Now Playing</span><span class='align-left'>" + stations[idx].name + "</span>";

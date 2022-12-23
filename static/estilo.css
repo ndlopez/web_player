@@ -325,7 +325,6 @@ span{
 .col90{width:90%}
 .col10{width: 10%;margin: 0px;}
 .col15{width: 15%;}
-.col15 img{margin-left: 5px;}
 .col30{width: 30%;}
 .col70{
   width:70%;
@@ -333,6 +332,19 @@ span{
   overflow: hidden;
 }
 #cover_title{padding-left: 10px;}
+#cover_art{
+  position: relative;
+  text-align: center;
+}
+#cover_art img{
+  filter: opacity(50%);/*blur(1px);*/
+}
+.above_img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 #timer{margin-top: -15px;}
 .no_desktop{display: none;}
 /*.moving-text:hover{animation-play-state: paused;}*/
