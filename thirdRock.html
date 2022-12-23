@@ -36,19 +36,27 @@
 
     <aside id="player2">
       <div class="col15 float_left" id="cover_art"><img src="assets/phantogram.jpg" width="60" height="60"/></div>
-      <div class="col70 float_left" onclick="openNav()">
-        <div id="cover_title"><span>You don't get me high anymore</span><span>Phantogram</span></div>
+      <div class="col70 float_left">
+        <div id="cover_title" class="col_50 float_left" onclick="openNav()"><span>You don't get me high anymore</span><span>Phantogram</span></div>
+        <div class="col_20 float_left"><svg id="play2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">
+          <circle class="paused no_mobil" stroke-width="4" cx="30" cy="30" r="26"/>
+          <path class="paused" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg>
+        </div>
       </div>
       <div class="col15 float_left">
-        <div class="col2 float_left"><svg id="play2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">
-          <circle class="paused no_mobil" stroke-width="4" cx="30" cy="30" r="26"/>
-          <path class="paused" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/></svg></div>
-        <div class="col2 float_left no_mobil">
-          <div id="gifElm" class="equalizer no-audio"><div>
-            <span></span><span></span><span></span><span></span><span></span><!--span></span-->
-            </div></div>
+        <div class="col_half float_left padding_10">
+          <label for="vol_input" onclick="volume_mute(0)">
+            <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
+            <input id="vol_input" class="volume-vertical" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
         </div>
-        <!--span id="timer" class="col15 float_left">00:00</span--></div> 
+        <div class="col_half float_left no_mobil">
+          <div id="gifElm" class="equalizer no-audio"><div>
+          <span></span><span></span><span></span><span></span><span></span><!--span></span-->
+          </div></div>
+        </div>
+      </div>
+        <!--div class="col2 float_left no_mobil"></div-->
+        <!--span id="timer" class="col15 float_left">00:00</span--> 
     </aside>
     <!--aside id="station_info">
       <div class="col70 float_left"> <span id="title_stat" class="moving-text">♪ Click on a station logo and press the <em>play</em> button to start</span></div>

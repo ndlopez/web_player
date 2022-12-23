@@ -64,7 +64,7 @@ function display_all_stations(){
     
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
-        rowDiv.setAttribute("class","row round-border dashed-border");
+        rowDiv.setAttribute("class","row round-border dashed-border bottom-10px");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.innerHTML = "<div class='colImg float_left'><img src='" + stations[idx].logo + 
@@ -252,16 +252,6 @@ function stop_timer(){
     //document.getElementById("timer_"+jdx).innerText = "00:00";
 }
 
-function no_artwork(idx){
-    const gotDiv = document.getElementById("artwork");
-    gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
-    "' width='260'/></div>";
-    document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
-    const divTitle = document.getElementById("cover_title");
-    divTitle.innerHTML= "<span>Now Playing</span><span>" + stations[idx].name + "</span>";
-    //divTitle.classList.add("moving-text");
-}
-
 async function display_data(idx){
     const timeNow = new Date();
     var gotData = "";
@@ -295,8 +285,8 @@ async function display_data(idx){
 
     const cover_art = document.getElementById("cover_art");
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
-    document.getElementById("cover_title").innerHTML = "<span>" + 
-    "Now Playing</span><span>" + stations[idx].name + "</span>";
+    document.getElementById("cover_title").innerHTML = "<span class='align-left'>" + 
+    "Now Playing</span><span class='align-left'>" + stations[idx].name + "</span>";
 
     const this_row = document.getElementById("station_"+idx);
     this_row.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
@@ -482,4 +472,13 @@ function startPlay(idx=0){
             stop_timer(idx);
         }
     }
+}
+function no_artwork(idx){
+    const gotDiv = document.getElementById("artwork");
+    gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
+    "' width='260'/></div>";
+    document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
+    const divTitle = document.getElementById("cover_title");
+    divTitle.innerHTML= "<span>Now Playing</span><span>" +  stations[idx].name + "</span>";
+    //divTitle.classList.add("moving-text");
 }
