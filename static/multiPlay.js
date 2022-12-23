@@ -110,13 +110,15 @@ function init_player(stream_idx){
             /*startPlay(2);*/
             stopPlay();
             playStop(2);
-            no_artwork(2);
+            display_data(2);
+            // no_artwork(2);
             break;
         default:
             /*startPlay(3);*/
             stopPlay();
             playStop(3);
-            no_artwork(3);
+            display_data(3);
+            // no_artwork(3);
             break;
     }
     /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
