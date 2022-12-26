@@ -150,7 +150,7 @@ audioConnect = new Audio();
 
 function playStop(idx=0){
     const svgPlay = document.getElementById("play2");
-    svgPlay.addEventListener("click",stopPlay);
+    svgPlay.addEventListener("click",stopPlay());
     // const float_btn = document.getElementById("play_btn");
     // float_btn.addEventListener("click",stopPlay);
     const gifImg = document.getElementById("gifElm");
@@ -178,15 +178,12 @@ function playStop(idx=0){
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
-        // mmss = getTimer.innerText; // mm:ss
-        //mmss = get_sub_timer.innerText; // mm:ss
+        // mmss = getTimer.innerText; // mm:ss   //mmss = get_sub_timer.innerText; // mm:ss
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
         svgPlay.innerHTML = circleImg + pauseImg;
 
-        /*float_btn.classList.remove("paused");
-        float_btn.classList.add("play_on");float_btn.innerHTML = circle_img + pauseImg;*/
         gifImg.classList.remove("no-audio");
     }else{
         audioConnect.pause();
@@ -196,8 +193,7 @@ function playStop(idx=0){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
-        /*float_btn.classList.remove("play_on");
-        float_btn.classList.add("paused");float_btn.innerHTML = circle_img + playImg;*/
+
         stop_timer();//idx
     }
 }
@@ -205,7 +201,7 @@ function playStop(idx=0){
 function stopPlay(){/* param: idx=0 */
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
-    // svgPlay.addEventListener("click",playStop);
+    // svgPlay.addEventListener("click","playStop("+idx+")");
     // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
@@ -214,8 +210,7 @@ function stopPlay(){/* param: idx=0 */
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
     svgPlay.innerHTML = circleImg + playImg;
-    /*float_btn.classList.remove("play_on");float_btn.classList.add("paused");
-    float_btn.innerHTML = circle_img + playImg;*/
+    
     stop_timer();//idx
 }
 
@@ -290,7 +285,7 @@ async function update_stations(){
     for(let idx = 0; idx < stations.length; idx++){
         gotData = {
             nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
-            album: "",artwork: stations[idx].logo};
+            album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
         if(idx !== 3){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
@@ -314,7 +309,7 @@ async function update_stations(){
         this_img.innerHTML = auxLink;
         const this_artist = document.getElementById("artistDiv_"+idx);
         this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
-        "</span><span>" + gotData.nowPlaying.artist;
+        "</span><span>" + gotData.nowPlaying.artist + "</span>";
 
         /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
         "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
@@ -334,7 +329,8 @@ async function display_data(idx){
     const got_artwork  = got_row.getElementsByClassName("colImg");
     const got_artist = got_row.getElementsByClassName("colArtist");
     //console.log("art",got_artwork[0].firstChild.src,"artist",got_artist[0].lastChild.childNodes[0].data);
-    coverDiv.innerHTML = build_case(got_artist[0].firstChild.childNodes[0].data,got_artist[0].lastChild.childNodes[0].data,"",got_artwork[0].firstChild.src);
+    coverDiv.innerHTML = build_case(got_artist[0].lastChild.childNodes[0].data,
+        got_artist[0].firstChild.childNodes[0].data,"",got_artwork[0].firstChild.src);
     
     // Updating player2: elements
     var auxText = ""
