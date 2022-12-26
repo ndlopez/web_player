@@ -72,7 +72,7 @@ const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" w
 var audioConnect; //= new Audio();
 var tina_timer;
 
-display_all_stations();
+init_this();
 
 function display_all_stations(){
     const mainDiv = document.getElementById("amia");
@@ -94,41 +94,44 @@ function display_all_stations(){
     }
 }
 
+function init_this(){
+    display_all_stations();
+    //build_case("Phantogram","You don't get me high anymore","","");
+    for (let idx = 0; idx < 3; idx++) {
+        display_data(idx);
+    }
+}
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
     console.log("gotStream",stream_idx);
     document.title = stations[stream_idx].name;
 
-    // document.getElementById("title_stat").innerText = stations[stream_idx].name + 
-    // stations[stream_idx].description;
-
-    /*const span_name = document.getElementById("nowLabel");
+    /*document.getElementById("title_stat").innerText = stations[stream_idx].name + 
+    stations[stream_idx].description;
+    const span_name = document.getElementById("nowLabel");
     span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now playing</h2>" + 
     "<h2 id='list-icon' class='col10 float_left closeBtn'></h2>";*/
 
     switch (stream_idx) {
-        case 0:
-            /*startPlay(0);*/
+        case 0:            
             stopPlay();
-            playStop(0);
+            playStop(0);/*startPlay(0);*/
             display_data(0);
             if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
                 openNav();
             }            
             break;
-        case 1:
-            /*startPlay(1);*/
+        case 1:            
             stopPlay();
-            playStop(1);
+            playStop(1);/*startPlay(1);*/
             display_data(1);
             if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
                 openNav();
             }            
             break;
-        case 2:
-            /*startPlay(2);*/
+        case 2:            
             stopPlay();
-            playStop(2);
+            playStop(2);/*startPlay(2);*/
             display_data(2);
             break;
         case 3:
@@ -140,9 +143,6 @@ function init_player(stream_idx){
             stopPlay();
             break;
     }
-    /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
-        closeNav();
-    }*/
 }
 audioConnect = new Audio();
 
@@ -268,8 +268,21 @@ function stop_timer(){
     //document.getElementById("timer_"+jdx).innerText = "00:00";
 }
 
-async function display_data(idx){
+function build_case(artist, song, album, artwork){
     const timeNow = new Date();
+    const this_html = "<div class='bkg_cd_icon' id='coverCD'><img src='" + artwork + 
+    "' width='260'/></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
+    song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
+    album + "</h2><h2 class='col_half float_left lighter'>&#x231A; " + 
+    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + 
+    "</h2><a class='col_half float_left' title='Click for more info' href='https://duckduckgo.com/?q=" + 
+    artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
+    song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a></div>";
+    return this_html;
+}
+
+async function display_data(idx){
     var gotData = "";
     if(idx < 3){
         gotData = await get_artwork(idx);
@@ -286,16 +299,7 @@ async function display_data(idx){
         gotData.artwork = "assets/cd_case.svg";
     }
     const coverDiv = document.getElementById("artwork");
-    //const coverDiv = document.createElement("div"); <h2 id='list-icon' class='closeBtn'></h2>
-    coverDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + this_artwork + 
-    "' width='260'/></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
-    gotData.nowPlaying.song + "</h2><h2>" + gotData.nowPlaying.artist + "</h2><h2 class='lighter'>" + 
-    gotData.album + "</h2><h2 class='col_half float_left lighter'>&#x231A; " + 
-    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + 
-    "</h2><a class='col_half float_left' title='Click for more info' href='https://duckduckgo.com/?q=" + 
-    gotData.nowPlaying.artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
-    gotData.nowPlaying.song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a></div>";
+    coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
 
     const this_row = document.getElementById("station_"+idx);
     this_row.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
@@ -305,6 +309,8 @@ async function display_data(idx){
     "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
     "' class='headLabel'>00:00</span></div>";
     //document.getElementById("cover_title").classList.remove("moving-text");
+    
+    // Updating player2: elements
     var auxText = ""
     const cover_art = document.getElementById("cover_art");
     if(idx < 3){
@@ -312,11 +318,10 @@ async function display_data(idx){
         auxText = "<div class='above_img'>" + reloadImg + "</div>";
     }
 
-    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + 
-    auxText;
+    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + auxText;
     
     document.getElementById("cover_title").innerHTML = "<span>Now Playing</span><span>" +
-    stations[idx].name + "</span><span>"; //+ stations[idx].description + "</span>";
+    stations[idx].name + "</span><span>";
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
