@@ -96,9 +96,10 @@ function display_all_stations(){
 function init_this(){
     display_all_stations();
     //build_case("Phantogram","You don't get me high anymore","","");
-    for (let idx = 0; idx < stations.length; idx++) {
+    /*for (let idx = 0; idx < stations.length; idx++) {
         display_data(idx);
-    }
+    }*/
+    update_stations();
 }
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
@@ -282,9 +283,32 @@ function build_case(artist, song, album, artwork){
     return this_html;
 }
 
+async function update_stations(){
+    var nowPlaying = "", auxLink = "";
+    
+    for(let idx = 0; idx < stations.length; idx++){
+        nowPlaying = {artist: stations[idx].description, song: stations[idx].name};
+        if(idx !== 3){
+            nowPlaying = await get_id3(idx);//returns {artist, song}
+        }
+        if(idx == 4){
+            auxLink = "<a target='_blank' href='" + stations[idx].stream_url + "'><img src='" + 
+            stations[idx].logo + "'width='84'/></a>";
+        }else{
+            auxLink = "<img src='" + stations[idx].logo + "' width='84'/>";
+        }    
+        const this_row = document.getElementById("station_"+idx);
+        this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
+        "<div class='colArtist float_left'><span class='headLabel'>" + nowPlaying.song + 
+        "</span><span>" + nowPlaying.artist + 
+        "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
+        "' class='headLabel'>00:00</span></div>";
+    }
+}
+
 async function display_data(idx){
     var gotData = "";
-    var auxLink = "";
+    
     if(idx == 3){
         gotData = {nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
         album: "",artwork: stations[idx].logo};
@@ -302,25 +326,13 @@ async function display_data(idx){
     const coverDiv = document.getElementById("artwork");
     coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
 
-    if(idx == 4){
-        auxLink = "<a target='_blank' href='" + stations[idx].stream_url + "'><img src='" + 
-        gotData.artwork + "'width='84'/></a>";
-    }else{
-        auxLink = "<img src='" + gotData.artwork + "' width='84'/>";
-    }
-    const this_row = document.getElementById("station_"+idx);
-    this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
-    "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
-    "</span><span>" + gotData.nowPlaying.artist + 
-    "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
-    "' class='headLabel'>00:00</span></div>";
-    //document.getElementById("cover_title").classList.remove("moving-text");
+    // document.getElementById("cover_title").classList.remove("moving-text");
     
     // Updating player2: elements
     var auxText = ""
     const cover_art = document.getElementById("cover_art");
     if(idx < 3){
-        cover_art.setAttribute("onclick","display_data(" + idx + ")");
+        cover_art.setAttribute("onclick","update_stations()");//"display_data(" + idx + ")"
         auxText = "<div class='above_img'>" + reloadImg + "</div>";
     }
 
