@@ -8,6 +8,7 @@
  lovelytheband - these are my friends
  The Shins - So now what, New Slang
  Sneaker Pimps - 6 Underground
+ Flys - Got You
 
  id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
  stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
@@ -55,7 +56,7 @@ const stations = [
         name: "LaPaz.fm",
         logo: "assets/fmlapaz_logo.png",
         stream_url: "fmlapaz.html",
-        id3_info: "",
+        id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
         description: "<a href='fmlapaz.html'>Mas musica menos palabras. Musica adulto contemporanea.</a>",
         xtra_info: ["Contemporary","English","128kbps","Yes"]
     }
@@ -80,10 +81,8 @@ function display_all_stations(){
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row round-border dashed-border bottom-10px");
-        if(idx < 4){
-            rowDiv.setAttribute("id","station_"+idx);
-            rowDiv.setAttribute("onclick","init_player("+idx+")");
-        }
+        rowDiv.setAttribute("id","station_"+idx);
+        if(idx < 4){rowDiv.setAttribute("onclick","init_player("+idx+")");}
         
         rowDiv.innerHTML = "<div class='colImg float_left'><img src='" + stations[idx].logo + 
         "' width='84' height='84'/></div>" + "<div class='colArtist float_left'><span>" + 
@@ -97,7 +96,7 @@ function display_all_stations(){
 function init_this(){
     display_all_stations();
     //build_case("Phantogram","You don't get me high anymore","","");
-    for (let idx = 0; idx < 3; idx++) {
+    for (let idx = 0; idx < stations.length; idx++) {
         display_data(idx);
     }
 }
@@ -141,6 +140,7 @@ function init_player(stream_idx){
             break;
         default:
             stopPlay();
+            display_data(4)
             break;
     }
 }
@@ -284,11 +284,12 @@ function build_case(artist, song, album, artwork){
 
 async function display_data(idx){
     var gotData = "";
-    if(idx < 3){
-        gotData = await get_artwork(idx);
-    }else{
+    var auxLink = "";
+    if(idx == 3){
         gotData = {nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
         album: "",artwork: stations[idx].logo};
+    }else{
+        gotData = await get_artwork(idx);
     }
     var this_artwork = gotData.artwork;
     if((gotData.artwork === "assets/cd_case.svg") || (gotData.artwork === "")){
@@ -301,11 +302,11 @@ async function display_data(idx){
     const coverDiv = document.getElementById("artwork");
     coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
 
+    
     const this_row = document.getElementById("station_"+idx);
-    this_row.innerHTML = "<div class='colImg float_left'><img onclick='init_player(" + idx + 
-    ")' src='" + gotData.artwork + "' width='84'/></div>" +
-    "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
-    "</span><span>" + gotData.nowPlaying.artist + 
+    this_row.innerHTML = "<div class='colImg float_left'><img src='" + gotData.artwork + 
+    "' width='84'/></div>" + "<div class='colArtist float_left'><span class='headLabel'>" + 
+    gotData.nowPlaying.song + "</span><span>" + gotData.nowPlaying.artist + 
     "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
     "' class='headLabel'>00:00</span></div>";
     //document.getElementById("cover_title").classList.remove("moving-text");
@@ -329,10 +330,17 @@ let myReg = RegExp("[(][^)]*[)]");//find parentheses
 async function get_id3(idx){
     const response = await fetch(stations[idx].id3_info);
     const data = await response.json();
-    const artist = data["artist"].replace(/&/g,"and");
-    const song = data["title"].replace(myReg,"").replace(/&/g,"and");
-    console.log("got:",data["title"],song);
-    //const bit = data["bitrate"];
+    
+    var artist = "";
+    var song = data["title"].replace(myReg,"").replace(/&/g,"and");
+    if(idx == 4){
+        var auxStr = song.split("-");
+        artist = auxStr[1];
+        song = auxStr[0];
+    }else{
+        artist = data["artist"].replace(/&/g,"and");
+    }
+    // console.log("got:",data["title"],song);
     return {artist,song};
 }
 
