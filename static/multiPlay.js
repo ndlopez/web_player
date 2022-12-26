@@ -23,21 +23,21 @@
 
 const stations = [
     {
-        name: "181.fm Awesome 80's",
+        name: "181.fm - Awesome 80's",
         logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
         xtra_info: ["80's hits","English"," 128kbps","Yes"]
     },{
-        name: "181.fm 90's Alternative",
+        name: "181.fm - 90's Alternative",
         logo: "assets/90s_alt.jpg",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best hits of the 1990s",
         xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]
     },{
-        name: "The Buzz",
+        name: "The Buzz - Alternative-Rock",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",

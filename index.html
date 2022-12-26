@@ -7,61 +7,75 @@
     <meta name="author" content="DLopez (github.com/ndlopez)">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!--link rel="stylesheet" type="text/css" href="static/styles.css"-->
-    <link rel="stylesheet" type="text/css" href="https://ndlopez.github.io/static/estilo2.css">
+    <link rel="stylesheet" type="text/css" href="static/estilo.css">
+    <link rel="stylesheet" type="text/css" href="static/burger.css">
     
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js" integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script-->
   </head>
   <body>
-    <nav class="top-menu">
-      <div class="navlink inline-block"><a title="Music" href="#" class="navlink-on">music</a></div>
-      <div class="navlink inline-block"><a title="Home" href="/" class="navlink-off">home</a></div>
-      <div class="navlink inline-block"><a title="Research" href="https://ndlopez.github.io/pages/research.html" class="navlink-off">research</a></div>
-      <div class="navlink inline-block"><a title="Projects" href="https://ndlopez.github.io/pages/projects.html" class="navlink-off">projects</a></div>
-      <div class="navlink inline-block"><a title="Weather" href="https://ndlopez.github.io/pages/jma_weather.html" class="navlink-off">weather</a></div>
-      <div class="navlink inline-block"><a title="About" href="https://ndlopez.github.io/pages/about.html" class="navlink-off">about</a></div>
+    <nav class="top-nav">
+      <div><h2>Favorite Stations</h2></div>
+      <input id="menu-toggle" type="checkbox"/><label class="menu-button-container" for="menu-toggle">
+        <div class="menu-button"></div>
+      </label>
+      <ul class="menu">
+        <li>Music</li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/pages/research.html">Research</a></li>
+        <li><a href="/pages/projects.html">Projects</a></li>
+        <li><a href="/pages/jma_weather.html">Weather</a></li>
+        <li><a href="/pages/todo_list.html">To Do</a></li></ul>
     </nav>
-    <header class="padding_10"><h2>Favorite Stations</h2>
+    
+    <header class="padding_10">
       <p class="no_mobil">To run locally from your computer/laptop which reduces the load on github servers. 
         Please download the whole repository 
         <u><a href="https://github.com/ndlopez/web_player/archive/refs/heads/main.zip">here</a></u> 
         and double click on the <strong>index.html</strong> file.</p></header>
     
     <main>
-      <article class="column float-left">
-        <h2>LaPaz.fm</h2>
-        <p>Mas musica menos palabras.</br>Musica adulto contemporanea 24/365.</p>
-        
-        <section>
+      <article class="row round-border bottom-10px smoke-bkg">
+        <div class="colImg float_left">
+          <a href="fmlapaz.html"><img src="assets/fmlapaz_logo.png" width="84"/></a>
+        </div>
+        <div class="colArtist float_left">
+          <span class="headLabel">LaPaz.fm</span>
+          <span>Mas musica menos palabras.</br>Musica adulto contemporanea 24/365.</span>
+        </div>
+        <div class="colTime float_left">
+          <span>128kbps</span>
+        </div>
+        <!--section>
           <div class="column3 float-left"><h4>Genre</h4><p>Adult Contemporary</p></div>
           <div class="column3 float-left"><h4>Language</h4><p>English</p></div>
           <div class="column3 float-left"><h4>Bitrate</h4><p>128kbps</p></div>
-          <!--div class="half_col float_left"><h4>Ads</h4><p>Yes</p></div-->
-        </section>
-        <a href="fmlapaz.html"><img src="assets/fmlapaz_logo.png"/></a>
+        </section-->
       </article>
       
-      <article class="column float_left">
-        <h2>Third Rock radio</h2>
-        <p>Explore and discover new worlds of music with<br/> NASA's Third Rock Radio.</p>
-        
-        <section>
+      <article class="row round-border bottom-10px smoke-bkg">
+        <div class="colImg float_left">
+          <a href="thirdRock.html"><img src="https://cdn-profiles.tunein.com/s151799/images/logoq.jpg?t=636355620405200000" width="84"/></a>
+        </div>
+        <div class="colArtist float_left">
+          <span class="headLabel">Third Rock radio</span><span>Explore and discover new worlds of music with<br/> NASA's Third Rock Radio.</span>
+        </div>
+        <div class="colTime float_left"><span>196kbps</span></div>
+        <!--section>
           <div class="column3 float-left"><h4>Genre</h4><p>Alternative, Indie Rock</p></div>
           <div class="column3 float-left"><h4>Language</h4><p>English</p></div>
           <div class="column3 float-left"><h4>Bitrate</h4><p>196kbps</p></div>
-          <!--div class="half_col float_left"><h4>Ads</h4><p>No</p></div-->
-        </section>
-        <a href="thirdRock.html"><img src="https://cdn-profiles.tunein.com/s151799/images/logoq.jpg?t=636355620405200000"/></a>
+        </section-->
       </article>
     </main>
 
     <footer>
       <hr>
       <div class="clearfix">
-        <div class="column padding_10 align-left float-left">
+        <div class="align-left padding_10">
           <p>Hello from
             <a target="blank" href="https://www.openstreetmap.org/search?whereami=1&query=34.7022%2C135.1940#map=14/34.7021/135.1940">34°41'N 135°11'E</a></p>
         </div>
-        <div class="column padding_10 align-right float-left">
+        <div class="align-right padding_10">
           <a class="mySNS" href="https://twitter.com/ndzerglink" target="_blank"><img src="https://ndlopez.github.io/assets/twitter-logo.svg"/></a>
           <a class="mySNS" href="https://github.com/ndlopez"><img src="https://ndlopez.github.io/assets/github-logo.svg"/></a>
           <a class="mySNS" target="blank" href="https://jp.linkedin.com/in/diego-lopez-58a033147"><img src="https://ndlopez.github.io/assets/linkein-logo.svg" /></a>
@@ -71,15 +85,5 @@
         <p style="text-align:center;"><span> 2022-12-12 made by ndzerglink </span></p>
       </div>
     </footer>
-    
-    <nav class="menu no-desktop" id="nav-menu">
-      <ul>
-        <li><a class="link-off" href="https://ndlopez.github.io"><img src="https://ndlopez.github.io/assets/home.svg"/> home</a></li>
-        <li><a class="link-off" href="/pages/research.html"><img src="https://ndlopez.github.io/assets/telescope.svg"/> research</a></li>
-        <li><a class="link-off" href="/pages/projects.html"><img src="https://ndlopez.github.io/assets/code.svg"/> projects</a></li>
-        <li><a class="link-off" href="/pages/jma_weather.html"><img src="https://ndlopez.github.io/assets/cloudy.svg"/> weather</a></li>
-        <li><a class="link-off" href="/pages/todo_list.html"><img src="https://ndlopez.github.io/assets/todo.svg"/> todo</a></li>
-      </ul>
-    </nav>
   </body>
 </html>
