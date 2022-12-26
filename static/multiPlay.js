@@ -13,6 +13,12 @@
  stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
  history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
  80s: "assets/181fm_logo.png"
+ {name: "113.fm Alternative-Rock",
+    logo: "assets/113fm_logo.jpg",
+    stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
+    id3_info: "From guitar riffs to mellow beats, we've got you covered.",
+    description: "The biggest Alternative hits from the '90s.",
+    xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]}
 */
 
 const stations = [
@@ -31,12 +37,12 @@ const stations = [
         description: "Listen to the best hits of the 1990s",
         xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]
     },{
-        name: "113.fm Alternative-Rock",
-        logo: "assets/113fm_logo.jpg",
-        stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
-        id3_info: "From guitar riffs to mellow beats, we've got you covered.",
-        description: "The biggest Alternative hits from the '90s.",
-        xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]
+        name: "The Buzz",
+        logo: "assets/181fm_logo.png",
+        stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
+        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
+        description: "Listen to the best Alternative-Rock hits",
+        xtra_info: ["Alt-Rock","English","128kbps","Yes"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
@@ -254,7 +260,7 @@ function stop_timer(){
 async function display_data(idx){
     const timeNow = new Date();
     var gotData = "";
-    if(idx < 2){
+    if(idx < 3){
         gotData = await get_artwork(idx);
     }else{
         gotData = {nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
@@ -290,7 +296,7 @@ async function display_data(idx){
     //document.getElementById("cover_title").classList.remove("moving-text");
     var auxText = ""
     const cover_art = document.getElementById("cover_art");
-    if(idx < 2){
+    if(idx < 3){
         cover_art.setAttribute("onclick","display_data(" + idx + ")");
         auxText = "<div class='above_img'>" + reloadImg + "</div>";
     }
