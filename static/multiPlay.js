@@ -13,6 +13,7 @@
  stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
  history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
  80s: "assets/181fm_logo.png"
+ thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
  {name: "113.fm Alternative-Rock",
     logo: "assets/113fm_logo.jpg",
     stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
@@ -50,6 +51,13 @@ const stations = [
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         description: "Explore and discover new worlds of music with NASA's Radio.",
         xtra_info:["Alt-Rock","English"," 196kbps","no"]
+    },{
+        name: "LaPaz.fm",
+        logo: "assets/fmlapaz_logo.png",
+        stream_url: "fmlapaz.html",
+        id3_info: "",
+        description: "<a href='fmlapaz.html'>Mas musica menos palabras. Musica adulto contemporanea.</a>",
+        xtra_info: ["Contemporary","English","128kbps","Yes"]
     }
 ];
 const info_keys = ["Genre","Language","Bitrate","Ads"];
@@ -72,8 +80,11 @@ function display_all_stations(){
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row round-border dashed-border bottom-10px");
-        rowDiv.setAttribute("id","station_"+idx);
-        rowDiv.setAttribute("onclick","init_player("+idx+")");
+        if(idx < 4){
+            rowDiv.setAttribute("id","station_"+idx);
+            rowDiv.setAttribute("onclick","init_player("+idx+")");
+        }
+        
         rowDiv.innerHTML = "<div class='colImg float_left'><img src='" + stations[idx].logo + 
         "' width='84' height='84'/></div>" + "<div class='colArtist float_left'><span>" + 
         stations[idx].name + "</span><span>" + stations[idx].description + 
@@ -119,14 +130,14 @@ function init_player(stream_idx){
             stopPlay();
             playStop(2);
             display_data(2);
-            // no_artwork(2);
             break;
-        default:
-            /*startPlay(3);*/
+        case 3:
             stopPlay();
             playStop(3);
             display_data(3);
-            // no_artwork(3);
+            break;
+        default:
+            stopPlay();
             break;
     }
     /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
@@ -145,7 +156,7 @@ function playStop(idx=0){
     
     var get_sub_timer = "";
     var mmss = "";
-    for(let jdx=0;jdx < stations.length; jdx++){
+    for(let jdx=0;jdx < stations.length-1; jdx++){
         /* this loops disables/enables background and text-color */
         const get_row = document.getElementById("station_"+jdx);
         get_sub_timer = document.getElementById("timer_"+jdx);
