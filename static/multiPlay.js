@@ -84,8 +84,9 @@ function display_all_stations(){
         rowDiv.setAttribute("id","station_"+idx);
         if(idx < 4){rowDiv.setAttribute("onclick","init_player("+idx+")");}
         
-        rowDiv.innerHTML = "<div class='colImg float_left'><img src='" + stations[idx].logo + 
-        "' width='84' height='84'/></div>" + "<div class='colArtist float_left'><span>" + 
+        rowDiv.innerHTML = "<div class='colImg float_left' id='imgDiv_"+ idx + "'><img src='" + 
+        stations[idx].logo + "' width='84' height='84'/></div>" + 
+        "<div class='colArtist float_left' id='artistDiv_" + idx + "'><span>" + 
         stations[idx].name + "</span><span>" + stations[idx].description + 
         "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
         "'>00:00</span></div>";
@@ -104,7 +105,6 @@ function init_this(){
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
     console.log("gotStream",stream_idx);
-    document.title = stations[stream_idx].name;
 
     /*document.getElementById("title_stat").innerText = stations[stream_idx].name + 
     stations[stream_idx].description;
@@ -113,23 +113,23 @@ function init_player(stream_idx){
     "<h2 id='list-icon' class='col10 float_left closeBtn'></h2>";*/
 
     switch (stream_idx) {
-        case 0:            
+        case 0:
             stopPlay();
             playStop(0);/*startPlay(0);*/
             display_data(0);
             if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
                 openNav();
-            }            
+            }
             break;
-        case 1:            
+        case 1:
             stopPlay();
             playStop(1);/*startPlay(1);*/
             display_data(1);
             if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
                 openNav();
-            }            
+            }
             break;
-        case 2:            
+        case 2:
             stopPlay();
             playStop(2);/*startPlay(2);*/
             display_data(2);
@@ -144,6 +144,7 @@ function init_player(stream_idx){
             display_data(4)
             break;
     }
+    document.title = stations[stream_idx].name;
 }
 audioConnect = new Audio();
 
@@ -309,16 +310,23 @@ async function update_stations(){
         }else{
             auxLink = "<img src='" + this_artwork + "' width='84'/>";
         }
-        const this_row = document.getElementById("station_"+idx);
-        this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
+        const this_img = document.getElementById("imgDiv_"+idx);
+        this_img.innerHTML = auxLink;
+        const this_artist = document.getElementById("artistDiv_"+idx);
+        this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
+        "</span><span>" + gotData.nowPlaying.artist;
+
+        /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
         "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
         "</span><span>" + gotData.nowPlaying.artist + 
         "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
-        "' class='headLabel'>00:00</span></div>";
+        "'>00:00</span></div>";*/
     }
 }
 
-function display_data(idx){
+async function display_data(idx){
+    await update_stations();
+
     const coverDiv = document.getElementById("artwork");
     //coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
     // document.getElementById("cover_title").classList.remove("moving-text");
@@ -337,9 +345,7 @@ function display_data(idx){
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + auxText;
     
     document.getElementById("cover_title").innerHTML = "<span>Now Playing</span><span>" +
-    stations[idx].name + "</span><span>";
-
-    update_stations();
+    stations[idx].name + "</span>";    
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
@@ -364,7 +370,7 @@ async function get_id3(idx){
 async function get_artwork(jdx){
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx);
-    document.title = nowPlaying.artist + " - "+ nowPlaying.song;
+    // if(jdx !== 4){document.title = nowPlaying.artist + " - "+ nowPlaying.song;}
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(myReg,"").replace(/\s+/g,"%20") + "&format=json";
