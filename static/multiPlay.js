@@ -284,62 +284,62 @@ function build_case(artist, song, album, artwork){
 }
 
 async function update_stations(){
-    var nowPlaying = "", auxLink = "";
+    var gotData = "", auxLink = "";
     
     for(let idx = 0; idx < stations.length; idx++){
-        nowPlaying = {artist: stations[idx].description, song: stations[idx].name};
+        gotData = {
+            nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
+            album: "",artwork: stations[idx].logo};
+
         if(idx !== 3){
-            nowPlaying = await get_id3(idx);//returns {artist, song}
+            gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
+        }
+        
+        var this_artwork = gotData.artwork;
+        if(gotData.artwork === "assets/cd_case.svg"){
+            console.log("Error: No artwork found",gotData.artwork);
+            this_artwork = "assets/181fm_logo.png";
+        }
+        if(gotData.artwork === ""){
+            gotData.artwork = "assets/cd_case.svg";
         }
         if(idx == 4){
             auxLink = "<a target='_blank' href='" + stations[idx].stream_url + "'><img src='" + 
             stations[idx].logo + "'width='84'/></a>";
         }else{
-            auxLink = "<img src='" + stations[idx].logo + "' width='84'/>";
-        }    
+            auxLink = "<img src='" + this_artwork + "' width='84'/>";
+        }
         const this_row = document.getElementById("station_"+idx);
         this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
-        "<div class='colArtist float_left'><span class='headLabel'>" + nowPlaying.song + 
-        "</span><span>" + nowPlaying.artist + 
+        "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
+        "</span><span>" + gotData.nowPlaying.artist + 
         "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
         "' class='headLabel'>00:00</span></div>";
     }
 }
 
-async function display_data(idx){
-    var gotData = "";
-    
-    if(idx == 3){
-        gotData = {nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
-        album: "",artwork: stations[idx].logo};
-    }else{
-        gotData = await get_artwork(idx);
-    }
-    var this_artwork = gotData.artwork;
-    if((gotData.artwork === "assets/cd_case.svg") || (gotData.artwork === "")){
-        console.log("Error: No artwork found",gotData.artwork);
-        this_artwork = "assets/181fm_logo.png";
-    }
-    if(gotData.artwork === ""){
-        gotData.artwork = "assets/cd_case.svg";
-    }
+function display_data(idx){
     const coverDiv = document.getElementById("artwork");
-    coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
-
+    //coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
     // document.getElementById("cover_title").classList.remove("moving-text");
+    const got_row = document.getElementById("station_"+idx);
+    const got_artwork  = got_row.getElementsByClassName("colImg");
+    const got_artist = got_row.getElementsByClassName("colArtist");
+    //console.log("art",got_artwork[0].firstChild.src,"artist",got_artist[0].lastChild.childNodes[0].data);
+    coverDiv.innerHTML = build_case(got_artist[0].firstChild.childNodes[0].data,got_artist[0].lastChild.childNodes[0].data,"",got_artwork[0].firstChild.src);
     
     // Updating player2: elements
     var auxText = ""
     const cover_art = document.getElementById("cover_art");
-    if(idx < 3){
-        cover_art.setAttribute("onclick","update_stations()");//"display_data(" + idx + ")"
-        auxText = "<div class='above_img'>" + reloadImg + "</div>";
-    }
+    cover_art.setAttribute("onclick","display_data(" + idx + ")");//"update_stations()"
+    auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + auxText;
     
     document.getElementById("cover_title").innerHTML = "<span>Now Playing</span><span>" +
     stations[idx].name + "</span><span>";
+
+    update_stations();
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
