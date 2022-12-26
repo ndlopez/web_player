@@ -337,7 +337,7 @@ span{
 }
 .moving-text-10{animation: marque 10s linear infinite;}
 
-@media (max-width:500px) {
+@media (max-width: 700px) {
   body{font-size: small;}
   #now_song, #artwork, .no_mobil {display: none;}
   #nowPlaying{
