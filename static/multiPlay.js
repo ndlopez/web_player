@@ -302,11 +302,16 @@ async function display_data(idx){
     const coverDiv = document.getElementById("artwork");
     coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
 
-    
+    if(idx == 4){
+        auxLink = "<a target='_blank' href='" + stations[idx].stream_url + "'><img src='" + 
+        gotData.artwork + "'width='84'/></a>";
+    }else{
+        auxLink = "<img src='" + gotData.artwork + "' width='84'/>";
+    }
     const this_row = document.getElementById("station_"+idx);
-    this_row.innerHTML = "<div class='colImg float_left'><img src='" + gotData.artwork + 
-    "' width='84'/></div>" + "<div class='colArtist float_left'><span class='headLabel'>" + 
-    gotData.nowPlaying.song + "</span><span>" + gotData.nowPlaying.artist + 
+    this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
+    "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
+    "</span><span>" + gotData.nowPlaying.artist + 
     "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
     "' class='headLabel'>00:00</span></div>";
     //document.getElementById("cover_title").classList.remove("moving-text");
