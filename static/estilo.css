@@ -154,7 +154,7 @@ kbd {
 }
 span{
   display: block;
-  padding: 8px 5px;
+  padding: 6px 5px;
 }
 #playList .row{
   border-bottom: 1px var(--light-sky) dashed;

@@ -309,10 +309,13 @@ async function update_stations(){
         auxLink = "<img src='" + this_artwork + "' width='84'/>";
         const this_img = document.getElementById("imgDiv_"+idx);
         this_img.innerHTML = auxLink;
-        const this_artist = document.getElementById("artistDiv_"+idx);
-        this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
-        "</span><span>" + gotData.nowPlaying.artist + "</span>";
 
+        const this_artist = document.getElementById("artistDiv_"+idx);
+        auxLink = "";
+        if( idx !== 3 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }        
+        this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
+        "</span><span>" + gotData.nowPlaying.artist + "</span>" + auxLink;
+        
         /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
         "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
         "</span><span>" + gotData.nowPlaying.artist + 
