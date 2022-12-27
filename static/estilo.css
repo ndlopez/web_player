@@ -172,16 +172,11 @@ span{
 .col_20{width: 10%;}
 /*img{filter: opacity(30%);}*/
 .colArtist{
-  width:65%;
-  padding:10px 20px;}
+  width: 65%;
+  padding: 5px 10px;}
 .colImg{
-  /*background-size: 75px;
-  background-image: url("../assets/cd_case.svg");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  height:75px;*/
-  width:20%;
-  padding:5px;
+  width: 20%;
+  padding: 7px;
 }
 .colImg img, .col15 img{border-radius: 5px;}
 .colTime{
