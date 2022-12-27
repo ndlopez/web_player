@@ -304,12 +304,9 @@ async function update_stations(){
         }
         
         var this_artwork = gotData.artwork;
-        if(gotData.artwork === "assets/cd_case.svg"){
-            console.log("Error: No artwork found",idx,gotData.artwork);
-            this_artwork = stations[idx].logo;
-        }
         if(gotData.artwork === ""){
-            gotData.artwork = "assets/cd_case.svg";
+            console.log("Error: No artwork found",idx,gotData.artwork);
+            this_artwork = "assets/cd_case.svg";
         }
 
         auxLink = this_artwork;
@@ -350,10 +347,14 @@ async function display_data(idx){
     const got_artist = got_row.getElementsByClassName("colArtist");
     // console.log("artist",got_artist[0].childNodes[1].firstChild.data);
     // got_artist[0].lastChild.childNodes[0].data
+    var newArt = got_artwork[0].firstChild.src;
+    if(newArt === "assets/cd_case.svg"){
+        newArt = stations[idx].logo;
+    }
     const coverDiv = document.getElementById("artwork");
-    coverDiv.innerHTML = build_case(idx,got_artist[0].childNodes[1].firstChild.data,
-        got_artist[0].firstChild.childNodes[0].data,got_row.getAttribute("data-album"),
-        got_artwork[0].firstChild.src);
+    coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
+        got_artist[0].firstChild.childNodes[0].data, got_row.getAttribute("data-album"),
+        newArt);
     
     // Updating player2: elements
     var auxText = "";
@@ -409,7 +410,7 @@ async function get_artwork(jdx){
             artwork = data["track"]["album"]["image"][3]["#text"];
             album = data["track"]["album"]["title"];
         }else{
-            artwork = "assets/cd_case.svg";
+            artwork = "";
             album = "";
         }
         // console.log("artwork",artwork,"album",album);
