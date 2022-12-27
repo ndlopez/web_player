@@ -330,8 +330,7 @@ span{
   float: left;
   white-space: nowrap;
 }
-.moving-text-10{animation: marque 10s linear infinite;}
-
+#artwork .smoke-bkg{height: 220px;}
 @media (max-width: 700px) {
   body{font-size: small;}
   #now_song, #artwork, .no_mobil {display: none;}
@@ -385,8 +384,8 @@ span{
     display: none;
   }
   /*.equalizer span:nth-child(6) {
-    animation: none;display: none;
-  }*/  
+    animation: none;display: none;}*/ 
+   
   .col_50{width: 80%;}
   .col_20{width: 20%;}
   .col2{width: 100%;}

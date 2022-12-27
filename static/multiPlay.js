@@ -330,7 +330,6 @@ async function update_stations(){
 async function display_data(idx){
     await update_stations();
 
-    const coverDiv = document.getElementById("artwork");
     // coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
     // document.getElementById("cover_title").classList.remove("moving-text");
     const got_row = document.getElementById("station_"+idx);
@@ -338,6 +337,7 @@ async function display_data(idx){
     const got_artist = got_row.getElementsByClassName("colArtist");
     // console.log("artist",got_artist[0].childNodes[1].firstChild.data);
     // got_artist[0].lastChild.childNodes[0].data
+    const coverDiv = document.getElementById("artwork");
     coverDiv.innerHTML = build_case(idx,got_artist[0].childNodes[1].firstChild.data,
         got_artist[0].firstChild.childNodes[0].data,got_row.getAttribute("data-album"),
         got_artwork[0].firstChild.src);
