@@ -370,6 +370,7 @@ span{
     width: 64px;
     height: 64px;
   }
+  .colImg{padding: 10px 5px;}
   .colArtist{padding: 5px;}
   #playList{
     display: none;

@@ -316,6 +316,8 @@ async function update_stations(){
         this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
         "</span><span>" + gotData.nowPlaying.artist + "</span>" + auxLink;
         
+        const this_row = document.getElementById("station_"+idx);
+        this_row.setAttribute("data-album",gotData.album);
         /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
         "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
         "</span><span>" + gotData.nowPlaying.artist + 
@@ -336,7 +338,8 @@ async function display_data(idx){
     // console.log("artist",got_artist[0].childNodes[1].firstChild.data);
     // got_artist[0].lastChild.childNodes[0].data
     coverDiv.innerHTML = build_case(idx,got_artist[0].childNodes[1].firstChild.data,
-        got_artist[0].firstChild.childNodes[0].data,"",got_artwork[0].firstChild.src);
+        got_artist[0].firstChild.childNodes[0].data,got_row.getAttribute("data-album"),
+        got_artwork[0].firstChild.src);
     
     // Updating player2: elements
     var auxText = "";
