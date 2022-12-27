@@ -66,6 +66,15 @@ const stations = [
         xtra_info: ["Contemporary","English","128kbps",true]
     }
 ];
+const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
+"https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
+"https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
+"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059",
+"https://stream.consultoradas.com/cp/musiclibrary/nocover.png",
+"https://i.scdn.co/image/ab67616d0000b273946c1699a48b214e45f765d6",
+"https://i.scdn.co/image/ab67616d0000b2736d7a8a34f348d587f007045f",
+"https://i.scdn.co/image/ab67616d0000b273d4af276af7f96299274d4b1b",
+"https://i.scdn.co/image/ab67616d0000b273e8e71ebc372dfa978fc0581f"];
 
 const info_keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
@@ -302,14 +311,18 @@ async function update_stations(){
         if(gotData.artwork === ""){
             gotData.artwork = "assets/cd_case.svg";
         }
-        /*if(idx == 4){
-            auxLink = "<a target='_blank' href='" + stations[idx].site + "'><img src='" + 
-            stations[idx].logo + "'width='84'/></a>";
-        }else{auxLink = "<img src='" + this_artwork + "' width='84'/>";}*/
+
+        auxLink = this_artwork;
+        if(idx == 4){//gotData={{artist,song,artwork},album,artwork}
+            if(awfulArt.includes(gotData.nowPlaying.artwork)){
+                auxLink = stations[4].logo;
+            }else{
+                auxLink = gotData.nowPlaying.artwork;
+            }
+        }
         
-        auxLink = "<img src='" + this_artwork + "' width='84'/>";
         const this_img = document.getElementById("imgDiv_"+idx);
-        this_img.innerHTML = auxLink;
+        this_img.innerHTML = "<img src='" + auxLink + "' width='84'/>";
 
         const this_artist = document.getElementById("artistDiv_"+idx);
         auxLink = "";
@@ -360,25 +373,26 @@ async function get_id3(idx){
     const response = await fetch(stations[idx].id3_info);
     const data = await response.json();
     
-    var artist = "";
+    var artist = "", artwork = "";
     var song = data["title"].replace(myReg,"").replace(/&/g,"and");
     if(idx == 4){
         var auxStr = song.split("-");
         artist = auxStr[1];
         song = auxStr[0];
+        artwork = data["art"];
     }else{
         artist = data["artist"].replace(/&/g,"and");
     }
     // console.log("got:",data["title"],song);
-    return {artist,song};
+    return {artist,song,artwork};
 }
 
 async function get_artwork(jdx){
     var album = "", artwork = "assets/cd_case.svg";
     /*Fetch artwork from another source, must get first id3 */
-    const nowPlaying = await get_id3(jdx);
-    const errTitle = ["Radio Online","Music Promo60","Music Promo30"]
-    if(errTitle.includes(nowPlaying.song.trim())){
+    const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
+    const errTitle = ["Radio Online","Music Promo60","Music Promo30"];
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx === 4)){
         console.log("Apparently no requests",jdx);
         return {nowPlaying,album,artwork};
     }
