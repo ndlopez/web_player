@@ -348,7 +348,9 @@ async function display_data(idx){
     // console.log("artist",got_artist[0].childNodes[1].firstChild.data);
     // got_artist[0].lastChild.childNodes[0].data
     var newArt = got_artwork[0].firstChild.src;
-    if(newArt === "assets/cd_case.svg"){
+    // console.log("newArt",newArt.substring(newArt.length-3));
+    if(newArt.substring(newArt.length-3) === "svg"){
+        //console.log("is it cd_case?");
         newArt = stations[idx].logo;
     }
     const coverDiv = document.getElementById("artwork");
@@ -415,7 +417,7 @@ async function get_artwork(jdx){
         }
         // console.log("artwork",artwork,"album",album);
     } catch (error) {
-        console.log("got an error",error);
+        console.log("got an error",jdx,error);
         //return {nowPlaying, album, artwork};
     }
     if (artwork === defaultImg){
