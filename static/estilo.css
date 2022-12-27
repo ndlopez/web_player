@@ -354,7 +354,8 @@ span{
     padding: 0;
     margin: 0;
   }
-  #timerr, #timer_0, #timer_1, #timer_2, #timer_3{font-size: 1rem !important;}
+  .colTime span {font-size: 1rem !important;}
+  /*#timerr, #timer_0, #timer_1, #timer_2, #timer_3, #timer_4{}*/
   #downLink img{width: 32px;}
   .bottomText{
     padding: 5px 5px 20px 13px;  

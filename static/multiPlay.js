@@ -26,7 +26,7 @@
 const stations = [
     {
         name: "181.fm - Awesome 80's",
-        logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
+        logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
@@ -42,7 +42,7 @@ const stations = [
         xtra_info: ["Alt-Rock","English"," 128kbps",true]
     },{
         name: "The Buzz - Alternative-Rock",
-        logo: "assets/181fm_logo.png",
+        logo: "assets/alt-rock.jpg",
         stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
         description: "Listen to the best Alternative-Rock hits",
@@ -76,6 +76,7 @@ const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="r
 const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
+const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 var audioConnect; //= new Audio();
 var tina_timer;
 
@@ -295,8 +296,8 @@ async function update_stations(){
         
         var this_artwork = gotData.artwork;
         if(gotData.artwork === "assets/cd_case.svg"){
-            console.log("Error: No artwork found",gotData.artwork);
-            this_artwork = stations[idx].logo;/*"assets/181fm_logo.png";*/
+            console.log("Error: No artwork found",idx,gotData.artwork);
+            this_artwork = stations[idx].logo;
         }
         if(gotData.artwork === ""){
             gotData.artwork = "assets/cd_case.svg";
@@ -304,8 +305,8 @@ async function update_stations(){
         /*if(idx == 4){
             auxLink = "<a target='_blank' href='" + stations[idx].site + "'><img src='" + 
             stations[idx].logo + "'width='84'/></a>";
-        }else{auxLink = "<img src='" + this_artwork + "' width='84'/>";
-        }*/
+        }else{auxLink = "<img src='" + this_artwork + "' width='84'/>";}*/
+        
         auxLink = "<img src='" + this_artwork + "' width='84'/>";
         const this_img = document.getElementById("imgDiv_"+idx);
         this_img.innerHTML = auxLink;
@@ -376,8 +377,8 @@ async function get_artwork(jdx){
     var album = "", artwork = "assets/cd_case.svg";
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx);
-    
-    if((nowPlaying.song === "Music Promo60") || (nowPlaying.song === "Music Promo30")){
+    const errTitle = ["Radio Online","Music Promo60","Music Promo30"]
+    if(errTitle.includes(nowPlaying.song.trim())){
         console.log("Apparently no requests",jdx);
         return {nowPlaying,album,artwork};
     }
@@ -385,9 +386,7 @@ async function get_artwork(jdx){
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(myReg,"").replace(/\s+/g,"%20") + "&format=json";
-    //const default_art = ;//["assets/181fm_logo.png","assets/181fm_logo.png"];
     
-    // console.log("got url",this_url);duration="",
     try {
         const response = await fetch(this_url)
         const data = await response.json();
@@ -403,6 +402,9 @@ async function get_artwork(jdx){
     } catch (error) {
         console.log("got an error",error);
         //return {nowPlaying, album, artwork};
+    }
+    if (artwork === defaultImg){
+        artwork = stations[jdx].logo;
     }
     return {nowPlaying, album, artwork};
 }
