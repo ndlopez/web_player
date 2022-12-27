@@ -30,37 +30,43 @@ const stations = [
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
-        xtra_info: ["80's hits","English"," 128kbps","Yes"]
+        site: "",
+        xtra_info: ["80's hits","English"," 128kbps",true]
     },{
         name: "181.fm - 90's Alternative",
         logo: "assets/90s_alt.jpg",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best hits of the 1990s",
-        xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]
+        site: "",
+        xtra_info: ["Alt-Rock","English"," 128kbps",true]
     },{
         name: "The Buzz - Alternative-Rock",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
         description: "Listen to the best Alternative-Rock hits",
-        xtra_info: ["Alt-Rock","English","128kbps","Yes"]
+        site: "",
+        xtra_info: ["Alt-Rock","English","128kbps",true]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         description: "Explore and discover new worlds of music with NASA's Radio.",
-        xtra_info:["Alt-Rock","English"," 196kbps","no"]
+        site: "",
+        xtra_info:["Alt-Rock","English"," 196kbps",false]
     },{
         name: "LaPaz.fm",
         logo: "assets/fmlapaz_logo.png",
-        stream_url: "fmlapaz.html",
+        stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
         description: "<a href='fmlapaz.html'>Mas musica menos palabras. Musica adulto contemporanea.</a>",
-        xtra_info: ["Contemporary","English","128kbps","Yes"]
+        site: "fmlapaz.html",
+        xtra_info: ["Contemporary","English","128kbps",true]
     }
 ];
+
 const info_keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
 const svg_btn = '<svg class="col_half float_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">'
@@ -82,7 +88,7 @@ function display_all_stations(){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row round-border dashed-border bottom-10px");
         rowDiv.setAttribute("id","station_"+idx);
-        if(idx < 4){rowDiv.setAttribute("onclick","init_player("+idx+")");}
+        rowDiv.setAttribute("onclick","init_player("+idx+")");
         
         rowDiv.innerHTML = "<div class='colImg float_left' id='imgDiv_"+ idx + "'><img src='" + 
         stations[idx].logo + "' width='84' height='84'/></div>" + 
@@ -117,17 +123,13 @@ function init_player(stream_idx){
             stopPlay(0);
             playStop(0);/*startPlay(0);*/
             display_data(0);
-            if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
-                openNav();
-            }
+            /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
             break;
         case 1:
             stopPlay(1);
             playStop(1);/*startPlay(1);*/
             display_data(1);
-            if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
-                openNav();
-            }
+            /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
             break;
         case 2:
             stopPlay(2);
@@ -141,7 +143,8 @@ function init_player(stream_idx){
             break;
         default:
             stopPlay(4);
-            display_data(4)
+            playStop(4);
+            display_data(4);
             break;
     }
     document.title = stations[stream_idx].name;
@@ -158,7 +161,7 @@ function playStop(idx=0){
     
     var get_sub_timer = "";
     var mmss = "";
-    for(let jdx=0;jdx < stations.length-1; jdx++){
+    for(let jdx=0;jdx < stations.length; jdx++){
         /* this loops disables/enables background and text-color */
         const get_row = document.getElementById("station_"+jdx);
         get_sub_timer = document.getElementById("timer_"+jdx);
@@ -201,8 +204,7 @@ function playStop(idx=0){
 function stopPlay(idx){/* param: idx=0 */
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
-    svgPlay.addEventListener("click",function(){
-        playStop(idx);});
+    svgPlay.addEventListener("click",function(){ playStop(idx); });
     // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
@@ -263,13 +265,12 @@ function play_elapsed(min=0,sec=0,jdx){
 function stop_timer(){
     /* pauses timer */
     clearInterval(tina_timer);
-    //document.getElementById("timer_"+jdx).innerText = "00:00";
 }
 
-function build_case(artist, song, album, artwork){
+function build_case(index,artist, song, album, artwork){
     const timeNow = new Date();
-    const this_html = "<div class='bkg_cd_icon' id='coverCD'><img src='" + artwork + 
-    "' width='260'/></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
+    const this_html = "<div class='bkg_cd_icon' id='coverCD'><a href='" + stations[index].site + 
+    "'><img src='" + artwork + "' width='260'/></a></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
     song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
     album + "</h2><h2 class='col_half float_left lighter'>&#x231A; " + 
     zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + 
@@ -300,12 +301,12 @@ async function update_stations(){
         if(gotData.artwork === ""){
             gotData.artwork = "assets/cd_case.svg";
         }
-        if(idx == 4){
-            auxLink = "<a target='_blank' href='" + stations[idx].stream_url + "'><img src='" + 
+        /*if(idx == 4){
+            auxLink = "<a target='_blank' href='" + stations[idx].site + "'><img src='" + 
             stations[idx].logo + "'width='84'/></a>";
-        }else{
-            auxLink = "<img src='" + this_artwork + "' width='84'/>";
-        }
+        }else{auxLink = "<img src='" + this_artwork + "' width='84'/>";
+        }*/
+        auxLink = "<img src='" + this_artwork + "' width='84'/>";
         const this_img = document.getElementById("imgDiv_"+idx);
         this_img.innerHTML = auxLink;
         const this_artist = document.getElementById("artistDiv_"+idx);
@@ -330,13 +331,13 @@ async function display_data(idx){
     const got_artwork  = got_row.getElementsByClassName("colImg");
     const got_artist = got_row.getElementsByClassName("colArtist");
     //console.log("art",got_artwork[0].firstChild.src,"artist",got_artist[0].lastChild.childNodes[0].data);
-    coverDiv.innerHTML = build_case(got_artist[0].lastChild.childNodes[0].data,
+    coverDiv.innerHTML = build_case(idx,got_artist[0].lastChild.childNodes[0].data,
         got_artist[0].firstChild.childNodes[0].data,"",got_artwork[0].firstChild.src);
     
     // Updating player2: elements
     var auxText = ""
     const cover_art = document.getElementById("cover_art");
-    cover_art.setAttribute("onclick","display_data(" + idx + ")");//"update_stations()"
+    cover_art.setAttribute("onclick","display_data(" + idx + ")");
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
     cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + auxText;
