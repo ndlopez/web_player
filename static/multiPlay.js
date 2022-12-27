@@ -296,7 +296,7 @@ async function update_stations(){
         var this_artwork = gotData.artwork;
         if(gotData.artwork === "assets/cd_case.svg"){
             console.log("Error: No artwork found",gotData.artwork);
-            this_artwork = "assets/181fm_logo.png";
+            this_artwork = stations[idx].logo;/*"assets/181fm_logo.png";*/
         }
         if(gotData.artwork === ""){
             gotData.artwork = "assets/cd_case.svg";
@@ -366,14 +366,19 @@ async function get_id3(idx){
 }
 
 async function get_artwork(jdx){
+    var album = "", artwork = "assets/cd_case.svg";
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx);
+    
+    if((nowPlaying.song === "Music Promo60") || (nowPlaying.song === "Music Promo30")){
+        return {nowPlaying,album,artwork};
+    }
     // if(jdx !== 4){document.title = nowPlaying.artist + " - "+ nowPlaying.song;}
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(myReg,"").replace(/\s+/g,"%20") + "&format=json";
     //const default_art = ;//["assets/181fm_logo.png","assets/181fm_logo.png"];
-    var album = "", artwork = "assets/cd_case.svg", summ = "";
+    
     // console.log("got url",this_url);duration="",
     try {
         const response = await fetch(this_url)
@@ -382,8 +387,6 @@ async function get_artwork(jdx){
         if(typeof data["track"]["album"] !== 'undefined'){
             artwork = data["track"]["album"]["image"][3]["#text"];
             album = data["track"]["album"]["title"];
-            /*summ = data["track"]["wiki"]["summary"];
-            if(summ === undefined){summ = "";}*/
         }else{
             artwork = "assets/cd_case.svg";
             album = "";
