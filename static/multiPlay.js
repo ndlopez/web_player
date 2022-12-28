@@ -130,29 +130,29 @@ function init_player(stream_idx){
 
     switch (stream_idx) {
         case 0:
-            stopPlay(0);
+            stopPlay();
             playStop(0);/*startPlay(0);*/
             display_data(0);
             /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
             break;
         case 1:
-            stopPlay(1);
+            stopPlay();
             playStop(1);/*startPlay(1);*/
             display_data(1);
             /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
             break;
         case 2:
-            stopPlay(2);
+            stopPlay();
             playStop(2);/*startPlay(2);*/
             display_data(2);
             break;
         case 3:
-            stopPlay(3);
+            stopPlay();
             playStop(3);
             display_data(3);
             break;
         default:
-            stopPlay(4);
+            stopPlay();
             playStop(4);
             display_data(4);
             break;
@@ -163,7 +163,8 @@ audioConnect = new Audio();
 
 function playStop(idx=0){
     const svgPlay = document.getElementById("play2");
-    svgPlay.addEventListener("click",()=>{stopPlay(idx);});
+    svgPlay.addEventListener("click",stopPlay); /*function(){
+        console.log("passing index",idx); stopPlay(idx);});*/
     // const float_btn = document.getElementById("play_btn");
     // float_btn.addEventListener("click",stopPlay);
     const gifImg = document.getElementById("gifElm");
@@ -211,10 +212,10 @@ function playStop(idx=0){
     }
 }
 
-function stopPlay(idx){/* param: idx=0 */
+function stopPlay(){/* param: idx=0 */
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
-    svgPlay.addEventListener("click",function(){ playStop(idx); });
+    // svgPlay.addEventListener("click",function(){ playStop(idx); });
     // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
