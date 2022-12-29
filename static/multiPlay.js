@@ -47,7 +47,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best hits of the 1990s",
         site: "",
-        xtra_info: ["Alt-Rock","English"," 128kbps",true]
+        xtra_info: ["Alternative-Rock","English"," 128kbps",true]
     },{
         name: "The Buzz - Alternative-Rock",
         logo: "assets/alt-rock.jpg",
@@ -55,7 +55,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
         description: "Listen to the best Alternative-Rock hits",
         site: "",
-        xtra_info: ["Alt-Rock","English","128kbps",true]
+        xtra_info: ["Alternative-Rock","English","128kbps",true]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
@@ -63,7 +63,7 @@ const stations = [
         id3_info: "",
         description: "Explore and discover new worlds of music with NASA's Radio.",
         site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        xtra_info:["Alt-Rock","English"," 196kbps",false]
+        xtra_info:["Alternative-Rock","English"," 196kbps",false]
     },{
         name: "113.fm Classic One",
         logo: "https://static.wixstatic.com/media/143966_5140b6900352496eb333884c2bc960ec~mv2_d_1400_1400_s_2.jpg/v1/fill/w_398,h_393,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_Classic_One.jpg",
@@ -95,6 +95,7 @@ const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 var audioConnect = new Audio();
+var isPlaying = 0;
 var tina_timer;
 
 init_this();
@@ -129,6 +130,7 @@ function init_this(){
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
     console.log("gotStream",stream_idx);
+    isPlaying = stream_idx;
 
     /*document.getElementById("title_stat").innerText = stations[stream_idx].name + 
     stations[stream_idx].description;
@@ -337,7 +339,9 @@ async function update_stations(){
 
         const this_artist = document.getElementById("artistDiv_"+idx);
         auxLink = "";
-        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }        
+        
+        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
+        if(isPlaying == idx){ auxLink = ""; }
         this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
         "</span><span>" + gotData.nowPlaying.artist + "</span>" + auxLink;
         
@@ -367,10 +371,12 @@ async function display_data(idx){
         //console.log("is it cd_case?");
         newArt = stations[idx].logo;
     }
+    var gotSong = got_artist[0].firstChild.childNodes[0].data;
+    if( typeof gotSong === 'undefined'){
+        gotSong = "No id3 found";}
     const coverDiv = document.getElementById("artwork");
     coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
-        got_artist[0].firstChild.childNodes[0].data, got_row.getAttribute("data-album"),
-        newArt);
+        gotSong, got_row.getAttribute("data-album"),newArt);
     
     // Updating player2: elements
     var auxText = "";
