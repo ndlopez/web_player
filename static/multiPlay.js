@@ -60,9 +60,9 @@ const stations = [
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
-        id3_info: "https://feed.tunein.com/profiles/s151799/nowPlaying",
+        id3_info: "",
         description: "Explore and discover new worlds of music with NASA's Radio.",
-        site: "",
+        site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         xtra_info:["Alt-Rock","English"," 196kbps",false]
     },{
         name: "113.fm Classic One",

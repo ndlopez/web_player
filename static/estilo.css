@@ -333,6 +333,7 @@ span{
 #artwork .smoke-bkg{height: 220px;}
 @media (max-width: 700px) {
   body{font-size: small;}
+  #amia{height: 115vh;}
   #now_song, #artwork, .no_mobil {display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
