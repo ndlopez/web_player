@@ -25,6 +25,14 @@
 
 const stations = [
     {
+        name: "LaPaz.fm",
+        logo: "assets/fmlapaz_logo.png",
+        stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
+        id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
+        description: "<a href='fmlapaz.html'>Mas musica menos palabras. Musica adulto contemporanea.</a>",
+        site: "fmlapaz.html",
+        xtra_info: ["Contemporary","English","128kbps",true]
+    },{
         name: "181.fm - Awesome 80's",
         logo: "assets/181fm_logo.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
@@ -57,13 +65,13 @@ const stations = [
         site: "",
         xtra_info:["Alt-Rock","English"," 196kbps",false]
     },{
-        name: "LaPaz.fm",
-        logo: "assets/fmlapaz_logo.png",
-        stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
-        id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
-        description: "<a href='fmlapaz.html'>Mas musica menos palabras. Musica adulto contemporanea.</a>",
-        site: "fmlapaz.html",
-        xtra_info: ["Contemporary","English","128kbps",true]
+        name: "113.fm Classical One",
+        logo: "https://static.wixstatic.com/media/143966_5140b6900352496eb333884c2bc960ec~mv2_d_1400_1400_s_2.jpg/v1/fill/w_398,h_393,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_Classic_One.jpg",
+        stream_url: "https://113fm-atunwadigital.streamguys1.com/1008",
+        id3_info: "",
+        description: "Your radio station for the very best Classical and Piano Greats!",
+        site: "",
+        xtra_info: ["Classical","English"," 128kbps","Yes"]
     }
 ];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
@@ -86,7 +94,7 @@ const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
-var audioConnect; //= new Audio();
+var audioConnect = new Audio();
 var tina_timer;
 
 init_this();
@@ -159,9 +167,9 @@ function init_player(stream_idx){
     }
     document.title = stations[stream_idx].name;
 }
-audioConnect = new Audio();
+// audioConnect = new Audio();
 
-function playStop(idx=0){
+function playStop(idx){
     const svgPlay = document.getElementById("play2");
     svgPlay.addEventListener("click",stopPlay); /*function(){
         console.log("passing index",idx); stopPlay(idx);});*/
@@ -300,7 +308,7 @@ async function update_stations(){
             nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
-        if(idx !== 3){
+        if((idx !== 3) || (idx !== 5)){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
         }
         
