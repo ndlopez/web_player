@@ -65,7 +65,7 @@ const stations = [
         site: "",
         xtra_info:["Alt-Rock","English"," 196kbps",false]
     },{
-        name: "113.fm Classical One",
+        name: "113.fm Classic One",
         logo: "https://static.wixstatic.com/media/143966_5140b6900352496eb333884c2bc960ec~mv2_d_1400_1400_s_2.jpg/v1/fill/w_398,h_393,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_Classic_One.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1008",
         id3_info: "",
@@ -159,10 +159,15 @@ function init_player(stream_idx){
             playStop(3);
             display_data(3);
             break;
-        default:
+        case 4:
             stopPlay();
             playStop(4);
             display_data(4);
+            break;
+        default:
+            stopPlay();
+            playStop(5);
+            display_data(5);
             break;
     }
     document.title = stations[stream_idx].name;
@@ -308,7 +313,7 @@ async function update_stations(){
             nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
-        if((idx !== 3) || (idx !== 5)){
+        if(idx < 4){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
         }
         
@@ -319,9 +324,9 @@ async function update_stations(){
         }
 
         auxLink = this_artwork;
-        if(idx == 4){//gotData={{artist,song,artwork},album,artwork}
+        if(idx == 0){//LaPaz.fm, gotData={{artist,song,artwork},album,artwork}
             if(awfulArt.includes(gotData.nowPlaying.artwork)){
-                auxLink = stations[4].logo;
+                auxLink = stations[0].logo;
             }else{
                 auxLink = gotData.nowPlaying.artwork;
             }
@@ -332,7 +337,7 @@ async function update_stations(){
 
         const this_artist = document.getElementById("artistDiv_"+idx);
         auxLink = "";
-        if( idx !== 3 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }        
+        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }        
         this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
         "</span><span>" + gotData.nowPlaying.artist + "</span>" + auxLink;
         
@@ -358,7 +363,7 @@ async function display_data(idx){
     // got_artist[0].lastChild.childNodes[0].data
     var newArt = got_artwork[0].firstChild.src;
     // console.log("newArt",newArt.substring(newArt.length-3));
-    if(newArt.substring(newArt.length-3) === "svg"){
+    if(newArt.substring(newArt.length - 3) === "svg"){
         //console.log("is it cd_case?");
         newArt = stations[idx].logo;
     }
@@ -387,7 +392,7 @@ async function get_id3(idx){
     
     var artist = "", artwork = "";
     var song = data["title"].replace(myReg,"").replace(/&/g,"and");
-    if(idx == 4){
+    if(idx == 0){
         var auxStr = song.split("-");
         artist = auxStr[1];
         song = auxStr[0];
@@ -404,7 +409,7 @@ async function get_artwork(jdx){
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
     const errTitle = ["Radio Online","Music Promo60","Music Promo30"];
-    if(errTitle.includes(nowPlaying.song.trim()) || (jdx === 4)){
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0)){
         console.log("Apparently no requests",jdx);
         return {nowPlaying,album,artwork};
     }
