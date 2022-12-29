@@ -293,17 +293,21 @@ function stop_timer(){
     clearInterval(tina_timer);
 }
 
-function build_case(index,artist, song, album, artwork){
+function build_case(jdx,artist, song, album, artwork){
     const timeNow = new Date();
-    const this_html = "<div class='bkg_cd_icon' id='coverCD'><a href='" + stations[index].site + 
+    var search_link = "";
+    if(jdx < 4){
+        search_link = "<a class='col_half float_left' title='Click for more info' href='https://duckduckgo.com/?q=" + 
+    artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
+    song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a>";
+    }
+    const this_html = "<div class='bkg_cd_icon' id='coverCD'><a href='" + stations[jdx].site + 
     "'><img src='" + artwork + "' width='260'/></a></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
     song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
     album + "</h2><h2 class='col_half float_left lighter'>&#x231A; " + 
-    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + 
-    "</h2><a class='col_half float_left' title='Click for more info' href='https://duckduckgo.com/?q=" + 
-    artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
-    song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a></div>";
+    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + "</h2>" + search_link + "</div>";
+    
     return this_html;
 }
 
