@@ -459,20 +459,14 @@ function zeroPad(timeElm){
 
 /* open and close Info modal */
 function openNav(){
-    // document.getElementById("burger").style.display = "none";
-    // document.getElementById("nowLabel").style.display = "block";
-    const closeBtn = document.getElementById("list-icon");
-    closeBtn.style.display = "block";
-    closeBtn.innerHTML = '<svg focusable="false" width="24" height="24" viewBox="0 0 24 24" stroke="#2e4054" fill="#2e4054"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>'
-    // '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#2e4054" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 30 L30 2 M30 30 L2 2"/></svg>';
-    //closeBtn.style.margin = "0";
-    //closeBtn.setAttribute("class","col10 float_left closeBtn");
-    //closeBtn.setAttribute("href","javascript:void(0)");
-    closeBtn.setAttribute("onclick","closeNav()");
-    //document.getElementById("play_btn").style.display = "block";
+    const titleDiv = document.getElementById("cover_title");
+    titleDiv.setAttribute("onclick","closeNav()");
+    /*closeBtn.style.margin = "0";
+    closeBtn.setAttribute("class","col10 float_left closeBtn");
+    closeBtn.setAttribute("href","javascript:void(0)");
+    closeBtn.setAttribute("onclick","closeNav()");*/
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
-    // document.getElementById("player2").style.display = "none";
     // document.getElementById("station_info").style.display = "none";
     document.body.style.overflow = "hidden";    
 }
@@ -482,12 +476,9 @@ function closeNav(){
     }else{
         document.getElementById('amia').style.display = "block";
     }*/
-    // document.getElementById("nowLabel").style.display = "none";
-    // document.getElementById("burger").style.display = "block"
-    //document.getElementById("play_btn").style.display = "none";
-    document.getElementById("list-icon").style.display = "none";
+    const titleDiv = document.getElementById("cover_title");
+    titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
-    // document.getElementById("player2").style.display = "block";
     document.getElementById("amia").style.display = "block";
     //document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
