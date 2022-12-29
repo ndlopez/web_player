@@ -308,7 +308,7 @@ function build_case(index,artist, song, album, artwork){
 }
 
 async function update_stations(){
-    var gotData = "", auxLink = "";
+    var gotData = "", auxLink = "", img_size = 84;
     
     for(let idx = 0; idx < stations.length; idx++){
         gotData = {
@@ -319,12 +319,22 @@ async function update_stations(){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
         }
         
+        auxLink = "";
+        const this_artist = document.getElementById("artistDiv_"+idx);
+        
+        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
+        if(isPlaying == idx){ 
+            auxLink = "";
+            img_size = 80;
+        }
+        this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
+        "</span><span>" + gotData.nowPlaying.artist + "</span>" + auxLink;
+
         var this_artwork = gotData.artwork;
         if(gotData.artwork === ""){
             console.log("Error: No artwork found",idx,gotData.artwork);
             this_artwork = "assets/cd_case.svg";
         }
-
         auxLink = this_artwork;
         if(idx == 0){//LaPaz.fm, gotData={{artist,song,artwork},album,artwork}
             if(awfulArt.includes(gotData.nowPlaying.artwork)){
@@ -333,18 +343,11 @@ async function update_stations(){
                 auxLink = gotData.nowPlaying.artwork;
             }
         }
-        
-        const this_img = document.getElementById("imgDiv_"+idx);
-        this_img.innerHTML = "<img src='" + auxLink + "' width='84'/>";
 
-        const this_artist = document.getElementById("artistDiv_"+idx);
-        auxLink = "";
-        
-        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
-        if(isPlaying == idx){ auxLink = ""; }
-        this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
-        "</span><span>" + gotData.nowPlaying.artist + "</span>" + auxLink;
-        
+        const this_img = document.getElementById("imgDiv_"+idx);
+        this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + 
+        "' height='" + img_size + "'/>";        
+
         const this_row = document.getElementById("station_"+idx);
         this_row.setAttribute("data-album",gotData.album);
         /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
@@ -414,7 +417,7 @@ async function get_artwork(jdx){
     var album = "", artwork = "assets/cd_case.svg";
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
-    const errTitle = ["Radio Online","Music Promo60","Music Promo30"];
+    const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
     if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0)){
         console.log("Apparently no requests",jdx);
         return {nowPlaying,album,artwork};
