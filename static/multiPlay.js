@@ -66,7 +66,7 @@ const stations = [
         xtra_info:["Alternative-Rock","English"," 196kbps",false]
     },{
         name: "113.fm Classic One",
-        logo: "https://static.wixstatic.com/media/143966_5140b6900352496eb333884c2bc960ec~mv2_d_1400_1400_s_2.jpg/v1/fill/w_398,h_393,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_Classic_One.jpg",
+        logo: "assets/113fm_classicone_1008.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1008",
         id3_info: "",
         description: "Your radio station for the very best Classical and Piano Greats!",
