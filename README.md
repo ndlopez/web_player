@@ -1,14 +1,44 @@
-# Display current song playing on laPaz.fm/thirdRock
+# Display current song playing on streams
 
 [live demo](https://ndlopez.github.io/web_player/)
 
 Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) or *thirdrock-sgplayer* when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac) Thus, I decided to build a script that displays the current song playing on *lapaz.fm* or *thirdrockradio.net*
 
-Update: *www.lapaz.fm* has changed everything. icecasthd JSON file is no longer available. 
+Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and [fmlapaz](https://ndlopez.github.io/web_player/fmlapaz.html)
+
+## Web Player <index.html>
+
+*The Strumbellas - Spirits*
+
+Display the current playing song of 4 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz). Two other streams are also available: Third Rock Radio and 113.fm ClassicOne.<br> For the latter two, 
+JavaScript seems to have a CORS issue with the URL I am fetching data from, it cannot parse anything. Although I found a herokuapp website that appends the required *header* to the URL and JavaScript can fetch ~~without problems~~. There are several problems, the herokuapp no longer accepts requests, so this scripts no longer works :(
+
+As countermeasure, I decided it was too much hassle on the herokuapp server(it says so on its GitHub page), thus I decided to make a Python script to fetch data from the same URL and store it in a JSON file. Python's urllib doesnt care about headers and fetches data without problems :)
+
+I really do not understand why JavaScript has issues with the URL, I mean, I wrote some scripts in Python, Gnome-JavaScript, C#, and Shell (using curl) and they fetch data without problems.
+
+## FM La Paz - <fmlapaz.html>
+
+![new design](assets/new_design.png)
+
+Display and store in a playlist on the same page current song and the previously listened songs.<br>
+The URL has some security issues (*expired* SSL certificate) but JavaScript's fetch does not seem to care and gets data without problems. I cannot say the same with C#'s json lib.
+
+About the *expired* certificate:<br>
+The URL I am using is hosted somewhere on the west (where the Sun sets), where I am the Sun is rising, there's a UTC+9 hour difference. The URL's certificate is renewed every day at midnight, so by the time I am fetching data it already *expired*. Perhaps if the URL's server would be connected to some CloudFlare service, this issue might not matter.
+
+*small issue*<br>
+Update time is set to 3min40s (assumed average length of a song). Because of this sometimes a song might me missed and not included in the Playlist, in such case the user can update the list by clicking the <reload> button.
+
+By clicking on the cloud icon, it is possible to download the playlist in JSON format, obviously from the moment the page was opened.
+
+## Unrelated?
+
+To create some [wavy path in CSS3 and SVG](https://css-tricks.com/how-to-create-wavy-shapes-patterns-in-css/#top-of-site)
+Update: *www.lapaz.fm* has changed sources again. Another server has the id3 ~~icecasthd JSON file is no longer available~~.
 
 Dev only: Open *index.html* in Firefox and access *Web Developer Tools* from Settings Menu.
 
-By clicking on the cloud icon, it is possible to download the playlist in JSON format, obviously from the moment the page was opened.
 
 <!--div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
   <ul>
