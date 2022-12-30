@@ -398,6 +398,7 @@ async function display_data(idx){
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
+const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 
 async function get_id3(idx){
     const response = await fetch(stations[idx].id3_info);
@@ -414,6 +415,9 @@ async function get_id3(idx){
         artist = data["artist"].replace(/&/g,"and");
     }
     // console.log("got:",data["title"],song);
+    if(errTitle.includes(song.trim())){
+        artwork = stations[idx].logo;
+    }
     return {artist,song,artwork};
 }
 
@@ -421,9 +425,9 @@ async function get_artwork(jdx){
     var album = "", artwork = "assets/cd_case.svg";
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
-    const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
+
     if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0)){
-        console.log("Apparently no requests",jdx);
+        console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
     // if(jdx !== 4){document.title = nowPlaying.artist + " - "+ nowPlaying.song;}
