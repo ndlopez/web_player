@@ -11,12 +11,7 @@
   </head>
   <body>
     <nav class="top-nav">
-      <div>
-        <div class="col_half float_left"><div id="gifElm" class="equalizer no-audio"><div>
-        <span></span><span></span><span></span><span></span><span></span><!--span></span-->
-        </div></div></div>
-        <h2 id="update_time" class="col_half float_left"></h2>
-      </div>
+      <div id="update_time"></div>
       <input id="menu-toggle" type="checkbox"/><label class="menu-button-container" for="menu-toggle">
         <div class="menu-button"></div>
       </label>
@@ -56,7 +51,9 @@
             <input id="vol_input" class="volume-vertical" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
         </div>
         <div class="col_half float_left no_mobil">
-          
+          <div id="gifElm" class="equalizer no-audio"><div>
+        <span></span><span></span><span></span><span></span><!--span></span><span></span-->
+        </div></div>
         </div>
       </div>
     </aside>

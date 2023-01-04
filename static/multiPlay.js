@@ -308,7 +308,7 @@ function build_case(jdx, artist, song, album, artwork){
     song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
     album + "</h2>" + search_link + "</div>";
     const up_time = document.getElementById("update_time");
-    up_time.innerHTML = /*"<h2 class='lighter'>"*/ "&#x231A;" +
+    up_time.innerHTML = "<h2 class='lighter'>&#x231A;" +
     zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>"; 
     
     return this_html;
