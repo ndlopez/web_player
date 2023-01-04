@@ -308,8 +308,8 @@ function build_case(jdx, artist, song, album, artwork){
     song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
     album + "</h2>" + search_link + "</div>";
     const up_time = document.getElementById("update_time");
-    up_time.innerHTML = "<h2 class='lighter'>&#x231A; " + 
-    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + "</h2>"; 
+    up_time.innerHTML = /*"<h2 class='lighter'>"*/ "&#x231A;" +
+    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>"; 
     
     return this_html;
 }
@@ -408,7 +408,7 @@ async function display_data(idx){
     cover_art.setAttribute("onclick","display_data(" + idx + ")");//"update_stations()"
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
-    cover_art.innerHTML = "<img src='" + stations[idx].logo /*gotData.artwork*/ +
+    cover_art.innerHTML = "<img src='" + /*stations[idx].logo*/ this_artwork +
     "' width='60' height='60'/>" + auxText;
     auxText = gotArtist;
     if(idx > 3){ auxText = stations[idx].xtra_info[0]; }
