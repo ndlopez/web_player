@@ -374,10 +374,8 @@ async function update_stations(){
 }
 
 async function display_data(idx){
-    await update_stations();
-
-    // coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
-    // document.getElementById("cover_title").classList.remove("moving-text");
+    //await update_stations();
+    
     const got_row = document.getElementById("station_"+idx);
     const got_artwork  = got_row.getElementsByClassName("colImg");
     const got_artist = got_row.getElementsByClassName("colArtist");
@@ -390,23 +388,27 @@ async function display_data(idx){
         newArt = stations[idx].logo;
     }
     var gotSong = got_artist[0].firstChild.childNodes[0].data;
+    var gotArtist = got_artist[0].childNodes[1].firstChild.data;
     if( typeof gotSong === 'undefined'){
         gotSong = "No id3 found";}
-    const coverDiv = document.getElementById("artwork");
-    coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
-        gotSong, got_row.getAttribute("data-album"),newArt);
     
+    var gotData = await get_artwork(idx,gotArtist,gotSong);
+
+    const coverDiv = document.getElementById("artwork");
+    /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
+        gotSong, got_row.getAttribute("data-album"),newArt);*/
+    coverDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, gotData.artwork);
     // Updating player2: elements
     var auxText = "";
     const cover_art = document.getElementById("cover_art");
     cover_art.setAttribute("onclick","display_data(" + idx + ")");
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
-    cover_art.innerHTML = "<img src='" + /*stations[idx].logo*/ newArt +
+    cover_art.innerHTML = "<img src='" + /*stations[idx].logo*/ gotData.artwork +
     "' width='60' height='60'/>" + auxText;
     
-    document.getElementById("cover_title").innerHTML = "<span>" + "</span><span>" +
-    stations[idx].name + "</span>";    
+    document.getElementById("cover_title").innerHTML = "<span>" + gotSong + "</span><span>" +
+    gotArtist + "</span>";    
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
@@ -433,12 +435,14 @@ async function get_id3(idx){
     return {artist,song,artwork};
 }
 
-async function get_artwork(jdx){
+async function get_artwork(jdx,artist_name,song_title){
     var album = "", artwork = "assets/cd_case.svg";
     /*Fetch artwork from another source, must get first id3 */
-    const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
+    const nowPlaying = {
+        artist: artist_name, song: song_title, artwork: stations[jdx].logo };
+        //await get_id3(jdx); // {artist,song,artwork}
 
-    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0)){
+    if(errTitle.includes(nowPlaying.song.trim()) /*|| (jdx == 0)*/){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
