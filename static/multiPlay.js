@@ -294,7 +294,7 @@ function stop_timer(){
     clearInterval(tina_timer);
 }
 
-function build_case(jdx,artist, song, album, artwork){
+function build_case(jdx, artist, song, album, artwork){
     const timeNow = new Date();
     var search_link = "";
     if(jdx < 4){
@@ -324,17 +324,18 @@ async function update_stations(){
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo;*/
 
         if(idx < 4){
-            gotData = await get_id3(idx);//get_artwork(idx);//returns {{artist, song},album,artwork}
+            gotData = await get_id3(idx);// {artist,song,artwork}
+            //get_artwork(idx);//returns {{artist, song},album,artwork}
         }
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         
         if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
-        /*if(isPlaying == idx){ 
-            auxLink = "";
-            //img_size = 80;
-        }*/
+        if(isPlaying == idx){ 
+            //auxLink = "";//img_size = 80;
+            document.title = gotData.artist + "-" + gotData.song;
+        }
         /*if(gotData.nowPlaying.song.length > 25){
             console.log(idx,"length",gotData.nowPlaying.song.length);
             auxText = " moving-text";}else{auxText="";}*/
@@ -346,29 +347,24 @@ async function update_stations(){
         if(gotData.artwork === ""){
             console.log("Error: No artwork found",idx,gotData.artwork);
             this_artwork = "assets/cd_case.svg";
-        }
-        auxLink = this_artwork;
-        if(idx == 0){//LaPaz.fm, gotData={{artist,song,artwork},album,artwork}
-            if(awfulArt.includes(gotData.nowPlaying.artwork)){
-                auxLink = stations[0].logo;
-            }else{
-                auxLink = gotData.nowPlaying.artwork;
-            }
         }*/
 
         auxLink = stations[idx].logo;
-
         const this_img = document.getElementById("imgDiv_"+idx);
         this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + 
         "' height='" + img_size + "'/>";        
 
         /* adding album info to <data-?> tag */
+        auxLink = gotData.artwork;
+        if(idx == 0){//LaPaz.fm, gotData={artist,song,artwork}
+            if(awfulArt.includes(gotData.artwork)){
+                auxLink = stations[0].logo;
+            }else{
+                auxLink = gotData.artwork;
+            }
+        }
         const this_row = document.getElementById("station_"+idx);
-        this_row.setAttribute("data-album",gotData.album);
-        /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
-        "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + "</span><span>" + gotData.nowPlaying.artist + 
-        "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
-        "'>00:00</span></div>";*/
+        this_row.setAttribute("data-album",auxLink);
     }
 }
 
@@ -388,9 +384,10 @@ async function display_data(idx){
     if(idx > 0){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
     var this_artwork = gotData.artwork;
+    if(idx==0){ this_artwork = got_row.getAttribute("data-album"); }
     if(gotData.artwork === ""){
         console.log("Error: No artwork found",idx,gotData.artwork);
-        this_artwork = stations[idx].logo//"assets/cd_case.svg";
+        this_artwork = stations[idx].logo;//"assets/cd_case.svg";
     }
     const coverDiv = document.getElementById("artwork");
     /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
@@ -453,7 +450,6 @@ async function get_artwork(jdx,artist_name,song_title){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
-    // if(jdx !== 4){document.title = nowPlaying.artist + " - "+ nowPlaying.song;}
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
     nowPlaying.artist.trim().replace(/\s+/g,"%20") + "&track=" + 
     nowPlaying.song.trim().replace(myReg,"").replace(/\s+/g,"%20") + "&format=json";
