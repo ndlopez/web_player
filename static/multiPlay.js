@@ -319,29 +319,30 @@ async function update_stations(){
     
     for(let idx = 0; idx < stations.length; idx++){
         gotData = {
-            nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
-            album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
+            artist: stations[idx].description,song: stations[idx].name};
+            /*nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
+            album: stations[idx].xtra_info[0],artwork: stations[idx].logo;*/
 
         if(idx < 4){
-            gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
+            gotData = await get_id3(idx);//get_artwork(idx);//returns {{artist, song},album,artwork}
         }
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         
         if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
-        if(isPlaying == idx){ 
+        /*if(isPlaying == idx){ 
             auxLink = "";
             //img_size = 80;
-        }
+        }*/
         /*if(gotData.nowPlaying.song.length > 25){
             console.log(idx,"length",gotData.nowPlaying.song.length);
             auxText = " moving-text";}else{auxText="";}*/
         this_artist.innerHTML = "<span class='headLabel'>" + 
-        gotData.nowPlaying.song + "</span><span>" + gotData.nowPlaying.artist + 
+        gotData/*.nowPlaying*/.song + "</span><span>" + gotData/*.nowPlaying*/.artist + 
         "</span>" + auxLink;
 
-        var this_artwork = gotData.artwork;
+        /*var this_artwork = gotData.artwork;
         if(gotData.artwork === ""){
             console.log("Error: No artwork found",idx,gotData.artwork);
             this_artwork = "assets/cd_case.svg";
@@ -353,12 +354,15 @@ async function update_stations(){
             }else{
                 auxLink = gotData.nowPlaying.artwork;
             }
-        }
+        }*/
+
+        auxLink = stations[idx].logo;
 
         const this_img = document.getElementById("imgDiv_"+idx);
         this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + 
         "' height='" + img_size + "'/>";        
 
+        /* adding album info to <data-?> tag */
         const this_row = document.getElementById("station_"+idx);
         this_row.setAttribute("data-album",gotData.album);
         /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
@@ -401,7 +405,7 @@ async function display_data(idx){
     cover_art.innerHTML = "<img src='" + /*stations[idx].logo*/ newArt +
     "' width='60' height='60'/>" + auxText;
     
-    document.getElementById("cover_title").innerHTML = "<span>Now Playing</span><span>" +
+    document.getElementById("cover_title").innerHTML = "<span>" + "</span><span>" +
     stations[idx].name + "</span>";    
 }
 
