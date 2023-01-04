@@ -25,7 +25,7 @@
 
 const stations = [
     {
-        name: "LaPaz.fm",
+        name: "LaPaz.fm - Adult Contemporary",
         logo: "assets/fmlapaz_logo.png",
         stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
@@ -410,9 +410,10 @@ async function display_data(idx){
 
     cover_art.innerHTML = "<img src='" + stations[idx].logo /*gotData.artwork*/ +
     "' width='60' height='60'/>" + auxText;
-    
+    auxText = gotArtist;
+    if(idx > 3){ auxText = stations[idx].xtra_info[0]; }
     document.getElementById("cover_title").innerHTML = "<span class='headLabel'>" + 
-    gotSong + "</span><span>" + gotArtist + "</span>";    
+    gotSong + "</span><span>" + auxText + "</span>";    
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
