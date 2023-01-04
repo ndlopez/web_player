@@ -374,25 +374,27 @@ async function update_stations(){
 }
 
 async function display_data(idx){
-    //await update_stations();
+    // Function to request artwork from ext-source, not valid for idx=0
+    await update_stations();
     
     const got_row = document.getElementById("station_"+idx);
-    const got_artwork  = got_row.getElementsByClassName("colImg");
     const got_artist = got_row.getElementsByClassName("colArtist");
     // console.log("artist",got_artist[0].childNodes[1].firstChild.data);
     // got_artist[0].lastChild.childNodes[0].data
+    /*const got_artwork  = got_row.getElementsByClassName("colImg");
     var newArt = got_artwork[0].firstChild.src;
-    // console.log("newArt",newArt.substring(newArt.length-3));
+    console.log("newArt",newArt.substring(newArt.length-3));
     if(newArt.substring(newArt.length - 3) === "svg"){
         //console.log("is it cd_case?");
         newArt = stations[idx].logo;
-    }
+    }*/
     var gotSong = got_artist[0].firstChild.childNodes[0].data;
     var gotArtist = got_artist[0].childNodes[1].firstChild.data;
     if( typeof gotSong === 'undefined'){
         gotSong = "No id3 found";}
     
-    var gotData = await get_artwork(idx,gotArtist,gotSong);
+    var gotData = "";
+    if(idx > 0){gotData= await get_artwork(idx,gotArtist,gotSong);}
 
     const coverDiv = document.getElementById("artwork");
     /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
@@ -401,7 +403,7 @@ async function display_data(idx){
     // Updating player2: elements
     var auxText = "";
     const cover_art = document.getElementById("cover_art");
-    cover_art.setAttribute("onclick","display_data(" + idx + ")");
+    cover_art.setAttribute("onclick","display_data(" + idx + ")");//"update_stations()"
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
     cover_art.innerHTML = "<img src='" + /*stations[idx].logo*/ gotData.artwork +
