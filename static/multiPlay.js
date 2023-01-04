@@ -366,8 +366,7 @@ async function update_stations(){
         const this_row = document.getElementById("station_"+idx);
         this_row.setAttribute("data-album",gotData.album);
         /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
-        "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
-        "</span><span>" + gotData.nowPlaying.artist + 
+        "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + "</span><span>" + gotData.nowPlaying.artist + 
         "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
         "'>00:00</span></div>";*/
     }
@@ -386,21 +385,24 @@ async function display_data(idx){
         gotSong = "No id3 found";}
     
     var gotData = "";
-    if(idx > 0){gotData= await get_artwork(idx,gotArtist,gotSong);}
+    if(idx > 0){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
+    var this_artwork = gotData.artwork;
+    if(gotData.artwork === ""){
+        console.log("Error: No artwork found",idx,gotData.artwork);
+        this_artwork = stations[idx].logo//"assets/cd_case.svg";
+    }
     const coverDiv = document.getElementById("artwork");
     /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
         gotSong, got_row.getAttribute("data-album"),newArt);*/
-    coverDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, gotData.artwork);
+    coverDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);
     
     // Update artwork of station_idx Div
     const got_artwork  = document.getElementById("imgDiv_" + idx);
-    var newArt = gotData.artwork;//got_artwork[0].firstChild.src;
+    var newArt = this_artwork;//got_artwork[0].firstChild.src;
     //console.log("newArt",newArt.substring(newArt.length-3));
-    if(newArt.substring(newArt.length - 3) === "svg"){
-        //console.log("is it cd_case?");
-        newArt = stations[idx].logo;
-    }
+    /*if(newArt.substring(newArt.length - 3) === "svg"){
+        newArt = stations[idx].logo;//console.log("is it cd_case?");}*/
     got_artwork.innerHTML = "<img src='" + newArt + "' width='" + img_size + 
     "' height='"+ img_size + "'/>"
     // Updating player2: elements
@@ -441,13 +443,13 @@ async function get_id3(idx){
 }
 
 async function get_artwork(jdx,artist_name,song_title){
-    var album = "", artwork = "assets/cd_case.svg";
+    var album = "", artwork = stations[jdx].logo;
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = {
-        artist: artist_name, song: song_title, artwork: stations[jdx].logo };
+        artist: artist_name, song: song_title };
         //await get_id3(jdx); // {artist,song,artwork}
 
-    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0)){
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0) || (jdx > 3)){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
@@ -508,102 +510,4 @@ function closeNav(){
     document.getElementById("amia").style.display = "block";
     //document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
-}
-
-/* Deprecated functions */
-function display_info(){
-    const mainDiv = document.getElementById("amia");
-    const divTitle = document.createElement("h2");
-    divTitle.innerText = "Favorite stations";
-    mainDiv.appendChild(divTitle);
-    
-    for (let idx = 0; idx < stations.length; idx++) {
-        const newDiv = document.createElement("div");
-        newDiv.setAttribute("class","padding_10");
-        var texty = "<details><summary>"+stations[idx].name+"&emsp;<a onclick='init_player(" + 
-        idx + ")' title='click me'><img src='"+stations[idx].logo+"' width='128'/>" + 
-        "</a></summary><p>" + stations[idx].description + "</p>";
-        var zoey_html = "<div>";
-        for (let jdx = 0; jdx < info_keys.length; jdx++) {
-            zoey_html += "<div class='half_col float_left'><h4>"+info_keys[jdx]+"</h4><p>"+stations[idx].xtra_info[jdx]+"</p></div>";
-        }
-        zoey_html += "</div></details>";
-        newDiv.innerHTML = texty + zoey_html;
-        mainDiv.appendChild(newDiv);
-    }    
-}
-
-function startPlay(idx=0){
-    const svgPlay = document.getElementById("play2");
-    //const float_btn = document.getElementById("play_btn")
-    const gifImg = document.getElementById("gifElm");
-    // const getTimer = document.getElementById("timer");
-    var mmss = "";
-    var get_sub_timer = "";
-    for(let jdx=0;jdx < stations.length; jdx++){
-        /* this loops disables/enables background and text-color */
-        const get_row = document.getElementById("station_"+jdx);
-        get_sub_timer = document.getElementById("timer_"+jdx);
-        if(idx == jdx){
-            get_row.classList.add("smoke-bkg");
-            get_sub_timer.classList.add("headLabel");
-        }else{
-            get_row.classList.remove("smoke-bkg");
-            get_sub_timer.classList.remove("headLabel");
-        }
-    }
-    
-    svgPlay.addEventListener("click",playStop);
-    //float_btn.addEventListener("click",playStop);
-
-    document.addEventListener("keydown",function(event){
-        if(event.key === "d" || event.key === "D"){
-            /* adding key press events to player: play pressed */
-            playStop();
-        }
-        if(event.key === "r" || event.key === "R"){
-            display_data(idx);
-        }
-    });
-    audioConnect = new Audio();
-    
-    function playStop(){
-        if(audioConnect.paused){
-            audioConnect.src = stations[idx].stream_url;
-            audioConnect.play();//if not success -> then timer should not start
-            audioConnect.loop = true;
-            // mmss = getTimer.innerText; // mm:ss
-            mmss = get_sub_timer.innerText; // mm:ss
-            play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
-            svgPlay.classList.remove("paused");
-            svgPlay.classList.add("play_on");
-            svgPlay.innerHTML = circleImg + pauseImg;
-
-            /*float_btn.classList.remove("paused");
-            float_btn.classList.add("play_on");
-            float_btn.innerHTML = circle_img + pauseImg;*/
-            gifImg.classList.remove("no-audio");
-        }else{
-            audioConnect.pause();
-            audioConnect.loop = false;
-            gifImg.classList.add("no-audio");
-            clearInterval(tina_timer);
-            svgPlay.classList.remove("play_on");
-            svgPlay.classList.add("paused");
-            svgPlay.innerHTML = circleImg + playImg;
-            /*float_btn.classList.remove("play_on");
-            float_btn.classList.add("paused");
-            float_btn.innerHTML = circle_img + playImg;*/
-            stop_timer(idx);
-        }
-    }
-}
-function no_artwork(idx){
-    const gotDiv = document.getElementById("artwork");
-    gotDiv.innerHTML = "<div class='bkg_cd_icon' id='coverCD'><img src='" + stations[idx].logo +
-    "' width='260'/></div>";
-    document.getElementById("cover_art").innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>";
-    const divTitle = document.getElementById("cover_title");
-    divTitle.innerHTML= "<span>Now Playing</span><span>" +  stations[idx].name + "</span>";
-    //divTitle.classList.add("moving-text");
 }
