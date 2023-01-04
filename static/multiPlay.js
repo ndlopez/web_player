@@ -334,8 +334,13 @@ async function update_stations(){
             auxLink = "";
             //img_size = 80;
         }
-        this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
-        "</span><span>" + gotData.nowPlaying.artist + "</span>" + auxLink;
+        /*if(gotData.nowPlaying.song.length > 25){
+            console.log(idx,"length",gotData.nowPlaying.song.length);
+            auxText = " moving-text";
+        }else{auxText="";}*/
+        this_artist.innerHTML = "<span class='headLabel'>" + 
+        gotData.nowPlaying.song + "</span><span>" + gotData.nowPlaying.artist + 
+        "</span>" + auxLink;
 
         var this_artwork = gotData.artwork;
         if(gotData.artwork === ""){
