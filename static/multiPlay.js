@@ -34,7 +34,7 @@ const stations = [
         xtra_info: ["Contemporary","English","128kbps",true]
     },{
         name: "181.fm - Awesome 80's",
-        logo: "assets/181fm_logo.png",
+        logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
@@ -295,7 +295,6 @@ function stop_timer(){
 }
 
 function build_case(jdx,artist, song, album, artwork){
-    const up_time = document.getElementById("update_time");
     const timeNow = new Date();
     var search_link = "";
     if(jdx < 4){
@@ -308,6 +307,7 @@ function build_case(jdx,artist, song, album, artwork){
     "'><img src='" + artwork + "' width='260'/></a></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
     song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
     album + "</h2>" + search_link + "</div>";
+    const up_time = document.getElementById("update_time");
     up_time.innerHTML = "<h2 class='lighter'>&#x231A; " + 
     zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes()) + "</h2>"; 
     
@@ -379,15 +379,7 @@ async function display_data(idx){
     
     const got_row = document.getElementById("station_"+idx);
     const got_artist = got_row.getElementsByClassName("colArtist");
-    // console.log("artist",got_artist[0].childNodes[1].firstChild.data);
-    // got_artist[0].lastChild.childNodes[0].data
-    /*const got_artwork  = got_row.getElementsByClassName("colImg");
-    var newArt = got_artwork[0].firstChild.src;
-    console.log("newArt",newArt.substring(newArt.length-3));
-    if(newArt.substring(newArt.length - 3) === "svg"){
-        //console.log("is it cd_case?");
-        newArt = stations[idx].logo;
-    }*/
+    
     var gotSong = got_artist[0].firstChild.childNodes[0].data;
     var gotArtist = got_artist[0].childNodes[1].firstChild.data;
     if( typeof gotSong === 'undefined'){
@@ -400,17 +392,28 @@ async function display_data(idx){
     /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
         gotSong, got_row.getAttribute("data-album"),newArt);*/
     coverDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, gotData.artwork);
+    
+    // Update artwork of station_idx Div
+    const got_artwork  = document.getElementById("imgDiv_" + idx);
+    var newArt = gotData.artwork;//got_artwork[0].firstChild.src;
+    //console.log("newArt",newArt.substring(newArt.length-3));
+    if(newArt.substring(newArt.length - 3) === "svg"){
+        //console.log("is it cd_case?");
+        newArt = stations[idx].logo;
+    }
+    got_artwork.innerHTML = "<img src='" + newArt + "' width='" + img_size + 
+    "' height='"+ img_size + "'/>"
     // Updating player2: elements
     var auxText = "";
     const cover_art = document.getElementById("cover_art");
     cover_art.setAttribute("onclick","display_data(" + idx + ")");//"update_stations()"
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
-    cover_art.innerHTML = "<img src='" + /*stations[idx].logo*/ gotData.artwork +
+    cover_art.innerHTML = "<img src='" + stations[idx].logo /*gotData.artwork*/ +
     "' width='60' height='60'/>" + auxText;
     
-    document.getElementById("cover_title").innerHTML = "<span>" + gotSong + "</span><span>" +
-    gotArtist + "</span>";    
+    document.getElementById("cover_title").innerHTML = "<span class='headLabel'>" + 
+    gotSong + "</span><span>" + gotArtist + "</span>";    
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
@@ -444,7 +447,7 @@ async function get_artwork(jdx,artist_name,song_title){
         artist: artist_name, song: song_title, artwork: stations[jdx].logo };
         //await get_id3(jdx); // {artist,song,artwork}
 
-    if(errTitle.includes(nowPlaying.song.trim()) /*|| (jdx == 0)*/){
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0)){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
@@ -472,6 +475,7 @@ async function get_artwork(jdx,artist_name,song_title){
     if (artwork === defaultImg){
         artwork = stations[jdx].logo;
     }
+    console.log("gotArt:",artwork);
     return {nowPlaying, album, artwork};
 }
 
