@@ -392,7 +392,8 @@ async function display_data(idx){
     cover_art.setAttribute("onclick","display_data(" + idx + ")");
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
-    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + auxText;
+    cover_art.innerHTML = "<img src='" + /*stations[idx].logo*/ newArt +
+    "' width='60' height='60'/>" + auxText;
     
     document.getElementById("cover_title").innerHTML = "<span>Now Playing</span><span>" +
     stations[idx].name + "</span>";    
