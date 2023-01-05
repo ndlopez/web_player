@@ -53,7 +53,7 @@ const stations = [
         logo: "assets/alt-rock.jpg",
         stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
-        description: "Listen to the best Alternative-Rock hits",
+        description: "Listen to the best Mainstream-Rock hits",
         site: "",
         xtra_info: ["Alternative-Rock","English","128kbps",true]
     },{
@@ -98,6 +98,7 @@ let img_size = 80;
 let audioConnect = new Audio();
 let isPlaying;
 let tina_timer;
+let played = [];
 
 init_this();
 
@@ -331,15 +332,22 @@ async function update_stations(){
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
-        
+        let jdx;
         if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
-        if(isPlaying == idx){ 
+        if(isPlaying == idx){
+            played.push(idx);
             //auxLink = "";//img_size = 80;
             document.title = gotData.artist + "-" + gotData.song;
             document.getElementById("station_"+idx).style.display = "none";
-        }/*else{
-            document.getElementById("station_"+jdx).style.display = "block";
-        }*/
+            console.log("thus far played: ",played);
+        }else{
+            document.getElementById("station_"+idx).style.display = "block";
+            /*if(played.length > 0){
+                jdx = played[0];
+                console.log("played:",played);
+                played.shift();
+            }*/
+        }
         /*if(gotData.nowPlaying.song.length > 25){
             console.log(idx,"length",gotData.nowPlaying.song.length);
             auxText = " moving-text";}else{auxText="";}*/
