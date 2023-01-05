@@ -299,6 +299,7 @@ function stop_timer(){
 function build_case(jdx, artist, song, album, artwork){
     const timeNow = new Date();
     let search_link = "";
+    if( typeof album === 'undefined'){ album = artist;}
     if(jdx < 4){
         search_link = "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 
     artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
@@ -343,10 +344,7 @@ async function update_stations(){
         }else{
             document.getElementById("station_"+idx).style.display = "block";
             /*if(played.length > 0){
-                jdx = played[0];
-                console.log("played:",played);
-                played.shift();
-            }*/
+                jdx = played[0];console.log("played:",played);played.shift();}*/
             console.log("keeping:",idx);
         }
         /*if(gotData.nowPlaying.song.length > 25){
@@ -398,10 +396,7 @@ async function display_data(idx){
     if(idx > 0){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
     let this_artwork = gotData.artwork;
-    if(idx==0){ 
-        this_artwork = got_row.getAttribute("data-album");
-        gotData.album = gotSong;
-    }
+    if(idx==0){ this_artwork = got_row.getAttribute("data-album"); }
     if(gotData.artwork === ""){
         console.log("Error: No artwork found",idx,gotData.artwork);
         this_artwork = stations[idx].logo;//"assets/cd_case.svg";
@@ -432,7 +427,7 @@ async function display_data(idx){
     document.getElementById("cover_title").innerHTML = "<span class='headLabel'>" + 
     gotSong + "</span><span>" + auxText + "</span>";
     
-    document.getElementById("title_stat").innerText = stations[idx].name + "♪ " + 
+    document.getElementById("title_stat").innerText = stations[idx].name + " ♪ " + 
     stations[idx].description;
 }
 
