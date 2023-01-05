@@ -184,7 +184,7 @@ function playStop(idx){
     // const float_btn = document.getElementById("play_btn");
     // float_btn.addEventListener("click",stopPlay);
     const gifImg = document.getElementById("gifElm");
-    // const getTimer = document.getElementById("timer");
+    let getTimer = document.getElementById("timer");
     
     let get_sub_timer = "";
     let mmss = "";
@@ -196,6 +196,7 @@ function playStop(idx){
             get_row.classList.remove("dashed-border");
             get_row.classList.add("smoke-bkg");            
             get_sub_timer.classList.add("headLabel");
+            getTimer = get_sub_timer.innerText;
             mmss = get_sub_timer.innerText;
         }else{
             get_row.classList.remove("smoke-bkg");
@@ -278,6 +279,7 @@ function play_elapsed(min=0,sec=0,jdx){
         minute = (min<10)?"0"+String(min):min;
         
         document.getElementById("timer_"+jdx).innerText = minute + ":" + second;
+        document.getElementById("timer").innerText = minute + ":" +second;
         sec++;
         if(sec>59){
             min++;
@@ -385,7 +387,10 @@ async function display_data(idx){
     if(idx > 0){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
     let this_artwork = gotData.artwork;
-    if(idx==0){ this_artwork = got_row.getAttribute("data-album"); }
+    if(idx==0){ 
+        this_artwork = got_row.getAttribute("data-album");
+        gotData.album = gotSong;
+    }
     if(gotData.artwork === ""){
         console.log("Error: No artwork found",idx,gotData.artwork);
         this_artwork = stations[idx].logo;//"assets/cd_case.svg";

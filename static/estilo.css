@@ -322,9 +322,9 @@ span{
   left: 50%;
   transform: translate(-50%,-50%);
 }
-#timer{margin-top: -15px;}
+
 .no_desktop{display: none;}
-/*.moving-text:hover{animation-play-state: paused;}*/
+/*.moving-text:hover{animation-play-state: paused;}#timer{margin-top: -15px;}*/
 .moving-text{
   animation: marque 40s linear infinite;
   float: left;
@@ -355,7 +355,7 @@ span{
     margin: 0;
   }
   .colTime span {font-size: 0.9rem !important;}
-  /*#timerr, #timer_0, #timer_1, #timer_2, #timer_3, #timer_4{}*/
+  
   #downLink img{width: 32px;}
   .bottomText{
     padding: 5px 5px 20px 13px;  
