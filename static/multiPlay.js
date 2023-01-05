@@ -94,10 +94,10 @@ const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
-var img_size = 80;
-var audioConnect = new Audio();
-var isPlaying = 0;
-var tina_timer;
+let img_size = 80;
+let audioConnect = new Audio();
+let isPlaying = 0;
+let tina_timer;
 
 init_this();
 
@@ -186,8 +186,8 @@ function playStop(idx){
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
     
-    var get_sub_timer = "";
-    var mmss = "";
+    let get_sub_timer = "";
+    let mmss = "";
     for(let jdx=0;jdx < stations.length; jdx++){
         /* this loops disables/enables background and text-color */
         const get_row = document.getElementById("station_"+jdx);
@@ -271,7 +271,7 @@ function volume_mute(vol_stat){
 }
 
 function play_elapsed(min=0,sec=0,jdx){
-    var second,minute;
+    let second,minute;
 
     tina_timer = setInterval(function(){
         second = (sec<10)?"0"+String(sec):sec;
@@ -296,7 +296,7 @@ function stop_timer(){
 
 function build_case(jdx, artist, song, album, artwork){
     const timeNow = new Date();
-    var search_link = "";
+    let search_link = "";
     if(jdx < 4){
         search_link = "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 
     artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
@@ -375,15 +375,15 @@ async function display_data(idx){
     const got_row = document.getElementById("station_"+idx);
     const got_artist = got_row.getElementsByClassName("colArtist");
     
-    var gotSong = got_artist[0].firstChild.childNodes[0].data;
-    var gotArtist = got_artist[0].childNodes[1].firstChild.data;
+    let gotSong = got_artist[0].firstChild.childNodes[0].data;
+    let gotArtist = got_artist[0].childNodes[1].firstChild.data;
     if( typeof gotSong === 'undefined'){
         gotSong = "No id3 found";}
     
     var gotData = "";
     if(idx > 0){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
-    var this_artwork = gotData.artwork;
+    let this_artwork = gotData.artwork;
     if(idx==0){ this_artwork = got_row.getAttribute("data-album"); }
     if(gotData.artwork === ""){
         console.log("Error: No artwork found",idx,gotData.artwork);
@@ -396,7 +396,7 @@ async function display_data(idx){
     
     // Update artwork of station_idx Div
     const got_artwork  = document.getElementById("imgDiv_" + idx);
-    var newArt = this_artwork;//got_artwork[0].firstChild.src;
+    let newArt = this_artwork;//got_artwork[0].firstChild.src;
     //console.log("newArt",newArt.substring(newArt.length-3));
     /*if(newArt.substring(newArt.length - 3) === "svg"){
         newArt = stations[idx].logo;//console.log("is it cd_case?");}*/
@@ -423,10 +423,10 @@ async function get_id3(idx){
     const response = await fetch(stations[idx].id3_info);
     const data = await response.json();
     
-    var artist = "", artwork = "";
-    var song = data["title"].replace(myReg,"").replace(/&/g,"and");
+    let artist = "", artwork = "";
+    let song = data["title"].replace(myReg,"").replace(/&/g,"and");
     if(idx == 0){
-        var auxStr = song.split("-");
+        const auxStr = song.split("-");
         artist = auxStr[1];
         song = auxStr[0];
         artwork = data["art"];
@@ -441,7 +441,7 @@ async function get_id3(idx){
 }
 
 async function get_artwork(jdx,artist_name,song_title){
-    var album = "", artwork = stations[jdx].logo;
+    let album = "", artwork = stations[jdx].logo;
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = {
         artist: artist_name, song: song_title };
