@@ -377,8 +377,9 @@ async function display_data(idx){
     
     let gotSong = got_artist[0].firstChild.childNodes[0].data;
     let gotArtist = got_artist[0].childNodes[1].firstChild.data;
-    if( typeof gotSong === 'undefined'){
-        gotSong = "No id3 found";}
+    if( (typeof gotSong === 'undefined') || (typeof gotArtist === 'undefined')){
+        gotSong = "No id3 found"; gotArtist = "No artist";
+    }
     
     var gotData = "";
     if(idx > 0){ gotData = await get_artwork(idx,gotArtist,gotSong);}
