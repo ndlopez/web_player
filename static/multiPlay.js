@@ -29,7 +29,7 @@ const stations = [
         logo: "assets/fmlapaz_logo.png",
         stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
-        description: "<a href='fmlapaz.html'>Mas musica menos palabras. Musica adulto contemporanea.</a>",
+        description: "Mas musica menos palabras. Musica adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: ["Contemporary","English","128kbps",true]
     },{
@@ -96,7 +96,7 @@ const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" w
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 let img_size = 80;
 let audioConnect = new Audio();
-let isPlaying = 0;
+let isPlaying;
 let tina_timer;
 
 init_this();
@@ -142,19 +142,19 @@ function init_player(stream_idx){
     switch (stream_idx) {
         case 0:
             stopPlay();
-            playStop(0);/*startPlay(0);*/
+            playStop(0);
             display_data(0);
             /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
             break;
         case 1:
             stopPlay();
-            playStop(1);/*startPlay(1);*/
+            playStop(1);
             display_data(1);
             /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
             break;
         case 2:
             stopPlay();
-            playStop(2);/*startPlay(2);*/
+            playStop(2);
             display_data(2);
             break;
         case 3:
@@ -175,7 +175,6 @@ function init_player(stream_idx){
     }
     document.title = stations[stream_idx].name;
 }
-// audioConnect = new Audio();
 
 function playStop(idx){
     const svgPlay = document.getElementById("play2");
@@ -337,7 +336,10 @@ async function update_stations(){
         if(isPlaying == idx){ 
             //auxLink = "";//img_size = 80;
             document.title = gotData.artist + "-" + gotData.song;
-        }
+            document.getElementById("station_"+idx).style.display = "none";
+        }/*else{
+            document.getElementById("station_"+jdx).style.display = "block";
+        }*/
         /*if(gotData.nowPlaying.song.length > 25){
             console.log(idx,"length",gotData.nowPlaying.song.length);
             auxText = " moving-text";}else{auxText="";}*/
@@ -419,7 +421,10 @@ async function display_data(idx){
     auxText = gotArtist;
     if(idx > 3){ auxText = stations[idx].xtra_info[0]; }
     document.getElementById("cover_title").innerHTML = "<span class='headLabel'>" + 
-    gotSong + "</span><span>" + auxText + "</span>";    
+    gotSong + "</span><span>" + auxText + "</span>";
+    
+    document.getElementById("title_stat").innerText = stations[idx].name + "♪ " + 
+    stations[idx].description;
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
