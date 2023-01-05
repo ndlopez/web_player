@@ -318,7 +318,7 @@ function build_case(jdx, artist, song, album, artwork){
 
 async function update_stations(){
     var gotData = "", auxLink = "";
-    
+    let jdx;
     for(let idx = 0; idx < stations.length; idx++){
         gotData = {
             artist: stations[idx].description,song: stations[idx].name};
@@ -332,14 +332,14 @@ async function update_stations(){
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
-        let jdx;
+        
         if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
         if(isPlaying == idx){
             played.push(idx);
             //auxLink = "";//img_size = 80;
             document.title = gotData.artist + "-" + gotData.song;
             document.getElementById("station_"+idx).style.display = "none";
-            console.log("thus far played: ",played);
+            console.log("thus far played: ",played,"RM: ",isPlaying);
         }else{
             document.getElementById("station_"+idx).style.display = "block";
             /*if(played.length > 0){
@@ -347,6 +347,7 @@ async function update_stations(){
                 console.log("played:",played);
                 played.shift();
             }*/
+            console.log("keeping:",idx);
         }
         /*if(gotData.nowPlaying.song.length > 25){
             console.log(idx,"length",gotData.nowPlaying.song.length);
