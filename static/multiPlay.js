@@ -110,13 +110,16 @@ function display_all_stations(){
         rowDiv.setAttribute("class","row round-border dashed-border bottom-10px");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
+        //rowDiv.style.height = "160px";
+        /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
+        rowDiv.style.backgroundRepeat = "no-repeat";
+        rowDiv.style.backgroundSize = "cover";*/
         
-        rowDiv.innerHTML = "<div class='colImg float_left' id='imgDiv_"+ idx + "'><img src='" + 
-        stations[idx].logo + "' width='" + img_size + "' height='" + img_size + "'/></div>" + 
-        "<div class='colArtist float_left' id='artistDiv_" + idx + "'><span>" + 
+        rowDiv.innerHTML = "<div class='colImg float_left' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "' height='" + img_size +
+        "'/></div><div class='colArtist float_left' id='artistDiv_" + idx + "'><span>" + 
         stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
-        "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
-        "'>00:00</span></div>";
+        "</span></div>";
+        //<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
     }
 }
@@ -186,8 +189,8 @@ function playStop(idx){
     
     let get_sub_timer;
     let mmss = "";
-    for(let jdx=0;jdx < stations.length; jdx++){
-        /* this loops disables/enables background and text-color */
+    /*for(let jdx=0;jdx < stations.length; jdx++){
+        // this loops disables/enables background and text-color
         //const get_row = document.getElementById("station_"+jdx);
         get_sub_timer = document.getElementById("timer_"+jdx);
         if(idx == jdx){
@@ -196,18 +199,19 @@ function playStop(idx){
             //get_sub_timer.classList.add("headLabel");
             // getTimer = get_sub_timer.innerText;
             mmss = get_sub_timer.innerText;
-        }/*else{
+        }else{
             get_row.classList.remove("smoke-bkg");
             get_row.classList.add("dashed-border");
             get_sub_timer.classList.remove("headLabel");
-        }*/
-    }
+        }
+    }*/
 
     if(audioConnect.paused){
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
         //counter starts or restarts
+        mmss = "00:00";//document.getElementById("timer_"+idx).innerText;
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
@@ -341,17 +345,15 @@ async function update_stations(){
             document.getElementById("station_"+idx).style.display = "block";
             console.log("keeping:",idx);
         }
-        /*if(gotData.nowPlaying.song.length > 25){
-            console.log(idx,"length",gotData.nowPlaying.song.length);
-            auxText = " moving-text";}else{auxText="";}*/
+        
         this_artist.innerHTML = "<span class='headLabel'>" + 
         gotData/*.nowPlaying*/.song + "</span><span>" + gotData/*.nowPlaying*/.artist + 
         "</span>" + auxLink;
 
-        auxLink = stations[idx].logo;
+        /*auxLink = stations[idx].logo;
         const this_img = document.getElementById("imgDiv_"+idx);
         this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + 
-        "' height='" + img_size + "'/>";        
+        "' height='" + img_size + "'/>";*/
 
         /* adding album info to <data-?> tag */
         auxLink = gotData.artwork;
@@ -395,25 +397,36 @@ async function display_data(idx){
     coverDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);
     
     // Update artwork of station_idx Div
-    const got_artwork  = document.getElementById("imgDiv_" + idx);
+    /*const got_artwork  = document.getElementById("imgDiv_" + idx);
     let newArt = this_artwork;//got_artwork[0].firstChild.src;
+    got_artwork.innerHTML = "<img src='" + newArt + "' width='" + img_size + 
+    "' height='"+ img_size + "'/>"*/
     //console.log("newArt",newArt.substring(newArt.length-3));
     /*if(newArt.substring(newArt.length - 3) === "svg"){
         newArt = stations[idx].logo;//console.log("is it cd_case?");}*/
-    got_artwork.innerHTML = "<img src='" + newArt + "' width='" + img_size + 
-    "' height='"+ img_size + "'/>"
+    
     // Updating player2: elements
     var auxText = "";
     const cover_art = document.getElementById("cover_art");
     cover_art.setAttribute("onclick","display_data(" + idx + ")");//"update_stations()"
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
-    cover_art.innerHTML = "<img src='" + /*stations[idx].logo*/ this_artwork +
+    cover_art.innerHTML = "<img src='" + this_artwork +
     "' width='60' height='60'/>" + auxText;
+
     auxText = gotArtist;
     if(idx > 3){ auxText = stations[idx].xtra_info[0]; }
+    
+    let newTitle = gotSong + " - " + gotArtist;
+
+    if(gotSong.length < 21){
+        newTitle = gotSong;
+        console.log(idx,"length",gotSong.length);
+    }else{
+        auxText = "";
+    }
     document.getElementById("cover_title").innerHTML = "<span class='headLabel'>" + 
-    gotSong + "</span><span>" + auxText + "</span>";
+    newTitle + "</span><span>" + auxText + "</span>";
     
     document.getElementById("title_stat").innerText = stations[idx].name + " ♪ " + 
     stations[idx].description;
