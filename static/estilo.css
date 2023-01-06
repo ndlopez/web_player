@@ -331,7 +331,7 @@ span{
   float: left;
   white-space: nowrap;
 }
-#artwork .smoke-bkg{height: 220px;}
+#artwork .smoke-bkg{height: 200px;}
 @media (max-width: 700px) {
   body{font-size: small;}
   #amia{height: 115vh;}

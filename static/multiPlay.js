@@ -25,37 +25,37 @@
 
 const stations = [
     {
-        name: "LaPaz.fm - Adult Contemporary",
+        name: "LaPaz.fm",
         logo: "assets/fmlapaz_logo.png",
         stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
         description: "Mas musica menos palabras. Musica adulto contemporanea.",
         site: "fmlapaz.html",
-        xtra_info: ["Contemporary","English","128kbps",true]
+        xtra_info: [" - Adult Contemporary","English",128,true]
     },{
-        name: "181.fm - Awesome 80's",
+        name: "181.fm",
         logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
         stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
         site: "",
-        xtra_info: ["80's hits","English"," 128kbps",true]
+        xtra_info: [" - Awesome 80's","English",128,true]
     },{
-        name: "181.fm - 90's Alternative",
+        name: "181.fm",
         logo: "assets/90s_alt.jpg",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best hits of the 1990s",
         site: "",
-        xtra_info: ["Alternative-Rock","English"," 128kbps",true]
+        xtra_info: [" - 90's Alternative","English",128,true]
     },{
-        name: "The Buzz - Alternative-Rock",
+        name: "The Buzz",
         logo: "assets/alt-rock.jpg",
         stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
-        description: "Listen to the best Mainstream-Rock hits",
+        description: "Listen to the best Alternative-Rock hits",
         site: "",
-        xtra_info: ["Alternative-Rock","English","128kbps",true]
+        xtra_info: [" - Alternative-Rock","English",128,true]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
@@ -63,7 +63,7 @@ const stations = [
         id3_info: "",
         description: "Explore and discover new worlds of music with NASA's Radio.",
         site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        xtra_info:["Alternative-Rock","English"," 196kbps",false]
+        xtra_info:["Alternative-Rock","English",196,false]
     },{
         name: "113.fm Classic One",
         logo: "assets/113fm_classicone_1008.jpg",
@@ -71,7 +71,7 @@ const stations = [
         id3_info: "",
         description: "Your radio station for the very best Classical and Piano Greats!",
         site: "",
-        xtra_info: ["Classical","English"," 128kbps","Yes"]
+        xtra_info: ["Classical","English",128,true]
     }
 ];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
@@ -94,11 +94,12 @@ const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
+// emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 let img_size = 80;
 let audioConnect = new Audio();
 let isPlaying;
 let tina_timer;
-let played = [];
+// let played = [];
 
 init_this();
 
@@ -114,7 +115,7 @@ function display_all_stations(){
         rowDiv.innerHTML = "<div class='colImg float_left' id='imgDiv_"+ idx + "'><img src='" + 
         stations[idx].logo + "' width='" + img_size + "' height='" + img_size + "'/></div>" + 
         "<div class='colArtist float_left' id='artistDiv_" + idx + "'><span>" + 
-        stations[idx].name + "</span><span>" + stations[idx].description + 
+        stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
         "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
         "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
@@ -131,7 +132,7 @@ function init_this(){
 }
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
-    console.log("gotStream",stream_idx);
+    // console.log("gotStream",stream_idx);
     isPlaying = stream_idx;
 
     /*document.getElementById("title_stat").innerText = stations[stream_idx].name + 
@@ -304,12 +305,12 @@ function build_case(jdx, artist, song, album, artwork){
         search_link = "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 
     artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
     song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'>More info <img src='assets/duck.svg' width='36'/></a>";
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank'> <img src='assets/duck.svg' width='36'/></a>";
     }
     const this_html = "<div class='bkg_cd_icon' id='coverCD'><a href='" + stations[jdx].site + 
     "'><img src='" + artwork + "' width='260'/></a></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
     song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
-    album + "</h2>" + search_link + "</div>";
+    album + search_link + "</h2></div>";
     const up_time = document.getElementById("update_time");
     up_time.innerHTML = "<h2 class='lighter'>&#x231A;" +
     zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>"; 
@@ -322,7 +323,7 @@ async function update_stations(){
     let jdx;
     for(let idx = 0; idx < stations.length; idx++){
         gotData = {
-            artist: stations[idx].description,song: stations[idx].name};
+            artist: stations[idx].xtra_info[0],song: stations[idx].name};
             /*nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo;*/
 
@@ -334,13 +335,14 @@ async function update_stations(){
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         
-        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
+        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + 
+        stations[idx].xtra_info[0] + "</span>"; }
         if(isPlaying == idx){
-            played.push(idx);
             //auxLink = "";//img_size = 80;
             document.title = gotData.artist + "-" + gotData.song;
             document.getElementById("station_"+idx).style.display = "none";
-            console.log("thus far played: ",played,"RM: ",isPlaying);
+            // played.push(idx); 
+            console.log("Removing:",isPlaying);
         }else{
             document.getElementById("station_"+idx).style.display = "block";
             /*if(played.length > 0){
@@ -489,7 +491,7 @@ async function get_artwork(jdx,artist_name,song_title){
     if (artwork === defaultImg){
         artwork = stations[jdx].logo;
     }
-    console.log("gotArt:",artwork);
+    // console.log("gotArt:",artwork);
     return {nowPlaying, album, artwork};
 }
 
