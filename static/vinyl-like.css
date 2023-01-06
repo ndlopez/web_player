@@ -95,7 +95,7 @@ new artwork design */
   transform-origin: 0 0;
   transform: rotate(0) translate(-50%,-50%);
   border-radius: 50%;
-  animation: spin 4s linear infinite paused;
+  animation: spin 4s linear infinite;
 }
 .cover div{
   border-radius: 0;

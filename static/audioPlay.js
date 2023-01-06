@@ -90,23 +90,24 @@ function startPlay(){
 function volume_mute(vol_stat){
     const volInput = document.getElementById("vol_input");
     const volIcon = document.getElementById("vol_icon");
+    const volume_svg = '<path fill="#bed2e0" d="M20 16 C20 8 15 2 15 2 L8 10 2 10 2 22 8 22 15 30 C15 30 20 24 20 16 Z"/>';
 
     if(vol_stat === 0){
         if(volInput.value != "0"){
-            // console.log("volume on");
+            // console.log("volume off");
             // volInput.classList.remove("volume-none");
             // volInput.classList.add("volume-vertical");
             //console.log(audioConnect.volume);
-            volIcon.innerHTML = '<path d="M20 16 C20 8 15 2 15 2 L8 10 2 10 2 22 8 22 15 30 C15 30 20 24 20 16 Z"/>';
+            volIcon.innerHTML = volume_svg;
             // volIcon.src = "assets/volume-repo-off.svg";
             audioConnect.volume = "0";
             volInput.onchange = "0";
             volInput.value = "0";
         }else{
-            // console.log("volume off");
+            // console.log("volume on");
             // volInput.classList.remove("volume-vertical");
             // volInput.classList.add("volume-none");
-            volIcon.innerHTML = '<path d="M20 16 C20 8 15 2 15 2 L8 10 2 10 2 22 8 22 15 30 C15 30 20 24 20 16 Z M21 2 C21 2 25 6 25 16 25 26 21 30 21 30 M27 4 C27 4 30 8 30 16 30 24 27 28 27 28" />';
+            volIcon.innerHTML = volume_svg + '<path d="M21 2 C21 2 25 6 25 16 25 26 21 30 21 30 M27 4 C27 4 30 8 30 16 30 24 27 28 27 28" />';
             //volIcon.src = "assets/volume-svgrepo.svg";
             volInput.onchange = "0.8";
             volInput.value = "80";
