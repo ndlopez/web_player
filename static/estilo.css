@@ -293,12 +293,13 @@ span{
   fill: var(--light-sky);
   stroke: var(--light-sky);
 }
-#station_info{
+#station_info, #stationInfo{
   background-color: var(--dark-smoke);
   position: fixed;
-  bottom: 58px;
   width: 100%;
 }
+#station_info{bottom: 58px;}
+#stationInfo{bottom: 68px;}
 #stat_name h3{margin:0px;}
 .col90{width:90%}
 .col10{width: 10%;margin: 0px;}
