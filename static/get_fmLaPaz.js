@@ -158,19 +158,14 @@ function sleepy(msec){
 }
 
 function get_sched(tag,heure,time_lag){
-    var myTitle = "Now on LaPaz.fm ♪ Adult contemporary music.";
-    var gotObj = weekly_9; //default JST
+    let myTitle = "Now on LaPaz.fm ♪ Adult contemporary music.";
+    let gotObj = weekly_9; //default JST
     if(time_lag == 240){
         gotObj = weekly_4;// UTC-4
     }
     for (let item in gotObj){
-        /*if(gotObj[item].day === tag && gotObj[item].time === heure){
-            myTitle = "Now on LaPaz.fm ♪ " + gotObj[item].name;
-            var durTime = gotObj[item].time + gotObj[item].duration;
-            myTitle += " (" + gotObj[item].time + " - " + durTime+":00)";
-        }*/
         if(gotObj[item].day === tag){
-            var endTime = gotObj[item].time + gotObj[item].duration;
+            let endTime = gotObj[item].time + gotObj[item].duration;
             if(heure >= gotObj[item].time && heure < endTime){
                 myTitle = "Now on LaPaz.fm ♪ " + gotObj[item].time + ":00 ~ " + 
                 endTime + ":00 <em>" + gotObj[item].name +"</em>"+gotObj[item].desc;
@@ -181,9 +176,9 @@ function get_sched(tag,heure,time_lag){
 }
 
 function build_schedule(tag,heure,time_lag){
-    var sched = [];
-    var outStr = "";
-    var thisObj = weekly_9;
+    let sched = [];
+    let outStr = "";
+    let thisObj = weekly_9;
     if(time_lag == 240){thisObj = weekly_4;}
     for(let item in thisObj){
         if(thisObj[item].day === tag){
@@ -215,21 +210,21 @@ setInterval(async function makePlayList(){
     const divList = document.getElementById("playList");
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","row");
-    var divText = document.createElement("div");
+    const divText = document.createElement("div");
     divText.setAttribute("class","colArtist float_left");
     //last prev index of myList array, last will be -1
-    var lena = Object.keys(myList)[Object.keys(myList).length - 2];
-    var gotArtist = myList[lena].song.split("-");
+    const lena = Object.keys(myList)[Object.keys(myList).length - 2];
+    let gotArtist = myList[lena].song.split("-");
     if(titleErr.includes(gotArtist)){
         gotArtist[0] = "CM or Station Id";
         myList[lena].artwork = "assets/cd-case.svg";
     }
-    var gotArtwork = myList[lena].artwork;
+    let gotArtwork = myList[lena].artwork;
     if(awfulArt.includes(gotArtwork)){
         gotArtwork = "assets/cd-case.svg";
-        gotArtist = "Sorry, artwork not found in DB";
+        gotArtist = ["Sorry, artwork not found in DB",""];
     }
-    var divColImg = document.createElement("div");
+    const divColImg = document.createElement("div");
     divColImg.setAttribute("class","colImg float_left");
     /*divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
     divColImg.style.backgroundSize = "75px";
@@ -237,7 +232,7 @@ setInterval(async function makePlayList(){
     divColImg.innerHTML = "<img src='"+ gotArtwork + "' width='75' height='75'/>";
     divText.innerHTML = "<span>" + gotArtist[0] + "</span><span>" + gotArtist[1] +"</span>";
 
-    var divTime = document.createElement("div");
+    const divTime = document.createElement("div");
     divTime.setAttribute("class","colTime float_left");
     divTime.innerHTML = "<span>" + myList[lena].time + "</span>";
     
@@ -252,20 +247,17 @@ setInterval(async function makePlayList(){
 async function display_data(){
     /* Display current song playing on FM La Paz 
     Builds array to store recently played*/
-    var gotData = await get_url(thisURL);
+    let gotData = await get_url(thisURL);
     const parentDiv = document.getElementById("music");
     const timeNow = new Date();
     const timeOffset = timeNow.getTimezoneOffset(); //if UTC + -> return -offset
     //console.log(timeOffset,typeof(timeOffset));
     let day = timeNow.getDay();
     let hh = timeNow.getHours();
-    let mm = timeNow.getMinutes();
-    let ss = timeNow.getSeconds();
+    let mm = zeroPad(timeNow.getMinutes()); //(mm < 10)? "0" + String(mm):mm;
+    let ss = zeroPad(timeNow.getSeconds()); //(ss < 10)? "0" + String(ss):ss;
 
-    mm = zeroPad(mm); //(mm < 10)? "0" + String(mm):mm;
-    ss = zeroPad(ss); //(ss < 10)? "0" + String(ss):ss;
-
-    var gina = hh + ":" + mm + ":" + ss;
+    let gina = hh + ":" + mm + ":" + ss;
     // console.log("time",gina);
     if(titleErr.includes(gotData.song)){
         console.log(gina,"error:",gotData.song);
@@ -298,9 +290,9 @@ async function display_data(){
     "<h2 id='listIcon' onclick='openNav()' class='col10 float_left closeBtn'>" + this_menu + "</h2>";
     //<img src='assets/list-alt.svg' width='32'/>"<h2 class='col90 float_left' id='headTit'>" + "</h2>" + 
 
-    var myDiv = document.getElementById("nowPlaying");
+    const myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
-    //var gina = hh + ":" + mm + ":" + ss;
+    //let gina = hh + ":" + mm + ":" + ss;
     const h2Time = "<h2 class='lighter col_50 float_left'><small>&#8986; "+ gina +
     "</small></h2><button title='reload id3-tag' onclick='reloadMe()'>" + 
     "<img src='assets/reload-svgrepo.svg' width='32'/></button>";
@@ -331,7 +323,7 @@ async function display_data(){
     now_song.innerHTML = h2Song[0].trim() + "<br/>"+ h2Song[1].trim();
 
     // Saving data into array
-    var noSec = gina;//time HH:MM:SS
+    let noSec = gina;//time HH:MM:SS
     noSec = (noSec.length < 8)? noSec.substring(0,4):noSec.substring(0,5);
     /*if(upCount === 0){
         tmpData = {"time":noSec,"song":gotData.song,"artwork":gotData.artwork};}
@@ -343,7 +335,7 @@ async function display_data(){
     myList.push(tmpData);
     //console.log(upCount,myList);
     export_to_file(myList);
-    var dLink = document.getElementById("downLink");
+    const dLink = document.getElementById("downLink");
     dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
     upCount++;
 }
@@ -353,7 +345,7 @@ async function get_url(my_url){
         const response = await fetch(my_url);
         const data = await response.json();
         const song = data[keys[0]];
-        var artwork = data[keys[1]];
+        const artwork = data[keys[1]];
         const bit = data[keys[2]];
         const listen = data[keys[3]];
         return {song,artwork,bit,listen};
@@ -412,96 +404,3 @@ function addModal(){
     }
     return secDiv;
 }
-
-// No longer working
-/*setInterval(*/async function buildList(){
-    /* Wait 'til display_data is finished, then get info from h2 elems */
-    await display_data();
-    const parentDiv = document.getElementById("music");
-    const divList = document.getElementById("playList");
-    // Getting data from nowPlaying div
-    const gotDiv = document.getElementById('nowPlaying');
-    const song = gotDiv.getElementsByTagName("h2");
-    var noSec = song[2].innerText;//time HH:MM:SS
-    noSec = (noSec.length < 8)? noSec.substring(0,4):noSec.substring(0,5);
-    //noSec = noSec.substring(0,5);
-    //console.log(song[2].innerText);
-    //const playTime = song[2].innerHTML;//.split(" ");
-    var artwork = gotDiv.getElementsByTagName("div");
-    artwork = artwork[0].innerHTML.split('"');
-
-    //var thisSong = song[1].innerHTML; // .split("-");
-    
-    const mainDiv = document.createElement("div");
-    mainDiv.setAttribute("class","row");
-    //divList.setAttribute("class","row");
-
-    var divText = document.createElement("div");
-    divText.setAttribute("class","colArtist");
-
-    var gotArtist = song[0].innerText;
-    if(gotArtist === "Radio Online" || gotArtist === "LA CASCADA"){
-        gotArtist = "CM or Station Id";
-        artwork[1] = "../assets/cd-case.svg";
-    }
-    if((artwork[1] === awfulArt[0]) || (artwork[1] === awfulArt[1]) || (artwork[1] === awfulArt[2]) || artwork[1] === awfulArt[3]){
-        artwork[1] = "../assets/cd-case.svg";
-        gotArtist = "Sorry, artwork not found in DB";
-    }
-    var divColImg = document.createElement("div");
-    divColImg.setAttribute("class","colImg");
-    divColImg.style.backgroundImage = "url('"+ artwork[1] + "')";
-    divColImg.style.backgroundSize = "75px";
-    divColImg.style.backgroundRepeat = "no-repeat";
-    //divColImg.innerHTML = "<img src='"+ artwork[1]+"' width='75'>";
-    //it works but it does not turn off :(
-    /*if(upCount == myList.length){
-        divColImg.innerHTML = "<img src='assets/bars.svg' width='70'>";
-    }else{
-        console.log("no bars here :(");
-        divColImg.innerHTML = "";}*/
-    divText.innerHTML = "<span>" + gotArtist + "</span><span>" + song[1].innerText +"</span>";
-
-    var divTime = document.createElement("div");
-    divTime.setAttribute("class","colTime");
-    divTime.innerHTML = "<span>" + noSec + "</span>";
-    
-    mainDiv.appendChild(divColImg);
-    mainDiv.appendChild(divText);
-    mainDiv.appendChild(divTime);
-
-    divList.appendChild(mainDiv);
-    //document.body.appendChild(divList);
-    parentDiv.appendChild(divList);
-
-    /*Schedule list
-    const schedLiz = document.getElementById("schedList");
-    const newDate = new Date();
-    schedLiz.innerHTML = "<h2>Later today<br/>"+ days[newDate.getDay()] + "</h2>";*/
-
-    /*Saving data into array
-    timeStamp.push(noSec);
-    songs.push(song[0].innerText + "-" + song[1].innerText);
-    artImg.push(artwork[1]);
-    tmpData = {"time": timeStamp[upCount], "song": songs[upCount], "artwork": artImg[upCount]};
-    myList.push(tmpData);
-    //console.log(upCount,myList);
-    export_to_file(myList);
-    var dLink = document.getElementById("downLink");
-    dLink.innerHTML = "<img src='assets/down_cloud.svg' width='32'/>";
-    upCount++;*/
-
-}/*,upTime);*/
-
-/*myDiv.src = 'javascript:void((function(){var script = document.createElement(\'script\');' +
-  'script.innerHTML = "(function() {' +
-  'document.open();document.domain=\'' + document.domain +
-  '\';document.close();})();";' +
-  'document.write("<head>" + script.outerHTML + "'+
-	'</head><body></body>");})())';
-    myDiv.contentWindow.document.write(updater);
-    /\myDiv.contentWindow.document.write(calljs);
-    myDiv.contentWindow.document.write(catInfo);
-    /\'<div><h2>'+gotData.song+'</h2></div>'
-    /\console.log("Now: "+ gotData.song,gotData.artwork);
-*/

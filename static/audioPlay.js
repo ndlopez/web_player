@@ -1,6 +1,6 @@
 /*
 Code to play an audio stream with basic functions: play/pause/stop 
-handled by either by click or keyboard events.
+handled by either click or keyboard events.
 Also control volume and animations.
 Must refer to these code-sources:
  https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
@@ -20,7 +20,7 @@ function startPlay(){
     const getTimer = document.getElementById("timerr");
     /*const song_artist = document.getElementById("currSong");
     console.log(song_artist.innerText);// returns null object*/
-    var mmss = "";
+    let mmss = "";
 
     const circleImg = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
     const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
@@ -118,7 +118,7 @@ function volume_mute(vol_stat){
 }
 
 function play_elapsed(min=0,sec=0){
-    var second,minute;
+    let second,minute;
 
     tina_timer = setInterval(function(){
 
