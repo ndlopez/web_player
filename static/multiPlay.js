@@ -181,8 +181,8 @@ function playStop(idx){
     const svgPlay = document.getElementById("play2");
     svgPlay.addEventListener("click",stopPlay); /*function(){
         console.log("passing index",idx); stopPlay(idx);});*/
-    // const float_btn = document.getElementById("play_btn");
-    // float_btn.addEventListener("click",stopPlay);
+    /* const float_btn = document.getElementById("play_btn");
+    float_btn.addEventListener("click",stopPlay);*/
     const gifImg = document.getElementById("gifElm");
     let getTimer = document.getElementById("timer");
     
@@ -190,19 +190,19 @@ function playStop(idx){
     let mmss = "";
     for(let jdx=0;jdx < stations.length; jdx++){
         /* this loops disables/enables background and text-color */
-        const get_row = document.getElementById("station_"+jdx);
+        //const get_row = document.getElementById("station_"+jdx);
         get_sub_timer = document.getElementById("timer_"+jdx);
         if(idx == jdx){
-            get_row.classList.remove("dashed-border");
-            get_row.classList.add("smoke-bkg");            
-            get_sub_timer.classList.add("headLabel");
+            //get_row.classList.remove("dashed-border");
+            //get_row.classList.add("smoke-bkg");            
+            //get_sub_timer.classList.add("headLabel");
             getTimer = get_sub_timer.innerText;
             mmss = get_sub_timer.innerText;
-        }else{
+        }/*else{
             get_row.classList.remove("smoke-bkg");
             get_row.classList.add("dashed-border");
             get_sub_timer.classList.remove("headLabel");
-        }
+        }*/
     }
 
     if(audioConnect.paused){
