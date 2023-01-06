@@ -187,7 +187,7 @@ function playStop(idx){
     const gifImg = document.getElementById("gifElm");
     let getTimer = document.getElementById("timer");
     
-    let get_sub_timer = "";
+    let get_sub_timer;
     let mmss = "";
     for(let jdx=0;jdx < stations.length; jdx++){
         /* this loops disables/enables background and text-color */
@@ -210,7 +210,6 @@ function playStop(idx){
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
-        // mmss = getTimer.innerText; // mm:ss   //mmss = get_sub_timer.innerText; // mm:ss
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); //counter starts or restarts
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
@@ -225,7 +224,6 @@ function playStop(idx){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
-
         stop_timer();//idx
     }
 }
@@ -279,7 +277,7 @@ function play_elapsed(min=0,sec=0,jdx){
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
         
-        document.getElementById("timer_"+jdx).innerText = minute + ":" + second;
+        //document.getElementById("timer_"+jdx).innerText = minute + ":" + second;
         document.getElementById("timer").innerText = minute + ":" +second;
         sec++;
         if(sec>59){
