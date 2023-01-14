@@ -95,6 +95,8 @@ const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 // emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
+const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
+let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let img_size = 80;
 let audioConnect = new Audio();
 let isPlaying;
@@ -432,16 +434,21 @@ async function display_data(idx){
     stations[idx].description;
 }
 
-let myReg = RegExp("[(][^)]*[)]");//find parentheses
-const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
-
 async function get_id3(idx){
     const response = await fetch(stations[idx].id3_info);
     const data = await response.json();
     
+    const this_output = {
+        artist:stations[idx].name,
+        song:stations[idx].xtra_info[1],
+        artwork:stations[idx].logo};
     let artist = "", artwork = "";
     let song = data["title"].replace(myReg,"").replace(/&/g,"and");
     if(idx == 0){
+        if(Object.keys(data).length < 1){
+            return this_output;
+        }
+        // console.log("Got",idx,Object.keys(data).length);
         const auxStr = song.split("-");
         artist = auxStr[1];
         song = auxStr[0];
