@@ -1,15 +1,16 @@
 :root{
-  --smoke: #2e4054;
-  --wine: #cc274c;
-  --dark-smoke: #405366;/*#6a7285;*/
-  --light-sky:#bed2e0;
+  --smoke: #002b36;/*#2d2d2d;*/
+  --wine: #dc322f;
+  --dark-smoke: #073642;/*#333;#6a7285;*/
+  --light-sky:#eee8d5;
   --darkish-sky:#bed2e040;
-  --lemon: #ffeea6;
-  --blackish: #333;
-  --blacky: #2d2d2d;
+  --lemon: #b58900;/*#ffeea6;*/
+  --blackish: #2e4054;
+  --blacky: #405366;
   --navy: #03314B;
   --orange: #f46b45;
   --mikan: #eea849;
+  --backish-blue: #0b1320;
 }
 body{
   font-family: Helvetica Neue, sans-serif;
@@ -333,7 +334,7 @@ span{
 #artwork .smoke-bkg{height: 200px;}
 @media (max-width: 700px) {
   body{font-size: small;}
-  #amia{height: 115vh;}
+  #amia{height: 105vh;}
   #now_song, #artwork, .no_mobil {display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
