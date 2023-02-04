@@ -3,8 +3,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /*background-color: #00BAF0;*/
-    background: var(--dark-smoke);/*linear-gradient(to left, var(--wine), var(--dark-smoke));*/
+    background: var(--dark-smoke);
+    /*linear-gradient(to left, var(--wine), var(--dark-smoke));*/
     color: var(--light-sky);
     height: 50px;
     padding: 1em;

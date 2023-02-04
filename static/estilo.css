@@ -1,16 +1,19 @@
 :root{
-  --smoke: #002b36;/*#2d2d2d;*/
+  --smoke: #002b36;
   --wine: #dc322f;
-  --dark-smoke: #073642;/*#333;#6a7285;*/
+  --dark-smoke: #073642;
   --light-sky:#eee8d5;
   --darkish-sky:#bed2e040;
-  --lemon: #b58900;/*#ffeea6;*/
+  --lemon: #b58900;
   --blackish: #2e4054;
   --blacky: #405366;
   --navy: #03314B;
   --orange: #f46b45;
   --mikan: #eea849;
   --backish-blue: #0b1320;
+  --magenta: #d33682;
+  --cyan:#2aa198;
+  --lime: #859900; 
 }
 body{
   font-family: Helvetica Neue, sans-serif;
@@ -90,10 +93,9 @@ kbd {
   height: 35px;
   overflow: hidden;
   position: absolute;
-  /*right: 10px;*/
 }
 .equalizer > div {
-  width: 80px;/*45px;*/
+  width: 80px;
   height: 100px;
   position: absolute;
   top: 5px;
@@ -162,7 +164,7 @@ span{
 }
 .padding_10{padding: 10px;}
 .padding_15{padding: 15px;}
-.col3{width: 33%;/*33.33%*/}
+.col3{width: 33%;}
 .half_col{
   width: 25%;
   display: grid;
@@ -206,7 +208,7 @@ span{
   opacity: 0.4; bottom: -22px;  left:5px;  width: 360px;*/
   margin-top: 5px;
   border-radius: 10px;
-  padding: 15px 0px; /*15px 20px;*/
+  padding: 15px 0px;
   font-size: small;
   text-align: center;
   background-color: var(--dark-smoke);
@@ -269,10 +271,7 @@ span{
   overflow: auto;
 }
 /*Player controls*/
-#play{
-  /*position: fixed;bottom: 30px;*/
-  margin-top: -12px;
-}
+#play{ margin-top: -12px;}
 .sp-margin{
   margin-top: -40px;
   padding-bottom: 12px;
