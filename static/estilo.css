@@ -2,7 +2,7 @@
   --smoke: #002b36;
   --wine: #dc322f;
   --dark-smoke: #073642;
-  --light-sky:#eee8d5;
+  --light-sky: #bed2e0;
   --darkish-sky:#bed2e040;
   --lemon: #b58900;
   --blackish: #2e4054;
@@ -13,7 +13,8 @@
   --backish-blue: #0b1320;
   --magenta: #d33682;
   --cyan:#2aa198;
-  --lime: #859900; 
+  --lime: #859900;
+  --light-yellow: #eee8d5;
 }
 body{
   font-family: Helvetica Neue, sans-serif;

@@ -344,10 +344,10 @@ async function update_stations(){
             //auxLink = "";//img_size = 80;played.push(idx); 
             document.title = gotData.artist + "-" + gotData.song;
             document.getElementById("station_"+idx).style.display = "none";
-            console.log("Removing:",isPlaying);
+            // console.log("Removing:",isPlaying);
         }else{
             document.getElementById("station_"+idx).style.display = "block";
-            console.log("keeping:",idx);
+            // console.log("keeping:",idx);
         }
         
         this_artist.innerHTML = "<span class='headLabel'>" + 
