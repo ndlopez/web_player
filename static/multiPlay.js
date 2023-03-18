@@ -3,11 +3,7 @@
  https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
  const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
  alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
- Beethoven - moonlight
- Cigarettes After Sex - Apocalypse
- lovelytheband - these are my friends
- The Shins - So now what, New Slang
- Sneaker Pimps - 6 Underground
+ 
  Flys - Got You
 
  id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
@@ -134,6 +130,11 @@ function init_this(){
     }*/
     update_stations();
 }
+
+setInterval(function updater(){
+    update_stations();
+},30000);
+
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
     // console.log("gotStream",stream_idx);
