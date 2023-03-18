@@ -132,8 +132,9 @@ function init_this(){
 }
 
 setInterval(function updater(){
-    update_stations();
-},30000);
+    // update_stations();
+    display_data(isPlaying);
+},185000);
 
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
