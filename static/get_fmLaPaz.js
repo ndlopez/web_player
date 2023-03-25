@@ -299,6 +299,9 @@ async function display_data(){
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
+    if (h2Song.length < 2){
+        h2Song.push("No title")
+    }
     const divTitle = "<div id='now_text' class='bottomText'>" + "<h2 class='headLabel'>"+ h2Song[0].trim() +
     "</h2><h2><small>" + h2Song[1].trim() + 
     "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3 float_left'>"+
