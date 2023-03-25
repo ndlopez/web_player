@@ -452,6 +452,9 @@ async function get_id3(idx){
         }
         // console.log("Got",idx,Object.keys(data).length);
         const auxStr = song.split("-");
+        if (auxStr.length < 2){
+            auxStr.push("No title");
+        }
         artist = auxStr[1];
         song = auxStr[0];
         artwork = data["art"];
