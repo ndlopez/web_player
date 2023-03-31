@@ -53,6 +53,14 @@ const stations = [
         site: "",
         xtra_info: [" - Alternative-Rock","English",128,true]
     },{
+	name: "Drawing with words",
+	logo: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
+	stream_url:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",
+	id3_info:"",
+	description: "Skeuomorphic Audio Player",
+	site: "https://codepen.io/joshbader/pen/GqXbVZ",
+	xtra_info:["WordBurglar","English",128,false]
+    },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
