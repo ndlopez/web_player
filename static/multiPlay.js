@@ -18,6 +18,7 @@
     description: "The biggest Alternative hits from the '90s.",
     xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]}
 */
+const no_id3 = 5; //@stations, from this index no requests
 
 const stations = [
     {
@@ -28,6 +29,14 @@ const stations = [
         description: "Mas musica menos palabras. Musica adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: [" - Adult Contemporary","English",128,true]
+    },{
+        name: "Stereo 97",
+        logo: "https://www.stereo97.fm/templates/rt_antares/custom/images/logo/Logo-transparente-website.png?5fa9ad5b",
+        stream_url: "https://stream.consultoradas.com/8104/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
+        description: "Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu corazon.",
+        site: "",
+        xtra_info: [" - La n&uacute;mero uno", "Spanish",128,true]
     },{
         name: "181.fm",
         logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
@@ -53,14 +62,6 @@ const stations = [
         site: "",
         xtra_info: [" - Alternative-Rock","English",128,true]
     },{
-	name: "Drawing with words",
-	logo: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
-	stream_url:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",
-	id3_info:"",
-	description: "Skeuomorphic Audio Player",
-	site: "https://codepen.io/joshbader/pen/GqXbVZ",
-	xtra_info:["WordBurglar","English",128,false]
-    },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
@@ -76,6 +77,14 @@ const stations = [
         description: "Your radio station for the very best Classical and Piano Greats!",
         site: "",
         xtra_info: ["Classical","English",128,true]
+    },{
+        name: "Drawing with words",
+        logo: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
+        stream_url:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",
+        id3_info: "",
+        description: "Skeuomorphic Audio Player",
+        site: "https://codepen.io/joshbader/pen/GqXbVZ",
+        xtra_info:["WordBurglar","English",128,false]
     }
 ];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
@@ -320,7 +329,7 @@ function build_case(jdx, artist, song, album, artwork){
     const timeNow = new Date();
     let search_link = "";
     if( typeof album === 'undefined'){ album = artist;}
-    if(jdx < 4){
+    if(jdx < no_id3){
         search_link = "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 
     artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
     song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
@@ -346,7 +355,7 @@ async function update_stations(){
             /*nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo;*/
 
-        if(idx < 4){
+        if(idx < no_id3){
             gotData = await get_id3(idx);// {artist,song,artwork}
             //get_artwork(idx);//returns {{artist, song},album,artwork}
         }
@@ -354,7 +363,7 @@ async function update_stations(){
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         
-        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + 
+        if( idx < no_id3 ){ auxLink = "<span class='small'>" + stations[idx].name + 
         stations[idx].xtra_info[0] + "</span>"; }
         if(isPlaying == idx){
             //auxLink = "";//img_size = 80;played.push(idx); 
@@ -403,7 +412,7 @@ async function display_data(idx){
     }
     
     var gotData = "";
-    if(idx > 0){ gotData = await get_artwork(idx,gotArtist,gotSong);}
+    if(idx > 1){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
     let this_artwork = gotData.artwork;
     if(idx==0){ this_artwork = got_row.getAttribute("data-album"); }
@@ -435,7 +444,7 @@ async function display_data(idx){
     "' width='60' height='60'/>" + auxText;
 
     auxText = gotArtist;
-    if(idx > 3){ auxText = stations[idx].xtra_info[0]; }
+    if(idx > no_id3){ auxText = stations[idx].xtra_info[0]; }
     
     let newTitle = gotSong + " - " + gotArtist;
 
@@ -462,7 +471,7 @@ async function get_id3(idx){
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
     let song = data["title"].replace(myReg,"").replace(/&/g,"and");
-    if(idx == 0){
+    if(idx == 0 || idx == 1){
         if(Object.keys(data).length < 1){
             return this_output;
         }
@@ -491,7 +500,7 @@ async function get_artwork(jdx,artist_name,song_title){
         artist: artist_name, song: song_title };
         //await get_id3(jdx); // {artist,song,artwork}
 
-    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0) || (jdx > 3)){
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0) || (jdx > no_id3)){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
