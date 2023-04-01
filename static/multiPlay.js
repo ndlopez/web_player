@@ -386,13 +386,13 @@ async function update_stations(){
 
         /* adding album info to <data-?> tag */
         auxLink = gotData.artwork;
-        if(idx == 0){//LaPaz.fm, gotData={artist,song,artwork}
+        if(idx < 2){//==0 LaPaz.fm, gotData={artist,song,artwork}
             if(awfulArt.includes(gotData.artwork)){
                 auxLink = stations[0].logo;
             }else{
                 auxLink = gotData.artwork;
             }
-        }
+        }else{ auxLink = ""; }
         const this_row = document.getElementById("station_"+idx);
         this_row.setAttribute("data-album",auxLink);
     }
@@ -415,7 +415,7 @@ async function display_data(idx){
     if(idx > 1){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
     let this_artwork = gotData.artwork;
-    if(idx==0){ this_artwork = got_row.getAttribute("data-album"); }
+    if(idx < 2){ this_artwork = got_row.getAttribute("data-album"); }
     if(gotData.artwork === ""){
         console.log("Error: No artwork found",idx,gotData.artwork);
         this_artwork = stations[idx].logo;//"assets/cd_case.svg";
@@ -471,7 +471,7 @@ async function get_id3(idx){
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
     let song = data["title"].replace(myReg,"").replace(/&/g,"and");
-    if(idx == 0 || idx == 1){
+    if(idx < 2 ){// prev == 0
         if(Object.keys(data).length < 1){
             return this_output;
         }
@@ -500,7 +500,7 @@ async function get_artwork(jdx,artist_name,song_title){
         artist: artist_name, song: song_title };
         //await get_id3(jdx); // {artist,song,artwork}
 
-    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0) || (jdx > no_id3)){
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx < 2) || (jdx > no_id3)){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
