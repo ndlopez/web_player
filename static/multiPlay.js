@@ -183,10 +183,15 @@ function init_player(stream_idx){
             playStop(4);
             display_data(4);
             break;
+	case 5:
+	    stopPlay();
+	    playStop(5);
+	    display_data(5);
+	    break;
         default:
             stopPlay();
-            playStop(5);
-            display_data(5);
+            playStop(6);
+            display_data(6);
             break;
     }
     //document.title = stations[stream_idx].name;
