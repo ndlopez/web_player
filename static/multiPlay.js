@@ -154,19 +154,22 @@ function init_player(stream_idx){
     const span_name = document.getElementById("nowLabel");
     span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now playing</h2>" + 
     "<h2 id='list-icon' class='col10 float_left closeBtn'></h2>";*/
+    stopPlay();
+    playStop(isPlaying);
+    display_data(isPlaying);
 
-    switch (stream_idx) {
+    /*switch (stream_idx) {
         case 0:
             stopPlay();
             playStop(0);
             display_data(0);
-            /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
+            // if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}
             break;
         case 1:
             stopPlay();
             playStop(1);
             display_data(1);
-            /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
+            //if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}
             break;
         case 2:
             stopPlay();
@@ -193,7 +196,7 @@ function init_player(stream_idx){
             playStop(6);
             display_data(6);
             break;
-    }
+    }*/
     //document.title = stations[stream_idx].name;
 }
 
