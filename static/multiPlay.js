@@ -1,22 +1,22 @@
 /*
- check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
- https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
- const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
- alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
- 
- Flys - Got You
+    check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
+    https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
+    const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
+    alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
+    
+    Flys - Got You
 
- id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
- stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
- history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
- 80s: "assets/181fm_logo.png"
- thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
- {name: "113.fm Alternative-Rock",
-    logo: "assets/113fm_logo.jpg",
-    stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
-    id3_info: "From guitar riffs to mellow beats, we've got you covered.",
-    description: "The biggest Alternative hits from the '90s.",
-    xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]}
+    id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
+    stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
+    history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
+    80s: "assets/181fm_logo.png"
+    thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
+    {  name: "113.fm Alternative-Rock",
+        logo: "assets/113fm_logo.jpg",
+        stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
+        id3_info: "From guitar riffs to mellow beats, we've got you covered.",
+        description: "The biggest Alternative hits from the '90s.",
+        xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]}
 */
 const no_id3 = 5; //@stations, from this index no requests
 
@@ -114,6 +114,7 @@ let img_size = 80;
 let audioConnect = new Audio();
 let isPlaying;
 let tina_timer;
+const updateTime = 185000 //ms
 
 init_this();
 
@@ -148,16 +149,20 @@ function init_this(){
     update_stations();
 }
 
-setInterval(function updater(){
+function update_this(){
     // update_stations();
     display_data(isPlaying);
-},185000);
+}
+
+let updater = setInterval(update_this,updateTime);
 
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
     // console.log("gotStream",stream_idx);
     isPlaying = stream_idx;
-
+    clearInterval(updater)
+    console.log("Time updater restarted");
+    updater = setInterval(update_this,updateTime)
     /*document.getElementById("title_stat").innerText = stations[stream_idx].name + 
     stations[stream_idx].description;
     const span_name = document.getElementById("nowLabel");
@@ -190,20 +195,10 @@ function init_player(stream_idx){
             playStop(3);
             display_data(3);
             break;
-        case 4:
+        default:
             stopPlay();
             playStop(4);
             display_data(4);
-            break;
-	case 5:
-	    stopPlay();
-	    playStop(5);
-	    display_data(5);
-	    break;
-        default:
-            stopPlay();
-            playStop(6);
-            display_data(6);
             break;
     }*/
     //document.title = stations[stream_idx].name;
