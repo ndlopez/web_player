@@ -537,23 +537,21 @@ function zeroPad(timeElm){
 
 /* open and close Info modal */
 function openNav(){
-    const titleDiv = document.getElementById("cover_title");
-    titleDiv.setAttribute("onclick","closeNav()");
-    /*closeBtn.style.margin = "0";
-    closeBtn.setAttribute("class","col10 float_left closeBtn");
-    closeBtn.setAttribute("href","javascript:void(0)");
-    closeBtn.setAttribute("onclick","closeNav()");*/
-    document.getElementById("amia").style.display = "none";
-    document.getElementById("artwork").style.display = "block";
-    // document.getElementById("station_info").style.display = "none";
-    document.body.style.overflow = "hidden";    
+    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){    
+        const titleDiv = document.getElementById("cover_title");
+        titleDiv.setAttribute("onclick","closeNav()");
+        /*closeBtn.style.margin = "0";
+        closeBtn.setAttribute("class","col10 float_left closeBtn");
+        closeBtn.setAttribute("href","javascript:void(0)");
+        closeBtn.setAttribute("onclick","closeNav()");*/
+        document.getElementById("amia").style.display = "none";
+        document.getElementById("artwork").style.display = "block";
+        // document.getElementById("station_info").style.display = "none";
+        document.body.style.overflow = "hidden";
+    }
 }
 function closeNav(){
-    /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
-        document.getElementById('amia').style.display = "none";
-    }else{
-        document.getElementById('amia').style.display = "block";
-    }*/
+    /**/
     const titleDiv = document.getElementById("cover_title");
     titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
