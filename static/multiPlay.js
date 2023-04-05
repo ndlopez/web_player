@@ -336,9 +336,14 @@ function build_case(jdx, artist, song, album, artwork){
     album + search_link + "</h2></div>";
     const up_time = document.getElementById("update_time");
     up_time.innerHTML = "<h2 class='lighter'>&#x231A;" +
-    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>"; 
+    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>";
+    up_time.addEventListener("click",sleepy);
     
     return this_html;
+}
+
+function sleepy(){
+    alert("I will go to sleep in 30 minutes");
 }
 
 async function update_stations(){
@@ -495,7 +500,7 @@ async function get_artwork(jdx,artist_name,song_title){
         artist: artist_name, song: song_title };
         //await get_id3(jdx); // {artist,song,artwork}
 
-    if(errTitle.includes(nowPlaying.song.trim()) || (jdx < 2) || (jdx > no_id3)){
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx < 2) || (jdx > (no_id3 - 1))){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
