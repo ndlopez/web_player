@@ -16,7 +16,16 @@
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
         id3_info: "From guitar riffs to mellow beats, we've got you covered.",
         description: "The biggest Alternative hits from the '90s.",
-        xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]}
+        xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]
+    },{
+        name: "Drawing with words",
+        logo: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
+        stream_url:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",
+        id3_info: "",
+        description: "Skeuomorphic Audio Player",
+        site: "https://codepen.io/joshbader/pen/GqXbVZ",
+        xtra_info:["WordBurglar","English",128,false]
+    }
 */
 const no_id3 = 5; //@stations, from this index no requests
 
@@ -78,13 +87,13 @@ const stations = [
         site: "",
         xtra_info: ["Classical","English",128,true]
     },{
-        name: "Drawing with words",
-        logo: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
-        stream_url:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",
+        name: "Panamericana",
+        logo: "",
+        stream_url: "https://stream-28.zeno.fm/pnwpbyfambruv?zs=7zM3ROeGQVmyOAzN9Khz5A",
         id3_info: "",
-        description: "Skeuomorphic Audio Player",
-        site: "https://codepen.io/joshbader/pen/GqXbVZ",
-        xtra_info:["WordBurglar","English",128,false]
+        description: "La radio que todos tienen encendida desde la manana.",
+        site: "",
+        xtra_info: [" - Noticias", "Espanol",112,true]
     }
 ];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
