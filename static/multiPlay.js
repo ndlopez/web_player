@@ -337,13 +337,15 @@ function build_case(jdx, artist, song, album, artwork){
     const up_time = document.getElementById("update_time");
     up_time.innerHTML = "<h2 class='lighter'>&#x231A;" +
     zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>";
+    //onClick sleep timer starts
     up_time.addEventListener("click",sleepy);
     
     return this_html;
 }
 
 function sleepy(){
-    alert("I will go to sleep in 30 minutes");
+    setTimeout(stopPlay,(60*60*1000));//1hour=60*60*1000
+    alert("I will go to sleep in 60 minutes.");
 }
 
 async function update_stations(){
