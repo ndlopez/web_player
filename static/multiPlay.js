@@ -248,7 +248,7 @@ function playStop(idx){
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
-        svgPlay.innerHTML = circleImg + pauseImg;
+        svgPlay.innerHTML = circleImg + stopImg;
 
         gifImg.classList.remove("no-audio");
     }else{
@@ -547,8 +547,8 @@ function zeroPad(timeElm){
     return (parseInt(timeElm,10) < 10 ? '0' : '') + timeElm;
 }
 
-/* open and close Info modal */
 function openNav(){
+    /* open and close Info modal. works onMobil only*/
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){    
         const titleDiv = document.getElementById("cover_title");
         titleDiv.setAttribute("onclick","closeNav()");
@@ -563,7 +563,6 @@ function openNav(){
     }
 }
 function closeNav(){
-    /**/
     const titleDiv = document.getElementById("cover_title");
     titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
