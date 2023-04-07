@@ -91,7 +91,7 @@ const stations = [
         logo: "https://www.panamericana.bo/media/radiopanamerica/images/2021/01/01/2021010100000073897.png",
         stream_url: "https://stream-28.zeno.fm/pnwpbyfambruv?zs=7zM3ROeGQVmyOAzN9Khz5A",
         id3_info: "",
-        description: "La radio que todos tienen encendida desde la manana.",
+        description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
         xtra_info: [" - Noticias", "Espanol",112,true]
     }
@@ -169,7 +169,7 @@ let updater = setInterval(update_this,updateTime);
 function init_player(stream_idx){
     // console.log("gotStream",stream_idx);
     isPlaying = stream_idx;
-    clearInterval(updater)
+    clearInterval(updater);
     console.log("Time updater restarted");
     updater = setInterval(update_this,updateTime)
     /*document.getElementById("title_stat").innerText = stations[stream_idx].name + 
@@ -354,6 +354,7 @@ function build_case(jdx, artist, song, album, artwork){
 
 function sleepy(){
     setTimeout(stopPlay,(60*60*1000));//1hour=60*60*1000
+    clearInterval(updater);
     alert("I will go to sleep in 60 minutes.");
 }
 
