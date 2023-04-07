@@ -88,7 +88,7 @@ const stations = [
         xtra_info: ["Classical","English",128,true]
     },{
         name: "Panamericana",
-        logo: "",
+        logo: "https://www.panamericana.bo/media/radiopanamerica/images/2021/01/01/2021010100000073897.png",
         stream_url: "https://stream-28.zeno.fm/pnwpbyfambruv?zs=7zM3ROeGQVmyOAzN9Khz5A",
         id3_info: "",
         description: "La radio que todos tienen encendida desde la manana.",
