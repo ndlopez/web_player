@@ -26,6 +26,13 @@
         site: "https://codepen.io/joshbader/pen/GqXbVZ",
         xtra_info:["WordBurglar","English",128,false]
     }
+Emilie-Claire Barlow - Les yeux ouverts
+stream: https://t4.bcbits.com/stream/781d7c338951f1626aa79bb2b73dbded/mp3-128/3837873285?p=0&ts=1681627558&t=3af4a080855f45a352cdb367d8ba412fc466cde6&token=1681627558_d798b8ec9d833c325f55b1a8f93e55f96c349322
+art: https://f4.bcbits.com/img/a1087795934_10.jpg
+
+Marian Call- Homeward bound
+stream: https://t4.bcbits.com/stream/f7ad19156002d3b234b72708270c22eb/mp3-128/294350381?p=0&ts=1681625045&t=2a34fdc17f304a77c5d33a4fb9460be360c763ad&token=1681625045_4dfec4145959a00a0d9b571330c11dafa6ff3f8f
+art: https://f4.bcbits.com/img/a2694757447_10.jpg
 */
 const no_id3 = 5; //@stations, from this index no requests
 
