@@ -35,7 +35,7 @@ const stations = [
         logo: "assets/fmlapaz_logo.png",
         stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
-        description: "Mas musica menos palabras. Musica adulto contemporanea.",
+        description: "Mas m\u00FAsica menos palabras. M\u00FAsica adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: [" - Adult Contemporary","English",128,true]
     },{
@@ -43,9 +43,9 @@ const stations = [
         logo: "https://www.stereo97.fm/templates/rt_antares/custom/images/logo/Logo-transparente-website.png?5fa9ad5b",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu corazon.",
+        description: "Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
         site: "",
-        xtra_info: [" - La n&uacute;mero uno", "Spanish",128,true]
+        xtra_info: [" - La n\u00FAmero uno", "Spanish",128,true]
     },{
         name: "181.fm",
         logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
@@ -93,7 +93,7 @@ const stations = [
         id3_info: "",
         description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
-        xtra_info: ["Noticias y m&uacute;sica en espa\u00f1ol", "Espanol",112,true]
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true]
     }
 ];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
