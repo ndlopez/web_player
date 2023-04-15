@@ -93,7 +93,7 @@ const stations = [
         id3_info: "",
         description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
-        xtra_info: [" - Noticias", "Espanol",112,true]
+        xtra_info: ["Noticias y m&uacute;sica en espa\u00f1ol", "Espanol",112,true]
     }
 ];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
