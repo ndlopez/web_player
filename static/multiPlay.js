@@ -59,7 +59,7 @@ const stations = [
         logo: "assets/90s_alt.jpg",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
-        description: "Listen to the best hits of the 1990s",
+        description: "Listen to the best Alternative-Rock hits of the 1990s",
         site: "",
         xtra_info: [" - 90's Alternative","English",128,true]
     },{
@@ -353,9 +353,13 @@ function build_case(jdx, artist, song, album, artwork){
 }
 
 function sleepy(){
-    setTimeout(stopPlay,(60*60*1000));//1hour=60*60*1000
-    clearInterval(updater);
-    alert("I will go to sleep in 60 minutes.");
+    if(confirm("Streaming will end after 60 minutes, ok?")){
+        setTimeout(stopPlay,(60*60*1000));//1hour=60*60*1000
+        clearInterval(updater);
+    }else{
+        console.log("Sleepy canceled");return;}
+    
+    // alert("I will go to sleep in 60 minutes.");
 }
 
 async function update_stations(){
