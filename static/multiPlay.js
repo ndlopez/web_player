@@ -12,21 +12,21 @@ const no_id3 = 5; //@stations, from this index no requests
 
 const stations = [
     {
-        name: "LaPaz.fm",
+        name: "Adult Contemporary",
         logo: "assets/fmlapaz_logo.png",
         stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
         description: "Mas m\u00FAsica menos palabras. M\u00FAsica adulto contemporanea.",
         site: "fmlapaz.html",
-        xtra_info: [" - Adult Contemporary","English",128,true]
+        xtra_info: ["Adult Contemporary","English",128,true]
     },{
-        name: "Stereo 97",
+        name: "La n\u00FAmero uno",
         logo: "https://www.stereo97.fm/templates/rt_antares/custom/images/logo/Logo-transparente-website.png?5fa9ad5b",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
         description: "Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
         site: "",
-        xtra_info: [" - La n\u00FAmero uno", "Spanish",128,true]
+        xtra_info: ["La n\u00FAmero uno", "Spanish",128,true]
     },{
         name: "181.fm",
         logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
@@ -60,7 +60,7 @@ const stations = [
         site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         xtra_info:["Alternative-Rock","English",196,false]
     },{
-        name: "113.fm Classic One",
+        name: "113.fm",
         logo: "assets/113fm_classicone_1008.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1008",
         id3_info: "",
@@ -113,7 +113,7 @@ function display_all_stations(){
     
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
-        rowDiv.setAttribute("class","row col3 round-border dashed-border bottom-10px");
+        rowDiv.setAttribute("class","row half_col round-border dashed-border bottom-10px");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.style.float= "left";
@@ -125,8 +125,8 @@ function display_all_stations(){
         colArtist:class=float_left*/
         rowDiv.innerHTML = "<div class='colImg' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "' height='" + img_size +
         "'/></div><div class='colArtist' id='artistDiv_" + idx + "'><span>" + 
-        stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
-        "</span></div>";
+        stations[idx].name + "</span></div>";
+        /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";*/
         //<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
     }
@@ -155,45 +155,9 @@ function init_player(stream_idx){
     clearInterval(updater);
     console.log("Time updater restarted");
     updater = setInterval(update_this,updateTime)
-    /*document.getElementById("title_stat").innerText = stations[stream_idx].name + 
-    stations[stream_idx].description;
-    const span_name = document.getElementById("nowLabel");
-    span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now playing</h2>" + 
-    "<h2 id='list-icon' class='col10 float_left closeBtn'></h2>";*/
     stopPlay();
     playStop(isPlaying);
     display_data(isPlaying);
-
-    /*switch (stream_idx) {
-        case 0:
-            stopPlay();
-            playStop(0);
-            display_data(0);
-            // if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}
-            break;
-        case 1:
-            stopPlay();
-            playStop(1);
-            display_data(1);
-            //if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}
-            break;
-        case 2:
-            stopPlay();
-            playStop(2);
-            display_data(2);
-            break;
-        case 3:
-            stopPlay();
-            playStop(3);
-            display_data(3);
-            break;
-        default:
-            stopPlay();
-            playStop(4);
-            display_data(4);
-            break;
-    }*/
-    //document.title = stations[stream_idx].name;
 }
 
 function playStop(idx){
@@ -202,26 +166,8 @@ function playStop(idx){
         console.log("passing index",idx); stopPlay(idx);});*/
     const gifImg = document.getElementById("gifElm");
     // let getTimer = document.getElementById("timer");
-    
-    let get_sub_timer;
     let mmss = "";
-    /*for(let jdx=0;jdx < stations.length; jdx++){
-        // this loops disables/enables background and text-color
-        //const get_row = document.getElementById("station_"+jdx);
-        get_sub_timer = document.getElementById("timer_"+jdx);
-        if(idx == jdx){
-            //get_row.classList.remove("dashed-border");
-            //get_row.classList.add("smoke-bkg");            
-            //get_sub_timer.classList.add("headLabel");
-            // getTimer = get_sub_timer.innerText;
-            mmss = get_sub_timer.innerText;
-        }else{
-            get_row.classList.remove("smoke-bkg");
-            get_row.classList.add("dashed-border");
-            get_sub_timer.classList.remove("headLabel");
-        }
-    }*/
-
+    
     if(audioConnect.paused){
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
@@ -362,8 +308,10 @@ async function update_stations(){
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         
-        if( idx < no_id3 ){ auxLink = "<span class='small'>" + stations[idx].name + 
-        stations[idx].xtra_info[0] + "</span>"; }
+        //auxLink = "<span class='small'>" + stations[idx].name + "</span>";
+        if( idx < no_id3 ){ 
+            auxLink = "<span class='small'>" + stations[idx].name + 
+            /*stations[idx].xtra_info[0] +*/ "</span>"; }
         if(isPlaying == idx){
             //auxLink = "";//img_size = 80;played.push(idx); 
             document.title = gotData.artist + "-" + gotData.song;
@@ -378,10 +326,10 @@ async function update_stations(){
         gotData/*.nowPlaying*/.song + "</span><span>" + gotData/*.nowPlaying*/.artist + 
         "</span>" + auxLink;
 
-        /*auxLink = stations[idx].logo;
+        /*Update artwork of station by artist
+        auxLink = stations[idx].logo;
         const this_img = document.getElementById("imgDiv_"+idx);
-        this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + 
-        "' height='" + img_size + "'/>";*/
+        this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + "' height='" + img_size + "'/>";*/
 
         /* adding album info to <data-?> tag */
         auxLink = gotData.artwork;

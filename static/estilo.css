@@ -41,7 +41,7 @@ kbd {
   background-color: var(--dark-smoke);
 }
 .dashed-border{
-  border: 1px dashed var(--light-sky);
+  border: 1px dashed var(--darkish-sky);
 }
 .round-border{border-radius: 10px;}
 .small{font-size: small;}
