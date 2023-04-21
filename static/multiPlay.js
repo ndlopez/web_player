@@ -8,7 +8,7 @@
     80s: "assets/181fm_logo.png"
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
 */
-const no_id3 = 5; //@stations, from this index no requests
+const no_id3 = 6; //@stations, from this index no requests
 
 const stations = [
     {
@@ -16,7 +16,7 @@ const stations = [
         logo: "assets/fmlapaz_logo.png",
         stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
-        description: "Mas m\u00FAsica menos palabras. M\u00FAsica adulto contemporanea.",
+        description: "LaPaz.fm - Mas m\u00FAsica menos palabras. M\u00FAsica adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true]
     },{
@@ -24,7 +24,7 @@ const stations = [
         logo: "https://www.stereo97.fm/templates/rt_antares/custom/images/logo/Logo-transparente-website.png?5fa9ad5b",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
+        description: "Stereo97 - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
         site: "",
         xtra_info: ["La n\u00FAmero uno", "Spanish",128,true]
     },{
@@ -52,6 +52,14 @@ const stations = [
         site: "",
         xtra_info: [" - Alternative-Rock","English",128,true]
     },{
+        name:"181.fm",
+        logo:"assets/181fm_logo.png",
+        stream_url:"https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069",
+        id3_info:"https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600",
+        description:"Classical music",
+        site:"",
+        xtra_info:["Classical","English",128,true]
+    },{
         name:"Third Rock Radio",
         logo: "assets/thirdRock_logo.png",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
@@ -64,15 +72,15 @@ const stations = [
         logo: "assets/113fm_classicone_1008.jpg",
         stream_url: "https://113fm-atunwadigital.streamguys1.com/1008",
         id3_info: "",
-        description: "Your radio station for the very best Classical and Piano Greats!",
+        description: "Classic One - Your radio station for the very best Classical and Piano Greats!",
         site: "",
         xtra_info: ["Classical","English",128,true]
     },{
-        name: "Panamericana",
+        name: "En vivo",
         logo: "https://www.panamericana.bo/media/radiopanamerica/images/2021/01/01/2021010100000073897.png",
         stream_url: "https://stream-28.zeno.fm/pnwpbyfambruv?zs=7zM3ROeGQVmyOAzN9Khz5A",
         id3_info: "",
-        description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
+        description: "Panamericana - La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true]
     }
