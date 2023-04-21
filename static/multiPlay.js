@@ -3,36 +3,12 @@
     https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
     const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
     alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
-    
-    Flys - Got You
 
     id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
     stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
     history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
     80s: "assets/181fm_logo.png"
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
-    {  name: "113.fm Alternative-Rock",
-        logo: "assets/113fm_logo.jpg",
-        stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
-        id3_info: "From guitar riffs to mellow beats, we've got you covered.",
-        description: "The biggest Alternative hits from the '90s.",
-        xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]
-    },{
-        name: "Drawing with words",
-        logo: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
-        stream_url:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",
-        id3_info: "",
-        description: "Skeuomorphic Audio Player",
-        site: "https://codepen.io/joshbader/pen/GqXbVZ",
-        xtra_info:["WordBurglar","English",128,false]
-    }
-Emilie-Claire Barlow - Les yeux ouverts
-stream: https://t4.bcbits.com/stream/781d7c338951f1626aa79bb2b73dbded/mp3-128/3837873285?p=0&ts=1681627558&t=3af4a080855f45a352cdb367d8ba412fc466cde6&token=1681627558_d798b8ec9d833c325f55b1a8f93e55f96c349322
-art: https://f4.bcbits.com/img/a1087795934_10.jpg
-
-Marian Call- Homeward bound
-stream: https://t4.bcbits.com/stream/f7ad19156002d3b234b72708270c22eb/mp3-128/294350381?p=0&ts=1681625045&t=2a34fdc17f304a77c5d33a4fb9460be360c763ad&token=1681625045_4dfec4145959a00a0d9b571330c11dafa6ff3f8f
-art: https://f4.bcbits.com/img/a2694757447_10.jpg
 */
 const no_id3 = 5; //@stations, from this index no requests
 
