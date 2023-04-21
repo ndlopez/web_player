@@ -323,8 +323,7 @@ async function update_stations(){
         }
         
         this_artist.innerHTML = "<span class='headLabel'>" + 
-        gotData/*.nowPlaying*/.song + "</span><span>" + gotData/*.nowPlaying*/.artist + 
-        "</span>" + auxLink;
+        gotData/*.nowPlaying*/.song + "</span><span class='small'>" + gotData/*.nowPlaying*/.artist + "</span>" + auxLink;
 
         /*Update artwork of station by artist
         auxLink = stations[idx].logo;
