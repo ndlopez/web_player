@@ -129,8 +129,7 @@ function display_all_stations(){
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
         rowDiv.style.backgroundSize = "cover";*/
-        /*colImg:class=float_left
-        colArtist:class=float_left*/
+        /*colImg:class=float_left    colArtist:class=float_left*/
         rowDiv.innerHTML = "<div class='colImg' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "' height='" + img_size +
         "'/></div><div class='colArtist' id='artistDiv_" + idx + "'><span>" + 
         stations[idx].name + "</span></div>";
@@ -330,8 +329,12 @@ async function update_stations(){
             // console.log("keeping:",idx);
         }
         
-        this_artist.innerHTML = "<span class='headLabel'>" + 
-        gotData/*.nowPlaying*/.song + "</span><span class='small'>" + gotData/*.nowPlaying*/.artist + "</span>" + auxLink;
+        let auxTitle = gotData.song;
+        if (auxTitle.length > 28){
+            auxTitle = auxTitle.substring(0,25) + "...";
+        }
+        this_artist.innerHTML = "<span class='headLabel'>" + auxTitle +
+        "</span><span class='small'>" + gotData/*.nowPlaying*/.artist + "</span>" + auxLink;
 
         /*Update artwork of station by artist
         auxLink = stations[idx].logo;
