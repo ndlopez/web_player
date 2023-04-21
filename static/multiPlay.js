@@ -330,11 +330,16 @@ async function update_stations(){
         }
         
         let auxTitle = gotData.song;
-        if (auxTitle.length > 28){
-            auxTitle = auxTitle.substring(0,25) + "...";
+        if (auxTitle.length > 24){
+            auxTitle = auxTitle.substring(0,22) + "...";
+            /*probably adding a style= white-space: no-wrap
+            and hidding the CSSContainerRule, overflow:hidden*/
         }
+        let auxArtist = gotData/*.nowPlaying*/.artist;
+        if ( auxArtist.length > 24 && idx < no_id3 ){
+            auxArtist= auxArtist.substring(0,21)+"...";}
         this_artist.innerHTML = "<span class='headLabel'>" + auxTitle +
-        "</span><span class='small'>" + gotData/*.nowPlaying*/.artist + "</span>" + auxLink;
+        "</span><span class='small'>" + auxArtist + "</span>" + auxLink;
 
         /*Update artwork of station by artist
         auxLink = stations[idx].logo;

@@ -1,6 +1,5 @@
 /* Not working functions
-but helpful as code sample 
-*/
+but helpful as code sample*/
 function init_player(stream_idx){
     document.getElementById("title_stat").innerText = stations[stream_idx].name + stations[stream_idx].description;
     const span_name = document.getElementById("nowLabel");
