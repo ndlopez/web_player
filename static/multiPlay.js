@@ -100,7 +100,7 @@ const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0af
 // emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
-let img_size = 80;
+let img_size = 120; //80
 let audioConnect = new Audio();
 let isPlaying;
 let tina_timer;
@@ -121,9 +121,10 @@ function display_all_stations(){
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
         rowDiv.style.backgroundSize = "cover";*/
-        
-        rowDiv.innerHTML = "<div class='colImg float_left' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "' height='" + img_size +
-        "'/></div><div class='colArtist float_left' id='artistDiv_" + idx + "'><span>" + 
+        /*colImg:class=float_left
+        colArtist:class=float_left*/
+        rowDiv.innerHTML = "<div class='colImg' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "' height='" + img_size +
+        "'/></div><div class='colArtist' id='artistDiv_" + idx + "'><span>" + 
         stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
         "</span></div>";
         //<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";

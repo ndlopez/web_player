@@ -177,8 +177,8 @@ span{
 /*img{filter: opacity(30%);}*/
 .col_artist{background-color: var(--dark-smoke);}
 .colArtist{
-  width: 65%;
-  padding: 5px 10px;}
+  /*width: 65%;5px 10px*/
+  padding: 5px 0px;}
 .colImg{
   width: 20%;
   padding: 7px;
