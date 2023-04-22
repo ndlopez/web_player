@@ -369,7 +369,7 @@ span{
     max-width: 50%;
     flex-basis: 50%;
   }
-  #now_song, #artwork, .no_mobil {display: none;}
+  #now_song, .cardTitle, .no_mobil {display: none;}/*#artwork,*/
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
     background-position-x: right;*/
@@ -402,10 +402,7 @@ span{
   }
   
   /*.bottomText h2{line-height: normal;}*/
-  /*.colImg img{
-    width: 64px;
-    height: 64px;
-  }*/
+  /*.colImg img{width: 64px;height: 64px;}*/
   .colImg{padding: 10px 5px;}
   .colArtist{padding: 5px;}
   #playList{
