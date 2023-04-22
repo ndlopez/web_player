@@ -53,7 +53,7 @@ const stations = [
         xtra_info: [" - Alternative-Rock","English",128,true]
     },{
         name:"181.fm",
-        logo:"assets/181fm_logo.png",
+        logo:"assets/classicalMusic.jpg",
         stream_url:"https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069",
         id3_info:"https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600",
         description:"Classical music",
@@ -108,7 +108,8 @@ const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0af
 // emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
-let img_size = 120; //80
+let img_size = 125; //80
+let cardHeight = "250px";
 let audioConnect = new Audio();
 let isPlaying;
 let tina_timer;
@@ -121,11 +122,11 @@ function display_all_stations(){
     
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
-        rowDiv.setAttribute("class","row half_col round-border dashed-border bottom-10px");
+        rowDiv.setAttribute("class","row col_23 round-border smoke-bkg bottom-10px");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.style.float= "left";
-        rowDiv.style.height = "250px";
+        rowDiv.style.height = cardHeight;
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
         rowDiv.style.backgroundSize = "cover";*/
@@ -329,17 +330,18 @@ async function update_stations(){
             // console.log("keeping:",idx);
         }
         
+        /*probably adding a style= white-space: no-wrap
+            and hidding the CSSContainerRule, overflow:hidden
         let auxTitle = gotData.song;
         if (auxTitle.length > 24){
             auxTitle = auxTitle.substring(0,22) + "...";
-            /*probably adding a style= white-space: no-wrap
-            and hidding the CSSContainerRule, overflow:hidden*/
         }
-        let auxArtist = gotData/*.nowPlaying*/.artist;
+        let auxArtist = gotData.artist;
         if ( auxArtist.length > 24 && idx < no_id3 ){
-            auxArtist= auxArtist.substring(0,21)+"...";}
-        this_artist.innerHTML = "<span class='headLabel'>" + auxTitle +
-        "</span><span class='small'>" + auxArtist + "</span>" + auxLink;
+            auxArtist= auxArtist.substring(0,21)+"...";}*/
+        
+        this_artist.innerHTML = "<span class='headLabel oneLine'>" + gotData.song +
+        "</span><span class='oneLine'>" + gotData.artist + "</span>" + auxLink;
 
         /*Update artwork of station by artist
         auxLink = stations[idx].logo;

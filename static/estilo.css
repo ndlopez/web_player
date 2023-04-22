@@ -36,7 +36,10 @@ kbd {
   display: grid;
   place-items: center;
 }
-.bottom-10px{margin-bottom: 10px;}
+.bottom-10px{
+  margin-bottom: 10px;
+  margin-right: 8px;
+}
 .smoke-bkg{
   background-color: var(--dark-smoke);
 }
@@ -171,6 +174,7 @@ span{
   display: grid;
   place-items: center;
 }
+.col_23{width:23.5%;}
 .col_50, .col2, .col_half{width: 50%;}
 .col_40{width: 40%;}
 .col_20{width: 10%;}
@@ -226,6 +230,12 @@ span{
 .headLabel{
   color: var(--lemon);
   font-weight: bold;
+}
+.oneLine{
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
@@ -331,7 +341,7 @@ span{
   float: left;
   white-space: nowrap;
 }
-#artwork .smoke-bkg{height: 200px;}
+/*#artwork .smoke-bkg{height: 200px;}*/
 @media (max-width: 700px) {
   body{font-size: small;}
   #amia{height: 105vh;}
