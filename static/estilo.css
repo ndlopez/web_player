@@ -74,6 +74,7 @@ kbd {
   border: none;
 }
 #music{padding-top: 50px;}
+
 /* Bottom menu and player*/
 #currSong, #vol_input, .closeBtn, #list-icon, #listIcon{display: none;}
 #player, #player2{
@@ -241,8 +242,9 @@ span{
 *{box-sizing: border-box;}
 .bkg_cd_case{
   background: no-repeat url("../assets/cd_case.svg");
-  background-size: 320px;
+  background-size: 300px;
   background-position-x: center;
+  background-color: var(--dark-smoke);
 }
 #nowPlaying{
   background-position-y: bottom;
@@ -254,9 +256,10 @@ span{
 .bkg_cd_icon{
   height: 280px;
   background: no-repeat url("../assets/CD_icon.svg");
-  background-position-x: right;
+  /*background-position-x: right;*/
+  margin-left: 20px;
 }
-#coverCD img{margin-left: 25px;}
+#coverCD img{/*margin-left: 25px;*/margin-top: -10px;}
 #coverCD{
   background-size:280px;
   display: grid;

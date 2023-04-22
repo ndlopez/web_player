@@ -277,7 +277,7 @@ function build_case(jdx, artist, song, album, artwork){
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'> <img src='assets/duck.svg' width='36'/></a>";
     }
     const this_html = "<div class='bkg_cd_icon' id='coverCD'><a href='" + stations[jdx].site + 
-    "'><img src='" + artwork + "' width='260'/></a></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
+    "'><img src='" + artwork + "' width='248'/></a></div><div class='smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
     song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
     album + search_link + "</h2></div>";
     const up_time = document.getElementById("update_time");
