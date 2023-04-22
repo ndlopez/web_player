@@ -118,14 +118,21 @@ const updateTime = 185000 //ms
 init_this();
 
 function display_all_stations(){
-    const mainDiv = document.getElementById("amia");
+    const containDiv = document.getElementById("amia");
+    //const outerDiv = document.createElement("div");
+    //outerDiv.setAttribute("class","outer_div");
+    //const innerDiv = document.createElement("div");
+    //innerDiv.setAttribute("class","inner_div")
+    const mainDiv = document.createElement("div");
+    mainDiv.setAttribute("class","outer_div");
     
     for(let idx = 0; idx < stations.length; idx++){
         const rowDiv = document.createElement("div");
-        rowDiv.setAttribute("class","row col_23 round-border smoke-bkg bottom-10px");
+        rowDiv.setAttribute("class","row round-border smoke-bkg bottom-10px card");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.style.float= "left";
+        
         rowDiv.style.height = cardHeight;
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
@@ -138,6 +145,9 @@ function display_all_stations(){
         //<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
     }
+    //innerDiv.appendChild();
+    //outerDiv.appendChild(mainDiv);
+    containDiv.appendChild(mainDiv);
 }
 
 function init_this(){

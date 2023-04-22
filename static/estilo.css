@@ -244,7 +244,6 @@ span{
   background: no-repeat url("../assets/cd_case.svg");
   background-size: 300px;
   background-position-x: center;
-  background-color: var(--dark-smoke);
 }
 #nowPlaying{
   background-position-y: bottom;
@@ -344,10 +343,32 @@ span{
   float: left;
   white-space: nowrap;
 }
+.outer_div{
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: hidden;
+}
+.card{
+  max-width: 23.5%;
+  flex-basis: 23.5%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
 /*#artwork .smoke-bkg{height: 200px;}*/
 @media (max-width: 700px) {
   body{font-size: small;}
-  #amia{height: 105vh;}
+  .outer_div{
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  .card{
+    max-width: 50%;
+    flex-basis: 50%;
+  }
   #now_song, #artwork, .no_mobil {display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
@@ -381,10 +402,10 @@ span{
   }
   
   /*.bottomText h2{line-height: normal;}*/
-  .colImg img{
+  /*.colImg img{
     width: 64px;
     height: 64px;
-  }
+  }*/
   .colImg{padding: 10px 5px;}
   .colArtist{padding: 5px;}
   #playList{
@@ -403,7 +424,9 @@ span{
    
   .col_50{width: 80%;}
   .col_20{width: 20%;}
-  .col2{width: 100%;}
+  .col2, #amia, #artwork{width: 100%;}
+  
+  .col_23{width: 50%;}
   #listIcon{display: block;}
   #list-icon{
     height: 28px;
