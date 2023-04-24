@@ -107,22 +107,19 @@ const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" w
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 // emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
+const updateTime = 185000 //ms
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let img_size = 125; //80
 let cardHeight = "250px";
 let audioConnect = new Audio();
 let isPlaying;
 let tina_timer;
-const updateTime = 185000 //ms
 
 init_this();
 
 function display_all_stations(){
+    /* Build one card for each station*/
     const containDiv = document.getElementById("amia");
-    //const outerDiv = document.createElement("div");
-    //outerDiv.setAttribute("class","outer_div");
-    //const innerDiv = document.createElement("div");
-    //innerDiv.setAttribute("class","inner_div")
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","outer_div");
     
@@ -145,14 +142,12 @@ function display_all_stations(){
         //<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
         mainDiv.appendChild(rowDiv);
     }
-    //innerDiv.appendChild();
-    //outerDiv.appendChild(mainDiv);
     containDiv.appendChild(mainDiv);
 }
 
 function init_this(){
     display_all_stations();
-    //build_case("Phantogram","You don't get me high anymore","","");
+    //build_case(0,"Phantogram","You don't get me high anymore","","",".png");
     /*for (let idx = 0; idx < stations.length; idx++) {
         display_data(idx);
     }*/

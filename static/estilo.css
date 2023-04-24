@@ -357,7 +357,7 @@ span{
   flex-shrink: 0;
 }
 .cardTitle{margin-right: 10px;}
-/*#artwork .smoke-bkg{height: 200px;}*/
+
 @media (max-width: 700px) {
   body{font-size: small;}
   .outer_div{
