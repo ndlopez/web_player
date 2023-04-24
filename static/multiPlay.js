@@ -83,6 +83,14 @@ const stations = [
         description: "Panamericana - La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true]
+    },{
+        name: "Phantogram",
+        logo: "assets/phantogram.jpg",
+        stream_url: "Three",
+        id3_info: "You don't get me high anymore",
+        description: "",
+        site: "",
+        xtra_info: ["","English",128,false]
     }
 ];
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
@@ -123,7 +131,7 @@ function display_all_stations(){
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","outer_div");
     
-    for(let idx = 0; idx < stations.length; idx++){
+    for(let idx = 0; idx < (stations.length -1); idx++){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row round-border smoke-bkg bottom-10px card");
         rowDiv.setAttribute("id","station_"+idx);
@@ -147,10 +155,8 @@ function display_all_stations(){
 
 function init_this(){
     display_all_stations();
-    //build_case(0,"Phantogram","You don't get me high anymore","","",".png");
-    /*for (let idx = 0; idx < stations.length; idx++) {
-        display_data(idx);
-    }*/
+    //build_case(stations.length,stations.name,stations.id3_info,stations.stream_url,stations.logo);
+    /*for (let idx=0;idx<stations.length;idx++) {display_data(idx);}*/
     update_stations();
 }
 
@@ -307,7 +313,7 @@ function sleepy(){
 async function update_stations(){
     var gotData = "", auxLink = "";
 
-    for(let idx = 0; idx < stations.length; idx++){
+    for(let idx = 0; idx < (stations.length -1); idx++){
         gotData = {
             artist: stations[idx].xtra_info[0],song: stations[idx].name};
             /*nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
