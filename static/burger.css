@@ -100,3 +100,18 @@
         border-bottom: 1px solod var(--wine);
     }
 }
+/*@media(prefers-reduced-motion: no-preference){
+  .moving-text{animation: marque 20s linear infinite;}
+}
+@media (prefers-color-scheme: light){
+  body{
+    color:var(--smoke);
+    background: var(--light-sky);
+  }
+}
+@media (prefers-color-scheme:dark){
+  body{
+    color: var(--light-sky);
+    background: var(--smoke);
+  }
+}*/
