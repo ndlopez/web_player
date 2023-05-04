@@ -56,7 +56,7 @@ const stations = [
         logo:"assets/classicalMusic.jpg",
         stream_url:"https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069",
         id3_info:"https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600",
-        description:"Often characterized by formality and complexity in its musical form and harmonic organization, particularly with the use of polyphony",
+        description:"Classical Music - characterized by formality and complexity in its musical form and harmonic organization, particularly with the use of polyphony.",
         site:"",
         xtra_info:["Classical","English",128,true]
     },{
