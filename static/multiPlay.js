@@ -16,7 +16,7 @@ const stations = [
         logo: "assets/fmlapaz_logo.png",
         stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
-        description: "LaPaz.fm - Mas m\u00FAsica menos palabras. M\u00FAsica adulto contemporanea.",
+        description: "LaPaz.fm - Mas m\u00FAsica menos palabras. La radio hecha a tu medida.",
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true]
     },{
@@ -40,7 +40,7 @@ const stations = [
         logo: "assets/90s_alt.jpg",
         stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
-        description: "Listen to the best Alternative-Rock hits of the 1990s",
+        description: "Listen to the best Alternative-Rock hits of the 90s",
         site: "",
         xtra_info: [" - 90's Alternative","English",128,true]
     },{
@@ -117,8 +117,8 @@ const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0af
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
-let cardHeight = "250px";
-let img_size = 148; //card Image size
+let cardHeight = "260px";
+let img_size = 100; //card Image size
 
 let audioConnect = new Audio();
 let isPlaying;
@@ -144,8 +144,8 @@ function display_all_stations(){
         rowDiv.style.backgroundRepeat = "no-repeat";
         rowDiv.style.backgroundSize = "cover";*/
         /*colImg:class=float_left    colArtist:class=float_left*/
-        rowDiv.innerHTML = "<div class='colImg' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "' height='" + img_size +
-        "'/></div><div class='colArtist' id='artistDiv_" + idx + "'>" + 
+        rowDiv.innerHTML = "<div class='colImg' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "%' height='" + img_size +
+        "%'/></div><div class='colArtist' id='artistDiv_" + idx + "'>" + 
         /*"<span>"+stations[idx].name + "</span>"+*/"</div>";
         /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";*/
         //<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
