@@ -56,7 +56,7 @@ const stations = [
         logo:"assets/classicalMusic.jpg",
         stream_url:"https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069",
         id3_info:"https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600",
-        description:"Classical music",
+        description:"Often characterized by formality and complexity in its musical form and harmonic organization, particularly with the use of polyphony",
         site:"",
         xtra_info:["Classical","English",128,true]
     },{
@@ -117,8 +117,9 @@ const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0af
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
-let img_size = 125; //80
-let cardHeight = "250px";
+let cardHeight = "270px";
+let img_size = 148; //card Image size
+
 let audioConnect = new Audio();
 let isPlaying;
 let tina_timer;

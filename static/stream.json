@@ -10,6 +10,14 @@
     "id3_info": "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600",
     "stream_url": "https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069"
 },{
+"name": "Radio.de 90er",
+"logo":"",
+"stream_url":"https://www.radio.de/_next/data/GOBFXdM8u3ezLy-UNiSTB/de-DE/s/90er.json?slug=90er",
+"id3_info":"https://prod.radio-api.net/stations/now-playing?stationIds=90er",
+"description": "Der best 90er",
+"site":"",
+"xtra_info":["Top 40s","Deutsch",128,true]
+},{
     "name": "Drawing with words",
     "logo": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
     "stream_url":"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",

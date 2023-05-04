@@ -255,10 +255,10 @@ span{
 .bkg_cd_icon{
   height: 280px;
   background: no-repeat url("../assets/CD_icon.svg");
-  /*background-position-x: right;*/
-  margin-left: 20px;
+  margin-left: 28px;
+  margin-top: -5px;
 }
-#coverCD img{/*margin-left: 25px;*/margin-top: -10px;}
+#coverCD img{margin-top: -15px;}
 #coverCD{
   background-size:280px;
   display: grid;
