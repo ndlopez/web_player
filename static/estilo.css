@@ -371,7 +371,7 @@ span{
   }
   #coverCD img{margin-left: -30px;}
   .bkg_cd_icon{margin-left: 55px;}
-  #now_song, .no_mobil {display: none;}/*#artwork,*/
+  #now_song, .cardTitle,.no_mobil {display: none;}/*#artwork,*/
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
     background-position-x: right;*/
@@ -405,7 +405,7 @@ span{
   
   /*.bottomText h2{line-height: normal;}*/
   /*.colImg img{width: 64px;height: 64px;}*/
-  .colImg{padding: 10px 5px;}
+  .colImg{padding: 0px 5px;}
   .colArtist{padding: 5px;}
   #playList{
     display: none;
@@ -414,7 +414,7 @@ span{
     height: 90vh;
   }
   .equalizer{width: 50px;}
-  .equalizer span:nth-child(5) {
+  .equalizer span:nth-child(4), .equalizer span:nth-child(5){
     animation: none;
     display: none;
   }

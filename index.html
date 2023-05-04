@@ -33,16 +33,14 @@
     </nav>
     
     <main>
-      <section class="col70 float_left padding_10" id="amia"></section>
       <section class="col30 float_left bkg_cd_case" id="artwork"></section>
-      
+      <section class="col70 float_left padding_10" id="amia"></section>      
     </main>
     <aside id="player2">
       <div class="col15 float_left" id="cover_art">
         <img src="assets/phantogram.jpg" width="60" height="60"/></div>
       <div class="col70 float_left">
         <div id="cover_title" class="col_50 float_left" onclick="openNav()">
-          <!---->
           <span>You don't get me high anymore</span><span>Phantogram</span></div>
         <div class="col_20 float_left">
           <svg id="play2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
@@ -51,12 +49,12 @@
         </div>
       </div>
       <div class="col15 float_left">
-        <div class="col_half float_left padding_10">
+        <div class="col_half float_left padding_10 no_mobil">
           <label for="vol_input" onclick="volume_mute(0)">
             <img id="vol_icon" src="assets/volume-svgrepo.svg" width="32"/></label>
             <input id="vol_input" class="volume-vertical" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
         </div>
-        <div class="col_half float_left no_mobil">
+        <div class="col_half float_left">
           <div id="gifElm" class="equalizer no-audio">
             <div><span></span><span></span><span></span><span></span>
               <span></span><!--span></span--></div></div>
@@ -65,7 +63,7 @@
     </aside>
     <aside id="stationInfo">
       <span class="col15 float_left" id="timer">00:00</span>
-      <div class="col70 float_left"> <span id="title_stat" class="moving-text">♪ Click on any station from the list and <em>start</em> streaming LIVE</span></div>
+      <div class="col70 float_left"> <span id="title_stat" class="moving-text">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div>
       <span class="col15 float_left align-right">LIVE&emsp;</span>
     </aside>
 
