@@ -1,4 +1,5 @@
 /*
+    https://www.panamericana.bo/media/radiopanamerica/images/2021/01/01/2021010100000073897.png
     check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
     https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
     const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
@@ -21,7 +22,7 @@ const stations = [
         xtra_info: ["Adult Contemporary","English",128,true]
     },{
         name: "La n\u00FAmero uno",
-        logo: "https://www.stereo97.fm/templates/rt_antares/custom/images/logo/Logo-transparente-website.png?5fa9ad5b",
+        logo: "assets/stereo97.jpg",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
         description: "Stereo97 - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
@@ -61,7 +62,7 @@ const stations = [
         xtra_info:["Classical","English",128,true]
     },{
         name:"Third Rock Radio",
-        logo: "assets/thirdRock_logo.png",
+        logo: "assets/thirdRockRadio.jpg",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
         id3_info: "",
         description: "Explore and discover new worlds of music with NASA's Radio.",
@@ -76,11 +77,11 @@ const stations = [
         site: "",
         xtra_info: ["Classical","English",128,true]
     },{
-        name: "En vivo",
-        logo: "https://www.panamericana.bo/media/radiopanamerica/images/2021/01/01/2021010100000073897.png",
+        name: "Panamericana",
+        logo: "assets/pana148.png",
         stream_url: "https://stream-28.zeno.fm/pnwpbyfambruv?zs=7zM3ROeGQVmyOAzN9Khz5A",
         id3_info: "",
-        description: "Panamericana - La radio que todos tienen encendida desde la ma\u00f1ana.",
+        description: "- La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true]
     },{
