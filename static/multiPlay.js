@@ -81,7 +81,7 @@ const stations = [
         logo: "assets/pana148.png",
         stream_url: "https://stream-28.zeno.fm/pnwpbyfambruv?zs=7zM3ROeGQVmyOAzN9Khz5A",
         id3_info: "",
-        description: "- La radio que todos tienen encendida desde la ma\u00f1ana.",
+        description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true]
     },{

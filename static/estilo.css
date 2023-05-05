@@ -175,6 +175,8 @@ span{
   display: grid;
   place-items: center;
 }
+#artwork{margin-top: 20px;}
+
 .col_23{width:23.5%;}
 .col_50, .col2, .col_half{width: 50%;}
 .col_40{width: 40%;}
@@ -427,7 +429,7 @@ span{
   .col_50{width: 80%;}
   .col_20{width: 20%;}
   .col2, #amia, #artwork{width: 100%;}
-  
+  #artwork{margin-top: 0px;}
   .col_23{width: 50%;}
   #listIcon{display: block;}
   #list-icon{
