@@ -260,6 +260,7 @@ span{
 .bkg_cd_icon{
   height: 280px;
   background: no-repeat url("../assets/CD_icon.svg");
+  background-position-x: center;
   margin-left: 28px;
   margin-top: -5px;
 }
