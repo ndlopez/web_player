@@ -118,7 +118,7 @@ const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0af
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
-let cardHeight = "260px";
+let cardHeight = "auto";
 let img_size = 100; //card Image size
 
 let audioConnect = new Audio();

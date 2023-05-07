@@ -372,7 +372,7 @@ span{
     flex-wrap: nowrap;
   }
   .card{
-    max-width: 48%;
+    max-width: 45%;
     flex-basis: 45%;
   }
   #coverCD img{margin-left: -30px;}
