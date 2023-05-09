@@ -282,14 +282,20 @@ function stop_timer(){
 function build_case(jdx, artist, song, album, artwork){
     const timeNow = new Date();
     let search_link = "";
+    let aux_link = "";
     if( typeof album === 'undefined'){ album = artist;}
     if(jdx < no_id3){
         search_link = "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 
     artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
     song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
     "&t=ffcm&atb=v319-1&ia=web' target='_blank'> <img src='assets/duck.svg' width='36'/></a>";
-    }
-    const this_html = "<div class='bkg_cd_icon' id='coverCD'><a href='" + stations[jdx].site + 
+        aux_link = "https://duckduckgo.com/?q=" + artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
+    song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
+    "&t=ffcm&atb=v319-1&ia=web' target='_blank";
+    }else{ aux_link = stations[jdx].site;}
+
+    const this_html = "<div class='bkg_cd_icon' id='coverCD'>" + 
+    "<a title='Click for more info' href='" + aux_link + 
     "'><img src='" + artwork + "' width='248'/></a></div><div class='cardTitle smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
     song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
     album + search_link + "</h2></div>";
