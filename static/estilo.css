@@ -76,7 +76,7 @@ kbd {
 #music{padding-top: 50px;}
 
 /* Bottom menu and player*/
-#currSong, #vol_input, .closeBtn, #list-icon, #listIcon{display: none;}
+#currSong, .closeBtn, #list-icon, #listIcon{display: none;}
 #player, #player2{
   display: block;
   position: fixed;
