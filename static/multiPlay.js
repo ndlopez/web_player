@@ -9,7 +9,7 @@
     80s: "assets/181fm_logo.png"
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
 */
-const no_id3 = 6; //@stations, from this index no requests
+const no_id3 = 8; //@stations, from this index no requests
 
 const stations = [
     {
@@ -52,6 +52,22 @@ const stations = [
         description: "Listen to the best Alternative-Rock hits",
         site: "",
         xtra_info: [" - Alternative-Rock","English",128,true]
+    },{
+        name: "Mellow Gold",
+        logo: "assets/alt-rock.jpg",
+        stream_url: "https://listen.181fm.com/181-mellow_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683720203",
+        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-mellow_128k.mp3&https=&f=ice&c=202036",
+        description: "Listen to the best mellow hits",
+        site: "",
+        xtra_info: [" - Relaxing","English",128,true]
+    },{
+        name: "Good Time Oldies",
+        logo: "assets/alt-rock.jpg",
+        stream_url: "https://listen.181fm.com/181-goodtime_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683722389",
+        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-goodtime_128k.mp3&https=&f=ice&c=223878",
+        description: "Listen to the best of the 50's and 60's hits",
+        site: "",
+        xtra_info: [" - 50's and 60's","English",128,true]
     },{
         name:"181.fm",
         logo:"assets/classicalMusic.jpg",
