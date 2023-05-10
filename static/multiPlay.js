@@ -54,7 +54,7 @@ const stations = [
         xtra_info: [" - Alternative-Rock","English",128,true]
     },{
         name: "Mellow Gold",
-        logo: "assets/alt-rock.jpg",
+        logo: "assets/meditate.png",
         stream_url: "https://listen.181fm.com/181-mellow_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683720203",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-mellow_128k.mp3&https=&f=ice&c=202036",
         description: "Listen to the best mellow hits",
@@ -62,7 +62,7 @@ const stations = [
         xtra_info: [" - Relaxing","English",128,true]
     },{
         name: "Good Time Oldies",
-        logo: "assets/alt-rock.jpg",
+        logo: "assets/rockola.jpg",
         stream_url: "https://listen.181fm.com/181-goodtime_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683722389",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-goodtime_128k.mp3&https=&f=ice&c=223878",
         description: "Listen to the best of the 50's and 60's hits",
