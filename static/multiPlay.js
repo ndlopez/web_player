@@ -29,13 +29,13 @@ const stations = [
         site: "",
         xtra_info: ["La n\u00FAmero uno", "Spanish",128,true]
     },{
-        name: "181.fm",
-        logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
-        stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
-        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
-        description: "Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
+        name: "The Buzz",
+        logo: "assets/alt-rock.jpg",
+        stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
+        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
+        description: "Listen to the best Alternative-Rock hits",
         site: "",
-        xtra_info: [" - Awesome 80's","English",128,true]
+        xtra_info: [" - Alternative-Rock","English",128,true]
     },{
         name: "181.fm",
         logo: "assets/90s_alt.jpg",
@@ -45,13 +45,13 @@ const stations = [
         site: "",
         xtra_info: [" - 90's Alternative","English",128,true]
     },{
-        name: "The Buzz",
-        logo: "assets/alt-rock.jpg",
-        stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
-        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
-        description: "Listen to the best Alternative-Rock hits",
+        name: "181.fm",
+        logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
+        stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
+        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
+        description: "Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         site: "",
-        xtra_info: [" - Alternative-Rock","English",128,true]
+        xtra_info: [" - Awesome 80's","English",128,true]
     },{
         name: "Mellow Gold",
         logo: "assets/meditate.png",
