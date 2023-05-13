@@ -372,8 +372,8 @@ span{
     flex-wrap: nowrap;
   }
   .card{
-    max-width: 45%;
-    flex-basis: 45%;
+    max-width: 43%;
+    flex-basis: 43%;
   }
   #coverCD img{margin-left: -30px;}
   .bkg_cd_icon{margin-left: 55px;}
