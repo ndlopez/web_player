@@ -43,7 +43,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best Alternative-Rock hits of the 90s",
         site: "",
-        xtra_info: [" - 90's Alternative","English",128,true,"#be4039"]
+        xtra_info: [" - 90's Alternative","English",128,true,"rgb(119,24,19)"]
     },{
         name: "181.fm",
         logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
@@ -51,7 +51,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         site: "",
-        xtra_info: [" - Awesome 80's","English",128,true,"#54a442"]
+        xtra_info: [" - Awesome 80's","English",128,true,"#03712c"]
     },{
         name: "Mellow Gold",
         logo: "assets/meditate.png",
@@ -59,7 +59,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-mellow_128k.mp3&https=&f=ice&c=202036",
         description: "Listen to the best mellow hits",
         site: "",
-        xtra_info: [" - Relaxing","English",128,true,"#022839"]
+        xtra_info: [" - Relaxing","English",128,true,"#073642"]
     },{
         name: "Good Time Oldies",
         logo: "assets/rockola.jpg",
@@ -67,7 +67,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-goodtime_128k.mp3&https=&f=ice&c=223878",
         description: "Listen to the best of the 50's and 60's hits",
         site: "",
-        xtra_info: [" - 50's and 60's","English",128,true,"#ffffff"]
+        xtra_info: [" - 50's and 60's","English",128,true,"#073642"]
     },{
         name:"181.fm",
         logo:"assets/classicalMusic.jpg",
@@ -91,7 +91,7 @@ const stations = [
         id3_info: "",
         description: "Classic One - Your radio station for the very best Classical and Piano Greats!",
         site: "",
-        xtra_info: ["Classical","English",128,true,"#b98f39"]
+        xtra_info: ["Classical","English",128,true,"rgb(98,69,11)"]
     },{
         name: "Panamericana",
         logo: "assets/pana148.png",
@@ -99,7 +99,7 @@ const stations = [
         id3_info: "",
         description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#009423"]
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#073642"]
     },{
         name: "Phantogram",
         logo: "assets/phantogram.jpg",

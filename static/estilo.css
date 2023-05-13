@@ -185,7 +185,7 @@ span{
 .col_artist{background-color: var(--dark-smoke);}
 .colArtist{
   /*width: 65%;5px 10px*/
-  padding: 5px 0px;}
+  padding: 0px;}
 .colImg{
   width: 100%;/*20%*/
   padding: 7px;
