@@ -19,7 +19,7 @@ const stations = [
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
         description: "LaPaz.fm - Mas m\u00FAsica menos palabras. La radio hecha a tu medida.",
         site: "fmlapaz.html",
-        xtra_info: ["Adult Contemporary","English",128,true]
+        xtra_info: ["Adult Contemporary","English",128,true,"#183a67"]
     },{
         name: "La n\u00FAmero uno",
         logo: "assets/stereo97.jpg",
@@ -27,7 +27,7 @@ const stations = [
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
         description: "Stereo97 - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
         site: "",
-        xtra_info: ["La n\u00FAmero uno", "Spanish",128,true]
+        xtra_info: ["La n\u00FAmero uno", "Spanish",128,true,"#140000"]
     },{
         name: "The Buzz",
         logo: "assets/alt-rock.jpg",
@@ -35,7 +35,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
         description: "Listen to the best Alternative-Rock hits",
         site: "",
-        xtra_info: [" - Alternative-Rock","English",128,true]
+        xtra_info: [" - Alternative-Rock","English",128,true,"#51738f"]
     },{
         name: "181.fm",
         logo: "assets/90s_alt.jpg",
@@ -43,7 +43,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best Alternative-Rock hits of the 90s",
         site: "",
-        xtra_info: [" - 90's Alternative","English",128,true]
+        xtra_info: [" - 90's Alternative","English",128,true,"#be4039"]
     },{
         name: "181.fm",
         logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
@@ -51,7 +51,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         site: "",
-        xtra_info: [" - Awesome 80's","English",128,true]
+        xtra_info: [" - Awesome 80's","English",128,true,"#54a442"]
     },{
         name: "Mellow Gold",
         logo: "assets/meditate.png",
@@ -59,7 +59,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-mellow_128k.mp3&https=&f=ice&c=202036",
         description: "Listen to the best mellow hits",
         site: "",
-        xtra_info: [" - Relaxing","English",128,true]
+        xtra_info: [" - Relaxing","English",128,true,"#022839"]
     },{
         name: "Good Time Oldies",
         logo: "assets/rockola.jpg",
@@ -67,7 +67,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-goodtime_128k.mp3&https=&f=ice&c=223878",
         description: "Listen to the best of the 50's and 60's hits",
         site: "",
-        xtra_info: [" - 50's and 60's","English",128,true]
+        xtra_info: [" - 50's and 60's","English",128,true,"#ffffff"]
     },{
         name:"181.fm",
         logo:"assets/classicalMusic.jpg",
@@ -75,7 +75,7 @@ const stations = [
         id3_info:"https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600",
         description:"Classical Music - characterized by formality and complexity in its musical form and harmonic organization.",
         site:"",
-        xtra_info:["Classical","English",128,true]
+        xtra_info:["Classical","English",128,true,"#000000"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRockRadio.jpg",
@@ -83,7 +83,7 @@ const stations = [
         id3_info: "",
         description: "Explore and discover new worlds of music with NASA's Radio.",
         site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        xtra_info:["Alternative-Rock","English",196,false]
+        xtra_info:["Alternative-Rock","English",196,false,"#1363a2"]
     },{
         name: "113.fm",
         logo: "assets/113fm_classicone_1008.jpg",
@@ -91,7 +91,7 @@ const stations = [
         id3_info: "",
         description: "Classic One - Your radio station for the very best Classical and Piano Greats!",
         site: "",
-        xtra_info: ["Classical","English",128,true]
+        xtra_info: ["Classical","English",128,true,"#b98f39"]
     },{
         name: "Panamericana",
         logo: "assets/pana148.png",
@@ -99,7 +99,7 @@ const stations = [
         id3_info: "",
         description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true]
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#009423"]
     },{
         name: "Phantogram",
         logo: "assets/phantogram.jpg",
@@ -151,11 +151,11 @@ function display_all_stations(){
     
     for(let idx = 0; idx < (stations.length -1); idx++){
         const rowDiv = document.createElement("div");
-        rowDiv.setAttribute("class","row round-border smoke-bkg bottom-10px card");
+        rowDiv.setAttribute("class","row round-border bottom-10px card");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.style.float= "left";
-        
+        rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
         rowDiv.style.height = cardHeight;
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
