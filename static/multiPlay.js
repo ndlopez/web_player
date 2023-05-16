@@ -101,6 +101,15 @@ const stations = [
         site: "",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#073642"]
     },{
+        
+        name: "Radio Fides",
+        logo: "assets/pana148.png",
+        stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
+        id3_info: "",
+        description: "Fides, su voz amiga, en sintonia nacional, radio Fides ahh....",
+        site: "",
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#073642"] 
+    },{
         name: "Phantogram",
         logo: "assets/phantogram.jpg",
         stream_url: "Three",

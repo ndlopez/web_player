@@ -25,6 +25,13 @@
     "description":"is a non-commercial, independent, listener-supported station broadcasting from North Carolina.",
     "xtra_info":["Classical","English",128,false]
 },{
+    "name":"Mundial fm",
+    "stream_url":"https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream"
+},{
+    "name":"Radio Fides",
+    "stream_url":"https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
+    "description":"Fides, su voz amiga, Fides ahh..."
+},{
     "name": "Drawing with words",
     "logo": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
     "stream_url":"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",
