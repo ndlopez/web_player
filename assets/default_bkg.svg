@@ -16,20 +16,19 @@
      * fill property, the color property is for HTML only */
     .Rrrrr {
       font: italic 40px comic-sans;
-      fill: red;
+      fill: #df443a;
     }
     ]]>
   </style>
   
   <!--text x="2" y="55" class="small">su voz amiga</text-->
+  <text x="10" y="25" class="heavy">radio</text>
+  <text x="75" y="80" class="Rrrrr">fides</text>
   <text x="45" y="150" class="heavy">online</text>
-  <text x="15" y="25" class="heavy">radio</text>
-  <text x="45" y="50" class="Rrrrr">fides</text>
-
-  <path id="my_path" d="M 10 75 Q 50 10 100 75 T 190 75" stroke="black"
+  <path id="my_path" d="M 10 75 Q 50 10 100 75 T 190 75" stroke="transparent"
     stroke-linecap="round" stroke-dasharray="5,10,5" fill="transparent"/>
     <text fill="black"><textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#my_path">
-    su voz amiga, en sintonia nacional</textPath></text>
-  <path d="M 10 75 L 190 75" stroke="red"
+    su voz amiga, en sintonia nacional, con el placer de su compania...</textPath></text>
+  <path d="M 10 150 L 190 150" stroke="red"
     stroke-linecap="round" stroke-width="1" stroke-dasharray="5,5" fill="none"/>
 </svg>
