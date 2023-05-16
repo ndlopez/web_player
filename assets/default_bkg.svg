@@ -1,0 +1,35 @@
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+  <style>
+    <![CDATA[
+    /*text{
+        fill:#ff9800;
+    }*/
+    path{fill:transparent;}
+    .small {
+      font: italic 13px Verdana, Helvetica, Arial, sans-serif;
+    }
+    .heavy {
+      font: bold 30px Georgia;
+    }
+
+    /* Note that the color of the text is set with the    *
+     * fill property, the color property is for HTML only */
+    .Rrrrr {
+      font: italic 40px comic-sans;
+      fill: red;
+    }
+    ]]>
+  </style>
+  
+  <!--text x="2" y="55" class="small">su voz amiga</text-->
+  <text x="45" y="150" class="heavy">online</text>
+  <text x="15" y="25" class="heavy">radio</text>
+  <text x="45" y="50" class="Rrrrr">fides</text>
+
+  <path id="my_path" d="M 10 75 Q 50 10 100 75 T 190 75" stroke="black"
+    stroke-linecap="round" stroke-dasharray="5,10,5" fill="transparent"/>
+    <text fill="black"><textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#my_path">
+    su voz amiga, en sintonia nacional</textPath></text>
+  <path d="M 10 75 L 190 75" stroke="red"
+    stroke-linecap="round" stroke-width="1" stroke-dasharray="5,5" fill="none"/>
+</svg>
