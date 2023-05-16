@@ -105,9 +105,9 @@ const stations = [
         logo: "assets/default_bkg.svg",
         stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
         id3_info: "",
-        description: "su voz amiga, en sintonia nacional, con el placer de su compa\u00f1ia...",
+        description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
         site: "",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#008700"] 
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#073642"] 
     },{
         name: "Phantogram",
         logo: "assets/phantogram.jpg",
