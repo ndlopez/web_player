@@ -54,7 +54,7 @@ const stations = [
         xtra_info: [" - Awesome 80's","English",128,true,"#03712c"]
     },{
         name: "Mellow Gold",
-        logo: "assets/meditate.png",
+        logo: "assets/default_bkg.svg",
         stream_url: "https://listen.181fm.com/181-mellow_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683720203",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-mellow_128k.mp3&https=&f=ice&c=202036",
         description: "Listen to the best mellow hits",
