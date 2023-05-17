@@ -1,0 +1,41 @@
+<svg viewBox="0 0 450 450"
+     xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>
+    <![CDATA[
+    path{fill:transparent;}
+    .small {
+      font: italic 13px Verdana, Helvetica, Arial, sans-serif;
+    }
+    .heavy {
+      font: bold 30px Georgia;
+      fill: #008700;
+    }
+    .Rrrrr {
+      font: italic 40px Verdana, Helvetica, Arial, sans-serif;
+      fill: #df443a;
+    }
+    ]]>
+  </style>
+  <defs>
+    <path id="MyPath" d="M100,100 A40,40 0 0,0 350,350"/>
+    <path id="MyPath2" d="M100,100 A40,40 0 1,1 350,350"/>
+  </defs>
+
+  <use xlink:href="#MyPath" fill="none" stroke="none"  />
+  <use xlink:href="#MyPath2" fill="none" stroke="none"  />
+  <text font-family="Verdana" font-size="20" fill="red">
+    <textPath xlink:href="#MyPath">
+      y el diario ..., con el placer de su compania, radio fides
+    </textPath>
+    <textPath xlink:href="#MyPath2">
+      su voz amiga, a la hora de las noticias la buena musica 
+    </textPath>
+  </text>
+  <text x="150" y="100" class="heavy">radio</text>
+  <text x="200" y="220" class="Rrrrr">fides</text>
+  <text x="200" y="350" class="heavy">online</text>
+  <!-- Show outline of the viewport using 'rect' element -->
+  <!--rect x="1" y="1" width="450" height="450"
+        fill="none" stroke="white" stroke-width="2" /-->
+</svg>

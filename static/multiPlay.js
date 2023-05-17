@@ -102,7 +102,7 @@ const stations = [
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#073642"]
     },{
         name: "Radio Fides",
-        logo: "assets/default_bkg.svg",
+        logo: "assets/fides.svg",
         stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
         id3_info: "",
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
