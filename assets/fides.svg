@@ -8,34 +8,36 @@
       font: italic 13px Verdana, Helvetica, Arial, sans-serif;
     }
     .heavy {
-      font: bold 30px Georgia;
+      font: bold 40px Georgia;
       fill: #008700;
     }
-    .Rrrrr {
-      font: italic 40px Verdana, Helvetica, Arial, sans-serif;
+    .fides {
+      font: italic 60px Verdana, Helvetica, Arial, sans-serif;
       fill: #df443a;
     }
     ]]>
   </style>
   <defs>
-    <path id="MyPath" d="M100,100 A40,40 0 0,0 350,350"/>
-    <path id="MyPath2" d="M100,100 A40,40 0 1,1 350,350"/>
+    <!--path id="MyPath" d="M100,100 A40,40 0 0,0 350,350"/-->
+    <path id="bottomPath" d="M45,230 A40,40 0 0,0 405,220"/>
+    <path id="topPath" d="M50,225 A40,40 0 1,1 400,225"/>
+    <path id="path3" d="M 230 230
+           A 45 45, 0, 1, 1, 275 275
+           L 275 230 Z" fill="blue"/>
+    <path id="path4" d="M50 100 A 50 50 0 1 1 200 100"/>
   </defs>
 
-  <use xlink:href="#MyPath" fill="none" stroke="none"  />
-  <use xlink:href="#MyPath2" fill="none" stroke="none"  />
+  <use xlink:href="#topPath" fill="none" stroke="none" />
+  <use xlink:href="#bottomPath" fill="none" stroke="none" />
   <text font-family="Verdana" font-size="20" fill="red">
-    <textPath xlink:href="#MyPath">
+    <textPath xlink:href="#bottomPath">
       y el diario ..., con el placer de su compania, radio fides
     </textPath>
-    <textPath xlink:href="#MyPath2">
-      su voz amiga, a la hora de las noticias la buena musica 
+    <textPath xlink:href="#topPath">
+      su voz amiga a la hora de las noticias la buena musica 
     </textPath>
   </text>
   <text x="150" y="100" class="heavy">radio</text>
-  <text x="200" y="220" class="Rrrrr">fides</text>
+  <text x="200" y="220" class="fides">fides</text>
   <text x="200" y="350" class="heavy">online</text>
-  <!-- Show outline of the viewport using 'rect' element -->
-  <!--rect x="1" y="1" width="450" height="450"
-        fill="none" stroke="white" stroke-width="2" /-->
 </svg>

@@ -107,7 +107,7 @@ const stations = [
         id3_info: "",
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
         site: "",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#073642"] 
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"] 
     },{
         name: "Radio Mundial",
         logo: "assets/mundial.png",
