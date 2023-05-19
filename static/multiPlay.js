@@ -109,6 +109,14 @@ const stations = [
         site: "",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#073642"] 
     },{
+        name: "Radio Mundial",
+        logo: "assets/mundial.png",
+        stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
+        id3_info: "",
+        description: "puntual contigo",
+        site: "",
+        xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#073642"] 
+    },{
         name: "Phantogram",
         logo: "assets/phantogram.jpg",
         stream_url: "Three",
