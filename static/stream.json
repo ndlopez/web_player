@@ -25,16 +25,13 @@
     "description":"is a non-commercial, independent, listener-supported station broadcasting from North Carolina.",
     "xtra_info":["Classical","English",128,false]
 },{
-    "name":"Mundial fm",
-    "stream_url":"https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream"
-},{
-    "name":"Radio Fides",
-    "stream_url":"https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
-    "description":"Fides, su voz amiga, Fides ahh..."
-},{
-"name":"Melodia fm",
-"stream_url": "https://stream.consultoradas.com/8194/stream",
-"id3_info":"https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958"
+    "name": "Radio Mundial",
+    "logo": "assets/mundial.png",
+    "stream_url": "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
+    "id3_info": "",
+    "description": "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
+    "site": "",
+    "xtra_info": ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
 },{
     "name": "Drawing with words",
     "logo": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",

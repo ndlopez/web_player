@@ -5,7 +5,8 @@
     <![CDATA[
     path{fill:transparent;}
     .small {
-      font: italic 13px Verdana, Helvetica, Arial, sans-serif;
+      font: italic 25px Verdana, Helvetica, Arial, sans-serif;
+      fill: wheat;
     }
     .heavy {
       font: bold 40px Georgia;
@@ -29,7 +30,7 @@
 
   <use xlink:href="#topPath" fill="none" stroke="none" />
   <use xlink:href="#bottomPath" fill="none" stroke="none" />
-  <text font-family="Verdana" font-size="20" fill="red">
+  <text font-family="Verdana" font-size="20" fill="wheat">
     <textPath xlink:href="#bottomPath">
       y el diario ..., con el placer de su compania, radio fides
     </textPath>
@@ -38,6 +39,7 @@
     </textPath>
   </text>
   <text x="150" y="100" class="heavy">radio</text>
-  <text x="200" y="220" class="fides">fides</text>
+  <text x="200" y="200" class="fides">fides</text>
   <text x="200" y="350" class="heavy">online</text>
+  <text x="80" y="280" class="small">05:45~22:00 -04:00</text>
 </svg>

@@ -109,13 +109,13 @@ const stations = [
         site: "",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"] 
     },{
-        name: "Radio Mundial",
-        logo: "assets/mundial.png",
-        stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
-        id3_info: "",
-        description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
+        name: "Melodia",
+        logo: "assets/melodia.png",
+        stream_url: "https://stream.consultoradas.com/8194/stream",
+        id3_info: "https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958",
+        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina, con la magia y dintincion...",
         site: "",
-        xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
+        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"]
     },{
         name: "Phantogram",
         logo: "assets/phantogram.jpg",
