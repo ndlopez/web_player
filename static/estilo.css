@@ -317,9 +317,12 @@ span{
   width: 100%;
 }
 .info_block{
+  width: 100%;
   position: absolute;
-  bottom: 8px;
-  left: 6px;
+  bottom: 0px;
+  left: 0;
+  background-color: var(--smoke);
+  text-align: center;
 }
 .pos_rel{
   position: relative;

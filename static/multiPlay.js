@@ -177,7 +177,11 @@ function display_all_stations(){
         rowDiv.style.backgroundRepeat = "no-repeat";
         rowDiv.style.backgroundSize = "cover";*/
         /*colImg:class=float_left    colArtist:class=float_left*/
-        rowDiv.innerHTML = "<div class='colImg pos_rel' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "%' height='" + img_size + "%'/><div class='info_block'><span>"+stations[idx].name + "</span></div>" + 
+        let auxStr = "";
+        if( idx < no_id3 ){
+            auxStr = "<div class='info_block'><span class='small'>"+stations[idx].name + "</span></div>"
+        }
+        rowDiv.innerHTML = "<div class='colImg pos_rel' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "%' height='" + img_size + "%'/>" + auxStr +
         "</div><div class='colArtist' id='artistDiv_" + idx + "'>" + 
         /*"<span>"+stations[idx].name + "</span>"+*/"</div>";
         /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";*/
@@ -367,10 +371,9 @@ async function update_stations(){
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         
-        //auxLink = "<span class='small'>" + stations[idx].name + "</span>";
-        if( idx < no_id3 ){ 
-            auxLink = "<span class='small'>" + stations[idx].name + 
-            /*stations[idx].xtra_info[0] +*/ "</span>"; }
+        //auxLink = "<span class='small'>" + stations[idx].name + "</span>";/*stations[idx].xtra_info[0] +*/
+        /*if( idx < no_id3 ){
+            auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }*/
         if(isPlaying == idx){
             //auxLink = "";//img_size = 80;played.push(idx); 
             document.title = gotData.artist + "-" + gotData.song;
@@ -382,7 +385,8 @@ async function update_stations(){
         }
         
         this_artist.innerHTML = "<span class='headLabel oneLine'>" + gotData.song +
-        "</span><span class='oneLine'>" + gotData.artist + "</span>" + auxLink;
+        "</span><span class='oneLine'>" + gotData.artist + "</span>"; 
+        //+ auxLink;
 
         /*Update artwork of station by artist
         auxLink = stations[idx].logo;
