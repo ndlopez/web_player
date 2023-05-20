@@ -113,9 +113,9 @@ const stations = [
         logo: "assets/mundial.png",
         stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
         id3_info: "",
-        description: "puntual contigo",
+        description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
         site: "",
-        xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#073642"] 
+        xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
     },{
         name: "Phantogram",
         logo: "assets/phantogram.jpg",
