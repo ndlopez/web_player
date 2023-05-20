@@ -316,6 +316,14 @@ span{
   position: fixed;
   width: 100%;
 }
+.info_block{
+  position: absolute;
+  bottom: 8px;
+  left: 6px;
+}
+.pos_rel{
+  position: relative;
+}
 #station_info{bottom: 58px;}
 #stationInfo{bottom: 68px;}
 #stat_name h3{margin:0px;}

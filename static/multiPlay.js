@@ -177,8 +177,8 @@ function display_all_stations(){
         rowDiv.style.backgroundRepeat = "no-repeat";
         rowDiv.style.backgroundSize = "cover";*/
         /*colImg:class=float_left    colArtist:class=float_left*/
-        rowDiv.innerHTML = "<div class='colImg' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "%' height='" + img_size +
-        "%'/></div><div class='colArtist' id='artistDiv_" + idx + "'>" + 
+        rowDiv.innerHTML = "<div class='colImg pos_rel' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "%' height='" + img_size + "%'/><div class='info_block'><span>"+stations[idx].name + "</span></div>" + 
+        "</div><div class='colArtist' id='artistDiv_" + idx + "'>" + 
         /*"<span>"+stations[idx].name + "</span>"+*/"</div>";
         /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";*/
         //<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
