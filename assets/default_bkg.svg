@@ -1,36 +1,32 @@
-<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
   <style>
     <![CDATA[
     /*text{
         fill:#ff9800;
-    }*/
-    path{fill:transparent;}
+    }
     .small {
       font: italic 13px Verdana, Helvetica, Arial, sans-serif;
-    }
+    }*/
+    path{fill:transparent;}
     .heavy {
       font: bold 30px Georgia;
-      fill: #008700;
+      fill: wheat;
     }
-
-    /* Note that the color of the text is set with the    *
-     * fill property, the color property is for HTML only */
-    .Rrrrr {
+    .title {
       font: italic 40px Verdana, Helvetica, Arial, sans-serif;
       fill: #df443a;
     }
     ]]>
   </style>
   
-  <!--text x="2" y="55" class="small">su voz amiga</text-->
-  <text x="10" y="25" class="heavy">181.fm</text>
-  <text x="25" y="80" class="Rrrrr">mellow</text>
-  <text x="65" y="110" class="Rrrrr">gold</text>
+  <!--text x="10" y="25" class="heavy">181.fm</text-->
+  <text x="25" y="65" class="title">mellow</text>
+  <text x="75" y="100" class="title">gold</text>
   <text x="45" y="150" class="heavy">online</text>
-  <path id="my_path" d="M 10 75 Q 50 10 100 75 T 190 75" stroke="transparent"
+  <path id="my_path" d="M 8 75 Q 50 10 100 75 T 190 75" stroke="transparent"
     stroke-linecap="round" stroke-dasharray="5,10,5" fill="transparent"/>
     <text fill="wheat"><textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#my_path">
-    soft rock, ballads and more...
+    soft rock, ballads and more
     </textPath></text>
   <!--path d="M 10 150 L 190 150" stroke="red"
     stroke-linecap="round" stroke-width="1" stroke-dasharray="5,5" fill="none"/-->

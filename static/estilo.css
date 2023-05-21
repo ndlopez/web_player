@@ -375,7 +375,7 @@ span{
   flex-shrink: 0;
 }
 .cardTitle{margin-right: 10px;}
-
+.no_mobil {display: none;}
 @media (max-width: 700px) {
   body{font-size: small;}
   .outer_div{
