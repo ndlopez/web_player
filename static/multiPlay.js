@@ -62,7 +62,7 @@ const stations = [
         xtra_info: [" - Relaxing","English",128,true,"#073642"]
     },{
         name: "Good Time Oldies",
-        logo: "assets/rockola.jpg",
+        logo: "assets/rockola.png",
         stream_url: "https://listen.181fm.com/181-goodtime_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683722389",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-goodtime_128k.mp3&https=&f=ice&c=223878",
         description: "Dedicated to playing the best oldies music from the 50s, 60s, and 70s.",
