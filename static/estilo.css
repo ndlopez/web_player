@@ -319,9 +319,10 @@ span{
 .info_block{
   width: 100%;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   left: 0;
   background-color: var(--smoke);
+  opacity: 65%;
   text-align: center;
 }
 .pos_rel{
@@ -431,12 +432,10 @@ span{
     height: 90vh;
   }
   .equalizer{width: 50px;}
-  .equalizer span:nth-child(4), .equalizer span:nth-child(5){
+  .equalizer span:nth-child(5), .equalizer span:nth-child(6){
     animation: none;
     display: none;
   }
-  /*.equalizer span:nth-child(6) {
-    animation: none;display: none;}*/ 
    
   .col_50{width: 80%;}
   .col_20{width: 20%;}

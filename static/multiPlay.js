@@ -9,7 +9,7 @@
     80s: "assets/181fm_logo.png"
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
 */
-const no_id3 = 8; //@stations, from this index no requests
+const no_id3 = 7; //@stations, from this index no requests
 
 const stations = [
     {
@@ -21,11 +21,11 @@ const stations = [
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true,"#183a67"]
     },{
-        name: "La n\u00FAmero uno",
+        name: "Top40 & Pop Music",
         logo: "assets/stereo97.jpg",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "Stereo97 - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
+        description: "Stereo97 - La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
         site: "",
         xtra_info: ["La n\u00FAmero uno", "Spanish",128,true,"#140000"]
     },{
@@ -57,7 +57,7 @@ const stations = [
         logo: "assets/default_bkg.svg",
         stream_url: "https://listen.181fm.com/181-mellow_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683720203",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-mellow_128k.mp3&https=&f=ice&c=202036",
-        description: "Listen to the best mellow hits",
+        description: "A softer mix of classic hits with a '70s, '80s, & 90's focus.",
         site: "",
         xtra_info: [" - Relaxing","English",128,true,"#073642"]
     },{
@@ -65,17 +65,9 @@ const stations = [
         logo: "assets/rockola.jpg",
         stream_url: "https://listen.181fm.com/181-goodtime_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683722389",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-goodtime_128k.mp3&https=&f=ice&c=223878",
-        description: "Listen to the best of the 50's and 60's hits",
+        description: "Dedicated to playing the best oldies music from the 50s, 60s, and 70s.",
         site: "",
         xtra_info: [" - 50's and 60's","English",128,true,"#073642"]
-    },{
-        name:"181.fm",
-        logo:"assets/classicalMusic.jpg",
-        stream_url:"https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069",
-        id3_info:"https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600",
-        description:"Classical Music - characterized by formality and complexity in its musical form and harmonic organization.",
-        site:"",
-        xtra_info:["Classical","English",128,true,"#000000"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRockRadio.jpg",
@@ -84,6 +76,14 @@ const stations = [
         description: "Explore and discover new worlds of music with NASA's Radio.",
         site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         xtra_info:["Alternative-Rock","English",196,false,"#1363a2"]
+    },{
+        name:"WCPE, The Classical Station",
+        logo:"assets/classicalStation.png",
+        stream_url:"http://playerservices.streamtheworld.com/api/livestream-redirect/WCPE_FMAAC128.aac",
+        id3_info:"",
+        description:"is a non-commercial, independent, listener-supported station broadcasting from North Carolina, US.",
+        site:"",
+        xtra_info:["Classical","English",128,true,"#306985"]
     },{
         name: "113.fm",
         logo: "assets/113fm_classicone_1008.jpg",
