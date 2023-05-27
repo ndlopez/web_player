@@ -211,6 +211,8 @@ function init_player(stream_idx){
     isPlaying = stream_idx;
     clearInterval(updater);
     //console.log("Time updater restarted");
+    const getTimer = document.getElementById("timer_"+isPlaying);
+    getTimer.innerText = document.getElementById("timer").innerText;
     updater = setInterval(update_this,updateTime)
     stopPlay();
     playStop(stream_idx);
@@ -247,8 +249,8 @@ function playStop(idx){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;*/
+        stop_timer();
         getTimer.innerText = document.getElementById("timer").innerText;
-        // stop_timer();
     }
 }
 
@@ -325,13 +327,13 @@ function build_case(jdx, artist, song, album, artwork){
     let aux_link = "";
     if( typeof album === 'undefined'){ album = artist;}
     if(jdx < no_id3){
-        search_link = "<a title='Click for more info' href='https://duckduckgo.com/?q=" + 
-    artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
-    song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'> <img src='assets/duck.svg' width='36'/></a>";
-        aux_link = "https://duckduckgo.com/?q=" + artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
-    song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank";
+        search_link = "<a title='Click for more info' href='https://duckduckgo.com/?q=" + artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + 
+        "+" + song.trim().replace(/\s+/g,"%20").replace(/'/g,"") + 
+        "&t=ffcm&atb=v319-1&ia=web' target='_blank'> <img src='assets/duck.svg' width='36'/></a>";
+        aux_link = "https://duckduckgo.com/?q=" + 
+        artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
+        song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
+        "&t=ffcm&atb=v319-1&ia=web' target='_blank";
     }else{ aux_link = stations[jdx].site;}
 
     const this_html = "<div class='bkg_cd_icon' id='coverCD'>" + 
