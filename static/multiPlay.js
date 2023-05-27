@@ -13,21 +13,21 @@ const no_id3 = 7; //@stations, from this index no requests
 
 const stations = [
     {
-        name: "Adult Contemporary",
+        name: "LaPaz.fm",
         logo: "assets/fmlapaz_logo.png",
         stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
         id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
-        description: "LaPaz.fm - Mas m\u00FAsica menos palabras. La radio hecha a tu medida.",
+        description: "Mas m\u00FAsica menos palabras. La mejor radio adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true,"#183a67"]
     },{
-        name: "Top40 & Pop Music",
+        name: "Stereo97",
         logo: "assets/stereo97.jpg",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "Stereo97 - La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
+        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n.",
         site: "",
-        xtra_info: ["La n\u00FAmero uno", "Spanish",128,true,"#140000"]
+        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     },{
         name: "The Buzz",
         logo: "assets/alt-rock.jpg",
@@ -35,7 +35,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
         description: "Listen to the best Alternative-Rock hits",
         site: "",
-        xtra_info: [" - Alternative-Rock","English",128,true,"#51738f"]
+        xtra_info: ["Alternative-Rock","English",128,true,"#51738f"]
     },{
         name: "181.fm",
         logo: "assets/90s_alt.jpg",
@@ -178,9 +178,10 @@ function display_all_stations(){
         rowDiv.style.backgroundSize = "cover";*/
         /*colImg:class=float_left    colArtist:class=float_left*/
         let auxStr = "";
-        if( idx < no_id3 ){
-            auxStr = "<div class='info_block'><span class='small'>"+stations[idx].name + "</span></div>"
-        }
+        //if( idx < no_id3 ){
+        auxStr = "<div class='info_block'><span id='timer_'" + 
+idx +" class='small'>00:00</span></div>"
+        //}
         rowDiv.innerHTML = "<div class='colImg pos_rel' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "%' height='" + img_size + "%'/>" + auxStr +
         "</div><div class='colArtist' id='artistDiv_" + idx + "'>" + 
         /*"<span>"+stations[idx].name + "</span>"+*/"</div>";
