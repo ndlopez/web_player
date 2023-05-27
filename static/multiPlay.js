@@ -243,18 +243,19 @@ function playStop(idx){
         audioConnect.pause();
         audioConnect.loop = false;
         gifImg.classList.add("no-audio");
-        clearInterval(tina_timer);
+        /*clearInterval(tina_timer);
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
-        svgPlay.innerHTML = circleImg + playImg;
+        svgPlay.innerHTML = circleImg + playImg;*/
         getTimer.innerText = document.getElementById("timer").innerText;
-        stop_timer();
+        // stop_timer();
     }
 }
 
 function stopPlay(){/* param: idx=0 */
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
+    //getTimer.innerText = document.getElementById("timer").innerText;
     svgPlay.addEventListener("click",function(){ playStop(isPlaying); });
     // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
