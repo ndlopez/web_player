@@ -65,7 +65,7 @@ const stations = [
         logo: "assets/rockola.png",
         stream_url: "https://listen.181fm.com/181-goodtime_128k.mp3?listenerId=esAdblock0526824&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1683722389",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-goodtime_128k.mp3&https=&f=ice&c=223878",
-        description: "Dedicated to playing the best oldies music from the 50s, 60s, and 70s.",
+        description: "Dedicated to playing the best oldies music from the 50s and 60s.",
         site: "",
         xtra_info: [" - 50's and 60's","English",128,true,"#073642"]
     },{
@@ -179,14 +179,13 @@ function display_all_stations(){
         /*colImg:class=float_left    colArtist:class=float_left*/
         let auxStr = "";
         //if( idx < no_id3 ){
-        auxStr = "<div class='info_block'><span id='timer_'" + 
-idx +" class='small'>00:00</span></div>"
+        auxStr = "<div class='info_block'><span id='timer_" + idx + 
+        "' class='small'>00:00</span></div>";
         //}
         rowDiv.innerHTML = "<div class='colImg pos_rel' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "%' height='" + img_size + "%'/>" + auxStr +
-        "</div><div class='colArtist' id='artistDiv_" + idx + "'>" + 
-        /*"<span>"+stations[idx].name + "</span>"+*/"</div>";
-        /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";*/
-        //<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";
+        "</div><div class='colArtist' id='artistDiv_" + idx + "'></div>";
+        /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";
+        <div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
     }
     containDiv.appendChild(mainDiv);
@@ -211,11 +210,11 @@ function init_player(stream_idx){
     // console.log("gotStream",stream_idx);
     isPlaying = stream_idx;
     clearInterval(updater);
-    console.log("Time updater restarted");
+    //console.log("Time updater restarted");
     updater = setInterval(update_this,updateTime)
     stopPlay();
-    playStop(isPlaying);
-    display_data(isPlaying);
+    playStop(stream_idx);
+    display_data(stream_idx);
 }
 
 function playStop(idx){
@@ -223,7 +222,7 @@ function playStop(idx){
     svgPlay.addEventListener("click",stopPlay); /*function(){
         console.log("passing index",idx); stopPlay(idx);});*/
     const gifImg = document.getElementById("gifElm");
-    // let getTimer = document.getElementById("timer");
+    let getTimer = document.getElementById("timer_"+idx);
     let mmss = "";
     
     if(audioConnect.paused){
@@ -231,7 +230,9 @@ function playStop(idx){
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
         //counter starts or restarts
-        mmss = "00:00";//document.getElementById("timer_"+idx).innerText;
+        //mmss = "00:00";
+        mmss = getTimer.innerText;
+        //document.getElementById("timer_"+idx).innerText;
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
@@ -246,6 +247,7 @@ function playStop(idx){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
+        getTimer.innerText = document.getElementById("timer").innerText;
         stop_timer();
     }
 }
@@ -253,7 +255,7 @@ function playStop(idx){
 function stopPlay(){/* param: idx=0 */
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
-    // svgPlay.addEventListener("click",function(){ playStop(idx); });
+    svgPlay.addEventListener("click",function(){ playStop(isPlaying); });
     // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
@@ -351,7 +353,6 @@ function sleepy(){
         clearInterval(updater);
     }else{
         console.log("Sleepy canceled");return;}
-    
     // alert("I will go to sleep in 60 minutes.");
 }
 
