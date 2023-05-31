@@ -8,9 +8,10 @@
     history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
     80s: "assets/181fm_logo.png"
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
+    melodia:https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958
 */
-const lpb_id3 = 2 // LaPaz.fm, Ste..
-const no_id3 = 7; //@stations, from this index no requests
+const lpb_id3 = 3 // LaPaz.fm, Ste..
+const no_id3 = 8; //@stations, from this index no requests
 
 const stations = [
     {
@@ -21,6 +22,14 @@ const stations = [
         description: "Mas m\u00FAsica menos palabras. La mejor radio adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true,"#183a67"]
+    },{
+        name: "Melodia",
+        logo: "assets/melodia.png",
+        stream_url: "https://stream.consultoradas.com/8194/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8194",
+        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina, con la magia y dintincion...",
+        site: "",
+        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"]
     },{
         name: "Stereo97",
         logo: "assets/stereo97.jpg",
@@ -109,14 +118,6 @@ const stations = [
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
         site: "",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"] 
-    },{
-        name: "Melodia",
-        logo: "assets/melodia.png",
-        stream_url: "https://stream.consultoradas.com/8194/stream",
-        id3_info: "https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958",
-        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina, con la magia y dintincion...",
-        site: "",
-        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"]
     },{
         name: "Phantogram",
         logo: "assets/phantogram.jpg",
