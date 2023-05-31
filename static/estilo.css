@@ -233,6 +233,7 @@ span{
 .bottomText #more_info{padding-top:15px;}
 .align-right{text-align: right;}
 .align-left{text-align: left;}
+.center{text-align: center;}
 .headLabel{
   color: var(--lemon);
   font-weight: bold;

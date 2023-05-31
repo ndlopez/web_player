@@ -339,9 +339,9 @@ function build_case(jdx, artist, song, album, artwork){
 
     const this_html = "<div class='bkg_cd_icon' id='coverCD'>" + 
     "<a title='Click for more info' href='" + aux_link + 
-    "'><img src='" + artwork + "' width='248'/></a></div><div class='cardTitle smoke-bkg padding_15 small round-border'><h2 class='headLabel'>" + 
-    song + "</h2><h2>" + artist + "</h2><h2 class='lighter'>" + 
-    album + search_link + "</h2></div>";
+    "'><img src='" + artwork + "' width='248'/></a></div><div class='cardTitle smoke-bkg padding_10 small round-border'><h2 class='headLabel center'>" + 
+    song + "</h2><h2 class='center'>" + artist + "</h2><h2 class='lighter center'>" + 
+    album + /*search_link +*/ "</h2></div>";
     const up_time = document.getElementById("update_time");
     up_time.innerHTML = "<h2 class='lighter'>&#x231A;" +
     zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>";
