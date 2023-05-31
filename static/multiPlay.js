@@ -9,6 +9,7 @@
     80s: "assets/181fm_logo.png"
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
 */
+const lpb_id3 = 2 // LaPaz.fm, Ste..
 const no_id3 = 7; //@stations, from this index no requests
 
 const stations = [
@@ -232,8 +233,8 @@ function playStop(idx){
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
         //counter starts or restarts
-        //mmss = "00:00";
-        mmss = getTimer.innerText;
+        mmss = "00:00";
+        // mmss = getTimer.innerText;
         //document.getElementById("timer_"+idx).innerText;
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
         svgPlay.classList.remove("paused");
@@ -356,7 +357,6 @@ function sleepy(){
         clearInterval(updater);
     }else{
         console.log("Sleepy canceled");return;}
-    // alert("I will go to sleep in 60 minutes.");
 }
 
 async function update_stations(){
@@ -400,7 +400,7 @@ async function update_stations(){
 
         /* adding album info to <data-?> tag */
         auxLink = gotData.artwork;
-        if(idx < 2){//==0 LaPaz.fm, gotData={artist,song,artwork}
+        if(idx < lpb_id3){//==0 LaPaz.fm, gotData={artist,song,artwork}
             if(awfulArt.includes(gotData.artwork)){
                 auxLink = stations[0].logo;
             }else{
@@ -429,7 +429,7 @@ async function display_data(idx){
     if(idx > 1){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
     let this_artwork = gotData.artwork;
-    if(idx < 2){ this_artwork = got_row.getAttribute("data-album"); }
+    if(idx < lpb_id3){ this_artwork = got_row.getAttribute("data-album"); }
     if(gotData.artwork === ""){
         console.log("Error: No artwork found",idx,gotData.artwork);
         this_artwork = stations[idx].logo;//"assets/cd_case.svg";
@@ -468,11 +468,10 @@ async function display_data(idx){
     }else{
         auxText = "";
     }
-    document.getElementById("cover_title").innerHTML = "<span class='headLabel'>" + 
-    newTitle + "</span><span>" + auxText + "</span>";
+    document.getElementById("cover_title").innerHTML = "<span class='headLabel'>" + newTitle + "</span><span>" + auxText + "</span>";
     
-    document.getElementById("title_stat").innerText = stations[idx].name + " ♪ " + 
-    stations[idx].description;
+    document.getElementById("title_stat").innerText = stations[idx].name + 
+    " ♪ " + stations[idx].description;
 }
 
 async function get_id3(idx){
@@ -485,7 +484,7 @@ async function get_id3(idx){
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
     let song = data["title"].replace(myReg,"").replace(/&/g,"and");
-    if(idx < 2 ){// prev == 0
+    if(idx < lpb_id3){// prev == 0
         if(Object.keys(data).length < 1){
             return this_output;
         }
@@ -514,7 +513,7 @@ async function get_artwork(jdx,artist_name,song_title){
         artist: artist_name, song: song_title };
         //await get_id3(jdx); // {artist,song,artwork}
 
-    if(errTitle.includes(nowPlaying.song.trim()) || (jdx < 2) || (jdx > (no_id3 - 1))){
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx < lpb_id3) || (jdx > (no_id3 - 1))){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
