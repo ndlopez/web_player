@@ -33,6 +33,14 @@
     "site": "",
     "xtra_info": ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
 },{
+    "name": "rfi: Radio Francia Internacional",
+    "stream_url": "https://rfienespagnol64k.ice.infomaniak.ch/rfienespagnol-64.mp3"
+},{
+    "name": "RadiCro",
+    "logo": "",
+    "stream_url": "https://radicrojapan.out.airtime.pro/radicrojapan_b",
+    "description": "Radio Cross from Kobe,Japan"
+},{
     "name": "Drawing with words",
     "logo": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg",
     "stream_url":"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3",
