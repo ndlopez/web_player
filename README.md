@@ -2,7 +2,7 @@
 
 [live demo](https://ndlopez.github.io/web_player/)
 
-Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) or *thirdrock-sgplayer* when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac) Thus, I decided to build a script that displays the current song playing on *lapaz.fm* or *thirdrockradio.net*
+Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) or *thirdrock-sgplayer* when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac). I decided to build a script that displays the current song playing on *lapaz.fm* or *thirdrockradio.net*
 
 Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and [fmlapaz](https://ndlopez.github.io/web_player/fmlapaz.html)
 
@@ -10,12 +10,11 @@ Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and
 
 *The Strumbellas - Spirits*
 
-Display the current playing song of 4 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz). Two other streams are also available: Third Rock Radio and 113.fm ClassicOne.<br> For the latter two, 
-JavaScript seems to have a CORS issue with the URL I am fetching data from, it cannot parse anything. Although I found a herokuapp website that appends the required *header* to the URL and JavaScript can fetch ~~without problems~~. There are several problems, the herokuapp no longer accepts requests, so this scripts no longer works :(
+Display the current playing song of 13 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), Third Rock Radio, 113.fm ClassicOne, News Radio x2.<br> For ThirdRock stream, 
+there is a CORS issue with the URL I am fetching data from, it cannot parse anything (those people protect their data fiercely). Although I found a herokuapp website that appends the required *header* to the URL and JavaScript can fetch ~~without problems~~. Currently, the herokuapp no longer accepts requests, so this script no longer works :(
 
 As countermeasure, I decided it was too much hassle on the herokuapp server(it says so on its GitHub page), thus I decided to make a Python script to fetch data from the same URL and store it in a JSON file. Python's urllib doesnt care about headers and fetches data without problems :)
 
-I really do not understand why JavaScript has issues with the URL, I mean, I wrote some scripts in Python, Gnome-JavaScript, C#, and Shell (using curl) and they fetch data without problems.
 
 ## FM La Paz - <fmlapaz.html>
 
