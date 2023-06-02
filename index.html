@@ -35,7 +35,7 @@
       <section class="col30 float_left bkg_cd_case" id="artwork"></section>
       <section class="col70 float_left padding_10" id="amia"></section>      
     </main>
-    <aside id="player2">
+    <!--aside id="player2">
       <div class="col15 float_left" id="cover_art">
         <img src="assets/phantogram.jpg" width="60" height="60"/></div>
       <div class="col70 float_left">
@@ -55,7 +55,45 @@
       <div class="col15 float_left">
           <div id="gifElm" class="equalizer no-audio">
             <div><span></span><span></span><span></span><span></span>
-              <span></span><!--span></span--></div></div>
+              <span></span><--span></span-></div></div>
+      </div>
+    </aside-->
+    <aside id="player2">
+      <div class="col_50 float_left">
+        <!--div class="half_col float_left">
+          <a title="reload id3-tag" onclick="reloadMe()"><img src="../assets/reload-svgrepo.svg" width="32"/><-reload-></a>
+        </div-->
+        <div class="half_col float_left">
+          <label for="vol_input" onclick="volume_mute(0)">
+            <!--svg id="vol_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+              <path fill="#bed2e0" d="M20 16 C20 8 15 2 15 2 L8 10 2 10 2 22 8 22 15 30 C15 30 20 24 20 16 Z"/>
+              <path d="M21 2 C21 2 25 6 25 16 25 26 21 30 21 30 M27 4 C27 4 30 8 30 16 30 24 27 28 27 28"/>
+            </svg--><img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
+          <!--input id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"-->
+        </div>
+        <div class="half_col float_left">
+          <svg id="stop" title="[s] key to stop stream" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+              <path d= "M5 9 L5 29 27 29 27 9 Z"/><!--"M8 8 L8 24 24 24 24 8Z"--></svg>
+        </div>
+        <div class="half_col float_left">
+          <svg id="play2" title="[d] key to start stream" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+            <circle class="paused" cx="30" cy="30" r="26"/>
+            <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/></svg>
+        </div>
+        <a href="index.html" title="Wanna listen Rock?" class="half_col float_left">
+          <svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+          <!--path d="M9 25 L25 16 9 7Z M25 25 L25 7"//"M15 28 L15 14 25 21Z M28 28 L28 14">
+          <circle stroke-width="0" cx="21" cy="21" r="20"/-->
+          <path d= "M12 30 L12 10 30 20Z M31 30 L31 10"/></svg></a>
+
+      </div>
+      <div id="cover_title" class="col_40 no_mobil float_left">
+        <!--img src="assets/download.svg"/--><span id="now_song">Alive and Kicking<br/>Simple Minds</span></div>
+      <div class="col_20 float_left">       
+        <div id="gifElm" class="equalizer no-audio">
+        <div>
+          <span></span><span></span><span></span><span></span><span></span><!--span></span-->
+        </div></div>
       </div>
     </aside>
     <aside id="stationInfo">
