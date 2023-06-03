@@ -388,7 +388,9 @@ span{
   }
   #coverCD img{margin-left: -30px;}
   .bkg_cd_icon{margin-left: 55px;}
-  #now_song, .cardTitle,.no_mobil {display: none;}/*#artwork,*/
+  #stationInfo{bottom: 142px;}
+  #player2{bottom: 68px;}
+  #now_song, #artwork, .no_mobil {display: none;}/**/
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
     background-position-x: right;*/
