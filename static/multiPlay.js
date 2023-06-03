@@ -148,6 +148,7 @@ const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="r
 const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
+const svg_clock = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="#002b36" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="16" cy="16" r="14" /><path d="M16 8 L16 16 20 20" /></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
@@ -346,8 +347,8 @@ function build_case(jdx, artist, song, album, artwork){
     "'><img src='" + artwork + "' width='248'/></a></div><div class='cardTitle smoke-bkg padding_10 small round-border'><h2 class='headLabel center'>" + 
     song + "</h2><h2 class='center'>" + artist + "</h2><h2 class='lighter center'>" + 
     album + /*search_link +*/ "</h2></div>";
-    const up_time = document.getElementById("update_time");
-    up_time.innerHTML = "<h2 class='lighter'>&#x231A;" +
+    const up_time = document.getElementById("update_time");//&#x231A;
+    up_time.innerHTML = "<h2 class='lighter'>" + 
     zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>";
     //onClick sleep timer starts
     up_time.addEventListener("click",sleepy);
