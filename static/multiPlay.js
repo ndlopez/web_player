@@ -93,7 +93,7 @@ const stations = [
         stream_url:"http://playerservices.streamtheworld.com/api/livestream-redirect/WCPE_FMAAC128.aac",
         id3_info:"",
         description:"is a non-commercial, independent, listener-supported station broadcasting from North Carolina, US.",
-        site:"",
+        site:"https://theclassicalstation.org/",
         xtra_info:["Classical","English",128,true,"#306985"]
     },{
         name: "113.fm",
@@ -109,7 +109,7 @@ const stations = [
         stream_url: "https://stream-28.zeno.fm/pnwpbyfambruv?zs=7zM3ROeGQVmyOAzN9Khz5A",
         id3_info: "",
         description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
-        site: "",
+        site: "https://www.panamericana.bo/blog/section/nacional",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#073642"]
     },{
         name: "Radio Fides",
@@ -117,7 +117,7 @@ const stations = [
         stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
         id3_info: "",
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
-        site: "",
+        site: "https://www.online.radiofides.com/",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"] 
     },{
         name: "Phantogram",
