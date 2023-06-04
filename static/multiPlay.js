@@ -228,16 +228,22 @@ function playStop(idx){
     svgPlay.addEventListener("click",stopPlay); /*function(){
         console.log("passing index",idx); stopPlay(idx);});*/
     const gifImg = document.getElementById("gifElm");
-    let getTimer = document.getElementById("timer_"+idx);
-    let mmss = "";
+    let getTimer = "", mmss = "";
+    for (let jdx = 0; jdx < stations.length; jdx++) {
+        getTimer = document.getElementById("timer_"+jdx);
+        if (idx == jdx){
+            mmss = getTimer.innerText;
+        }
+    }
     
     if(audioConnect.paused){
+        audioConnect.addEventListener('error',()=>{
+            console.error(`Error loading: ${stations[idx].stream_url}`);});
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
         //counter starts or restarts
-        mmss = "00:00";
-        // mmss = getTimer.innerText;
+        // mmss = "00:00";
         //document.getElementById("timer_"+idx).innerText;
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
         svgPlay.classList.remove("paused");
