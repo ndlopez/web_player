@@ -38,6 +38,15 @@
     
     <aside id="player2">
       <div class="col_50 float_left">
+        <div class="col15 float_left" id="cover_art">
+          <img class="no_mobil" src="assets/phantogram.jpg" width="60" height="60"/>
+        </div>
+        <div id="cover_title" class="col70 float_left" onclick="openNav()">
+          <span>You don't get me high anymore<br/>Phantogram</span>
+        </div>        
+      </div>
+      <div class="col_50 float_left">
+        <div id="duck_it" class="half_col float_left"></div>
         <div class="half_col float_left">
           <label for="vol_input" onclick="volume_mute(0)">
             <!--svg id="vol_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -45,31 +54,19 @@
               <path d="M21 2 C21 2 25 6 25 16 25 26 21 30 21 30 M27 4 C27 4 30 8 30 16 30 24 27 28 27 28"/></svg-->
             <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
           <input class="no_desktop no_mobil" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
-        </div>
-        <div id="duck_it" class="half_col float_left"></div>
-        
+        </div>        
         <div class="half_col float_left">
           <svg id="play2" title="[d] key to start stream" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
             <circle class="paused" cx="30" cy="30" r="26"/>
             <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/></svg>
         </div>
-        <div class="half_col float_left">
-          <div class="col30 float_left" id="cover_art">
-          <img class="no_mobil" src="assets/phantogram.jpg" width="60" height="60"/></div>
-        </div>
-      </div>
-      <div class="col_50 float_left">
-        <div id="cover_title" class="col70 float_left" onclick="openNav()">
-          <span>You don't get me high anymore<br/>Phantogram</span>
-        </div>
-        <div class="col30 float_left">       
+        <div class="col15 float_left">       
           <div id="gifElm" class="equalizer no-audio">
             <div><span></span><span></span><span></span><span></span><span></span><!--span></span-->
             </div>
           </div>
         </div>
-      </div>
-      
+      </div>      
     </aside>
     <aside id="stationInfo">
       <span class="col15 float_left" id="timer">00:00</span>

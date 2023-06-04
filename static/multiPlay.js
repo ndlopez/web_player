@@ -229,7 +229,7 @@ function playStop(idx){
         console.log("passing index",idx); stopPlay(idx);});*/
     const gifImg = document.getElementById("gifElm");
     let getTimer = "", mmss = "";
-    for (let jdx = 0; jdx < stations.length; jdx++) {
+    for (let jdx = 0; jdx < stations.length -1; jdx++) {
         getTimer = document.getElementById("timer_"+jdx);
         if (idx == jdx){
             mmss = getTimer.innerText;
@@ -260,7 +260,7 @@ function playStop(idx){
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;*/
         stop_timer();
-        getTimer.innerText = document.getElementById("timer").innerText;
+        // getTimer.innerText = document.getElementById("timer").innerText;
     }
 }
 
@@ -307,14 +307,14 @@ function volume_mute(vol_stat){
     }
 }
 
-function play_elapsed(min=0,sec=0){//,jdx
+function play_elapsed(min=0,sec=0,jdx){//
     let second,minute;
 
     tina_timer = setInterval(function(){
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
-        
-        document.getElementById("timer").innerText = minute + ":" +second;
+        document.getElementById("timer_"+jdx).innerText = minute + ":" + second;
+        //document.getElementById("timer").innerText = minute + ":" +second;
         sec++;
         if(sec>59){
             min++;
