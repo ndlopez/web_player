@@ -447,8 +447,7 @@ async function display_data(idx){
         this_artwork = stations[idx].logo;//"assets/cd_case.svg";
     }
     const coverDiv = document.getElementById("artwork");
-    /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
-        gotSong, got_row.getAttribute("data-album"),newArt);*/
+    /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data, gotSong, got_row.getAttribute("data-album"),newArt);*/
     coverDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);
     
     // Update artwork of station_idx Div
@@ -471,16 +470,10 @@ async function display_data(idx){
     auxText = gotArtist;
     if(idx > no_id3){ auxText = stations[idx].xtra_info[0]; }
     
-    let newTitle = gotSong + " - " + gotArtist;
-
-    if(gotSong.length < 21){
-        newTitle = gotSong;
-        console.log(idx,"length",gotSong.length);
-    }else{
-        auxText = "";
-    }
+    /*let newTitle = gotSong + " - " + gotArtist;
+    if(gotSong.length < 21){ newTitle = gotSong; }else{ auxText = ""; }*/
     document.getElementById("cover_title").innerHTML = 
-    `<span class='headLabel'> ${newTitle} </span><span> ${auxText} </span>`;
+    `<span class='headLabel'> ${gotSong} </span><span> ${auxText} </span>`;
     
     document.getElementById("title_stat").innerText = stations[idx].name + 
     " ♪ " + stations[idx].description;

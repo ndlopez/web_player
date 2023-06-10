@@ -180,7 +180,7 @@ span{
 .col_23{width:23.5%;}
 .col_50, .col2, .col_half{width: 50%;}
 .col_40{width: 40%;}
-.col_20{width: 10%;}
+.col_20{width: 20%;}
 /*img{filter: opacity(30%);}*/
 .col_artist{background-color: var(--dark-smoke);}
 .colArtist{
