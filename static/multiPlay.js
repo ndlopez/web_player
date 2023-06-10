@@ -189,8 +189,9 @@ function display_all_stations(){
         rowDiv.innerHTML = `<div class='colImg pos_rel' id='imgDiv_${idx}'>
         <img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/> 
         ${auxStr}</div><div class='colArtist' id='artistDiv_${idx}'></div>`;
-        /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";
-        <div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
+        /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
+        "</span></div>";<div class='colTime float_left'><span id='timer_" + 
+        idx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
     }
     containDiv.appendChild(mainDiv);
@@ -244,9 +245,7 @@ function playStop(idx){
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
-        //counter starts or restarts
-        // mmss = "00:00";
-        //document.getElementById("timer_"+idx).innerText;
+        //counter starts or restarts mmss = "00:00";
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
@@ -257,12 +256,10 @@ function playStop(idx){
         audioConnect.pause();
         audioConnect.loop = false;
         gifImg.classList.add("no-audio");
-        /*clearInterval(tina_timer);*/
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
         stop_timer();
-        // getTimer.innerText = document.getElementById("timer").innerText;
     }
 }
 
@@ -310,21 +307,18 @@ function volume_mute(vol_stat){
 }
 
 function play_elapsed(min=0,sec=0,jdx){//
-    let second,minute;
-    //let sec00=0,min00=0;
+    // let second,minute;
 
     tina_timer = setInterval(function(){
-        second = (sec<10)?"0"+String(sec):sec;
-        minute = (min<10)?"0"+String(min):min;
+        // second = (sec<10)?"0"+String(sec):sec;
+        // minute = (min<10)?"0"+String(min):min;
         document.getElementById("timer_"+jdx).innerText = `${zeroPad(min)}:${zeroPad(sec)}`;
-        //second = (sec00<10)?"0"+String(sec00):sec00;
-        //minute = (min00<10)?"0"+String(min00):min00;
+        
         document.getElementById("timer").innerText = `${zeroPad(min)}:${zeroPad(sec)}`;
-        sec++;//sec00++;
+        sec++;
         if(sec > 59){
             min++; sec=0;
         }
-        // if(sec00 > 59){min00++;sec00=0;}
         /* if listen hours
         if(min>59 && sec>59){hours++;min=0;sec=0;}*/
         //timer case: if(sec < 0){clearInterval(tina_timer);}
@@ -354,7 +348,7 @@ function build_case(jdx, artist, song, album, artwork){
 
     const duck = document.getElementById("duck_it");
     duck.innerHTML = search_link;
-    const this_html = `<div class='bkg_cd_icon' id='coverCD'>"
+    const this_html = `<div class='bkg_cd_icon' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
     <img src='${artwork}' width='248'/></a></div><div class='cardTitle smoke-bkg padding_10 small round-border'><h2 class='headLabel center'> 
     ${song}</h2><h2 class='center'> ${artist} </h2><h2 class='lighter center'>

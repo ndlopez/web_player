@@ -1,25 +1,25 @@
 /* 
-Code to fetch id3 info from LaPaz.fm server.
-Data are updated every 4mins or so and stored in a json-array
-Playlist is built using this array.
+    Code to fetch id3 info from LaPaz.fm server.
+    Data are updated every 4mins or so and stored in a json-array
+    Playlist is built using this array.
 
-Some icons are from: www.danklammer.com/bytesize-icons/
-issues:
-1. Since updating time is ~4mins but not all songs last that long,
-json-array stores duplicated data.
-2. It seems not easy to get info when audio is not playing,
-after the user pushes play will either listen or not.
-How to control this?
-3. On mobile: after clicking show plalist button there's a possibility
-that by accident update the page, in such case stream restarts, playlist
-empties its contents to start all over again. Must find a way to prevent
-this.
-4. The audio stream has a lot of un-requested awful artwork, some of them
-were avoided but remains a whole bunch. 
+    Some icons are from: www.danklammer.com/bytesize-icons/
+    issues:
+    1. Since updating time is ~4mins but not all songs last that long,
+    json-array stores duplicated data.
+    2. It seems not easy to get info when audio is not playing,
+    after the user pushes play will either listen or not.
+    How to control this?
+    3. On mobile: after clicking show plalist button there's a possibility
+    that by accident update the page, in such case stream restarts, playlist
+    empties its contents to start all over again. Must find a way to prevent
+    this.
+    4. The audio stream has a lot of un-requested awful artwork, some of them
+    were avoided but remains a whole bunch. 
 
-Soundcloud: Mobile settings
-Song Title: font-size:22px;font-weight:700;
-Song Artist: color: var(--second-color)
+    Soundcloud: Mobile settings
+    Song Title: font-size:22px;font-weight:700;
+    Song Artist: color: var(--second-color)
 */
 
 const old_URL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";

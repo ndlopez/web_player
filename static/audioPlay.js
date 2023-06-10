@@ -7,8 +7,8 @@ Must refer to these code-sources:
  https://alvarotrigo.com/blog/hamburger-menu-css/
 */
 const stream_url = "https://cloudstream2030.conectarhosting.com/8042/stream";
-var audioConnect; //= new Audio();
-var tina_timer;
+let audioConnect; //= new Audio();
+let tina_timer;
 
 window.addEventListener("load",startPlay);
 
