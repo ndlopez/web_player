@@ -232,7 +232,8 @@ function playStop(idx){
     let getTimer = "", mmss = "";
     for (let jdx = 0; jdx < stations.length -1; jdx++) {
         getTimer = document.getElementById("timer_"+jdx);
-        if (idx == jdx){
+        console.log("timer",jdx,getTimer.innerText);
+        if (jdx == idx){
             mmss = getTimer.innerText;
         }
     }
@@ -260,7 +261,7 @@ function playStop(idx){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;*/
-        stop_timer();
+        // stop_timer();
         // getTimer.innerText = document.getElementById("timer").innerText;
     }
 }
@@ -310,17 +311,20 @@ function volume_mute(vol_stat){
 
 function play_elapsed(min=0,sec=0,jdx){//
     let second,minute;
+    let sec00=0,min00=0;
 
     tina_timer = setInterval(function(){
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
         document.getElementById("timer_"+jdx).innerText = minute + ":" + second;
-        //document.getElementById("timer").innerText = minute + ":" +second;
-        sec++;
-        if(sec>59){
-            min++;
-            sec=0;
+        sec00 = (sec00<10)?"0"+String(sec00):sec00;
+        min00 = (min00<10)?"0"+String(min00):min00;
+        document.getElementById("timer").innerText = min00 + ":" +sec00;
+        sec++;sec00++;
+        if(sec > 59){
+            min++; sec=0;
         }
+        if(sec00 > 59){min00++;sec00=0;}
         /* if listen hours
         if(min>59 && sec>59){hours++;min=0;sec=0;}*/
         //timer case: if(sec < 0){clearInterval(tina_timer);}
