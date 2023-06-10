@@ -184,11 +184,11 @@ function display_all_stations(){
         /*colImg:class=float_left    colArtist:class=float_left*/
         let auxStr = "";
         //if( idx < no_id3 ){
-        auxStr = "<div class='info_block'><span id='timer_" + idx + 
-        "' class='small'>00:00</span></div>";
+        auxStr = `<div class='info_block'><span id='timer_${idx}' class='small'> 00:00 </span></div>`;
         //}
-        rowDiv.innerHTML = "<div class='colImg pos_rel' id='imgDiv_"+ idx + "'><img src='" + stations[idx].logo + "' width='" + img_size + "%' height='" + img_size + "%'/>" + auxStr +
-        "</div><div class='colArtist' id='artistDiv_" + idx + "'></div>";
+        rowDiv.innerHTML = `<div class='colImg pos_rel' id='imgDiv_${idx}'>
+        <img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/> 
+        ${auxStr}</div><div class='colArtist' id='artistDiv_${idx}'></div>`;
         /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";
         <div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
@@ -257,10 +257,10 @@ function playStop(idx){
         audioConnect.pause();
         audioConnect.loop = false;
         gifImg.classList.add("no-audio");
-        /*clearInterval(tina_timer);
+        /*clearInterval(tina_timer);*/
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
-        svgPlay.innerHTML = circleImg + playImg;*/
+        svgPlay.innerHTML = circleImg + playImg;
         stop_timer();
         // getTimer.innerText = document.getElementById("timer").innerText;
     }
@@ -316,10 +316,10 @@ function play_elapsed(min=0,sec=0,jdx){//
     tina_timer = setInterval(function(){
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
-        document.getElementById("timer_"+jdx).innerText = zeroPad(min) + ":" + zeroPad(sec);
+        document.getElementById("timer_"+jdx).innerText = `${zeroPad(min)}:${zeroPad(sec)}`;
         //second = (sec00<10)?"0"+String(sec00):sec00;
         //minute = (min00<10)?"0"+String(min00):min00;
-        document.getElementById("timer").innerText = `${zeroPad(min)} : ${zeroPad(sec)}`;
+        document.getElementById("timer").innerText = `${zeroPad(min)}:${zeroPad(sec)}`;
         sec++;//sec00++;
         if(sec > 59){
             min++; sec=0;
@@ -342,29 +342,27 @@ function build_case(jdx, artist, song, album, artwork){
     let aux_link = "";
     if( typeof album === 'undefined'){ album = artist;}
     if(jdx < no_id3){
-        search_link = "<a title='Click for more info' href='https://duckduckgo.com/?q=" + artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + 
-        "+" + song.trim().replace(/\s+/g,"%20").replace(/'/g,"") + 
-        "&t=ffcm&atb=v319-1&ia=web' target='_blank'> <img src='assets/duck.svg' width='36'/></a>";
-        aux_link = "https://duckduckgo.com/?q=" + 
-        artist.trim().replace(/\s+/g,"%20").replace(/'/g,"") + "+" + 
-        song.trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-        "&t=ffcm&atb=v319-1&ia=web' target='_blank";
+        search_link = `<a title='Click for more info' href='https://duckduckgo.com/?q=${artist.trim().replace(/\s+/g,"%20").replace(/'/g,"")}+${song.trim().replace(/\s+/g,"%20").replace(/'/g,"")}&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a>`;
+        aux_link = `https://duckduckgo.com/?q=
+        ${artist.trim().replace(/\s+/g,"%20").replace(/'/g,"")}+ 
+        ${song.trim().replace(/\s+/g,"%20").replace(/'/g,"")}
+        &t=ffcm&atb=v319-1&ia=web' target='_blank`;
     }else{ 
         aux_link = stations[jdx].site;
-        search_link = "<a href='" + stations[jdx].site +"' target='_blank'>" +
-        svg_ff +"</a>";
+        search_link = `<a href='${stations[jdx].site}' target='_blank'> ${svg_ff}</a>`;
     }
 
     const duck = document.getElementById("duck_it");
     duck.innerHTML = search_link;
-    const this_html = "<div class='bkg_cd_icon' id='coverCD'>" + 
-    "<a title='Click for more info' href='" + aux_link + 
-    "'><img src='" + artwork + "' width='248'/></a></div><div class='cardTitle smoke-bkg padding_10 small round-border'><h2 class='headLabel center'>" + 
-    song + "</h2><h2 class='center'>" + artist + "</h2><h2 class='lighter center'>" + 
-    album + /*search_link +*/ "</h2></div>";
+    const this_html = `<div class='bkg_cd_icon' id='coverCD'>"
+    <a title='Click for more info' href='${aux_link}'>
+    <img src='${artwork}' width='248'/></a></div><div class='cardTitle smoke-bkg padding_10 small round-border'><h2 class='headLabel center'> 
+    ${song}</h2><h2 class='center'> ${artist} </h2><h2 class='lighter center'>
+    ${album} </h2></div>`;/*search_link +*/
     const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = "<h2 class='lighter'>" + 
-    zeroPad(timeNow.getHours()) + ":" + zeroPad(timeNow.getMinutes());// + "</h2>";
+    up_time.innerHTML = `<h2 class='lighter'> 
+    ${zeroPad(timeNow.getHours())}:${zeroPad(timeNow.getMinutes())}`;
+    // + "</h2>";
     //onClick sleep timer starts
     up_time.addEventListener("click",sleepy);
     
@@ -409,8 +407,8 @@ async function update_stations(){
             // console.log("keeping:",idx);
         }
         
-        this_artist.innerHTML = "<span class='headLabel oneLine'>" + gotData.song +
-        "</span><span class='oneLine'>" + gotData.artist + "</span>"; 
+        this_artist.innerHTML = `<span class='headLabel oneLine'> ${gotData.song}
+        </span><span class='oneLine'> ${gotData.artist} </span>`; 
         //+ auxLink;
 
         /*Update artwork of station by artist
@@ -445,7 +443,7 @@ async function display_data(idx){
         gotSong = "No id3 found"; gotArtist = "No artist";
     }
     
-    var gotData = "";
+    let gotData = "";
     if(idx > 1){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
     let this_artwork = gotData.artwork;
@@ -469,13 +467,12 @@ async function display_data(idx){
         newArt = stations[idx].logo;//console.log("is it cd_case?");}*/
     
     // Updating player2: elements
-    var auxText = "";
+    let auxText = "";
     const cover_art = document.getElementById("cover_art");
     cover_art.setAttribute("onclick","display_data(" + idx + ")");//"update_stations()"
-    auxText = "<div class='above_img'>" + reloadImg + "</div>";
+    auxText = `<div class='above_img'> ${reloadImg} </div>`;
 
-    cover_art.innerHTML = "<img src='" + this_artwork +
-    "' width='60' height='60'/>" + auxText;
+    cover_art.innerHTML = `<img src='${this_artwork}' width='60' height='60'/> ${auxText}`;
 
     auxText = gotArtist;
     if(idx > no_id3){ auxText = stations[idx].xtra_info[0]; }
@@ -488,7 +485,8 @@ async function display_data(idx){
     }else{
         auxText = "";
     }
-    document.getElementById("cover_title").innerHTML = "<span class='headLabel'>" + newTitle + "</span><span>" + auxText + "</span>";
+    document.getElementById("cover_title").innerHTML = 
+    `<span class='headLabel'> ${newTitle} </span><span> ${auxText} </span>`;
     
     document.getElementById("title_stat").innerText = stations[idx].name + 
     " ♪ " + stations[idx].description;
