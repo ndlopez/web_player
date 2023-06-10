@@ -37,16 +37,16 @@
     </main>
     
     <aside id="player2">
-      <div class="col_50 float_left">
-        <div class="col15 float_left" id="cover_art">
-          <img class="no_mobil" src="assets/phantogram.jpg" width="60" height="60"/>
+      <div id="art_title" class="col_50 float_left">
+        <div class="col_20 float_left" id="cover_art">
+          <img src="assets/phantogram.jpg" width="60" height="60"/>
         </div>
-        <div id="cover_title" class="col70 float_left" onclick="openNav()">
+        <div id="cover_title" class="col80 float_left" onclick="openNav()">
           <span>You don't get me high anymore<br/>Phantogram</span>
         </div>        
       </div>
-      <div class="col_50 float_left">
-        <div class="col_20 float_left">
+      <div class="col_50 float_left flexy">
+        <div class="col_20 float_left flexy">
           <label for="vol_input" onclick="volume_mute(0)">
             <!--svg id="vol_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
               <path fill="#bed2e0" d="M20 16 C20 8 15 2 15 2 L8 10 2 10 2 22 8 22 15 30 C15 30 20 24 20 16 Z"/>
@@ -54,14 +54,14 @@
             <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
           <input class="no_desktop no_mobil" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
         </div>
-        <div id="reload_this" class="col_20 float_left"></div>
-        <div class="col_20 float_left">
+        <div id="reload_this" class="col_20 float_left flexy"></div>
+        <div class="col_20 float_left flexy">
           <svg id="play2" title="[d] key to start stream" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
             <circle class="paused" cx="30" cy="30" r="26"/>
             <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/></svg>
         </div>
-        <div id="duck_it" class="col_20 float_left"></div>
-        <div class="col_20 float_left">
+        <div id="duck_it" class="col_20 float_left flexy"></div>
+        <div class="col_20 float_left flexy">
           <div id="gifElm" class="equalizer no-audio">
             <div><span></span><span></span><span></span><span></span><span></span><!--span></span-->
             </div>

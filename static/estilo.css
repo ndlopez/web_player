@@ -339,14 +339,13 @@ span{
   width:70%;
   overflow: hidden;
 }
+.col80{width:80%;}
 #cover_title{padding-left: 10px;}
 #cover_art{
   position: relative;
   text-align: center;
 }
-/*#cover_art img{
-  filter: opacity(50%);
-}*/
+#cover_art img{ border-radius: 8px; /*filter: opacity(50%);*/ }
 .above_img{
   position: absolute;
   top: 50%;
@@ -374,6 +373,11 @@ span{
   flex-grow: 0;
   flex-shrink: 0;
 }
+.flexy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .cardTitle{margin-right: 10px;}
 @media (max-width: 700px) {
   body{font-size: small;}
@@ -386,6 +390,7 @@ span{
     max-width: 43%;
     flex-basis: 43%;
   }
+  .cardTitle{margin-right: 0px;}
   #coverCD img{margin-left: -30px;}
   .bkg_cd_icon{margin-left: 55px;}
   #stationInfo{bottom: 142px;}
@@ -438,9 +443,9 @@ span{
     display: none;
   }
    
-  .col_50{width: 80%;}
-  .col_20{width: 20%;}
-  .col2, #amia, #artwork{width: 100%;}
+  /*.col_50{width: 80%;}
+  .col_20{width: 20%;}*/
+  .col2, #amia, #artwork, .col_50{width: 100%;}
   #artwork{margin-top: 0px;}
   .col_23{width: 50%;}
   #listIcon{display: block;}
