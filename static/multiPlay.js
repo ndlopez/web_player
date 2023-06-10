@@ -120,11 +120,11 @@ const stations = [
         site: "https://www.online.radiofides.com/",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"] 
     },{
-        name: "Phantogram",
+        name: "RadiCro",
         logo: "assets/phantogram.jpg",
-        stream_url: "Three",
-        id3_info: "You don't get me high anymore",
-        description: "",
+        stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
+        id3_info: "",
+        description: "Radio Cross from Kobe,Japan",
         site: "",
         xtra_info: ["","English",128,false]
     }
@@ -311,20 +311,20 @@ function volume_mute(vol_stat){
 
 function play_elapsed(min=0,sec=0,jdx){//
     let second,minute;
-    let sec00=0,min00=0;
+    //let sec00=0,min00=0;
 
     tina_timer = setInterval(function(){
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
-        document.getElementById("timer_"+jdx).innerText = minute + ":" + second;
-        second = (sec00<10)?"0"+String(sec00):sec00;
-        minute = (min00<10)?"0"+String(min00):min00;
-        document.getElementById("timer").innerText = minute + ":" +second;
-        sec++;sec00++;
+        document.getElementById("timer_"+jdx).innerText = zeroPad(min) + ":" + zeroPad(sec);
+        //second = (sec00<10)?"0"+String(sec00):sec00;
+        //minute = (min00<10)?"0"+String(min00):min00;
+        document.getElementById("timer").innerText = `${zeroPad(min)} : ${zeroPad(sec)}`;
+        sec++;//sec00++;
         if(sec > 59){
             min++; sec=0;
         }
-        if(sec00 > 59){min00++;sec00=0;}
+        // if(sec00 > 59){min00++;sec00=0;}
         /* if listen hours
         if(min>59 && sec>59){hours++;min=0;sec=0;}*/
         //timer case: if(sec < 0){clearInterval(tina_timer);}

@@ -46,7 +46,6 @@
         </div>        
       </div>
       <div class="col_50 float_left">
-        <div id="duck_it" class="half_col float_left"></div>
         <div class="half_col float_left">
           <label for="vol_input" onclick="volume_mute(0)">
             <!--svg id="vol_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -60,13 +59,14 @@
             <circle class="paused" cx="30" cy="30" r="26"/>
             <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/></svg>
         </div>
-        <div class="col15 float_left">       
+        <div id="duck_it" class="half_col float_left"></div>
+        <div class="col15 float_left">
           <div id="gifElm" class="equalizer no-audio">
             <div><span></span><span></span><span></span><span></span><span></span><!--span></span-->
             </div>
           </div>
         </div>
-      </div>      
+      </div>
     </aside>
     <aside id="stationInfo">
       <span class="col15 float_left" id="timer">00:00</span>

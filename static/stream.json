@@ -56,4 +56,13 @@
     "name":"Marian Call- Homeward bound",
     "stream": "",
     "art": "https://f4.bcbits.com/img/a2694757447_10.jpg"
-}]
+},{
+    "name": "Phantogram",
+    "logo": "assets/phantogram.jpg",
+    "stream_url": "https://duckduckgo.com/?t=ftsa&q=You+don%27t+get+me+high+anymore+Phantogram&atb=v320-1&iax=videos&ia=videos&iai=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjryzEU7WAlg",
+    "id3_info": "You don't get me high anymore",
+    "description": "It's less about drug use and more about trying to find that happiness that was once easy to find",
+    "site": "https://phantogram.com",
+    "xtra_info": ["Electronic Rock","English",128,false]
+}
+]
