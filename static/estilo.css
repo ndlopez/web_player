@@ -344,9 +344,9 @@ span{
   position: relative;
   text-align: center;
 }
-#cover_art img{
-  filter: opacity(50%);/*blur(1px);*/
-}
+/*#cover_art img{
+  filter: opacity(50%);
+}*/
 .above_img{
   position: absolute;
   top: 50%;

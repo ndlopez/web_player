@@ -461,11 +461,14 @@ async function display_data(idx){
     
     // Updating player2: elements
     let auxText = "";
+    const reloadMe = document.getElementById("reload_this");//"update_stations()"
+    reloadMe.setAttribute("onclick","display_data(" + idx + ")");
     const cover_art = document.getElementById("cover_art");
-    cover_art.setAttribute("onclick","display_data(" + idx + ")");//"update_stations()"
-    auxText = `<div class='above_img'> ${reloadImg} </div>`;
-
-    cover_art.innerHTML = `<img src='${this_artwork}' width='60' height='60'/> ${auxText}`;
+    // cover_art.setAttribute("onclick","display_data(" + idx + ")");
+    // auxText = `<div class='above_img'> ${reloadImg} </div>`;
+    reloadMe.innerHTML = reloadImg;
+    cover_art.innerHTML = `<img src='${this_artwork}' width='60' height='60'/>`
+    // ${auxText}`;
 
     auxText = gotArtist;
     if(idx > no_id3){ auxText = stations[idx].xtra_info[0]; }
