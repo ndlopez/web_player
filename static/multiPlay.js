@@ -216,8 +216,8 @@ function init_player(stream_idx){
     isPlaying = stream_idx;
     clearInterval(updater);
     //console.log("Time updater restarted");
-    const getTimer = document.getElementById("timer_"+isPlaying);
-    getTimer.innerText = document.getElementById("timer").innerText;
+    //const getTimer = document.getElementById("timer_"+isPlaying);
+    //getTimer.innerText = document.getElementById("timer").innerText;
     updater = setInterval(update_this,updateTime)
     stopPlay();
     playStop(stream_idx);
@@ -233,7 +233,7 @@ function playStop(idx){
     for (let jdx = 0; jdx < stations.length -1; jdx++) {
         getTimer = document.getElementById("timer_"+jdx);
         console.log("timer",jdx,getTimer.innerText);
-        if (jdx == idx){
+        if (idx == jdx){
             mmss = getTimer.innerText;
         }
     }
@@ -261,7 +261,7 @@ function playStop(idx){
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;*/
-        // stop_timer();
+        stop_timer();
         // getTimer.innerText = document.getElementById("timer").innerText;
     }
 }
@@ -275,7 +275,7 @@ function stopPlay(){/* param: idx=0 */
     audioConnect.pause();
     audioConnect.loop = false;
     gifImg.classList.add("no-audio");
-    clearInterval(tina_timer);
+    // clearInterval(tina_timer);
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
     svgPlay.innerHTML = circleImg + playImg;
@@ -317,9 +317,9 @@ function play_elapsed(min=0,sec=0,jdx){//
         second = (sec<10)?"0"+String(sec):sec;
         minute = (min<10)?"0"+String(min):min;
         document.getElementById("timer_"+jdx).innerText = minute + ":" + second;
-        sec00 = (sec00<10)?"0"+String(sec00):sec00;
-        min00 = (min00<10)?"0"+String(min00):min00;
-        document.getElementById("timer").innerText = min00 + ":" +sec00;
+        second = (sec00<10)?"0"+String(sec00):sec00;
+        minute = (min00<10)?"0"+String(min00):min00;
+        document.getElementById("timer").innerText = minute + ":" +second;
         sec++;sec00++;
         if(sec > 59){
             min++; sec=0;
