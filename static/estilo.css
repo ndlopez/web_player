@@ -38,7 +38,7 @@ kbd {
 }
 .bottom-10px{
   margin-bottom: 15px;
-  margin-right: 9px;
+  /*margin-right: 9px;*/
 }
 .smoke-bkg{
   background-color: var(--dark-smoke);

@@ -118,8 +118,18 @@ const stations = [
         id3_info: "",
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
         site: "https://www.online.radiofides.com/",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"] 
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
     },{
+    name: "Radio Mundial",
+    logo: "assets/mundial.png",
+    stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
+    id3_info: "",
+    description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
+    site: "",
+    xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
+}
+];
+/*,{
         name: "RadiCro",
         logo: "assets/phantogram.jpg",
         stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
@@ -127,8 +137,7 @@ const stations = [
         description: "Radio Cross from Kobe,Japan",
         site: "",
         xtra_info: ["","English",128,false]
-    }
-];
+    }*/
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
@@ -156,7 +165,7 @@ const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let cardHeight = "auto";
-let img_size = 100; //card Image size %
+let img_size = 80; //card Image size %
 
 let audioConnect = new Audio();
 let isPlaying;
