@@ -321,7 +321,8 @@ span{
   width: auto;
   position: absolute;
   bottom: 5px;
-  right: calc(50% - 0.5 * 47.45px);
+  left:0px;
+  /*right: calc(50% - 0.5 * 47.45px);*/
   background-color: var(--smoke);
   opacity: 65%;
 }
@@ -372,6 +373,7 @@ span{
   flex-basis: 23.5%;
   flex-grow: 0;
   flex-shrink: 0;
+  margin-right: 8px;
 }
 .flexy{
   display: flex;

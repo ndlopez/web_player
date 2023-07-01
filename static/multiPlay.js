@@ -158,6 +158,7 @@ const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 const svg_clock = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="#002b36" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="16" cy="16" r="14" /><path d="M16 8 L16 16 20 20" /></svg>';
+const svg_moon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#002b36" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2C 9 2 3 7 3 15 3 23 9 29 17 29 25 29 30 23 30 18 19 25 7 13 14 2Z" /></svg>';
 const svg_ff = '<svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d= "M12 30 L12 10 30 20Z M31 30 L31 10"/></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 
@@ -165,7 +166,7 @@ const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let cardHeight = "auto";
-let img_size = 80; //card Image size %
+let img_size = 100; //card Image size %
 
 let audioConnect = new Audio();
 let isPlaying;
@@ -340,7 +341,6 @@ function stop_timer(){
 }
 
 function build_case(jdx, artist, song, album, artwork){
-    const timeNow = new Date();
     let search_link = "";
     let aux_link = "";
     if( typeof album === 'undefined'){ album = artist;}
@@ -360,17 +360,18 @@ function build_case(jdx, artist, song, album, artwork){
     ${song}</h2><h2 class='center'> ${artist} </h2><h2 class='lighter center'>
     ${album} </h2></div>`;/*search_link +*/
     const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<h2 class='lighter'> 
-    ${zeroPad(timeNow.getHours())}:${zeroPad(timeNow.getMinutes())}`;
-    // + "</h2>";
-    //onClick sleep timer starts
+    up_time.innerHTML = `<h2 class='lighter'>${svg_moon}</h2>`;
+    // onClick sleep timer starts 
     up_time.addEventListener("click",sleepy);
     
     return this_html;
 }
 
 function sleepy(){
-    if(confirm("Streaming will end after 60 minutes, ok?")){
+    //
+    const timeNow = new Date();
+    let msg = `Streaming will end at ${zeroPad(timeNow.getHours() + 1)}:${zeroPad(timeNow.getMinutes())}, ok?`;
+    if(confirm(msg)){
         setTimeout(stopPlay,(60*60*1000));//1hour=60*60*1000
         clearInterval(updater);
     }else{
