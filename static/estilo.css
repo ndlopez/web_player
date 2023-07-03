@@ -321,7 +321,7 @@ span{
   width: auto;
   position: absolute;
   bottom: 5px;
-  left:0px;
+  left:5px;
   /*right: calc(50% - 0.5 * 47.45px);*/
   background-color: var(--smoke);
   opacity: 65%;
@@ -395,8 +395,9 @@ span{
   .cardTitle{margin-right: 0px;}
   #coverCD img{margin-left: -30px;}
   .bkg_cd_icon{margin-left: 55px;}
-  #stationInfo{bottom: 142px;}
-  #player2{bottom: 68px;}
+  #stationInfo{bottom: 70px;/*142px;*/}
+  /*#player2{bottom: 68px;}*/
+  #art_title{display: none;}
   #now_song, #artwork, .no_mobil {display: none;}/**/
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
