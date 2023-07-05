@@ -381,6 +381,7 @@ span{
   justify-content: center;
 }
 .cardTitle{margin-right: 10px;}
+.cardTitle h2{margin: 0px;}
 @media (max-width: 700px) {
   body{font-size: small;}
   .outer_div{
@@ -398,7 +399,7 @@ span{
   #stationInfo{bottom: 70px;/*142px;*/}
   /*#player2{bottom: 68px;}*/
   #art_title{display: none;}
-  #now_song, #artwork, .no_mobil {display: none;}/**/
+  #now_song, /*#artwork,*/ .no_mobil {display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
     background-position-x: right;*/
