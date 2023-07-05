@@ -490,7 +490,7 @@ async function display_data(idx){
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){ 
         strText = auxText + " - " + gotSong + " ♪ ";
     }
-    document.getElementById("title_stat").innerText = strText + stations[idx].name + " ♪ " + stations[idx].description;
+    document.getElementById("title_stat").innerHTML = strText + stations[idx].name + " ♪ " + stations[idx].description;
 }
 
 async function get_id3(idx){
