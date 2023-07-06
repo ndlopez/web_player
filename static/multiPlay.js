@@ -54,7 +54,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best Alternative-Rock hits of the 90s",
         site: "",
-        xtra_info: [" - 90's Alternative","English",128,true,"rgb(119,24,19)"]
+        xtra_info: ["90's Alternative","English",128,true,"rgb(119,24,19)"]
     },{
         name: "181.fm",
         logo: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
@@ -62,7 +62,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         site: "",
-        xtra_info: [" - Awesome 80's","English",128,true,"#03712c"]
+        xtra_info: ["Awesome 80's","English",128,true,"#03712c"]
     },{
         name: "Mellow Gold",
         logo: "assets/default_bkg.svg",
@@ -70,7 +70,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-mellow_128k.mp3&https=&f=ice&c=202036",
         description: "A softer mix of classic hits with a '70s, '80s, & 90's focus.",
         site: "",
-        xtra_info: [" - Relaxing","English",128,true,"#073642"]
+        xtra_info: ["Relaxing","English",128,true,"#073642"]
     },{
         name: "Good Time Oldies",
         logo: "assets/rockola.png",
@@ -78,7 +78,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-goodtime_128k.mp3&https=&f=ice&c=223878",
         description: "Dedicated to playing the best oldies music from the 50s and 60s.",
         site: "",
-        xtra_info: [" - 50's and 60's","English",128,true,"#073642"]
+        xtra_info: ["50's and 60's","English",128,true,"#073642"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRockRadio.jpg",
@@ -356,7 +356,7 @@ function build_case(jdx, artist, song, album, artwork){
     duck.innerHTML = search_link;
     const this_html = `<div class='bkg_cd_icon' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
-    <img src='${artwork}' width='248'/></a></div><div class='cardTitle smoke-bkg padding_10 small round-border'><h2 class='headLabel center'> 
+    <img src='${artwork}' width='248'/></a></div><div class='cardTitle smoke-bkg padding_10 small round-border no_mobil'><h2 class='headLabel center'> 
     ${song}</h2><h2 class='center'> ${artist} </h2><h2 class='lighter center'>
     ${album} </h2></div>`;/*search_link +*/
     const up_time = document.getElementById("update_time");//&#x231A;
@@ -485,13 +485,14 @@ async function display_data(idx){
     document.getElementById("cover_title").innerHTML = 
     `<span class='headLabel'> ${gotSong} </span><span> ${auxText} </span>`;
     
+    const currDiv = document.getElementById('curr_song');
     let strText = "";
     console.log("what?",gotSong);
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/) && (idx < no_id3)){ 
-        const currDiv = document.getElementById('curr_song');
-        currDiv.innerHTML = "<p> Now ♪ " + auxText + " - " + gotSong + " ♪ </p>";
+        strText = `<h3 class="moving-text"> Now ♪ ${auxText} - ${gotSong} ♪ </h3>`;
     }
-    document.getElementById("title_stat").innerHTML = stations[idx].name + " - " + stations[idx].description;
+    currDiv.innerHTML = strText;
+    document.getElementById("title_stat").innerHTML = stations[idx].name + " - " + stations[idx].xtra_info[0];
 }
 
 async function get_id3(idx){
