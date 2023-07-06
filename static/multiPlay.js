@@ -487,10 +487,11 @@ async function display_data(idx){
     
     let strText = "";
     console.log("what?",gotSong);
-    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){ 
-        strText = auxText + " - " + gotSong + " ♪ ";
+    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/) && (idx < no_id3)){ 
+        const currDiv = document.getElementById('curr_song');
+        currDiv.innerHTML = "<p> Now ♪ " + auxText + " - " + gotSong + " ♪ </p>";
     }
-    document.getElementById("title_stat").innerHTML = strText + stations[idx].name + " ♪ " + stations[idx].description;
+    document.getElementById("title_stat").innerHTML = stations[idx].name + " - " + stations[idx].description;
 }
 
 async function get_id3(idx){
