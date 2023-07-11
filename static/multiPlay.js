@@ -11,8 +11,8 @@
     melodia:https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958
     emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 */
-const lpb_id3 = 1 // LaPaz.fm, Ste..
-const no_id3 = 6; //@stations, from this index no requests
+const lpb_id3 = 3;//1 // LaPaz.fm, Ste..
+const no_id3 = 8;//6; //@stations, from this index no requests
 
 const stations = [
     {
@@ -23,6 +23,22 @@ const stations = [
         description: "Mas m\u00FAsica menos palabras. La mejor radio adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true,"#183a67"]
+    },{
+        name: "Stereo97",
+        logo: "assets/stereo97.jpg",
+        stream_url: "https://stream.consultoradas.com/8104/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
+        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
+        site: "",
+        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
+    },{
+        name: "Melodia",
+        logo: "assets/melodia.png",
+        stream_url: "https://stream.consultoradas.com/8194/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8194",
+        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina, con la magia y distinci\u00F3n...",
+        site: "",
+        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"]
     },{
         name: "The Buzz",
         logo: "assets/alt-rock.jpg",
@@ -103,22 +119,6 @@ const stations = [
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
         site: "https://www.online.radiofides.com/",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
-    },{
-        name: "Stereo97",
-        logo: "assets/stereo97.jpg",
-        stream_url: "https://stream.consultoradas.com/8104/stream",
-        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
-        site: "",
-        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
-    },{
-        name: "Melodia",
-        logo: "assets/melodia.png",
-        stream_url: "https://stream.consultoradas.com/8194/stream",
-        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8194",
-        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina, con la magia y distinci\u00F3n...",
-        site: "",
-        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"]
     },{
     name: "Radio Mundial",
     logo: "assets/mundial.png",
@@ -487,7 +487,7 @@ async function display_data(idx){
     
     const currDiv = document.getElementById('curr_song');
     let strText = "";
-    console.log("what?",gotSong);
+    // console.log("what?",gotSong);
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/) && (idx < no_id3)){ 
         strText = `<h3 class="moving-text"> Now ♪ ${auxText} - ${gotSong} ♪ </h3>`;
     }
@@ -496,35 +496,41 @@ async function display_data(idx){
 }
 
 async function get_id3(idx){
-    const response = await fetch(stations[idx].id3_info);
-    const data = await response.json();
-    
     const this_output = {
         artist:stations[idx].name,
         song:stations[idx].xtra_info[1],
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
-    let song = data["title"].replace(myReg,"").replace(/&/g,"and");
-    if(idx < lpb_id3){// prev == 0
-        if(Object.keys(data).length < 1){
-            return this_output;
-        }
-        // console.log("Got",idx,Object.keys(data).length);
-        const auxStr = song.split("-");
-        if (auxStr.length < 2){
-            auxStr.push("No title");
-        }
-        artist = auxStr[1];
-        song = auxStr[0];
-        artwork = data["art"];
-    }else{
-        artist = data["artist"].replace(/&/g,"and");
-    }
-    // console.log("got:",data["title"],song);
-    if(errTitle.includes(song.trim())){
-        artwork = stations[idx].logo;
-    }
-    return {artist,song,artwork};
+
+    try{
+	    const response = await fetch(stations[idx].id3_info);
+	    const data = await response.json();
+	    	    
+	    let song = data["title"].replace(myReg,"").replace(/&/g,"and");
+	    if(idx < lpb_id3){// prev == 0
+		if(Object.keys(data).length < 1){
+		    return this_output;
+		}
+		// console.log("Got",idx,Object.keys(data).length);
+		const auxStr = song.split("-");
+		if (auxStr.length < 2){
+		    auxStr.push("No title");
+		}
+		artist = auxStr[1];
+		song = auxStr[0];
+		artwork = data["art"];
+	    }else{
+		artist = data["artist"].replace(/&/g,"and");
+	    }
+	    // console.log("got:",data["title"],song);
+	    if(errTitle.includes(song.trim())){
+		artwork = stations[idx].logo;
+	    }
+	    return {artist,song,artwork};
+    }catch(err){
+        console.error("error",err);
+        return this_output;
+    }    
 }
 
 async function get_artwork(jdx,artist_name,song_title){
