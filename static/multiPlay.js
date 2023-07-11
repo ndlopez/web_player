@@ -504,6 +504,9 @@ async function get_id3(idx){
 
     try{
 	    const response = await fetch(stations[idx].id3_info);
+        if(!response.ok){
+            throw new Error(`couldnt fetch ${stations[idx].id3_info}`);
+        }
 	    const data = await response.json();
 	    	    
 	    let song = data["title"].replace(myReg,"").replace(/&/g,"and");
