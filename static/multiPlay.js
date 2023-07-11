@@ -11,8 +11,8 @@
     melodia:https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958
     emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 */
-const lpb_id3 = 3 // LaPaz.fm, Ste..
-const no_id3 = 8; //@stations, from this index no requests
+const lpb_id3 = 1 // LaPaz.fm, Ste..
+const no_id3 = 6; //@stations, from this index no requests
 
 const stations = [
     {
@@ -23,22 +23,6 @@ const stations = [
         description: "Mas m\u00FAsica menos palabras. La mejor radio adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true,"#183a67"]
-    },{
-        name: "Melodia",
-        logo: "assets/melodia.png",
-        stream_url: "https://stream.consultoradas.com/8194/stream",
-        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8194",
-        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina, con la magia y distinci\u00F3n...",
-        site: "",
-        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"]
-    },{
-        name: "Stereo97",
-        logo: "assets/stereo97.jpg",
-        stream_url: "https://stream.consultoradas.com/8104/stream",
-        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
-        site: "",
-        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     },{
         name: "The Buzz",
         logo: "assets/alt-rock.jpg",
@@ -119,6 +103,22 @@ const stations = [
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
         site: "https://www.online.radiofides.com/",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
+    },{
+        name: "Stereo97",
+        logo: "assets/stereo97.jpg",
+        stream_url: "https://stream.consultoradas.com/8104/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
+        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
+        site: "",
+        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
+    },{
+        name: "Melodia",
+        logo: "assets/melodia.png",
+        stream_url: "https://stream.consultoradas.com/8194/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8194",
+        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina, con la magia y distinci\u00F3n...",
+        site: "",
+        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#2e4054"]
     },{
     name: "Radio Mundial",
     logo: "assets/mundial.png",
