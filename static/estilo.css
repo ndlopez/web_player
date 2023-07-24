@@ -86,7 +86,7 @@ kbd {
   box-sizing: content-box;
   width: 100%;
   background-color: var(--dark-smoke);
-  padding: 5px 0px;
+  padding: 0px;
 }
 #player{height: 48px;}
 #player2{height: 64px;}
@@ -396,7 +396,7 @@ span{
   .cardTitle{margin-right: 0px;}
   #coverCD img{margin-left: -30px;}
   .bkg_cd_icon{margin-left: 55px;}
-  #stationInfo{bottom: 70px;/*142px;*/}
+  #stationInfo{bottom: 64px;/*142px;*/}
   /*#player2{bottom: 68px;}*/
   #art_title{display: none;}
   #now_song, /*#artwork,*/ .no_mobil {display: none;}
