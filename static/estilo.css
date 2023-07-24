@@ -88,8 +88,8 @@ kbd {
   background-color: var(--dark-smoke);
   padding: 0px;
 }
-#player{height: 48px;}
-#player2{height: 64px;}
+#player{height: 58px;}
+#player2{height: 68px;}
 #player2 #gifElm{margin-top: 10px;}
 #player img{padding-top: 5px;}
 /*Equalizer elem anim*/
@@ -396,8 +396,8 @@ span{
   .cardTitle{margin-right: 0px;}
   #coverCD img{margin-left: -30px;}
   .bkg_cd_icon{margin-left: 55px;}
-  #stationInfo{bottom: 64px;/*142px;*/}
-  /*#player2{bottom: 68px;}*/
+  #stationInfo{bottom: 60px;/*142px;*/}
+  #player2{height: 60px;}
   #art_title{display: none;}
   #now_song, /*#artwork,*/ .no_mobil {display: none;}
   #nowPlaying{
