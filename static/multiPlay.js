@@ -112,14 +112,6 @@ const stations = [
         site: "https://www.panamericana.bo/blog/section/nacional",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#073642"]
     },{
-        name: "Radio Fides",
-        logo: "assets/fides.svg",
-        stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
-        id3_info: "",
-        description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
-        site: "https://www.online.radiofides.com/",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
-    },{
     name: "Radio Mundial",
     logo: "assets/mundial.png",
     stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
@@ -127,7 +119,15 @@ const stations = [
     description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
     site: "",
     xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
-}
+},{
+        name: "Radio Fides",
+        logo: "assets/fides.svg",
+        stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
+        id3_info: "",
+        description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
+        site: "https://www.online.radiofides.com/",
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
+    }
 ];
 /*,{
         name: "RadiCro",
@@ -485,13 +485,11 @@ async function display_data(idx){
     document.getElementById("cover_title").innerHTML = 
     `<span class='headLabel'> ${gotSong} </span><span> ${auxText} </span>`;
     
-    const currDiv = document.getElementById('curr_song');
-    let strText = "";
-    // console.log("what?",gotSong);
+    /*const currDiv = document.getElementById('curr_song');
+    let strText = "";    
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/) && (idx < no_id3)){ 
         strText = `<h3 class="moving-text"> Now ♪ ${auxText} - ${gotSong} ♪ </h3>`;
-    }
-    currDiv.innerHTML = strText;
+    }currDiv.innerHTML = strText;*/
     document.getElementById("title_stat").innerHTML = stations[idx].name + " - " + stations[idx].xtra_info[0];
 }
 
@@ -544,7 +542,7 @@ async function get_artwork(jdx,artist_name,song_title){
         //await get_id3(jdx); // {artist,song,artwork}
 
     if(errTitle.includes(nowPlaying.song.trim()) || (jdx < lpb_id3) || (jdx > (no_id3 - 1))){
-        console.log("No artwork requests for ",stations[jdx].name);
+        // console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
