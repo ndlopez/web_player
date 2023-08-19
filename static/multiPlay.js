@@ -485,11 +485,13 @@ async function display_data(idx){
     document.getElementById("cover_title").innerHTML = 
     `<span class='headLabel'> ${gotSong} </span><span> ${auxText} </span>`;
     
-    /*const currDiv = document.getElementById('curr_song');
+    /* current song title next to burger menu
+    const currDiv = document.getElementById('curr_song');
     let strText = "";    
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/) && (idx < no_id3)){ 
         strText = `<h3 class="moving-text"> Now ♪ ${auxText} - ${gotSong} ♪ </h3>`;
     }currDiv.innerHTML = strText;*/
+    // current playing station id
     document.getElementById("title_stat").innerHTML = stations[idx].name + " - " + stations[idx].xtra_info[0];
 }
 

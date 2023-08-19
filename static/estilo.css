@@ -431,11 +431,11 @@ span{
     height: 240px;
     background-image: linear-gradient(var(--smoke),var(--darkish-sky));
   }
+  .bottom-10px{ margin-bottom: 0px; }
   
   /*.bottomText h2{line-height: normal;}*/
   /*.colImg img{width: 64px;height: 64px;}*/
   .colImg{padding: 0px 5px;}
-  .colArtist{padding: 5px;}
   #playList{
     display: none;
     width: 100%;
