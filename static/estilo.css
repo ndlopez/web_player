@@ -322,10 +322,9 @@ span{
   width: auto;
   position: absolute;
   bottom: 5px;
-  left:5px;
-  /*right: calc(50% - 0.5 * 47.45px);*/
+  /*left:5px;  right: calc(50% - 0.5 * 47.45px);*/
   background-color: var(--smoke);
-  opacity: 65%;
+  opacity: 85%;
 }
 .pos_rel{
   position: relative;
@@ -394,12 +393,13 @@ span{
     max-width: 43%;
     flex-basis: 43%;
   }
-  .cardTitle{margin-right: 0px;}
-  #coverCD img{margin-left: -30px;}
-  .bkg_cd_icon{margin-left: 55px;}
-  #stationInfo{bottom: 60px;/*142px;*/}
-  #player2{height: 60px;}
-  #art_title{display: none;}
+  .cardTitle{ margin-right: 0px; }
+  .cardTitle h2{ margin:0px; font-size: medium;}
+  #coverCD img{ margin-left: -30px; }
+  .bkg_cd_icon{ margin-left: 55px; }
+  #stationInfo{ bottom: 60px;/*142px;*/}
+  #player2{ height: 60px; }
+  #art_title{ display: none; }
   #now_song, /*#artwork,*/ .no_mobil {display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;

@@ -185,7 +185,7 @@ function display_all_stations(){
         rowDiv.setAttribute("class","row round-border bottom-10px card");
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
-        rowDiv.style.float= "left";
+        rowDiv.style.float = "left";
         rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
         rowDiv.style.height = cardHeight;
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
@@ -354,11 +354,11 @@ function build_case(jdx, artist, song, album, artwork){
 
     const duck = document.getElementById("duck_it");
     duck.innerHTML = search_link;
-    const this_html = `<div class='bkg_cd_icon' id='coverCD'>
+    const this_html = `<div class='bkg_cd_icon pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
-    <img src='${artwork}' width='248'/></a></div><div class='cardTitle smoke-bkg padding_10 small round-border no_mobil'><h2 class='headLabel center'> 
+    <img src='${artwork}' width='248'/></a><div class='cardTitle smoke-bkg padding_10 small round-border info_block'><h2 class='headLabel center'> 
     ${song}</h2><h2 class='center'> ${artist} </h2><h2 class='lighter center'>
-    ${album} </h2></div>`;/*search_link +*/
+    ${album} </h2></div></div>`;/*search_link +*/
     const up_time = document.getElementById("update_time");//&#x231A;
     up_time.innerHTML = `<h2 class='lighter'>${svg_moon}</h2>`;
     // onClick sleep timer starts 
