@@ -6,7 +6,7 @@
     background: var(--dark-smoke);
     /*linear-gradient(to left, var(--wine), var(--dark-smoke));*/
     color: var(--light-sky);
-    height: 50px;
+    height: 45px;
     padding: 1em;
 }
 .menu{

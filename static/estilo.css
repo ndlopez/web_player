@@ -322,7 +322,8 @@ span{
   width: auto;
   position: absolute;
   bottom: 5px;
-  /*left:5px;  right: calc(50% - 0.5 * 47.45px);*/
+  left: -5px;
+  /*  right: calc(50% - 0.5 * 47.45px);*/
   background-color: var(--smoke);
   opacity: 85%;
 }
