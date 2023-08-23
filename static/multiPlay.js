@@ -120,6 +120,14 @@ const stations = [
         site: "https://www.online.radiofides.com/",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
     },{
+        name: "RadiCro",
+        logo: "assets/phantogram.jpg",
+        stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
+        id3_info: "",
+        description: "Radio Cross from Kobe,Japan",
+        site: "",
+        xtra_info: ["Variety in Japanese","English",128,false]
+    },{
         name: "Radio Mundial",
         logo: "assets/mundial.png",
         stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
@@ -129,15 +137,7 @@ const stations = [
         xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
     }
 ];
-/*,{
-        name: "RadiCro",
-        logo: "assets/phantogram.jpg",
-        stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
-        id3_info: "",
-        description: "Radio Cross from Kobe,Japan",
-        site: "",
-        xtra_info: ["","English",128,false]
-    }*/
+
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
@@ -181,6 +181,8 @@ function display_all_stations(){
     mainDiv.setAttribute("class","outer_div");
     
     for(let idx = 0; idx < (stations.length -1); idx++){
+        /* here should consider replacing Fides by Mundial
+        based on local time */
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row round-border bottom-10px card");
         rowDiv.setAttribute("id","station_"+idx);
@@ -191,7 +193,7 @@ function display_all_stations(){
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
         rowDiv.style.backgroundSize = "cover";*/
-        /*colImg:class=float_left    colArtist:class=float_left*/
+        /*colImg:class=float_left; colArtist:class=float_left*/
         let auxStr = "";
         //if( idx < no_id3 ){
         auxStr = `<div class='info_block'><span id='timer_${idx}' class='small'> 00:00 </span></div>`;
@@ -199,9 +201,7 @@ function display_all_stations(){
         rowDiv.innerHTML = `<div class='colImg pos_rel' id='imgDiv_${idx}'>
         <img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/> 
         ${auxStr}</div><div class='colArtist' id='artistDiv_${idx}'></div>`;
-        /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + 
-        "</span></div>";<div class='colTime float_left'><span id='timer_" + 
-        idx + "'>00:00</span></div>";*/
+        /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
     }
     containDiv.appendChild(mainDiv);
