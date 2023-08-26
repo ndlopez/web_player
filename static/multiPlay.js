@@ -112,13 +112,13 @@ const stations = [
         site: "https://www.panamericana.bo/blog/section/nacional",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#073642"]
     },{
-        name: "Radio Fides",
-        logo: "assets/fides.svg",
-        stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
+        name: "Radio Mundial",
+        logo: "assets/mundial.png",
+        stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
         id3_info: "",
-        description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
-        site: "https://www.online.radiofides.com/",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
+        description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
+        site: "",
+        xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
     },{
         name: "RadiCro",
         logo: "assets/phantogram.jpg",
@@ -128,13 +128,13 @@ const stations = [
         site: "",
         xtra_info: ["Variety in Japanese","English",128,false]
     },{
-        name: "Radio Mundial",
-        logo: "assets/mundial.png",
-        stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
+        name: "Radio Fides",
+        logo: "assets/fides.svg",
+        stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
         id3_info: "",
-        description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
-        site: "",
-        xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
+        description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
+        site: "https://www.online.radiofides.com/",
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
     }
 ];
 
