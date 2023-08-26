@@ -47,7 +47,8 @@ Update: *www.lapaz.fm* has changed sources again. Another server has the id3 ~~i
 Dev only: Open *index.html* in Firefox and access *Web Developer Tools* from Settings Menu.
 
 
-<!--div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
+<!--
+div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-sizing: content-box;">
   <ul>
     <li><a><div><label for="vol_input" onclick="volume_mute(0)">
       <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
@@ -78,3 +79,25 @@ Dev only: Open *index.html* in Firefox and access *Web Developer Tools* from Set
       <path transform="translate(-1682.000000, -935.000000)" d="M1687,935 L1687,945 L1690,945 L1690,935 L1687,935 Z M1682,935 L1682,945 L1685,945 L1685,935 L1682,935 Z" fill="currentColor"></path></svg>
     <svg id="sub_play" viewBox="0 0 16 16" width="32px" height="32px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path class="paused" d="M12.322 7.576a.5.5 0 010 .848l-6.557 4.098A.5.5 0 015 12.098V3.902a.5.5 0 01.765-.424l6.557 4.098z" fill="currentColor"></path></svg-->
+
+<!--aside id='player2'>
+<div class='col15 float_left' id='cover_art'>
+<img src='assets/phantogram.jpg' width='60' height='60'/></div>
+<div class='col70 float_left'><div id='cover_title' class='col_50 float_left'>
+<span>You don't get me high anymore</span><span>Phantogram</span></div><div class='col_20 float_left'><svg id='play2' 
+    xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60' width='60' height='60' stroke='#2e4054' fill='#bed2e0' stroke-linecap='round' stroke-linejoin='round' stroke-width='4'>
+    <circle class='paused no_mobil' cx='30' cy='30' r='26'/>
+    <path class='paused' fill='#2e4054' d='M23 40 L23 20 43 30Z'/></svg>
+  </div>
+  <div class='float_left padding_10 no_mobil'>
+    <label for='vol_input' onclick='volume_mute(0)'>
+      <img id='vol_icon' src='assets/volume-svgrepo.svg' width='32'/></label>
+      <input id='vol_input' class='no_desktop no_mobil' type='range' min='0' max='100' value='80' step='10' oninput='audioConnect.volume = this.value/100' onchange='this.oninput()'>
+  </div>
+</div>
+<div class='col15 float_left'>
+    <div id='gifElm' class='equalizer no-audio'>
+      <div><span></span><span></span><span></span><span></span>
+        <span></span><--span></span-></div></div>
+</div>
+</aside-->
