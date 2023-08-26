@@ -2,7 +2,7 @@
 
 [live demo](https://ndlopez.github.io/web_player/)
 
-Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) or *thirdrock-sgplayer* when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac). I decided to build a script that displays the current song playing on *lapaz.fm* or *thirdrockradio.net*
+Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) or *thirdrock-sgplayer* when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac). I decided to build a website to display the current song playing on *lapaz.fm* or *thirdrockradio.net*
 
 Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and [fmlapaz](https://ndlopez.github.io/web_player/fmlapaz.html)
 
@@ -10,7 +10,7 @@ Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and
 
 *The Strumbellas - Spirits*
 
-Display the current playing song of 13 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), Third Rock Radio, 113.fm ClassicOne, News Radio x2.<br> For ThirdRock stream, 
+Display the current playing song out of 13 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), Third Rock Radio, 113.fm ClassicOne, News Radio x2.<br> For ThirdRock stream, 
 there is a CORS issue with the URL I am fetching data from, it cannot parse anything (those people protect their data fiercely). Although I found a herokuapp website that appends the required *header* to the URL and JavaScript can fetch ~~without problems~~. Currently, the herokuapp no longer accepts requests, so this script no longer works :(
 
 As countermeasure, I decided it was too much hassle on the herokuapp server(it says so on its GitHub page), thus I decided to make a Python script to fetch data from the same URL and store it in a JSON file. Python's urllib doesnt care about headers and fetches data without problems :)
@@ -32,6 +32,14 @@ Update time is set to 3min40s (assumed average length of a song). Because of thi
 By clicking on the cloud icon, it is possible to download the playlist in JSON format, obviously from the moment the page was opened.
 
 ## Unrelated?
+
+Resize images using imageMagick (on Debian)
+
+mogrify -resize 256x256 rfi_logo.png
+
+mogrify -format jpg *.png
+
+more [here](https://imagemagick.org/script/mogrify.php)
 
 To create some [wavy path in CSS3 and SVG](https://css-tricks.com/how-to-create-wavy-shapes-patterns-in-css/#top-of-site)
 Update: *www.lapaz.fm* has changed sources again. Another server has the id3 ~~icecasthd JSON file is no longer available~~.

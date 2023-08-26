@@ -1,4 +1,6 @@
-{"list":[{"name":"The Breeze","stream_url":"http://listen.livestreamingservice.com/181-breeze_64k.aac"},{  
+{
+    "list":[
+        {"name":"The Breeze","stream_url":"http://listen.livestreamingservice.com/181-breeze_64k.aac"},{  
     "name": "113.fm Alternative-Rock",
     "logo": "assets/113fm_logo.jpg",
     "stream_url": "https://113fm-atunwadigital.streamguys1.com/1001",
@@ -66,13 +68,10 @@
     "xtra_info": ["Electronic Rock","English",128,false]
 }],
 "player": "<aside id='player2'>
-    <div class='col15 float_left' id='cover_art'>
-  <img src='assets/phantogram.jpg' width='60' height='60'/></div>
-<div class='col70 float_left'>
-  <div id='cover_title' class='col_50 float_left'>
-    <span>You don't get me high anymore</span><span>Phantogram</span></div>
-  <div class='col_20 float_left'>
-    <svg id='play2' 
+<div class='col15 float_left' id='cover_art'>
+<img src='assets/phantogram.jpg' width='60' height='60'/></div>
+<div class='col70 float_left'><div id='cover_title' class='col_50 float_left'>
+<span>You don't get me high anymore</span><span>Phantogram</span></div><div class='col_20 float_left'><svg id='play2' 
     xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60' width='60' height='60' stroke='#2e4054' fill='#bed2e0' stroke-linecap='round' stroke-linejoin='round' stroke-width='4'>
     <circle class='paused no_mobil' cx='30' cy='30' r='26'/>
     <path class='paused' fill='#2e4054' d='M23 40 L23 20 43 30Z'/></svg>
