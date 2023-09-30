@@ -61,14 +61,14 @@
     transform: rotate(-405deg);
 }
 
-/* this menu was display under cd cover
 @media (max-width: 700px){
     .menu-button-container{display: flex;}
     .menu{
         position: absolute;
         top: 0;
-        margin-top: 50px;
         left: 0;
+        margin-top: 50px;
+        z-index: 1;
         flex-direction: column;
         width: 100%;
         justify-content: center;
@@ -100,7 +100,7 @@
     .menu >li:not(:last-child) {
         border-bottom: 1px solod var(--wine);
     }
-}*/
+}
 
 /*@media(prefers-reduced-motion: no-preference){
   .moving-text{animation: marque 20s linear infinite;}
