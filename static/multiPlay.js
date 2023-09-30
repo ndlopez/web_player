@@ -170,8 +170,8 @@ let img_size = 100; //card Image size %
 
 let audioConnect = new Audio();
 let isPlaying;
-let tina_timer;
-
+let tina_timer,dayna_timer;
+let zoey, cindy;
 init_this();
 
 function display_all_stations(){
@@ -206,7 +206,7 @@ function display_all_stations(){
     }
     containDiv.appendChild(mainDiv);
     const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<h2>${svg_moon}</h2><span id="id3_timer">00:00</span>`;
+    up_time.innerHTML = `<span class="col_half float_left">${svg_moon}</span><span id="id3_timer" class="col_half float_left">00:00</span>`;
     // onClick sleep timer starts 
     up_time.addEventListener("click",sleepy);
 }
@@ -221,6 +221,7 @@ function init_this(){
 function update_this(){
     // update_stations();
     display_data(isPlaying);
+    clearInterval(dayna_timer);
 }
 
 // Updates all avail id3 and playing album every updateTime
@@ -323,11 +324,8 @@ function volume_mute(vol_stat){
 
 function play_elapsed(min=0,sec=0,jdx){//
     // let second,minute;
-    let zoey = 3, cindy = 5;
     tina_timer = setInterval(function(){
-        // second = (sec<10)?"0"+String(sec):sec;
-        // minute = (min<10)?"0"+String(min):min;
-        // timer on each station
+        // timer for each station
         document.getElementById("timer_"+jdx).innerText = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
         // timer on player
         document.getElementById("timer").innerText = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
@@ -338,13 +336,15 @@ function play_elapsed(min=0,sec=0,jdx){//
         /* if listen hours
         if(min>59 && sec>59){hours++;min=0;sec=0;}*/
         //timer case: if(sec < 0){clearInterval(tina_timer);}
+    },1000);
+    zoey = 3, cindy = 5;
+    dayna_timer = setInterval(()=>{
         // timer to update id3
         document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
         cindy = cindy - 1;
         if (cindy < 0){
             cindy=59;zoey = zoey - 1;
         }
-        console.log(zoey,cindy);
     },1000);
 }
 
@@ -389,7 +389,7 @@ function sleepy(){
 }
 
 async function update_stations(){
-    var gotData = "", auxLink = "";
+    let gotData = "", auxLink = "";
 
     for(let idx = 0; idx < (stations.length -1); idx++){
         gotData = {
@@ -442,6 +442,8 @@ async function update_stations(){
 }
 
 async function display_data(idx){
+    // reset timer
+    zoey = 3, cindy = 5;
     // Function to request artwork from ext-source, not valid for idx=0
     await update_stations();
     
