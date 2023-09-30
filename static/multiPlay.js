@@ -219,6 +219,7 @@ function update_this(){
     display_data(isPlaying);
 }
 
+// Updates all avail id3 and playing album every updateTime
 let updater = setInterval(update_this,updateTime);
 
 //window.addEventListener("load",startPlay);//for autoplay
@@ -322,8 +323,9 @@ function play_elapsed(min=0,sec=0,jdx){//
     tina_timer = setInterval(function(){
         // second = (sec<10)?"0"+String(sec):sec;
         // minute = (min<10)?"0"+String(min):min;
+        // timer on each station
         document.getElementById("timer_"+jdx).innerText = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-        
+        // timer on player
         document.getElementById("timer").innerText = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
         sec++;
         if(sec > 59){
@@ -332,6 +334,13 @@ function play_elapsed(min=0,sec=0,jdx){//
         /* if listen hours
         if(min>59 && sec>59){hours++;min=0;sec=0;}*/
         //timer case: if(sec < 0){clearInterval(tina_timer);}
+            // timer to update id3
+        let zoey = 3, cindy = 5;
+        document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
+        cindy--;
+        if (cindy < 1){
+            cindy=59;zoey--;
+        }
     },1000);
 }
 
@@ -360,7 +369,7 @@ function build_case(jdx, artist, song, album, artwork){
     ${song}</h2><h2> ${artist} </h2><h2 class='lighter'>
     ${album} </h2></div></div>`;/*search_link +*/
     const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<h2 class='lighter'>${svg_moon}</h2>`;
+    up_time.innerHTML = `<h2 class='lighter'>${svg_moon} <span id="id3_timer">00:00</span></h2>`;
     // onClick sleep timer starts 
     up_time.addEventListener("click",sleepy);
     
