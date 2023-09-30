@@ -322,9 +322,9 @@ function play_elapsed(min=0,sec=0,jdx){//
     tina_timer = setInterval(function(){
         // second = (sec<10)?"0"+String(sec):sec;
         // minute = (min<10)?"0"+String(min):min;
-        document.getElementById("timer_"+jdx).innerText = `${zeroPad(min)}:${zeroPad(sec)}`;
+        document.getElementById("timer_"+jdx).innerText = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
         
-        document.getElementById("timer").innerText = `${zeroPad(min)}:${zeroPad(sec)}`;
+        document.getElementById("timer").innerText = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
         sec++;
         if(sec > 59){
             min++; sec=0;
@@ -370,7 +370,7 @@ function build_case(jdx, artist, song, album, artwork){
 function sleepy(){
     //
     const timeNow = new Date();
-    let msg = `Streaming will end at ${zeroPad(timeNow.getHours() + 1)}:${zeroPad(timeNow.getMinutes())}, ok?`;
+    let msg = `Streaming will end at ${String(timeNow.getHours() + 1).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, ok?`;
     if(confirm(msg)){
         setTimeout(stopPlay,(60*60*1000));//1hour=60*60*1000
         clearInterval(updater);
@@ -572,10 +572,6 @@ async function get_artwork(jdx,artist_name,song_title){
     }
     // console.log("gotArt:",artwork);
     return {nowPlaying, album, artwork};
-}
-
-function zeroPad(timeElm){
-    return (parseInt(timeElm,10) < 10 ? '0' : '') + timeElm;
 }
 
 function openNav(){
