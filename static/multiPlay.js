@@ -205,6 +205,10 @@ function display_all_stations(){
         mainDiv.appendChild(rowDiv);
     }
     containDiv.appendChild(mainDiv);
+    const up_time = document.getElementById("update_time");//&#x231A;
+    up_time.innerHTML = `<h2>${svg_moon}</h2><span id="id3_timer">00:00</span>`;
+    // onClick sleep timer starts 
+    up_time.addEventListener("click",sleepy);
 }
 
 function init_this(){
@@ -319,7 +323,7 @@ function volume_mute(vol_stat){
 
 function play_elapsed(min=0,sec=0,jdx){//
     // let second,minute;
-
+    let zoey = 3, cindy = 5;
     tina_timer = setInterval(function(){
         // second = (sec<10)?"0"+String(sec):sec;
         // minute = (min<10)?"0"+String(min):min;
@@ -334,13 +338,13 @@ function play_elapsed(min=0,sec=0,jdx){//
         /* if listen hours
         if(min>59 && sec>59){hours++;min=0;sec=0;}*/
         //timer case: if(sec < 0){clearInterval(tina_timer);}
-            // timer to update id3
-        let zoey = 3, cindy = 5;
+        // timer to update id3
         document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
-        cindy--;
-        if (cindy < 1){
-            cindy=59;zoey--;
+        cindy = cindy - 1;
+        if (cindy < 0){
+            cindy=59;zoey = zoey - 1;
         }
+        console.log(zoey,cindy);
     },1000);
 }
 
@@ -368,10 +372,7 @@ function build_case(jdx, artist, song, album, artwork){
     <img src='${artwork}' width='248'/></a><div class='cardTitle smoke-bkg padding_10 small round-border info_block'><h2 class='headLabel'> 
     ${song}</h2><h2> ${artist} </h2><h2 class='lighter'>
     ${album} </h2></div></div>`;/*search_link +*/
-    const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<h2 class='lighter'>${svg_moon} <span id="id3_timer">00:00</span></h2>`;
-    // onClick sleep timer starts 
-    up_time.addEventListener("click",sleepy);
+    // update time was here 2023-10-01
     
     return this_html;
 }
