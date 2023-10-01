@@ -216,12 +216,14 @@ function init_this(){
     //build_case(stations.length,stations.name,stations.id3_info,stations.stream_url,stations.logo);
     /*for (let idx=0;idx<stations.length;idx++) {display_data(idx);}*/
     update_stations();
+    // run_timer();
 }
 
 function update_this(){
     // update_stations();
+    run_timer();
     display_data(isPlaying);
-    clearInterval(dayna_timer);
+    // clearInterval(dayna_timer);
 }
 
 // Updates all avail id3 and playing album every updateTime
@@ -239,6 +241,7 @@ function init_player(stream_idx){
     stopPlay();
     playStop(stream_idx);
     display_data(stream_idx);
+    run_timer();
 }
 
 function playStop(idx){
@@ -337,6 +340,10 @@ function play_elapsed(min=0,sec=0,jdx){//
         if(min>59 && sec>59){hours++;min=0;sec=0;}*/
         //timer case: if(sec < 0){clearInterval(tina_timer);}
     },1000);
+}
+
+function run_timer(){
+    console.log("run_timer started");
     zoey = 3, cindy = 5;
     dayna_timer = setInterval(()=>{
         // timer to update id3
@@ -344,6 +351,9 @@ function play_elapsed(min=0,sec=0,jdx){//
         cindy = cindy - 1;
         if (cindy < 0){
             cindy=59;zoey = zoey - 1;
+        }
+        if ((zoey == 0) && (cindy < 1)){
+            cindy=5;zoey=3;
         }
     },1000);
 }
@@ -443,7 +453,7 @@ async function update_stations(){
 
 async function display_data(idx){
     // reset timer
-    zoey = 3, cindy = 5;
+    // zoey = 3, cindy = 5;
     // Function to request artwork from ext-source, not valid for idx=0
     await update_stations();
     
