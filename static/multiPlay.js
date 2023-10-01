@@ -206,7 +206,7 @@ function display_all_stations(){
     }
     containDiv.appendChild(mainDiv);
     const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<span class="col_half float_left">${svg_moon}</span><span id="id3_timer" class="col_half float_left">00:00</span>`;
+    up_time.innerHTML = `<span class="col_20 float_left">${svg_moon}</span><span id="id3_timer" class="col_half float_left">00:00</span>`;
     // onClick sleep timer starts 
     up_time.addEventListener("click",sleepy);
 }
@@ -220,10 +220,10 @@ function init_this(){
 }
 
 function update_this(){
-    // update_stations();
+    clearInterval(dayna_timer);
     run_timer();
+    // update_stations();
     display_data(isPlaying);
-    // clearInterval(dayna_timer);
 }
 
 // Updates all avail id3 and playing album every updateTime
@@ -241,6 +241,7 @@ function init_player(stream_idx){
     stopPlay();
     playStop(stream_idx);
     display_data(stream_idx);
+    clearInterval(dayna_timer);
     run_timer();
 }
 
@@ -343,7 +344,7 @@ function play_elapsed(min=0,sec=0,jdx){//
 }
 
 function run_timer(){
-    console.log("run_timer started");
+    // console.log("run_timer started");
     zoey = 3, cindy = 5;
     dayna_timer = setInterval(()=>{
         // timer to update id3
