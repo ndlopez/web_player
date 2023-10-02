@@ -422,7 +422,7 @@ span{
     margin: 0;
   }
   .colTime span, #timer {font-size: 0.9rem !important;}
-  
+  #id3_timer{font-size: medium;}
   #downLink img{width: 32px;}
   .bottomText{
     padding: 5px 5px 20px 13px;  

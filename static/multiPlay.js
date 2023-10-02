@@ -206,7 +206,7 @@ function display_all_stations(){
     }
     containDiv.appendChild(mainDiv);
     const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<span class="col_20 float_left">${svg_moon}</span><span id="id3_timer" class="col_half float_left">00:00</span>`;
+    up_time.innerHTML = `<span class="col30 float_left">${svg_moon}</span><span id="id3_timer" class="col_half float_left">00:00</span>`;
     // onClick sleep timer starts 
     up_time.addEventListener("click",sleepy);
 }
@@ -234,7 +234,6 @@ function init_player(stream_idx){
     // console.log("gotStream",stream_idx);
     isPlaying = stream_idx;
     clearInterval(updater);
-    //console.log("Time updater restarted");
     //const getTimer = document.getElementById("timer_"+isPlaying);
     //getTimer.innerText = document.getElementById("timer").innerText;
     updater = setInterval(update_this,updateTime)
@@ -353,7 +352,7 @@ function run_timer(){
         if (cindy < 0){
             cindy=59;zoey = zoey - 1;
         }
-        if ((zoey == 0) && (cindy < 1)){
+        if ((zoey == 0) && (cindy < 0)){
             cindy=5;zoey=3;
         }
     },1000);
