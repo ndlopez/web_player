@@ -172,6 +172,7 @@ let audioConnect = new Audio();
 let isPlaying;
 let tina_timer,dayna_timer;
 let zoey, cindy;
+
 init_this();
 
 function display_all_stations(){
@@ -352,7 +353,7 @@ function run_timer(){
         if (cindy < 0){
             cindy=59;zoey = zoey - 1;
         }
-        if ((zoey == 0) && (cindy < 0)){
+        if ((zoey == 0) && (cindy == 0)){
             cindy=5;zoey=3;
         }
     },1000);
