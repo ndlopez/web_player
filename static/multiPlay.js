@@ -382,9 +382,9 @@ function build_case(jdx, artist, song, album, artwork){
     duck.innerHTML = search_link;
     const this_html = `<div class='bkg_cd_icon pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
-    <img src='${artwork}' width='248'/></a><div class='cardTitle smoke-bkg padding_10 small round-border info_block'><h2 class='headLabel'> 
+    <img src='${artwork}' width='248'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel'> 
     ${song}</h2><h2> ${artist} </h2><h2 class='lighter'>
-    ${album} </h2></div></div>`;/*search_link +*/
+    ${album} </h2></div>`;/*search_link +*/
     // update time was here 2023-10-01
     
     return this_html;
