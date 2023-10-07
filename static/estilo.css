@@ -388,7 +388,7 @@ span{
   .outer_div{
     width: 100%;
     overflow-x: auto;
-    flex-wrap: nowrap;
+    /*flex-wrap: nowrap;all items in one single row*/
   }
   .card{
     max-width: 43%;

@@ -12,7 +12,7 @@
     emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 */
 // import stations from "./fetch_list.js"; // should not be local
-const lpb_id3 = 3;//1 // LaPaz.fm, Ste..
+const lpb_id3 = 2;//1 // LaPaz.fm, Me..
 const no_id3 = 8;//6; //@stations, from this index no requests
 
 const stations = [
@@ -24,14 +24,6 @@ const stations = [
         description: "Mas m\u00FAsica menos palabras. La mejor radio adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true,"#183a67"]
-    },{
-        name: "Stereo97",
-        logo: "assets/stereo97.jpg",
-        stream_url: "https://stream.consultoradas.com/8104/stream",
-        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
-        site: "",
-        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     },{
         name: "Melodia",
         logo: "assets/melodia.png",
@@ -136,6 +128,14 @@ const stations = [
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
         site: "https://www.online.radiofides.com/",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
+    },{
+        name: "Stereo97",
+        logo: "assets/stereo97.jpg",
+        stream_url: "https://stream.consultoradas.com/8104/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
+        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
+        site: "",
+        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     }
 ];
 
