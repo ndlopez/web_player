@@ -184,6 +184,21 @@ let zoey, cindy;
 
 init_this();
 
+if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+    // Load onMobile only:console.log("User is using a Mobile device");
+    window.onscroll = () => {scrollFunction();};
+}
+
+const pxx=350;
+
+function scrollFunction() {
+    if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) { document.getElementById("topBtn").style.display = "block"; } 
+    else { document.getElementById("topBtn").style.display = "none"; }
+}
+function topFunction() {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+}
+
 function display_all_stations(){
     /* Build one card for each station*/
     const containDiv = document.getElementById("amia");
