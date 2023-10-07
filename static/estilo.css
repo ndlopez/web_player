@@ -37,7 +37,7 @@ kbd {
   place-items: center;
 }
 .bottom-10px{
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   /*margin-right: 9px;*/
 }
 .smoke-bkg{
@@ -432,9 +432,9 @@ span{
     height: 240px;
     background-image: linear-gradient(var(--smoke),var(--darkish-sky));
   }
+  /*
   .bottom-10px{ margin-bottom: 0px; }
-  
-  /*.bottomText h2{line-height: normal;}*/
+  .bottomText h2{line-height: normal;}*/
   /*.colImg img{width: 64px;height: 64px;}*/
   .colImg{padding: 0px 5px;}
   #playList{

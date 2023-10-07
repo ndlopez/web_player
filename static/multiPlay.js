@@ -13,7 +13,7 @@
 */
 // import stations from "./fetch_list.js"; // should not be local
 const lpb_id3 = 2;//1 // LaPaz.fm, Me..
-const no_id3 = 8;//6; //@stations, from this index no requests
+const no_id3 = 7;//6; //@stations, from this index no requests
 
 const stations = [
     {
@@ -105,6 +105,14 @@ const stations = [
         site: "https://www.panamericana.bo/blog/section/nacional",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#073642"]
     },{
+        name: "Radio Fides",
+        logo: "assets/fides.svg",
+        stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
+        id3_info: "",
+        description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
+        site: "https://www.online.radiofides.com/",
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
+    },{
         name: "Radio Mundial",
         logo: "assets/mundial.png",
         stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
@@ -120,14 +128,6 @@ const stations = [
         description: "Radio Cross from Kobe,Japan",
         site: "",
         xtra_info: ["Variety in Japanese","English",128,false,"#073642"]
-    },{
-        name: "Radio Fides",
-        logo: "assets/fides.svg",
-        stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
-        id3_info: "",
-        description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
-        site: "https://www.online.radiofides.com/",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
     },{
         name: "Stereo97",
         logo: "assets/stereo97.jpg",
