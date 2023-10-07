@@ -175,7 +175,7 @@ span{
   display: grid;
   place-items: center;
 }
-#artwork{margin-top: 20px;}
+#artwork{margin-top: 45px;}
 
 .col_23{width:23.5%;}
 .col_50, .col2, .col_half{width: 50%;}

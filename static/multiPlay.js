@@ -129,6 +129,13 @@ const stations = [
         site: "",
         xtra_info: ["Variety in Japanese","English",128,false,"#073642"]
     },{
+        name: "rfi",
+        logo: "assets/rfi_logo.png",
+        stream_url: "https://rfienespagnol64k.ice.infomaniak.ch/rfienespagnol-64.mp3",
+        id3_info:"",
+        site:"https://www.rfi.fr/es/en-vivo",
+        xtra_info: ["Radio Francia Internacional","Espa\u00f1ol",64,false,"#a50005"]
+    },{
         name: "Stereo97",
         logo: "assets/stereo97.jpg",
         stream_url: "https://stream.consultoradas.com/8104/stream",
