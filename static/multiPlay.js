@@ -245,6 +245,7 @@ function init_player(stream_idx){
     display_data(stream_idx);
     clearInterval(dayna_timer);
     run_timer();
+    openNav();
 }
 
 function playStop(idx){
@@ -382,7 +383,7 @@ function build_case(jdx, artist, song, album, artwork){
     duck.innerHTML = search_link;
     const this_html = `<div class='bkg_cd_icon pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
-    <img src='${artwork}' width='248'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel'> 
+    <img src='${artwork}' width='248'/></a></div> <div class='cardTitle padding_10 small round-border centered'><h2 class='headLabel'> 
     ${song}</h2><h2> ${artist} </h2><h2 class='lighter'>
     ${album} </h2></div>`;/*search_link +*/
     // update time was here 2023-10-01
@@ -602,7 +603,7 @@ async function get_artwork(jdx,artist_name,song_title){
 function openNav(){
     /* open and close Info modal. works onMobil only*/
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){    
-        const titleDiv = document.getElementById("cover_title");
+        const titleDiv = document.getElementById("toggle-list");
         titleDiv.setAttribute("onclick","closeNav()");
         /*closeBtn.style.margin = "0";
         closeBtn.setAttribute("class","col10 float_left closeBtn");
@@ -610,15 +611,17 @@ function openNav(){
         closeBtn.setAttribute("onclick","closeNav()");*/
         document.getElementById("amia").style.display = "none";
         document.getElementById("artwork").style.display = "block";
-        // document.getElementById("station_info").style.display = "none";
+        document.getElementById("stationInfo").style.display = "block";
+        document.getElementById("player2").style.display = "block";
         document.body.style.overflow = "hidden";
     }
 }
 function closeNav(){
-    const titleDiv = document.getElementById("cover_title");
+    const titleDiv = document.getElementById("toggle-list");
     titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
     document.getElementById("amia").style.display = "block";
-    //document.getElementById("station_info").style.display = "block";
+    document.getElementById("stationInfo").style.display = "none";
+    document.getElementById("player2").style.display = "none";
     document.body.style.overflow = "auto";
 }
