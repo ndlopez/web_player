@@ -391,8 +391,9 @@ span{
     /*flex-wrap: nowrap;all items in one single row*/
   }
   .card{
-    max-width: 43%;
-    flex-basis: 43%;
+    /*43% x-scrollable*/
+    max-width: 47%;
+    flex-basis: 47%;
   }
   .cardTitle{ margin-right: 0px; }
   .cardTitle h2{ /*margin:0px;*/ font-size: medium;}
