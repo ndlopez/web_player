@@ -183,15 +183,13 @@ let tina_timer,dayna_timer;
 let zoey, cindy;
 
 init_this();
-
+// topBtn functions
 if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     // Load onMobile only:console.log("User is using a Mobile device");
     window.onscroll = () => {scrollFunction();};
 }
-
-const pxx=350;
-
 function scrollFunction() {
+    let pxx=350;
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) { document.getElementById("topBtn").style.display = "block"; } 
     else { document.getElementById("topBtn").style.display = "none"; }
 }
@@ -374,13 +372,13 @@ function run_timer(){
     dayna_timer = setInterval(()=>{
         // timer to update id3
         document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
-        cindy = cindy - 1;
         if (cindy < 0){
             cindy=59;zoey = zoey - 1;
         }
         if ((zoey == 0) && (cindy == 0)){
             cindy=5;zoey=3;
         }
+        cindy = cindy - 1;
     },1000);
 }
 
@@ -526,7 +524,11 @@ async function display_data(idx){
     // ${auxText}`;
 
     auxText = gotArtist;
-    if(idx > no_id3){ auxText = stations[idx].xtra_info[0]; }
+    let play_stat = stations[idx].name + " - " + stations[idx].xtra_info[0];
+    if(idx > no_id3){
+        auxText = stations[idx].xtra_info[0];
+        play_stat = "";
+    }
     
     /*let newTitle = gotSong + " - " + gotArtist;
     if(gotSong.length < 21){ newTitle = gotSong; }else{ auxText = ""; }*/
@@ -540,7 +542,7 @@ async function display_data(idx){
         strText = `<h3 class="moving-text"> Now ♪ ${auxText} - ${gotSong} ♪ </h3>`;
     }currDiv.innerHTML = strText;*/
     // current playing station id
-    document.getElementById("title_stat").innerHTML = stations[idx].name + " - " + stations[idx].xtra_info[0];
+    document.getElementById("title_stat").innerHTML = play_stat; 
 }
 
 async function get_id3(idx){
