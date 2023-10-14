@@ -283,8 +283,13 @@ function playStop(idx){
     }
     
     if(audioConnect.paused){
+        document.getElementById("url_status").innerText = "";
         audioConnect.addEventListener('error',()=>{
+            // Should be displayed also on GUI
+            document.getElementById("url_status").innerText = `Cannot connect to ${stations[idx].name}`;
+            stopPlay();
             console.error(`Error loading: ${stations[idx].stream_url}`);});
+        
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
@@ -373,7 +378,7 @@ function run_timer(){
         // timer to update id3
         document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
         cindy = cindy - 1;
-        if (cindy < 1){
+        if ((cindy < 1) && (zoey > 0)){
             cindy=59;zoey = zoey - 1;
         }
         if ((zoey == 0) && (cindy == 0)){
