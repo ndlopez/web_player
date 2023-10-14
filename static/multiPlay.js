@@ -410,8 +410,8 @@ function build_case(jdx, artist, song, album, artwork){
     <a title='Click for more info' href='${aux_link}'>
     <img src='${artwork}' width='248'/></a></div> <div class='cardTitle padding_10 small round-border centered'><h2 class='headLabel'> 
     ${song}</h2><h2> ${artist} </h2><h2 class='lighter'>${album} </h2></div>
-    <div><span id="timer" class="col15 float_left">00:00</span>
-    <span id="title_stat" class="center oneLine"></span></div>`;/*search_link +*/
+    <div><span id="timer" class="col_20 float_left">00:00</span>
+    <span id="title_stat" class="col80 float_left oneLine"></span></div>`;/*search_link +*/
     // update time was here 2023-10-01
     
     return this_html;
@@ -641,7 +641,7 @@ function openNav(){
         closeBtn.setAttribute("onclick","closeNav()");*/
         document.getElementById("amia").style.display = "none";
         document.getElementById("artwork").style.display = "block";
-        document.getElementById("stationInfo").style.display = "block";
+        //document.getElementById("stationInfo").style.display = "block";
         document.getElementById("player2").style.display = "block";
         document.body.style.overflow = "hidden";
     }
@@ -651,7 +651,7 @@ function closeNav(){
     titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
     document.getElementById("amia").style.display = "block";
-    document.getElementById("stationInfo").style.display = "none";
+    //document.getElementById("stationInfo").style.display = "none";
     document.getElementById("player2").style.display = "none";
     document.body.style.overflow = "auto";
 }
