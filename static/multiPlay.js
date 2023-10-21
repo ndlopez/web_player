@@ -554,11 +554,23 @@ async function display_data(idx){
 async function get_id3(idx){
     const this_output = {
         artist:stations[idx].name,
-        song:stations[idx].xtra_info[1],
+        song:stations[idx].xtra_info[0],
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
-    let data,song = "";
+    let data = {},song = "";
+    // deal with timeout requests
+    /*function withTimeout(msecs, promise) {
+        const timeout = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            reject(new Error("timeout"));
+          }, msecs);
+        });
+        return Promise.race([timeout, promise]);
+    }*/
     try{
+        /*withTimeout(1000, fetch(stations[idx].id3_info))
+            .then(doSomething)
+            .catch(handleError);*/
 	    if (idx > (lpb_id3 -1) ){
             //avoid the 1st two streams
             const response = await fetch(stations[idx].id3_info);
@@ -567,10 +579,8 @@ async function get_id3(idx){
             }
 	        data = await response.json();
             song = data["title"].replace(myReg,"").replace(/&/g,"and");
-        }else{
-            data = this_output;
         }
-	    
+        	    
 	    if(idx < lpb_id3){// prev == 0            
             if(Object.keys(data).length < 1){
                 return this_output;
