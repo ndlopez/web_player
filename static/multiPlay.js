@@ -550,6 +550,15 @@ async function display_data(idx){
     // current playing station id
     document.getElementById("title_stat").innerHTML = play_stat; 
 }
+// deal with timeout requests
+function withTimeout(msecs, promise) {
+    const timeout = new Promise((resolve, reject) => {
+        setTimeout(() => {
+        reject(new Error("timeout"));
+        }, msecs);
+    });
+    return Promise.race([timeout, promise]);
+}
 
 async function get_id3(idx){
     const this_output = {
@@ -558,19 +567,8 @@ async function get_id3(idx){
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
     let data = {},song = "";
-    // deal with timeout requests
-    /*function withTimeout(msecs, promise) {
-        const timeout = new Promise((resolve, reject) => {
-          setTimeout(() => {
-            reject(new Error("timeout"));
-          }, msecs);
-        });
-        return Promise.race([timeout, promise]);
-    }*/
+    
     try{
-        /*withTimeout(1000, fetch(stations[idx].id3_info))
-            .then(doSomething)
-            .catch(handleError);*/
 	    if (idx > (lpb_id3 -1) ){
             //avoid the 1st two streams
             const response = await fetch(stations[idx].id3_info);
@@ -579,10 +577,22 @@ async function get_id3(idx){
             }
 	        data = await response.json();
             song = data["title"].replace(myReg,"").replace(/&/g,"and");
+        }else{
+            withTimeout(1000, fetch(stations[idx].id3_info))
+            .then((response) =>{ return response.json();})
+            .then((data)=>{
+                console.log("thisData",data);
+                song = data["title"].replace(myReg,"").replace(/&/g,"and");
+            })
+            .catch(err => {
+                console.error("connection timed out",err);
+                data = this_output;
+            });
         }
-        	    
-	    if(idx < lpb_id3){// prev == 0            
+
+	    if(idx < lpb_id3){// prev == 0
             if(Object.keys(data).length < 1){
+                console.log("response length",Object.keys(data).length);
                 return this_output;
             }
             // console.log("Got",idx,Object.keys(data).length);
