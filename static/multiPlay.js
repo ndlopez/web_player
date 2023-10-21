@@ -408,12 +408,12 @@ function build_case(jdx, artist, song, album, artwork){
     duck.innerHTML = search_link;
     const this_html = `<div class='bkg_cd_icon pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
-    <img src='${artwork}' width='248'/></a></div> <div class='cardTitle padding_10 small round-border centered'><h2 class='headLabel'> 
+    <img src='${artwork}' width='248'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel'> 
     ${song}</h2><h2> ${artist} </h2><h2 class='lighter'>${album} </h2></div>
-    <div><span id="timer" class="col_20 float_left">00:00</span>
-    <span id="title_stat" class="col80 float_left oneLine"></span></div>`;/*search_link +*/
-    // update time was here 2023-10-01
-    
+    `;
+    /*search_link +
+    <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
+    <h3 id="title_stat" class="col80 float_left lighter"></h3></div>*/    
     return this_html;
 }
 
@@ -557,33 +557,38 @@ async function get_id3(idx){
         song:stations[idx].xtra_info[1],
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
-
+    let data,song = "";
     try{
-	    const response = await fetch(stations[idx].id3_info);
-        if(!response.ok){
-            throw new Error(`couldnt fetch ${stations[idx].id3_info}`);
+	    if (idx > (lpb_id3 -1) ){
+            //avoid the 1st two streams
+            const response = await fetch(stations[idx].id3_info);
+            if(!response.ok){
+                throw new Error(`couldnt fetch ${stations[idx].id3_info}`);
+            }
+	        data = await response.json();
+            song = data["title"].replace(myReg,"").replace(/&/g,"and");
+        }else{
+            data = this_output;
         }
-	    const data = await response.json();
-	    	    
-	    let song = data["title"].replace(myReg,"").replace(/&/g,"and");
-	    if(idx < lpb_id3){// prev == 0
-		if(Object.keys(data).length < 1){
-		    return this_output;
-		}
-		// console.log("Got",idx,Object.keys(data).length);
-		const auxStr = song.split("-");
-		if (auxStr.length < 2){
-		    auxStr.push("No title");
-		}
-		artist = auxStr[1];
-		song = auxStr[0];
-		artwork = data["art"];
+	    
+	    if(idx < lpb_id3){// prev == 0            
+            if(Object.keys(data).length < 1){
+                return this_output;
+            }
+            // console.log("Got",idx,Object.keys(data).length);
+            const auxStr = song.split("-");
+            if (auxStr.length < 2){
+                auxStr.push("No title");
+            }
+            artist = auxStr[1];
+            song = auxStr[0];
+            artwork = data["art"];
 	    }else{
-		artist = data["artist"].replace(/&/g,"and");
+		    artist = data["artist"].replace(/&/g,"and");
 	    }
 	    // console.log("got:",data["title"],song);
 	    if(errTitle.includes(song.trim())){
-		artwork = stations[idx].logo;
+		    artwork = stations[idx].logo;
 	    }
 	    return {artist,song,artwork};
     }catch(err){

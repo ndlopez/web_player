@@ -54,8 +54,10 @@
         <div id="reload_this" class="col_20 float_left flexy"></div>
         <div class="col_20 float_left flexy">
           <svg id="play2" title="[d] key to start stream" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
-            <circle class="paused" cx="30" cy="30" r="26"/>
-            <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/></svg>
+            <!--circle class="paused" cx="30" cy="30" r="26"/>
+            <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/-->
+            <path class="paused" fill="#bed2e0" stroke="#bed2e0" d="M20 40 L20 20 40 20 40 40 Z"/>
+          </svg>
         </div>
         <div id="duck_it" class="col_20 float_left flexy"></div>
         <div class="col_20 float_left flexy">
@@ -66,11 +68,11 @@
         </div>
       </div>
     </aside>
-    <!--aside id="stationInfo">
-      <span class="col15 float_left">00:00</span>
-      <div class="col70 float_left"> <span class="center oneLine">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div>
+    <aside id="stationInfo">
+      <span class="col15 float_left" id="timer">00:00</span>
+      <div class="col70 float_left"> <span id="title_stat" class="center oneLine">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div>
       <span class="col15 float_left align-right">LIVE&emsp;</span>
-    </aside-->
+    </aside>
 
     <!--script type="module" src="static/multiPlay.js"></script-->
     <script src="static/multiPlay.js"></script>
