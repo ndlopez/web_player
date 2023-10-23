@@ -576,10 +576,11 @@ async function get_id3(idx){
                 throw new Error(`couldnt fetch ${stations[idx].id3_info}`);
             }
 	        data = await response.json();
-            song = data["title"].replace(myReg,"").replace(/&/g,"and");
+            //song = data["title"].replace(myReg,"").replace(/&/g,"and");
         }else{
-            data = withTimeout(1000, fetch(stations[idx].id3_info))
-            .then((response) =>{ return response.json();})
+            const response = await withTimeout(1000, fetch(stations[idx].id3_info));
+            data = await response.json();
+            /*.then((response) =>{ return response.json();})
             .then((dato)=>{
                 // console.log("thisData",dato);
                 dat = dato;
@@ -588,9 +589,9 @@ async function get_id3(idx){
                 })
             .catch(err => {
                 console.error("connection timed out",err);
-            });
+            });*/
         }
-        //song = data["title"].replace(myReg,"").replace(/&/g,"and");
+        song = data["title"].replace(myReg,"").replace(/&/g,"and");
 	    if(idx < lpb_id3){// prev == 0
             if(Object.keys(data).length < 1){
                 console.log("response length",Object.keys(data).length);
