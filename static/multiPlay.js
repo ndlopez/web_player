@@ -566,7 +566,7 @@ async function get_id3(idx){
         song:stations[idx].xtra_info[0],
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
-    let data = {},song = "";
+    let data = {}, dat={}, song = "";
     
     try{
 	    if (idx > (lpb_id3 -1) ){
@@ -577,37 +577,21 @@ async function get_id3(idx){
             }
 	        data = await response.json();
             song = data["title"].replace(myReg,"").replace(/&/g,"and");
-            artist = data["artist"].replace(/&/g,"and");
-            return {artist,song,artwork};
         }else{
-            withTimeout(1000, fetch(stations[idx].id3_info))
+            data = withTimeout(1000, fetch(stations[idx].id3_info))
             .then((response) =>{ return response.json();})
             .then((dato)=>{
-                console.log("thisData",dato);
-                data = dato;
-                song = dato["title"].replace(myReg,"").replace(/&/g,"and");
-                if(Object.keys(data).length < 1){
-                    console.log("response length",Object.keys(data).length);
-                    return this_output;
-                }
-                // console.log("Got",idx,Object.keys(data).length);
-                const auxStr = song.split("-");
-                if (auxStr.length < 2){
-                    auxStr.push("No title");
-                }
-                artist = auxStr[1];
-                song = auxStr[0];
-                artwork = data["art"];
-                
-                return {artist,song,artwork};
-
+                // console.log("thisData",dato);
+                dat = dato;
+                //song = dato["title"].replace(myReg,"").replace(/&/g,"and");
+                return dat;
                 })
             .catch(err => {
                 console.error("connection timed out",err);
             });
         }
-
-	    /*if(idx < lpb_id3){// prev == 0
+        //song = data["title"].replace(myReg,"").replace(/&/g,"and");
+	    if(idx < lpb_id3){// prev == 0
             if(Object.keys(data).length < 1){
                 console.log("response length",Object.keys(data).length);
                 return this_output;
@@ -626,8 +610,8 @@ async function get_id3(idx){
 	    // console.log("got:",data["title"],song);
 	    if(errTitle.includes(song.trim())){
 		    artwork = stations[idx].logo;
-	    }*/
-	    
+	    }
+	    return {artist,song,artwork};
     }catch(err){
         console.error("error",err);
         return this_output;
