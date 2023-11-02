@@ -394,6 +394,8 @@ span{
     /*43% x-scrollable*/
     max-width: 47%;
     flex-basis: 47%;
+    margin-right: auto;
+    margin-left: auto;
   }
   .cardTitle{ margin-right: 0px; }
   .cardTitle h2{ /*margin:0px;*/ font-size: medium;}

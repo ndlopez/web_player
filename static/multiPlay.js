@@ -268,7 +268,7 @@ function init_player(stream_idx){
     openNav();
 }
 function updateBar(){
-    // update a progress bar
+    // update a progress bar https://codepen.io/thomasmarren/pen/VPbdEo
     console.log("updating...");
 }
 
@@ -672,7 +672,7 @@ function openNav(){
         closeBtn.setAttribute("onclick","closeNav()");*/
         document.getElementById("amia").style.display = "none";
         document.getElementById("artwork").style.display = "block";
-        //document.getElementById("stationInfo").style.display = "block";
+        document.getElementById("stationInfo").style.display = "block";
         document.getElementById("player2").style.display = "block";
         document.body.style.overflow = "hidden";
     }
@@ -682,7 +682,7 @@ function closeNav(){
     titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
     document.getElementById("amia").style.display = "block";
-    //document.getElementById("stationInfo").style.display = "none";
+    document.getElementById("stationInfo").style.display = "none";
     document.getElementById("player2").style.display = "none";
     document.body.style.overflow = "auto";
 }
