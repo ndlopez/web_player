@@ -141,7 +141,7 @@ const stations = [
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
         description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
-        site: "",
+        site: "https://listen.181fm.com/181-heart_128k.mp3?listenerId=esTrackblock0250930&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1698928812",
         xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     }
 ];
@@ -267,6 +267,10 @@ function init_player(stream_idx){
     run_timer();
     openNav();
 }
+function updateBar(){
+    // update a progress bar
+    console.log("updating...");
+}
 
 function playStop(idx){
     const svgPlay = document.getElementById("play2");
@@ -293,6 +297,8 @@ function playStop(idx){
         audioConnect.src = stations[idx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
+        audioConnect.ontimeupdate = updateBar();
+        //console.log("audio?",audioConnect.duration());
         //counter starts or restarts mmss = "00:00";
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
         svgPlay.classList.remove("paused");
@@ -566,7 +572,7 @@ async function get_id3(idx){
         song:stations[idx].xtra_info[0],
         artwork:stations[idx].logo};
     let artist = "", artwork = "";
-    let data = {}, dat={}, song = "";
+    let data = {}, song = "";
     
     try{
 	    if (idx > (lpb_id3 -1) ){
@@ -583,9 +589,7 @@ async function get_id3(idx){
             /*.then((response) =>{ return response.json();})
             .then((dato)=>{
                 // console.log("thisData",dato);
-                dat = dato;
-                //song = dato["title"].replace(myReg,"").replace(/&/g,"and");
-                return dat;
+                song = dato["title"].replace(myReg,"").replace(/&/g,"and");
                 })
             .catch(err => {
                 console.error("connection timed out",err);
@@ -614,7 +618,7 @@ async function get_id3(idx){
 	    }
 	    return {artist,song,artwork};
     }catch(err){
-        console.error("error",err);
+        console.error(err);
         return this_output;
     }    
 }
