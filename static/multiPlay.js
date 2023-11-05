@@ -73,6 +73,14 @@ const stations = [
         site: "",
         xtra_info: ["50's and 60's","English",128,true,"#073642"]
     },{
+        name:"Heart Radio",
+        logo: "assets/heart80s.jpg",
+        stream_url:"https://media-ssl.musicradio.com/Heart80s",
+        id3_info: "",
+        description: "the UK's biggest commercial radio brand.",
+        site: "https://www.heart.co.uk/",
+        xtra_info:["80's Pop","English",196,false,"#a50005"]
+    },{
         name:"Third Rock Radio",
         logo: "assets/thirdRockRadio.jpg",
         stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
@@ -389,9 +397,10 @@ function run_timer(){
         if ((cindy < 0) && (zoey > 0)){
             cindy=59;zoey = zoey - 1;
         }
+        /* Probably not needed, since update_this() resets it
         if ((zoey == 0) && (cindy == 0)){
             cindy=5;zoey=3;
-        }        
+        }*/        
     },1000);
 }
 
