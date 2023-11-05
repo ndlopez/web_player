@@ -79,7 +79,15 @@ const stations = [
         id3_info: "",
         description: "the UK's biggest commercial radio brand.",
         site: "https://www.heart.co.uk/",
-        xtra_info:["80's Pop","English",196,false,"#a50005"]
+        xtra_info:["80's Pop","English",196,false,"#d21e2a"]
+    },{
+        name:"Heart Radio",
+        logo: "assets/heart90s.jpg",
+        stream_url:"https://media-ssl.musicradio.com/Heart90s",
+        id3_info: "",
+        description: "the UK's biggest commercial radio brand.",
+        site: "https://www.heart.co.uk/",
+        xtra_info:["90's best","English",196,false,"#a30321"]
     },{
         name:"Third Rock Radio",
         logo: "assets/thirdRockRadio.jpg",
@@ -389,7 +397,7 @@ function play_elapsed(min=0,sec=0,jdx){//
 
 function run_timer(){
     // console.log("run_timer started");
-    zoey = 3, cindy = 5;
+    zoey = 3, cindy = 3;
     dayna_timer = setInterval(()=>{
         // timer to update id3
         document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;

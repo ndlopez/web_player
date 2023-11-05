@@ -39,7 +39,7 @@ mogrify -resize 256x256 rfi_logo.png
 
 mogrify -format jpg *.png
 
-more [here](https://imagemagick.org/script/mogrify.php)
+more info [here](https://imagemagick.org/script/mogrify.php)
 
 To create some [wavy path in CSS3 and SVG](https://css-tricks.com/how-to-create-wavy-shapes-patterns-in-css/#top-of-site)
 Update: *www.lapaz.fm* has changed sources again. Another server has the id3 ~~icecasthd JSON file is no longer available~~.
