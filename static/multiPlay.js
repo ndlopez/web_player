@@ -10,6 +10,8 @@
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
     melodia:https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958
     emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
+
+    https://codepen.io/alexdevero/pen/aZjLNw
 */
 // import stations from "./fetch_list.js"; // should not be local
 const lpb_id3 = 2;//1 // LaPaz.fm, Me..
@@ -189,6 +191,7 @@ const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0af
 
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
+const art_size = 300;
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let cardHeight = "auto";
 let img_size = 100; //card Image size %
@@ -433,7 +436,7 @@ function build_case(jdx, artist, song, album, artwork){
     duck.innerHTML = search_link;
     const this_html = `<div class='bkg_cd_icon pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
-    <img src='${artwork}' width='248'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel'> 
+    <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel'> 
     ${song}</h2><h2> ${artist} </h2><h2 class='lighter'>${album} </h2></div>
     `;
     /*search_link +
