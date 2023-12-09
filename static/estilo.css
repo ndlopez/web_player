@@ -266,12 +266,11 @@ span{
   /*margin-left: 28px;*/
   margin-top: -5px;
 }
-#coverCD img{width: 100vw;}
+
 #coverCD{
   background-size:300px;
   display: grid;
   place-items: center;
-  
 }
 .contain{
   position: relative;
@@ -400,6 +399,7 @@ span{
   }
   .cardTitle{ margin-right: 0px; margin-top: 70px;}
   .cardTitle h2{ /*margin:0px;*/ font-size: medium;}
+  #coverCD img{width: 100vw;}
   /*#coverCD img{ margin-left: -30px; }
   .bkg_cd_icon{ margin-left: 55px; }*/
   #stationInfo{ bottom: 60px;/*142px;*/}

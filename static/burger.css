@@ -8,9 +8,14 @@
     color: var(--light-sky);
     height: 55px;
     padding: 1em;
-    z-index: 1;
-    position: absolute;
-    width: 100vw;
+    
+}
+@media (max-width: 700px){
+    .top-nav{
+        z-index: 1;
+        position: absolute;
+        width: 100vw;
+    }
 }
 /*.menu{
     display: flex;

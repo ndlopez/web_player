@@ -191,7 +191,7 @@ const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0af
 
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
-const art_size = 300;
+const art_size = 300; //artwork default size
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let cardHeight = "auto";
 let img_size = 100; //card Image size %
@@ -400,7 +400,7 @@ function play_elapsed(min=0,sec=0,jdx){//
 
 function run_timer(){
     // console.log("run_timer started");
-    zoey = 3, cindy = 3;
+    zoey = 3, cindy = 5;
     dayna_timer = setInterval(()=>{
         // timer to update id3
         document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
