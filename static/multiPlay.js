@@ -1,17 +1,11 @@
-/*
-    https://www.panamericana.bo/media/radiopanamerica/images/2021/01/01/2021010100000073897.png
-    check this https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
-    https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
+/*  
     const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
-    alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
-
+    alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg"
     history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
     80s: "assets/181fm_logo.png"
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
     melodia:https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958
     emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
-
-    https://codepen.io/alexdevero/pen/aZjLNw
 */
 // import stations from "./fetch_list.js"; // should not be local
 const lpb_id3 = 2;//1 // LaPaz.fm, Me..
@@ -98,6 +92,14 @@ const stations = [
         description: "Explore and discover new worlds of music with NASA's Radio.",
         site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
         xtra_info:["Alternative-Rock","English",196,false,"#1363a2"]
+    },{
+        name: "113.fm",
+        logo: "assets/alt-x_113fm.jpg",
+        stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
+        id3_info: "From guitar riffs to mellow beats, we've got you covered.",
+        description: "The biggest Alternative hits from the '90s.",
+        site: "",
+        xtra_info: ["Alt-Rock","English",128,true,"#291F1B"]
     },{
         name:"WCPE, The Classical Station",
         logo:"assets/classicalStation.png",
