@@ -142,12 +142,12 @@ const stations = [
         xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
     },{
         name: "RadiCro",
-        logo: "assets/phantogram.jpg",
+        logo: "assets/radicro_400x400.jpg",
         stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
         id3_info: "",
         description: "Radio Cross from Kobe,Japan",
         site: "",
-        xtra_info: ["Variety in Japanese","English",128,false,"#073642"]
+        xtra_info: ["[人,情報,まち,企業,学校...]すべてが繋がる!!","English",128,false,"#073642"]
     },{
         name: "rfi",
         logo: "assets/rfi_logo.png",
