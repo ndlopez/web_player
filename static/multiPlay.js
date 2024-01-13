@@ -85,13 +85,13 @@ const stations = [
         site: "https://www.heart.co.uk/",
         xtra_info:["90's best","English",196,false,"#a30321"]
     },{
-        name:"Third Rock Radio",
-        logo: "assets/thirdRockRadio.jpg",
-        stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
-        id3_info: "",
-        description: "Explore and discover new worlds of music with NASA's Radio.",
-        site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        xtra_info:["Alternative-Rock","English",196,false,"#1363a2"]
+        name: "KEXP-FM",
+        logo: "assets/kexp_fm.svg",
+        stream_url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
+        id3_info: "https://api.kexp.org/v2/plays/?format=json&limit=1&ordering=-airdate&airdate_before=2024-01-13T12:45:25.000Z",
+        description: "KEXP is an affiliate of the University of Washington.",
+        site: "",
+        xtra_info: ["TopRock","English",128,true,"#31251C"]
     },{
         name: "113.fm",
         logo: "assets/alt-x_113fm.jpg",
