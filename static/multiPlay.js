@@ -89,7 +89,7 @@ const stations = [
         logo: "assets/kexp_fm.svg",
         stream_url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
         id3_info: "https://api.kexp.org/v2/plays/?format=json&limit=1&ordering=-airdate&airdate_before=2024-01-13T12:45:25.000Z",
-        description: "KEXP is an affiliate of the University of Washington.",
+        description: "KEXP is an affiliate of the University of Washington, Seattle.",
         site: "",
         xtra_info: ["TopRock","English",128,true,"#31251C"]
     },{
