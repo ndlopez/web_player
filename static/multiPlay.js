@@ -190,6 +190,7 @@ const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" w
 const svg_moon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#b58900" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2C 9 2 3 7 3 15 3 23 9 29 17 29 25 29 30 23 30 18 19 25 7 13 14 2Z" /></svg>';
 const svg_ff = '<svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d= "M12 30 L12 10 30 20Z M31 30 L31 10"/></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
+const card_bkg = "linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7))";
 
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
@@ -232,7 +233,8 @@ function display_all_stations(){
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.style.float = "left";
-        rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
+        // rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
+        rowDiv.style.background = card_bkg;
         rowDiv.style.height = cardHeight;
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
