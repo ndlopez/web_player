@@ -18,7 +18,7 @@ As countermeasure, I decided it was too much hassle on the herokuapp server(it s
 
 ## FM La Paz - <fmlapaz.html>
 
-![new design](assets/new_design.png)
+![new design](assets/web_player_20240131.png)
 
 Display and store in a playlist on the same page current song and the previously listened songs.<br>
 The URL has some security issues (*expired* SSL certificate) but JavaScript's fetch does not seem to care and gets data without problems. I cannot say the same with C#'s json lib.
@@ -35,9 +35,11 @@ By clicking on the cloud icon, it is possible to download the playlist in JSON f
 
 Resize images using imageMagick (on Debian)
 
-mogrify -resize 256x256 rfi_logo.png
+    $ mogrify -resize 256x256 rfi_logo.png
 
-mogrify -format jpg *.png
+    $ mogrify -resize 50% rfi_logo.png
+
+    $ mogrify -format jpg *.png
 
 more info [here](https://imagemagick.org/script/mogrify.php)
 
