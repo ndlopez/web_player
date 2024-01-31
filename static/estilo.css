@@ -272,6 +272,9 @@ span{
   display: grid;
   place-items: center;
 }
+#coverCD img{
+  border-radius: 5px;
+}
 .contain{
   position: relative;
   padding: 20px;
@@ -321,11 +324,12 @@ span{
 .info_block{
   width: auto;
   position: absolute;
-  bottom: 5px;
-  left: -5px;
-  /*  right: calc(50% - 0.5 * 47.45px);*/
+  bottom: 4px;
+  /*left: -5px;
+    right: calc(50% - 0.5 * 47.45px);*/
   background-color: var(--smoke);
   opacity: 85%;
+  border-radius: 5px;
 }
 .pos_rel{
   position: relative;
