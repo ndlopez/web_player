@@ -322,12 +322,13 @@ span{
   width: 100%;
 }
 .info_block{
-  width: auto;
+  width: 100%;
   position: absolute;
-  bottom: 4px;
+  bottom: -32px;
   /*left: -5px;
     right: calc(50% - 0.5 * 47.45px);*/
   background-color: var(--smoke);
+  /*background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7));*/
   opacity: 85%;
   border-radius: 5px;
 }
