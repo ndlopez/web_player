@@ -196,7 +196,7 @@ const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 const art_size = 300; //artwork default size
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
-let cardHeight = "auto";
+let cardHeight = "220px";
 let img_size = 100; //card Image size %
 
 let audioConnect = new Audio();
@@ -233,8 +233,8 @@ function display_all_stations(){
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.style.float = "left";
-        // rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
-        rowDiv.style.background = card_bkg;
+        rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
+        /*rowDiv.style.background = card_bkg;*/
         rowDiv.style.height = cardHeight;
         /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
@@ -242,11 +242,11 @@ function display_all_stations(){
         /*colImg:class=float_left; colArtist:class=float_left*/
         let auxStr = "";
         //if( idx < no_id3 ){
-        auxStr = `<div class='info_block'><span id='timer_${idx}' class='small'> 00:00 </span></div>`;
+        auxStr = `<div class='info_block'><div><span id='timer_${idx}' class='small'> 00:00 </span></div>`;
         //}
         rowDiv.innerHTML = `<div class='colImg pos_rel' id='imgDiv_${idx}'>
         <img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/> 
-        ${auxStr}</div><div class='colArtist' id='artistDiv_${idx}'></div>`;
+        ${auxStr}<div class='colArtist' id='artistDiv_${idx}'></div></div>`;
         /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
     }
