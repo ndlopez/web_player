@@ -190,7 +190,7 @@ const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" w
 const svg_moon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#b58900" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2C 9 2 3 7 3 15 3 23 9 29 17 29 25 29 30 23 30 18 19 25 7 13 14 2Z" /></svg>';
 const svg_ff = '<svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d= "M12 30 L12 10 30 20Z M31 30 L31 10"/></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
-const card_bkg = "linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7))";
+const card_bkg = "rgba(0,0,0,0.9)";//linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))
 
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
@@ -540,12 +540,11 @@ async function display_data(idx){
     const coverDiv = document.getElementById("artwork");
     /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data, gotSong, got_row.getAttribute("data-album"),newArt);*/
     coverDiv.style.backgroundImage = `url("${this_artwork}")`;
-    const auxDiv = document.createElement("div");
+    const auxDiv = document.getElementById("dark_bkg");
     auxDiv.classList.add("pos_rel");
     auxDiv.style.background = card_bkg;
     auxDiv.style.height = "100vh";
     auxDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);
-    coverDiv.appendChild(auxDiv);
     // Update artwork of station_idx Div
     /*const got_artwork  = document.getElementById("imgDiv_" + idx);
     let newArt = this_artwork;//got_artwork[0].firstChild.src;

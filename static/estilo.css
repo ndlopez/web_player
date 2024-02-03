@@ -275,7 +275,8 @@ span{
   background-size:300px;
   display: grid;
   place-items: center;
-  margin-top: 20px;
+  padding-top: 20px;
+  /*margin-top: 20px;*/
 }
 #coverCD img{
   border-radius: 5px;
