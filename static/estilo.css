@@ -325,7 +325,7 @@ span{
   width: 100%;
   position: absolute;
   bottom: -32px;
-  /*left: -5px;
+  /*left: 0px;
     right: calc(50% - 0.5 * 47.45px);*/
   background-color: var(--smoke);
   /*background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7));*/
@@ -407,6 +407,10 @@ span{
     margin-top: 10vh;
     text-align: center;
   }
+  .info_block{
+    bottom:-40px;
+    left:0px;
+  }
   /*.cardTitle h2{ /*margin:0px;// font-size: medium;}*/
   #coverCD img{width: 100vw;}
   /*#coverCD img{ margin-left: -30px; }
@@ -449,7 +453,7 @@ span{
   .bottom-10px{ margin-bottom: 0px; }
   .bottomText h2{line-height: normal;}*/
   /*.colImg img{width: 64px;height: 64px;}*/
-  .colImg{padding: 0px 5px;}
+  .colImg{padding: 0px;}
   #playList{
     display: none;
     width: 100%;
