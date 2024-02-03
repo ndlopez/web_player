@@ -539,6 +539,7 @@ async function display_data(idx){
     }
     const coverDiv = document.getElementById("artwork");
     /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data, gotSong, got_row.getAttribute("data-album"),newArt);*/
+    coverDiv.style.backgroundImage = `url("${this_artwork}")`;
     coverDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);
     
     // Update artwork of station_idx Div

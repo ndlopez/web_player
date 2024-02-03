@@ -175,8 +175,12 @@ span{
   display: grid;
   place-items: center;
 }
-/*#artwork{margin-top: 45px;}*/
-
+#artwork{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
 .col_23{width:23.5%;}
 .col_50, .col2, .col_half{width: 50%;}
 
@@ -271,6 +275,7 @@ span{
   background-size:300px;
   display: grid;
   place-items: center;
+  margin-top: 20px;
 }
 #coverCD img{
   border-radius: 5px;
@@ -404,7 +409,7 @@ span{
   }
   .cardTitle{ 
     margin-right: 0px; 
-    margin-top: 5vh;
+    margin-top: 1vh;
     text-align: center;
   }
   .info_block{
