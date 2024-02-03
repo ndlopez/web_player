@@ -193,7 +193,7 @@ span{
 }
 .colImg img, .col15 img{
   border-radius: 5px;
-  margin-top: 5px;
+  /*margin-top: 5px;*/
 }
 .colTime{
   width: 15%;
@@ -263,8 +263,8 @@ span{
   height: 300px;
   background: no-repeat url("../assets/CD_icon.svg");
   background-position-x: center;
-  /*margin-left: 28px;*/
-  margin-top: -5px;
+  /*margin-left: 28px;
+  margin-top: -5px;*/
 }
 
 #coverCD{
@@ -404,7 +404,7 @@ span{
   }
   .cardTitle{ 
     margin-right: 0px; 
-    margin-top: 10vh;
+    margin-top: 5vh;
     text-align: center;
   }
   .info_block{
@@ -412,7 +412,7 @@ span{
     left:0px;
   }
   /*.cardTitle h2{ /*margin:0px;// font-size: medium;}*/
-  #coverCD img{width: 100vw;}
+  #coverCD img{width: 80vw;}
   /*#coverCD img{ margin-left: -30px; }
   .bkg_cd_icon{ margin-left: 55px; }*/
   #stationInfo{ bottom: 60px;/*142px;*/}
