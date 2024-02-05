@@ -275,7 +275,7 @@ span{
   background-size:300px;
   display: grid;
   place-items: center;
-  padding-top: 20px;
+  padding-top: 65px;
   /*margin-top: 20px;*/
 }
 #coverCD img{
@@ -418,9 +418,8 @@ span{
     left:0px;
   }
   /*.cardTitle h2{ /*margin:0px;// font-size: medium;}*/
-  #coverCD img{width: 80vw;}
-  /*#coverCD img{ margin-left: -30px; }
-  .bkg_cd_icon{ margin-left: 55px; }*/
+  #coverCD img{width: 70vw;}
+  /*.bkg_cd_icon{ margin-left: 55px; }*/
   #stationInfo{ bottom: 60px;/*142px;*/}
   #player2{ height: 60px; }
   #art_title{ display: none; }
