@@ -441,8 +441,7 @@ function build_case(jdx, artist, song, album, artwork){
     const this_html = `<div class='pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
     <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel'> 
-    ${song}</h2><h2> ${artist} </h2><h2 class='lighter'>${album} </h2></div>
-    `;
+    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
     <h3 id="title_stat" class="col80 float_left lighter"></h3></div>*/    

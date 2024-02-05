@@ -420,7 +420,11 @@ span{
   /*.cardTitle h2{ /*margin:0px;// font-size: medium;}*/
   #coverCD img{width: 70vw;}
   /*.bkg_cd_icon{ margin-left: 55px; }*/
-  #stationInfo{ bottom: 60px;/*142px;*/}
+  #stationInfo{ 
+    bottom: 60px;/*142px;*/
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
   #player2{ height: 60px; }
   #art_title{ display: none; }
   #now_song, /*#artwork,*/ .no_mobil {display: none;}
