@@ -193,11 +193,15 @@ span{
   padding: 0px;}
 .colImg{
   width: 100%;/*20%*/
+  height: 220px;
   /*padding: 7px;*/
 }
 .colImg img, .col15 img{
   border-radius: 5px;
   /*margin-top: 5px;*/
+}
+.linear_bkg {
+  background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.9));
 }
 .colTime{
   width: 15%;
@@ -332,9 +336,9 @@ span{
   position: absolute;
   bottom: -32px;
   /*left: 0px;
-    right: calc(50% - 0.5 * 47.45px);*/
+    right: calc(50% - 0.5 * 47.45px);
   background-color: var(--smoke);
-  /*background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7));*/
+  background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7));*/
   opacity: 85%;
   border-radius: 5px;
 }
@@ -414,7 +418,7 @@ span{
     text-align: center;
   }
   .info_block{
-    bottom:-40px;
+    bottom:0px;
     left:0px;
   }
   /*.cardTitle h2{ /*margin:0px;// font-size: medium;}*/

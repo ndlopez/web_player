@@ -233,19 +233,21 @@ function display_all_stations(){
         rowDiv.setAttribute("id","station_"+idx);
         rowDiv.setAttribute("onclick","init_player("+idx+")");
         rowDiv.style.float = "left";
-        rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
+        /*rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
         /*rowDiv.style.background = card_bkg;*/
         rowDiv.style.height = cardHeight;
-        /*rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
+        rowDiv.style.width = img_size;
+        rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
-        rowDiv.style.backgroundSize = "cover";*/
+        rowDiv.style.backgroundSize = "cover";
+        rowDiv.style.backgroundPosition = "center";
         /*colImg:class=float_left; colArtist:class=float_left*/
         let auxStr = "";
         //if( idx < no_id3 ){
         auxStr = `<div class='info_block'><div><span id='timer_${idx}' class='small'> 00:00 </span></div>`;
         //}
-        rowDiv.innerHTML = `<div class='colImg pos_rel' id='imgDiv_${idx}'>
-        <img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/> 
+        rowDiv.innerHTML = `<div class='colImg pos_rel linear_bkg round-border' id='imgDiv_${idx}'>
+        <!--img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/--> 
         ${auxStr}<div class='colArtist' id='artistDiv_${idx}'></div></div>`;
         /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
