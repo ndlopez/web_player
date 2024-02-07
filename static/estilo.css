@@ -202,6 +202,7 @@ span{
 }
 .linear_bkg {
   background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.9));
+  /*mask-image: linear-gradient(to top, transparent 0%, rgb(0, 0, 0) 100px);*/
 }
 .colTime{
   width: 15%;
@@ -334,7 +335,7 @@ span{
 .info_block{
   width: 100%;
   position: absolute;
-  bottom: -32px;
+  bottom: 0px;
   /*left: 0px;
     right: calc(50% - 0.5 * 47.45px);
   background-color: var(--smoke);
@@ -417,10 +418,7 @@ span{
     margin-top: 1vh;
     text-align: center;
   }
-  .info_block{
-    bottom:0px;
-    left:0px;
-  }
+  .info_block{ left:0px;}
   /*.cardTitle h2{ /*margin:0px;// font-size: medium;}*/
   #coverCD img{width: 70vw;}
   /*.bkg_cd_icon{ margin-left: 55px; }*/
