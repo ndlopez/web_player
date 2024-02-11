@@ -567,7 +567,7 @@ async function display_data(idx){
     // ${auxText}`;
 
     auxText = gotArtist;
-    let play_stat = stations[idx].name + " - " + stations[idx].xtra_info[0];
+    let play_stat = stations[idx].name + " - " + stations[idx].description;
     if(idx > no_id3){
         auxText = stations[idx].xtra_info[0];
         play_stat = "";
