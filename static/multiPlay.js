@@ -190,11 +190,12 @@ const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" w
 const svg_moon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#b58900" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2C 9 2 3 7 3 15 3 23 9 29 17 29 25 29 30 23 30 18 19 25 7 13 14 2Z" /></svg>';
 const svg_ff = '<svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d= "M12 30 L12 10 30 20Z M31 30 L31 10"/></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
-const card_bkg = "rgba(0,0,0,0.9)";//linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))
+const card_bkg = "rgba(0,0,0,0.75)";//linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))
 
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 const art_size = 300; //artwork default size
+const top_title = document.getElementById("url_status");
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let cardHeight = "220px";
 let img_size = 100; //card Image size %
@@ -312,11 +313,11 @@ function playStop(idx){
     }
     
     if(audioConnect.paused){
-        document.getElementById("url_status").innerText = "";
+        top_title.innerText = "";
         audioConnect.addEventListener('error',()=>{
             stopPlay();
             // Should be displayed also on GUI
-            document.getElementById("url_status").innerText = `Cannot connect to ${stations[idx].name}`;
+            top_title.innerText = `Cannot connect to ${stations[idx].name}`;
             // console.error(`Error loading: ${stations[idx].stream_url}`);
         });
         
@@ -331,7 +332,6 @@ function playStop(idx){
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
         svgPlay.innerHTML = circleImg + stopImg;
-
         gifImg.classList.remove("no-audio");
     }else{
         audioConnect.pause();
@@ -477,7 +477,6 @@ async function update_stations(){
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
-        
         //auxLink = "<span class='small'>" + stations[idx].name + "</span>";/*stations[idx].xtra_info[0] +*/
         /*if( idx < no_id3 ){
             auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }*/
@@ -485,6 +484,7 @@ async function update_stations(){
             //auxLink = "";//img_size = 80;played.push(idx); 
             document.title = gotData.artist + "-" + gotData.song;
             document.getElementById("station_"+idx).style.display = "none";
+            top_title.innerText = "Now: " + gotData.artist + " - " + gotData.song;
             // console.log("Removing:",isPlaying);
         }else{
             document.getElementById("station_"+idx).style.display = "block";
@@ -692,10 +692,11 @@ async function get_artwork(jdx,artist_name,song_title){
     return {nowPlaying, album, artwork};
 }
 
+const titleDiv = document.getElementById("toggle-list");
+
 function openNav(){
     /* open and close Info modal. works onMobil only*/
-    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){    
-        const titleDiv = document.getElementById("toggle-list");
+    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
         titleDiv.setAttribute("onclick","closeNav()");
         /*closeBtn.style.margin = "0";
         closeBtn.setAttribute("class","col10 float_left closeBtn");
@@ -706,14 +707,15 @@ function openNav(){
         document.getElementById("stationInfo").style.display = "block";
         document.getElementById("player2").style.display = "block";
         document.body.style.overflow = "hidden";
+        top_title.style.display = "none";
     }
 }
 function closeNav(){
-    const titleDiv = document.getElementById("toggle-list");
     titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
     document.getElementById("amia").style.display = "block";
     document.getElementById("stationInfo").style.display = "none";
     document.getElementById("player2").style.display = "none";
+    top_title.style.display = "block";
     document.body.style.overflow = "auto";
 }

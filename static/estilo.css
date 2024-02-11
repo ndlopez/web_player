@@ -201,7 +201,7 @@ span{
   /*margin-top: 5px;*/
 }
 .linear_bkg {
-  background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.9));
+  background: linear-gradient(rgba(0,0,0,0)40%,rgba(0,0,0,0.9));
   /*mask-image: linear-gradient(to top, transparent 0%, rgb(0, 0, 0) 100px);*/
 }
 .colTime{
