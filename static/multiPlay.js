@@ -541,11 +541,15 @@ async function display_data(idx){
     const coverDiv = document.getElementById("artwork");
     /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data, gotSong, got_row.getAttribute("data-album"),newArt);*/
     coverDiv.style.backgroundImage = `url("${this_artwork}")`;
-    const auxDiv = document.getElementById("dark_bkg");
+
+    /* append dark_bkg div to coverDiv*/
+    coverDiv.innerHTML = `<div id="dark_bkg" class="pos_rel">${build_case(idx, gotArtist, gotSong, gotData.album, this_artwork)}</div>`;
+
+    /*const auxDiv = document.getElementById("dark_bkg");
     auxDiv.classList.add("pos_rel");
     auxDiv.style.background = card_bkg;
     auxDiv.style.height = "100vh";
-    auxDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);
+    auxDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);*/
     // Update artwork of station_idx Div
     /*const got_artwork  = document.getElementById("imgDiv_" + idx);
     let newArt = this_artwork;//got_artwork[0].firstChild.src;

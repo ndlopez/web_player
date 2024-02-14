@@ -222,7 +222,10 @@ span{
   float: none;
 }
 #nowLabel h2, .close_btn h2{margin: 0px;}
-
+#dark_bkg{
+  background:rgba(0,0,0,0.75);
+  height: 110vh;
+}
 .bottomText{
   /*width: 60%;float: left;
   background-image: linear-gradient(var(--light-sky),var(--smoke));
