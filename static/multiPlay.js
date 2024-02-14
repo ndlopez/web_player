@@ -442,7 +442,7 @@ function build_case(jdx, artist, song, album, artwork){
     duck.innerHTML = search_link;
     const this_html = `<div class='pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel'> 
+    <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel oneLine'> 
     ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>

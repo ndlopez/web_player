@@ -224,7 +224,7 @@ span{
 #nowLabel h2, .close_btn h2{margin: 0px;}
 #dark_bkg{
   background:rgba(0,0,0,0.75);
-  height: 110vh;
+  height: 100vh;
 }
 .bottomText{
   /*width: 60%;float: left;
