@@ -251,8 +251,11 @@ span{
   color: var(--lemon);
   font-weight: bold;
 }
+div.colArtist > span.headLabel{
+  font-size: large;
+}
 .oneLine{
-  font-size: 13px;
+  /*font-size: 13px;*/
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -342,9 +345,16 @@ span{
   /*left: 0px;
     right: calc(50% - 0.5 * 47.45px);
   background-color: var(--smoke);
-  background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7));*/
-  opacity: 85%;
+  background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7));
+  opacity: 85%;*/
   border-radius: 5px;
+}
+.info_block div > span.small {
+  background: rgba(0,0,0,0.75);
+  width:45px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 50%;
 }
 .pos_rel{
   position: relative;
