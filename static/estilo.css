@@ -252,7 +252,7 @@ span{
   font-weight: bold;
 }
 div.colArtist > span.headLabel{
-  font-size: large;
+  font-size: medium;
 }
 .oneLine{
   /*font-size: 13px;*/
@@ -350,11 +350,12 @@ div.colArtist > span.headLabel{
   border-radius: 5px;
 }
 .info_block div > span.small {
-  background: rgba(0,0,0,0.75);
+  background: rgba(255,255,255,0.4);
   width:45px;
   height: 45px;
-  line-height: 45px;
+  line-height: 35px;
   border-radius: 50%;
+  color:var(--backish-blue);
 }
 .pos_rel{
   position: relative;
