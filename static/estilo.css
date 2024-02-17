@@ -201,7 +201,7 @@ span{
   /*margin-top: 5px;*/
 }
 .linear_bkg {
-  background: linear-gradient(rgba(0,0,0,0)40%,rgba(0,0,0,0.9));
+  background: linear-gradient(rgba(0,0,0,0)30%,rgba(0,0,0,0.8));
   /*mask-image: linear-gradient(to top, transparent 0%, rgb(0, 0, 0) 100px);*/
 }
 .colTime{
@@ -251,8 +251,9 @@ span{
   color: var(--lemon);
   font-weight: bold;
 }
-div.colArtist > span.headLabel{
+.bold_medium{
   font-size: medium;
+  font-weight: bold;
 }
 .oneLine{
   /*font-size: 13px;*/
@@ -342,11 +343,6 @@ div.colArtist > span.headLabel{
   width: 100%;
   position: absolute;
   bottom: 0px;
-  /*left: 0px;
-    right: calc(50% - 0.5 * 47.45px);
-  background-color: var(--smoke);
-  background: linear-gradient(rgba(0,0,0,0)50%,rgba(0,0,0,0.7));
-  opacity: 85%;*/
   border-radius: 5px;
 }
 .info_block div > span.small {
@@ -356,6 +352,8 @@ div.colArtist > span.headLabel{
   line-height: 35px;
   border-radius: 50%;
   color:var(--backish-blue);
+  position: absolute;
+  right: 5px;
 }
 .pos_rel{
   position: relative;

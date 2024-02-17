@@ -191,6 +191,8 @@ const svg_moon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" wi
 const svg_ff = '<svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42" fill="#bed2e0" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d= "M12 30 L12 10 30 20Z M31 30 L31 10"/></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 const card_bkg = "rgba(0,0,0,0.75)";//linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))
+const gifImg = document.getElementById("gifElm");
+const svgPlay = document.getElementById("play2");
 
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
@@ -247,9 +249,9 @@ function display_all_stations(){
         //if( idx < no_id3 ){
         auxStr = `<div class='info_block'><div><span id='timer_${idx}' class='small'> 00:00 </span></div>`;
         //}
-        rowDiv.innerHTML = `<div class='colImg pos_rel linear_bkg round-border' id='imgDiv_${idx}'>
-        <!--img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/--> 
+        rowDiv.innerHTML = `<div class='colImg pos_rel linear_bkg round-border' id='imgDiv_${idx}'> 
         ${auxStr}<div class='colArtist' id='artistDiv_${idx}'></div></div>`;
+        // <!--img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/-->
         /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
     }
@@ -299,10 +301,8 @@ function updateBar(){
 }
 
 function playStop(idx){
-    const svgPlay = document.getElementById("play2");
     svgPlay.addEventListener("click",stopPlay); /*function(){
         console.log("passing index",idx); stopPlay(idx);});*/
-    const gifImg = document.getElementById("gifElm");
     let getTimer = "", mmss = "";
     for (let jdx = 0; jdx < stations.length -1; jdx++) {
         getTimer = document.getElementById("timer_"+jdx);
@@ -332,11 +332,11 @@ function playStop(idx){
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
         svgPlay.innerHTML = circleImg + stopImg;
-        gifImg.classList.remove("no-audio");
+        // gifImg.classList.remove("no-audio");
     }else{
         audioConnect.pause();
         audioConnect.loop = false;
-        gifImg.classList.add("no-audio");
+        // gifImg.classList.add("no-audio");
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
@@ -345,14 +345,12 @@ function playStop(idx){
 }
 
 function stopPlay(){/* param: idx=0 */
-    const gifImg = document.getElementById("gifElm");
-    const svgPlay = document.getElementById("play2");
     //getTimer.innerText = document.getElementById("timer").innerText;
     svgPlay.addEventListener("click",function(){ playStop(isPlaying); });
     // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
-    gifImg.classList.add("no-audio");
+    // gifImg.classList.add("no-audio");
     // clearInterval(tina_timer);
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
@@ -491,7 +489,7 @@ async function update_stations(){
             // console.log("keeping:",idx);
         }
         
-        this_artist.innerHTML = `<span class='headLabel oneLine'> ${gotData.song}
+        this_artist.innerHTML = `<span class='bold_medium oneLine'> ${gotData.song}
         </span><span class='oneLine'> ${gotData.artist} </span>`; 
         //+ auxLink;
 
