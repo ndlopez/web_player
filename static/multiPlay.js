@@ -257,7 +257,7 @@ function display_all_stations(){
     }
     containDiv.appendChild(mainDiv);
     const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<span class="col30 float_left">${svg_moon}</span><span id="id3_timer" class="col_half float_left">00:00</span>`;
+    up_time.innerHTML = `<!--span class="col30 float_left">${svg_moon}</span--><span id="id3_timer" class="col_half float_left">00:00</span>`;
     // onClick sleep timer starts 
     up_time.addEventListener("click",sleepy);
 }
@@ -332,11 +332,11 @@ function playStop(idx){
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
         svgPlay.innerHTML = circleImg + stopImg;
-        // gifImg.classList.remove("no-audio");
+        gifImg.classList.remove("no-audio");
     }else{
         audioConnect.pause();
         audioConnect.loop = false;
-        // gifImg.classList.add("no-audio");
+        gifImg.classList.add("no-audio");
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
@@ -350,7 +350,7 @@ function stopPlay(){/* param: idx=0 */
     // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
-    // gifImg.classList.add("no-audio");
+    gifImg.classList.add("no-audio");
     // clearInterval(tina_timer);
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
