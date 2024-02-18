@@ -192,7 +192,6 @@ const svg_ff = '<svg id="next_play" xmlns="http://www.w3.org/2000/svg" viewBox="
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
 const card_bkg = "rgba(0,0,0,0.75)";//linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))
 const gifImg = document.getElementById("gifElm");
-gifImg.innerHTML = svg_moon;
 const svgPlay = document.getElementById("play2");
 
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
@@ -258,7 +257,7 @@ function display_all_stations(){
     }
     containDiv.appendChild(mainDiv);
     const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<span class="col30 float_left">${svg_clock}</span><span id="id3_timer" class="col_half float_left">00:00</span>`;
+    up_time.innerHTML = `<span class="col30 float_left">${svg_moon}</span><span id="id3_timer" class="col_half float_left">00:00</span>`;
     // onClick sleep timer starts 
     up_time.addEventListener("click",sleepy);
 }
@@ -439,10 +438,13 @@ function build_case(jdx, artist, song, album, artwork){
 
     const duck = document.getElementById("duck_it");
     duck.innerHTML = search_link;
+    const vol_icon = `<div class="vol_pad"><label for="vol_input" onclick="volume_mute(0)">
+    <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
+  <input class="" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
     const this_html = `<div class='pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small round-border'><h2 class='headLabel'> 
-    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>`;
+    <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small'><h2 class='headLabel'> 
+    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
     <h3 id="title_stat" class="col80 float_left lighter"></h3></div>*/    

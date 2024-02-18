@@ -369,6 +369,7 @@ span{
   width:70%;
   overflow: hidden;
 }
+.col60{width: 60%;}
 .col80{width:80%;}
 #cover_title{padding-left: 10px;}
 #cover_art{
@@ -413,6 +414,9 @@ span{
 /*.cardTitle h2{margin: 0px;}*/
 @media (max-width: 700px) {
   body{font-size: small;}
+  .vol_pad{
+    padding: 5px 20vw;
+  }
   .outer_div{
     width: 100%;
     overflow-x: auto;
