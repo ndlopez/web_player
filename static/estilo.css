@@ -440,8 +440,9 @@ span{
   /*.bkg_cd_icon{ margin-left: 55px; }*/
   #stationInfo{ 
     bottom: 60px;/*142px;*/
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    /*border-top-right-radius: 10px;
+    border-top-left-radius: 10px;*/
+    border-radius: 15px 15px 0px 0px;
   }
   #player2{ height: 60px; }
   #art_title{ display: none; }
