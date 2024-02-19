@@ -198,6 +198,9 @@ const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 const art_size = 300; //artwork default size
 const top_title = document.getElementById("url_status");
+
+const titleDiv = document.getElementById("toggle-list");
+
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let cardHeight = "220px";
 let img_size = 100; //card Image size %
@@ -214,7 +217,7 @@ if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     window.onscroll = () => {scrollFunction();};
 }
 function scrollFunction() {
-    let pxx=350;
+    let pxx=380;
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) { document.getElementById("topBtn").style.display = "block"; } 
     else { document.getElementById("topBtn").style.display = "none"; }
 }
@@ -223,8 +226,8 @@ function topFunction() {
 }
 
 function display_all_stations(){
+    const amiaDiv = document.getElementById("amia");
     /* Build one card for each station*/
-    const containDiv = document.getElementById("amia");
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","outer_div");
     
@@ -255,7 +258,7 @@ function display_all_stations(){
         /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
     }
-    containDiv.appendChild(mainDiv);
+    amiaDiv.appendChild(mainDiv);
     const up_time = document.getElementById("update_time");//&#x231A;
     up_time.innerHTML = `<!--span class="col30 float_left">${svg_moon}</span--><span id="id3_timer" class="col_half float_left">00:00</span>`;
     // onClick sleep timer starts 
@@ -263,6 +266,9 @@ function display_all_stations(){
 }
 
 function init_this(){
+    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
+        closeNav();
+    }
     display_all_stations();
     //build_case(stations.length,stations.name,stations.id3_info,stations.stream_url,stations.logo);
     /*for (let idx=0;idx<stations.length;idx++) {display_data(idx);}*/
@@ -697,8 +703,6 @@ async function get_artwork(jdx,artist_name,song_title){
     return {nowPlaying, album, artwork};
 }
 
-const titleDiv = document.getElementById("toggle-list");
-
 function openNav(){
     /* open and close Info modal. works onMobil only*/
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
@@ -706,10 +710,12 @@ function openNav(){
         /*closeBtn.style.margin = "0";
         closeBtn.setAttribute("class","col10 float_left closeBtn");
         closeBtn.setAttribute("href","javascript:void(0)");
-        closeBtn.setAttribute("onclick","closeNav()");*/
+        closeBtn.setAttribute("onclick","closeNav()");
+        document.getElementById("stationInfo").style.display = "block";*/
         document.getElementById("amia").style.display = "none";
         document.getElementById("artwork").style.display = "block";
-        /*document.getElementById("stationInfo").style.display = "block";*/
+        //document.getElementById("dark_bkg").style.display = "block";
+        
         document.getElementById("player2").style.display = "block";
         document.getElementById("art_title").style.display = "none";
         document.body.style.overflow = "hidden";
@@ -719,6 +725,7 @@ function openNav(){
 function closeNav(){
     titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
+    //document.getElementById("dark_bkg").style.display = "none";
     document.getElementById("amia").style.display = "block";
     /*document.getElementById("stationInfo").style.display = "none";
     document.getElementById("player2").style.display = "none";*/
