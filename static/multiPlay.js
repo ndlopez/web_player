@@ -197,7 +197,7 @@ const svgPlay = document.getElementById("play2");
 const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 const updateTime = 185000 //ms
 const art_size = 300; //artwork default size
-const top_title = document.getElementById("url_status");
+// const top_title = document.getElementById("url_status");
 
 const titleDiv = document.getElementById("toggle-list");
 
@@ -259,10 +259,10 @@ function display_all_stations(){
         mainDiv.appendChild(rowDiv);
     }
     amiaDiv.appendChild(mainDiv);
-    const up_time = document.getElementById("update_time");//&#x231A;
-    up_time.innerHTML = `<!--span class="col30 float_left">${svg_moon}</span--><span id="id3_timer" class="col_half float_left">00:00</span>`;
+    // const up_time = document.getElementById("update_time");//&#x231A;
+    // up_time.innerHTML = `<span id="id3_timer" class="col_half float_left">00:00</span>`;
     // onClick sleep timer starts 
-    up_time.addEventListener("click",sleepy);
+    // up_time.addEventListener("click",sleepy);
 }
 
 function init_this(){
@@ -319,11 +319,12 @@ function playStop(idx){
     }
     
     if(audioConnect.paused){
-        top_title.innerText = "";
+        const stream_info = document.getElementById("title_stat");
+        // top_title.innerText = "";
         audioConnect.addEventListener('error',()=>{
             stopPlay();
             // Should be displayed also on GUI
-            top_title.innerText = `Cannot connect to ${stations[idx].name}`;
+            stream_info.innerText = `Cannot connect to ${stations[idx].name}`;
             // console.error(`Error loading: ${stations[idx].stream_url}`);
         });
         
@@ -491,7 +492,6 @@ async function update_stations(){
             //auxLink = "";//img_size = 80;played.push(idx); 
             document.title = gotData.artist + "-" + gotData.song;
             document.getElementById("station_"+idx).style.display = "none";
-            // top_title.innerText = "Now: " + gotData.artist + " - " + gotData.song;
             // console.log("Removing:",isPlaying);
         }else{
             document.getElementById("station_"+idx).style.display = "block";
@@ -719,7 +719,7 @@ function openNav(){
         document.getElementById("player2").style.display = "block";
         document.getElementById("art_title").style.display = "none";
         document.body.style.overflow = "hidden";
-        top_title.style.display = "none";
+        // top_title.style.display = "none";
     }
 }
 function closeNav(){
@@ -730,6 +730,6 @@ function closeNav(){
     /*document.getElementById("stationInfo").style.display = "none";
     document.getElementById("player2").style.display = "none";*/
     document.getElementById("art_title").style.display = "block";
-    top_title.style.display = "block";
+    // top_title.style.display = "block";
     document.body.style.overflow = "auto";
 }
