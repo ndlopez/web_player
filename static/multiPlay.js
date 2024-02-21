@@ -304,11 +304,12 @@ function init_player(stream_idx){
 
 function updateBar(){
     // update a progress bar:
+    // https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/buffering_seeking_time_ranges
     audioConnect.addEventListener('timeupdate',function(){
         let duration =  updateTime/1000;// myAudio.duration;
         if (duration > 0) {
             // console.log("Audio len",audioConnect.currentTime,updateTime);
-            document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
+            document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*10) + "%";
         }
     });
     // console.log("updating...");
@@ -459,7 +460,7 @@ function build_case(jdx, artist, song, album, artwork){
     const this_html = `<div class='pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
     <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small'><h2 class='headLabel'> 
-    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}<div><span id="id3_timer"></span></div>`;
+    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
     <h3 id="title_stat" class="col80 float_left lighter"></h3></div>*/    

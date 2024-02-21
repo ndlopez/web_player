@@ -22,8 +22,16 @@ body{
   color:var(--light-sky);
   margin:0px;
 }
+nav{
+  display: block;
+  position: fixed;
+  top: calc(100vh*0.65);
+  right: 10px;
+  z-index: 99;
+}
+/*Progress bar at bottom*/
 .progress { 
-  margin-top: -40px;
+  margin-top: -35px;
   height: 5px;  
   position: relative;
   width: 100vw;
@@ -32,8 +40,9 @@ body{
 #progress-amount {
   display: block;
   height: 100%;
-  background-color: #595;
+  background-color: var(--lemon);
   width: 0;
+  padding: 0;
 }
 a{
   text-decoration: none;
