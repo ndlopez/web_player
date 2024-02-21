@@ -15,7 +15,7 @@
   </head>
   <body>    
     <button onclick="topFunction()" id="topBtn" type="button" href="#amia"></button>
-    <nav><span id="id3_timer"></span></nav>
+    <!--nav><span id="id3_timer"></span></nav-->
     <main>
       <!--nav class="top-nav">
         <div id="update_time" class="col_30 float_left"></div>
@@ -75,9 +75,10 @@
       <div class="progress"><span id="progress-amount"></span></div>
     </aside>
     <aside id="stationInfo">
-      <span class="col15 float_left" id="timer">00:00</span>
+      <span class="col15 float_left no_desktop no_mobil" id="timer">00:00</span>
+      <span class="col15 float_left">&emsp;LIVE</span>
       <div class="col70 float_left"> <span id="title_stat" class="center moving-text">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div>
-      <span class="col15 float_left align-right">LIVE&emsp;</span>
+      <span id="id3_timer" class="col15 float_left align-right"></span>
     </aside>
 
     <!-- script type="module" src="static/multiPlay.js"></script-->

@@ -582,7 +582,7 @@ async function display_data(idx){
     const cover_art = document.getElementById("cover_art");
     // cover_art.setAttribute("onclick","display_data(" + idx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;
-    reloadMe.innerHTML = reloadImg;
+    reloadMe.innerHTML =  "<img src='assets/loading.svg' width='50'>"; //reloadImg;
     cover_art.innerHTML = `<img src='${this_artwork}' width='60' height='60'/>`
     // ${auxText}`;
 
