@@ -301,9 +301,17 @@ function init_player(stream_idx){
     run_timer();
     openNav();
 }
+
 function updateBar(){
-    // update a progress bar https://codepen.io/thomasmarren/pen/VPbdEo
-    console.log("updating...");
+    // update a progress bar:
+    audioConnect.addEventListener('timeupdate',function(){
+        let duration =  updateTime/1000;// myAudio.duration;
+        if (duration > 0) {
+            // console.log("Audio len",audioConnect.currentTime,updateTime);
+            document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
+        }
+    });
+    // console.log("updating...");
 }
 
 function playStop(idx){
@@ -332,7 +340,7 @@ function playStop(idx){
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
         // Once audio changes this func starts.
-        // audioConnect.ontimeupdate = updateBar();
+        audioConnect.ontimeupdate = updateBar();
         //console.log("audio?",audioConnect.duration());
         //counter starts or restarts mmss = "00:00";
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
@@ -447,11 +455,11 @@ function build_case(jdx, artist, song, album, artwork){
     duck.innerHTML = search_link;
     const vol_icon = `<div class="vol_pad"><label for="vol_input" onclick="volume_mute(0)">
     <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
-  <input class="" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
+    <input class="" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
     const this_html = `<div class='pos_rel' id='coverCD'>
     <a title='Click for more info' href='${aux_link}'>
     <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small'><h2 class='headLabel'> 
-    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}`;
+    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}<div><span id="id3_timer"></span></div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
     <h3 id="title_stat" class="col80 float_left lighter"></h3></div>*/    
