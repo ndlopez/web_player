@@ -439,9 +439,9 @@ span{
 /*.cardTitle h2{margin: 0px;}*/
 @media (max-width: 700px) {
   body{font-size: small;}
-  .vol_pad{
+  /*.vol_pad{
     padding: 5px 20vw;
-  }
+  }*/
   .outer_div{
     width: 100%;
     overflow-x: auto;
@@ -525,7 +525,7 @@ span{
   .col2, #amia, #artwork, .col_50{width: 100%;}
   /*#artwork{margin-top: 0px;}*/
   .col_23{width: 50%;}
-  #listIcon{display: block;}
+  #listIcon, #toggle-list{display: block;}
   #list-icon{
     height: 28px;
     width: 28px;

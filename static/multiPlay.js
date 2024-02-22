@@ -301,12 +301,11 @@ function init_player(stream_idx){
     run_timer();
     openNav();
 }
-
+let duration =  600;// myAudio.duration;
 function updateBar(){
     // update a progress bar:
     // https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/buffering_seeking_time_ranges
     audioConnect.addEventListener('timeupdate',function(){
-        let duration =  600;// myAudio.duration;
         // console.log("Audio len",audioConnect.currentTime,updateTime);
         document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
 
@@ -456,7 +455,7 @@ function build_case(jdx, artist, song, album, artwork){
 
     const duck = document.getElementById("duck_it");
     duck.innerHTML = search_link;
-    const vol_icon = `<div class="vol_pad"><label for="vol_input" onclick="volume_mute(0)">
+    const vol_icon = `<div class="flexy"><label for="vol_input" onclick="volume_mute(0)">
     <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
     <input class="" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
     const this_html = `<div class='pos_rel' id='coverCD'>
