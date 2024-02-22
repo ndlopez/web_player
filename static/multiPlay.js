@@ -250,7 +250,7 @@ function display_all_stations(){
         /*colImg:class=float_left; colArtist:class=float_left*/
         let auxStr = "";
         //if( idx < no_id3 ){
-        auxStr = `<div class='info_block'><div><span id='timer_${idx}' class='small'> 00:00 </span></div>`;
+        auxStr = `<div class='info_block'><div><span id='timer_${idx}' class='small glass_circle'> 00:00 </span></div>`;
         //}
         rowDiv.innerHTML = `<div class='colImg pos_rel linear_bkg round-border' id='imgDiv_${idx}'> 
         ${auxStr}<div class='colArtist' id='artistDiv_${idx}'></div></div>`;
@@ -306,13 +306,15 @@ function updateBar(){
     // update a progress bar:
     // https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/buffering_seeking_time_ranges
     audioConnect.addEventListener('timeupdate',function(){
-        let duration =  updateTime/1000;// myAudio.duration;
-        if (duration > 0) {
-            // console.log("Audio len",audioConnect.currentTime,updateTime);
-            document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*10) + "%";
+        let duration =  600;// myAudio.duration;
+        // console.log("Audio len",audioConnect.currentTime,updateTime);
+        document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
+
+        if (audioConnect.currentTime > duration){
+            document.getElementById('progress-amount').style.width = "0%";
+            duration = 1200;
         }
     });
-    // console.log("updating...");
 }
 
 function playStop(idx){
@@ -582,7 +584,8 @@ async function display_data(idx){
     const cover_art = document.getElementById("cover_art");
     // cover_art.setAttribute("onclick","display_data(" + idx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;
-    reloadMe.innerHTML =  "<img src='assets/loading.svg' width='50'>"; //reloadImg;
+    reloadMe.innerHTML =  "<span id='id3_timer' class='glass_circle'></span>";
+    // reloadMe.classList.add("glass_circle");
     cover_art.innerHTML = `<img src='${this_artwork}' width='60' height='60'/>`
     // ${auxText}`;
 

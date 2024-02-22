@@ -70,6 +70,14 @@ kbd {
   border: 1px dashed var(--darkish-sky);
 }
 .round-border{border-radius: 10px;}
+.glass_circle{
+  background: rgba(255,255,255,0.4);
+  width: 45px;
+  height: 45px;
+  line-height: 35px;
+  border-radius: 50%;
+  color:var(--backish-blue);
+}
 .small{font-size: small;}
 #topBtn{
   display: none;
@@ -368,13 +376,7 @@ span{
   bottom: 0px;
   border-radius: 5px;
 }
-.info_block div > span.small {
-  background: rgba(255,255,255,0.4);
-  width:45px;
-  height: 45px;
-  line-height: 35px;
-  border-radius: 50%;
-  color:var(--backish-blue);
+.info_block div > span.small {  
   position: absolute;
   right: 5px;
 }
@@ -491,7 +493,7 @@ span{
     margin: 0;
   }
   .colTime span /*, #timer*/ {font-size: 0.9rem !important;}
-  #id3_timer, #timer{font-size: medium;}
+  #timer{font-size: medium;}
   #downLink img{width: 32px;}
   .bottomText{
     padding: 5px 5px 20px 13px;  
