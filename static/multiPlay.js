@@ -156,6 +156,14 @@ const stations = [
         site:"https://www.rfi.fr/es/en-vivo",
         xtra_info: ["Radio Francia Internacional","Espa\u00f1ol",64,false,"#a50005"]
     },{
+        name: "WDR 4",
+        logo: "assets/wdr4_logo.png",
+        stream_url: "https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
+        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt?cb=61024762",
+        description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise. Melden Sie sich an, schalten Sie WDR 4 ein und rufen Sie im richtigen Moment an!",
+        site: "https://www1.wdr.de/radio/wdr4/index.html",
+        xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#140000"]
+    },{
         name: "Stereo97",
         logo: "assets/stereo97.jpg",
         stream_url: "https://stream.consultoradas.com/8104/stream",
@@ -310,7 +318,7 @@ function updateBar(){
         document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
 
         if (audioConnect.currentTime > duration){
-            document.getElementById('progress-amount').style.width = "0%";
+            document.getElementById('progress-amount').style.width = "50%";
             duration = 1200;
         }
     });
@@ -493,6 +501,10 @@ async function update_stations(){
         if(idx < no_id3){
             gotData = await get_id3(idx);// {artist,song,artwork}
             //get_artwork(idx);//returns {{artist, song},album,artwork}
+        }
+        if (idx == (stations.length-2)){
+            const response = await fetch(stations[idx].id3_info);
+            gotData = {artist: await response.text(), song:stations[idx].name};
         }
         
         auxLink = "";

@@ -3,7 +3,8 @@
 {
     "name":"The Breeze",
     "stream_url":"http://listen.livestreamingservice.com/181-breeze_64k.aac",
-    "id3_info":""
+    "id3_info":"https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-breeze_128k.mp3&https=&f=ice&c=903697",
+    "description":"https://player.181fm.com/album.php?key=Miracles-Love%20Machine"
 },{  
     "name": "113.fm Alternative-Rock",
     "logo": "assets/113fm_logo.jpg",
