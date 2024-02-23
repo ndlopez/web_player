@@ -525,7 +525,7 @@ span{
   .col2, #amia, #artwork, .col_50{width: 100%;}
   /*#artwork{margin-top: 0px;}*/
   .col_23{width: 50%;}
-  #listIcon, #toggle-list{display: block;}
+  #listIcon, #toggle-list, #playBtn{display: block;}
   #list-icon{
     height: 28px;
     width: 28px;

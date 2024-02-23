@@ -410,13 +410,15 @@ function play_elapsed(min=0,sec=0,jdx){//
         // timer on player
         document.getElementById("timer").innerText = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
         sec++;
+        // console.log("stream",audioConnect.currentTime,audioConnect.currentSrc);
+        // returns 0.160997, 1.16687, ...
         if(sec > 59){
             min++; sec=0;
         }
         /* if listen hours
         if(min>59 && sec>59){hours++;min=0;sec=0;}*/
         //timer case: if(sec < 0){clearInterval(tina_timer);}
-    },1000);
+    },1000);    
 }
 
 function run_timer(){
@@ -583,8 +585,6 @@ async function display_data(idx){
     const cover_art = document.getElementById("cover_art");
     // cover_art.setAttribute("onclick","display_data(" + idx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;
-    reloadMe.innerHTML =  "<span id='id3_timer' class='glass_circle'></span>";
-    // reloadMe.classList.add("glass_circle");
     cover_art.innerHTML = `<img src='${this_artwork}' width='60' height='60'/>`
     // ${auxText}`;
 
