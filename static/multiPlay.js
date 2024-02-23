@@ -159,7 +159,7 @@ const stations = [
         name: "WDR 4",
         logo: "assets/wdr4_logo.png",
         stream_url: "https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
-        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt?cb=61024762",
+        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt",
         description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise. Melden Sie sich an, schalten Sie WDR 4 ein und rufen Sie im richtigen Moment an!",
         site: "https://www1.wdr.de/radio/wdr4/index.html",
         xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#140000"]
@@ -173,7 +173,7 @@ const stations = [
         xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     }
 ];
-
+// id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt?cb=61024762"
 const info_keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
 const svg_btn = '<svg class="col_half float_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">'
@@ -519,7 +519,6 @@ async function update_stations(){
             // console.log("Removing:",isPlaying);
         }else{
             document.getElementById("station_"+idx).style.display = "block";
-            // console.log("keeping:",idx);
         }
         
         this_artist.innerHTML = `<span class='bold_medium oneLine'> ${gotData.song}
