@@ -187,12 +187,12 @@ kbd {
 }.volume-none{display: none;}*/
 /*Playlist elements*/
 input[type="range"]{
-  color: var(--light-sky);
+  color: var(--lemon);
   --thumb-height: 1.125em;
   --thumb-width: 1.125em;
-  --track-height: 1em;
+  --track-height: 1.125em;
   --track-color: rgba(0,0,0,0.2);
-  background: var(--lemon);
+  background: var(--light-sky);
   width:12.5em;
   border-radius: 1.125em;
 }

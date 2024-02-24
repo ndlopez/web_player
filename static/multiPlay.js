@@ -25,7 +25,7 @@ const stations = [
         logo: "assets/melodia.png",
         stream_url: "https://stream.consultoradas.com/8194/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8194",
-        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina, con la magia y distinci\u00F3n...",
+        description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina.",
         site: "",
         xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#f2f2f2"]
     },{
