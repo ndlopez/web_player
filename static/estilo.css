@@ -186,6 +186,38 @@ kbd {
   transform:rotate(-90deg);  width: 80px;
 }.volume-none{display: none;}*/
 /*Playlist elements*/
+input[type="range"]{
+  color: var(--light-sky);
+  --thumb-height: 1.125em;
+  --thumb-width: 1.125em;
+  --track-height: 1em;
+  --track-color: rgba(0,0,0,0.2);
+  background: var(--lemon);
+  width:12.5em;
+  border-radius: 1.125em;
+}
+input[type="range"],input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-thumb {
+	appearance: none;
+	transition: all ease 100ms;
+	height: var(--thumb-height);
+}
+
+input[type="range"]::-moz-range-thumb {
+	background: currentColor;
+	border: 0;
+	width: var(--thumb-width, var(--thumb-height));
+	border-radius: var(--thumb-width, var(--thumb-height));
+}
+input[type="range"]::-moz-range-progress {
+	appearance: none;
+	background: currentColor;
+	transition-delay: 30ms;
+}
+
+input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
+	height: var(--track-height);/*calc(var(--track-height) + 1px)*/;
+	border-radius: var(--track-height);
+}
 .row:after{
   content:"";
   display:table;

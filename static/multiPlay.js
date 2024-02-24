@@ -286,6 +286,7 @@ function init_this(){
 
 function update_this(){
     clearInterval(dayna_timer);
+
     run_timer();
     // update_stations();
     display_data(isPlaying);
@@ -310,7 +311,7 @@ function init_player(stream_idx){
     openNav();
 }
 
-let duration =  600;// myAudio.duration;
+let duration = 900;// ~15min myAudio.duration;
 function updateBar(){
     // update a progress bar:
     // https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/buffering_seeking_time_ranges
@@ -319,8 +320,8 @@ function updateBar(){
         document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
 
         if (audioConnect.currentTime > duration){
-            document.getElementById('progress-amount').style.width = "50%";
-            duration = 1200;
+            // document.getElementById('progress-amount').style.width = "50%";
+            duration = 1800; //30min
         }
     });
 }
