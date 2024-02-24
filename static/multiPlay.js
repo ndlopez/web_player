@@ -69,6 +69,14 @@ const stations = [
         site: "",
         xtra_info: ["50's and 60's","English",128,true,"#073642"]
     },{
+        name: "WDR 4",
+        logo: "assets/wdr4_logo.png",
+        stream_url: "https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
+        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt",
+        description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise. Melden Sie sich an, schalten Sie WDR 4 ein und rufen Sie im richtigen Moment an!",
+        site: "https://www1.wdr.de/radio/wdr4/index.html",
+        xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#140000"]
+    },{
         name:"Heart Radio",
         logo: "assets/heart80s.jpg",
         stream_url:"https://media-ssl.musicradio.com/Heart80s",
@@ -117,6 +125,21 @@ const stations = [
         site: "",
         xtra_info: ["Classical","English",128,true,"rgb(98,69,11)"]
     },{
+        name: "RadiCro",
+        logo: "assets/radicro_400x400.jpg",
+        stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
+        id3_info: "",
+        description: "Radio Cross from Kobe,Japan",
+        site: "",
+        xtra_info: ["[人,情報,まち,企業,学校...]すべてが繋がる!!","English",128,false,"#073642"]
+    },{
+        name: "rfi",
+        logo: "assets/rfi_logo.png",
+        stream_url: "https://rfienespagnol64k.ice.infomaniak.ch/rfienespagnol-64.mp3",
+        id3_info:"",
+        site:"https://www.rfi.fr/es/en-vivo",
+        xtra_info: ["Radio Francia Internacional","Espa\u00f1ol",64,false,"#a50005"]
+    },{
         name: "Panamericana",
         logo: "assets/pana148.png",
         stream_url: "https://stream-28.zeno.fm/pnwpbyfambruv?zs=7zM3ROeGQVmyOAzN9Khz5A",
@@ -140,29 +163,6 @@ const stations = [
         description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
         site: "",
         xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
-    },{
-        name: "RadiCro",
-        logo: "assets/radicro_400x400.jpg",
-        stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
-        id3_info: "",
-        description: "Radio Cross from Kobe,Japan",
-        site: "",
-        xtra_info: ["[人,情報,まち,企業,学校...]すべてが繋がる!!","English",128,false,"#073642"]
-    },{
-        name: "rfi",
-        logo: "assets/rfi_logo.png",
-        stream_url: "https://rfienespagnol64k.ice.infomaniak.ch/rfienespagnol-64.mp3",
-        id3_info:"",
-        site:"https://www.rfi.fr/es/en-vivo",
-        xtra_info: ["Radio Francia Internacional","Espa\u00f1ol",64,false,"#a50005"]
-    },{
-        name: "WDR 4",
-        logo: "assets/wdr4_logo.png",
-        stream_url: "https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
-        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt",
-        description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise. Melden Sie sich an, schalten Sie WDR 4 ein und rufen Sie im richtigen Moment an!",
-        site: "https://www1.wdr.de/radio/wdr4/index.html",
-        xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#140000"]
     },{
         name: "Stereo97",
         logo: "assets/stereo97.jpg",
@@ -495,14 +495,14 @@ async function update_stations(){
     for(let idx = 0; idx < (stations.length -1); idx++){
         gotData = {
             artist: stations[idx].xtra_info[0],song: stations[idx].name};
-            /*nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
+        /*nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo;*/
 
         if(idx < no_id3){
             gotData = await get_id3(idx);// {artist,song,artwork}
             //get_artwork(idx);//returns {{artist, song},album,artwork}
         }
-        if (idx == (stations.length-2)){
+        if (idx == no_id3){
             const response = await fetch(stations[idx].id3_info);
             gotData = {artist: await response.text(), song:stations[idx].name};
         }
