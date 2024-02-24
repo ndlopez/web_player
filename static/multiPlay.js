@@ -452,9 +452,9 @@ function build_case(jdx, artist, song, album, artwork){
     let search_link = "";
     let aux_link = "";
     if( typeof album === 'undefined'){ album = artist;}
-    if(jdx < no_id3){
-        search_link = `<a title='Click for more info' href='https://duckduckgo.com/?q=${artist.trim().replace(/\s+/g,"%20").replace(/'/g,"")}+${song.trim().replace(/\s+/g,"%20").replace(/'/g,"")}&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a>`;
-        aux_link = `https://duckduckgo.com/?q=${artist.trim().replace(/\s+/g,"%20").replace(/'/g,"")}+${song.trim().replace(/\s+/g,"%20").replace(/'/g,"")}&t=ffcm&atb=v319-1&ia=web' target='_blank`;
+    if(jdx < (no_id3+1)){
+        search_link = `<a title='Duck it!' href='https://duckduckgo.com/?q=${artist.trim().replace(/\s+/g,"%20").replace(/'/g,"")}+${song.trim().replace(/\s+/g,"%20").replace(/'/g,"")}&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a>`;
+        aux_link = `https://duckduckgo.com/?q=${artist.trim().replace(/\s+/g,"%20").replace(/'/g,"")}+${song.trim().replace(/\s+/g,"%20").replace(/'/g,"")}&t=ffcm&atb=v319-1&ia=web'`;
     }else{ 
         aux_link = stations[jdx].site;
         search_link = `<a href='${stations[jdx].site}' target='_blank'> ${svg_ff}</a>`;
@@ -466,7 +466,7 @@ function build_case(jdx, artist, song, album, artwork){
     <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
     <input class="" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
     const this_html = `<div class='pos_rel' id='coverCD'>
-    <a title='Click for more info' href='${aux_link}'>
+    <a target='_blank' title='Duck it!' href='${aux_link}'>
     <img src='${artwork}' width='${art_size}'/></a></div> <div class='cardTitle padding_10 small'><h2 class='headLabel'> 
     ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}`;
     /*search_link +
