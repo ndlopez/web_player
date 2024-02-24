@@ -70,12 +70,12 @@ const stations = [
         xtra_info: ["50's and 60's","English",128,true,"#073642"]
     },{
         name: "WDR 4",
-        logo: "assets/wdr4_logo.png",
+        logo: "assets/wdr4_logo.svg",
         stream_url: "https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt",
         description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise.",
         site: "https://www1.wdr.de/radio/wdr4/index.html",
-        xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#140000"]
+        xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#18375C"]
     },{
         name:"Heart Radio",
         logo: "assets/heart80s.jpg",
@@ -309,6 +309,7 @@ function init_player(stream_idx){
     run_timer();
     openNav();
 }
+
 let duration =  600;// myAudio.duration;
 function updateBar(){
     // update a progress bar:
@@ -438,11 +439,7 @@ function run_timer(){
         cindy = cindy - 1;
         if ((cindy < 0) && (zoey > 0)){
             cindy=59;zoey = zoey - 1;
-        }
-        /* Probably not needed, since update_this() resets it
-        if ((zoey == 0) && (cindy == 0)){
-            cindy=5;zoey=3;
-        }*/        
+        }       
     },1000);
 }
 

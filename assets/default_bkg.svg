@@ -23,10 +23,10 @@
   <text x="25" y="65" class="title">mellow</text>
   <text x="75" y="100" class="title">gold</text>
   <text x="45" y="150" class="heavy">online</text>
-  <path id="my_path" d="M 8 75 Q 50 10 100 75 T 190 75" stroke="transparent"
+  <path id="my_path" d="M 23 85 Q 50 10 100 75 T 180 85" stroke="transparent"
     stroke-linecap="round" stroke-dasharray="5,10,5" fill="transparent"/>
     <text fill="wheat"><textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#my_path">
-    soft rock, ballads and more
+    soft rock, ballads n more
     </textPath></text>
   <!--path d="M 10 150 L 190 150" stroke="red"
     stroke-linecap="round" stroke-width="1" stroke-dasharray="5,5" fill="none"/-->
