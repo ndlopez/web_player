@@ -73,7 +73,7 @@ const stations = [
         logo: "assets/wdr4_logo.png",
         stream_url: "https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt",
-        description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise. Melden Sie sich an, schalten Sie WDR 4 ein und rufen Sie im richtigen Moment an!",
+        description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise.",
         site: "https://www1.wdr.de/radio/wdr4/index.html",
         xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#140000"]
     },{
@@ -504,7 +504,10 @@ async function update_stations(){
         }
         if (idx == no_id3){
             const response = await fetch(stations[idx].id3_info);
-            gotData = {artist: await response.text(), song:stations[idx].name};
+            auxLink = await response.text();
+            auxLink = auxLink.split("-");
+            if(auxLink.length < 2){auxLink.push(stations[idx].name);}
+            gotData = {artist: auxLink[1], song:auxLink[0]};
         }
         
         auxLink = "";
@@ -639,7 +642,7 @@ async function get_id3(idx){
     let data = {}, song = "";
     
     try{
-	    if (idx > (lpb_id3 -1) ){
+	    if (idx > (lpb_id3 - 1) ){
             //avoid the 1st two streams
             const response = await fetch(stations[idx].id3_info);
             if(!response.ok){
