@@ -77,6 +77,14 @@ const stations = [
         site: "https://www1.wdr.de/radio/wdr4/index.html",
         xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#18375C"]
     },{
+        name: "WDR 1Live",
+        logo: "assets/1live_logo.svg",
+        stream_url: "https://wdr-1live-rockhits.icecast.wdr.de/wdr/1live/rockhits/mp3/128/stream.mp3",
+        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
+        description: "",
+        site: "https://www1.wdr.de/radio/wdr1/index.html",
+        xtra_info: ["Sie hören: Rock Hits", "Deutsch",128,true,"#18375C"]
+    },{
         name:"Heart Radio",
         logo: "assets/heart80s.jpg",
         stream_url:"https://media-ssl.musicradio.com/Heart80s",
@@ -84,14 +92,6 @@ const stations = [
         description: "the UK's biggest commercial radio brand.",
         site: "https://www.heart.co.uk/",
         xtra_info:["80's Pop","English",196,false,"#d21e2a"]
-    },{
-        name:"Heart Radio",
-        logo: "assets/heart90s.jpg",
-        stream_url:"https://media-ssl.musicradio.com/Heart90s",
-        id3_info: "",
-        description: "the UK's biggest commercial radio brand.",
-        site: "https://www.heart.co.uk/",
-        xtra_info:["90's best","English",196,false,"#a30321"]
     },{
         name: "KEXP-FM",
         logo: "assets/kexp_fm.svg",
@@ -165,12 +165,20 @@ const stations = [
         xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
     },{
         name: "Stereo97",
-        logo: "assets/stereo97.jpg",
+        logo: "assets/stereo97.png",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
         description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
         site: "https://listen.181fm.com/181-heart_128k.mp3?listenerId=esTrackblock0250930&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1698928812",
         xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
+    },{
+        name:"Heart Radio",
+        logo: "assets/heart90s.jpg",
+        stream_url:"https://media-ssl.musicradio.com/Heart90s",
+        id3_info: "",
+        description: "the UK's biggest commercial radio brand.",
+        site: "https://www.heart.co.uk/",
+        xtra_info:["90's best","English",196,false,"#a30321"]
     }
 ];
 // id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt?cb=61024762"
