@@ -81,8 +81,8 @@ const stations = [
         logo: "assets/1live_logo.svg",
         stream_url: "https://wdr-1live-rockhits.icecast.wdr.de/wdr/1live/rockhits/mp3/128/stream.mp3",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
-        description: "",
-        site: "https://www1.wdr.de/radio/wdr1/index.html",
+        description: "Hier treffen die beliebtesten Rockhymnen auf den neusten Rocksound",
+        site: "https://www1.wdr.de/radio/",
         xtra_info: ["Sie hören: Rock Hits", "Deutsch",128,true,"#18375C"]
     },{
         name:"Heart Radio",
@@ -286,17 +286,14 @@ function init_this(){
         closeNav();
     }
     display_all_stations();
-    //build_case(stations.length,stations.name,stations.id3_info,stations.stream_url,stations.logo);
-    /*for (let idx=0;idx<stations.length;idx++) {display_data(idx);}*/
+    // build_case(0,stations[0].name,"You dont get me high anymore",stations[0].xtra_info[0],stations[0].logo);
+    
     update_stations();
-    // run_timer();
 }
 
 function update_this(){
     clearInterval(dayna_timer);
-
     run_timer();
-    // update_stations();
     display_data(isPlaying);
 }
 
@@ -605,7 +602,7 @@ async function display_data(idx){
     const cover_art = document.getElementById("cover_art");
     // cover_art.setAttribute("onclick","display_data(" + idx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;
-    cover_art.innerHTML = `<img src='${this_artwork}' width='60' height='60'/>`
+    cover_art.innerHTML = `<img src='${this_artwork}' width='48' height='48'/>`
     // ${auxText}`;
 
     auxText = gotArtist;
