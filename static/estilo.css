@@ -32,10 +32,11 @@ nav{
 }
 /*Progress bar at bottom*/
 .progress { 
-  margin-top: -35px;
+  margin-top: -5px;
   height: 5px;  
   position: relative;
   width: 100vw;
+  background-color: rgba(0,0,0,0.75);
 }
 
 #progress-amount {
@@ -398,7 +399,7 @@ span{
   stroke: var(--light-sky);
 }
 #station_info, #stationInfo{
-  background-color: var(--dark-smoke);
+  /*background-color: var(--dark-smoke);*/
   position: fixed;
   width: 100%;
 }
