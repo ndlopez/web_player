@@ -36,7 +36,7 @@ nav{
   height: 5px;  
   position: relative;
   width: 100vw;
-  background-color: rgba(0,0,0,0.75);
+  /*background-color: rgba(0,0,0,0.75);*/
 }
 
 #progress-amount {
@@ -479,6 +479,10 @@ span{
     width: 100%;
     overflow-x: auto;
     /*flex-wrap: nowrap;all items in one single row*/
+  }
+  #cover_art{
+    display: block;
+    padding-top: 5px;
   }
   .card{
     /*43% x-scrollable*/
