@@ -77,7 +77,7 @@ const stations = [
         site: "https://www1.wdr.de/radio/wdr4/index.html",
         xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#18375C"]
     },{
-        name: "WDR 1Live",
+        name: "WDR einsLive",
         logo: "assets/1live_logo.svg",
         stream_url: "https://wdr-1live-rockhits.icecast.wdr.de/wdr/1live/rockhits/mp3/128/stream.mp3",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
@@ -601,6 +601,7 @@ async function display_data(idx){
     let auxText = "";
     const reloadMe = document.getElementById("reload_this");//"update_stations()"
     reloadMe.setAttribute("onclick","display_data(" + idx + ")");
+    reloadMe.innerHTML = reloadImg;
     const cover_art = document.getElementById("cover_art");
     // cover_art.setAttribute("onclick","display_data(" + idx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;
