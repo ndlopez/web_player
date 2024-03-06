@@ -309,8 +309,9 @@ function init_player(stream_idx){
     //getTimer.innerText = document.getElementById("timer").innerText;
     updater = setInterval(update_this,updateTime)
     stopPlay();
-    playStop(stream_idx);
+    // playStop(stream_idx);
     display_data(stream_idx);
+    playStop(stream_idx);
     clearInterval(dayna_timer);
     run_timer();
     openNav();
@@ -469,7 +470,7 @@ function build_case(jdx, artist, song, album, artwork){
     const duck = document.getElementById("duck_it");
     duck.innerHTML = search_link;
     
-    const vol_icon = `<!--div class="flexy"> <span id="title_stat">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div--><div class="flexy"><label for="vol_input" onclick="volume_mute(0)">
+    const vol_icon = `<div> <span id="title_stat">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div><div class="flexy"><label for="vol_input" onclick="volume_mute(0)">
     <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
     <input class="" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
     const this_html = `<div class='pos_rel' id='coverCD'>
