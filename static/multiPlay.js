@@ -8,8 +8,8 @@
     emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 */
 // import stations from "./fetch_list.js"; // should not be local
-const lpb_id3 = 2;//1 // LaPaz.fm, Me..
-const no_id3 = 7;//6; //@stations, from this index no requests
+const lpb_id3 = 3;//1 // LaPaz.fm, Me..
+const no_id3 = 8;//6; //@stations, from this index no requests
 
 const stations = [
     {
@@ -28,6 +28,14 @@ const stations = [
         description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina.",
         site: "",
         xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#f2f2f2"]
+    },{
+        name: "Stereo97",
+        logo: "assets/stereo97.png",
+        stream_url: "https://stream.consultoradas.com/8104/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
+        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
+        site: "https://listen.181fm.com/181-heart_128k.mp3?listenerId=esTrackblock0250930&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1698928812",
+        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     },{
         name: "The Buzz",
         logo: "assets/alt-rock.jpg",
@@ -163,14 +171,6 @@ const stations = [
         description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
         site: "",
         xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
-    },{
-        name: "Stereo97",
-        logo: "assets/stereo97.png",
-        stream_url: "https://stream.consultoradas.com/8104/stream",
-        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
-        site: "https://listen.181fm.com/181-heart_128k.mp3?listenerId=esTrackblock0250930&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1698928812",
-        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     },{
         name:"Heart Radio",
         logo: "assets/heart90s.jpg",

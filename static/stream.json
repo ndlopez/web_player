@@ -24,14 +24,6 @@
     "description":"is a non-commercial, independent, listener-supported station broadcasting from North Carolina.",
     "xtra_info":["Classical","English",128,false]
 },{
-    "name": "Radio.de 90er",
-    "logo":"",
-    "stream_url":"https://www.radio.de/_next/data/GOBFXdM8u3ezLy-UNiSTB/de-DE/s/90er.json?slug=90er",
-    "id3_info":"https://prod.radio-api.net/stations/now-playing?stationIds=90er",
-    "description": "Der best 90er",
-    "site":"",
-    "xtra_info":["Top 40s","Deutsch",128,true]
-},{
     "name": "Radio Mundial",
     "logo": "assets/mundial.png",
     "stream_url": "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
