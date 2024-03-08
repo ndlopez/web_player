@@ -32,11 +32,31 @@
           <li class="no_mobil"><a target="_blank" href="https://github.com/ndlopez/web_player/archive/refs/heads/main.zip">Download</a></li>
         </ul->
       </nav-->
-      <section class="bkg_cd_case" id="artwork"></section><!--class="col30 float_left"-->
-      <section id="amia"></section><!--class="col70 float_left"-->
+      <aside id="player2" class="col10 float_left">
+        <div onclick="sleepy()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#b58900" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2C 9 2 3 7 3 15 3 23 9 29 17 29 25 29 30 23 30 18 19 25 7 13 14 2Z" /></svg>
+        </div>
+        <div>
+          <svg id="play2" title="[d] key to start stream" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+            <!--circle class="paused" cx="30" cy="30" r="26"/>
+            <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/-->
+            <path class="paused" fill="#bed2e0" stroke="#bed2e0" d="M20 40 L20 20 40 20 40 40 Z"/>
+          </svg>
+        </div>
+        <div id="duck_it"></div>
+        <div id="gifElm" class="equalizer no-audio no_mobil" onclick="closeNav()">
+          <div><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </aside>
+      <div class="col90 float_left">
+        <section class="bkg_cd_case" id="artwork"></section><!--class="col30 float_left"-->
+        <section id="amia"></section><!--class="col70 float_left"-->
+      </div>
+      
     </main>
     
-    <aside id="player2">
+    <aside id="playe">
       <div id="art_title" class="col_50 float_left">
         <div class="col_20 float_left no_desktop" id="cover_art">
           <img src="assets/phantogram.jpg" width="48" height="48"/>
@@ -54,32 +74,32 @@
         <div class="col70 float_left progress"><span id="progress-amount"></span></div>
         <span id="id3_timer" class="col15 float_left align-right">03:05</span>
       </div-->
-      <div id="controls" class="col_50 float_left flexy">
+      <!--div id="controls" class="col_50 float_left flexy">
         <div class="half_col float_left flexy" onclick="sleepy()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#b58900" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2C 9 2 3 7 3 15 3 23 9 29 17 29 25 29 30 23 30 18 19 25 7 13 14 2Z" /></svg>
         </div>
-        <!--div id="reload_this" class="half_col float_left flexy">
+        <-div id="reload_this" class="half_col float_left flexy">
           <span id="id3_timer" class="glass_circle">00:00</span>
-        </div-->
+        </div->
         <div class="half_col float_left flexy">
           <svg id="play2" title="[d] key to start stream" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
-            <!--circle class="paused" cx="30" cy="30" r="26"/>
-            <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/-->
+            <-circle class="paused" cx="30" cy="30" r="26"/>
+            <path class="paused" fill="#2e4054" d="M23 40 L23 20 43 30Z"/->
             <path class="paused" fill="#bed2e0" stroke="#bed2e0" d="M20 40 L20 20 40 20 40 40 Z"/>
           </svg>
         </div>
         <div id="duck_it" class="half_col float_left flexy"></div>
         <div class="half_col float_left flexy">
           <div id="toggle-list" class="no_desktop" onclick="openNav()">
-            <!--svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path d="M4 8 L28 8 M4 16 L28 16 M4 24 L28 24" /></svg-->
+            <-svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path d="M4 8 L28 8 M4 16 L28 16 M4 24 L28 24" /></svg->
             <img src="assets/list.svg" width="48px">
           </div>
           <div id="gifElm" class="equalizer no-audio no_mobil" onclick="closeNav()">
-            <div><span></span><span></span><span></span><span></span><span></span><!--span></span-->
+            <div><span></span><span></span><span></span><span></span><span></span>
             </div>
           </div>
         </div>
-      </div>
+      </div-->
       <div class="progress"><span id="progress-amount"></span></div>
     </aside>
     <aside id="stationInfo">
@@ -88,7 +108,7 @@
       <div class="col70 float_left">
         <span id="title_stat" class="center moving-text">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div>
       <!--div class="col70 float_left progress"><span id="progress-amount"></span></div-->
-      <span id="id3_timer" class="col15 float_left align-right">03:05</span>
+      <span id="id3_timer" class="col15 float_left align-right">03:04</span>
     </aside>
 
     <!--LIVE&emsp; script type="module" src="static/multiPlay.js"></script-->

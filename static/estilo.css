@@ -247,9 +247,18 @@ span{
 }
 .col_23{width:23.5%;}
 .col_50, .col2, .col_half{width: 50%;}
-
 .col_40{width: 40%;}
 .col_20{width: 20%;}
+.col90{width:90%}
+.col10{width: 10%;margin: 0px;}
+.col15{width: 15%;}
+.col30{width: 30%;}
+.col70{
+  width:70%;
+  overflow: hidden;
+}
+.col60{width: 60%;}
+.col80{width:80%;}
 /*img{filter: opacity(30%);}*/
 .col_artist{background-color: var(--dark-smoke);}
 .colArtist{
@@ -419,16 +428,6 @@ span{
 #station_info{bottom: 58px;}
 #stationInfo{bottom: 68px;}
 #stat_name h3{margin:0px;}
-.col90{width:90%}
-.col10{width: 10%;margin: 0px;}
-.col15{width: 15%;}
-.col30{width: 30%;}
-.col70{
-  width:70%;
-  overflow: hidden;
-}
-.col60{width: 60%;}
-.col80{width:80%;}
 #cover_title{padding-left: 10px;}
 #cover_art{
   position: relative;
@@ -472,9 +471,8 @@ span{
 /*.cardTitle h2{margin: 0px;}*/
 @media (max-width: 700px) {
   body{font-size: small;}
-  /*.vol_pad{
-    padding: 5px 20vw;
-  }*/
+  /*.vol_pad{ padding: 5px 20vw;}*/
+  .flexy{ display: block;}
   .outer_div{
     width: 100%;
     overflow-x: auto;

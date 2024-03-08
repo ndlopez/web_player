@@ -447,7 +447,7 @@ function play_elapsed(min=0,sec=0,jdx){//
 
 function run_timer(){
     // console.log("run_timer started");
-    zoey = 3, cindy = 5;
+    zoey = 3, cindy = 4;
     dayna_timer = setInterval(()=>{
         // timer to update id3
         document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
