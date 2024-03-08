@@ -77,7 +77,7 @@ const stations = [
         site: "",
         xtra_info: ["50's and 60's","English",128,true,"#073642"]
     },{
-        name: "WDR 4",
+        name: "WDR 4 80er",
         logo: "assets/wdr4_logo.svg",
         stream_url: "https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt",
@@ -85,13 +85,13 @@ const stations = [
         site: "https://www1.wdr.de/radio/wdr4/index.html",
         xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#18375C"]
     },{
-        name: "WDR einsLive",
+        name: "WDR 1Live",
         logo: "assets/1live_logo.svg",
-        stream_url: "https://wdr-1live-rockhits.icecast.wdr.de/wdr/1live/rockhits/mp3/128/stream.mp3",
+        stream_url: "https://d111.rndfnk.com/ard/wdr/1live/live/mp3/128/stream.mp3?cid=01FBRZTS1K1TCD4KA2YZ1ND8X3&sid=2dO2O2xaoZmBXJ0PlNRg3jZxhJ1&token=eoVaiEeHkZlEhscyVdL82T91MwtZEID3cZ8kceuVBtg&tvf=nI1frZe8uhdkMTExLnJuZGZuay5jb20",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
-        description: "Hier treffen die beliebtesten Rockhymnen auf den neusten Rocksound",
+        description: "",
         site: "https://www1.wdr.de/radio/",
-        xtra_info: ["Sie hören: Rock Hits", "Deutsch",128,true,"#18375C"]
+        xtra_info: ["Sie hören: ...", "Deutsch",128,true,"#18375C"]
     },{
         name:"Heart Radio",
         logo: "assets/heart80s.jpg",
@@ -100,6 +100,14 @@ const stations = [
         description: "the UK's biggest commercial radio brand.",
         site: "https://www.heart.co.uk/",
         xtra_info:["80's Pop","English",196,false,"#d21e2a"]
+    },{
+        name: "WDR einsLive",
+        logo: "assets/1live_logo.svg",
+        stream_url: "https://wdr-1live-rockhits.icecast.wdr.de/wdr/1live/rockhits/mp3/128/stream.mp3",
+        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
+        description: "Hier treffen die beliebtesten Rockhymnen auf den neusten Rocksound",
+        site: "https://www1.wdr.de/radio/",
+        xtra_info: ["Sie hören: Rock Hits", "Deutsch",128,true,"#18375C"]
     },{
         name: "KEXP-FM",
         logo: "assets/kexp_fm.svg",
