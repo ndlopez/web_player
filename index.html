@@ -32,8 +32,8 @@
           <li class="no_mobil"><a target="_blank" href="https://github.com/ndlopez/web_player/archive/refs/heads/main.zip">Download</a></li>
         </ul->
       </nav-->
-      <section class="col30 float_left bkg_cd_case" id="artwork"></section>
-      <section class="col70 float_left" id="amia"></section>
+      <section class="bkg_cd_case" id="artwork"></section>
+      <section id="amia"></section><!--class="col70 float_left"-->
     </main>
     
     <aside id="player2">
@@ -49,11 +49,11 @@
             <path class="paused" fill="#bed2e0" stroke="#bed2e0" d="M20 40 L20 20 40 20 40 40 Z"/>
           </svg></div>
       </div>
-      <div class="col_50 float_left flexy">
+      <!--div class="col_50 float_left flexy">
         <span class="col15 float_left" id="timer">00:00</span>
         <div class="col70 float_left progress"><span id="progress-amount"></span></div>
         <span id="id3_timer" class="col15 float_left align-right">03:05</span>
-      </div>
+      </div-->
       <div id="controls" class="col_50 float_left flexy">
         <div class="half_col float_left flexy" onclick="sleepy()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#b58900" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 2C 9 2 3 7 3 15 3 23 9 29 17 29 25 29 30 23 30 18 19 25 7 13 14 2Z" /></svg>
@@ -82,14 +82,14 @@
       </div>
       <!--div class="progress"><span id="progress-amount"></span></div-->
     </aside>
-    <!--aside id="stationInfo">
+    <aside id="stationInfo">
       <span class="col15 float_left" id="timer">00:00</span>
-      <-span class="col15 float_left">&emsp;LIVE</span->
-      <-div class="col70 float_left">
+      <!--span class="col15 float_left">&emsp;LIVE</span-->
+      <div class="col70 float_left">
         <span id="title_stat" class="center moving-text">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div->
       <div class="col70 float_left progress"><span id="progress-amount"></span></div>
       <span id="id3_timer" class="col15 float_left align-right">03:05</span>
-    </aside-->
+    </aside>
 
     <!--LIVE&emsp; script type="module" src="static/multiPlay.js"></script-->
     <script src="static/multiPlay.js"></script>
