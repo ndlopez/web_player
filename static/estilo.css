@@ -32,11 +32,11 @@ nav{
 }
 /*Progress bar at bottom*/
 .progress { 
-  margin-top: 15px;
+  margin-top: -2px;
   height: 5px;  
   position: relative;
-  /*width: 100vw;
-  background-color: rgba(0,0,0,0.75);*/
+  width: 100vw;
+  /*background-color: rgba(0,0,0,0.75);*/
 }
 
 #progress-amount {
@@ -243,7 +243,7 @@ span{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 50vh;
 }
 .col_23{width:23.5%;}
 .col_50, .col2, .col_half{width: 50%;}
@@ -288,7 +288,7 @@ span{
 #nowLabel h2, .close_btn h2{margin: 0px;}
 #dark_bkg{
   background:rgba(0,0,0,0.75);
-  height: 100vh;
+  height: 50vh;
 }
 .bottomText{
   /*width: 60%;float: left;
@@ -351,8 +351,8 @@ span{
   background-size:300px;
   display: grid;
   place-items: center;
-  padding-top: calc(100vh*0.07);
-  /*margin-top: 20px;*/
+  /*padding-top: calc(100vh*0.07);
+  margin-top: 20px;*/
 }
 #coverCD img{
   border-radius: 5px;
@@ -457,8 +457,8 @@ span{
   overflow-y: hidden;
 }
 .card{
-  max-width: 23.5%;
-  flex-basis: 23.5%;
+  max-width: 19%;/*23.5%;*/
+  flex-basis: 20%;/*23.5%;*/
   flex-grow: 0;
   flex-shrink: 0;
   margin-right: 8px;
