@@ -89,9 +89,9 @@ const stations = [
         logo: "assets/1live_logo.svg",
         stream_url: "https://d111.rndfnk.com/ard/wdr/1live/live/mp3/128/stream.mp3?cid=01FBRZTS1K1TCD4KA2YZ1ND8X3&sid=2dO2O2xaoZmBXJ0PlNRg3jZxhJ1&token=eoVaiEeHkZlEhscyVdL82T91MwtZEID3cZ8kceuVBtg&tvf=nI1frZe8uhdkMTExLnJuZGZuay5jb20",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
-        description: "",
+        description: "Neue songs auf der 1Live",
         site: "https://www1.wdr.de/radio/",
-        xtra_info: ["Sie hören: ...", "Deutsch",128,true,"#18375C"]
+        xtra_info: ["Sie hören: Neue songs", "Deutsch",128,true,"#18375C"]
     },{
         name:"Heart Radio",
         logo: "assets/heart80s.jpg",
@@ -517,7 +517,7 @@ async function update_stations(){
             gotData = await get_id3(idx);// {artist,song,artwork}
             //get_artwork(idx);//returns {{artist, song},album,artwork}
         }
-        if (idx == no_id3){
+        if (idx >= no_id3 && idx <= (no_id3+1)){
             const response = await fetch(stations[idx].id3_info);
             auxLink = await response.text();
             auxLink = auxLink.split("-");
