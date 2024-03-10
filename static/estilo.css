@@ -472,7 +472,6 @@ span{
 @media (max-width: 700px) {
   body{font-size: small;}
   /*.vol_pad{ padding: 5px 20vw;}*/
-  .flexy{ display: block;}
   .outer_div{
     width: 100%;
     overflow-x: auto;
@@ -497,6 +496,7 @@ span{
   .info_block{ left:0px;}
   /*.cardTitle h2{ /*margin:0px;// font-size: medium;}*/
   #coverCD img{width: 70vw;}
+  #coverCD{padding-top: calc(100vh*0.07);}
   /*.bkg_cd_icon{ margin-left: 55px; }*/
   #stationInfo{ 
     bottom: 60px;/*142px;*/
@@ -507,7 +507,7 @@ span{
   }
   #player2{ height: 60px; }
   #art_title{ display: none; }
-  #now_song, /*#artwork,*/ .no_mobil {display: none;}
+  #now_song, .no_mobil {display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
     background-position-x: right;*/
@@ -558,7 +558,12 @@ span{
   /*.col_50{width: 80%;}*/
   
   .col2, #amia, #artwork, .col_50{width: 100%;}
-  /*#artwork{margin-top: 0px;}*/
+  #artwork, #dark_bkg{
+    height: 100vh;
+  }
+  #dark_bkg,#cover_title{
+    display: block;
+  }
   .col_23{width: 50%;}
   #listIcon, #toggle-list, #playBtn{display: block;}
   #list-icon{
