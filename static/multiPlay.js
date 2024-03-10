@@ -238,12 +238,14 @@ init_this();
 // topBtn functions
 if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     // Load onMobile only:console.log("User is using a Mobile device");
-    window.onscroll = () => {scrollFunction();};
+    window.onscroll = () => {scrollFunction("topBtn");};
+}else{
+    window.onscroll = () => {scrollFunction("player2");}
 }
-function scrollFunction() {
+function scrollFunction(thisObj) {
     let pxx=380;
-    if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) { document.getElementById("topBtn").style.display = "block"; } 
-    else { document.getElementById("topBtn").style.display = "none"; }
+    if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) { document.getElementById(thisObj).style.display = "block"; } 
+    else { document.getElementById(thisObj).style.display = "none"; }
 }
 function topFunction() {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });

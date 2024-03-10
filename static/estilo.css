@@ -34,7 +34,7 @@ nav{
 .progress { 
   margin-top: -2px;
   height: 5px;  
-  position: relative;
+  position: absolute;
   width: 100vw;
   /*background-color: rgba(0,0,0,0.75);*/
 }
@@ -110,9 +110,9 @@ kbd {
 /* Bottom menu and player*/
 #currSong, .closeBtn, #list-icon, #listIcon{display: none;}
 #player, #player2{
-  display: block;
+  display: none;
   position: fixed;
-  bottom: 0;
+  top: 0;
   z-index: 100;
   float:none;
   box-sizing: content-box;
@@ -408,9 +408,9 @@ span{
   stroke: var(--light-sky);
 }
 #station_info, #stationInfo{
-  /*background-color: var(--dark-smoke);*/
-  position: fixed;
+  position: absolute;
   width: 100%;
+  bottom: 50vh;
 }
 .info_block{
   width: 100%;
@@ -425,8 +425,6 @@ span{
 .pos_rel{
   position: relative;
 }
-#station_info{bottom: 58px;}
-#stationInfo{bottom: 68px;}
 #stat_name h3{margin:0px;}
 #cover_title{padding-left: 10px;}
 #cover_art{
