@@ -32,7 +32,7 @@ nav{
 }
 /*Progress bar at bottom*/
 .progress { 
-  margin-top: -2px;
+  margin-top: 26px;
   height: 5px;  
   position: absolute;
   width: 100vw;
@@ -56,10 +56,7 @@ kbd {
   padding: 2px 4px;
   border: 1px solid var(--light-sky);
 }
-.centered{
-  display: grid;
-  place-items: center;
-}
+
 .bottom-10px{
   margin-top: 10px;
   /*margin-right: 9px;*/
@@ -319,7 +316,7 @@ span{
 .bottomText #more_info{padding-top:15px;}
 .align-right{text-align: right;}
 .align-left{text-align: left;}
-.center{text-align: center;}
+
 .headLabel{
   color: var(--lemon);
   font-weight: bold;
@@ -465,11 +462,16 @@ span{
   align-items: center;
   justify-content: center;
 }
+.centered{
+  display: grid;
+  place-items: center;
+}
 .cardTitle{margin-right: 10px;}
 /*.cardTitle h2{margin: 0px;}*/
 @media (max-width: 700px) {
   body{font-size: small;}
   /*.vol_pad{ padding: 5px 20vw;}*/
+  .center{text-align: center;}
   .outer_div{
     width: 100%;
     overflow-x: auto;
