@@ -2,9 +2,9 @@
 
 [live demo](https://ndlopez.github.io/web_player/)
 
-Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) or *thirdrock-sgplayer* when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac). I decided to build a website to display the current song playing on *lapaz.fm* or *thirdrockradio.net*
+Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) ~~or when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac)~~. I decided to build a web app to display the current song playing on *lapaz.fm* or *thirdrockradio.net*
 
-Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and [fmlapaz](https://ndlopez.github.io/web_player/fmlapaz.html)
+Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and [fmlapaz](https://ndlopez.github.io/web_player/fmlapaz.html). The latter one is not maintained and might not work due to several changes on main CSS.
 
 ## Web Player <index.html>
 
@@ -15,8 +15,7 @@ there is a CORS issue with the URL I am fetching data from, it cannot parse anyt
 
 As countermeasure, I decided it was too much hassle on the herokuapp server(it says so on its GitHub page), thus I decided to make a Python script to fetch data from the same URL and store it in a JSON file. Python's urllib *doesnt care about headers* and fetches data without problems :)
 
-
-## FM La Paz - <fmlapaz.html>
+## FM La Paz - <fmlapaz.html> No longer maintained. 
 
 ![new design](assets/web_player_20240131.png)
 
@@ -31,6 +30,16 @@ Update time is set to 3min40s (assumed average length of a song). Because of thi
 
 By clicking on the cloud icon, it is possible to download the playlist in JSON format, obviously from the moment the page was opened.
 
+## NHK radio 5min-news every hour
+
+fetch("https://www.nhk.or.jp/s-media/news/podcast/list/v1/all.xml")
+  .then((response) => response.text())
+  .then((text) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, "text/xml");
+    console.log(doc.documentElement.nodeName);
+  });
+
 ## Unrelated?
 
 Resize images using imageMagick (on Debian)
@@ -44,10 +53,6 @@ Resize images using imageMagick (on Debian)
 more info [here](https://imagemagick.org/script/mogrify.php)
 
 To create some [wavy path in CSS3 and SVG](https://css-tricks.com/how-to-create-wavy-shapes-patterns-in-css/#top-of-site)
-Update: *www.lapaz.fm* has changed sources again. Another server has the id3 ~~icecasthd JSON file is no longer available~~.
-
-Dev only: Open *index.html* in Firefox and access *Web Developer Tools* from Settings Menu.
-
 
 <!--
 <svg id="vol_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -102,8 +107,8 @@ div id="player" style="position: fixed;bottom: 0;z-index: 100;float:none;box-siz
   </div>
 </div>
 <div class='col15 float_left'>
-    <div id='gifElm' class='equalizer no-audio'>
-      <div><span></span><span></span><span></span><span></span>
-        <span></span><--span></span-></div></div>
+  <div id='gifElm' class='equalizer no-audio'>
+    <div><span></span><span></span><span></span><span></span>
+      <span></span><--span></span-></div></div>
 </div>
 </aside-->
