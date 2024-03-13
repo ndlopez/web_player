@@ -480,13 +480,13 @@ function build_case(jdx, artist, song, album, artwork){
     const duck = document.getElementById("duck_it");
     duck.innerHTML = search_link;
     
-    const vol_icon = `<div class="center"><label class="col_20 float_left" for="vol_input" onclick="volume_mute(0)">
+    const vol_icon = `<div class="center"><label for="vol_input" onclick="volume_mute(0)">
     <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
-    <input class="col80 float_left" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
+    <input id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
     const this_html = `<div class='col_50 float_left pos_rel' id='coverCD'>
     <a target='_blank' title='Duck it!' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div><div class="col_50 float_left"> <div class="col70 float_left cardTitle small" onclick="display_data(${jdx})"><h2 class='headLabel'> 
-    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div><div class="col_20 float_left no_mobil" onclick="stopPlay()">${svg_btn}${stopImg}</div>${vol_icon}</div>`;
+    <img src='${artwork}' width='${art_size}'/></a></div><div class="col_50 float_left"> <div class="cardTitle small" onclick="display_data(${jdx})"><h2 class='headLabel'> 
+    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}</div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
     <h3 id="title_stat" class="col80 float_left lighter"></h3></div>*/    
@@ -701,7 +701,7 @@ async function get_id3(idx){
 	    }
 	    return {artist,song,artwork};
     }catch(err){
-        console.error(err);
+        console.error(stations[idx].name,err);
         return this_output;
     }    
 }

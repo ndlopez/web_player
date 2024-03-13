@@ -505,7 +505,10 @@ span{
     added atop progress bar
     border-radius: 15px 15px 0px 0px;*/
   }
-  #player2{ height: 60px; }
+  #player2{ 
+    height: 60px;
+    top: 91vh;
+  }
   #art_title{ display: none; }
   #now_song, .no_mobil {display: none;}
   #nowPlaying{
