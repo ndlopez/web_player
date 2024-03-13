@@ -9,11 +9,9 @@ Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and
 ## Web Player <index.html>
 
 *The Strumbellas - Spirits*
+*I Don't Wanna Know If You Are Lonely - Husker Du*
 
-Display the current playing song out of 13 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), ~~Third Rock Radio,~~ 113.fm ClassicOne, News Radio x2.<br> For ThirdRock stream, 
-there is a CORS issue with the URL I am fetching data from, it cannot parse anything (those people protect their data fiercely). Although I found a herokuapp website that appends the required *header* to the URL and JavaScript can fetch ~~without problems~~. Currently, the herokuapp no longer accepts requests, so this script no longer works :(. I can no longer request to thirdRock, location error?, no longer streaming via streamguys1.com?. Removed and replaced by KEXP-fm.
-
-As countermeasure, I decided it was too much hassle on the herokuapp server(it says so on its GitHub page), thus I decided to make a Python script to fetch data from the same URL and store it in a JSON file. Python's urllib *doesnt care about headers* and fetches data without problems :)
+Display the current playing song out of 13 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), ~~Third Rock Radio,~~ 113.fm ClassicOne, News Radio x3.<br> As for thirdRock, I can no longer request the stream due to location error?, apparently no longer streaming via streamguys1.com. Although tune.in still returns current playing track. In any way, removed and replaced by KEXP-fm.
 
 ## FM La Paz - <fmlapaz.html> No longer maintained. 
 

@@ -192,7 +192,7 @@ const stations = [
 // id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt?cb=61024762"
 const info_keys = ["Genre","Language","Bitrate","Ads"];
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
-const svg_btn = '<svg class="col_half float_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">'
+const svg_btn = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">'
 const circle_img = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const svg_clock = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="#b58900" stroke="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="16" cy="16" r="14" /><path d="M16 8 L16 16 20 20" /></svg>';
@@ -480,13 +480,13 @@ function build_case(jdx, artist, song, album, artwork){
     const duck = document.getElementById("duck_it");
     duck.innerHTML = search_link;
     
-    const vol_icon = `<!--div><span id="title_stat">♪ Click/Tap on any station from the list and <em>start</em> streaming LIVE</span></div--><div class="center"><label for="vol_input" onclick="volume_mute(0)">
+    const vol_icon = `<div class="center"><label class="col_20 float_left" for="vol_input" onclick="volume_mute(0)">
     <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
-    <input class="" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
+    <input class="col80 float_left" id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
     const this_html = `<div class='col_50 float_left pos_rel' id='coverCD'>
     <a target='_blank' title='Duck it!' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div><div class="col_50 float_left"> <div class='cardTitle padding_10 small' onclick="display_data(${jdx})"><h2 class='headLabel'> 
-    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}</div>`;
+    <img src='${artwork}' width='${art_size}'/></a></div><div class="col_50 float_left"> <div class="col70 float_left cardTitle small" onclick="display_data(${jdx})"><h2 class='headLabel'> 
+    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div><div class="col_20 float_left no_mobil" onclick="stopPlay()">${svg_btn}${stopImg}</div>${vol_icon}</div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
     <h3 id="title_stat" class="col80 float_left lighter"></h3></div>*/    
