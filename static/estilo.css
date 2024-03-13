@@ -333,11 +333,11 @@ span{
 }
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
-/*.bkg_cd_case{
+.bkg_cd_case{
   background: no-repeat url("../assets/cd_case.svg");
-  background-size: 300px;
+  background-size: 330px;
   background-position-x: center;
-}*/
+}
 #nowPlaying{
   background-position-y: bottom;
   padding: 20px;/*50px 20px*/

@@ -337,7 +337,7 @@ function updateBar(){
 
         if (audioConnect.currentTime > duration){
             // document.getElementById('progress-amount').style.width = "50%";
-            duration = 1800; //30min
+            duration = 3600; //60min
         }
     });
 }
