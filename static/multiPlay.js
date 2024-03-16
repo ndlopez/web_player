@@ -9,7 +9,7 @@
 */
 // import stations from "./fetch_list.js"; // should not be local
 const lpb_id3 = 3;//1 // LaPaz.fm, Me..
-const no_id3 = 8;//6; //@stations, from this index no requests
+const no_id3 = 10;//6; //@stations, from this index no requests
 
 const stations = [
     {
@@ -33,17 +33,25 @@ const stations = [
         logo: "assets/stereo97.png",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "La n\u00FAmero uno - Soy parte de ti, lleno tu vida con alegria. Soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
-        site: "https://listen.181fm.com/181-heart_128k.mp3?listenerId=esTrackblock0250930&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1698928812",
+        description: "Soy parte de ti, lleno tu vida con alegria, soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
+        site: "La n\u00FAmero uno",
         xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
     },{
         name: "The Buzz",
         logo: "assets/alt-rock.jpg",
         stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
-        description: "Listen to the best Alternative-Rock hits",
+        description: "Listen to the new Alternative-Rock hits",
         site: "",
         xtra_info: ["Alternative-Rock","English",128,true,"#51738f"]
+    },{
+        name: "Aceradio",
+        logo: "assets/alt-rock.jpg",
+        stream_url: "http://bigrradio.cdnstream1.com/5116_128",
+        id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5116_128&https=&f=ice&c=617202",
+        description: "Listen to the new Alternative-Rock hits",
+        site: "https://player.aceradio.net/album.php?key=The%20Revivalists%20-%20Kid",
+        xtra_info: ["Alternative","English",128,true,"#51738f"]
     },{
         name: "181.fm",
         logo: "assets/90s_alt.jpg",
@@ -60,6 +68,14 @@ const stations = [
         description: "Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         site: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
         xtra_info: ["Awesome 80's","English",128,true,"#03712c"]
+    },{
+        name: "Aceradio",
+        logo: "assets/awesome80s.jpg",
+        stream_url: "http://bigrradio.cdnstream1.com/5115_128",
+        id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5115_128&https=&f=ice&c=605736",
+        description: "Soft 80's - Mellow hits",
+        site: "",
+        xtra_info: ["Soft 80's","English",128,true,"#03712c"]
     },{
         name: "Mellow Gold",
         logo: "assets/default_bkg.svg",
@@ -113,7 +129,7 @@ const stations = [
         logo: "assets/kexp_fm.svg",
         stream_url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
         id3_info: "https://api.kexp.org/v2/plays/?format=json&limit=1&ordering=-airdate&airdate_before=2024-01-13T12:45:25.000Z",
-        description: "KEXP is an affiliate of the University of Washington, Seattle.",
+        description: "is an affiliate of the University of Washington, Seattle.",
         site: "",
         xtra_info: ["TopRock","English",128,true,"#31251C"]
     },{
@@ -179,14 +195,6 @@ const stations = [
         description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
         site: "",
         xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
-    },{
-        name:"Heart Radio",
-        logo: "assets/heart90s.jpg",
-        stream_url:"https://media-ssl.musicradio.com/Heart90s",
-        id3_info: "",
-        description: "the UK's biggest commercial radio brand.",
-        site: "https://www.heart.co.uk/",
-        xtra_info:["90's best","English",196,false,"#a30321"]
     }
 ];
 // id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt?cb=61024762"

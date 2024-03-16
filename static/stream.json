@@ -17,6 +17,14 @@
     "id3_info": "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600",
     "stream_url": "https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069"
 },{
+    "name":"Heart Radio",
+    "logo": "assets/heart90s.jpg",
+    "stream_url":"https://media-ssl.musicradio.com/Heart90s",
+    "id3_info": "",
+    "description": "the UK's biggest commercial radio brand.",
+    "site": "https://www.heart.co.uk/",
+    "xtra_info":["90's best","English",196,false,"#a30321"]
+},{
     "name":"WCPE, The Classical Station",
     "logo":"assets/classicalStation.png",
     "stream_url": "http://playerservices.streamtheworld.com/api/livestream-redirect/WCPE_FMAAC128.aac",
