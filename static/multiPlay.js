@@ -46,8 +46,8 @@ const stations = [
         xtra_info: ["Alternative-Rock","English",128,true,"#51738f"]
     },{
         name: "Aceradio",
-        logo: "assets/alter.png",
-        stream_url: "http://bigrradio.cdnstream1.com/5116_128",
+        logo: "assets/CD_icon.svg",
+        stream_url: "https://bigrradio.cdnstream1.com/5116_128",
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5116_128&https=&f=ice&c=617202",
         description: "Listen to the new Alternative-Rock hits",
         site: "https://player.aceradio.net/album.php?key=The%20Revivalists%20-%20Kid",
@@ -70,8 +70,8 @@ const stations = [
         xtra_info: ["Awesome 80's","English",128,true,"#03712c"]
     },{
         name: "Aceradio",
-        logo: "assets/soft80s_400.jpg",
-        stream_url: "http://bigrradio.cdnstream1.com/5115_128",
+        logo: "assets/vinyl_record.svg",
+        stream_url: "https://bigrradio.cdnstream1.com/5115_128",
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5115_128&https=&f=ice&c=605736",
         description: "Soft hits from the 80's",
         site: "",
@@ -187,6 +187,14 @@ const stations = [
         description: "su voz amiga, a la hora de las noticias, la buena musica, en sintonia nacional, con el placer de su compa\u00f1ia...",
         site: "https://www.online.radiofides.com/",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00f1ol",128,true,"#2e4054"] 
+    },{
+        name: "Correo del Sur",
+        logo: "assets/correodelsur.jpg",
+        stream_url: "https://whsh4u-panel.com/proxy/gddupgij?mp=/stream",
+        id3_info: "",
+        description: "Diario Correo del Sur: Noticias de Sucre, Bolivia y el mundo.",
+        site: "https://correodelsur.com/",
+        xtra_info: ["Noticias y m\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",128,true,"#014171"] 
     },{
         name: "Radio Mundial",
         logo: "assets/mundial.png",
@@ -571,8 +579,7 @@ async function update_stations(){
 }
 
 async function display_data(idx){
-    // reset timer
-    // zoey = 3, cindy = 5;
+    // reset timer zoey = 3, cindy = 5;
     // Function to request artwork from ext-source, not valid for idx=0
     await update_stations();
     
@@ -606,7 +613,7 @@ async function display_data(idx){
     auxDiv.style.background = card_bkg;
     auxDiv.style.height = "100vh";
     auxDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);*/
-    // Update artwork of station_idx Div
+    // Update artwork of each station_idx Div
     /*const got_artwork  = document.getElementById("imgDiv_" + idx);
     let newArt = this_artwork;//got_artwork[0].firstChild.src;
     got_artwork.innerHTML = "<img src='" + newArt + "' width='" + img_size + 
@@ -630,13 +637,13 @@ async function display_data(idx){
     let play_stat = stations[idx].name + " - " + stations[idx].description;
     if(idx > no_id3){
         auxText = stations[idx].xtra_info[0];
-        play_stat = "";
+        //play_stat = "";
     }
     
     /*let newTitle = gotSong + " - " + gotArtist;
     if(gotSong.length < 21){ newTitle = gotSong; }else{ auxText = ""; }*/
     document.getElementById("cover_title").innerHTML = 
-    `<span class='headLabel oneLine'> ${gotSong} </span><span> ${auxText} </span>`;
+    `<span class="headLabel oneLine"> ${gotSong} </span><span class="oneLine"> ${auxText} </span>`;
     
     /* current song title next to burger menu
     const currDiv = document.getElementById('curr_song');
@@ -667,7 +674,7 @@ async function get_id3(idx){
     
     try{
 	    if (idx > (lpb_id3 - 1) ){
-            //avoid the 1st two streams
+            //avoid the 1st tree streams
             const response = await fetch(stations[idx].id3_info);
             if(!response.ok){
                 throw new Error(`couldnt fetch ${stations[idx].id3_info}`);
@@ -675,16 +682,14 @@ async function get_id3(idx){
 	        data = await response.json();
             //song = data["title"].replace(myReg,"").replace(/&/g,"and");
         }else{
-            const response = await withTimeout(1000, fetch(stations[idx].id3_info));
+            // fmLaPaz, Melodia, stereo streams fail from time to time, thus
+            const response = await withTimeout(2000, fetch(stations[idx].id3_info));
             data = await response.json();
             /*.then((response) =>{ return response.json();})
-            .then((dato)=>{
-                // console.log("thisData",dato);
+            .then((dato)=>{  // console.log("thisData",dato);
                 song = dato["title"].replace(myReg,"").replace(/&/g,"and");
                 })
-            .catch(err => {
-                console.error("connection timed out",err);
-            });*/
+            .catch(err => { console.error("connection timed out",err); });*/
         }
         song = data["title"].replace(myReg,"").replace(/&/g,"and");
 	    if(idx < lpb_id3){// prev == 0

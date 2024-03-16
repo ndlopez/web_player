@@ -334,8 +334,8 @@ span{
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 .bkg_cd_case{
-  background: no-repeat url("../assets/cd_case.svg");
-  background-size: 330px;
+  background: no-repeat url("https://i.scdn.co/image/ab67616d0000b273759d4b0ac2d1c1742d4653ca");
+  background-size: cover;
   background-position-x: center;
 }
 #nowPlaying{
