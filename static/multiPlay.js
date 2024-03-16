@@ -46,7 +46,7 @@ const stations = [
         xtra_info: ["Alternative-Rock","English",128,true,"#51738f"]
     },{
         name: "Aceradio",
-        logo: "assets/alt-rock.jpg",
+        logo: "assets/alter.png",
         stream_url: "http://bigrradio.cdnstream1.com/5116_128",
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5116_128&https=&f=ice&c=617202",
         description: "Listen to the new Alternative-Rock hits",
@@ -70,10 +70,10 @@ const stations = [
         xtra_info: ["Awesome 80's","English",128,true,"#03712c"]
     },{
         name: "Aceradio",
-        logo: "assets/awesome80s.jpg",
+        logo: "assets/soft80s_400.jpg",
         stream_url: "http://bigrradio.cdnstream1.com/5115_128",
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5115_128&https=&f=ice&c=605736",
-        description: "Soft 80's - Mellow hits",
+        description: "Soft hits from the 80's",
         site: "",
         xtra_info: ["Soft 80's","English",128,true,"#03712c"]
     },{
