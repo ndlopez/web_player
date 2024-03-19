@@ -769,8 +769,7 @@ function openNav(){
         document.getElementById("amia").style.display = "none";
         document.getElementById("artwork").style.display = "block";
         //document.getElementById("dark_bkg").style.display = "block";
-        
-        document.getElementById("player2").style.display = "block";
+        document.getElementById("controls").style.display = "flex";
         document.getElementById("art_title").style.display = "none";
         document.body.style.overflow = "hidden";
         // top_title.style.display = "none";
@@ -781,8 +780,8 @@ function closeNav(){
     document.getElementById("artwork").style.display = "none";
     //document.getElementById("dark_bkg").style.display = "none";
     document.getElementById("amia").style.display = "block";
-    /*document.getElementById("stationInfo").style.display = "none";
-    document.getElementById("player2").style.display = "none";*/
+    /*document.getElementById("stationInfo").style.display = "none";*/
+    document.getElementById("controls").style.display = "none";
     document.getElementById("art_title").style.display = "block";
     // top_title.style.display = "block";
     document.body.style.overflow = "auto";

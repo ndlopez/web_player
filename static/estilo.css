@@ -107,13 +107,13 @@ kbd {
 /* Bottom menu and player*/
 #currSong, .closeBtn, #list-icon, #listIcon{display: none;}
 #player, #player2{
-  display: none;
+  display: block;
   position: fixed;
-  top: 0;
+  bottom: 0;
   z-index: 100;
   float:none;
   box-sizing: content-box;
-  width: 100%;
+  /*width: 100%;*/
   background-color: var(--dark-smoke);
   padding: 0px;
 }
@@ -407,7 +407,7 @@ span{
 #station_info, #stationInfo{
   position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: 68px;
 }
 .info_block{
   width: 100%;
@@ -436,7 +436,6 @@ span{
   transform: translate(-50%,-50%);
 }
 
-.no_desktop{display: none;}
 /*.moving-text:hover{animation-play-state: paused;}#timer{margin-top: -15px;}*/
 .moving-text{
   animation: marque 40s linear infinite;
@@ -467,6 +466,7 @@ span{
   place-items: center;
 }
 .cardTitle{margin-right: 10px;}
+.no_desktop{display: none;}
 /*.cardTitle h2{margin: 0px;}*/
 @media (max-width: 700px) {
   body{font-size: small;}
@@ -509,6 +509,7 @@ span{
   #player2{ 
     height: 60px;
     top: 91vh;
+    width: 100%;
   }
   #art_title{ display: none; }
   #now_song, .no_mobil {display: none;}
