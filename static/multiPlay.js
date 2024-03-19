@@ -255,9 +255,9 @@ init_this();
 if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
     // Load onMobile only:console.log("User is using a Mobile device");
     window.onscroll = () => {scrollFunction("topBtn");};
-}else{
+}/*else{
     window.onscroll = () => {scrollFunction("player2");}
-}
+}*/
 function scrollFunction(thisObj) {
     let pxx=380;
     if (document.body.scrollTop > pxx || document.documentElement.scrollTop > pxx) { document.getElementById(thisObj).style.display = "block"; } 
@@ -499,9 +499,9 @@ function build_case(jdx, artist, song, album, artwork){
     const vol_icon = `<div class="center"><label for="vol_input" onclick="volume_mute(0)">
     <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
     <input id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
-    const this_html = `<div class='col_50 float_left pos_rel' id='coverCD'>
+    const this_html = `<div class="pos_rel" id="coverCD">
     <a target='_blank' title='Duck it!' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div><div class="col_50 float_left"> <div class="cardTitle small" onclick="display_data(${jdx})"><h2 class='headLabel'> 
+    <img src='${artwork}' width='${art_size}'/></a></div><div class=""> <div class="cardTitle small" onclick="display_data(${jdx})"><h2 class="headLabel"> 
     ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}</div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
@@ -606,7 +606,7 @@ async function display_data(idx){
     coverDiv.style.backgroundImage = `url("${this_artwork}")`;
 
     /* append dark_bkg div to coverDiv*/
-    coverDiv.innerHTML = `<div id="dark_bkg" class="pos_rel flexy">${build_case(idx, gotArtist, gotSong, gotData.album, this_artwork)}</div>`;
+    coverDiv.innerHTML = `<div id="dark_bkg" class="pos_rel">${build_case(idx, gotArtist, gotSong, gotData.album, this_artwork)}</div>`;//flexy class
 
     /*const auxDiv = document.getElementById("dark_bkg");
     auxDiv.classList.add("pos_rel");
