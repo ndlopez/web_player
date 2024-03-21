@@ -27,7 +27,7 @@ const stations = [
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8194",
         description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina.",
         site: "",
-        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espanol",128,true,"#f2f2f2"]
+        xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espa\u00F1ol",128,true,"#f2f2f2"]
     },{
         name: "Stereo97",
         logo: "assets/stereo97.png",
@@ -502,7 +502,7 @@ function build_case(jdx, artist, song, album, artwork){
     <input id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
     const this_html = `<div class="pos_rel" id="coverCD">
     <a target='_blank' title='Duck it!' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div><div class="center"> <div class="cardTitle small" onclick="display_data(${jdx})"><h2 class="headLabel"> 
+    <img src='${artwork}' width='${art_size}'/></a></div><div class="center"> <div class="cardTitle small"><h2 class="headLabel"> 
     ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}</div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
@@ -625,9 +625,9 @@ async function display_data(idx){
     
     // Updating player2: elements
     let auxText = "";
-    /*const reloadMe = document.getElementById("reload_this");//"update_stations()"
+    const reloadMe = document.getElementById("reload_this");//"update_stations()"
     reloadMe.setAttribute("onclick","display_data(" + idx + ")");
-    reloadMe.innerHTML = reloadImg;*/
+    reloadMe.innerHTML = reloadImg;
     const cover_art = document.getElementById("cover_art");
     // cover_art.setAttribute("onclick","display_data(" + idx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;
