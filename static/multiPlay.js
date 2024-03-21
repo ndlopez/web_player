@@ -59,7 +59,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
         description: "Listen to the best Alternative-Rock hits of the 90s",
         site: "",
-        xtra_info: ["90's Alternative","English",128,true,"rgb(119,24,19)"]
+        xtra_info: ["Alternative-Rock","English",128,true,"rgb(119,24,19)"]
     },{
         name: "181.fm",
         logo: "assets/awesome80s.jpg",
@@ -67,7 +67,7 @@ const stations = [
         id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
         description: "Awesome 80's - The Best Choice for Radio. Your Lifestyle, Your Music.",
         site: "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png",
-        xtra_info: ["Awesome 80's","English",128,true,"#03712c"]
+        xtra_info: ["80's Pop","English",128,true,"#03712c"]
     },{
         name: "Aceradio",
         logo: "assets/vinyl_record.svg",
@@ -75,7 +75,7 @@ const stations = [
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5115_128&https=&f=ice&c=605736",
         description: "Soft hits from the 80's",
         site: "",
-        xtra_info: ["Soft 80's","English",128,true,"#03712c"]
+        xtra_info: ["80's Pop","English",128,true,"#03712c"]
     },{
         name: "Mellow Gold",
         logo: "assets/default_bkg.svg",
@@ -93,13 +93,13 @@ const stations = [
         site: "",
         xtra_info: ["50's and 60's","English",128,true,"#073642"]
     },{
-        name: "WDR 4 80er",
+        name: "WDR 4",
         logo: "assets/wdr4_logo.svg",
         stream_url: "https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt",
         description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise.",
         site: "https://www1.wdr.de/radio/wdr4/index.html",
-        xtra_info: ["Die 4 Freunde-Flussreise", "Deutsch",128,true,"#18375C"]
+        xtra_info: ["80er", "Deutsch",128,true,"#18375C"]
     },{
         name: "WDR 1Live",
         logo: "assets/1live_logo.svg",
@@ -131,7 +131,7 @@ const stations = [
         id3_info: "https://api.kexp.org/v2/plays/?format=json&limit=1&ordering=-airdate&airdate_before=2024-01-13T12:45:25.000Z",
         description: "is an affiliate of the University of Washington, Seattle.",
         site: "",
-        xtra_info: ["TopRock","English",128,true,"#31251C"]
+        xtra_info: ["Rock","English",128,true,"#31251C"]
     },{
         name: "113.fm",
         logo: "assets/alt-x_113fm.jpg",
@@ -139,7 +139,7 @@ const stations = [
         id3_info: "From guitar riffs to mellow beats, we've got you covered.",
         description: "The biggest Alternative hits from the '90s.",
         site: "",
-        xtra_info: ["Alt-Rock","English",128,true,"#291F1B"]
+        xtra_info: ["Alternative-Rock","English",128,true,"#291F1B"]
     },{
         name:"WCPE, The Classical Station",
         logo:"assets/classicalStation.png",
@@ -161,16 +161,16 @@ const stations = [
         logo: "assets/radicro_400x400.jpg",
         stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
         id3_info: "",
-        description: "Radio Cross from Kobe,Japan",
-        site: "",
-        xtra_info: ["[人,情報,まち,企業,学校...]すべてが繋がる!!","English",128,false,"#073642"]
+        description: "[人,情報,まち,企業,学校...]すべてが繋がる!!",
+        site: "Radio Cross from Kobe,Japan",
+        xtra_info: ["Pop","English",128,false,"#073642"]
     },{
         name: "rfi",
         logo: "assets/rfi_logo.png",
         stream_url: "https://rfienespagnol64k.ice.infomaniak.ch/rfienespagnol-64.mp3",
-        id3_info:"",
+        id3_info:"Radio Francia Internacional",
         site:"https://www.rfi.fr/es/en-vivo",
-        xtra_info: ["Radio Francia Internacional","Espa\u00f1ol",64,false,"#a50005"]
+        xtra_info: ["Noticias","Espa\u00f1ol",64,false,"#a50005"]
     },{
         name: "Panamericana",
         logo: "assets/pana148.png",
@@ -594,7 +594,7 @@ async function display_data(idx){
     }
     
     let gotData = "";
-    if(idx > 1){ gotData = await get_artwork(idx,gotArtist,gotSong);}
+    if(idx >= lpb_id3){ gotData = await get_artwork(idx,gotArtist,gotSong);}
 
     let this_artwork = gotData.artwork;
     if(idx < lpb_id3){ this_artwork = got_row.getAttribute("data-album"); }
@@ -721,7 +721,7 @@ async function get_id3(idx){
 }
 
 async function get_artwork(jdx,artist_name,song_title){
-    let album = "", artwork = stations[jdx].logo;
+    let album = stations[jdx].xtra_info[0] + "-" + stations[jdx].xtra_info[2] +"kbps", artwork = stations[jdx].logo;
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = {
         artist: artist_name, song: song_title };
@@ -744,7 +744,7 @@ async function get_artwork(jdx,artist_name,song_title){
             album = data["track"]["album"]["title"];
         }else{
             artwork = "";
-            album = "";
+            album = stations[jdx].xtra_info[0] + "-" + stations[jdx].xtra_info[2] +"kbps";
         }
         // console.log("artwork",artwork,"album",album);
     } catch (error) {
