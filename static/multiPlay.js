@@ -1,11 +1,8 @@
 /*  
     const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
-    alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg"
     history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
-    80s: "assets/181fm_logo.png"
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
     melodia:https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958
-    emptyImg: https://lastfm.freetls.fastly.net/i/u/300x300/31bba5ca59edf033d87f791284b38ea4.png
 */
 // import stations from "./fetch_list.js"; // should not be local
 const lpb_id3 = 3;//1 // LaPaz.fm, Me..
@@ -46,7 +43,7 @@ const stations = [
         xtra_info: ["Alternative-Rock","English",128,true,"#51738f"]
     },{
         name: "Aceradio",
-        logo: "assets/CD_icon.svg",
+        logo: "assets/phantogram.jpg",
         stream_url: "https://bigrradio.cdnstream1.com/5116_128",
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5116_128&https=&f=ice&c=617202",
         description: "Listen to the new Alternative-Rock hits",
@@ -70,7 +67,7 @@ const stations = [
         xtra_info: ["80's Pop","English",128,true,"#03712c"]
     },{
         name: "Aceradio",
-        logo: "assets/vinyl_record.svg",
+        logo: "assets/soft80s_400.jpg",
         stream_url: "https://bigrradio.cdnstream1.com/5115_128",
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5115_128&https=&f=ice&c=605736",
         description: "Soft hits from the 80's",
