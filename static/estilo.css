@@ -33,19 +33,19 @@ nav{
 /*Progress bar at bottom*/
 .progress { 
   /*margin-top: 26px;*/
-  height: 100vh;/*5px;*/  
+  height: 5px;  
   position: fixed;/*absolute;*/
   z-index: 100;
   top: 0;
-  width: 5px;/*100vw;
-  background-color: rgba(0,0,0,0.75);*/
+  width: 100vw;
+  /*background-color: rgba(0,0,0,0.75);*/
 }
 
 #progress-amount {
   display: block;
-  height: 0; /*100%*/
+  height: 5px; /*100%*/
   background-color: var(--lemon);
-  width: 5px; /*0*/
+  width: 0;
   padding: 0;
 }
 a{
@@ -68,6 +68,10 @@ kbd {
 }
 .dashed-border{
   border: 1px dashed var(--darkish-sky);
+}
+#playBtn{
+  border-radius: 50%;
+  background-color: var(--lemon);
 }
 .round-border{border-radius: 10px;}
 .glass_circle{
@@ -389,17 +393,14 @@ span{
   padding-bottom: 12px;
 }
 .paused path{
-  fill: var(--dark-smoke);
-  stroke: var(--dark-smoke);
-}
-.paused circle{
   fill: var(--light-sky);
-  stroke:var(--smoke);
+  stroke: var(--light-sky);
 }
-.play_on circle{
+.paused circle,.play_on circle{
   fill: var(--dark-smoke);
-  stroke: var(--dark-smoke);
+  stroke:var(--lemon);
 }
+/*.play_on circle{fill: var(--dark-smoke);stroke: var(--lemon);}*/
 .play_on path{
   fill: var(--light-sky);
   stroke: var(--light-sky);
@@ -572,11 +573,14 @@ span{
     display: block;
   }
   .col_23{width: 50%;}
-  #listIcon, #toggle-list, #playBtn{display: block;}
+  #listIcon, #toggle-list, #playBtn{
+    display: block;
+    
+  }
+  
   #list-icon{
     height: 28px;
-    width: 28px;
-    border-radius: 50%;
+    width: 28px;    
     background-color: var(--light-sky);
     border: 1px solid var(--light-sky);
   }

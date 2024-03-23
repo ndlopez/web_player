@@ -35,7 +35,7 @@ const stations = [
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
         description: "Soy parte de ti, lleno tu vida con alegria, soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
         site: "La n\u00FAmero uno",
-        xtra_info: ["Top40 & Pop Music", "Spanish",128,true,"#140000"]
+        xtra_info: ["Top40 & Pop Music", "Espa\u00F1ol",128,true,"#140000"]
     },{
         name: "The Buzz",
         logo: "assets/alt-rock.jpg",
@@ -125,6 +125,14 @@ const stations = [
         site: "https://www1.wdr.de/radio/",
         xtra_info: ["Sie hören: Rock Hits", "Deutsch",128,true,"#18375C"]
     },{
+        name: "113.fm",
+        logo: "assets/alt-x_113fm.jpg",
+        stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
+        id3_info: "",
+        description: "From guitar riffs to mellow beats, we've got you covered.",
+        site: "",
+        xtra_info: ["Alternative-Rock","English",128,true,"#291F1B"]
+    },{
         name: "KEXP-FM",
         logo: "assets/kexp_fm.svg",
         stream_url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
@@ -132,14 +140,6 @@ const stations = [
         description: "is an affiliate of the University of Washington, Seattle.",
         site: "",
         xtra_info: ["Rock","English",128,true,"#31251C"]
-    },{
-        name: "113.fm",
-        logo: "assets/alt-x_113fm.jpg",
-        stream_url: "https://113fm-atunwadigital.streamguys1.com/1001",
-        id3_info: "From guitar riffs to mellow beats, we've got you covered.",
-        description: "The biggest Alternative hits from the '90s.",
-        site: "",
-        xtra_info: ["Alternative-Rock","English",128,true,"#291F1B"]
     },{
         name:"WCPE, The Classical Station",
         logo:"assets/classicalStation.png",
@@ -163,7 +163,7 @@ const stations = [
         id3_info: "",
         description: "[人,情報,まち,企業,学校...]すべてが繋がる!!",
         site: "Radio Cross from Kobe,Japan",
-        xtra_info: ["Pop","English",128,false,"#073642"]
+        xtra_info: ["Pop","日本語",128,false,"#073642"]
     },{
         name: "rfi",
         logo: "assets/rfi_logo.png",
@@ -178,7 +178,7 @@ const stations = [
         id3_info: "",
         description: "La radio que todos tienen encendida desde la ma\u00f1ana.",
         site: "https://www.panamericana.bo/blog/section/nacional",
-        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espanol",112,true,"#073642"]
+        xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00F1ol",112,true,"#073642"]
     },{
         name: "Radio Fides",
         logo: "assets/fides.svg",
@@ -194,7 +194,7 @@ const stations = [
         id3_info: "",
         description: "Diario Correo del Sur: Noticias de Sucre, Bolivia y el mundo.",
         site: "https://correodelsur.com/",
-        xtra_info: ["Noticias y m\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",128,true,"#014171"] 
+        xtra_info: ["Noticias y m\u00FAsica del ayer y hoy en espa\u00F1ol", "Espa\u00F1ol",128,true,"#014171"] 
     },{
         name: "Radio Mundial",
         logo: "assets/mundial.png",
@@ -349,8 +349,8 @@ function updateBar(){
     // https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/buffering_seeking_time_ranges
     audioConnect.addEventListener('timeupdate',function(){
         // console.log("Audio len",audioConnect.currentTime,updateTime);
-        // document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
-        document.getElementById('progress-amount').style.height = ((audioConnect.currentTime / duration)*100) + "%";
+        document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
+        // document.getElementById('progress-amount').style.height = ((audioConnect.currentTime / duration)*100) + "%";
 
         if (audioConnect.currentTime > duration){
             // document.getElementById('progress-amount').style.width = "50%";
@@ -721,7 +721,7 @@ async function get_id3(idx){
 }
 
 async function get_artwork(jdx,artist_name,song_title){
-    let album = stations[jdx].xtra_info[0] + "-" + stations[jdx].xtra_info[2] +"kbps", artwork = stations[jdx].logo;
+    let album = stations[jdx].xtra_info[1] + "-" + stations[jdx].xtra_info[2] +"kbps", artwork = stations[jdx].logo;
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = {
         artist: artist_name, song: song_title };
@@ -744,7 +744,7 @@ async function get_artwork(jdx,artist_name,song_title){
             album = data["track"]["album"]["title"];
         }else{
             artwork = "";
-            album = stations[jdx].xtra_info[0] + "-" + stations[jdx].xtra_info[2] +"kbps";
+            album = stations[jdx].xtra_info[1] + "-" + stations[jdx].xtra_info[2] +"kbps";
         }
         // console.log("artwork",artwork,"album",album);
     } catch (error) {
