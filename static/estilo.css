@@ -69,10 +69,10 @@ kbd {
 .dashed-border{
   border: 1px dashed var(--darkish-sky);
 }
-#playBtn{
+/*#playBtn{
   border-radius: 50%;
   background-color: var(--lemon);
-}
+}*/
 .round-border{border-radius: 10px;}
 .glass_circle{
   background: rgba(255,255,255,0.4);

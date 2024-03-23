@@ -30,5 +30,5 @@
       <path fill="#65BC46" d="M126.43 115.3c0 4.93-.71 7.04 1.4 7.51 2.11.48 6.1 0 7.52-.94 1.41-.94.24-7.28-.23-8.46-.47-1.18-8.7-.23-8.7 1.88z"/>
     </g>
   </g>
-  <circle cx="60" cy="60" r="53.1" fill="none" stroke="#FFF" stroke-width="5.189"/>
+  <circle cx="60" cy="60" r="53.1" fill="none" stroke="#bed2e0" stroke-width="5.189"/>
 </svg>
