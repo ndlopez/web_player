@@ -177,6 +177,14 @@ const stations = [
         site: "https://www.panamericana.bo/blog/section/nacional",
         xtra_info: ["Noticias y m\u00FAsica en espa\u00F1ol", "Espa\u00F1ol",112,true,"#073642"]
     },{
+        name: "ATB radio",
+        logo: "assets/atb_radio.jpg",
+        stream_url: "https://streamingenbolivia.com/8006/stream",
+        id3_info: "",
+        description: "Asociación de Teledifusoras Boliviana, la red privada de televisión más antigua e importante de Bolivia.",
+        site: "https://www.atb.com.bo/atb-radio",
+        xtra_info: ["Noticias y m\u00FAsica del ayer y hoy", "Espa\u00F1ol",128,true,"#014171"] 
+    },{
         name: "Radio Fides",
         logo: "assets/fides.svg",
         stream_url: "https://usa7.fastcast4u.com/proxy/grflores?mp=/1",
