@@ -119,9 +119,9 @@ kbd {
   z-index: 100;
   float:none;
   box-sizing: content-box;
-  /*width: 100%;*/
   background-color: var(--dark-smoke);
   padding: 0px;
+  border-radius: 15px;
 }
 #player{height: 58px;}
 #player2{height: 68px;}
@@ -511,8 +511,8 @@ span{
   }
   #player2{ 
     height: 60px;
-    top: 91vh;
-    width: 100%;
+    width: 97%;
+    margin-left: 1.5vw;
   }
   #art_title{ display: none; }
   #now_song, .no_mobil {display: none;}

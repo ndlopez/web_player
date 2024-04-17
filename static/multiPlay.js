@@ -365,8 +365,9 @@ function updateBar(){
 }
 
 function playStop(idx){
-    svgPlay.addEventListener("click",stopPlay); /*function(){
-        console.log("passing index",idx); stopPlay(idx);});*/
+    svgPlay.addEventListener("click",stopPlay);
+    svgPlay.removeEventListener("click",playStop); 
+    /*function(){console.log("passing index",idx); stopPlay(idx);});*/
     let getTimer = "", mmss = "";
     for (let jdx = 0; jdx < stations.length -1; jdx++) {
         getTimer = document.getElementById("timer_"+jdx);
@@ -409,9 +410,14 @@ function playStop(idx){
     }
 }
 
+function playThis(){
+    svgPlay.removeEventListener("click",stopPlay);
+    playStop(isPlaying);
+}
 function stopPlay(){/* param: idx=0 */
     //getTimer.innerText = document.getElementById("timer").innerText;
-    svgPlay.addEventListener("click",function(){ playStop(isPlaying); });
+    svgPlay.addEventListener("click",playThis);
+
     // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
