@@ -22,6 +22,7 @@ let audioConnect = new Audio();
 let isPlaying;
 let tina_timer,dayna_timer;
 let zoey, cindy;
+let slept = false;
 
 init_this();
 // topBtn functions
@@ -194,6 +195,9 @@ function stopPlay(){/* param: idx=0 */
     svgPlay.innerHTML = circleImg + playImg;
     
     stop_timer();
+    if (slept){ 
+        window.location.href = "https://ndlopez.github.io/pages/about.html";
+    }
 }
 
 function volume_mute(vol_stat){
@@ -290,11 +294,11 @@ function build_case(jdx, artist, song, album, artwork){
 function sleepy(){
     // this should be a modal page
     const timeNow = new Date();
-    let msg = `Streaming will end at ${String(timeNow.getHours() + 1).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, ok?`;
+    let msg = `Streaming will end at ${String(timeNow.getHours() + 1).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
     if(confirm(msg)){
-        setTimeout(stopPlay,(60*60*1000));//1hour=60*60*1000
+        slept = true;
+        setTimeout(stopPlay,(30*60*1000));//1hour=60*60*1000
         clearInterval(updater);
-        window.location.href = "https://ndlopez.github.io/pages/about.html";
     }else{
         console.log("Sleepy canceled");return;}
 }
