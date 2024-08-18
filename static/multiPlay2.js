@@ -106,7 +106,7 @@ function display_all_stations(){
     const tabl = document.createElement("table");
     for(let idx = 0; idx < stations.length; idx++){
         const rowTr = document.createElement("tr");
-        rowTr.setAttribute("class","row round-border dashed-border bottom-10px");
+        rowTr.setAttribute("class","round-border dashed-border bottom-10px");
         rowTr.setAttribute("id","station_"+idx);
         rowTr.setAttribute("onclick","init_player("+idx+")");
         
@@ -396,10 +396,11 @@ async function display_data(idx){
     cover_art.setAttribute("onclick","display_data(" + idx + ")");
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
 
-    cover_art.innerHTML = "<img src='" + stations[idx].logo + "' width='60' height='60'/>" + auxText;
+    cover_art.innerHTML = "<img src='" + newArt + "' width='60' height='60'/>" + auxText;
+    //stations[idx].logo
     
-    document.getElementById("cover_title").innerHTML = "<span>Now Playing</span><span>" +
-    stations[idx].name + "</span>";    
+    document.getElementById("cover_title").innerHTML = `<span>${gotSong}</span><span>${document.getElementById("titleCol_"+idx).innerText}</span>`;
+    // "<span>Now Playing</span><span>" + stations[idx].name + "</span>";    
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses

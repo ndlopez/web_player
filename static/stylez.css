@@ -335,10 +335,11 @@ span{
   white-space: nowrap;
 }
 #artwork .smoke-bkg{height: 220px;}
+#artwork{display: none;}
 @media (max-width: 700px) {
   body{font-size: small;}
   #amia{height: 115vh;}
-  #now_song, #artwork, .no_mobil {display: none;}
+  #now_song, .no_mobil {display: none;}
   #nowPlaying{
     background: none;/*url("../assets/group.svg") no-repeat;
     background-position-x: right;*/
