@@ -139,41 +139,10 @@ function init_player(stream_idx){
     const span_name = document.getElementById("nowLabel");
     span_name.innerHTML = "<h2 class='col90 float_left' id='mainTitle'>Now playing</h2>" + 
     "<h2 id='list-icon' class='col10 float_left closeBtn'></h2>";*/
+    stopPlay();
+    playStop(stream_idx);/*startPlay(0);*/
+    display_data(stream_idx);
 
-    switch (stream_idx) {
-        case 0:
-            stopPlay();
-            playStop(0);/*startPlay(0);*/
-            display_data(0);
-            /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
-            break;
-        case 1:
-            stopPlay();
-            playStop(1);/*startPlay(1);*/
-            display_data(1);
-            /*if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){openNav();}*/
-            break;
-        case 2:
-            stopPlay();
-            playStop(2);/*startPlay(2);*/
-            display_data(2);
-            break;
-        case 3:
-            stopPlay();
-            playStop(3);
-            display_data(3);
-            break;
-        case 4:
-            stopPlay();
-            playStop(4);
-            display_data(4);
-            break;
-        default:
-            stopPlay();
-            playStop(5);
-            display_data(5);
-            break;
-    }
     document.title = stations[stream_idx].name;
 }
 // audioConnect = new Audio();
@@ -321,14 +290,14 @@ async function update_stations(){
             nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
-        if(idx < 12){
+        if(idx < 10){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
         }
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         const this_title = document.getElementById("titleCol_"+idx);
-        if( idx > 12 ){ auxLink = "<td class='small'>" + stations[idx].name + "</td>"; }
+        if( idx > 10 ){ auxLink = "<td class='small'>" + stations[idx].name + "</td>"; }
         if(isPlaying == idx){ 
             auxLink = "";
             //img_size = 80;
@@ -411,10 +380,10 @@ async function get_id3(idx){
     const response = await fetch(stations[idx].id3_info);
     const data = await response.json();
     
-    var artist = "", artwork = "";
-    var song = data["title"].replace(myReg,"").replace(/&/g,"and");
-    if(idx == 0){
-        var auxStr = song.split("-");
+    let artist = "", artwork = "";
+    let song = data["title"].replace(myReg,"").replace(/&/g,"and");
+    if(idx < 3){
+        let auxStr = song.split("-");
         artist = auxStr[1];
         song = auxStr[0];
         artwork = data["art"];
