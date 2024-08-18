@@ -112,7 +112,7 @@ function display_all_stations(){
         
         rowTr.innerHTML = "<td id='imgDiv_"+ idx + "'><img src='" + 
         stations[idx].logo + "' width='" + img_size + "' height='" + img_size + "'/></td>" + "<td id='artistDiv_" + idx + "'>" + 
-        stations[idx].name + "</td><td>" + stations[idx].description + 
+        stations[idx].name + "</td><td id='titleCol_"+idx+"'>" + stations[idx].description + 
         "</td><td id='timer_" + idx + "'>00:00</td>";
         /**/         
         tabl.appendChild(rowTr);
@@ -326,14 +326,15 @@ async function update_stations(){
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
-        
+        const this_title = document.getElementById("titleCol_"+idx);
         if( idx < 4 ){ auxLink = "<td class='small'>" + stations[idx].name + "</td>"; }
         if(isPlaying == idx){ 
             auxLink = "";
             //img_size = 80;
         }
         this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +
-        "</td><td>" + gotData.nowPlaying.artist + "</td>" + auxLink;
+        "</td>"
+        this_title.innerHTML = "<td>" + gotData.nowPlaying.artist + "</td>" //+ auxLink;
 
         var this_artwork = gotData.artwork;
         if(gotData.artwork === ""){
