@@ -287,7 +287,7 @@ async function update_stations(){
     
     for(let idx = 0; idx < stations.length; idx++){
         gotData = {
-            nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
+            nowPlaying:{artist: stations[idx].xtra_info[0], song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
         if(idx < 10){
@@ -341,10 +341,10 @@ async function display_data(idx){
     // document.getElementById("cover_title").classList.remove("moving-text");
     const got_row = document.getElementById("station_"+idx);
     const got_artwork = document.getElementById("imgDiv_"+idx);
-    //got_row.getElementsByClassName("colImg");
+    // got_row.getElementsByClassName("colImg");
     const got_artist = document.getElementById("artistDiv_"+idx);
-    //got_row.getElementsByClassName("colArtist");
-    console.log("artist",got_artist,got_artwork);
+    // got_row.getElementsByClassName("colArtist");
+    // console.log("artist",got_artist,got_artwork);
     // got_artist[0].lastChild.childNodes[0].data
     let newArt = got_artwork.firstChild.src;
     //got_artwork[0].firstChild.src;
