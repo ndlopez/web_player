@@ -106,13 +106,13 @@ function display_all_stations(){
     const tabl = document.createElement("table");
     for(let idx = 0; idx < stations.length; idx++){
         const rowTr = document.createElement("tr");
-        rowTr.setAttribute("class","round-border dashed-border bottom-10px");
+        rowTr.setAttribute("class","bottom-10px");
         rowTr.setAttribute("id","station_"+idx);
         rowTr.setAttribute("onclick","init_player("+idx+")");
         
         rowTr.innerHTML = "<td id='imgDiv_"+ idx + "'><img src='" + 
         stations[idx].logo + "' width='" + img_size + "' height='" + img_size + "'/></td>" + "<td id='artistDiv_" + idx + "'>" + 
-        stations[idx].name + "</td><td id='titleCol_"+idx+"'>" + stations[idx].description + 
+        stations[idx].name + "</td><td id='titleCol_"+idx+"'>" + stations[idx].xtra_info[0] + 
         "</td><td id='timer_" + idx + "'>00:00</td>";
         /**/         
         tabl.appendChild(rowTr);

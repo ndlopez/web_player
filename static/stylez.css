@@ -334,6 +334,15 @@ span{
   float: left;
   white-space: nowrap;
 }
+table {
+  /*table-layout: fixed;border: 3px solid purple;*/
+  width: 100%;
+  border-collapse: collapse;
+}
+table td{
+  padding: 4px 5px;
+  /*letter-spacing: 1px;*/
+}
 #artwork .smoke-bkg{height: 220px;}
 #artwork{display: none;}
 @media (max-width: 700px) {
