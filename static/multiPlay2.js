@@ -23,7 +23,7 @@
     xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]}
 */
 
-const stations = [
+/*const stations = [
     {
         name: "LaPaz.fm",
         logo: "assets/fmlapaz_logo.png",
@@ -91,9 +91,10 @@ const circleImg = '<circle class="paused no_mobil" stroke-width="4" cx="30" cy="
 const circle_img = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
 const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
 const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
-const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
-const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
+const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
+const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';*/
+
 var img_size = 40;
 var audioConnect = new Audio();
 var isPlaying = 0;
@@ -320,14 +321,14 @@ async function update_stations(){
             nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
-        if(idx < 4){
+        if(idx < 12){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
         }
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         const this_title = document.getElementById("titleCol_"+idx);
-        if( idx < 4 ){ auxLink = "<td class='small'>" + stations[idx].name + "</td>"; }
+        if( idx > 12 ){ auxLink = "<td class='small'>" + stations[idx].name + "</td>"; }
         if(isPlaying == idx){ 
             auxLink = "";
             //img_size = 80;
@@ -342,7 +343,7 @@ async function update_stations(){
             this_artwork = "assets/cd_case.svg";
         }
         auxLink = this_artwork;
-        if(idx == 0){//LaPaz.fm, gotData={{artist,song,artwork},album,artwork}
+        if(idx < 3){//LaPaz.fm, gotData={{artist,song,artwork},album,artwork}
             if(awfulArt.includes(gotData.nowPlaying.artwork)){
                 auxLink = stations[0].logo;
             }else{
