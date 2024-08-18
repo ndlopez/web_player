@@ -370,25 +370,28 @@ async function display_data(idx){
     // coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
     // document.getElementById("cover_title").classList.remove("moving-text");
     const got_row = document.getElementById("station_"+idx);
-    const got_artwork  = got_row.getElementsByClassName("colImg");
-    const got_artist = got_row.getElementsByClassName("colArtist");
-    // console.log("artist",got_artist[0].childNodes[1].firstChild.data);
+    const got_artwork = document.getElementById("imgDiv_"+idx);
+    //got_row.getElementsByClassName("colImg");
+    const got_artist = document.getElementById("artistDiv_"+idx);
+    //got_row.getElementsByClassName("colArtist");
+    console.log("artist",got_artist,got_artwork);
     // got_artist[0].lastChild.childNodes[0].data
-    var newArt = got_artwork[0].firstChild.src;
+    let newArt = got_artwork.firstChild.src;
+    //got_artwork[0].firstChild.src;
     // console.log("newArt",newArt.substring(newArt.length-3));
     if(newArt.substring(newArt.length - 3) === "svg"){
         //console.log("is it cd_case?");
         newArt = stations[idx].logo;
     }
-    var gotSong = got_artist[0].firstChild.childNodes[0].data;
+    let gotSong = got_artist.innerText; //.firstChild.childNodes[0].data;
     if( typeof gotSong === 'undefined'){
         gotSong = "No id3 found";}
     const coverDiv = document.getElementById("artwork");
-    coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data,
+    coverDiv.innerHTML = build_case(idx, got_artist.innerText /*got_artist[0].childNodes[1].firstChild.data*/,
         gotSong, got_row.getAttribute("data-album"),newArt);
     
     // Updating player2: elements
-    var auxText = "";
+    let auxText = "";
     const cover_art = document.getElementById("cover_art");
     cover_art.setAttribute("onclick","display_data(" + idx + ")");
     auxText = "<div class='above_img'>" + reloadImg + "</div>";
