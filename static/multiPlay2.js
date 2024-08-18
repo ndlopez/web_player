@@ -94,7 +94,7 @@ const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';
 const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
-var img_size = 80;
+var img_size = 40;
 var audioConnect = new Audio();
 var isPlaying = 0;
 var tina_timer;
@@ -103,21 +103,21 @@ init_this();
 
 function display_all_stations(){
     const mainDiv = document.getElementById("amia");
-    
+    const tabl = document.createElement("table");
     for(let idx = 0; idx < stations.length; idx++){
-        const rowDiv = document.createElement("div");
-        rowDiv.setAttribute("class","row round-border dashed-border bottom-10px");
-        rowDiv.setAttribute("id","station_"+idx);
-        rowDiv.setAttribute("onclick","init_player("+idx+")");
+        const rowTr = document.createElement("tr");
+        rowTr.setAttribute("class","row round-border dashed-border bottom-10px");
+        rowTr.setAttribute("id","station_"+idx);
+        rowTr.setAttribute("onclick","init_player("+idx+")");
         
-        rowDiv.innerHTML = "<div class='colImg float_left' id='imgDiv_"+ idx + "'><img src='" + 
-        stations[idx].logo + "' width='" + img_size + "' height='" + img_size + "'/></div>" + 
-        "<div class='colArtist float_left' id='artistDiv_" + idx + "'><span>" + 
-        stations[idx].name + "</span><span>" + stations[idx].description + 
-        "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
-        "'>00:00</span></div>";
-        mainDiv.appendChild(rowDiv);
+        rowTr.innerHTML = "<td id='imgDiv_"+ idx + "'><img src='" + 
+        stations[idx].logo + "' width='" + img_size + "' height='" + img_size + "'/></td>" + "<td id='artistDiv_" + idx + "'>" + 
+        stations[idx].name + "</td><td>" + stations[idx].description + 
+        "</td><td id='timer_" + idx + "'>00:00</td>";
+        /**/         
+        tabl.appendChild(rowTr);
     }
+    mainDiv.appendChild(tabl);
 }
 
 function init_this(){
@@ -327,13 +327,13 @@ async function update_stations(){
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
         
-        if( idx < 4 ){ auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }
+        if( idx < 4 ){ auxLink = "<td class='small'>" + stations[idx].name + "</td>"; }
         if(isPlaying == idx){ 
             auxLink = "";
             //img_size = 80;
         }
-        this_artist.innerHTML = "<span class='headLabel'>" + gotData.nowPlaying.song +
-        "</span><span>" + gotData.nowPlaying.artist + "</span>" + auxLink;
+        this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +
+        "</td><td>" + gotData.nowPlaying.artist + "</td>" + auxLink;
 
         var this_artwork = gotData.artwork;
         if(gotData.artwork === ""){
