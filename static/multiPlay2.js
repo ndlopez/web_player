@@ -95,19 +95,23 @@ const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0af
 const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
 const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';*/
 
-var img_size = 40;
-var audioConnect = new Audio();
-var isPlaying = 0;
-var tina_timer;
+let img_size = 40;
+let audioConnect = new Audio();
+let isPlaying = 0;
+let tina_timer;
 
 init_this();
 
 function display_all_stations(){
     const mainDiv = document.getElementById("amia");
     const tabl = document.createElement("table");
+    const rowth = document.createElement("tr");
+    rowth.innerHTML = "<th></th><th>Title</th><th>Artist</th><th>Played</th>";
+    tabl.appendChild(rowth);
+
     for(let idx = 0; idx < stations.length; idx++){
         const rowTr = document.createElement("tr");
-        rowTr.setAttribute("class","bottom-10px");
+        // rowTr.setAttribute("class","bottom-10px");
         rowTr.setAttribute("id","station_"+idx);
         rowTr.setAttribute("onclick","init_player("+idx+")");
         
