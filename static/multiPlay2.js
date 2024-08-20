@@ -167,7 +167,7 @@ function volume_mute(vol_stat){
 }
 
 function play_elapsed(min=0,sec=0,jdx){
-    var second,minute;
+    let second,minute;
 
     tina_timer = setInterval(function(){
         second = (sec<10)?"0"+String(sec):sec;
@@ -220,9 +220,6 @@ async function update_stations(){
         /*if(idx < 10){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
         }*/
-        if (idx == stream_idx){
-            gotData = await get_artwork(idx);
-        }
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
@@ -230,13 +227,14 @@ async function update_stations(){
         if( idx > 10 ){ auxLink = "<td class='small'>" + stations[idx].name + "</td>"; }
         if(isPlaying == idx){ 
             auxLink = "";
+            gotData = await get_artwork(idx);
             //img_size = 80;
         }
         this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +
         "</td>"
         this_title.innerHTML = "<td>" + gotData.nowPlaying.artist + "</td>" //+ auxLink;
 
-        var this_artwork = gotData.artwork;
+        let this_artwork = gotData.artwork;
         if(gotData.artwork === ""){
             console.log("Error: No artwork found",idx,gotData.artwork);
             this_artwork = "assets/cd_case.svg";
