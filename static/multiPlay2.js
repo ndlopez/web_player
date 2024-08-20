@@ -217,9 +217,9 @@ async function update_stations(){
             nowPlaying:{artist: stations[idx].xtra_info[0], song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
-        /*if(idx < 10){
+        if(idx < 10){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
-        }*/
+        }
         
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+idx);
@@ -227,7 +227,6 @@ async function update_stations(){
         if( idx > 10 ){ auxLink = "<td class='small'>" + stations[idx].name + "</td>"; }
         if(isPlaying == idx){ 
             auxLink = "";
-            gotData = await get_artwork(idx);
             //img_size = 80;
         }
         this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +
@@ -254,9 +253,9 @@ async function update_stations(){
 
         const this_row = document.getElementById("station_"+idx);
         this_row.setAttribute("data-album",gotData.album);
-        /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + "</div>" + 
-        "<div class='colArtist float_left'><span class='headLabel'>" + gotData.nowPlaying.song + 
-        "</span><span>" + gotData.nowPlaying.artist + 
+        /*this_row.innerHTML = "<div class='colImg float_left'>" + auxLink + 
+        "</div><div class='colArtist float_left'><span class='headLabel'>" + 
+        gotData.nowPlaying.song + "</span><span>" + gotData.nowPlaying.artist + 
         "</span></div><div class='colTime float_left'><span id='timer_" + idx + 
         "'>00:00</span></div>";*/
     }
@@ -326,13 +325,16 @@ async function get_id3(idx){
 }
 
 async function get_artwork(jdx){
-    var album = "", artwork = "assets/cd_case.svg";
+    let album = "", artwork = stations[jdx].logo; //"assets/cd_case.svg";
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
 
     if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0)){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
+    }
+    if(jdx != isPlaying){
+        return {nowPlaying, album, artwork};
     }
     // if(jdx !== 4){document.title = nowPlaying.artist + " - "+ nowPlaying.song;}
     const this_url = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=16fe44aaa6f35d5755a08eb62f371994&artist="+
@@ -355,9 +357,7 @@ async function get_artwork(jdx){
         console.log("got an error",jdx,error);
         //return {nowPlaying, album, artwork};
     }
-    if (artwork === defaultImg){
-        artwork = stations[jdx].logo;
-    }
+    
     return {nowPlaying, album, artwork};
 }
 

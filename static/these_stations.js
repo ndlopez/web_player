@@ -214,7 +214,8 @@ const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmla
 "https://i.scdn.co/image/ab67616d0000b273946c1699a48b214e45f765d6",
 "https://i.scdn.co/image/ab67616d0000b2736d7a8a34f348d587f007045f",
 "https://i.scdn.co/image/ab67616d0000b273d4af276af7f96299274d4b1b",
-"https://i.scdn.co/image/ab67616d0000b273e8e71ebc372dfa978fc0581f"];
+"https://i.scdn.co/image/ab67616d0000b273e8e71ebc372dfa978fc0581f",
+"https://i.scdn.co/image/ab67616d0000b27345c679ef4bfdb875b5151ad1"];
 
 const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
 const svg_btn = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">'

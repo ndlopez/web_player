@@ -343,6 +343,7 @@ table td{
   padding: 4px 5px;
   /*letter-spacing: 1px;*/
 }
+table th{text-align: left;}
 #artwork .smoke-bkg{height: 220px;}
 #artwork{display: none;}
 @media (max-width: 700px) {
