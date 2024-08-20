@@ -3,12 +3,6 @@
  https://cdn.freebiesupply.com/images/large/2x/music-player-web-ui-design-b48.jpg
  const stream_url = "https://rfcmedia3.streamguys1.com/thirdrock.mp3";
  alt-x logo: "https://static.wixstatic.com/media/143966_f7c1536f838a4adb890693dcdbf8423f~mv2.jpg/v1/fill/w_498,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/113fm_alt_x_1001.jpg" 
- Beethoven - moonlight
- Cigarettes After Sex - Apocalypse
- lovelytheband - these are my friends
- The Shins - So now what, New Slang
- Sneaker Pimps - 6 Underground
- Flys - Got You
 
  id3_info: https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-classical_128k.mp3&https=&f=ice&c=818600
  stream_url: https://listen.181fm.com/181-classical_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670382069
@@ -22,78 +16,6 @@
     description: "The biggest Alternative hits from the '90s.",
     xtra_info: ["Alt-Rock","English"," 128kbps","Yes"]}
 */
-
-/*const stations = [
-    {
-        name: "LaPaz.fm",
-        logo: "assets/fmlapaz_logo.png",
-        stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
-        id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
-        description: "<a href='fmlapaz.html'>Mas musica menos palabras. Musica adulto contemporanea.</a>",
-        site: "fmlapaz.html",
-        xtra_info: ["Contemporary","English","128kbps",true]
-    },{
-        name: "181.fm - Awesome 80's",
-        logo: "assets/181fm_logo.png",
-        stream_url: "https://listen.181fm.com/181-awesome80s_128k.mp3?aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1606271347",
-        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-awesome80s_128k.mp3&https=&f=ice&c=186052",
-        description: "The Best Choice for Radio. Your Lifestyle, Your Music.",
-        site: "",
-        xtra_info: ["80's hits","English"," 128kbps",true]
-    },{
-        name: "181.fm - 90's Alternative",
-        logo: "assets/90s_alt.jpg",
-        stream_url: "https://listen.181fm.com/181-90salt_128k.mp3?listenerId=esAdblock0185051&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1670381772",
-        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802257",
-        description: "Listen to the best hits of the 1990s",
-        site: "",
-        xtra_info: ["Alternative-Rock","English"," 128kbps",true]
-    },{
-        name: "The Buzz - Alternative-Rock",
-        logo: "assets/alt-rock.jpg",
-        stream_url: "https://listen.181fm.com/181-buzz_128k.mp3?listenerId=esAdblock0523084&aw_0_1st.playerid=esPlayer&aw_0_1st.skey=1672012878",
-        id3_info: "https://player.181fm.com/streamdata.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128782",
-        description: "Listen to the best Alternative-Rock hits",
-        site: "",
-        xtra_info: ["Alternative-Rock","English","128kbps",true]
-    },{
-        name:"Third Rock Radio",
-        logo: "assets/thirdRock_logo.png",
-        stream_url:"https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac",
-        id3_info: "",
-        description: "Explore and discover new worlds of music with NASA's Radio.",
-        site: "https://feed.tunein.com/profiles/s151799/nowPlaying",
-        xtra_info:["Alternative-Rock","English"," 196kbps",false]
-    },{
-        name: "113.fm Classic One",
-        logo: "assets/113fm_classicone_1008.jpg",
-        stream_url: "https://113fm-atunwadigital.streamguys1.com/1008",
-        id3_info: "",
-        description: "Your radio station for the very best Classical and Piano Greats!",
-        site: "",
-        xtra_info: ["Classical","English"," 128kbps","Yes"]
-    }
-];
-const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
-"https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
-"https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
-"https://i.scdn.co/image/ab67616d0000b27344789c72043033cd97924059",
-"https://stream.consultoradas.com/cp/musiclibrary/nocover.png",
-"https://i.scdn.co/image/ab67616d0000b273946c1699a48b214e45f765d6",
-"https://i.scdn.co/image/ab67616d0000b2736d7a8a34f348d587f007045f",
-"https://i.scdn.co/image/ab67616d0000b273d4af276af7f96299274d4b1b",
-"https://i.scdn.co/image/ab67616d0000b273e8e71ebc372dfa978fc0581f"];
-
-const info_keys = ["Genre","Language","Bitrate","Ads"];
-const svg_elm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" stroke="#2e4054" fill="#bed2e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle class="paused" cx="18" cy="18" r="18"/><path fill="#2e4054" class="paused" d="M13 8 L13 28 26 18 Z" /></svg>';
-const svg_btn = '<svg class="col_half float_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">'
-const circleImg = '<circle class="paused no_mobil" stroke-width="4" cx="30" cy="30" r="26"/>';
-const circle_img = '<circle class="paused" stroke-width="4" cx="30" cy="30" r="26"/>';
-const playImg  = '<path class="paused" stroke-linecap="round" stroke-linejoin="round" d="M23 40 L23 20 43 30Z"/>'
-const stopImg = '<path d="M20 40 L20 20 40 20 40 40 Z" />';
-const defaultImg = "https://lastfm.freetls.fastly.net/i/u/300x300/accb1e554ea0afbac1fcc02a7413ed87.png";
-const pauseImg = '<path d="M20 40 L20 20 25 20 25 40Z M35 40 L35 20 40 20 40 40Z" />';
-const reloadImg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#ffeea6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>';*/
 
 let img_size = 40;
 let audioConnect = new Audio();
@@ -287,15 +209,19 @@ function build_case(jdx,artist, song, album, artwork){
 }
 
 async function update_stations(){
-    var gotData = "", auxLink = "";
+    let gotData = "";
+    let auxLink = "";
     
     for(let idx = 0; idx < stations.length; idx++){
         gotData = {
             nowPlaying:{artist: stations[idx].xtra_info[0], song:stations[idx].name},
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
-        if(idx < 10){
+        /*if(idx < 10){
             gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
+        }*/
+        if (idx == stream_idx){
+            gotData = await get_artwork(idx);
         }
         
         auxLink = "";
