@@ -44,9 +44,6 @@ kbd {
 }
 .round-border{border-radius: 10px;}
 .small{font-size: small;}
-#amia{
-  width: 70%;
-}
 #topBtn{
   display: none;
   position: fixed;
