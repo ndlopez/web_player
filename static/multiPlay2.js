@@ -329,7 +329,7 @@ async function get_artwork(jdx){
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
 
-    if(errTitle.includes(nowPlaying.song.trim()) || (jdx == 0)){
+    if(errTitle.includes(nowPlaying.song.trim()) || (jdx < 3)){
         console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
