@@ -138,7 +138,7 @@ const stations = [
         logo:"assets/classicalStation.png",
         stream_url:"http://playerservices.streamtheworld.com/api/livestream-redirect/WCPE_FMAAC128.aac",
         id3_info:"",
-        description:"is a non-commercial, independent, listener-supported station broadcasting from North Carolina, US.",
+        description:"is a non-commercial, independent, listener-supported station from North Carolina, US",
         site:"https://theclassicalstation.org/",
         xtra_info:["Classical","English",128,true,"#306985"]
     },{
@@ -155,7 +155,7 @@ const stations = [
         stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
         id3_info: "",
         description: "[人,情報,まち,企業,学校...]すべてが繋がる!!",
-        site: "Radio Cross from Kobe,Japan",
+        site: "Radio Cross from Kobe, Japan",
         xtra_info: ["Pop","日本語",128,false,"#073642"]
     },{
         name: "rfi",
@@ -177,7 +177,7 @@ const stations = [
         logo: "assets/atb_radio.jpg",
         stream_url: "https://streamingenbolivia.com/8006/stream",
         id3_info: "",
-        description: "Asociación de Teledifusoras Boliviana, la red privada de televisión más antigua e importante de Bolivia.",
+        description: "La red privada de televisi&oacute;n m&aacute;s antigua e importante de Bolivia.",
         site: "https://www.atb.com.bo/atb-radio",
         xtra_info: ["Noticias y m\u00FAsica del ayer y hoy", "Espa\u00F1ol",128,true,"#014171"] 
     },{
@@ -193,7 +193,7 @@ const stations = [
         logo: "assets/correodelsur.jpg",
         stream_url: "https://whsh4u-panel.com/proxy/gddupgij?mp=/stream",
         id3_info: "",
-        description: "Diario Correo del Sur: Noticias de Sucre, Bolivia y el mundo.",
+        description: "Noticias de Sucre, Bolivia y el mundo.",
         site: "https://correodelsur.com/",
         xtra_info: ["Noticias y m\u00FAsica del ayer y hoy en espa\u00F1ol", "Espa\u00F1ol",128,true,"#014171"] 
     },{
@@ -201,7 +201,7 @@ const stations = [
         logo: "assets/mundial.png",
         stream_url: "https://streaming1.locucionar.com/proxy/radiomundial?mp=/stream",
         id3_info: "",
-        description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales, grandes exitos.",
+        description: "para amantes de la m\u00FAsica que desean disfrutar de ritmos actuales y los grandes exitos.",
         site: "",
         xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
     }
