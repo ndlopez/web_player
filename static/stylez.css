@@ -414,6 +414,7 @@ table th{text-align: left;}
     border: 1px solid var(--light-sky);
   }
   .col70{width: 100%;overflow:visible;}
+  .half_col{width: 50%;}
   /*ul li:nth-child(4){text-align: center;}*/
 }
 /*Equalizer elem animation*/
