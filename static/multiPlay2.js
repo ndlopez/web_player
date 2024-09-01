@@ -218,7 +218,8 @@ async function update_stations(){
             album: stations[idx].xtra_info[0],artwork: stations[idx].logo};
 
         if(idx < 10){
-            gotData = await get_artwork(idx);//returns {{artist, song},album,artwork}
+            //returns {{artist, song},album,artwork}
+            gotData = await get_artwork(idx);
         }
         
         auxLink = "";
@@ -241,7 +242,7 @@ async function update_stations(){
         auxLink = this_artwork;
         if(idx < 3){//LaPaz.fm, gotData={{artist,song,artwork},album,artwork}
             if(awfulArt.includes(gotData.nowPlaying.artwork)){
-                auxLink = stations[0].logo;
+                auxLink = stations[idx].logo;
             }else{
                 auxLink = gotData.nowPlaying.artwork;
             }
@@ -369,13 +370,8 @@ function zeroPad(timeElm){
 function openNav(){
     const titleDiv = document.getElementById("cover_title");
     titleDiv.setAttribute("onclick","closeNav()");
-    /*closeBtn.style.margin = "0";
-    closeBtn.setAttribute("class","col10 float_left closeBtn");
-    closeBtn.setAttribute("href","javascript:void(0)");
-    closeBtn.setAttribute("onclick","closeNav()");*/
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
-    // document.getElementById("station_info").style.display = "none";
     document.body.style.overflow = "hidden";    
 }
 function closeNav(){
@@ -388,7 +384,6 @@ function closeNav(){
     titleDiv.setAttribute("onclick","openNav()");
     document.getElementById("artwork").style.display = "none";
     document.getElementById("amia").style.display = "block";
-    //document.getElementById("station_info").style.display = "block";
     document.body.style.overflow = "auto";
 }
 

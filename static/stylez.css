@@ -413,6 +413,7 @@ table th{text-align: left;}
     background-color: var(--light-sky);
     border: 1px solid var(--light-sky);
   }
+  .col70{width: 100%;overflow:visible;}
   /*ul li:nth-child(4){text-align: center;}*/
 }
 /*Equalizer elem animation*/
