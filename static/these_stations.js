@@ -3,6 +3,7 @@
     history: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-90salt_128k.mp3&https=&f=ice&c=802268
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
     melodia:https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958
+    https://i.scdn.co/image/ab67616d0000b273759d4b0ac2d1c1742d4653ca
 */
 const stations = [
     {
@@ -177,7 +178,7 @@ const stations = [
         logo: "assets/atb_radio.jpg",
         stream_url: "https://streamingenbolivia.com/8006/stream",
         id3_info: "",
-        description: "La red privada de televisi&oacute;n m&aacute;s antigua e importante de Bolivia.",
+        description: "La red privada de televisi&oacute;n m&aacute;s importante de Bolivia.",
         site: "https://www.atb.com.bo/atb-radio",
         xtra_info: ["Noticias y m\u00FAsica del ayer y hoy", "Espa\u00F1ol",128,true,"#014171"] 
     },{

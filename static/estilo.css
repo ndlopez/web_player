@@ -36,7 +36,7 @@ nav{
   height: 5px;  
   position: fixed;/*absolute;*/
   z-index: 100;
-  top: 0;
+  bottom: 68px;
   width: 100vw;
   /*background-color: rgba(0,0,0,0.75);*/
 }
@@ -340,7 +340,7 @@ span{
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 .bkg_cd_case{
-  background: no-repeat url("https://i.scdn.co/image/ab67616d0000b273759d4b0ac2d1c1742d4653ca");
+  background: no-repeat url("../assets/vinyl_record.svg");
   background-size: cover;
   background-position-x: center;
 }
@@ -501,7 +501,7 @@ span{
   #coverCD{padding-top: calc(100vh*0.07);}
   /*.bkg_cd_icon{ margin-left: 55px; }*/
   #stationInfo{ 
-    bottom: 60px;/*142px;*/
+    bottom: 65px;/*142px;*/
     position: fixed;
     width: 100%;
     /*border-top-right-radius: 10px;
