@@ -2,20 +2,21 @@
 
 [live demo](https://ndlopez.github.io/web_player/)
 
-Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) ~~or when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac)~~. I decided to build a web app to display the current song playing on *lapaz.fm* or *thirdrockradio.net*
+Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) ~~or when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac)~~. I decided to build a web app to display the current playing song.
 
-Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and [fmlapaz](https://ndlopez.github.io/web_player/fmlapaz.html). The latter one is not maintained and might not work due to several changes on main CSS.
+Two pages work as web player: [index](https://ndlopez.github.io/web_player/) and [player](https://ndlopez.github.io/web_player/player.html). The latter one is not maintained and might not work due to several changes on main CSS.
 
 ## Web Player <index.html>
 
 *The Strumbellas - Spirits*
+
 *I Don't Wanna Know If You Are Lonely - Husker Du*
 
 Display the current playing song out of 13 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), ~~Third Rock Radio,~~ 113.fm ClassicOne, News Radio x3.<br> As for thirdRock, I can no longer request the stream due to location error?, apparently no longer streaming via streamguys1.com. Although tune.in still returns current playing track. In any way, removed and replaced by KEXP-fm.
 
 ## FM La Paz - <fmlapaz.html> No longer maintained. 
 
-![new design](assets/web_player_20240131.png)
+![new design](assets/web_player_20240301.png)
 
 Display and store in a playlist on the same page current song and the previously listened songs.<br>
 The URL has some security issues (*expired* SSL certificate) but JavaScript's fetch does not seem to care and gets data without problems. I cannot say the same with C#'s json lib.
