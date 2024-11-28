@@ -45,31 +45,31 @@ function display_all_stations(){
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","outer_div");
     
-    for(let idx = 0; idx < (stations.length -1); idx++){
+    for(let kdx = 0; kdx < (stations.length -1); kdx++){
         /* here should consider replacing Fides by Mundial
         based on local time */
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row round-border bottom-10px card");
-        rowDiv.setAttribute("id","station_"+idx);
-        rowDiv.setAttribute("onclick","init_player("+idx+")");
+        rowDiv.setAttribute("id","station_"+kdx);
+        rowDiv.setAttribute("onclick","init_player("+kdx+")");
         rowDiv.style.float = "left";
-        /*rowDiv.style.backgroundColor = stations[idx].xtra_info[4];
+        /*rowDiv.style.backgroundColor = stations[kdx].xtra_info[4];
         /*rowDiv.style.background = card_bkg;*/
         rowDiv.style.height = cardHeight;
         rowDiv.style.width = img_size;
-        rowDiv.style.backgroundImage = "url('" + stations[idx].logo +"')";
+        rowDiv.style.backgroundImage = "url('" + stations[kdx].logo +"')";
         rowDiv.style.backgroundRepeat = "no-repeat";
         rowDiv.style.backgroundSize = "cover";
         rowDiv.style.backgroundPosition = "center";
         /*colImg:class=float_left; colArtist:class=float_left*/
         let auxStr = "";
-        //if( idx < no_id3 ){
-        auxStr = `<div class='info_block'><div><span id='timer_${idx}' class='small glass_circle'> 00:00 </span></div>`;
+        //if( kdx < no_id3 ){
+        auxStr = `<div class='info_block'><div><span id='timer_${kdx}' class='small glass_circle'> 00:00 </span></div>`;
         //}
-        rowDiv.innerHTML = `<div class='colImg pos_rel linear_bkg round-border' id='imgDiv_${idx}'> 
-        ${auxStr}<div class='colArtist' id='artistDiv_${idx}'></div></div>`;
-        // <!--img src='${stations[idx].logo}' width='${img_size}%' height='${img_size}%'/-->
-        /*stations[idx].name + "</span><span>" + stations[idx].xtra_info[0] + "</span></div>";<div class='colTime float_left'><span id='timer_" + idx + "'>00:00</span></div>";*/
+        rowDiv.innerHTML = `<div class='colImg pos_rel linear_bkg round-border' id='imgDiv_${kdx}'> 
+        ${auxStr}<div class='colArtist' id='artistDiv_${kdx}'></div></div>`;
+        // <!--img src='${stations[kdx].logo}' width='${img_size}%' height='${img_size}%'/-->
+        /*stations[kdx].name + "</span><span>" + stations[kdx].xtra_info[0] + "</span></div>";<div class='colTime float_left'><span id='timer_" + kdx + "'>00:00</span></div>";*/
         mainDiv.appendChild(rowDiv);
     }
     amiaDiv.appendChild(mainDiv);
@@ -131,15 +131,15 @@ function updateBar(){
     });
 }
 
-function playStop(idx){
+function playStop(kdx){
     svgPlay.addEventListener("click",stopPlay);
     svgPlay.removeEventListener("click",playStop); 
-    /*function(){console.log("passing index",idx); stopPlay(idx);});*/
+    /*function(){console.log("passing index",kdx); stopPlay(kdx);});*/
     let getTimer = "", mmss = "";
     for (let jdx = 0; jdx < stations.length -1; jdx++) {
         getTimer = document.getElementById("timer_"+jdx);
         // console.log("timer",jdx,getTimer.innerText);
-        if (idx == jdx){
+        if (kdx == jdx){
             mmss = getTimer.innerText;
         }
     }
@@ -150,18 +150,18 @@ function playStop(idx){
         audioConnect.addEventListener('error',()=>{
             stopPlay();
             // Should be displayed also on GUI
-            stream_info.innerText = `Cannot connect to ${stations[idx].name}`;
-            // console.error(`Error loading: ${stations[idx].stream_url}`);
+            stream_info.innerText = `Cannot connect to ${stations[kdx].name}`;
+            // console.error(`Error loading: ${stations[kdx].stream_url}`);
         });
         
-        audioConnect.src = stations[idx].stream_url;
+        audioConnect.src = stations[kdx].stream_url;
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
         // Once audio changes this func starts.
         audioConnect.ontimeupdate = updateBar();
         //console.log("audio?",audioConnect.duration());
         //counter starts or restarts mmss = "00:00";
-        play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),idx); 
+        play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),kdx); 
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
         svgPlay.innerHTML = circleImg + stopImg;
@@ -181,7 +181,7 @@ function playThis(){
     svgPlay.removeEventListener("click",stopPlay);
     playStop(isPlaying);
 }
-function stopPlay(){/* param: idx=0 */
+function stopPlay(){/* param: kdx=0 */
     //getTimer.innerText = document.getElementById("timer").innerText;
     svgPlay.addEventListener("click",playThis);
 
@@ -306,36 +306,36 @@ function sleepy(){
 async function update_stations(){
     let gotData = "", auxLink = "";
 
-    for(let idx = 0; idx < (stations.length -1); idx++){
+    for(let kdx = 0; kdx < (stations.length -1); kdx++){
         gotData = {
-            artist: stations[idx].xtra_info[0],song: stations[idx].name};
-        /*nowPlaying:{artist: stations[idx].description, song:stations[idx].name},
-            album: stations[idx].xtra_info[0],artwork: stations[idx].logo;*/
+            artist: stations[kdx].xtra_info[0],song: stations[kdx].name};
+        /*nowPlaying:{artist: stations[kdx].description, song:stations[kdx].name},
+            album: stations[kdx].xtra_info[0],artwork: stations[kdx].logo;*/
 
-        if(idx < no_id3){
-            gotData = await get_id3(idx);// {artist,song,artwork}
-            //get_artwork(idx);//returns {{artist, song},album,artwork}
+        if(kdx < no_id3){
+            gotData = await get_id3(kdx);// {artist,song,artwork}
+            //get_artwork(kdx);//returns {{artist, song},album,artwork}
         }
-        if (idx >= no_id3 && idx <= (no_id3+1)){
-            const response = await fetch(stations[idx].id3_info);
+        if (kdx >= no_id3 && kdx <= (no_id3+1)){
+            const response = await fetch(stations[kdx].id3_info);
             auxLink = await response.text();
             auxLink = auxLink.split("-");
-            if(auxLink.length < 2){auxLink.push(stations[idx].name);}
+            if(auxLink.length < 2){auxLink.push(stations[kdx].name);}
             gotData = {artist: auxLink[1], song:auxLink[0]};
         }
         
         auxLink = "";
-        const this_artist = document.getElementById("artistDiv_"+idx);
-        //auxLink = "<span class='small'>" + stations[idx].name + "</span>";/*stations[idx].xtra_info[0] +*/
-        /*if( idx < no_id3 ){
-            auxLink = "<span class='small'>" + stations[idx].name + "</span>"; }*/
-        if(isPlaying == idx){
-            //auxLink = "";//img_size = 80;played.push(idx); 
+        const this_artist = document.getElementById("artistDiv_"+kdx);
+        //auxLink = "<span class='small'>" + stations[kdx].name + "</span>";/*stations[kdx].xtra_info[0] +*/
+        /*if( kdx < no_id3 ){
+            auxLink = "<span class='small'>" + stations[kdx].name + "</span>"; }*/
+        if(isPlaying == kdx){
+            //auxLink = "";//img_size = 80;played.push(kdx); 
             document.title = gotData.artist + "-" + gotData.song;
-            document.getElementById("station_"+idx).style.display = "none";
+            document.getElementById("station_"+kdx).style.display = "none";
             // console.log("Removing:",isPlaying);
         }else{
-            document.getElementById("station_"+idx).style.display = "block";
+            document.getElementById("station_"+kdx).style.display = "block";
         }
         
         this_artist.innerHTML = `<span class='bold_medium oneLine'> ${gotData.song}
@@ -343,31 +343,31 @@ async function update_stations(){
         //+ auxLink;
 
         /*Update artwork of station by artist
-        auxLink = stations[idx].logo;
-        const this_img = document.getElementById("imgDiv_"+idx);
+        auxLink = stations[kdx].logo;
+        const this_img = document.getElementById("imgDiv_"+kdx);
         this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + "' height='" + img_size + "'/>";*/
 
         /* adding album info to <data-?> tag */
         auxLink = gotData.artwork;
-        if(idx < lpb_id3){//==0 LaPaz.fm, gotData={artist,song,artwork}
+        if(kdx < lpb_id3){//==0 LaPaz.fm, gotData={artist,song,artwork}
             if(awfulArt.includes(gotData.artwork)){
                 auxLink = stations[0].logo;
             }else{
                 auxLink = gotData.artwork;
             }
         }else{ auxLink = ""; }
-        const this_row = document.getElementById("station_"+idx);
+        const this_row = document.getElementById("station_"+kdx);
         this_row.setAttribute("data-album",auxLink);
     }
 }
 
-async function display_data(idx){
+async function display_data(kdx){
     // reset timer zoey = 3, cindy = 5;
     // clearInterval(dayna_timer); stops timer but does not restarts
-    // Function to request artwork from ext-source, not valid for idx=0
+    // Function to request artwork from ext-source, not valid for kdx=0
     await update_stations();
     
-    const got_row = document.getElementById("station_"+idx);
+    const got_row = document.getElementById("station_"+kdx);
     const got_artist = got_row.getElementsByClassName("colArtist");
     
     let gotSong = got_artist[0].firstChild.childNodes[0].data;
@@ -377,50 +377,50 @@ async function display_data(idx){
     }
     
     let gotData = "";
-    if(idx >= lpb_id3){ gotData = await get_artwork(idx,gotArtist,gotSong);}
+    if(kdx >= lpb_id3){ gotData = await get_artwork(kdx,gotArtist,gotSong);}
 
     let this_artwork = gotData.artwork;
-    if(idx < lpb_id3){ this_artwork = got_row.getAttribute("data-album"); }
+    if(kdx < lpb_id3){ this_artwork = got_row.getAttribute("data-album"); }
     if(gotData.artwork === ""){
-        console.log("Error: No artwork found",idx,gotData.artwork);
-        this_artwork = stations[idx].logo;//"assets/cd_case.svg";
+        console.log("Error: No artwork found",kdx,gotData.artwork);
+        this_artwork = stations[kdx].logo;//"assets/cd_case.svg";
     }
     const coverDiv = document.getElementById("artwork");
-    /*coverDiv.innerHTML = build_case(idx, got_artist[0].childNodes[1].firstChild.data, gotSong, got_row.getAttribute("data-album"),newArt);*/
+    /*coverDiv.innerHTML = build_case(kdx, got_artist[0].childNodes[1].firstChild.data, gotSong, got_row.getAttribute("data-album"),newArt);*/
     coverDiv.style.backgroundImage = `url("${this_artwork}")`;
 
     /* append dark_bkg div to coverDiv*/
-    coverDiv.innerHTML = `<div id="dark_bkg" class="pos_rel">${build_case(idx, gotArtist, gotSong, gotData.album, this_artwork)}</div>`;//flexy class
+    coverDiv.innerHTML = `<div id="dark_bkg" class="pos_rel">${build_case(kdx, gotArtist, gotSong, gotData.album, this_artwork)}</div>`;//flexy class
 
     /*const auxDiv = document.getElementById("dark_bkg");
     auxDiv.classList.add("pos_rel");
     auxDiv.style.background = card_bkg;
     auxDiv.style.height = "100vh";
-    auxDiv.innerHTML = build_case(idx, gotArtist, gotSong, gotData.album, this_artwork);*/
-    // Update artwork of each station_idx Div
-    /*const got_artwork  = document.getElementById("imgDiv_" + idx);
+    auxDiv.innerHTML = build_case(kdx, gotArtist, gotSong, gotData.album, this_artwork);*/
+    // Update artwork of each station_kdx Div
+    /*const got_artwork  = document.getElementById("imgDiv_" + kdx);
     let newArt = this_artwork;//got_artwork[0].firstChild.src;
     got_artwork.innerHTML = "<img src='" + newArt + "' width='" + img_size + 
     "' height='"+ img_size + "'/>"*/
     //console.log("newArt",newArt.substring(newArt.length-3));
     /*if(newArt.substring(newArt.length - 3) === "svg"){
-        newArt = stations[idx].logo;//console.log("is it cd_case?");}*/
+        newArt = stations[kdx].logo;//console.log("is it cd_case?");}*/
     
     // Updating player2: elements
     let auxText = "";
     const reloadMe = document.getElementById("reload_this");//"update_stations()"
-    reloadMe.setAttribute("onclick","display_data(" + idx + ")");
+    reloadMe.setAttribute("onclick","display_data(" + kdx + ")");
     reloadMe.innerHTML = reloadImg;
     const cover_art = document.getElementById("cover_art");
-    // cover_art.setAttribute("onclick","display_data(" + idx + ")");
+    // cover_art.setAttribute("onclick","display_data(" + kdx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;
     cover_art.innerHTML = `<img src='${this_artwork}' width='48' height='48'/>`
     // ${auxText}`;
 
     auxText = gotArtist;
-    let play_stat = stations[idx].name + " - " + stations[idx].description;
-    if(idx > no_id3){
-        auxText = stations[idx].xtra_info[0];
+    let play_stat = stations[kdx].name + " - " + stations[kdx].description;
+    if(kdx > no_id3){
+        auxText = stations[kdx].xtra_info[0];
         //play_stat = "";
     }
     
@@ -432,7 +432,7 @@ async function display_data(idx){
     /* current song title next to burger menu
     const currDiv = document.getElementById('curr_song');
     let strText = "";    
-    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/) && (idx < no_id3)){ 
+    if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/) && (kdx < no_id3)){ 
         strText = `<h3 class="moving-text"> Now ♪ ${auxText} - ${gotSong} ♪ </h3>`;
     }currDiv.innerHTML = strText;*/
     // current playing station id
@@ -448,26 +448,26 @@ function withTimeout(msecs, promise) {
     return Promise.race([timeout, promise]);
 }
 
-async function get_id3(idx){
+async function get_id3(kdx){
     const this_output = {
-        artist:stations[idx].name,
-        song:stations[idx].xtra_info[0],
-        artwork:stations[idx].logo};
+        artist:stations[kdx].name,
+        song:stations[kdx].xtra_info[0],
+        artwork:stations[kdx].logo};
     let artist = "", artwork = "";
     let data = {}, song = "";
     
     try{
-	    if (idx > (lpb_id3 - 1) ){
+	    if (kdx > (lpb_id3 - 1) ){
             //avoid the 1st tree streams
-            const response = await fetch(stations[idx].id3_info);
+            const response = await fetch(stations[kdx].id3_info);
             if(!response.ok){
-                throw new Error(`couldnt fetch ${stations[idx].id3_info}`);
+                throw new Error(`couldnt fetch ${stations[kdx].id3_info}`);
             }
 	        data = await response.json();
             //song = data["title"].replace(myReg,"").replace(/&/g,"and");
         }else{
             // fmLaPaz, Melodia, stereo streams fail from time to time, thus
-            const response = await withTimeout(2000, fetch(stations[idx].id3_info));
+            const response = await withTimeout(2000, fetch(stations[kdx].id3_info));
             data = await response.json();
             /*.then((response) =>{ return response.json();})
             .then((dato)=>{  // console.log("thisData",dato);
@@ -476,12 +476,12 @@ async function get_id3(idx){
             .catch(err => { console.error("connection timed out",err); });*/
         }
         song = data["title"].replace(myReg,"").replace(/&/g,"and");
-	    if(idx < lpb_id3){// prev == 0
+	    if(kdx < lpb_id3){// prev == 0
             if(Object.keys(data).length < 1){
                 console.log("response length",Object.keys(data).length);
                 return this_output;
             }
-            // console.log("Got",idx,Object.keys(data).length);
+            // console.log("Got",kdx,Object.keys(data).length);
             const auxStr = song.split("-");
             if (auxStr.length < 2){
                 auxStr.push("No title");
@@ -494,11 +494,11 @@ async function get_id3(idx){
 	    }
 	    // console.log("got:",data["title"],song);
 	    if(errTitle.includes(song.trim())){
-		    artwork = stations[idx].logo;
+		    artwork = stations[kdx].logo;
 	    }
 	    return {artist,song,artwork};
     }catch(err){
-        console.error(stations[idx].name,err);
+        console.error(stations[kdx].name,err);
         return this_output;
     }    
 }
