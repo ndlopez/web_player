@@ -50,9 +50,7 @@ function display_all_stations(){
 function init_this(){
     display_all_stations();
     //build_case("Phantogram","You don't get me high anymore","","");
-    /*for (let kdx = 0; kdx < stations.length; kdx++) {
-        display_data(kdx);
-    }*/
+    /*for (let kdx = 0; kdx < stations.length; kdx++) { display_data(kdx); }*/
     update_stations();
 }
 //window.addEventListener("load",startPlay);//for autoplay
