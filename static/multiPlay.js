@@ -294,10 +294,14 @@ function build_case(jdx, artist, song, album, artwork){
 function sleepy(){
     // this should be a modal page
     const timeNow = new Date();
-    let msg = `Streaming will end at ${String(timeNow.getHours() + 1).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
+    const time_limit=30 //minutes
+
+    // let msg = `Streaming will end at ${String(timeNow.getHours() + 1).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
+    let msg = `Streaming will end at ${String(timeNow.getHours()).padStart(2,'0')}:${String(timeNow.getMinutes()+time_limit).padStart(2,'0')}, is that correct?`;
+    // bug: msg displays incorrect time
     if(confirm(msg)){
         slept = true;
-        setTimeout(stopPlay,(30*60*1000));//1hour=60*60*1000
+        setTimeout(stopPlay,(time_limit*60*1000));//1hour=60*60*1000
         clearInterval(updater);
     }else{
         console.log("Sleepy canceled");return;}
