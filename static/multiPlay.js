@@ -293,17 +293,16 @@ function build_case(jdx, artist, song, album, artwork){
 
 function sleepy(){
     // this should be a modal page
-    const timeNow = new Date();
     const time_limit=30 //minutes
+    let timeNow = new Date();
 
     // let msg = `Streaming will end at ${String(timeNow.getHours() + 1).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
     Date.prototype.addMins = function (mini) {
-        this.setTime(this.getTime() + (mini * 60 * 1000));
-        return this;
+        return this.setTime(this.getTime() + (mini * 60 * 1000));
     }
-    let eve = new Date();
-    eve.addMins(time_limit);
-    let msg = `Streaming will end at ${String(eve.getHours()).padStart(2,'0')}:${String(eve.getMinutes()).padStart(2,'0')}, is that correct?`;
+    
+    timeNow.addMins(time_limit);
+    let msg = `Streaming will end at ${String(timeNow.getHours()).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
     if(confirm(msg)){
         slept = true;
         setTimeout(stopPlay,(time_limit*60*1000));//1hour=60*60*1000
@@ -555,17 +554,12 @@ function openNav(){
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
         titleDiv.setAttribute("onclick","closeNav()");
         /*closeBtn.style.margin = "0";
-        closeBtn.setAttribute("class","col10 float_left closeBtn");
-        closeBtn.setAttribute("href","javascript:void(0)");
-        closeBtn.setAttribute("onclick","closeNav()");
         document.getElementById("stationInfo").style.display = "block";*/
         document.getElementById("amia").style.display = "none";
         document.getElementById("artwork").style.display = "block";
-        //document.getElementById("dark_bkg").style.display = "block";
         document.getElementById("controls").style.display = "flex";
         document.getElementById("art_title").style.display = "none";
         document.body.style.overflow = "hidden";
-        // top_title.style.display = "none";
     }
 }
 function closeNav(){
@@ -573,9 +567,7 @@ function closeNav(){
     document.getElementById("artwork").style.display = "none";
     //document.getElementById("dark_bkg").style.display = "none";
     document.getElementById("amia").style.display = "block";
-    /*document.getElementById("stationInfo").style.display = "none";*/
     document.getElementById("controls").style.display = "none";
     document.getElementById("art_title").style.display = "block";
-    // top_title.style.display = "block";
     document.body.style.overflow = "auto";
 }
