@@ -297,8 +297,13 @@ function sleepy(){
     const time_limit=30 //minutes
 
     // let msg = `Streaming will end at ${String(timeNow.getHours() + 1).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
-    let msg = `Streaming will end at ${String(timeNow.getHours()).padStart(2,'0')}:${String(timeNow.getMinutes()+time_limit).padStart(2,'0')}, is that correct?`;
-    // bug: msg displays incorrect time
+    Date.prototype.addMins = function (mini) {
+        this.setTime(this.getTime() + (mini * 60 * 1000));
+        return this;
+    }
+    let eve = new Date();
+    eve.addMins(time_limit);
+    let msg = `Streaming will end at ${String(eve.getHours()).padStart(2,'0')}:${String(eve.getMinutes()).padStart(2,'0')}, is that correct?`;
     if(confirm(msg)){
         slept = true;
         setTimeout(stopPlay,(time_limit*60*1000));//1hour=60*60*1000
