@@ -290,9 +290,13 @@ async function display_data(kdx){
     let auxText = "";
     const cover_art = document.getElementById("cover_art");
     cover_art.setAttribute("onclick","display_data(" + kdx + ")");
-    auxText = "<div class='above_img'>" + reloadImg + "</div>";
+    auxText = ""; //"<div class='above_img'>" + reloadImg + "</div>";
 
-    cover_art.innerHTML = "<img src='" + newArt + "' width='60' height='60'/>" + auxText;
+    const reload_id3 = document.getElementById("reloadMe");
+    reload_id3.setAttribute("onclick","display_data(" + kdx + ")");
+    reload_id3.innerHTML = reloadImg;
+
+    cover_art.innerHTML = "<img src='" + newArt + "' width='120' height='120'/>" + auxText;
     //stations[kdx].logo
     
     document.getElementById("cover_title").innerHTML = `<span>${gotSong}</span><span>${document.getElementById("titleCol_"+kdx).innerText}</span>`;
