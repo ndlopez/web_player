@@ -1,0 +1,15 @@
+/*Player2 CSS*/
+.player2{
+    gap: .375rem;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.player_item{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0
+    /*margin: 0px;
+    padding: 0px;*/
+}

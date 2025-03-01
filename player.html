@@ -7,6 +7,7 @@
     <meta name="author" content="DLopez (github.com/ndlopez)">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="static/stylez.css">
+    <link rel="stylesheet" type="text/css" href="static/player.css">
     <!--link rel="stylesheet" type="text/css" href="static/burger.css"-->
     <script src="static/these_stations.js"></script>
   </head>
@@ -24,21 +25,22 @@
         <div id="cover_title" class="col_60 float_left" onclick="openNav()">
           <span>You don't get me high anymore</span><span>Phantogram</span></div>
       </div>
-      <div class="col_40 float_left">
-        <div id="reloadMe" class="half_col float_left padding_10"></div>
-        <div class="half_col float_left">
+      <div class="player2 col_40 float_left">
+      <!--half_col float_left padding_10,half_col float_left-->
+        <div id="reloadMe" class="player_item"></div>
+        <div class="player_item">
           <svg id="play2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" stroke="#2e4054" fill="#bed2e0">
           <circle class="paused no_mobil" stroke-width="4" cx="30" cy="30" r="26"/>
           <path class="paused" fill="#bed2e0" d="M23 40 L23 20 43 30Z"/></svg>
         </div>
-        <div class="half_col float_left padding_10">
+        <div class="player_item">
           <label for="vol_input" onclick="volume_mute(0)">
             <img id="vol_icon" src="assets/volume-svgrepo.svg" width="32"/></label>
             <input id="vol_input" class="volume-vertical" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()">
         </div>
-        <div class="half_col float_left no_mobil padding_10">
+        <div class="player_item no_mobil">
           <div id="gifElm" class="equalizer no-audio"><div>
-          <span></span><span></span><span></span><span></span><span></span><!--span></span-->
+          <span></span><span></span><span></span><span></span><span></span>
           </div></div>
         </div>
       </div>
