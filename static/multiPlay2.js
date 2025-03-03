@@ -269,6 +269,7 @@ async function display_data(kdx){
     const got_artwork = document.getElementById("imgDiv_"+kdx);
     // got_row.getElementsByClassName("colImg");
     const got_artist = document.getElementById("artistDiv_"+kdx);
+    const got_title = document.getElementById("titleCol_"+kdx).innerText;
     // got_row.getElementsByClassName("colArtist");
     // console.log("artist",got_artist,got_artwork);
     // got_artist[0].lastChild.childNodes[0].data
@@ -283,13 +284,12 @@ async function display_data(kdx){
     if( typeof gotSong === 'undefined'){
         gotSong = "No id3 found";}
     const coverDiv = document.getElementById("artwork");
-    coverDiv.innerHTML = build_case(kdx, got_artist.innerText /*got_artist[0].childNodes[1].firstChild.data*/,
-        gotSong, got_row.getAttribute("data-album"),newArt);
-    
+    coverDiv.innerHTML = build_case(kdx,got_title,gotSong,got_row.getAttribute("data-album"),newArt);
+    /*got_artist[0].childNodes[1].firstChild.data*/
     // Updating player2: elements
     let auxText = "";
-    const cover_art = document.getElementById("cover_art");
-    cover_art.setAttribute("onclick","display_data(" + kdx + ")");
+    const duck = document.getElementById("duck_it");
+    duck.innerHTML = `<a title='Duck it!' href='https://duckduckgo.com/?q=${got_title.trim().replace(/\s+/g,"%20").replace(/'/g,"")}+${gotSong.trim().replace(/\s+/g,"%20").replace(/'/g,"")}&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a>`;
     auxText = ""; //"<div class='above_img'>" + reloadImg + "</div>";
 
     const reload_id3 = document.getElementById("reloadMe");
@@ -299,8 +299,8 @@ async function display_data(kdx){
     cover_art.innerHTML = "<img src='" + newArt + "' width='120' height='120'/>" + auxText;
     //stations[kdx].logo
     
-    document.getElementById("cover_title").innerHTML = `<span>${gotSong}</span><span>${document.getElementById("titleCol_"+kdx).innerText}</span>`;
-    // "<span>Now Playing</span><span>" + stations[kdx].name + "</span>";    
+    document.getElementById("cover_title").innerHTML = `<span>${gotSong}</span><span>${got_title}</span>`;
+    // "<span>Now Playing</span><span>" + stations[kdx].name + "</span>";
 }
 
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
