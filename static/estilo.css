@@ -200,12 +200,6 @@ span{
   font-size: medium;
   font-weight: bold;
 }
-.oneLine{
-  /*font-size: 13px;*/
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 .lighter{font-weight: 400;}
 *{box-sizing: border-box;}
 .bkg_cd_case{
