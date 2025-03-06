@@ -38,8 +38,9 @@ function display_all_stations(){
         rowTr.setAttribute("onclick","init_player("+kdx+")");
         
         rowTr.innerHTML = "<td id='imgDiv_"+ kdx + "'><img src='" + 
-        stations[kdx].logo + "' width='" + img_size + "' height='" + img_size + "'/></td>" + "<td id='artistDiv_" + kdx + "'>" + 
-        stations[kdx].name + "</td><td id='titleCol_"+kdx+"'>" + stations[kdx].xtra_info[0] + 
+        stations[kdx].logo + "' width='" + img_size + "' height='" + img_size + "'/></td>" + 
+        "<td id='artistDiv_" + kdx + "'>" + stations[kdx].name + 
+        "</td><td id='titleCol_"+kdx+"'>" + stations[kdx].xtra_info[0] + 
         "</td><td id='timer_" + kdx + "'>00:00</td>";
         /**/         
         tabl.appendChild(rowTr);
@@ -227,8 +228,7 @@ async function update_stations(){
             auxLink = "";
             //img_size = 80;
         }
-        this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +
-        "</td>"
+        this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +"</td>"
         this_title.innerHTML = "<td>" + gotData.nowPlaying.artist + "</td>" //+ auxLink;
 
         let this_artwork = gotData.artwork;
@@ -298,7 +298,7 @@ async function display_data(kdx){
     cover_art.innerHTML = "<img src='" + newArt + "' width='120' height='120'/>" + auxText;
     //stations[kdx].logo
     
-    document.getElementById("cover_title").innerHTML = `<span>${gotSong}</span><span>${got_title}</span>`;
+    document.getElementById("cover_title").innerHTML = `<span class="oneLine">${gotSong}</span><span class="oneLine">${got_title}</span>`;
     // "<span>Now Playing</span><span>" + stations[kdx].name + "</span>";
 }
 
