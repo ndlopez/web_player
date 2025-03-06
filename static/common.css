@@ -66,6 +66,12 @@ a{
     display: grid;
     place-items: center;
 }
+.oneLine{
+    /*font-size: 13px;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 /*Equalizer elem anim*/
 .equalizer {
     width: 80px;
