@@ -1,0 +1,43 @@
+@media (max-width: 700px) {
+    body{font-size: small;}
+    #nowPlaying{
+        background: none;/*url("../assets/group.svg") no-repeat;
+        background-position-x: right;*/
+        width: 100%;
+        height: 480px !important;
+    }
+    .contain{
+        width: 100%;
+        padding: 0px;
+        margin: 0;
+        height: 340px;
+    }
+    .contain img{
+        border-radius:10px;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .colTime span /*, #timer*/ {font-size: 0.9rem !important;}
+    #downLink img{width: 32px;}
+    .bottomText{
+        padding: 5px 5px 20px 13px;  
+        margin-left: -20px;
+        width: 100vw;
+        text-align: left;
+        height: 240px;
+        background-image: linear-gradient(var(--smoke),var(--darkish-sky));
+    }
+    #playList{
+        display: none;
+        width: 100%;
+        overflow: auto;
+        height: 90vh;
+    }
+    .equalizer{width: 50px;}
+    .equalizer span:nth-child(5), .equalizer span:nth-child(6){
+      animation: none;
+      display: none;
+    }
+}
