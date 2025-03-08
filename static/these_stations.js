@@ -111,6 +111,14 @@ const stations = [
         site: "https://www.heart.co.uk/",
         xtra_info:["80's Pop","English",196,false,"#d21e2a"]
     },{
+        name:"Heart Radio",
+        logo: "assets/heart90s.jpg",
+        stream_url:"https://media-ssl.musicradio.com/Heart90s",
+        id3_info: "",
+        description: "the UK's biggest commercial radio brand.",
+        site: "https://www.heart.co.uk/",
+        xtra_info:["90's best","English",196,false,"#a30321"]
+    },{
         name: "WDR einsLive",
         logo: "assets/1live_logo.svg",
         stream_url: "https://wdr-1live-rockhits.icecast.wdr.de/wdr/1live/rockhits/mp3/128/stream.mp3",
@@ -164,7 +172,7 @@ const stations = [
         stream_url: "https://rfienespagnol64k.ice.infomaniak.ch/rfienespagnol-64.mp3",
         id3_info:"Radio Francia Internacional",
         site:"https://www.rfi.fr/es/en-vivo",
-        xtra_info: ["Noticias","Espa\u00f1ol",64,false,"#a50005"]
+        xtra_info: ["Noticias del Mundo","Espa\u00f1ol",64,false,"#a50005"]
     },{
         name: "Panamericana",
         logo: "assets/pana148.png",
