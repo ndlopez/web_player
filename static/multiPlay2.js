@@ -294,6 +294,7 @@ async function display_data(kdx){
     const reload_id3 = document.getElementById("reloadMe");
     reload_id3.setAttribute("onclick","display_data(" + kdx + ")");
     reload_id3.innerHTML = reloadImg;
+    //"<img src='assets/loading.svg' width='36'></>";
 
     cover_art.innerHTML = "<img src='" + newArt + "' width='120' height='120'/>" + auxText;
     //stations[kdx].logo

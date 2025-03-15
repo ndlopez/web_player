@@ -4,13 +4,14 @@
     thebuzz_hist: https://player.181fm.com/external.php?http%3A%2F%2Flisten.181fm.com%3A8443%2Fice_history.php?h=listen.181fm.com&p=7080&i=181-buzz_128k.mp3&https=&f=ice&c=128773
     melodia:https://radiomelodia.fm/?qtdir=2968&qtproxycall=Mjk2OFstXWh0dHBzOi8vc3RyZWFtLmNvbnN1bHRvcmFkYXMuY29tLzgxOTQvc3RyZWFt&icymetadata=1&_=1684549254958
     https://i.scdn.co/image/ab67616d0000b273759d4b0ac2d1c1742d4653ca
+    fmLP:https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042, https://cloudstream2030.conectarhosting.com/8042/stream
 */
 const stations = [
     {
         name: "LaPaz.fm",
         logo: "assets/fmlapaz_logo.png",
-        stream_url: "https://cloudstream2030.conectarhosting.com/8042/stream",
-        id3_info: "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042",
+        stream_url: "https://stream.consultoradas.com/8354/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8354",
         description: "Mas m\u00FAsica menos palabras. La mejor radio adulto contemporanea.",
         site: "fmlapaz.html",
         xtra_info: ["Adult Contemporary","English",128,true,"#183a67"]
@@ -27,7 +28,7 @@ const stations = [
         logo: "assets/stereo97.png",
         stream_url: "https://stream.consultoradas.com/8104/stream",
         id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
-        description: "Soy parte de ti, lleno tu vida con alegria, soy mas que tu amigo yo quiero estar en tu coraz\u00F3n",
+        description: "Soy parte de ti, lleno tu vida con alegria, soy mas que tu amigo yo quiero estar en tu coraz\u00F3n...",
         site: "La n\u00FAmero uno",
         xtra_info: ["Top40 & Pop Music", "Espa\u00F1ol",128,true,"#140000"]
     },{
