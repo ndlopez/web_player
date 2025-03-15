@@ -104,7 +104,7 @@ table td{
 table th{text-align: left;}
 #artwork .smoke-bkg{height: 220px;}
 #artwork{display: none;}
-
+.no_desktop{display: none;}
 @media (max-width: 700px) {
   #amia{height: 115vh;}
   #now_song, .no_mobil {display: none;}

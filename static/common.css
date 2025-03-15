@@ -68,7 +68,7 @@ a{
     float: left;
     white-space: nowrap;
 }
-.no_desktop{display: none;}
+
 .centered{
     display: grid;
     place-items: center;
