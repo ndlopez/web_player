@@ -28,7 +28,7 @@ function display_all_stations(){
     const mainDiv = document.getElementById("amia");
     const tabl = document.createElement("table");
     const rowth = document.createElement("tr");
-    rowth.innerHTML = "<th></th><th>Title</th><th>Artist</th><th>Played</th>";
+    rowth.innerHTML = "<th></th><th>Artist/Title</th><!--th>Artist</th--><th></th><th>Played</th>";
     tabl.appendChild(rowth);
 
     for(let kdx = 0; kdx < stations.length; kdx++){
@@ -42,7 +42,7 @@ function display_all_stations(){
         "<td id='artistDiv_" + kdx + "'>" + stations[kdx].name + 
         "</td><td id='titleCol_"+kdx+"'>" + stations[kdx].xtra_info[0] + 
         "</td><td id='timer_" + kdx + "'>00:00</td>";
-        
+        //><span
         tabl.appendChild(rowTr);
     }
     mainDiv.appendChild(tabl);
@@ -224,31 +224,38 @@ async function update_stations(){
         const this_artist = document.getElementById("artistDiv_"+kdx);
         const this_title = document.getElementById("titleCol_"+kdx);
         if( kdx > 10 ){ auxLink = "<td class='small'>" + stations[kdx].name + "</td>"; }
-        if(isPlaying == kdx){ 
-            auxLink = "";
-            zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+img_size + "'/></div>"
-            //img_size = 80;
-        }else{zoey="";}
 
         this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +"</td>";
         this_title.innerHTML = "<td>" + gotData.nowPlaying.artist + "</td>"; //+ auxLink;
 
         let this_artwork = gotData.artwork;
+        
         if(gotData.artwork === ""){
             console.log("Error: No artwork found",kdx,gotData.artwork);
-            this_artwork = "assets/cd_case.svg";
+            this_artwork = "assets/favicon_180.svg";
         }
-        auxLink = this_artwork;
+        // auxLink = this_artwork;
         if(kdx < 3){//LaPaz.fm, gotData={{artist,song,artwork},album,artwork}
             if(awfulArt.includes(gotData.nowPlaying.artwork)){
-                auxLink = stations[kdx].logo;
+                this_artwork = stations[kdx].logo;
             }else{
-                auxLink = gotData.nowPlaying.artwork;
+                this_artwork = gotData.nowPlaying.artwork;
             }
         }
 
+        if(isPlaying == kdx){
+            this_artist.parentElement.style.backgroundImage= `url('${this_artwork}')`;
+            this_artist.parentElement.style.backgroundRepeat = "no-repeat";
+            this_artist.parentElement.style.backgroundSize = "contain";
+            this_artwork = "assets/bars.svg";
+            zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+ img_size + "'/></div>";
+        }else{
+            zoey="";this_artwork=gotData.artwork;
+            this_artist.parentElement.style.backgroundImage = "";
+        }
+
         const this_img = document.getElementById("imgDiv_"+kdx);
-        this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + "' height='" + img_size + "'/>" + zoey;
+        this_img.innerHTML = "<img src='" + this_artwork + "' width='"+ img_size + "' height='" + img_size + "'/>";
 
         const this_row = document.getElementById("station_"+kdx);
         this_row.setAttribute("data-album",gotData.album);
@@ -273,13 +280,16 @@ async function display_data(kdx){
     // got_row.getElementsByClassName("colArtist");
     // console.log("artist",got_artist,got_artwork);
     // got_artist[0].lastChild.childNodes[0].data
-    let newArt = got_artwork.firstChild.src;
-    //got_artwork[0].firstChild.src;
+    let newArt = getComputedStyle(got_row).backgroundImage; //returns url
+    let auxArr = newArt.split('"');
+    // previously: got_artwork.firstChild.src;
+    // got_artwork[0].firstChild.src;
     // console.log("newArt",newArt.substring(newArt.length-3));
-    if(newArt.substring(newArt.length - 3) === "svg"){
+    if(auxArr[1].substring(newArt.length - 3) === "svg"){
         //console.log("is it cd_case?");
         newArt = stations[kdx].logo;
     }
+    newArt = auxArr[1];
     let gotSong = got_artist.innerText; //.firstChild.childNodes[0].data;
     if( typeof gotSong === 'undefined'){
         gotSong = "No id3 found";}
@@ -298,6 +308,8 @@ async function display_data(kdx){
     //"<img src='assets/loading.svg' width='36'></>";
 
     cover_art.innerHTML = "<img src='" + newArt + "' width='120' height='120'/>" + auxText;
+    // cover_art.style.backgroundImage = newArt;
+    // cover_art.style.backgroundRepeat = "no-repeat";
     //stations[kdx].logo
     
     document.getElementById("cover_title").innerHTML = `<span class="oneLine">${gotSong}</span><span class="oneLine">${got_title}</span>`;
@@ -334,7 +346,7 @@ async function get_artwork(jdx){
     const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
 
     if(errTitle.includes(nowPlaying.song.trim()) || (jdx < 3)){
-        console.log("No artwork requests for ",stations[jdx].name);
+        // console.log("No artwork requests for ",stations[jdx].name);
         return {nowPlaying,album,artwork};
     }
     if(jdx != isPlaying){
