@@ -42,7 +42,7 @@ function display_all_stations(){
         "<td id='artistDiv_" + kdx + "'>" + stations[kdx].name + 
         "</td><td id='titleCol_"+kdx+"'>" + stations[kdx].xtra_info[0] + 
         "</td><td id='timer_" + kdx + "'>00:00</td>";
-        /**/         
+        
         tabl.appendChild(rowTr);
     }
     mainDiv.appendChild(tabl);
@@ -209,7 +209,7 @@ function build_case(jdx,artist, song, album, artwork){
 async function update_stations(){
     let gotData = "";
     let auxLink = "";
-    
+    let zoey = "";
     for(let kdx = 0; kdx < stations.length; kdx++){
         gotData = {
             nowPlaying:{artist: stations[kdx].xtra_info[0], song:stations[kdx].name},
@@ -226,10 +226,12 @@ async function update_stations(){
         if( kdx > 10 ){ auxLink = "<td class='small'>" + stations[kdx].name + "</td>"; }
         if(isPlaying == kdx){ 
             auxLink = "";
+            zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+img_size + "'/></div>"
             //img_size = 80;
-        }
-        this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +"</td>"
-        this_title.innerHTML = "<td>" + gotData.nowPlaying.artist + "</td>" //+ auxLink;
+        }else{zoey="";}
+
+        this_artist.innerHTML = "<td class='headLabel'>" + gotData.nowPlaying.song +"</td>";
+        this_title.innerHTML = "<td>" + gotData.nowPlaying.artist + "</td>"; //+ auxLink;
 
         let this_artwork = gotData.artwork;
         if(gotData.artwork === ""){
@@ -246,8 +248,7 @@ async function update_stations(){
         }
 
         const this_img = document.getElementById("imgDiv_"+kdx);
-        this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + 
-        "' height='" + img_size + "'/>";        
+        this_img.innerHTML = "<img src='" + auxLink + "' width='"+ img_size + "' height='" + img_size + "'/>" + zoey;
 
         const this_row = document.getElementById("station_"+kdx);
         this_row.setAttribute("data-album",gotData.album);

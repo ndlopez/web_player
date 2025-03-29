@@ -18,7 +18,7 @@ main{
   box-sizing: content-box;
   width: 100%;
   background-color: var(--dark-smoke);
-  padding: 5px 0px;
+  /*padding: 5px 0px;*/
 }
 #player{height: 48px;}
 #player2{height: 64px;}
@@ -81,7 +81,8 @@ main{
 }
 #stat_name h3{margin:0px;}
 
-#cover_title{padding-left: 10px;}
+#cover_title{
+  padding: 5px;}
 #cover_art{
   position: relative;
   text-align: center;

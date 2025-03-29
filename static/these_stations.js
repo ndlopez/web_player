@@ -18,16 +18,16 @@ const stations = [
     },{
         name: "Melodia",
         logo: "assets/melodia.png",
-        stream_url: "https://stream.consultoradas.com/8194/stream",
-        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8194",
+        stream_url: "https://stream.consultoradas.com/8244/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8244",
         description: "tu grata compa\u00f1ia, que enciende tu alegria, esta en tu sintonia la mejor radio latina.",
         site: "",
         xtra_info: ["M\u00FAsica en espa\u00F1ol", "Espa\u00F1ol",128,true,"#f2f2f2"]
     },{
         name: "Stereo97",
         logo: "assets/stereo97.png",
-        stream_url: "https://stream.consultoradas.com/8104/stream",
-        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8104",
+        stream_url: "https://stream.consultoradas.com/8340/stream",
+        id3_info: "https://stream.consultoradas.com/cp/get_info.php?p=8340",
         description: "Soy parte de ti, lleno tu vida con alegria, soy mas que tu amigo yo quiero estar en tu coraz\u00F3n...",
         site: "La n\u00FAmero uno",
         xtra_info: ["Top40 & Pop Music", "Espa\u00F1ol",128,true,"#140000"]
