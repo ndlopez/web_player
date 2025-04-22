@@ -19,7 +19,7 @@
         width: 40px;
         height: 40px;
     }
-    #cover_title span{
+    #cover_title{
         color:var(--lemon);
         position: absolute;
         bottom: 15px;

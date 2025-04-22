@@ -121,10 +121,6 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
 .colImg img, .col15 img, .imgCol{
   border-radius: 5px;
 }
-.linear_bkg {
-  background: linear-gradient(rgba(0,0,0,0)30%,rgba(0,0,0,0.8));
-  /*mask-image: linear-gradient(to top, transparent 0%, rgb(0, 0, 0) 100px);*/
-}
 
 #dark_bkg{
   background:rgba(0,0,0,0.75);

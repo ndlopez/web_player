@@ -30,6 +30,10 @@ a{
 .smoke-bkg{
     background-color: var(--dark-smoke);
 }
+.linear_bkg {
+    background: linear-gradient(rgba(0,0,0,0)30%,rgba(0,0,0,0.8));
+    /*mask-image: linear-gradient(to top, transparent 0%, rgb(0, 0, 0) 100px);*/
+}
 .round-border{border-radius: 10px;}
 .small{font-size: small;}
 .padding_10{padding: 10px;}
