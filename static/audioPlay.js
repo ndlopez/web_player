@@ -6,7 +6,7 @@ Must refer to these code-sources:
  https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
  https://alvarotrigo.com/blog/hamburger-menu-css/
 */
-const stream_url = "https://cloudstream2030.conectarhosting.com/8042/stream";
+const stream_url = "https://stream.consultoradas.com/8354/stream";
 let audioConnect; //= new Audio();
 let tina_timer;
 

@@ -23,7 +23,7 @@
 */
 
 const old_URL = "https://stream.consultoradas.com/cp/get_info.php?p=8042";
-const thisURL = "https://cloudstream2030.conectarhosting.com/cp/get_info.php?p=8042";
+const thisURL = "https://stream.consultoradas.com/cp/get_info.php?p=8354";
 
 //const these_days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 //const animElem = '<div id="gifElm" class="equalizer no-audio"><div><span></span><span></span><span></span><span></span><span></span><span></span></div></div>';
@@ -225,7 +225,7 @@ setInterval(async function makePlayList(){
         gotArtist = ["Sorry, artwork not found in DB",""];
     }
     const divColImg = document.createElement("div");
-    divColImg.setAttribute("class","colImg float_left");
+    divColImg.setAttribute("class","imgCol float_left");
     /*divColImg.style.backgroundImage = "url('"+ gotArtwork + "')";
     divColImg.style.backgroundSize = "75px";
     divColImg.style.backgroundRepeat = "no-repeat";*/
