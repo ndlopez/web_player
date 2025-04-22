@@ -19,6 +19,22 @@
         width: 40px;
         height: 40px;
     }
-    #cover_title{width:70%;}
-    .player2{width: 30%;}
+    #cover_title span{
+        color:var(--lemon);
+        position: absolute;
+        bottom: 15px;
+    }
+    #cover_title span:nth-child(1){
+        font-size: large;
+        font-weight:900;
+    }
+    #cover_title span:nth-child(2){
+        font-size: medium;
+    }
+    .player2{
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        padding: 0px 10px;
+    }
 }

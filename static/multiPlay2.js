@@ -28,7 +28,7 @@ function display_all_stations(){
     const mainDiv = document.getElementById("amia");
     const tabl = document.createElement("table");
     const rowth = document.createElement("tr");
-    rowth.innerHTML = "<th></th><th>Artist/Title</th><!--th>Artist</th--><th></th><th>Played</th>";
+    rowth.innerHTML = "<th><br>Playlist<br></th><th></th><th></th><th></th>";
     tabl.appendChild(rowth);
 
     for(let kdx = 0; kdx < stations.length; kdx++){
@@ -306,10 +306,12 @@ async function display_data(kdx){
     reload_id3.setAttribute("onclick","display_data(" + kdx + ")");
     reload_id3.innerHTML = reloadImg;
     //"<img src='assets/loading.svg' width='36'></>";
-
-    cover_art.innerHTML = "<img src='" + newArt + "' width='120' height='120'/>" + auxText;
+    const player2_div = document.getElementById("player2")
+    player2_div.style.backgroundImage= `url('${newArt}')`;
+    // cover_art.innerHTML = "<!--img src='" + newArt + "' width='120' height='120'/-->" + auxText;
     // cover_art.style.backgroundImage = newArt;
-    // cover_art.style.backgroundRepeat = "no-repeat";
+    player2_div.style.backgroundRepeat = "no-repeat";
+    player2_div.style.backgroundSize = "cover";
     //stations[kdx].logo
     
     document.getElementById("cover_title").innerHTML = `<span class="oneLine">${gotSong}</span><span class="oneLine">${got_title}</span>`;
