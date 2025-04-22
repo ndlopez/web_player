@@ -211,7 +211,7 @@ setInterval(async function makePlayList(){
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","row");
     const divText = document.createElement("div");
-    divText.setAttribute("class","colArtist float_left");
+    divText.setAttribute("class","col_artist float_left");
     //last prev index of myList array, last will be -1
     const lena = Object.keys(myList)[Object.keys(myList).length - 2];
     let gotArtist = myList[lena].song.split("-");

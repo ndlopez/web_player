@@ -105,9 +105,13 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
 .col_23{width:23.5%;}
 .col80{width:80%;}
 /*img{filter: opacity(30%);}*/
-.col_artist{background-color: var(--dark-smoke);}
+.col_artist{
+  /*background-color: var(--dark-smoke);*/
+  width: 65%;
+}
+
 .colArtist{
-  /*width: 65%;5px 10px*/
+  /*5px 10px*/
   padding: 0px;}
 .colImg{
   width: 100%;/*20%*/
