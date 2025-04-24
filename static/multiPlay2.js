@@ -21,6 +21,8 @@ let img_size = 40;
 let audioConnect = new Audio();
 let isPlaying = 0;
 let tina_timer;
+let myReg = RegExp("[(][^)]*[)]"); //find parentheses
+const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 
 init_this();
 
@@ -245,6 +247,7 @@ async function update_stations(){
 
         if(isPlaying == kdx){
             this_artist.parentElement.style.backgroundImage= `url('${this_artwork}')`;
+            // this_artist.parentElement.style.backgroundImage= `url('${stations[kdx].logo}')`;
             this_artist.parentElement.style.backgroundRepeat = "no-repeat";
             this_artist.parentElement.style.backgroundSize = "contain";
             this_artwork = "assets/bars.svg";
@@ -270,7 +273,6 @@ async function update_stations(){
 async function display_data(kdx){
     await update_stations();
 
-    // coverDiv.innerHTML = build_case(gotData.nowPlaying.artist,gotData.nowPlaying.song,gotData.album,this_artwork);
     // document.getElementById("cover_title").classList.remove("moving-text");
     const got_row = document.getElementById("station_"+kdx);
     const got_artwork = document.getElementById("imgDiv_"+kdx);
@@ -286,7 +288,6 @@ async function display_data(kdx){
     // got_artwork[0].firstChild.src;
     // console.log("newArt",newArt.substring(newArt.length-3));
     if(auxArr[1].substring(newArt.length - 3) === "svg"){
-        //console.log("is it cd_case?");
         newArt = stations[kdx].logo;
     }
     newArt = auxArr[1];
@@ -306,20 +307,11 @@ async function display_data(kdx){
     reload_id3.setAttribute("onclick","display_data(" + kdx + ")");
     reload_id3.innerHTML = reloadImg;
     //"<img src='assets/loading.svg' width='36'></>";
-    const player2_div = document.getElementById("player2")
-    player2_div.style.backgroundImage= `url('${newArt}')`;
-    // cover_art.innerHTML = "<!--img src='" + newArt + "' width='120' height='120'/-->" + auxText;
-    // cover_art.style.backgroundImage = newArt;
-    /*player2_div.style.backgroundRepeat = "no-repeat";
-    player2_div.style.backgroundSize = "cover";*/
-    //stations[kdx].logo
-    
-    document.getElementById("cover_title").innerHTML = `<span class="oneLine">${gotSong}</span><span class="oneLine">${got_title}</span>`;
+    document.getElementById("player2").style.backgroundImage= `url('${newArt}')`;
+        
+    document.getElementById("cover_title").innerHTML = `<span class="oneLine headLabel">${gotSong}</span><span class="oneLine">${got_title}</span><span>${got_row.getAttribute("data-album")}</span>`;
     // "<span>Now Playing</span><span>" + stations[kdx].name + "</span>";
 }
-
-let myReg = RegExp("[(][^)]*[)]");//find parentheses
-const errTitle = ["Radio Online","Music Promo60","Music Promo30","Listen.FM"];
 
 async function get_id3(kdx){
     const response = await fetch(stations[kdx].id3_info);
