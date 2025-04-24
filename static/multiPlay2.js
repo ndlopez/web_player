@@ -248,9 +248,9 @@ async function update_stations(){
             this_artist.parentElement.style.backgroundRepeat = "no-repeat";
             this_artist.parentElement.style.backgroundSize = "contain";
             this_artwork = "assets/bars.svg";
-            zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+ img_size + "'/></div>";
+            //zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+ img_size + "'/></div>";
         }else{
-            zoey="";this_artwork=gotData.artwork;
+            zoey="";this_artwork = gotData.artwork;
             this_artist.parentElement.style.backgroundImage = "";
         }
 
@@ -310,8 +310,8 @@ async function display_data(kdx){
     player2_div.style.backgroundImage= `url('${newArt}')`;
     // cover_art.innerHTML = "<!--img src='" + newArt + "' width='120' height='120'/-->" + auxText;
     // cover_art.style.backgroundImage = newArt;
-    player2_div.style.backgroundRepeat = "no-repeat";
-    player2_div.style.backgroundSize = "cover";
+    /*player2_div.style.backgroundRepeat = "no-repeat";
+    player2_div.style.backgroundSize = "cover";*/
     //stations[kdx].logo
     
     document.getElementById("cover_title").innerHTML = `<span class="oneLine">${gotSong}</span><span class="oneLine">${got_title}</span>`;

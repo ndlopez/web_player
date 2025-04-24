@@ -21,7 +21,12 @@ main{
   /*padding: 5px 0px;*/
 }
 #player{height: 48px;}
-#player2{height: 30vh;/*64px;*/}
+#player2{
+  height: 30vh;/*64px;*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y:center;
+}
 
 /*vol_input
 .volume-vertical{

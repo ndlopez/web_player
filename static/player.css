@@ -1,6 +1,6 @@
 /*Player2 CSS*/
 .player2{
-    gap: .375rem;
+    gap: .75rem;
     display:flex;
     justify-content:center;
     align-items: center;
@@ -20,9 +20,14 @@
         height: 40px;
     }
     #cover_title{
-        color:var(--lemon);
+        color:whitesmoke;
         position: absolute;
-        bottom: 15px;
+        bottom: 0px;
+        width: 100vw;
+        background-color: rgba(0,0,0,0.4); /*rgba(255, 255, 255, 0.2)*/;
+        /*box-shadow: 0 4px 30px rgba(0,0,0,0.1);*/
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
     }
     #cover_title span:nth-child(1){
         font-size: large;
@@ -33,7 +38,7 @@
     }
     .player2{
         position: absolute;
-        bottom: 0px;
+        bottom: -30px;
         right: 0px;
         padding: 0px 10px;
     }
