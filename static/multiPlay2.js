@@ -234,7 +234,7 @@ async function update_stations(){
         
         if(gotData.artwork === ""){
             console.log("Error: No artwork found",kdx,gotData.artwork);
-            this_artwork = "assets/favicon_180.svg";
+            this_artwork = "assets/cd_case.svg";
         }
         // auxLink = this_artwork;
         if(kdx < 3){//LaPaz.fm, gotData={{artist,song,artwork},album,artwork}
@@ -273,7 +273,6 @@ async function update_stations(){
 async function display_data(kdx){
     await update_stations();
 
-    // document.getElementById("cover_title").classList.remove("moving-text");
     const got_row = document.getElementById("station_"+kdx);
     const got_artwork = document.getElementById("imgDiv_"+kdx);
     // got_row.getElementsByClassName("colImg");
@@ -309,7 +308,7 @@ async function display_data(kdx){
     //"<img src='assets/loading.svg' width='36'></>";
     document.getElementById("player2").style.backgroundImage= `url('${newArt}')`;
         
-    document.getElementById("cover_title").innerHTML = `<span class="oneLine headLabel">${gotSong}</span><span class="oneLine">${got_title}</span><span>${got_row.getAttribute("data-album")}</span>`;
+    document.getElementById("cover_title").innerHTML = `<span class="oneLine">${gotSong}</span><span class="oneLine">${got_title}</span><span class="oneLine">${got_row.getAttribute("data-album")}</span>`;
     // "<span>Now Playing</span><span>" + stations[kdx].name + "</span>";
 }
 

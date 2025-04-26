@@ -41,7 +41,7 @@ const stations = [
         xtra_info: ["Alternative-Rock","English",128,true,"#51738f"]
     },{
         name: "Aceradio",
-        logo: "assets/phantogram.jpg",
+        logo: "assets/CD_icon.svg",
         stream_url: "https://bigrradio.cdnstream1.com/5116_128",
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5116_128&https=&f=ice&c=617202",
         description: "Listen to the new Alternative-Rock hits",
