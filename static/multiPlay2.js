@@ -44,7 +44,6 @@ function display_all_stations(){
         "<td id='artistDiv_" + kdx + "'>" + stations[kdx].name + 
         "</td><td id='titleCol_"+kdx+"'>" + stations[kdx].xtra_info[0] + 
         "</td><td id='timer_" + kdx + "'>00:00</td>";
-        //><span
         tabl.appendChild(rowTr);
     }
     mainDiv.appendChild(tabl);
@@ -52,7 +51,6 @@ function display_all_stations(){
 
 function init_this(){
     display_all_stations();
-    //build_case("Phantogram","You don't get me high anymore","","");
     /*for (let kdx = 0; kdx < stations.length; kdx++) { display_data(kdx); }*/
     update_stations();
 }
@@ -72,7 +70,6 @@ function init_player(stream_kdx){
 
     document.title = stations[stream_kdx].name;
 }
-// audioConnect = new Audio();
 
 function playStop(kdx){
     const svgPlay = document.getElementById("play2");
@@ -83,8 +80,8 @@ function playStop(kdx){
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
     
-    var get_sub_timer = "";
-    var mmss = "";
+    let get_sub_timer = "";
+    let mmss = "";
     for(let jdx=0;jdx < stations.length; jdx++){
         /* this loops disables/enables background and text-color */
         const get_row = document.getElementById("station_"+jdx);
@@ -137,7 +134,7 @@ function stopPlay(){/* param: kdx=0 */
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
     svgPlay.innerHTML = circleImg + playImg;
-    
+    document.getElementById("imgDiv_"+isPlaying).classList.remove("beating_play");
     stop_timer();//kdx
 }
 
@@ -250,15 +247,24 @@ async function update_stations(){
             // this_artist.parentElement.style.backgroundImage= `url('${stations[kdx].logo}')`;
             this_artist.parentElement.style.backgroundRepeat = "no-repeat";
             this_artist.parentElement.style.backgroundSize = "contain";
-            this_artwork = "assets/bars.svg";
+            auxLink = "beating_play";
+            this_artwork = "assets/favicon.svg"; // "assets/bars.svg";
             //zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+ img_size + "'/></div>";
         }else{
+            auxLink="stop_beating";
             zoey="";this_artwork = gotData.artwork;
             this_artist.parentElement.style.backgroundImage = "";
         }
 
         const this_img = document.getElementById("imgDiv_"+kdx);
+        /*this_img.style.backgroundImage = 'url("assets/favicon.svg")';
+        this_img.style.backgroundRepeat = "no-repeat";
+        this_img.style.backgroundSize = "contain";*/
         this_img.innerHTML = "<img src='" + this_artwork + "' width='"+ img_size + "' height='" + img_size + "'/>";
+        this_img.classList.add(auxLink);
+        if (auxLink == "beating_play"){
+            this_img.classList.remove("stop_beating");
+        }else{this_img.classList.remove("beating_play");}
 
         const this_row = document.getElementById("station_"+kdx);
         this_row.setAttribute("data-album",gotData.album);
@@ -334,7 +340,7 @@ async function get_id3(kdx){
 }
 
 async function get_artwork(jdx){
-    let album = "", artwork = stations[jdx].logo; //"assets/cd_case.svg";
+    let album = "", artwork = stations[jdx].logo;
     /*Fetch artwork from another source, must get first id3 */
     const nowPlaying = await get_id3(jdx); // {artist,song,artwork}
 
@@ -405,10 +411,10 @@ function display_info(){
     for (let kdx = 0; kdx < stations.length; kdx++) {
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class","padding_10");
-        var texty = "<details><summary>"+stations[kdx].name+"&emsp;<a onclick='init_player(" + 
+        let texty = "<details><summary>"+stations[kdx].name+"&emsp;<a onclick='init_player(" + 
         kdx + ")' title='click me'><img src='"+stations[kdx].logo+"' width='128'/>" + 
         "</a></summary><p>" + stations[kdx].description + "</p>";
-        var zoey_html = "<div>";
+        let zoey_html = "<div>";
         for (let jdx = 0; jdx < info_keys.length; jdx++) {
             zoey_html += "<div class='half_col float_left'><h4>"+info_keys[jdx]+"</h4><p>"+stations[kdx].xtra_info[jdx]+"</p></div>";
         }
@@ -423,8 +429,8 @@ function startPlay(kdx=0){
     //const float_btn = document.getElementById("play_btn")
     const gifImg = document.getElementById("gifElm");
     // const getTimer = document.getElementById("timer");
-    var mmss = "";
-    var get_sub_timer = "";
+    let mmss = "";
+    let get_sub_timer = "";
     for(let jdx=0;jdx < stations.length; jdx++){
         /* this loops disables/enables background and text-color */
         const get_row = document.getElementById("station_"+jdx);
