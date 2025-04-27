@@ -3,9 +3,9 @@ main{
   top: /*70px*/30vh;
 }
 
-.dashed-border{
+/*.dashed-border{
   border: 1px dashed var(--darkish-sky);
-}
+}*/
 
 /* Bottom menu and player*/
 #currSong, #vol_input, .closeBtn, #list-icon, #listIcon{display: none;}

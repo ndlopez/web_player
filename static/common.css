@@ -11,11 +11,12 @@
     --navy: #03314B;
     --orange: #f46b45;
     --mikan: #eea849;
-    --backish-blue: #0b1320;
+    --blackish-blue: #0b1320;
     --magenta: #d33682;
     --cyan:#2aa198;
     --lime: #859900;
     --light-yellow: #eee8d5;
+    --black-transparent:rgba(0,0,0,0.4);
 }
 body{
     font-family: Helvetica Neue, sans-serif;
@@ -28,7 +29,7 @@ a{
     color: var(--light-sky);
 }
 .smoke-bkg{
-    background-color: var(--dark-smoke);
+    background-color: var(--black-transparent); /*var(--dark-smoke);*/
 }
 .linear_bkg {
     background: linear-gradient(rgba(0,0,0,0)30%,rgba(0,0,0,0.8));
@@ -268,6 +269,15 @@ span{
 }
 #music{padding-top: 50px;}
 
+.beating_play{
+    animation: beating 1.5s cubic-bezier(0,0,.2,1) infinite;
+}
+/*.beating_play img{
+    margin-left: 5px;
+}*/
+.stop_beating{
+    animation: none !important;
+}
 /*Equalizer elem animation*/
 @keyframes load{
     0% {
@@ -286,7 +296,21 @@ span{
       background: var(--light-sky);
     }
   }
-  @keyframes marque{
+@keyframes marque{
     0%{transform: translateX(100%);}
     100%{transform: translateX(-100%);}
+}
+@keyframes beating{
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    75%{
+        transform: scale(1.25);
+        opacity: 0.25;
+    }
+    100%{
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
