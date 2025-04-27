@@ -201,7 +201,7 @@ const stations = [
     },{
         name: "Correo del Sur",
         logo: "assets/correodelsur.jpg",
-        stream_url: "https://whsh4u-panel.com/proxy/gddupgij?mp=/stream",
+        stream_url: "https://whsh4u-panel.com:28323/proxy/pgijgarc?mp=/stream",
         id3_info: "",
         description: "Noticias de Sucre, Bolivia y el mundo.",
         site: "https://correodelsur.com/",
