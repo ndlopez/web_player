@@ -14,8 +14,8 @@
     }
     .contain img{
         border-radius:10px;
-        width: 100%;
-        height: 100%;
+        width: 80vw;
+        height: auto;
         padding: 0;
         margin: 0;
     }

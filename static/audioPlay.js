@@ -1,8 +1,8 @@
 /*
-Code to play an audio stream with basic functions: play/pause/stop 
-handled by either click or keyboard events.
-Also control volume and animations.
-Must refer to these code-sources:
+ Code to play an audio stream with basic functions: play/pause/stop 
+ handled by either click or keyboard events.
+ Also control volume and animations.
+ Must refer to these code-sources:
  https://codes4education.com/create-custom-music-player-ui-design-in-html-css/
  https://alvarotrigo.com/blog/hamburger-menu-css/
 */
