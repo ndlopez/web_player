@@ -293,9 +293,8 @@ async function display_data(){
     const myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
     //let gina = hh + ":" + mm + ":" + ss;
-    const h2Time = "<div><h2 class='lighter col_half float_left'><small>&#8986; "+ gina +
-    "</small></h2><button class='col_half float_left' title='reload id3-tag' onclick='reloadMe()'>" + 
-    "<img src='assets/reload-svgrepo.svg' width='32'/></button></div>";
+    const h2Time = "<div><h2 class='lighter'><small>&#8986; "+ gina +
+    "</small></h2></div>";
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
