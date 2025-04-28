@@ -74,7 +74,18 @@ a{
     float: left;
     white-space: nowrap;
 }
-
+.flexy{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.lexy{
+    gap:2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .centered{
     display: grid;
     place-items: center;

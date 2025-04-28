@@ -210,11 +210,6 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
   flex-shrink: 0;
   margin-right: 8px;
 }
-.flexy{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .center{text-align: center;}
 .cardTitle{margin-right: 10px;}
