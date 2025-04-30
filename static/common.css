@@ -104,7 +104,7 @@ kbd {
 }
 .bottom-10px{margin-bottom: 10px;}
 
-#player2 #gifElm{margin-top: 10px;}
+#gifElm{margin-top: 10px;}
 #player img{padding-top: 5px;}
 /*Playlist elements*/
 .row:after{
@@ -142,7 +142,7 @@ span{
     height: 300px;
     width: 50%;
 }
-#play{ margin-top: -12px;}
+/*#play{ margin-top: -12px;}*/
 .play_on path{
     fill: var(--light-sky);
     stroke: var(--light-sky);
@@ -196,7 +196,7 @@ span{
 *{box-sizing: border-box;}
 /*Equalizer elem anim*/
 .equalizer {
-    width: 80px;
+    width: 60px; /*prev80px*/
     height: 35px;
     overflow: hidden;
     position: absolute;

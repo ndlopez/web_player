@@ -45,9 +45,7 @@ function display_all_stations(){
     const mainDiv = document.createElement("div");
     mainDiv.setAttribute("class","outer_div");
     
-    for(let kdx = 0; kdx < (stations.length -1); kdx++){
-        /* here should consider replacing Fides by Mundial
-        based on local time */
+    for(let kdx = 0; kdx < stations.length; kdx++){
         const rowDiv = document.createElement("div");
         rowDiv.setAttribute("class","row round-border bottom-10px card");
         rowDiv.setAttribute("id","station_"+kdx);
@@ -136,7 +134,7 @@ function playStop(kdx){
     svgPlay.removeEventListener("click",playStop); 
     /*function(){console.log("passing index",kdx); stopPlay(kdx);});*/
     let getTimer = "", mmss = "";
-    for (let jdx = 0; jdx < stations.length -1; jdx++) {
+    for (let jdx = 0; jdx < stations.length; jdx++) {
         getTimer = document.getElementById("timer_"+jdx);
         // console.log("timer",jdx,getTimer.innerText);
         if (kdx == jdx){
@@ -314,7 +312,7 @@ function sleepy(){
 async function update_stations(){
     let gotData = "", auxLink = "";
 
-    for(let kdx = 0; kdx < (stations.length -1); kdx++){
+    for(let kdx = 0; kdx < stations.length; kdx++){
         gotData = {
             artist: stations[kdx].xtra_info[0],song: stations[kdx].name};
         /*nowPlaying:{artist: stations[kdx].description, song:stations[kdx].name},
