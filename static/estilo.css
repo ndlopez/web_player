@@ -108,6 +108,7 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
 .col_artist{
   /*background-color: var(--dark-smoke);*/
   width: 65%;
+  padding: 10px;
 }
 
 .colArtist{
@@ -153,6 +154,7 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
 }
 #coverCD img{
   border-radius: 50%;
+  border: 5px var(--light-sky) solid;
 }
 
 /*Player controls*/
