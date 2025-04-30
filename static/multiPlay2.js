@@ -248,12 +248,14 @@ async function update_stations(){
         
         // this_img.classList.add(auxLink);
         if (auxLink == "beating_play"){
-            //this_img.classList.remove("stop_beating");
-            this_img.innerHTML = `<img src='${this_artwork}' width="${img_size}" height="${img_size}"/><!--div class="${auxLink} above_img"--><img class="${auxLink} above_img" src='${this_artwork}' width="${img_size}" height="${img_size}"/>`;
+            this_img.classList.add(auxLink);
+            this_img.classList.remove("stop_beating");
+            this_img.innerHTML = `<img src='${this_artwork}' width="${img_size}" height="${img_size}"/><!--div class="${auxLink} above_img"><img class="${auxLink} above_img" src='${this_artwork}' width="${img_size}" height="${img_size}"/-->`;
         }else{
-            //this_img.classList.remove("beating_play");
-            // this_img.innerHTML = "<div class=''><img src='" + this_artwork + "' width='"+ img_size + "' height='" + img_size + "'/>";
-            this_img.innerHTML = `<div class="${auxLink}"><img src='${this_artwork}' width="${img_size}" height="${img_size}"/>`;
+            this_img.classList.remove("beating_play");
+            this_img.classList.add("stop_beating");
+            this_img.innerHTML = "<img src='" + this_artwork + "' width='"+ img_size + "' height='" + img_size + "'/>";
+            // this_img.innerHTML = `<div class="${auxLink}"><img src='${this_artwork}' width="${img_size}" height="${img_size}"/>`;
         }
 
         const this_row = document.getElementById("station_"+kdx);
