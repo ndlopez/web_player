@@ -289,6 +289,16 @@ span{
 .stop_beating{
     animation: none !important;
 }
+.svg_contain{
+    position: relative;
+    text-align: center;
+}
+.above_svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 /*Equalizer elem animation*/
 @keyframes load{
     0% {

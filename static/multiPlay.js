@@ -416,7 +416,8 @@ async function display_data(kdx){
     let auxText = "";
     const reloadMe = document.getElementById("reload_this");//"update_stations()"
     reloadMe.setAttribute("onclick","display_data(" + kdx + ")");
-    reloadMe.innerHTML = reloadImg;
+    
+    // reloadMe.innerHTML = /*reloadImg*/"<img src='assets/tail_spin_185s.svg'/><div class='above_svg' id='id3_timer'>03:04</div>";
     const cover_art = document.getElementById("cover_art");
     // cover_art.setAttribute("onclick","display_data(" + kdx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;
