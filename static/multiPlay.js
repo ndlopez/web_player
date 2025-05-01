@@ -162,7 +162,7 @@ function playStop(kdx){
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),kdx); 
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
-        svgPlay.innerHTML = circleImg + stopImg;
+        svgPlay.innerHTML = /*circleImg +*/ stopImg;
         gifImg.classList.remove("no-audio");
     }else{
         audioConnect.pause();
@@ -170,7 +170,7 @@ function playStop(kdx){
         gifImg.classList.add("no-audio");
         svgPlay.classList.remove("play_on");
         svgPlay.classList.add("paused");
-        svgPlay.innerHTML = circleImg + playImg;
+        svgPlay.innerHTML = /*circleImg +*/ playImg;
         stop_timer();
     }
 }
@@ -190,7 +190,7 @@ function stopPlay(){/* param: kdx=0 */
     // clearInterval(tina_timer);
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
-    svgPlay.innerHTML = circleImg + playImg;
+    svgPlay.innerHTML = /*circleImg +*/ playImg;
     
     stop_timer();
     if (slept){ 
@@ -417,7 +417,7 @@ async function display_data(kdx){
     const reloadMe = document.getElementById("reload_this");//"update_stations()"
     reloadMe.setAttribute("onclick","display_data(" + kdx + ")");
     
-    // reloadMe.innerHTML = /*reloadImg*/"<img src='assets/tail_spin_185s.svg'/><div class='above_svg' id='id3_timer'>03:04</div>";
+    reloadMe.innerHTML = reloadImg + "<div class='above_svg' id='id3_timer'>03:04</div>";
     const cover_art = document.getElementById("cover_art");
     // cover_art.setAttribute("onclick","display_data(" + kdx + ")");
     // auxText = `<div class='above_img'> ${reloadImg} </div>`;

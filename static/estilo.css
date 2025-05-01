@@ -127,7 +127,10 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
   background:rgba(0,0,0,0.75);
   height: 100vh;
 }
-
+#play2, #playBtn{
+  border:4px var(--lemon) solid;
+  border-radius: 50%;
+}
 .bold_medium{
   font-size: medium;
   font-weight: bold;
@@ -277,9 +280,9 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
     display: block;
   }
   .col_23{width: 50%;}
+  
   #listIcon, #toggle-list, #playBtn{
-    display: block;
-    
+    display: block;  
   }
   
   #list-icon{
