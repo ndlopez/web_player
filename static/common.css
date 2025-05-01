@@ -295,9 +295,9 @@ span{
 }
 .above_svg{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    bottom: 5%;
+    /*left: 50%;
+    transform: translate(-50%,-50%);*/
 }
 /*Equalizer elem animation*/
 @keyframes load{

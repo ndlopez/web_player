@@ -1,6 +1,4 @@
-/*
-
-*/
+/* Player2 engine*/
 
 let img_size = 40;
 let audioConnect = new Audio();
@@ -15,7 +13,7 @@ function display_all_stations(){
     const mainDiv = document.getElementById("amia");
     const tabl = document.createElement("table");
     const rowth = document.createElement("tr");
-    rowth.innerHTML = "<th><br>Playlist<br></th><th></th><th></th><th></th>";
+    rowth.innerHTML = "<th><br>&emsp;Playlist</th><th></th><th></th><th></th>";
     tabl.appendChild(rowth);
 
     for(let kdx = 0; kdx < stations.length; kdx++){
@@ -25,7 +23,7 @@ function display_all_stations(){
         rowTr.setAttribute("onclick","init_player("+kdx+")");
         
         rowTr.innerHTML = "<td id='imgDiv_"+ kdx + "'><img src='" + 
-        stations[kdx].logo + "' width='" + img_size + "' height='" + img_size + "'/></td>" + 
+        stations[kdx].logo + "' width='" + img_size + "' height='" + img_size + "' style='border-radius:50%;'/></td>" + 
         "<td id='artistDiv_" + kdx + "'>" + stations[kdx].name + 
         "</td><td id='titleCol_"+kdx+"'>" + stations[kdx].xtra_info[0] + 
         "</td><td id='timer_" + kdx + "'>00:00</td>";
@@ -232,11 +230,11 @@ async function update_stations(){
             // this_artist.parentElement.style.backgroundImage= `url('${stations[kdx].logo}')`;
             this_artist.parentElement.style.backgroundRepeat = "no-repeat";
             this_artist.parentElement.style.backgroundSize = "contain";
-            auxLink = "beating_play";
+            auxLink = "loader";
             this_artwork = "assets/favicon.svg"; // "assets/bars.svg";
             //zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+ img_size + "'/></div>";
         }else{
-            auxLink="stop_beating";
+            auxLink="stop_loader";
             zoey="";this_artwork = gotData.artwork;
             this_artist.parentElement.style.backgroundImage = "";
         }
@@ -247,13 +245,13 @@ async function update_stations(){
         this_img.style.backgroundSize = "contain";*/
         
         // this_img.classList.add(auxLink);
-        if (auxLink == "beating_play"){
-            this_img.classList.add(auxLink);
-            this_img.classList.remove("stop_beating");
-            this_img.innerHTML = `<img src='${this_artwork}' width="${img_size}" height="${img_size}"/><!--div class="${auxLink} above_img"><img class="${auxLink} above_img" src='${this_artwork}' width="${img_size}" height="${img_size}"/-->`;
+        if (auxLink == "loader"){
+            //this_img.classList.add(auxLink);
+            //this_img.classList.remove("stop_loader");
+            this_img.innerHTML = `<!--img src='${this_artwork}' width="${img_size}" height="${img_size}"/--><div class="${auxLink}"><!--img src='${this_artwork}' width="${img_size}" height="${img_size}"/--></div>`;
         }else{
-            this_img.classList.remove("beating_play");
-            this_img.classList.add("stop_beating");
+            //this_img.classList.remove("loader");
+            //this_img.classList.add("stop_loader");
             this_img.innerHTML = "<img src='" + this_artwork + "' width='"+ img_size + "' height='" + img_size + "'/>";
             // this_img.innerHTML = `<div class="${auxLink}"><img src='${this_artwork}' width="${img_size}" height="${img_size}"/>`;
         }
