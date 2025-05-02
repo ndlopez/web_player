@@ -12,8 +12,13 @@ init_this();
 function display_all_stations(){
     const mainDiv = document.getElementById("amia");
     const tabl = document.createElement("table");
+    const tabl_title = document.createElement("caption");
+    tabl_title.setAttribute("class","padding_10");
+    tabl_title.innerHTML = "PLAYLIST";
+    tabl.appendChild(tabl_title);
     const rowth = document.createElement("tr");
-    rowth.innerHTML = "<th><br>&emsp;Playlist</th><th></th><th></th><th></th>";
+    rowth.innerHTML = "<th></th><th></th><th></th><th></th>";
+
     tabl.appendChild(rowth);
 
     for(let kdx = 0; kdx < stations.length; kdx++){
@@ -34,7 +39,6 @@ function display_all_stations(){
 
 function init_this(){
     display_all_stations();
-    /*for (let kdx = 0; kdx < stations.length; kdx++) { display_data(kdx); }*/
     update_stations();
 }
 //window.addEventListener("load",startPlay);//for autoplay
@@ -56,12 +60,10 @@ function init_player(stream_kdx){
 
 function playStop(kdx){
     const svgPlay = document.getElementById("play2");
-    svgPlay.addEventListener("click",stopPlay); /*function(){
-        console.log("passing index",kdx); stopPlay(kdx);});*/
+    svgPlay.addEventListener("click",stopPlay); 
     // const float_btn = document.getElementById("play_btn");
     // float_btn.addEventListener("click",stopPlay);
     const gifImg = document.getElementById("gifElm");
-    // const getTimer = document.getElementById("timer");
     
     let get_sub_timer = "";
     let mmss = "";
@@ -86,7 +88,8 @@ function playStop(kdx){
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;
         // mmss = getTimer.innerText; // mm:ss   //mmss = get_sub_timer.innerText; // mm:ss
-        play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),kdx); //counter starts or restarts
+        //counter starts or restarts
+        play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),kdx); 
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
         svgPlay.innerHTML = circleImg + pauseImg;
@@ -101,7 +104,7 @@ function playStop(kdx){
         svgPlay.classList.add("paused");
         svgPlay.innerHTML = circleImg + playImg;
 
-        stop_timer();//kdx
+        stop_timer();
     }
 }
 
@@ -109,7 +112,6 @@ function stopPlay(){/* param: kdx=0 */
     const gifImg = document.getElementById("gifElm");
     const svgPlay = document.getElementById("play2");
     // svgPlay.addEventListener("click",function(){ playStop(kdx); });
-    // const float_btn = document.getElementById("play_btn");
     audioConnect.pause();
     audioConnect.loop = false;
     gifImg.classList.add("no-audio");
@@ -117,7 +119,7 @@ function stopPlay(){/* param: kdx=0 */
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
     svgPlay.innerHTML = circleImg + playImg;
-    document.getElementById("imgDiv_"+isPlaying).classList.remove("beating_play");
+    document.getElementById("imgDiv_"+isPlaying).firstElementChild.classList.remove("loader");
     stop_timer();//kdx
 }
 
@@ -231,11 +233,11 @@ async function update_stations(){
             this_artist.parentElement.style.backgroundRepeat = "no-repeat";
             this_artist.parentElement.style.backgroundSize = "contain";
             auxLink = "loader";
-            this_artwork = "assets/favicon.svg"; // "assets/bars.svg";
+            this_artwork = `<div class="${auxLink}"></div>`;
             //zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+ img_size + "'/></div>";
         }else{
             auxLink="stop_loader";
-            zoey="";this_artwork = gotData.artwork;
+            zoey="";this_artwork = `<img src='${gotData.artwork}' width="${img_size}" height="${img_size}"/>`;
             this_artist.parentElement.style.backgroundImage = "";
         }
 
@@ -244,17 +246,7 @@ async function update_stations(){
         this_img.style.backgroundRepeat = "no-repeat";
         this_img.style.backgroundSize = "contain";*/
         
-        // this_img.classList.add(auxLink);
-        if (auxLink == "loader"){
-            //this_img.classList.add(auxLink);
-            //this_img.classList.remove("stop_loader");
-            this_img.innerHTML = `<!--img src='${this_artwork}' width="${img_size}" height="${img_size}"/--><div class="${auxLink}"><!--img src='${this_artwork}' width="${img_size}" height="${img_size}"/--></div>`;
-        }else{
-            //this_img.classList.remove("loader");
-            //this_img.classList.add("stop_loader");
-            this_img.innerHTML = "<img src='" + this_artwork + "' width='"+ img_size + "' height='" + img_size + "'/>";
-            // this_img.innerHTML = `<div class="${auxLink}"><img src='${this_artwork}' width="${img_size}" height="${img_size}"/>`;
-        }
+        this_img.innerHTML = this_artwork;
 
         const this_row = document.getElementById("station_"+kdx);
         this_row.setAttribute("data-album",gotData.album);
@@ -296,7 +288,7 @@ async function display_data(kdx){
     let auxText = "";
     const duck = document.getElementById("duck_it");
     duck.innerHTML = `<a title='Duck it!' href='https://duckduckgo.com/?q=${got_title.trim().replace(/\s+/g,"%20").replace(/'/g,"")}+${gotSong.trim().replace(/\s+/g,"%20").replace(/'/g,"")}&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width='36'/></a>`;
-    auxText = ""; //"<div class='above_img'>" + reloadImg + "</div>";
+    auxText = "";
 
     const reload_id3 = document.getElementById("reloadMe");
     reload_id3.setAttribute("onclick","display_data(" + kdx + ")");
@@ -372,8 +364,8 @@ function zeroPad(timeElm){
 
 /* open and close Info modal */
 function openNav(){
-    const titleDiv = document.getElementById("cover_title");
-    titleDiv.setAttribute("onclick","closeNav()");
+    /*const titleDiv = document.getElementById("cover_title");
+    titleDiv.setAttribute("onclick","closeNav()");*/
     document.getElementById("amia").style.display = "none";
     document.getElementById("artwork").style.display = "block";
     document.body.style.overflow = "hidden";    
@@ -384,8 +376,8 @@ function closeNav(){
     }else{
         document.getElementById('amia').style.display = "block";
     }*/
-    const titleDiv = document.getElementById("cover_title");
-    titleDiv.setAttribute("onclick","openNav()");
+    /*const titleDiv = document.getElementById("cover_title");
+    titleDiv.setAttribute("onclick","openNav()");*/
     document.getElementById("artwork").style.display = "none";
     document.getElementById("amia").style.display = "block";
     document.body.style.overflow = "auto";
