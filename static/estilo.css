@@ -157,9 +157,14 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
 }
 #coverCD img{
   border-radius: 50%;
-  border: 5px var(--light-sky) solid;
+  border: 5px var(--black-transparent) solid;
 }
-
+.vinyl_like{
+  /*https://www.pyxofy.com/css-art-how-to-make-a-turntable/*/
+  background: repeating-radial-gradient(var(--dark-smoke),
+  var(--darkish-sky) 3px,
+  var(--darkish-sky) 3px);
+}
 /*Player controls*/
 
 .paused path{
@@ -262,10 +267,10 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
     width: 97%;
     margin-left: 1.5vw;
   }
+
   #art_title{ display: none; }
   #now_song, .no_mobil {display: none;}
-  
-  #timer,#id3_timer{font-size: medium;}
+  #timer{font-size: medium;}
 
   /*
   .bottom-10px{ margin-bottom: 0px; }
