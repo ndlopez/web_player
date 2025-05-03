@@ -36,6 +36,7 @@ a{
     /*mask-image: linear-gradient(to top, transparent 0%, rgb(0, 0, 0) 100px);*/
 }
 .round-border{border-radius: 10px;}
+.circle_border{border-radius: 50%;}
 .small{font-size: small;}
 .padding_10{padding: 10px;}
 .padding_15{padding: 15px;}
