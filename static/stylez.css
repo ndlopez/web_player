@@ -111,15 +111,15 @@ table th{text-align: left;}
 .no_desktop{display: none;}
 
 .loader {
-  border: 4px dashed var(--lemon);
+  /*border: 4px dashed var(--lemon);
   border-radius: 50%;
-  /*border-top: 4px dashed var(--wine);
+  border-top: 4px dashed var(--wine);
   border-bottom: 4px solid var(--wine);*/
 
   width: 40px;
   height: 40px;
   -webkit-animation: spin 30s linear infinite;
-  animation: spin 30s linear infinite;
+  animation: spin 1.5s linear infinite;
   background-color:transparent;
 }
 .stop_loader{
