@@ -293,33 +293,32 @@ async function display_data(){
     const myDiv = document.getElementById("nowPlaying");
     /*myDiv.style.width = "100%"; myDiv.style.height = "350px";*/
     //let gina = hh + ":" + mm + ":" + ss;
-    const h2Time = "<div><h2 class='lighter'><small>&#8986; "+ gina +
-    "</small></h2></div>";
+    
     //document.createElement("h2");
     //const hTitle = "<h1> Now Playing: " + get_sched(day,hh) + "</h1>";
     const h2Song = gotData.song.split("-");
     if (h2Song.length < 2){
         h2Song.push("No title");
     }
-    const divTitle = "<div id='now_text' class='bottomText'>" + "<h2 class='headLabel'>"+ h2Song[0].trim() +
-    "</h2><h2><small>" + h2Song[1].trim() + 
-    "</small></h2>"+ h2Time +"<div id='more_info'><div class='col3 float_left'>"+
+    const divTitle = "<div id='now_text' class='bottomText'>" + "<h2 class='headLabel'>" + 
+    h2Song[0].trim() + "</h2><h2><small>" + h2Song[1].trim() + 
+    "</small></h2><div id='more_info'><div class='col3 float_left'>" +
     "<h3 class='lighter'>Bitrate</h3><h3>" + gotData.bit + 
-    " kbps</h3></div><div class='col3 float_left'><h3 class='lighter'> Listeners</h3><h3>"+ 
-    gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>More info</h3>" + 
-    "<h3><a href='https://duckduckgo.com/?q="+ h2Song[1].trim().replace(/\s+/g,"%20")+ "+" + 
-    h2Song[0].trim().replace(/\s+/g,"%20").replace(/'/g,"") +
-    "&t=ffcm&atb=v319-1&ia=web' target='_blank'><img src='assets/duck.svg' width=32/></a>"+
-    "</h3></div>" + "<div class='no_mobil'>Press <kbd>d</kbd> key to START stream, <kbd>s</kbd> key to STOP stream</div></div></div>";
+    " kbps</h3></div><div class='col3 float_left'><h3 class='lighter'> Listeners</h3><h3>" + 
+    gotData.listen + "</h3></div><div class='col3 float_left'><h3 class='lighter'>&#8986;</h3>" + 
+    "<h3>" + gina + "</h3></div></div><div class='no_mobil'>Press <kbd>d</kbd> key to START stream, <kbd>s</kbd> key to STOP stream</div></div>";
+    
+    const duck_it = document.getElementById("duck_it");
+    let duck_link = "https://duckduckgo.com/?q="+ h2Song[1].trim().replace(/\s+/g,"%20")+ "+" + h2Song[0].trim().replace(/\s+/g,"%20").replace(/'/g,"") + "&t=ffcm&atb=v319-1&ia=web";
+    duck_it.setAttribute("href",duck_link);
+    duck_it.innerHTML = "<img src='assets/duck.svg' width=32/>";
 
-    const divImg = "<div class='bkg_cd_icon contain' id='album_art'><div class='cover'><div>" + img_art +
-    "</div></div></div>" + divTitle;
+    const divImg = "<div class='bkg_cd_icon contain' id='album_art'><div class='cover'><div>" + img_art + "</div></div></div>" + divTitle;
     //console.log("doc",divElm);//const catInfo = divImg;
     myDiv.innerHTML = divImg; /*hTitle +catInfo;*/ 
     //document.body.appendChild(myDiv);
     parentDiv.appendChild(myDiv);
 
-    // I wonder if it's necessary to display currSong a 2nd time
     const now_song = document.getElementById("now_song");
     //now_song.innerHTML = "&emsp;"+ gotData.song;
     now_song.innerHTML = h2Song[0].trim() + "<br/>"+ h2Song[1].trim();
