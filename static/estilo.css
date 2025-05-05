@@ -54,7 +54,7 @@ nav{
   padding: 0px;
   border-radius: 15px;
 }
-#player{height: 58px;}
+#player{height: 65px;}
 #player2{height: 68px;}
 
 /*vol_input
@@ -180,10 +180,13 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
 #station_info, #stationInfo{
   position: absolute;
   width: 30%;
+}
+#stationInfo{
   bottom: 68px;
 }
 #station_info{
   width: 100vw;
+  bottom: 60px;
 }
 .info_block{
   width: 100%;

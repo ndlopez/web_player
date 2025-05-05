@@ -233,7 +233,7 @@ async function update_stations(){
             this_artist.parentElement.style.backgroundRepeat = "no-repeat";
             this_artist.parentElement.style.backgroundSize = "contain";
             auxLink = "loader";
-            this_artwork = `<div class="${auxLink}"></div>`;
+            this_artwork = `<div class="${auxLink}"><img src="assets/cd-svgrepo.svg" width="${img_size}" height="${img_size}"/></div>`;
             //zoey = "<div class='above_img'><img src='assets/bars.svg' width='"+ img_size + "'/></div>";
         }else{
             auxLink="stop_loader";
