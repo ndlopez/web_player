@@ -121,13 +121,13 @@ const stations = [
         site: "https://www.heart.co.uk/",
         xtra_info:["80's Pop","English",196,false,"#d21e2a"]
     },{
-        name:"Heart Radio",
-        logo: "assets/heart90s.jpg",
-        stream_url:"https://media-ssl.musicradio.com/Heart90s",
+        name:"113.fm",
+        logo: "assets/sleepy.jpeg",
+        stream_url:"https://113fm-atunwadigital.streamguys1.com/1068",
         id3_info: "",
-        description: "the UK's biggest commercial radio brand.",
-        site: "https://www.heart.co.uk/",
-        xtra_info:["90's best","English",196,false,"#a30321"]
+        description: "Your music station for calm and relaxing mood music.  Perfect for meditation.",
+        site: "https://www.113.fm/zen",
+        xtra_info:["Meditation/New Age","English",196,false,"#a30321"]
     },{
         name: "WDR einsLive",
         logo: "assets/1live_logo.svg",
