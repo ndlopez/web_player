@@ -40,7 +40,10 @@ nav{
   border-radius: 50%;
   color:var(--backish-blue);
 }
-
+#canvas{
+  margin-top: -300px;
+  margin-left: 30px;
+}
 /* Bottom menu and player*/
 #currSong, .closeBtn, #list-icon, #listIcon{display: none;}
 #player, #player2{
