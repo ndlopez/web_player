@@ -279,9 +279,10 @@ function build_case(jdx, artist, song, album, artwork){
     const vol_icon = `<div class="flexy"><label for="vol_input" onclick="volume_mute(0)">
     <img id="vol_icon" src="assets/volume-svgrepo.svg" width="38"/></label>
     <input id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
-    const this_html = `<div class="pos_rel" id="coverCD">
+    // ??<canvas id="canvas" height="200" width="200"></canvas>
+    const this_html = `<!--div class="pos_rel" id="coverCD"--><canvas class="pos_rel" id="coverCD"  height="300" width="300">
     <a target='_blank' title='Duck it!' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div><div class="center"> <div class="cardTitle small"><h2 class="headLabel"> 
+    <img src='${artwork}' width='${art_size}'/></a><!--/div--></canvas><div class="center"> <div class="cardTitle small"><h2 class="headLabel"> 
     ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}</div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
@@ -398,6 +399,17 @@ async function display_data(kdx){
     /* append dark_bkg div to coverDiv*/
     coverDiv.innerHTML = `<div id="dark_bkg" class="pos_rel">${build_case(kdx, gotArtist, gotSong, gotData.album, this_artwork)}</div>`;//flexy class
 
+    const canvas = document.querySelector("#coverCD");
+    if (canvas.getContext){
+        const ctx = canvas.getContext('2d');
+        ctx.strokeStyle='red';
+        ctx.fillStyle='rgba(255,0,0,0.1)';
+        ctx.lineWidth=5;
+        ctx.beginPath();
+        ctx.arc(canvas.width/2,canvas.height/2,100,0,2*Math.PI);
+        ctx.stroke();
+        ctx.drawImage(this_artwork,10,10);
+    }
     /*const auxDiv = document.getElementById("dark_bkg");
     auxDiv.classList.add("pos_rel");
     auxDiv.style.background = card_bkg;

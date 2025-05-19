@@ -121,14 +121,6 @@ const stations = [
         site: "https://www.heart.co.uk/",
         xtra_info:["80's Pop","English",196,false,"#d21e2a"]
     },{
-        name:"113.fm",
-        logo: "assets/sleepy.jpeg",
-        stream_url:"https://113fm-atunwadigital.streamguys1.com/1068",
-        id3_info: "",
-        description: "Your music station for calm and relaxing mood music.  Perfect for meditation.",
-        site: "https://www.113.fm/zen",
-        xtra_info:["Meditation/New Age","English",196,false,"#a30321"]
-    },{
         name: "WDR einsLive",
         logo: "assets/1live_logo.svg",
         stream_url: "https://wdr-1live-rockhits.icecast.wdr.de/wdr/1live/rockhits/mp3/128/stream.mp3",
@@ -169,6 +161,14 @@ const stations = [
         site: "",
         xtra_info: ["Classical","English",128,true,"rgb(98,69,11)"]
     },{
+        name:"113.fm",
+        logo: "assets/sleepy.jpeg",
+        stream_url:"https://113fm-atunwadigital.streamguys1.com/1068",
+        id3_info: "",
+        description: "Your music station for calm and relaxing mood music.  Perfect for meditation.",
+        site: "https://www.113.fm/zen",
+        xtra_info:["Meditation/New Age","English",196,false,"#a30321"]
+    },{
         name: "RadiCro",
         logo: "assets/radicro_400x400.jpg",
         stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
@@ -177,11 +177,12 @@ const stations = [
         site: "Radio Cross from Kobe, Japan",
         xtra_info: ["Pop","日本語",128,false,"#073642"]
     },{
-        name: "rfi",
+        name: "Radio Francia Internacional",
         logo: "assets/rfi_logo.png",
         stream_url: "https://rfienespagnol64k.ice.infomaniak.ch/rfienespagnol-64.mp3",
-        id3_info:"Radio Francia Internacional",
+        id3_info:"",
         site:"https://www.rfi.fr/es/en-vivo",
+        description: "es una radio francesa de actualidad, difundida en espa\u00f1ol.",
         xtra_info: ["Noticias del Mundo","Espa\u00f1ol",64,false,"#a50005"]
     },{
         name: "Panamericana",
