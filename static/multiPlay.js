@@ -117,10 +117,21 @@ let duration = 900;// ~15min myAudio.duration;
 function updateBar(){
     // update a progress bar:
     // https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/buffering_seeking_time_ranges
+    // https://coderspacket.com/posts/how-to-make-a-circular-progress-bar-with-pure-html-css-and-javascript/
     audioConnect.addEventListener('timeupdate',function(){
         // console.log("Audio len",audioConnect.currentTime,updateTime);
-        document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
+        // document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
         // document.getElementById('progress-amount').style.height = ((audioConnect.currentTime / duration)*100) + "%";
+        const canvas = document.querySelector("#canvas");
+        // https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_canvas_tut_img
+        if (canvas.getContext){
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle='#b58900';
+            ctx.lineWidth=5;
+            ctx.beginPath();
+            ctx.arc(canvas.width/2,canvas.height/2,135,0,(audioConnect.currentTime/duration)*2*Math.PI);//125 mobile
+            ctx.stroke();
+        }
 
         if (audioConnect.currentTime > duration){
             // document.getElementById('progress-amount').style.width = "50%";
@@ -399,16 +410,8 @@ async function display_data(kdx){
     /* append dark_bkg div to coverDiv*/
     coverDiv.innerHTML = `<div id="dark_bkg" class="pos_rel">${build_case(kdx, gotArtist, gotSong, gotData.album, this_artwork)}</div>`;//flexy class
 
-    const canvas = document.querySelector("#canvas");
-    // https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_canvas_tut_img
-    if (canvas.getContext){
-        const ctx = canvas.getContext('2d');
-        ctx.strokeStyle='#b58900';
-        ctx.lineWidth=5;
-        ctx.beginPath();
-        ctx.arc(canvas.width/2,canvas.height/2,125,0,2*Math.PI);
-        ctx.stroke();
-    }
+    // canvas was here
+
     /*const auxDiv = document.getElementById("dark_bkg");
     auxDiv.classList.add("pos_rel");
     auxDiv.style.background = card_bkg;
