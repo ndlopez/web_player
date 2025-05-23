@@ -118,6 +118,7 @@ function updateBar(){
     // update a progress bar:
     // https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/buffering_seeking_time_ranges
     // https://coderspacket.com/posts/how-to-make-a-circular-progress-bar-with-pure-html-css-and-javascript/
+    let radius = 145;
     audioConnect.addEventListener('timeupdate',function(){
         // console.log("Audio len",audioConnect.currentTime,updateTime);
         // document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
@@ -129,7 +130,10 @@ function updateBar(){
             ctx.strokeStyle='#b58900';
             ctx.lineWidth=5;
             ctx.beginPath();
-            ctx.arc(canvas.width/2,canvas.height/2,135,0,(audioConnect.currentTime/duration)*2*Math.PI);//125 mobile
+            // 
+            if (window.innerWidth < 500){ radius = radius*window.innerWidth*0.7; }
+            ctx.arc(canvas.width/2,canvas.height/2,radius,0,(audioConnect.currentTime/duration)*2*Math.PI);
+            // ctx.arc(canvas.width/2,canvas.height/2,radius,0,2*Math.PI);
             ctx.stroke();
         }
 
@@ -293,7 +297,7 @@ function build_case(jdx, artist, song, album, artwork){
 
     const this_html = `<div class="pos_rel" id="coverCD">
     <a target='_blank' title='Duck it!' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div><canvas id="canvas" class="pos_rel" height="300" width="300"></canvas><div class="center"> <div class="cardTitle small"><h2 class="headLabel"> 
+    <img src='${artwork}' width='${art_size}'/></a></div><canvas id="canvas" height="300" width="300"></canvas><div class="center"> <div class="cardTitle small"><h2 class="headLabel"> 
     ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}</div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>

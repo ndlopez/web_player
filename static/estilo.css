@@ -41,8 +41,10 @@ nav{
   color:var(--backish-blue);
 }
 #canvas{
+  position: absolute;
   margin-top: -300px;
   margin-left: 30px;
+  transform: rotate(-90deg);
 }
 /* Bottom menu and player*/
 #currSong, .closeBtn, #list-icon, #listIcon{display: none;}
@@ -301,6 +303,9 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
     width: 28px;    
     background-color: var(--light-sky);
     border: 1px solid var(--light-sky);
+  }
+  #canvas{
+    margin-top: calc(-0.7*vw);
   }
   /*ul li:nth-child(4){text-align: center;}*/
 }
