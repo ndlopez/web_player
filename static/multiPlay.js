@@ -118,24 +118,27 @@ function updateBar(){
     // update a progress bar:
     // https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/buffering_seeking_time_ranges
     // https://coderspacket.com/posts/how-to-make-a-circular-progress-bar-with-pure-html-css-and-javascript/
-    let radius = 145;
+    let radius = 145;    
     audioConnect.addEventListener('timeupdate',function(){
-        // console.log("Audio len",audioConnect.currentTime,updateTime);
-        // document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
-        // document.getElementById('progress-amount').style.height = ((audioConnect.currentTime / duration)*100) + "%";
-        const canvas = document.querySelector("#canvas");
-        // https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_canvas_tut_img
-        if (canvas.getContext){
-            const ctx = canvas.getContext('2d');
-            ctx.strokeStyle='#b58900';
-            ctx.lineWidth=5;
-            ctx.beginPath();
-            // 
-            if (window.innerWidth < 500){ radius = radius*window.innerWidth*0.7; }
-            ctx.arc(canvas.width/2,canvas.height/2,radius,0,(audioConnect.currentTime/duration)*2*Math.PI);
-            // ctx.arc(canvas.width/2,canvas.height/2,radius,0,2*Math.PI);
-            ctx.stroke();
+
+        if (window.innerWidth < 500){ 
+            radius = radius*window.innerWidth*0.7; 
+            document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
         }
+        else {
+            const canvas = document.querySelector("#canvas");
+            if (canvas?.getContext){
+                const ctx = canvas.getContext('2d');
+                ctx.strokeStyle='#b58900';
+                ctx.lineWidth=5;
+                ctx.beginPath();
+                ctx.arc(canvas.width/2,canvas.height/2,radius,0,(audioConnect.currentTime/duration)*2*Math.PI);
+                // ctx.arc(canvas.width/2,canvas.height/2,radius,0,2*Math.PI);
+                ctx.stroke();
+            }
+        }
+        // console.log("Audio len",audioConnect.currentTime,updateTime);
+        
 
         if (audioConnect.currentTime > duration){
             // document.getElementById('progress-amount').style.width = "50%";
@@ -147,7 +150,7 @@ function updateBar(){
 function playStop(kdx){
     svgPlay.addEventListener("click",stopPlay);
     svgPlay.removeEventListener("click",playStop); 
-    /*function(){console.log("passing index",kdx); stopPlay(kdx);});*/
+    
     let getTimer = "", mmss = "";
     for (let jdx = 0; jdx < stations.length; jdx++) {
         getTimer = document.getElementById("timer_"+jdx);

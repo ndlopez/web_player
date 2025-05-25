@@ -305,7 +305,7 @@ input[type="range"]::-moz-range-track,input[type="range"]::-moz-range-progress {
     border: 1px solid var(--light-sky);
   }
   #canvas{
-    margin-top: calc(-0.7*vw);
+    margin-top: calc(0.7*100vw*-1);
   }
   /*ul li:nth-child(4){text-align: center;}*/
 }
