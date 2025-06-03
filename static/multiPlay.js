@@ -121,24 +121,22 @@ function updateBar(){
     let radius = 145;    
     audioConnect.addEventListener('timeupdate',function(){
 
-        if (window.innerWidth < 500){ 
-            radius = radius*window.innerWidth*0.7; 
-            document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
-        }
-        else {
-            const canvas = document.querySelector("#canvas");
-            if (canvas?.getContext){
-                const ctx = canvas.getContext('2d');
-                ctx.strokeStyle='#b58900';
-                ctx.lineWidth=5;
-                ctx.beginPath();
-                ctx.arc(canvas.width/2,canvas.height/2,radius,0,(audioConnect.currentTime/duration)*2*Math.PI);
-                // ctx.arc(canvas.width/2,canvas.height/2,radius,0,2*Math.PI);
-                ctx.stroke();
-            }
+        if (window.innerWidth < 500){
+            radius = parseInt(0.5*window.innerWidth*0.7); 
+            //console.log("window",window.innerWidth,radius);
+            // document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
+        }/*else { }*/
+        const canvas = document.querySelector("#canvas");
+        if (canvas?.getContext){
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle='#b58900';
+            ctx.lineWidth=5;
+            ctx.beginPath();
+            ctx.arc(canvas.width/2,canvas.height/2,radius,0,(audioConnect.currentTime/duration)*2*Math.PI);
+            // ctx.arc(canvas.width/2,canvas.height/2,radius,0,2*Math.PI);
+            ctx.stroke();
         }
         // console.log("Audio len",audioConnect.currentTime,updateTime);
-        
 
         if (audioConnect.currentTime > duration){
             // document.getElementById('progress-amount').style.width = "50%";
