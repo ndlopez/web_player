@@ -125,7 +125,7 @@ function updateBar(){
             radius = parseInt(0.5*window.innerWidth*0.7); 
             //console.log("window",window.innerWidth,radius);
             // document.getElementById('progress-amount').style.width = ((audioConnect.currentTime / duration)*100) + "%";
-        }/*else { }*/
+        }
         const canvas = document.querySelector("#canvas");
         if (canvas?.getContext){
             const ctx = canvas.getContext('2d');
@@ -297,9 +297,9 @@ function build_case(jdx, artist, song, album, artwork){
     <input id="vol_input" type="range" min="0" max="100" value="80" step="10" oninput="audioConnect.volume = this.value/100" onchange="this.oninput()"></div>`;
 
     const this_html = `<div class="pos_rel" id="coverCD">
-    <a target='_blank' title='Duck it!' href='${aux_link}'>
-    <img src='${artwork}' width='${art_size}'/></a></div><canvas id="canvas" height="300" width="300"></canvas><div class="center"> <div class="cardTitle small"><h2 class="headLabel"> 
-    ${song}</h2><h2 class='lighter'> ${artist} </h2><h2 class='lighter'>${album} </h2></div>${vol_icon}</div>`;
+    <img src='${artwork}' width='${art_size}'/>
+    </div><canvas id="canvas" height="300" width="300"></canvas><div class="center"> <div class="cardTitle small"><h2 class="headLabel">
+    ${song}</h2><h2 class='lighter'><a target='_blank' class='lighter' title='Duck it!' href='${aux_link}'>${artist}</a></h2><h2 class='lighter'>${album} </h2></div>${vol_icon}</div>`;
     /*search_link +
     <div><h3 id="timer" class="col_20 float_left lighter centered">00:00</h3>
     <h3 id="title_stat" class="col80 float_left lighter"></h3></div>*/    
