@@ -319,10 +319,9 @@ function sleepy(){
     let msg = `Streaming will end at ${String(timeNow.getHours()).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
     if(confirm(msg)){
         slept = true;
-        
-        clearInterval(updater);
         setTimeout(stopPlay,(time_limit*60*1000));//1hour=60*60*1000
-        
+        clearInterval(updater);
+        clearInterval(dayna_timer);
         run_timer(time_limit,0,"sleepy_timer");
     }else{
         console.log("Sleepy canceled");return;}
