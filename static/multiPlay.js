@@ -259,12 +259,12 @@ function play_elapsed(min=0,sec=0,jdx){//
     },1000);    
 }
 
-function run_timer(){
+function run_timer(zoey=3,cindy=4,targetObj="id3_timer"){
     // console.log("run_timer started");
-    zoey = 3, cindy = 4;
+    // zoey = 3, cindy = 4;
     dayna_timer = setInterval(()=>{
         // timer to update id3
-        document.getElementById("id3_timer").innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
+        document.getElementById(targetObj).innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
         cindy = cindy - 1;
         if ((cindy < 0) && (zoey > 0)){
             cindy=59;zoey = zoey - 1;
@@ -311,7 +311,6 @@ function sleepy(){
     const time_limit=30 //minutes
     let timeNow = new Date();
 
-    // let msg = `Streaming will end at ${String(timeNow.getHours() + 1).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
     Date.prototype.addMins = function (mini) {
         return this.setTime(this.getTime() + (mini * 60 * 1000));
     }
@@ -320,8 +319,11 @@ function sleepy(){
     let msg = `Streaming will end at ${String(timeNow.getHours()).padStart(2,'0')}:${String(timeNow.getMinutes()).padStart(2,'0')}, is that correct?`;
     if(confirm(msg)){
         slept = true;
-        setTimeout(stopPlay,(time_limit*60*1000));//1hour=60*60*1000
+        
         clearInterval(updater);
+        setTimeout(stopPlay,(time_limit*60*1000));//1hour=60*60*1000
+        
+        run_timer(time_limit,0,"sleepy_timer");
     }else{
         console.log("Sleepy canceled");return;}
 }
