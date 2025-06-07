@@ -103,15 +103,15 @@ const stations = [
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_wdr4.txt",
         description: "Wir schicken Sie und drei Ihrer engsten Freunde und Freundinnen auf Flussreise.",
         site: "https://www1.wdr.de/radio/wdr4/index.html",
-        xtra_info: ["80er", "Deutsch",128,true,"#18375C"]
+        xtra_info: ["80er", "Deutsch",128,false,"#18375C"]
     },{
-        name: "WDR 1Live",
-        logo: "assets/1live_logo.svg",
-        stream_url: "https://d111.rndfnk.com/ard/wdr/1live/live/mp3/128/stream.mp3?cid=01FBRZTS1K1TCD4KA2YZ1ND8X3&sid=2dO2O2xaoZmBXJ0PlNRg3jZxhJ1&token=eoVaiEeHkZlEhscyVdL82T91MwtZEID3cZ8kceuVBtg&tvf=nI1frZe8uhdkMTExLnJuZGZuay5jb20",
-        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
-        description: "Neue songs auf der 1Live",
-        site: "https://www1.wdr.de/radio/",
-        xtra_info: ["Sie hören: Neue songs", "Deutsch",128,true,"#18375C"]
+        name: "WDR Die Maus",
+        logo: "assets/dieMaus_256.jpg",
+        stream_url: "https://wdr-diemaus-live.icecastssl.wdr.de/wdr/diemaus/live/mp3/128/stream.mp3",
+        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_diemaus.txt",
+        description: "Die Maus zum Hören - Lach- und Sachgeschichten",
+        site: "https://www.wdrmaus.de/hoeren/",
+        xtra_info: ["Pop", "Deutsch",128,false,"#18375C"]
     },{
         name:"Heart Radio",
         logo: "assets/heart80s.jpg",
@@ -119,15 +119,15 @@ const stations = [
         id3_info: "",
         description: "the UK's biggest commercial radio brand.",
         site: "https://www.heart.co.uk/",
-        xtra_info:["80's Pop","English",196,false,"#d21e2a"]
+        xtra_info:["80's Pop","English",196,true,"#d21e2a"]
     },{
         name: "WDR einsLive",
-        logo: "assets/1live_logo.svg",
+        logo: "assets/1live_logo_claim.svg",
         stream_url: "https://wdr-1live-rockhits.icecast.wdr.de/wdr/1live/rockhits/mp3/128/stream.mp3",
         id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
         description: "Hier treffen die beliebtesten Rockhymnen auf den neusten Rocksound",
         site: "https://www1.wdr.de/radio/",
-        xtra_info: ["Sie hören: Rock Hits", "Deutsch",128,true,"#18375C"]
+        xtra_info: ["Sie hören: Rock Hits", "Deutsch",128,false,"#18375C"]
     },{
         name: "113.fm",
         logo: "assets/alt-x_113fm.jpg",
@@ -226,6 +226,18 @@ const stations = [
         xtra_info: ["M\u00FAsica del ayer y hoy en espa\u00F1ol", "Espanol",64,true,"#014171"] 
     }
 ];
+
+/*
+,{
+        name: "WDR 1Live",
+        logo: "assets/1live_logo_claim.svg",
+        stream_url: "https://d111.rndfnk.com/ard/wdr/1live/live/mp3/128/stream.mp3?cid=01FBRZTS1K1TCD4KA2YZ1ND8X3&sid=2dO2O2xaoZmBXJ0PlNRg3jZxhJ1&token=eoVaiEeHkZlEhscyVdL82T91MwtZEID3cZ8kceuVBtg&tvf=nI1frZe8uhdkMTExLnJuZGZuay5jb20",
+        id3_info: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
+        description: "Neue songs auf der 1Live",
+        site: "https://www1.wdr.de/radio/",
+        xtra_info: ["Sie hören: Neue songs", "Deutsch",128,true,"#18375C"]
+    }
+*/
 const awfulArt = ["https://stream.consultoradas.com/cp/musiclibrary/nowplay_fmlapaz.png",
 "https://i.scdn.co/image/ab67616d0000b273852527d582b377f1543129a3",
 "https://i.scdn.co/image/ab67616d0000b2737515ba4e369a9526d7d4dfde",
