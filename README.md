@@ -4,13 +4,11 @@
 
 Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) ~~or when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac)~~. I decided to build a web app to display the current playing song.
 
-## Web Player <main page>
-
-[index](https://ndlopez.github.io/web_player/)
+## Web Player [main page](https://ndlopez.github.io/web_player/)
 
 ![new design](assets/web_player_20240301.png)
 
-[player](https://ndlopez.github.io/web_player/player.html). 
+[player 2](https://ndlopez.github.io/web_player/player.html). 
 
 *The Strumbellas - Spirits*
 
@@ -18,7 +16,7 @@ Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultorada
 
 Display the current playing song out of 25 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), 113.fm ClassicOne, News Radio x3.<br> As for thirdRock, I can no longer request the stream due to location error?, apparently no longer streaming via streamguys1.com. Although tune.in still returns current playing track. In any way, removed and replaced by KEXP-fm.
 
-## [FM La Paz](https://ndlopez.github.io/web_player/fmlapaz.html) 
+## FM La Paz [click here](https://ndlopez.github.io/web_player/fmlapaz.html) 
 
 Display and store in a playlist on the same page current song and the previously listened songs.<br>
 The URL has some security issues (*expired* SSL certificate) but JavaScript's fetch does not seem to care and gets data without problems. I cannot say the same with C#'s json lib.
