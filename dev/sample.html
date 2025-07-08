@@ -75,9 +75,25 @@ body {
 <h2>How To Create A Loader</h2>
 
 <div class="loader"></div>
+
 <div style="width: 100px;height: 100px;">
   <img src="../static/svg_wheel.svg"/>
 </div>
+<button type="button" onclick="load_xml()">Click Me!</button>
+<script>
+async function load_xml() {
+  fetch("https://www.nhk.or.jp/s-media/news/podcast/list/v1/all.xml")
+  .then((response) => response.text())
+  .then((text) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, "text/xml");
+    console.log(doc.getElementsByTagName("lastBuildDate")[0].childNodes[0], 
+    doc.getElementsByTagName("description")[0].childNodes[0].nodeValue);
+    console.log(doc.getElementsByTagName("item")[0].childNodes[1].nodeValue);
+  });
+}
+  
+</script>
 </body>
 </html>
 
