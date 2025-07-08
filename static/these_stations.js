@@ -50,7 +50,7 @@ const stations = [
         xtra_info: ["Alternative-Rock","English",128,true,"#51738f"]
     },{
         name: "Aceradio",
-        logo: "assets/CD_icon.svg",
+        logo: "assets/phantogram.jpg",
         stream_url: "https://bigrradio.cdnstream1.com/5116_128",
         id3_info: "https://player.aceradio.net/streamdata.php?h=bigrradio.cdnstream1.com&p=9980&i=5116_128&https=&f=ice&c=617202",
         description: "Listen to the new Alternative-Rock hits",
@@ -137,14 +137,6 @@ const stations = [
         site: "",
         xtra_info: ["Alternative-Rock","English",128,true,"#291F1B"]
     },{
-        name: "KEXP-FM",
-        logo: "assets/kexp_fm.svg",
-        stream_url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
-        id3_info: "https://api.kexp.org/v2/plays/?format=json&limit=1&ordering=-airdate&airdate_before=2024-01-13T12:45:25.000Z",
-        description: "is an affiliate of the University of Washington, Seattle.",
-        site: "",
-        xtra_info: ["Rock","English",128,true,"#31251C"]
-    },{
         name:"WCPE, The Classical Station",
         logo:"assets/classicalStation.png",
         stream_url:"http://playerservices.streamtheworld.com/api/livestream-redirect/WCPE_FMAAC128.aac",
@@ -176,6 +168,14 @@ const stations = [
         description: "[人,情報,まち,企業,学校...]すべてが繋がる!!",
         site: "Radio Cross from Kobe, Japan",
         xtra_info: ["Pop","日本語",128,false,"#073642"]
+    },{
+        name: "NHK-radio",
+        logo: "assets/nhk_radio.png",
+        stream_url: "",
+        id3_info: "",
+        description: "",
+        site: "",
+        xtra_info: ["News","日本語",128,false,"#31251C"]
     },{
         name: "Radio Francia Internacional",
         logo: "assets/rfi_logo.png",
@@ -228,7 +228,15 @@ const stations = [
 ];
 
 /*
-,{
+    {
+        name: "KEXP-FM",
+        logo: "assets/kexp_fm.svg",
+        stream_url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
+        id3_info: "https://api.kexp.org/v2/plays/?format=json&limit=1&ordering=-airdate&airdate_before=2024-01-13T12:45:25.000Z",
+        description: "is an affiliate of the University of Washington, Seattle.",
+        site: "",
+        xtra_info: ["Rock","English",128,true,"#31251C"]
+    },{
         name: "WDR 1Live",
         logo: "assets/1live_logo_claim.svg",
         stream_url: "https://d111.rndfnk.com/ard/wdr/1live/live/mp3/128/stream.mp3?cid=01FBRZTS1K1TCD4KA2YZ1ND8X3&sid=2dO2O2xaoZmBXJ0PlNRg3jZxhJ1&token=eoVaiEeHkZlEhscyVdL82T91MwtZEID3cZ8kceuVBtg&tvf=nI1frZe8uhdkMTExLnJuZGZuay5jb20",
