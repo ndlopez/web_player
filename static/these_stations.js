@@ -161,7 +161,7 @@ const stations = [
         site: "https://www.113.fm/zen",
         xtra_info:["Meditation/New Age","English",196,false,"#a30321"]
     },{
-        name: "RadiCro",
+        name: "RadiCroインターネットラジオ放送",
         logo: "assets/radicro_400x400.jpg",
         stream_url: "https://radicrojapan.out.airtime.pro/radicrojapan_b",
         id3_info: "",
@@ -169,13 +169,13 @@ const stations = [
         site: "Radio Cross from Kobe, Japan",
         xtra_info: ["Pop","日本語",128,false,"#073642"]
     },{
-        name: "NHK-radio",
+        name: "NHKラジオ",
         logo: "assets/nhk_radio.png",
         stream_url: "",
         id3_info: "",
         description: "",
         site: "",
-        xtra_info: ["News","日本語",128,false,"#31251C"]
+        xtra_info: ["ニュースを、いつでもどこでもお聞きになれるサービスです。","日本語",128,false,"#31251C"]
     },{
         name: "Radio Francia Internacional",
         logo: "assets/rfi_logo.png",
