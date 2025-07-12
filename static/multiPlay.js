@@ -336,11 +336,10 @@ async function update_stations(){
         /*nowPlaying:{artist: stations[kdx].description, song:stations[kdx].name},
             album: stations[kdx].xtra_info[0],artwork: stations[kdx].logo;*/
 
-        if(kdx < no_id3){
+        if(kdx < no_id3){ // fmLaPaz, Melodia, Stereo
             gotData = await get_id3(kdx);// {artist,song,artwork}
-            //get_artwork(kdx);//returns {{artist, song},album,artwork}
         }
-        if (kdx >= no_id3 && kdx <= (no_id3+1)){
+        if (kdx >= no_id3 && kdx <= (no_id3+1)){ // wdr4 and wdrMaus
             const response = await fetch(stations[kdx].id3_info);
             auxLink = await response.text();
             auxLink = auxLink.split("-");
@@ -351,13 +350,10 @@ async function update_stations(){
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+kdx);
         //auxLink = "<span class='small'>" + stations[kdx].name + "</span>";/*stations[kdx].xtra_info[0] +*/
-        /*if( kdx < no_id3 ){
-            auxLink = "<span class='small'>" + stations[kdx].name + "</span>"; }*/
+        /*if( kdx < no_id3 ){auxLink="<span class='small'>" + stations[kdx].name + "</span>"; }*/
         if(isPlaying == kdx){
-            //auxLink = "";//img_size = 80;played.push(kdx); 
             document.title = gotData.artist + "-" + gotData.song;
             document.getElementById("station_"+kdx).style.display = "none";
-            // console.log("Removing:",isPlaying);
         }else{
             document.getElementById("station_"+kdx).style.display = "block";
         }
@@ -387,8 +383,7 @@ async function update_stations(){
 
 async function display_data(kdx){
     // reset timer zoey = 3, cindy = 5;
-    // clearInterval(dayna_timer); stops timer but does not restarts
-    // Function to request artwork from ext-source, not valid for kdx=0
+    // Function to request artwork from ext-source, not valid for kdx=0,1,2,10,11,...
     await update_stations();
     
     const got_row = document.getElementById("station_"+kdx);
@@ -410,13 +405,11 @@ async function display_data(kdx){
         this_artwork = stations[kdx].logo;//"assets/cd_case.svg";
     }
     const coverDiv = document.getElementById("artwork");
-    /*coverDiv.innerHTML = build_case(kdx, got_artist[0].childNodes[1].firstChild.data, gotSong, got_row.getAttribute("data-album"),newArt);*/
+
     coverDiv.style.backgroundImage = `url("${this_artwork}")`;
 
     /* append dark_bkg div to coverDiv*/
     coverDiv.innerHTML = `<div id="dark_bkg" class="pos_rel">${build_case(kdx, gotArtist, gotSong, gotData.album, this_artwork)}</div>`;//flexy class
-
-    // canvas was here
 
     /*const auxDiv = document.getElementById("dark_bkg");
     auxDiv.classList.add("pos_rel");
@@ -434,7 +427,7 @@ async function display_data(kdx){
     
     // Updating player2: elements
     let auxText = "";
-    const reloadMe = document.getElementById("reload_this");//"update_stations()"
+    const reloadMe = document.getElementById("reload_this");
     reloadMe.setAttribute("onclick","display_data(" + kdx + ")");
     
     reloadMe.innerHTML = reloadImg + "<div class='above_svg' id='id3_timer'>03:04</div>";
@@ -497,18 +490,15 @@ async function get_id3(kdx){
             const response = await withTimeout(2000, fetch(stations[kdx].id3_info));
             data = await response.json();
             /*.then((response) =>{ return response.json();})
-            .then((dato)=>{  // console.log("thisData",dato);
-                song = dato["title"].replace(myReg,"").replace(/&/g,"and");
-                })
+            .then((dato)=>{ song = dato["title"].replace(myReg,"").replace(/&/g,"and"); })
             .catch(err => { console.error("connection timed out",err); });*/
         }
         song = data["title"].replace(myReg,"").replace(/&/g,"and");
-	    if(kdx < lpb_id3){// prev == 0
+	    if(kdx < lpb_id3){
             if(Object.keys(data).length < 1){
                 console.log("response length",Object.keys(data).length);
                 return this_output;
             }
-            // console.log("Got",kdx,Object.keys(data).length);
             const auxStr = song.split("-");
             if (auxStr.length < 2){
                 auxStr.push("No title");

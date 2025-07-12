@@ -167,15 +167,15 @@ const stations = [
         id3_info: "",
         description: "[人,情報,まち,企業,学校...]すべてが繋がる!!",
         site: "Radio Cross from Kobe, Japan",
-        xtra_info: ["Pop","日本語",128,false,"#073642"]
+        xtra_info: ["Variety","日本語",128,false,"#073642"]
     },{
         name: "NHKラジオ",
         logo: "assets/nhk_radio.png",
         stream_url: "",
         id3_info: "",
-        description: "",
-        site: "",
-        xtra_info: ["ニュースを、いつでもどこでもお聞きになれるサービスです。","日本語",128,false,"#31251C"]
+        description: "最新のニュースは「らじる★らじる」やポッドキャスト「ＮＨＫラジオニュース」からもお聴きいただけます",
+        site: "https://www.nhk.or.jp/radionews/",
+        xtra_info: ["ニュース","日本語",64,false,"#f8be2d"]
     },{
         name: "Radio Francia Internacional",
         logo: "assets/rfi_logo.png",
