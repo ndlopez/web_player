@@ -13,7 +13,7 @@ const updateTime = 185000 //ms
 const art_size = 300; //artwork default size
 // const top_title = document.getElementById("url_status");
 const titleDiv = document.getElementById("toggle-list");
-
+let nhk_stream = "", nhk_id3 = "";
 let myReg = RegExp("[(][^)]*[)]");//find parentheses
 let cardHeight = "220px";
 let img_size = 100; //card Image size %
@@ -146,6 +146,7 @@ function updateBar(){
 }
 
 function playStop(kdx){
+    let gotData = "";
     svgPlay.addEventListener("click",stopPlay);
     svgPlay.removeEventListener("click",playStop); 
     
@@ -168,9 +169,10 @@ function playStop(kdx){
             // console.error(`Error loading: ${stations[kdx].stream_url}`);
         });
         
-        audioConnect.src = stations[kdx].stream_url;
         if (kdx==19){ // fetch info from NHK-xml
-            load_xml();
+            audioConnect.src = nhk_stream;
+        }else{
+            audioConnect.src = stations[kdx].stream_url;
         }
         audioConnect.play();//if not success -> then timer should not start
         audioConnect.loop = true;        
@@ -260,8 +262,7 @@ function play_elapsed(min=0,sec=0,jdx){//
 }
 
 function run_timer(zoey=3,cindy=4,targetObj="id3_timer"){
-    // console.log("run_timer started");
-    // zoey = 3, cindy = 4;
+    // console.log("run_timer started");  // zoey = 3, cindy = 4;
     dayna_timer = setInterval(()=>{
         // timer to update id3
         document.getElementById(targetObj).innerText = `${String(zoey).padStart(2,'0')}:${String(cindy).padStart(2,'0')}`;
@@ -346,7 +347,17 @@ async function update_stations(){
             if(auxLink.length < 2){auxLink.push(stations[kdx].name);}
             gotData = {artist: auxLink[1], song:auxLink[0]};
         }
-        
+        if (kdx == 19){
+            const response = await fetch(stations[kdx].stream_url);
+            if(!response.ok){ throw new Error ('couldnt fetch nhk.or.jp');}
+            data = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, "text/xml");
+            nhk_stream = doc.getElementsByTagName("item")[0].childNodes[3].attributes[0].nodeValue;
+            nhk_id3 = doc.getElementsByTagName("item")[0].childNodes[1].innerHTML;
+            // console.log("stream:",nhk_stream,"id3:",nhk_id3);
+            gotData = {artist: "NHKラジオ", song: nhk_id3};
+        }
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+kdx);
         //auxLink = "<span class='small'>" + stations[kdx].name + "</span>";/*stations[kdx].xtra_info[0] +*/
@@ -360,7 +371,6 @@ async function update_stations(){
         
         this_artist.innerHTML = `<span class='bold_medium oneLine'> ${gotData.song}
         </span><span class='oneLine'> ${gotData.artist} </span>`; 
-        //+ auxLink;
 
         /*Update artwork of station by artist
         auxLink = stations[kdx].logo;
@@ -549,7 +559,6 @@ async function get_artwork(jdx,artist_name,song_title){
         // console.log("artwork",artwork,"album",album);
     } catch (error) {
         console.log("got an error",jdx,error);
-        //return {nowPlaying, album, artwork};
     }
     if (artwork === defaultImg){
         artwork = stations[jdx].logo;
@@ -582,12 +591,18 @@ function closeNav(){
 }
 
 async function load_xml() {
-    fetch("https://www.nhk.or.jp/s-media/news/podcast/list/v1/all.xml")
-    .then((response) => response.text())
-    .then((text) => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(text, "text/xml");
-      console.log("stream:",doc.getElementsByTagName("item")[0].childNodes[3].attributes[0].nodeValue);
-      console.log("id3:",doc.getElementsByTagName("item")[0].childNodes[1].innerHTML);
-    });
-  }
+    let this_stream = "", this_id3 = "",data="";
+    try{
+        const response = await fetch("https://www.nhk.or.jp/s-media/news/podcast/list/v1/all.xml");
+        if(!response.ok){ throw new Error ('couldnt fetch nhk.or.jp');}
+        data = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, "text/xml");
+        this_stream = doc.getElementsByTagName("item")[0].childNodes[3].attributes[0].nodeValue;
+        this_id3 = doc.getElementsByTagName("item")[0].childNodes[1].innerHTML;
+        console.log("stream:",this_stream);
+        console.log("id3:",this_id3);
+        return {this_id3, this_stream};
+    }catch(error){console.log("Couldnt fetch nhk.or.jp xml");
+    }
+}
