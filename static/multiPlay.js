@@ -81,9 +81,7 @@ function init_this(){
     if(navigator.userAgent.match(/(iPhone|iPad|Android|IEMobile)/)){
         closeNav();
     }
-    display_all_stations();
-    // build_case(0,stations[0].name,"You dont get me high anymore",stations[0].xtra_info[0],stations[0].logo);
-    
+    display_all_stations();    
     update_stations();
 }
 
@@ -98,7 +96,6 @@ let updater = setInterval(update_this,updateTime);
 
 //window.addEventListener("load",startPlay);//for autoplay
 function init_player(stream_idx){
-    // console.log("gotStream",stream_idx);
     isPlaying = stream_idx;
     clearInterval(updater);
     //const getTimer = document.getElementById("timer_"+isPlaying);
@@ -164,9 +161,7 @@ function playStop(kdx){
         // top_title.innerText = "";
         audioConnect.addEventListener('error',()=>{
             stopPlay();
-            // Should be displayed also on GUI
             stream_info.innerText = `Cannot connect to ${stations[kdx].name}`;
-            // console.error(`Error loading: ${stations[kdx].stream_url}`);
         });
         
         if (kdx==19){ // fetch info from NHK-xml
@@ -206,7 +201,6 @@ function stopPlay(){/* param: kdx=0 */
     audioConnect.pause();
     audioConnect.loop = false;
     gifImg.classList.add("no-audio");
-    // clearInterval(tina_timer);
     svgPlay.classList.remove("play_on");
     svgPlay.classList.add("paused");
     svgPlay.innerHTML = /*circleImg +*/ playImg;
@@ -360,7 +354,8 @@ async function update_stations(){
         }
         auxLink = "";
         const this_artist = document.getElementById("artistDiv_"+kdx);
-        //auxLink = "<span class='small'>" + stations[kdx].name + "</span>";/*stations[kdx].xtra_info[0] +*/
+        //auxLink = "<span class='small'>" + stations[kdx].name + "</span>";
+        // /*stations[kdx].xtra_info[0] +*/
         /*if( kdx < no_id3 ){auxLink="<span class='small'>" + stations[kdx].name + "</span>"; }*/
         if(isPlaying == kdx){
             document.title = gotData.artist + "-" + gotData.song;
@@ -451,7 +446,6 @@ async function display_data(kdx){
     let play_stat = stations[kdx].name + " - " + stations[kdx].description;
     if(kdx > no_id3){
         auxText = stations[kdx].xtra_info[0];
-        //play_stat = "";
     }
     
     /*let newTitle = gotSong + " - " + gotArtist;
@@ -533,9 +527,7 @@ async function get_id3(kdx){
 async function get_artwork(jdx,artist_name,song_title){
     let album = stations[jdx].xtra_info[1] + "-" + stations[jdx].xtra_info[2] +"kbps", artwork = stations[jdx].logo;
     /*Fetch artwork from another source, must get first id3 */
-    const nowPlaying = {
-        artist: artist_name, song: song_title };
-        //await get_id3(jdx); // {artist,song,artwork}
+    const nowPlaying = { artist: artist_name, song: song_title };
 
     if(errTitle.includes(nowPlaying.song.trim()) || (jdx < lpb_id3) || (jdx > (no_id3 - 1))){
         // console.log("No artwork requests for ",stations[jdx].name);
@@ -588,21 +580,4 @@ function closeNav(){
     document.getElementById("controls").style.display = "none";
     document.getElementById("art_title").style.display = "block";
     document.body.style.overflow = "auto";
-}
-
-async function load_xml() {
-    let this_stream = "", this_id3 = "",data="";
-    try{
-        const response = await fetch("https://www.nhk.or.jp/s-media/news/podcast/list/v1/all.xml");
-        if(!response.ok){ throw new Error ('couldnt fetch nhk.or.jp');}
-        data = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data, "text/xml");
-        this_stream = doc.getElementsByTagName("item")[0].childNodes[3].attributes[0].nodeValue;
-        this_id3 = doc.getElementsByTagName("item")[0].childNodes[1].innerHTML;
-        console.log("stream:",this_stream);
-        console.log("id3:",this_id3);
-        return {this_id3, this_stream};
-    }catch(error){console.log("Couldnt fetch nhk.or.jp xml");
-    }
 }
