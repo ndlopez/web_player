@@ -169,12 +169,13 @@ function playStop(kdx){
         });
         
         audioConnect.src = stations[kdx].stream_url;
+        if (kdx==19){ // fetch info from NHK-xml
+            load_xml();
+        }
         audioConnect.play();//if not success -> then timer should not start
-        audioConnect.loop = true;
-        // Once audio changes this func starts.
-        audioConnect.ontimeupdate = updateBar();
+        audioConnect.loop = true;        
+        audioConnect.ontimeupdate = updateBar(); // Once audio changes this func starts.
         //console.log("audio?",audioConnect.duration());
-        //counter starts or restarts mmss = "00:00";
         play_elapsed(parseInt(mmss.substring(0,2)),parseInt(mmss.substring(3,5)),kdx); 
         svgPlay.classList.remove("paused");
         svgPlay.classList.add("play_on");
@@ -220,7 +221,6 @@ function volume_mute(vol_stat){
 
     if(vol_stat === 0){
         if(volInput.value != "0"){
-            // console.log("volume on");
             // volInput.classList.remove("volume-none");
             // volInput.classList.add("volume-vertical");
             volIcon.src = "assets/volume-repo-off.svg";
@@ -369,7 +369,7 @@ async function update_stations(){
 
         /* adding album info to <data-?> tag */
         auxLink = gotData.artwork;
-        if(kdx < lpb_id3){//==0 LaPaz.fm, gotData={artist,song,artwork}
+        if(kdx < lpb_id3){// LaPaz.fm, Melodia, Stereo
             if(awfulArt.includes(gotData.artwork)){
                 auxLink = stations[0].logo;
             }else{
@@ -580,3 +580,14 @@ function closeNav(){
     document.getElementById("art_title").style.display = "block";
     document.body.style.overflow = "auto";
 }
+
+async function load_xml() {
+    fetch("https://www.nhk.or.jp/s-media/news/podcast/list/v1/all.xml")
+    .then((response) => response.text())
+    .then((text) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, "text/xml");
+      console.log("stream:",doc.getElementsByTagName("item")[0].childNodes[3].attributes[0].nodeValue);
+      console.log("id3:",doc.getElementsByTagName("item")[0].childNodes[1].innerHTML);
+    });
+  }
