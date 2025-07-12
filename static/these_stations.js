@@ -171,7 +171,7 @@ const stations = [
     },{
         name: "NHKラジオ",
         logo: "assets/nhk_radio.png",
-        stream_url: "",
+        stream_url: "https://www.nhk.or.jp/s-media/news/podcast/list/v1/all.xml",
         id3_info: "",
         description: "最新のニュースは「らじる★らじる」やポッドキャスト「ＮＨＫラジオニュース」からもお聴きいただけます",
         site: "https://www.nhk.or.jp/radionews/",
