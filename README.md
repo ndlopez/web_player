@@ -1,20 +1,17 @@
-# Display current song playing on streams
-
+# Web Player [main page](https://ndlopez.github.io/web_player/)
 [live demo](https://ndlopez.github.io/web_player/)
 
-Since VLC displays *stream* after opening [lapaz.fm](https://stream.consultoradas.com/8042/stream) ~~or when opening [thirdRock](https://rfcmedia3.streamguys1.com/thirdrock-sgplayer.aac)~~. I decided to build a web app to display the current playing song.
+![new design](assets/main_player.png)
 
-## Web Player [main page](https://ndlopez.github.io/web_player/)
-
-![new design](assets/web_player_20240301.png)
+This is a web player to stream music from different stations (currently 26). Among them, LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), 113.fm ClassicOne, wdr, and News Radio x3.<br> It auto updates the id3-tag every 3min50s, due to that some streams might not match current playing song. Also not all the 26 streams have id3-tags, currently 12 are supported.
 
 [player 2](https://ndlopez.github.io/web_player/player.html). 
+
+Second player without auto-update function, once the user changes station it updates the id3-tag.
 
 *The Strumbellas - Spirits*
 
 *I Don't Wanna Know If You Are Lonely - Husker Du*
-
-Display the current playing song out of 25 (currently) differents streams. LaPaz.fm, 181.fm (Awesome80s,90s Alternative, The Buzz), 113.fm ClassicOne, News Radio x3.<br> As for thirdRock, I can no longer request the stream due to location error?, apparently no longer streaming via streamguys1.com. Although tune.in still returns current playing track. In any way, removed and replaced by KEXP-fm.
 
 ## FM La Paz [click here](https://ndlopez.github.io/web_player/fmlapaz.html) 
 
@@ -28,16 +25,6 @@ The URL I am using is hosted somewhere on the west (where the Sun sets), where I
 Update time is set to 3min40s (assumed average length of a song). Because of this sometimes a song might me missed and not included in the Playlist, in such case the user can update the list by clicking the <reload> button.
 
 By clicking on the cloud icon, it is possible to download the playlist in JSON format, obviously from the moment the page was opened.
-
-## NHK radio 5min-news every hour
-
-fetch("https://www.nhk.or.jp/s-media/news/podcast/list/v1/all.xml")
-  .then((response) => response.text())
-  .then((text) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, "text/xml");
-    console.log(doc.documentElement.nodeName);
-  });
 
 ## Unrelated?
 
